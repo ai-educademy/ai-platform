@@ -10,8 +10,8 @@
     "about": "À propos",
     "getStarted": "Commencer à Apprendre — C'est Gratuit",
     "language": "Langue",
-    "dashboard": "Dashboard",
-    "programs": "Programs"
+    "dashboard": "Tableau de bord",
+    "programs": "Programmes"
   },
   "hero": {
     "badge": "100% Gratuit • Open Source • Dans Votre Langue",
@@ -205,9 +205,9 @@
     }
   },
   "programs": {
-    "badge": "5 Learning Levels",
-    "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "badge": "5 niveaux d'apprentissage",
+    "title": "Choisissez votre parcours",
+    "subtitle": "Du débutant absolu à l'expert en IA — choisissez le niveau qui correspond à votre situation actuelle.",
     "level": "Niveau",
     "comingSoon": "Bientôt disponible",
     "startLearning": "Commencer",
@@ -279,9 +279,30 @@
     "trackCraft": "Craft Engineering"
   },
   "auth": {
-    "startLearning": "Commencer",
+    "startLearning": "Commencer à apprendre",
     "skipForNow": "Passer pour l'instant",
-    "progressSavedLocally": "Votre progression est enregistrée localement."
+    "progressSavedLocally": "Votre progression est enregistrée localement sur cet appareil.",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "signOut": "Se déconnecter",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "displayName": "Nom d'affichage",
+    "usernamePlaceholder": "Choisissez un nom d'utilisateur",
+    "passwordPlaceholder": "Choisissez un mot de passe",
+    "namePlaceholder": "Votre nom d'affichage",
+    "signInPlaceholder": "Entrez votre nom d'utilisateur",
+    "signInPasswordPlaceholder": "Entrez votre mot de passe",
+    "usernameMinLength": "Le nom d'utilisateur doit contenir au moins 3 caractères",
+    "passwordMinLength": "Le mot de passe doit contenir au moins 6 caractères",
+    "nameMinLength": "Le nom doit contenir au moins 2 caractères",
+    "usernameTaken": "Ce nom d'utilisateur est déjà pris",
+    "invalidCredentials": "Nom d'utilisateur ou mot de passe incorrect",
+    "welcomeBack": "Bon retour",
+    "accountCreated": "Compte créé avec succès",
+    "signInPrompt": "Connectez-vous pour suivre votre progression",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "hasAccount": "Vous avez déjà un compte ?"
   },
   "lessonTitles": {
     "what-is-ai": "Qu'est-ce que l'IA ?",

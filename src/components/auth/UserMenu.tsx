@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { SignInModal } from "./SignInModal";
 import Link from "next/link";
@@ -8,6 +9,7 @@ import { usePathname } from "next/navigation";
 
 export function UserMenu() {
   const { profile, clearProfile, isSignedIn } = useGuestProfile();
+  const t = useTranslations("auth");
   const [showModal, setShowModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -23,12 +25,12 @@ export function UserMenu() {
         <button
           onClick={() => setShowModal(true)}
           className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-full border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
-          aria-label="Sign in"
+          aria-label={t("signIn")}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
-          <span className="hidden sm:inline">Sign in</span>
+          <span className="hidden sm:inline">{t("signIn")}</span>
         </button>
         <SignInModal isOpen={showModal} onClose={() => setShowModal(false)} />
       </>
@@ -61,7 +63,9 @@ export function UserMenu() {
                   <span className="text-2xl">{profile?.avatar}</span>
                   <div>
                     <p className="text-sm font-semibold truncate">{profile?.name}</p>
-                    <p className="text-xs text-[var(--color-text-muted)]">Guest learner</p>
+                    <p className="text-xs text-[var(--color-text-muted)]">
+                      {profile?.username ? `@${profile.username}` : "Guest learner"}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -87,7 +91,7 @@ export function UserMenu() {
                   }}
                   className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-[var(--color-bg)] transition-colors cursor-pointer"
                 >
-                  <span>👋</span> Sign out
+                  <span>👋</span> {t("signOut")}
                 </button>
               </div>
             </div>

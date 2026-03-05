@@ -11,7 +11,7 @@
     "getStarted": "Begin te Leren — Het is Gratis",
     "language": "Taal",
     "dashboard": "Dashboard",
-    "programs": "Programs"
+    "programs": "Programma's"
   },
   "hero": {
     "badge": "100% Gratis • Open Source • In Jouw Taal",
@@ -205,9 +205,9 @@
     }
   },
   "programs": {
-    "badge": "5 Learning Levels",
-    "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "badge": "5 leerniveaus",
+    "title": "Kies jouw leerpad",
+    "subtitle": "Van absolute beginner tot AI-expert — kies het niveau dat bij je past.",
     "level": "Niveau",
     "comingSoon": "Binnenkort beschikbaar",
     "startLearning": "Begin met leren",
@@ -280,8 +280,29 @@
   },
   "auth": {
     "startLearning": "Begin met leren",
-    "skipForNow": "Overslaan",
-    "progressSavedLocally": "Je voortgang wordt lokaal opgeslagen."
+    "skipForNow": "Overslaan voor nu",
+    "progressSavedLocally": "Je voortgang wordt lokaal op dit apparaat opgeslagen.",
+    "signIn": "Inloggen",
+    "signUp": "Registreren",
+    "signOut": "Uitloggen",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "displayName": "Weergavenaam",
+    "usernamePlaceholder": "Kies een gebruikersnaam",
+    "passwordPlaceholder": "Kies een wachtwoord",
+    "namePlaceholder": "Je weergavenaam",
+    "signInPlaceholder": "Voer je gebruikersnaam in",
+    "signInPasswordPlaceholder": "Voer je wachtwoord in",
+    "usernameMinLength": "Gebruikersnaam moet minimaal 3 tekens bevatten",
+    "passwordMinLength": "Wachtwoord moet minimaal 6 tekens bevatten",
+    "nameMinLength": "Naam moet minimaal 2 tekens bevatten",
+    "usernameTaken": "Deze gebruikersnaam is al bezet",
+    "invalidCredentials": "Ongeldige gebruikersnaam of wachtwoord",
+    "welcomeBack": "Welkom terug",
+    "accountCreated": "Account succesvol aangemaakt",
+    "signInPrompt": "Log in om je leervoortgang bij te houden",
+    "noAccount": "Heb je nog geen account?",
+    "hasAccount": "Heb je al een account?"
   },
   "lessonTitles": {
     "what-is-ai": "Wat is AI?",

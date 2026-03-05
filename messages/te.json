@@ -10,8 +10,8 @@
     "about": "మా గురించి",
     "getStarted": "నేర్చుకోవడం ప్రారంభించండి — ఇది ఉచితం",
     "language": "భాష",
-    "dashboard": "Dashboard",
-    "programs": "Programs"
+    "dashboard": "డ్యాష్‌బోర్డ్",
+    "programs": "కార్యక్రమాలు"
   },
   "hero": {
     "badge": "100% ఉచితం • ఓపెన్ సోర్స్ • మీ భాషలో",
@@ -205,9 +205,9 @@
     }
   },
   "programs": {
-    "badge": "5 Learning Levels",
-    "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "badge": "5 నేర్చుకునే స్థాయిలు",
+    "title": "మీ నేర్చుకునే మార్గాన్ని ఎంచుకోండి",
+    "subtitle": "పూర్తి ప్రారంభకుడి నుండి AI నిపుణుడి వరకు — మీ ప్రస్తుత స్థాయికి సరిపోయే స్థాయిని ఎంచుకోండి.",
     "level": "స్థాయి",
     "comingSoon": "త్వరలో రాబోతోంది",
     "startLearning": "నేర్చుకోవడం ప్రారంభించండి",
@@ -280,8 +280,29 @@
   },
   "auth": {
     "startLearning": "నేర్చుకోవడం ప్రారంభించండి",
-    "skipForNow": "ప్రస్తుతం దాటవేయండి",
-    "progressSavedLocally": "మీ పురోగతి ఈ పరికరంలో స్థానికంగా సేవ్ చేయబడింది."
+    "skipForNow": "ప్రస్తుతానికి దాటవేయండి",
+    "progressSavedLocally": "మీ పురోగతి ఈ పరికరంలో స్థానికంగా సేవ్ చేయబడింది.",
+    "signIn": "సైన్ ఇన్",
+    "signUp": "సైన్ అప్",
+    "signOut": "సైన్ అవుట్",
+    "username": "వినియోగదారు పేరు",
+    "password": "పాస్‌వర్డ్",
+    "displayName": "ప్రదర్శన పేరు",
+    "usernamePlaceholder": "వినియోగదారు పేరు ఎంచుకోండి",
+    "passwordPlaceholder": "పాస్‌వర్డ్ ఎంచుకోండి",
+    "namePlaceholder": "మీ ప్రదర్శన పేరు",
+    "signInPlaceholder": "మీ వినియోగదారు పేరు నమోదు చేయండి",
+    "signInPasswordPlaceholder": "మీ పాస్‌వర్డ్ నమోదు చేయండి",
+    "usernameMinLength": "వినియోగదారు పేరు కనీసం 3 అక్షరాలు ఉండాలి",
+    "passwordMinLength": "పాస్‌వర్డ్ కనీసం 6 అక్షరాలు ఉండాలి",
+    "nameMinLength": "పేరు కనీసం 2 అక్షరాలు ఉండాలి",
+    "usernameTaken": "ఈ వినియోగదారు పేరు ఇప్పటికే తీసుకోబడింది",
+    "invalidCredentials": "చెల్లని వినియోగదారు పేరు లేదా పాస్‌వర్డ్",
+    "welcomeBack": "తిరిగి స్వాగతం",
+    "accountCreated": "ఖాతా విజయవంతంగా సృష్టించబడింది",
+    "signInPrompt": "మీ నేర్చుకునే పురోగతిని ట్రాక్ చేయడానికి సైన్ ఇన్ చేయండి",
+    "noAccount": "ఖాతా లేదా?",
+    "hasAccount": "ఇప్పటికే ఖాతా ఉందా?"
   },
   "lessonTitles": {
     "what-is-ai": "AI అంటే ఏమిటి?",

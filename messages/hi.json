@@ -10,8 +10,8 @@
     "about": "हमारे बारे में",
     "getStarted": "सीखना शुरू करें — यह मुफ्त है",
     "language": "भाषा",
-    "dashboard": "Dashboard",
-    "programs": "Programs"
+    "dashboard": "डैशबोर्ड",
+    "programs": "कार्यक्रम"
   },
   "hero": {
     "badge": "100% मुफ्त • ओपन सोर्स • आपकी भाषा में",
@@ -205,9 +205,9 @@
     }
   },
   "programs": {
-    "badge": "5 Learning Levels",
-    "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "badge": "5 सीखने के स्तर",
+    "title": "अपना सीखने का रास्ता चुनें",
+    "subtitle": "बिल्कुल शुरुआत से AI विशेषज्ञ तक — वह स्तर चुनें जो आपकी वर्तमान स्थिति से मेल खाता हो।",
     "level": "स्तर",
     "comingSoon": "जल्द आ रहा है",
     "startLearning": "सीखना शुरू करें",
@@ -281,7 +281,28 @@
   "auth": {
     "startLearning": "सीखना शुरू करें",
     "skipForNow": "अभी छोड़ें",
-    "progressSavedLocally": "आपकी प्रगति इस डिवाइस पर स्थानीय रूप से सहेजी गई है।"
+    "progressSavedLocally": "आपकी प्रगति इस डिवाइस पर स्थानीय रूप से सहेजी गई है।",
+    "signIn": "साइन इन करें",
+    "signUp": "साइन अप करें",
+    "signOut": "साइन आउट करें",
+    "username": "उपयोगकर्ता नाम",
+    "password": "पासवर्ड",
+    "displayName": "प्रदर्शित नाम",
+    "usernamePlaceholder": "एक उपयोगकर्ता नाम चुनें",
+    "passwordPlaceholder": "एक पासवर्ड चुनें",
+    "namePlaceholder": "आपका प्रदर्शित नाम",
+    "signInPlaceholder": "अपना उपयोगकर्ता नाम दर्ज करें",
+    "signInPasswordPlaceholder": "अपना पासवर्ड दर्ज करें",
+    "usernameMinLength": "उपयोगकर्ता नाम कम से कम 3 अक्षरों का होना चाहिए",
+    "passwordMinLength": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
+    "nameMinLength": "नाम कम से कम 2 अक्षरों का होना चाहिए",
+    "usernameTaken": "यह उपयोगकर्ता नाम पहले से लिया गया है",
+    "invalidCredentials": "अमान्य उपयोगकर्ता नाम या पासवर्ड",
+    "welcomeBack": "वापसी पर स्वागत है",
+    "accountCreated": "खाता सफलतापूर्वक बनाया गया",
+    "signInPrompt": "अपनी सीखने की प्रगति ट्रैक करने के लिए साइन इन करें",
+    "noAccount": "खाता नहीं है?",
+    "hasAccount": "पहले से खाता है?"
   },
   "lessonTitles": {
     "what-is-ai": "AI क्या है?",

@@ -125,68 +125,6 @@ export default async function HomePage({
 
       <hr className="section-divider" />
 
-      {/* Features Section */}
-      <section className="py-20 md:py-28 bg-[var(--color-bg-section)]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <ScrollReveal animation="fade-up">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                {t("features.title")}
-              </h2>
-              <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto">
-                {t("features.subtitle")}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Features illustration */}
-          <ScrollReveal animation="scale-in">
-            <div className="mb-12 max-w-4xl mx-auto">
-              <div className="rounded-2xl overflow-hidden bg-[var(--color-bg-card)] border border-[var(--color-border)]">
-                <Image
-                  src="/images/hero/features.svg"
-                  alt="Platform features: 5 languages, 100% free, hands-on projects, beginner friendly"
-                  width={720}
-                  height={200}
-                  className="w-full h-auto"
-                  unoptimized
-                />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal animation="fade-up" stagger>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { icon: "🌱", key: "beginner", gradient: "from-emerald-500 to-green-600" },
-                { icon: "🧪", key: "interactive", gradient: "from-blue-500 to-cyan-600" },
-                { icon: "🗣️", key: "multilingual", gradient: "from-violet-500 to-purple-600" },
-                { icon: "💝", key: "free", gradient: "from-pink-500 to-rose-600" },
-                { icon: "👥", key: "community", gradient: "from-amber-500 to-orange-600" },
-                { icon: "🌍", key: "practical", gradient: "from-indigo-500 to-blue-600" },
-              ].map((feature) => (
-                <div
-                  key={feature.key}
-                  className="group card-hover p-8 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:gradient-border transition-all animate-fade-up"
-                >
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform`}>
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">
-                    {t(`features.${feature.key}.title`)}
-                  </h3>
-                  <p className="text-[var(--color-text-muted)] leading-relaxed">
-                    {t(`features.${feature.key}.description`)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <hr className="section-divider" />
-
       {/* Programs Section — Two Tracks */}
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -278,65 +216,64 @@ export default async function HomePage({
       </section>
 
       <hr className="section-divider" />
-      <section className="py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+      {/* Interactive Preview */}
+      <section className="py-20 md:py-28 bg-[var(--color-bg-section)]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <ScrollReveal animation="fade-up">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                {t("journey.title")}
-              </h2>
-              <p className="text-lg text-[var(--color-text-muted)]">
-                {t("journey.subtitle")}
-              </p>
+            <div className="text-center mb-12">
+              <span className="text-xs font-semibold tracking-widest uppercase text-[var(--color-text-muted)]">{t("journey.title")}</span>
+              <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">{t("journey.subtitle")}</h2>
             </div>
           </ScrollReveal>
 
           <ScrollReveal animation="scale-in">
-            <div className="max-w-3xl mx-auto mb-12">
-              <div className="rounded-2xl overflow-hidden bg-[var(--color-bg-card)] border border-[var(--color-border)]">
-                <Image
-                  src="/images/hero/learning-path.svg"
-                  alt="Your learning journey from What is AI to building your own AI"
-                  width={720}
-                  height={160}
-                  className="w-full h-auto"
-                  unoptimized
-                />
+            <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] overflow-hidden shadow-xl">
+              <div className="grid md:grid-cols-2">
+                {/* Left — Preview content */}
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 text-violet-500 text-xs font-semibold w-fit mb-6">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    {t("hero.ctaSecondary")}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{t("journey.step1.title")}</h3>
+                  <p className="text-[var(--color-text-muted)] leading-relaxed mb-6">{t("journey.step1.description")}</p>
+                  <div className="space-y-3">
+                    {[
+                      { icon: "🎮", text: t("journey.step2.title") },
+                      { icon: "📊", text: t("journey.step3.title") },
+                      { icon: "🧠", text: t("journey.step4.title") },
+                    ].map((item) => (
+                      <div key={item.text} className="flex items-center gap-3 text-sm">
+                        <span className="text-lg">{item.icon}</span>
+                        <span className="text-[var(--color-text)]">{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right — CTA card with gradient */}
+                <div className="relative bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 p-8 md:p-10 flex flex-col items-center justify-center text-center text-white">
+                  <div className="absolute inset-0 bg-grid opacity-10" />
+                  <div className="relative">
+                    <div className="w-20 h-20 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" /></svg>
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-white">AI Playground</h3>
+                    <p className="text-indigo-100/80 text-sm mb-6 max-w-xs mx-auto">
+                      Sentiment analysis, neural networks, sorting visualisers, and the AI or Human? guessing game.
+                    </p>
+                    <Link
+                      href={`${basePath}/playground`}
+                      className="inline-flex items-center gap-2 px-8 py-3 bg-white text-indigo-700 rounded-xl font-bold hover:shadow-xl hover:scale-[1.02] transition-all"
+                    >
+                      {t("hero.ctaSecondary")} →
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </ScrollReveal>
-
-          <div className="max-w-3xl mx-auto space-y-0">
-            {[
-              { num: "1", key: "step1", gradient: "from-indigo-500 to-blue-600" },
-              { num: "2", key: "step2", gradient: "from-purple-500 to-violet-600" },
-              { num: "3", key: "step3", gradient: "from-emerald-500 to-teal-600" },
-              { num: "4", key: "step4", gradient: "from-amber-500 to-orange-600" },
-            ].map((step, idx) => (
-              <ScrollReveal key={step.key} animation="slide-left" delay={idx * 100}>
-                <div className="flex gap-6 items-start">
-                  <div className="flex flex-col items-center">
-                    <div
-                      className={`w-12 h-12 bg-gradient-to-br ${step.gradient} text-white rounded-full flex items-center justify-center text-lg font-bold shrink-0 shadow-lg`}
-                    >
-                      {step.num}
-                    </div>
-                    {idx < 3 && (
-                      <div className="w-0.5 h-16 bg-gradient-to-b from-indigo-500/40 to-transparent" />
-                    )}
-                  </div>
-                  <div className="pb-8">
-                    <h3 className="text-xl font-bold mb-2">
-                      {t(`journey.${step.key}.title`)}
-                    </h3>
-                    <p className="text-[var(--color-text-muted)] leading-relaxed">
-                      {t(`journey.${step.key}.description`)}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 
