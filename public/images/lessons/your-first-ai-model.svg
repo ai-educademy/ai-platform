@@ -14,7 +14,15 @@
   <!-- Canvas area -->
   <g transform="translate(40,60)">
     <rect width="280" height="280" rx="16" fill="white" stroke="#d8b4fe" stroke-width="2"/>
-    <text x="140" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#7c3aed">🎨 Drawing Canvas</text>
+    <!-- Palette icon + title -->
+    <g transform="translate(110,8)">
+      <circle cx="10" cy="10" r="9" stroke="#7c3aed" stroke-width="1.5" fill="none"/>
+      <circle cx="7" cy="7" r="1.5" fill="#ec4899"/>
+      <circle cx="13" cy="7" r="1.5" fill="#6366f1"/>
+      <circle cx="7" cy="13" r="1.5" fill="#10b981"/>
+      <circle cx="13" cy="13" r="1.5" fill="#f59e0b"/>
+    </g>
+    <text x="140" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#7c3aed">Drawing Canvas</text>
     <!-- Grid lines -->
     <g stroke="#f3e8ff" stroke-width="1">
       <line x1="20" y1="50" x2="260" y2="50"/>
@@ -43,25 +51,36 @@
   <!-- Result area -->
   <g transform="translate(400,60)">
     <rect width="280" height="280" rx="16" fill="white" stroke="#d8b4fe" stroke-width="2"/>
-    <text x="140" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#7c3aed">🤖 AI Prediction</text>
+    <!-- Robot/AI icon + title -->
+    <g transform="translate(108,6)">
+      <rect x="2" y="4" width="16" height="14" rx="3" stroke="#7c3aed" stroke-width="1.5" fill="none"/>
+      <circle cx="7" cy="10" r="2" fill="#7c3aed"/>
+      <circle cx="13" cy="10" r="2" fill="#7c3aed"/>
+      <line x1="10" y1="2" x2="10" y2="0" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="10" cy="0" r="1.5" fill="#7c3aed"/>
+    </g>
+    <text x="140" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#7c3aed">AI Prediction</text>
     <!-- Prediction result -->
     <g transform="translate(40,50)">
       <rect width="200" height="60" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
-      <text x="30" y="38" font-size="28">⭕</text>
-      <text x="70" y="32" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#166534">Circle</text>
-      <text x="70" y="48" font-family="system-ui,sans-serif" font-size="11" fill="#047857">Confidence: 94%</text>
+      <!-- Circle shape icon -->
+      <circle cx="30" cy="30" r="14" stroke="#166534" stroke-width="2.5" fill="none"/>
+      <text x="70" y="26" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#166534">Circle</text>
+      <text x="70" y="44" font-family="system-ui,sans-serif" font-size="11" fill="#047857">Confidence: 94%</text>
     </g>
     <!-- Other options -->
     <g transform="translate(40,125)">
       <rect width="200" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
-      <text x="30" y="26" font-size="16">⬜</text>
+      <!-- Square shape icon -->
+      <rect x="18" y="10" width="20" height="20" rx="2" stroke="#94a3b8" stroke-width="2" fill="none"/>
       <text x="60" y="26" font-family="system-ui,sans-serif" font-size="12" fill="#64748b">Square — 4%</text>
       <rect x="130" y="15" width="60" height="10" rx="5" fill="#e2e8f0"/>
       <rect x="130" y="15" width="4" height="10" rx="5" fill="#94a3b8"/>
     </g>
     <g transform="translate(40,175)">
       <rect width="200" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
-      <text x="30" y="26" font-size="16">🔺</text>
+      <!-- Triangle shape icon -->
+      <polygon points="28,8 18,30 38,30" stroke="#94a3b8" stroke-width="2" fill="none" stroke-linejoin="round"/>
       <text x="60" y="26" font-family="system-ui,sans-serif" font-size="12" fill="#64748b">Triangle — 2%</text>
       <rect x="130" y="15" width="60" height="10" rx="5" fill="#e2e8f0"/>
       <rect x="130" y="15" width="2" height="10" rx="5" fill="#94a3b8"/>
@@ -69,9 +88,10 @@
     <!-- Success badge -->
     <g transform="translate(60,240)">
       <rect width="160" height="30" rx="15" fill="url(#ycard)"/>
-      <text x="80" y="20" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="white">🎉 You built AI!</text>
+      <!-- Star icon -->
+      <polygon points="24,8 26,14 32,14 27,18 29,24 24,20 19,24 21,18 16,14 22,14" fill="white" opacity="0.9"/>
+      <text x="90" y="20" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="white">You built AI!</text>
     </g>
   </g>
-  <!-- Bottom tip -->
   <text x="360" y="375" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#7c3aed" opacity="0.7">Draw shapes and watch AI recognise them in real-time!</text>
 </svg>
