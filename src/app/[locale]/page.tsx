@@ -43,10 +43,10 @@ export default async function HomePage({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[85vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[60vh] flex items-center">
         <FloatingParticles />
         <div className="absolute inset-0 bg-grid" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-32 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
           <div className="text-center max-w-4xl mx-auto">
             {/* Badge */}
             <div className="inline-flex items-center px-5 py-2 rounded-full bg-indigo-600 text-white text-sm font-semibold mb-8 shadow-lg shadow-indigo-500/30 animate-fade-up" style={{ animationDelay: "100ms" }}>
@@ -62,7 +62,7 @@ export default async function HomePage({
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg sm:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up" style={{ animationDelay: "300ms" }}>
+            <p className="text-lg sm:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8 leading-relaxed animate-fade-up" style={{ animationDelay: "300ms" }}>
               {t("hero.subtitle")}
             </p>
 
@@ -92,10 +92,10 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Programs Section — Two Tracks */}
-      <section className="py-20 md:py-28">
+      <section className="py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <ScrollReveal animation="fade-up">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                 {t("programs.title")}
               </h2>
@@ -106,7 +106,7 @@ export default async function HomePage({
           </ScrollReveal>
 
           {/* Two track cards */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
             {/* AI Learning Path */}
             <ScrollReveal animation="fade-up">
               <div className="gradient-border rounded-2xl h-full">
@@ -184,10 +184,10 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Interactive Preview */}
-      <section className="py-20 md:py-28 bg-[var(--color-bg-section)]">
+      <section className="py-12 md:py-16 bg-[var(--color-bg-section)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <ScrollReveal animation="fade-up">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <span className="text-xs font-semibold tracking-widest uppercase text-[var(--color-text-muted)]">{t("journey.title")}</span>
               <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">{t("journey.subtitle")}</h2>
             </div>
@@ -246,7 +246,7 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Founder */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
+      <section className="py-12 md:py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <ScrollReveal animation="fade-up">
@@ -332,7 +332,7 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Final CTA */}
-      <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 text-white">
+      <section className="py-12 md:py-16 relative overflow-hidden bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 text-white">
         <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
           <ScrollReveal animation="fade-up">
