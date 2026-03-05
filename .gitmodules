@@ -1,0 +1,3 @@
+[submodule "content/programs/ai-seeds"]
+	path = content/programs/ai-seeds
+	url = https://github.com/open-ai-school/ai-seeds.git
