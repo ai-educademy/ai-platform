@@ -733,20 +733,20 @@ export default function PlaygroundPage() {
   const [activeTab, setActiveTab] = useState<"game" | "sentiment" | "neural" | "sorting" | "tokenizer">("game");
 
   const tabs = [
-    { id: "game" as const, label: "AI or Human?", icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+    { id: "game" as const, label: "AI or Human?", desc: "Guess if text is human or AI", icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
     )},
-    { id: "sentiment" as const, label: "Sentiment Analysis", icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>
+    { id: "sentiment" as const, label: "Sentiment Analysis", desc: "Detect emotions in text", icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>
     )},
-    { id: "neural" as const, label: "Neural Network", icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path strokeLinecap="round" d="M12 2v4m0 12v4m-7.07-2.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83" /></svg>
+    { id: "neural" as const, label: "Neural Network", desc: "Visualise how neurons learn", icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path strokeLinecap="round" d="M12 2v4m0 12v4m-7.07-2.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83" /></svg>
     )},
-    { id: "sorting" as const, label: "Sorting Algorithms", icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" /></svg>
+    { id: "sorting" as const, label: "Sorting Algorithms", desc: "Watch algorithms sort in real time", icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" /></svg>
     )},
-    { id: "tokenizer" as const, label: "Tokenizer", icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+    { id: "tokenizer" as const, label: "Tokenizer", desc: "See how AI reads your text", icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
     )},
   ];
 
@@ -761,20 +761,29 @@ export default function PlaygroundPage() {
         </div>
       </ScrollReveal>
 
-      {/* Tabs */}
-      <div className="flex gap-1 p-1 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] mb-8 overflow-x-auto">
+      {/* Experiment Picker */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
+            className={`group relative flex flex-col items-center text-center gap-2 p-4 rounded-xl border-2 transition-all cursor-pointer ${
               activeTab === tab.id
-                ? "bg-[var(--color-bg-card)] text-[var(--color-text)] shadow-sm"
-                : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                ? "border-indigo-500 bg-indigo-500/10 shadow-lg shadow-indigo-500/10"
+                : "border-[var(--color-border)] bg-[var(--color-bg-card)] hover:border-indigo-400 hover:shadow-md"
             }`}
           >
-            {tab.icon}
-            {tab.label}
+            <div className={`p-2.5 rounded-lg transition-colors ${
+              activeTab === tab.id
+                ? "bg-indigo-500 text-white"
+                : "bg-[var(--color-bg-section)] text-[var(--color-text-muted)] group-hover:bg-indigo-500/20 group-hover:text-indigo-500"
+            }`}>
+              {tab.icon}
+            </div>
+            <span className={`text-sm font-semibold leading-tight ${
+              activeTab === tab.id ? "text-indigo-500" : ""
+            }`}>{tab.label}</span>
+            <span className="text-[10px] text-[var(--color-text-muted)] leading-tight hidden sm:block">{tab.desc}</span>
           </button>
         ))}
       </div>
