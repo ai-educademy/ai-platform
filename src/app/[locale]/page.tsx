@@ -400,7 +400,7 @@ export default async function HomePage({
                 {/* Stats bar */}
                 <div className="mt-8 pt-8 border-t border-[var(--color-border)] grid grid-cols-2 md:grid-cols-4 gap-6">
                   {[
-                    { value: "14+", label: t("founder.statYears") },
+                    { value: "Decade+", label: t("founder.statYears") },
                     { value: "3", label: t("founder.statCountries") },
                     { value: "5", label: t("founder.statLanguages") },
                     { value: "100%", label: t("founder.statFree") },
