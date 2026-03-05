@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "@open-ai-school/ai-ui-library";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProgram } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 
 export default async function ProgramPage({
   params,

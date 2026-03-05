@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 
 export default function AboutPage() {
   const t = useTranslations("about");

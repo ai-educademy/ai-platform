@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider } from "@open-ai-school/ai-ui-library";
 import {
   GuestProfileContext,
   useGuestProfileState,

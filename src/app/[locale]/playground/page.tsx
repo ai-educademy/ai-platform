@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { DrawingRecogniser } from "@/components/playground/DrawingRecogniser";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 
 export default function PlaygroundPage() {
   const t = useTranslations("playground");

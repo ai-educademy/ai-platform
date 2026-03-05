@@ -1,10 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import Image from "next/image";
-import { CourseProgress } from "@/components/ui/CourseProgress";
-import { WelcomeBanner } from "@/components/ui/WelcomeBanner";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { FloatingParticles } from "@/components/ui/FloatingParticles";
+import { CourseProgress } from "@open-ai-school/ai-ui-library";
+import { WelcomeBanner } from "@open-ai-school/ai-ui-library";
+import { ScrollReveal } from "@open-ai-school/ai-ui-library";
+import { FloatingParticles } from "@open-ai-school/ai-ui-library";
 
 export default async function HomePage({
   params,

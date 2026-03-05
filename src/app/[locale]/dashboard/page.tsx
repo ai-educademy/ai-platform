@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useProgress } from "@/hooks/useProgress";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 
 const PROGRAMS = [
   {

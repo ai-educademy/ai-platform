@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { getProgram } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { LessonProgressBadge } from "@/components/lessons/LessonProgressBadge";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 
 export default async function ProgramLessonsPage({
   params,
