@@ -41,7 +41,7 @@ A hash map converts a **key** into an **index** using a hash function, then stor
 
 1. **Input:** `"apple"` (key)
 2. **Hash:** `hash("apple") % size` → bucket `0`
-3. **Store:** bucket `0` = `{apple: 3}`
+3. **Store:** bucket `0` = `apple: 3`
 4. **Lookup:** O(1) average — go straight to the bucket
 
 **Key characteristics:**
@@ -68,7 +68,7 @@ Why can't you use a list as a dictionary key in Python? Because lists are mutabl
 
 | Step | Current | Need (9 - current) | In Map? | Action |
 |------|---------|---------------------|---------|--------|
-| 1 | 2 | 7 | No | Store `{2: 0}` |
+| 1 | 2 | 7 | No | Store `2: 0` |
 | 2 | 7 | 2 | **Yes!** | Return `[0, 1]` |
 
 <Callout type="info">
@@ -88,7 +88,7 @@ def frequency_count(nums):
         freq[num] = freq.get(num, 0) + 1
     return freq
 
-# [1, 2, 2, 3, 3, 3] → {1: 1, 2: 2, 3: 3}
+# [1, 2, 2, 3, 3, 3] => {1: 1, 2: 2, 3: 3}
 ```
 
 **Used in:**
@@ -122,7 +122,7 @@ In production ML systems, **feature stores** use hash maps at their core:
 - **Cache layer** — avoid recomputing expensive features
 
 <FunFact>
-Netflix's recommendation engine performs **millions of hash map lookups per second** to match users with content. Each user's viewing history is stored as a hash map of {movie_id: rating}, enabling O(1) feature retrieval during model inference.
+Netflix's recommendation engine performs **millions of hash map lookups per second** to match users with content. Each user's viewing history is stored as a hash map of `movie_id: rating` pairs, enabling O(1) feature retrieval during model inference.
 </FunFact>
 
 ---

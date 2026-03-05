@@ -28,9 +28,9 @@ Every search result you see is **sorted by relevance**. Every database query use
 
 | Pass | Comparisons | Result |
 |------|------------|--------|
-| 1 | 5>3 swap, 5<8 skip, 8>1 swap | [3, 5, 1, **8**] |
-| 2 | 3<5 skip, 5>1 swap | [3, 1, **5**, 8] |
-| 3 | 3>1 swap | [**1**, 3, 5, 8] |
+| 1 | 5→3 swap, 5→8 skip, 8→1 swap | [3, 5, 1, **8**] |
+| 2 | 3→5 skip, 5→1 swap | [3, 1, **5**, 8] |
+| 3 | 3→1 swap | [**1**, 3, 5, 8] |
 
 **Time: O(n²) | Space: O(1)**
 
@@ -118,7 +118,7 @@ Why O(n log n)? The array splits log(n) times (halving). At each level, we do O(
 | Step | Range | Mid | Compare | Action |
 |------|-------|-----|---------|--------|
 | 1 | [2..56] | 15 | 23 > 15 | Search right half |
-| 2 | [23..56] | 37 | 23 < 37 | Search left half |
+| 2 | [23..56] | 37 | 23 ‹ 37 | Search left half |
 | 3 | [23] | 23 | 23 = 23 | **Found at index 4!** |
 
 **3 steps** instead of 8 (linear scan). For 1 million elements: **20 steps** instead of 1,000,000.

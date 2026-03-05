@@ -74,39 +74,19 @@ export default async function ProgramLessonPage({
         <LessonRenderer content={lesson.content} />
       </div>
 
-      {/* Mark as Complete */}
+      {/* Mark as Complete + Navigation */}
       <LessonComplete
         slug={`${programSlug}/${slug}`}
         totalLessons={allLessons.length}
         currentIndex={currentIdx}
         nextSlug={next?.slug}
         nextTitle={next?.title}
+        prevSlug={prev?.slug}
+        prevTitle={prev?.title}
         basePath={`${programPath}/lessons`}
+        programPath={programPath}
+        programTitle={program.title}
       />
-
-      {/* Navigation */}
-      <div className="mt-8 pt-8 border-t border-[var(--color-border)] flex items-center justify-between">
-        {prev ? (
-          <Link
-            href={`${programPath}/lessons/${prev.slug}`}
-            className="flex items-center gap-2 text-[var(--color-primary)] hover:underline"
-          >
-            ← {prev.title}
-          </Link>
-        ) : (
-          <div />
-        )}
-        {next ? (
-          <Link
-            href={`${programPath}/lessons/${next.slug}`}
-            className="flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-medium hover:bg-[var(--color-primary-dark)] transition-colors"
-          >
-            {next.title} →
-          </Link>
-        ) : (
-          <div />
-        )}
-      </div>
     </div>
   );
 }
