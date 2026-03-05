@@ -87,3 +87,4 @@ Deployed automatically to [Vercel](https://vercel.com) on push to `main`.
 ## 📄 License
 
 MIT © [Open AI School](https://github.com/open-ai-school)
+
