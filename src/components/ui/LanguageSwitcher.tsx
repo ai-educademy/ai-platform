@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { locales, localeNames, localeFlags } from "@/i18n/request";
 import type { Locale } from "@/i18n/request";
 import { useState, useRef, useEffect, useCallback } from "react";
@@ -10,13 +10,9 @@ export function LanguageSwitcher() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const router = useRouter();
+  const currentLocale = useLocale();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  // Detect current locale from pathname
-  const currentLocale = (locales as readonly string[]).find(
-    (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`)
-  ) || "en";
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -45,7 +41,7 @@ export function LanguageSwitcher() {
 
     const segments = pathname.split("/").filter(Boolean);
 
-    // Remove current locale prefix if present
+    // Remove any locale prefix if present (covers both prefixed and unprefixed cases)
     if ((locales as readonly string[]).includes(segments[0])) {
       segments.shift();
     }
@@ -58,6 +54,9 @@ export function LanguageSwitcher() {
     } else {
       newPath = "/" + newLocale + (segments.length > 0 ? "/" + segments.join("/") : "");
     }
+
+    // Ensure clean path (no double slashes, no trailing slash except root)
+    newPath = newPath.replace(/\/+/g, "/").replace(/\/$/, "") || "/";
 
     router.push(newPath);
     setOpen(false);
