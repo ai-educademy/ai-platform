@@ -126,10 +126,11 @@ export default async function HomePage({
                           </div>
                         </Link>
                       ) : (
-                        <div key={program.slug} className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-40">
+                        <button key={program.slug} onClick={() => alert(`${program.title} — Coming Soon!`)} className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-60 hover:opacity-80 hover:border-indigo-400 transition-all cursor-pointer">
                           <div className="text-2xl mb-1">{program.icon}</div>
                           <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
-                        </div>
+                          <div className="text-[8px] text-[var(--color-text-muted)]">Soon</div>
+                        </button>
                       )
                     ))}
                   </div>
@@ -156,10 +157,11 @@ export default async function HomePage({
                           </div>
                         </Link>
                       ) : (
-                        <div key={program.slug} className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-40">
+                        <button key={program.slug} onClick={() => alert(`${program.title} — Coming Soon!`)} className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-60 hover:opacity-80 hover:border-indigo-400 transition-all cursor-pointer">
                           <div className="text-2xl mb-1">{program.icon}</div>
                           <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
-                        </div>
+                          <div className="text-[8px] text-[var(--color-text-muted)]">Soon</div>
+                        </button>
                       )
                     ))}
                   </div>

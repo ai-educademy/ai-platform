@@ -204,5 +204,9 @@ function ProgramCard({
 
   return isActive ? (
     <Link href={`${basePath}/programs/${program.slug}`} className="block h-full">{card}</Link>
-  ) : card;
+  ) : (
+    <button onClick={() => alert(`${program.title} is coming soon! We're building this module right now.`)} className="block h-full text-left w-full hover:opacity-80 transition-opacity cursor-pointer">
+      {card}
+    </button>
+  );
 }
