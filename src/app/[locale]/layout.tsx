@@ -78,7 +78,7 @@ export async function generateMetadata({
     },
     verification: {
       // Add Google Search Console verification when available
-      google: "googlec0ba8018e06a46df",
+      google: "sy_cBywtczFwB5llz4Glcgpo_qdYRfXIgisrBL5E6Yw",
     },
     category: "education",
   };
