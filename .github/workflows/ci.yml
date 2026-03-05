@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   pull_request:
     branches: [main]
 
@@ -29,4 +29,75 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - run: npm run build
       - run: npm run lint
+
+  smoke-test:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --legacy-peer-deps
+      - run: npm run build
+
+      - name: Start server and smoke test
+        run: |
+          npm start -- -p 3000 &
+          SERVER_PID=$!
+
+          # Wait for server to be ready (max 30s)
+          for i in $(seq 1 30); do
+            if curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/robots.txt | grep -q "200"; then
+              echo "✅ Server ready after ${i}s"
+              break
+            fi
+            sleep 1
+          done
+
+          echo "🔍 Running smoke tests..."
+          FAILED=0
+
+          # Test critical pages
+          for path in "/" "/en" "/en/programs" "/en/playground" "/en/about" "/robots.txt" "/sitemap.xml" "/manifest.webmanifest"; do
+            STATUS=$(curl -sL -o /dev/null -w "%{http_code}" "http://localhost:3000${path}")
+            if [ "$STATUS" = "200" ]; then
+              echo "  ✅ ${path} → ${STATUS}"
+            else
+              echo "  ❌ ${path} → ${STATUS}"
+              FAILED=1
+            fi
+          done
+
+          # Test non-English locales
+          for locale in fr nl hi te; do
+            STATUS=$(curl -sL -o /dev/null -w "%{http_code}" "http://localhost:3000/${locale}")
+            if [ "$STATUS" = "200" ]; then
+              echo "  ✅ /${locale} → ${STATUS}"
+            else
+              echo "  ❌ /${locale} → ${STATUS}"
+              FAILED=1
+            fi
+          done
+
+          # Verify key SEO elements exist in HTML
+          HTML=$(curl -sL http://localhost:3000/en)
+          echo "$HTML" | grep -q "application/ld+json" && echo "  ✅ JSON-LD present" || { echo "  ❌ JSON-LD missing"; FAILED=1; }
+          echo "$HTML" | grep -q "og:title" && echo "  ✅ OG tags present" || { echo "  ❌ OG tags missing"; FAILED=1; }
+
+          kill $SERVER_PID 2>/dev/null
+
+          if [ "$FAILED" = "1" ]; then
+            echo ""
+            echo "❌ Smoke tests FAILED — this build would break production!"
+            exit 1
+          fi
+
+          echo ""
+          echo "✅ All smoke tests passed — safe to deploy"
 
