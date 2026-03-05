@@ -11,10 +11,16 @@
   "prerequisites": "AI Branches",
   "lessonCount": 0,
   "estimatedHours": 10,
-  "topics": ["Neural networks", "Large Language Models", "Prompt engineering", "AI system design"],
+  "topics": [
+    "Neural networks",
+    "Large Language Models",
+    "Prompt engineering",
+    "AI system design"
+  ],
   "outcomes": [
     "Understand how neural networks work",
     "Master prompt engineering techniques",
     "Evaluate AI tools and services critically"
-  ]
+  ],
+  "track": "ai-learning"
 }

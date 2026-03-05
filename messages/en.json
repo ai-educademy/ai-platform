@@ -226,7 +226,14 @@
       "4": "Advanced",
       "5": "Expert"
     },
-    "viewAll": "View All Programs"
+    "viewAll": "View All Programs",
+    "trackAI": "AI Learning Path",
+    "trackAIDesc": "Grow from zero to AI expert — nature-inspired progression",
+    "trackAITagline": "Seeds → Sprouts → Branches → Canopy → Forest",
+    "trackCraft": "Craft Engineering",
+    "trackCraftDesc": "Ace your dream interview — workshop-inspired mastery",
+    "trackCraftTagline": "Sketch → Chisel → Craft → Polish → Masterpiece",
+    "trackCraftBrand": "Learn the algorithms that power AI, design the systems that scale AI, and ace the interviews that land you AI-era jobs."
   },
   "homePrograms": {
     "startFromZero": "Start from zero",
@@ -236,7 +243,11 @@
     "masterAI": "Master AI",
     "start": "Start",
     "comingSoon": "Coming Soon",
-    "viewAll": "View All Programs"
+    "viewAll": "View All Programs",
+    "trackAI": "AI Learning Path",
+    "trackCraft": "Craft Engineering",
+    "trackAIHome": "Grow from zero to AI expert",
+    "trackCraftHome": "Ace your dream tech interview"
   },
   "programDetail": {
     "level": "Level",
@@ -270,7 +281,9 @@
     "aiGraduateDesc": "Completed all lessons",
     "emptyTitle": "Your Learning Journey Starts Here",
     "emptySubtitle": "Sign in and complete your first lesson to track your progress. It only takes 10 minutes!",
-    "emptyStart": "Start Your First Lesson"
+    "emptyStart": "Start Your First Lesson",
+    "trackAI": "AI Learning Path",
+    "trackCraft": "Craft Engineering"
   },
   "auth": {
     "startLearning": "Start Learning",
@@ -280,6 +293,18 @@
   "lessonTitles": {
     "what-is-ai": "What is AI?",
     "how-machines-learn": "How Machines Learn",
-    "your-first-ai-model": "Your First AI Model"
+    "your-first-ai-model": "Your First AI Model",
+    "arrays-and-hashing": "Arrays & Hashing",
+    "strings-and-patterns": "Strings & Pattern Matching",
+    "sorting-and-searching": "Sorting & Searching",
+    "two-pointers-and-sliding-window": "Two Pointers & Sliding Window",
+    "trees-and-graph-traversal": "Trees & Graph Traversal",
+    "stacks-queues-monotonic": "Stacks, Queues & Monotonic Patterns",
+    "design-url-shortener": "Design a URL Shortener",
+    "design-rate-limiter": "Design a Rate Limiter",
+    "design-recommendation-engine": "Design a Recommendation Engine",
+    "star-framework": "The STAR Framework",
+    "system-design-communication": "System Design Communication",
+    "ai-era-leadership": "AI-Era Leadership"
   }
 }

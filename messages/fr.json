@@ -226,7 +226,14 @@
       "4": "Avancé",
       "5": "Expert"
     },
-    "viewAll": "Voir tous les programmes"
+    "viewAll": "Voir tous les programmes",
+    "trackAI": "Parcours d'apprentissage IA",
+    "trackAIDesc": "De zéro à expert en IA — progression inspirée de la nature",
+    "trackAITagline": "Graines → Pousses → Branches → Canopée → Forêt",
+    "trackCraft": "Craft Engineering",
+    "trackCraftDesc": "Réussissez votre entretien de rêve — maîtrise inspirée de l'artisanat",
+    "trackCraftTagline": "Esquisse → Ciseau → Artisanat → Polissage → Chef-d'œuvre",
+    "trackCraftBrand": "Apprenez les algorithmes qui alimentent l'IA, concevez les systèmes qui la mettent à l'échelle, et réussissez les entretiens."
   },
   "homePrograms": {
     "startFromZero": "Partir de zéro",
@@ -236,7 +243,11 @@
     "masterAI": "Maîtriser l'IA",
     "start": "Commencer",
     "comingSoon": "Bientôt disponible",
-    "viewAll": "Voir tous les programmes"
+    "viewAll": "Voir tous les programmes",
+    "trackAI": "Parcours IA",
+    "trackCraft": "Craft Engineering",
+    "trackAIHome": "De zéro à expert en IA",
+    "trackCraftHome": "Réussissez votre entretien tech"
   },
   "programDetail": {
     "level": "Niveau",
@@ -270,7 +281,9 @@
     "aiGraduateDesc": "Terminé toutes les leçons",
     "emptyTitle": "Votre parcours commence ici",
     "emptySubtitle": "Connectez-vous et terminez votre première leçon pour suivre vos progrès. Ça ne prend que 10 minutes !",
-    "emptyStart": "Commencer la première leçon"
+    "emptyStart": "Commencer la première leçon",
+    "trackAI": "Parcours IA",
+    "trackCraft": "Craft Engineering"
   },
   "auth": {
     "startLearning": "Commencer",
@@ -280,6 +293,18 @@
   "lessonTitles": {
     "what-is-ai": "Qu'est-ce que l'IA ?",
     "how-machines-learn": "Comment les machines apprennent",
-    "your-first-ai-model": "Votre premier modèle IA"
+    "your-first-ai-model": "Votre premier modèle IA",
+    "arrays-and-hashing": "Tableaux & Hachage",
+    "strings-and-patterns": "Chaînes & Correspondance",
+    "sorting-and-searching": "Tri & Recherche",
+    "two-pointers-and-sliding-window": "Deux Pointeurs & Fenêtre Glissante",
+    "trees-and-graph-traversal": "Arbres & Parcours de Graphes",
+    "stacks-queues-monotonic": "Piles, Files & Patterns Monotones",
+    "design-url-shortener": "Conception d'un Raccourcisseur d'URL",
+    "design-rate-limiter": "Conception d'un Limiteur de Débit",
+    "design-recommendation-engine": "Conception d'un Moteur de Recommandation",
+    "star-framework": "La Méthode STAR",
+    "system-design-communication": "Communication en Conception Système",
+    "ai-era-leadership": "Leadership à l'Ère de l'IA"
   }
 }

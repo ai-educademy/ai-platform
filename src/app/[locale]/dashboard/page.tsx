@@ -14,10 +14,59 @@ const PROGRAMS = [
     icon: "🌱",
     title: "AI Seeds",
     color: "#34D399",
+    track: "ai-learning",
     lessons: [
       { slug: "what-is-ai", icon: "🤖", duration: 10 },
       { slug: "how-machines-learn", icon: "🧠", duration: 12 },
       { slug: "your-first-ai-model", icon: "🎨", duration: 15 },
+    ],
+  },
+  {
+    slug: "ai-sketch",
+    icon: "✏️",
+    title: "AI Sketch",
+    color: "#F97316",
+    track: "craft-engineering",
+    lessons: [
+      { slug: "arrays-and-hashing", icon: "📊", duration: 15 },
+      { slug: "strings-and-patterns", icon: "🔤", duration: 15 },
+      { slug: "sorting-and-searching", icon: "🔍", duration: 15 },
+    ],
+  },
+  {
+    slug: "ai-chisel",
+    icon: "🪨",
+    title: "AI Chisel",
+    color: "#06B6D4",
+    track: "craft-engineering",
+    lessons: [
+      { slug: "two-pointers-and-sliding-window", icon: "👆", duration: 20 },
+      { slug: "trees-and-graph-traversal", icon: "🌲", duration: 25 },
+      { slug: "stacks-queues-monotonic", icon: "📚", duration: 20 },
+    ],
+  },
+  {
+    slug: "ai-craft",
+    icon: "⚒️",
+    title: "AI Craft",
+    color: "#8B5CF6",
+    track: "craft-engineering",
+    lessons: [
+      { slug: "design-url-shortener", icon: "🔗", duration: 25 },
+      { slug: "design-rate-limiter", icon: "⚡", duration: 25 },
+      { slug: "design-recommendation-engine", icon: "🎯", duration: 30 },
+    ],
+  },
+  {
+    slug: "ai-polish",
+    icon: "💎",
+    title: "AI Polish",
+    color: "#EC4899",
+    track: "craft-engineering",
+    lessons: [
+      { slug: "star-framework", icon: "⭐", duration: 15 },
+      { slug: "system-design-communication", icon: "💬", duration: 20 },
+      { slug: "ai-era-leadership", icon: "🧭", duration: 20 },
     ],
   },
 ];
@@ -94,8 +143,21 @@ export default function DashboardPage() {
         </div>
       </ScrollReveal>
 
-      {/* Per-program sections */}
-      {PROGRAMS.map((program, pIdx) => {
+      {/* Per-program sections — grouped by track */}
+      {["ai-learning", "craft-engineering"].map((track) => {
+        const trackPrograms = PROGRAMS.filter((p) => p.track === track);
+        if (trackPrograms.length === 0) return null;
+        return (
+          <div key={track} className="mb-8">
+            <ScrollReveal animation="fade-up">
+              <div className="flex items-center gap-2 mb-6 mt-4">
+                <span className="text-2xl">{track === "ai-learning" ? "🌳" : "🔨"}</span>
+                <h2 className="text-lg font-bold text-[var(--color-text-muted)]">
+                  {track === "ai-learning" ? t("trackAI") : t("trackCraft")}
+                </h2>
+              </div>
+            </ScrollReveal>
+            {trackPrograms.map((program, pIdx) => {
         const progData = getProgram(program.slug);
         const progCompleted = progData.completed.length;
         const progTotal = program.lessons.length;
@@ -164,6 +226,9 @@ export default function DashboardPage() {
                 );
               })}
             </div>
+          </div>
+        );
+      })}
           </div>
         );
       })}

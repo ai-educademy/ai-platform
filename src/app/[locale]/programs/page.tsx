@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import Image from "next/image";
-import { getPrograms } from "@/lib/programs";
+import { getProgramsByTrack } from "@/lib/programs";
 import { ScrollReveal } from "@open-ai-school/ai-ui-library";
+import type { ProgramMeta } from "@/lib/programs";
 
 export default async function ProgramsPage({
   params,
@@ -11,7 +11,8 @@ export default async function ProgramsPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations("programs");
-  const programs = getPrograms();
+  const aiLearning = getProgramsByTrack("ai-learning");
+  const craftEngineering = getProgramsByTrack("craft-engineering");
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   const levelLabels: Record<number, string> = {
@@ -23,7 +24,7 @@ export default async function ProgramsPage({
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 bg-grid">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
       <ScrollReveal animation="fade-up">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium mb-6">
@@ -36,58 +37,109 @@ export default async function ProgramsPage({
         </div>
       </ScrollReveal>
 
-      {/* Growth metaphor visual */}
+      {/* Two track overview cards */}
       <ScrollReveal animation="scale-in">
-        <div className="flex items-center justify-center gap-2 mb-16 text-4xl">
-          {programs.map((p, i) => (
-            <div key={p.slug} className="flex items-center">
-              <div className="flex flex-col items-center">
-                <span className="text-3xl md:text-4xl">{p.icon}</span>
-                <span className="text-[10px] md:text-xs mt-1 text-[var(--color-text-muted)] font-medium">
-                  L{p.level}
-                </span>
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
+          <div className="gradient-border rounded-2xl">
+            <div className="bg-[var(--color-bg-card)] rounded-2xl p-6 h-full">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl">🌳</span>
+                <div>
+                  <h2 className="text-xl font-bold">{t("trackAI")}</h2>
+                  <p className="text-sm text-[var(--color-text-muted)]">{t("trackAIDesc")}</p>
+                </div>
               </div>
-              {i < programs.length - 1 && (
-                <span className="mx-2 md:mx-4 text-[var(--color-text-muted)] text-lg">→</span>
-              )}
+              <div className="flex items-center gap-1 text-2xl">
+                {aiLearning.map((p, i) => (
+                  <span key={p.slug} className="flex items-center">
+                    <span>{p.icon}</span>
+                    {i < aiLearning.length - 1 && <span className="mx-1 text-sm text-[var(--color-text-muted)]">→</span>}
+                  </span>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
+          <div className="gradient-border rounded-2xl">
+            <div className="bg-[var(--color-bg-card)] rounded-2xl p-6 h-full">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl">🔨</span>
+                <div>
+                  <h2 className="text-xl font-bold">{t("trackCraft")}</h2>
+                  <p className="text-sm text-[var(--color-text-muted)]">{t("trackCraftDesc")}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 text-2xl">
+                {craftEngineering.map((p, i) => (
+                  <span key={p.slug} className="flex items-center">
+                    <span>{p.icon}</span>
+                    {i < craftEngineering.length - 1 && <span className="mx-1 text-sm text-[var(--color-text-muted)]">→</span>}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {programs.map((program, idx) => {
-          const isActive = program.status === "active";
-          return (
-            <ScrollReveal key={program.slug} animation="fade-up" delay={idx * 100}>
-              {isActive ? (
-                <Link href={`${basePath}/programs/${program.slug}`} className="block h-full">
-                  <ProgramCardContent program={program} levelLabels={levelLabels} isActive t={t} />
-                </Link>
-              ) : (
-                <ProgramCardContent program={program} levelLabels={levelLabels} isActive={false} t={t} />
-              )}
+      {/* AI Learning Path Section */}
+      <section className="mb-20">
+        <ScrollReveal animation="fade-up">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="text-3xl">🌳</span>
+            <div>
+              <h2 className="text-2xl font-bold">{t("trackAI")}</h2>
+              <p className="text-sm text-[var(--color-text-muted)]">{t("trackAITagline")}</p>
+            </div>
+          </div>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {aiLearning.map((program, idx) => (
+            <ScrollReveal key={program.slug} animation="fade-up" delay={idx * 80}>
+              <ProgramCard program={program} basePath={basePath} levelLabels={levelLabels} t={t} />
             </ScrollReveal>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Craft Engineering Section */}
+      <section>
+        <ScrollReveal animation="fade-up">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-3xl">🔨</span>
+            <div>
+              <h2 className="text-2xl font-bold">{t("trackCraft")}</h2>
+              <p className="text-sm text-[var(--color-text-muted)]">{t("trackCraftTagline")}</p>
+            </div>
+          </div>
+          <p className="text-sm text-[var(--color-text-muted)] mb-8 ml-12">{t("trackCraftBrand")}</p>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {craftEngineering.map((program, idx) => (
+            <ScrollReveal key={program.slug} animation="fade-up" delay={idx * 80}>
+              <ProgramCard program={program} basePath={basePath} levelLabels={levelLabels} t={t} />
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
 
-function ProgramCardContent({
+function ProgramCard({
   program,
+  basePath,
   levelLabels,
-  isActive,
   t,
 }: {
-  program: { slug: string; level: number; color: string; icon: string; title: string; subtitle: string; description: string; status: string; estimatedHours: number; topics: string[] };
+  program: ProgramMeta;
+  basePath: string;
   levelLabels: Record<number, string>;
-  isActive: boolean;
   t: (key: string) => string;
 }) {
-  return (
-    <div className={isActive ? "gradient-border card-hover" : ""}>
+  const isActive = program.status === "active";
+
+  const card = (
+    <div className={isActive ? "gradient-border card-hover h-full" : "h-full"}>
       <div
         className={`h-full rounded-2xl p-8 transition-all duration-300 ${
           isActive
@@ -104,7 +156,7 @@ function ProgramCardContent({
             {program.icon}
           </div>
           <div className="min-w-0">
-            <h2 className="text-xl font-bold truncate">{program.title}</h2>
+            <h3 className="text-xl font-bold truncate">{program.title}</h3>
             <p className="text-xs text-[var(--color-text-muted)] truncate">{program.subtitle}</p>
           </div>
         </div>
@@ -127,9 +179,7 @@ function ProgramCardContent({
 
         <div className="text-xs text-[var(--color-text-muted)]">
           {program.topics.slice(0, 3).map((topic) => (
-            <span key={topic} className="inline-block mr-2 mb-1">
-              • {topic}
-            </span>
+            <span key={topic} className="inline-block mr-2 mb-1">• {topic}</span>
           ))}
         </div>
 
@@ -151,4 +201,8 @@ function ProgramCardContent({
       </div>
     </div>
   );
+
+  return isActive ? (
+    <Link href={`${basePath}/programs/${program.slug}`} className="block h-full">{card}</Link>
+  ) : card;
 }

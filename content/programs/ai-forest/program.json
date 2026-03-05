@@ -11,10 +11,16 @@
   "prerequisites": "AI Canopy",
   "lessonCount": 0,
   "estimatedHours": 15,
-  "topics": ["Building AI products", "Open-source AI", "AI research papers", "Future of AI"],
+  "topics": [
+    "Building AI products",
+    "Open-source AI",
+    "AI research papers",
+    "Future of AI"
+  ],
   "outcomes": [
     "Build and deploy an AI-powered application",
     "Read and understand AI research papers",
     "Contribute to open-source AI projects"
-  ]
+  ],
+  "track": "ai-learning"
 }

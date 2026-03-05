@@ -11,10 +11,16 @@
   "prerequisites": "AI Sprouts",
   "lessonCount": 0,
   "estimatedHours": 6,
-  "topics": ["AI in healthcare", "AI in creative arts", "Chatbots & NLP", "Computer vision basics"],
+  "topics": [
+    "AI in healthcare",
+    "AI in creative arts",
+    "Chatbots & NLP",
+    "Computer vision basics"
+  ],
   "outcomes": [
     "Build a simple chatbot",
     "Understand how image recognition works",
     "Create an AI-powered mini project"
-  ]
+  ],
+  "track": "ai-learning"
 }

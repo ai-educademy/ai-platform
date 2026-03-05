@@ -7,6 +7,7 @@ export interface ProgramMeta {
   status: "active" | "coming-soon";
   color: string;
   icon: string;
+  track: "ai-learning" | "craft-engineering";
   title: string;
   subtitle: string;
   description: string;
@@ -36,6 +37,10 @@ export function getPrograms(): ProgramMeta[] {
   }
 
   return programs.sort((a, b) => a.level - b.level);
+}
+
+export function getProgramsByTrack(track: string): ProgramMeta[] {
+  return getPrograms().filter((p) => p.track === track);
 }
 
 export function getProgram(slug: string): ProgramMeta | null {

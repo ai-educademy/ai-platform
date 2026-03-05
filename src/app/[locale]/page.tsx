@@ -24,6 +24,22 @@ export default async function HomePage({
     "ai-forest": "masterAI",
   };
 
+  const aiLearningPrograms = [
+    { slug: "ai-seeds", icon: "🌱", title: "AI Seeds", color: "#34D399", active: true, level: 1 },
+    { slug: "ai-sprouts", icon: "🌿", title: "AI Sprouts", color: "#60A5FA", active: false, level: 2 },
+    { slug: "ai-branches", icon: "🌳", title: "AI Branches", color: "#F59E0B", active: false, level: 3 },
+    { slug: "ai-canopy", icon: "🏕️", title: "AI Canopy", color: "#8B5CF6", active: false, level: 4 },
+    { slug: "ai-forest", icon: "🌲", title: "AI Forest", color: "#EF4444", active: false, level: 5 },
+  ];
+
+  const craftPrograms = [
+    { slug: "ai-sketch", icon: "✏️", title: "AI Sketch", color: "#F97316", active: true, level: 1, desc: "DSA Fundamentals" },
+    { slug: "ai-chisel", icon: "🪨", title: "AI Chisel", color: "#06B6D4", active: true, level: 2, desc: "Intermediate Patterns" },
+    { slug: "ai-craft", icon: "⚒️", title: "AI Craft", color: "#8B5CF6", active: true, level: 3, desc: "System Design" },
+    { slug: "ai-polish", icon: "💎", title: "AI Polish", color: "#EC4899", active: true, level: 4, desc: "Behavioral" },
+    { slug: "ai-masterpiece", icon: "🏆", title: "AI Masterpiece", color: "#EAB308", active: false, level: 5, desc: "Capstone" },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -171,14 +187,11 @@ export default async function HomePage({
 
       <hr className="section-divider" />
 
-      {/* Programs Section */}
+      {/* Programs Section — Two Tracks */}
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <ScrollReveal animation="fade-up">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium mb-6">
-                🌱 → 🌿 → 🌳 → 🏕️ → 🌲
-              </div>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                 {t("programs.title")}
               </h2>
@@ -188,44 +201,71 @@ export default async function HomePage({
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 max-w-5xl mx-auto">
-            {[
-              { slug: "ai-seeds", icon: "🌱", title: "AI Seeds", color: "#34D399", active: true, level: 1 },
-              { slug: "ai-sprouts", icon: "🌿", title: "AI Sprouts", color: "#60A5FA", active: false, level: 2 },
-              { slug: "ai-branches", icon: "🌳", title: "AI Branches", color: "#F59E0B", active: false, level: 3 },
-              { slug: "ai-canopy", icon: "🏕️", title: "AI Canopy", color: "#8B5CF6", active: false, level: 4 },
-              { slug: "ai-forest", icon: "🌲", title: "AI Forest", color: "#EF4444", active: false, level: 5 },
-            ].map((program, idx) => (
-              <ScrollReveal key={program.slug} animation="fade-up" delay={idx * 80}>
-                {program.active ? (
-                  <Link href={`${basePath}/programs/${program.slug}`} className="block h-full">
-                    <div
-                      className="h-full p-5 rounded-2xl bg-[var(--color-bg-card)] border-l-4 border border-[var(--color-border)] card-hover text-center hover:shadow-xl hover:shadow-black/5 transition-all"
-                      style={{ borderLeftColor: program.color }}
-                    >
-                      <div className="text-3xl mb-2">{program.icon}</div>
-                      <h3 className="font-bold text-sm mb-1">{program.title}</h3>
-                      <p className="text-xs text-[var(--color-text-muted)] mb-3">{tp(programDescKeys[program.slug])}</p>
-                      <span className="text-xs font-semibold" style={{ color: program.color }}>{tp("start")} →</span>
-                    </div>
-                  </Link>
-                ) : (
-                  <div className="relative h-full p-5 rounded-2xl bg-[var(--color-bg-card)]/50 border border-dashed border-[var(--color-border)] text-center opacity-50 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-bg)]/40 pointer-events-none" />
-                    <div className="relative">
-                      <div className="text-3xl mb-2">{program.icon}</div>
-                      <h3 className="font-bold text-sm mb-1">{program.title}</h3>
-                      <p className="text-xs text-[var(--color-text-muted)] mb-3">{tp(programDescKeys[program.slug])}</p>
-                      <span className="text-xs text-[var(--color-text-muted)]">🔒 {tp("comingSoon")}</span>
-                    </div>
+          {/* Two track cards */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* AI Learning Path */}
+            <ScrollReveal animation="fade-up">
+              <div className="gradient-border rounded-2xl h-full">
+                <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-3xl">🌳</span>
+                    <h3 className="text-xl font-bold">{tp("trackAI")}</h3>
                   </div>
-                )}
-              </ScrollReveal>
-            ))}
+                  <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackAIHome")}</p>
+                  <div className="grid grid-cols-5 gap-2">
+                    {aiLearningPrograms.map((program) => (
+                      program.active ? (
+                        <Link key={program.slug} href={`${basePath}/programs/${program.slug}`} className="block">
+                          <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
+                            <div className="text-2xl mb-1">{program.icon}</div>
+                            <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div key={program.slug} className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-40">
+                          <div className="text-2xl mb-1">{program.icon}</div>
+                          <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
+                        </div>
+                      )
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Craft Engineering */}
+            <ScrollReveal animation="fade-up" delay={100}>
+              <div className="gradient-border rounded-2xl h-full">
+                <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-3xl">🔨</span>
+                    <h3 className="text-xl font-bold">{tp("trackCraft")}</h3>
+                  </div>
+                  <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackCraftHome")}</p>
+                  <div className="grid grid-cols-5 gap-2">
+                    {craftPrograms.map((program) => (
+                      program.active ? (
+                        <Link key={program.slug} href={`${basePath}/programs/${program.slug}`} className="block">
+                          <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
+                            <div className="text-2xl mb-1">{program.icon}</div>
+                            <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div key={program.slug} className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-40">
+                          <div className="text-2xl mb-1">{program.icon}</div>
+                          <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
+                        </div>
+                      )
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
 
-          <ScrollReveal animation="fade-up" delay={500}>
-            <div className="text-center mt-10">
+          <ScrollReveal animation="fade-up" delay={200}>
+            <div className="text-center">
               <Link
                 href={`${basePath}/programs`}
                 className="text-[var(--color-primary)] font-semibold hover:underline"

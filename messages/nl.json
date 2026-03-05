@@ -226,7 +226,14 @@
       "4": "Gevorderd",
       "5": "Expert"
     },
-    "viewAll": "Bekijk alle programma's"
+    "viewAll": "Bekijk alle programma's",
+    "trackAI": "AI Leerpad",
+    "trackAIDesc": "Van nul naar AI-expert — door natuur geïnspireerde progressie",
+    "trackAITagline": "Zaden → Spruiten → Takken → Bladerdak → Bos",
+    "trackCraft": "Craft Engineering",
+    "trackCraftDesc": "Slaag voor je droomgesprek — door ambacht geïnspireerde meesterschap",
+    "trackCraftTagline": "Schets → Beitel → Ambacht → Polijst → Meesterwerk",
+    "trackCraftBrand": "Leer de algoritmes achter AI, ontwerp de systemen die AI schalen, en slaag voor de interviews."
   },
   "homePrograms": {
     "startFromZero": "Begin vanaf nul",
@@ -236,7 +243,11 @@
     "masterAI": "Beheers AI",
     "start": "Start",
     "comingSoon": "Binnenkort beschikbaar",
-    "viewAll": "Bekijk alle programma's"
+    "viewAll": "Bekijk alle programma's",
+    "trackAI": "AI Leerpad",
+    "trackCraft": "Craft Engineering",
+    "trackAIHome": "Van nul naar AI-expert",
+    "trackCraftHome": "Slaag voor je tech-interview"
   },
   "programDetail": {
     "level": "Niveau",
@@ -270,7 +281,9 @@
     "aiGraduateDesc": "Alle lessen voltooid",
     "emptyTitle": "Je leertraject begint hier",
     "emptySubtitle": "Log in en voltooi je eerste les om je voortgang bij te houden. Het duurt maar 10 minuten!",
-    "emptyStart": "Begin je eerste les"
+    "emptyStart": "Begin je eerste les",
+    "trackAI": "AI Leerpad",
+    "trackCraft": "Craft Engineering"
   },
   "auth": {
     "startLearning": "Begin met leren",
@@ -280,6 +293,18 @@
   "lessonTitles": {
     "what-is-ai": "Wat is AI?",
     "how-machines-learn": "Hoe machines leren",
-    "your-first-ai-model": "Je eerste AI-model"
+    "your-first-ai-model": "Je eerste AI-model",
+    "arrays-and-hashing": "Arrays & Hashing",
+    "strings-and-patterns": "Strings & Patronen",
+    "sorting-and-searching": "Sorteren & Zoeken",
+    "two-pointers-and-sliding-window": "Twee Pointers & Schuifvenster",
+    "trees-and-graph-traversal": "Bomen & Grafentraversal",
+    "stacks-queues-monotonic": "Stacks, Queues & Monotone Patronen",
+    "design-url-shortener": "Ontwerp een URL Verkorter",
+    "design-rate-limiter": "Ontwerp een Rate Limiter",
+    "design-recommendation-engine": "Ontwerp een Aanbevelingsengine",
+    "star-framework": "Het STAR Framework",
+    "system-design-communication": "Systeemontwerp Communicatie",
+    "ai-era-leadership": "Leiderschap in het AI-tijdperk"
   }
 }

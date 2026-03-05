@@ -226,7 +226,14 @@
       "4": "उन्नत",
       "5": "विशेषज्ञ"
     },
-    "viewAll": "सभी कार्यक्रम देखें"
+    "viewAll": "सभी कार्यक्रम देखें",
+    "trackAI": "AI सीखने का रास्ता",
+    "trackAIDesc": "शून्य से AI विशेषज्ञ तक — प्रकृति से प्रेरित प्रगति",
+    "trackAITagline": "बीज → अंकुर → शाखाएं → छत्रक → वन",
+    "trackCraft": "Craft Engineering",
+    "trackCraftDesc": "अपने सपनों के इंटरव्यू में सफल हों — कारीगरी से प्रेरित",
+    "trackCraftTagline": "स्केच → छेनी → शिल्प → पॉलिश → कृतित्व",
+    "trackCraftBrand": "AI को शक्ति देने वाले एल्गोरिदम सीखें, AI को स्केल करने वाली प्रणालियां डिज़ाइन करें।"
   },
   "homePrograms": {
     "startFromZero": "शून्य से शुरू करें",
@@ -236,7 +243,11 @@
     "masterAI": "AI में महारत हासिल करें",
     "start": "शुरू करें",
     "comingSoon": "जल्द आ रहा है",
-    "viewAll": "सभी कार्यक्रम देखें"
+    "viewAll": "सभी कार्यक्रम देखें",
+    "trackAI": "AI सीखने का रास्ता",
+    "trackCraft": "Craft Engineering",
+    "trackAIHome": "शून्य से AI विशेषज्ञ तक",
+    "trackCraftHome": "टेक इंटरव्यू में सफल हों"
   },
   "programDetail": {
     "level": "स्तर",
@@ -270,7 +281,9 @@
     "aiGraduateDesc": "सभी पाठ पूरे किए",
     "emptyTitle": "आपकी सीखने की यात्रा यहाँ शुरू होती है",
     "emptySubtitle": "साइन इन करें और अपनी प्रगति ट्रैक करने के लिए अपना पहला पाठ पूरा करें। बस 10 मिनट!",
-    "emptyStart": "पहला पाठ शुरू करें"
+    "emptyStart": "पहला पाठ शुरू करें",
+    "trackAI": "AI सीखने का रास्ता",
+    "trackCraft": "Craft Engineering"
   },
   "auth": {
     "startLearning": "सीखना शुरू करें",
@@ -280,6 +293,18 @@
   "lessonTitles": {
     "what-is-ai": "AI क्या है?",
     "how-machines-learn": "मशीनें कैसे सीखती हैं",
-    "your-first-ai-model": "आपका पहला AI मॉडल"
+    "your-first-ai-model": "आपका पहला AI मॉडल",
+    "arrays-and-hashing": "ऐरे और हैशिंग",
+    "strings-and-patterns": "स्ट्रिंग्स और पैटर्न",
+    "sorting-and-searching": "सॉर्टिंग और सर्चिंग",
+    "two-pointers-and-sliding-window": "दो पॉइंटर्स और स्लाइडिंग विंडो",
+    "trees-and-graph-traversal": "ट्री और ग्राफ ट्रैवर्सल",
+    "stacks-queues-monotonic": "स्टैक, क्यू और मोनोटोनिक पैटर्न",
+    "design-url-shortener": "URL शॉर्टनर डिज़ाइन करें",
+    "design-rate-limiter": "रेट लिमिटर डिज़ाइन करें",
+    "design-recommendation-engine": "रिकमेंडेशन इंजन डिज़ाइन करें",
+    "star-framework": "STAR फ्रेमवर्क",
+    "system-design-communication": "सिस्टम डिज़ाइन कम्युनिकेशन",
+    "ai-era-leadership": "AI-युग नेतृत्व"
   }
 }
