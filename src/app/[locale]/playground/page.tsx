@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
+import { ALL_GAMES } from "@/components/playground/MiniGames";
 
 /* ─── AI or Human? Game ─── */
 const GAME_ROUNDS = [
@@ -727,13 +728,89 @@ function TokenizerDemo() {
   );
 }
 
+/* ─── Random Game Picker ─── */
+function RandomGamePicker() {
+  const [gameIndex, setGameIndex] = useState<number>(-1);
+  const [showPicker, setShowPicker] = useState(true);
+
+  // Pick a random game including AI or Human (index -1 means AI or Human)
+  const allGames = useMemo(() => [
+    { id: "ai-or-human", name: "AI or Human?", desc: "Guess if text is human or AI", icon: "🤖", component: AIOrHumanGame },
+    ...ALL_GAMES,
+  ], []);
+
+  useEffect(() => {
+    setGameIndex(Math.floor(Math.random() * allGames.length));
+  }, [allGames]);
+
+  const switchGame = () => {
+    let next = Math.floor(Math.random() * allGames.length);
+    while (next === gameIndex && allGames.length > 1) next = Math.floor(Math.random() * allGames.length);
+    setGameIndex(next);
+  };
+
+  if (gameIndex < 0) return null;
+
+  const currentGame = allGames[gameIndex];
+  const GameComponent = currentGame.component;
+
+  if (showPicker) {
+    return (
+      <div className="space-y-6">
+        <div className="text-center space-y-3">
+          <div className="text-5xl">{currentGame.icon}</div>
+          <h2 className="text-2xl font-bold">{currentGame.name}</h2>
+          <p className="text-sm text-[var(--color-text-muted)]">{currentGame.desc}</p>
+        </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button onClick={() => setShowPicker(false)}
+            className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-indigo-500/25">
+            Play This Game
+          </button>
+          <button onClick={switchGame}
+            className="px-6 py-3 border-2 border-[var(--color-border)] rounded-xl font-semibold hover:border-indigo-400 transition-all text-sm">
+            🎲 Random Different Game
+          </button>
+        </div>
+        <div className="border-t border-[var(--color-border)] pt-4">
+          <p className="text-xs text-[var(--color-text-muted)] text-center mb-3">Or pick one:</p>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+            {allGames.map((g, i) => (
+              <button key={g.id} onClick={() => { setGameIndex(i); setShowPicker(false); }}
+                className={`p-2 rounded-lg border text-center transition-all hover:border-indigo-400 active:scale-[0.97] ${i === gameIndex ? "border-indigo-500 bg-indigo-500/10" : "border-[var(--color-border)]"}`}>
+                <div className="text-xl">{g.icon}</div>
+                <div className="text-[10px] font-medium leading-tight mt-1">{g.name}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <span className="text-xl">{currentGame.icon}</span>
+          <h2 className="text-lg font-bold">{currentGame.name}</h2>
+        </div>
+        <button onClick={() => { switchGame(); setShowPicker(true); }} className="text-xs px-3 py-1.5 rounded-lg border border-[var(--color-border)] hover:border-indigo-400 transition-colors">
+          🎲 New Game
+        </button>
+      </div>
+      <GameComponent />
+    </div>
+  );
+}
+
 /* ─── Main Page ─── */
 export default function PlaygroundPage() {
   const t = useTranslations("playground");
   const [activeTab, setActiveTab] = useState<"game" | "sentiment" | "neural" | "sorting" | "tokenizer">("game");
 
   const tabs = [
-    { id: "game" as const, label: "AI or Human?", desc: "Guess if text is human or AI", icon: (
+    { id: "game" as const, label: "Mini Games", desc: "Random AI game every visit", icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
     )},
     { id: "sentiment" as const, label: "Sentiment Analysis", desc: "Detect emotions in text", icon: (
@@ -792,11 +869,7 @@ export default function PlaygroundPage() {
       <ScrollReveal animation="fade-up">
         <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 md:p-8">
           {activeTab === "game" && (
-            <div>
-              <h2 className="text-xl font-bold mb-2">AI or Human?</h2>
-              <p className="text-sm text-[var(--color-text-muted)] mb-6">Can you tell if a piece of text was written by a human or generated by AI? Test your instincts.</p>
-              <AIOrHumanGame />
-            </div>
+            <RandomGamePicker />
           )}
           {activeTab === "sentiment" && (
             <div>
