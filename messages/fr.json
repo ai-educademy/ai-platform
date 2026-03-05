@@ -99,7 +99,9 @@
     "license": "Licence MIT — Open Source",
     "learnHeader": "Apprendre",
     "communityHeader": "Communauté",
-    "supportHeader": "Soutenir"
+    "supportHeader": "Soutenir",
+    "programs": "Programmes",
+    "dashboard": "Tableau de bord"
   },
   "about": {
     "title": "À Propos d'Open AI School",
@@ -167,7 +169,11 @@
     },
     "comingSoon3": {
       "title": "Comment fonctionnent les chatbots"
-    }
+    },
+    "programs": "Programmes",
+    "lessonsComingSoon": "Leçons à venir",
+    "checkBackSoon": "Revenez bientôt !",
+    "backToProgram": "Retour à"
   },
   "playground": {
     "title": "Terrain de Jeu IA",
@@ -202,6 +208,69 @@
   "programs": {
     "badge": "5 Learning Levels",
     "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now."
+    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "level": "Niveau",
+    "comingSoon": "Bientôt disponible",
+    "startLearning": "Commencer",
+    "hours": "h",
+    "levelLabels": {
+      "1": "Débutant",
+      "2": "Fondation",
+      "3": "Appliqué",
+      "4": "Avancé",
+      "5": "Expert"
+    },
+    "viewAll": "Voir tous les programmes"
+  },
+  "homePrograms": {
+    "startFromZero": "Partir de zéro",
+    "buildFoundations": "Construire les bases",
+    "applyInPractice": "Appliquer en pratique",
+    "goDeep": "Approfondir",
+    "masterAI": "Maîtriser l'IA",
+    "start": "Commencer",
+    "comingSoon": "Bientôt disponible",
+    "viewAll": "Voir tous les programmes"
+  },
+  "programDetail": {
+    "level": "Niveau",
+    "lessons": "Leçons",
+    "duration": "Durée",
+    "whatYouLearn": "Ce que vous apprendrez",
+    "prerequisites": "Prérequis",
+    "lessonsHeader": "Leçons",
+    "comingSoon": "Leçons à venir",
+    "comingSoonDesc": "Nous préparons ces leçons avec soin. Revenez bientôt !",
+    "startFirst": "Commencer la première leçon",
+    "backToAll": "Retour aux programmes"
+  },
+  "dashboard": {
+    "title": "Mon tableau de bord",
+    "titleUser": "Tableau de bord de {name}",
+    "subtitle": "Suivez votre parcours d'apprentissage IA",
+    "overallProgress": "Progression globale",
+    "lessonsCompleted": "{completed} sur {total} leçons terminées",
+    "remaining": "{count} restantes",
+    "min": "min",
+    "achievements": "Réalisations",
+    "unlocked": "Débloqué !",
+    "browsePrograms": "Parcourir les programmes",
+    "resetProgress": "Réinitialiser",
+    "firstStep": "Premier pas",
+    "firstStepDesc": "Terminé votre première leçon",
+    "halfWay": "À mi-chemin",
+    "halfWayDesc": "Terminé la moitié des leçons",
+    "aiGraduate": "Diplômé IA",
+    "aiGraduateDesc": "Terminé toutes les leçons"
+  },
+  "auth": {
+    "startLearning": "Commencer",
+    "skipForNow": "Passer pour l'instant",
+    "progressSavedLocally": "Votre progression est enregistrée localement."
+  },
+  "lessonTitles": {
+    "what-is-ai": "Qu'est-ce que l'IA ?",
+    "how-machines-learn": "Comment les machines apprennent",
+    "your-first-ai-model": "Votre premier modèle IA"
   }
 }

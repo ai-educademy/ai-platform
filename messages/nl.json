@@ -99,7 +99,9 @@
     "license": "MIT Licentie — Open Source",
     "learnHeader": "Leren",
     "communityHeader": "Community",
-    "supportHeader": "Ondersteuning"
+    "supportHeader": "Ondersteuning",
+    "programs": "Programma's",
+    "dashboard": "Dashboard"
   },
   "about": {
     "title": "Over Open AI School",
@@ -167,7 +169,11 @@
     },
     "comingSoon3": {
       "title": "Hoe chatbots werken"
-    }
+    },
+    "programs": "Programma's",
+    "lessonsComingSoon": "Lessen komen binnenkort",
+    "checkBackSoon": "Kom snel terug!",
+    "backToProgram": "Terug naar"
   },
   "playground": {
     "title": "AI Speeltuin",
@@ -202,6 +208,69 @@
   "programs": {
     "badge": "5 Learning Levels",
     "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now."
+    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "level": "Niveau",
+    "comingSoon": "Binnenkort beschikbaar",
+    "startLearning": "Begin met leren",
+    "hours": "u",
+    "levelLabels": {
+      "1": "Beginner",
+      "2": "Basis",
+      "3": "Toegepast",
+      "4": "Gevorderd",
+      "5": "Expert"
+    },
+    "viewAll": "Bekijk alle programma's"
+  },
+  "homePrograms": {
+    "startFromZero": "Begin vanaf nul",
+    "buildFoundations": "Bouw de basis",
+    "applyInPractice": "Pas toe in de praktijk",
+    "goDeep": "Ga dieper",
+    "masterAI": "Beheers AI",
+    "start": "Start",
+    "comingSoon": "Binnenkort beschikbaar",
+    "viewAll": "Bekijk alle programma's"
+  },
+  "programDetail": {
+    "level": "Niveau",
+    "lessons": "Lessen",
+    "duration": "Duur",
+    "whatYouLearn": "Wat je leert",
+    "prerequisites": "Vereisten",
+    "lessonsHeader": "Lessen",
+    "comingSoon": "Lessen komen binnenkort",
+    "comingSoonDesc": "We maken deze lessen met zorg. Kom snel terug!",
+    "startFirst": "Begin eerste les",
+    "backToAll": "Terug naar alle programma's"
+  },
+  "dashboard": {
+    "title": "Mijn leerdashboard",
+    "titleUser": "Dashboard van {name}",
+    "subtitle": "Volg je AI-leertraject",
+    "overallProgress": "Totale voortgang",
+    "lessonsCompleted": "{completed} van {total} lessen voltooid",
+    "remaining": "{count} resterend",
+    "min": "min",
+    "achievements": "Prestaties",
+    "unlocked": "Ontgrendeld!",
+    "browsePrograms": "Programma's bekijken",
+    "resetProgress": "Voortgang resetten",
+    "firstStep": "Eerste stap",
+    "firstStepDesc": "Je eerste les voltooid",
+    "halfWay": "Halverwege",
+    "halfWayDesc": "De helft van alle lessen voltooid",
+    "aiGraduate": "AI-afgestudeerde",
+    "aiGraduateDesc": "Alle lessen voltooid"
+  },
+  "auth": {
+    "startLearning": "Begin met leren",
+    "skipForNow": "Overslaan",
+    "progressSavedLocally": "Je voortgang wordt lokaal opgeslagen."
+  },
+  "lessonTitles": {
+    "what-is-ai": "Wat is AI?",
+    "how-machines-learn": "Hoe machines leren",
+    "your-first-ai-model": "Je eerste AI-model"
   }
 }

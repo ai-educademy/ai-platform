@@ -99,7 +99,9 @@
     "license": "MIT लाइसेंस — ओपन सोर्स",
     "learnHeader": "सीखें",
     "communityHeader": "समुदाय",
-    "supportHeader": "सहायता"
+    "supportHeader": "सहायता",
+    "programs": "कार्यक्रम",
+    "dashboard": "डैशबोर्ड"
   },
   "about": {
     "title": "Open AI School के बारे में",
@@ -167,7 +169,11 @@
     },
     "comingSoon3": {
       "title": "चैटबॉट कैसे काम करते हैं"
-    }
+    },
+    "programs": "कार्यक्रम",
+    "lessonsComingSoon": "पाठ जल्द आ रहे हैं",
+    "checkBackSoon": "जल्द वापस आएं!",
+    "backToProgram": "वापस"
   },
   "playground": {
     "title": "AI प्रयोगशाला",
@@ -202,6 +208,69 @@
   "programs": {
     "badge": "5 Learning Levels",
     "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now."
+    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "level": "स्तर",
+    "comingSoon": "जल्द आ रहा है",
+    "startLearning": "सीखना शुरू करें",
+    "hours": "घं",
+    "levelLabels": {
+      "1": "शुरुआती",
+      "2": "आधारभूत",
+      "3": "व्यावहारिक",
+      "4": "उन्नत",
+      "5": "विशेषज्ञ"
+    },
+    "viewAll": "सभी कार्यक्रम देखें"
+  },
+  "homePrograms": {
+    "startFromZero": "शून्य से शुरू करें",
+    "buildFoundations": "नींव बनाएं",
+    "applyInPractice": "व्यवहार में लागू करें",
+    "goDeep": "गहराई में जाएं",
+    "masterAI": "AI में महारत हासिल करें",
+    "start": "शुरू करें",
+    "comingSoon": "जल्द आ रहा है",
+    "viewAll": "सभी कार्यक्रम देखें"
+  },
+  "programDetail": {
+    "level": "स्तर",
+    "lessons": "पाठ",
+    "duration": "अवधि",
+    "whatYouLearn": "आप क्या सीखेंगे",
+    "prerequisites": "आवश्यकताएं",
+    "lessonsHeader": "पाठ",
+    "comingSoon": "पाठ जल्द आ रहे हैं",
+    "comingSoonDesc": "हम इन पाठों को सावधानी से तैयार कर रहे हैं। जल्द वापस आएं!",
+    "startFirst": "पहला पाठ शुरू करें",
+    "backToAll": "सभी कार्यक्रमों पर वापस"
+  },
+  "dashboard": {
+    "title": "मेरा लर्निंग डैशबोर्ड",
+    "titleUser": "{name} का डैशबोर्ड",
+    "subtitle": "अपनी AI सीखने की यात्रा ट्रैक करें",
+    "overallProgress": "कुल प्रगति",
+    "lessonsCompleted": "{total} में से {completed} पाठ पूरे",
+    "remaining": "{count} शेष",
+    "min": "मिनट",
+    "achievements": "उपलब्धियां",
+    "unlocked": "अनलॉक!",
+    "browsePrograms": "कार्यक्रम देखें",
+    "resetProgress": "प्रगति रीसेट करें",
+    "firstStep": "पहला कदम",
+    "firstStepDesc": "अपना पहला पाठ पूरा किया",
+    "halfWay": "आधा रास्ता",
+    "halfWayDesc": "आधे पाठ पूरे किए",
+    "aiGraduate": "AI स्नातक",
+    "aiGraduateDesc": "सभी पाठ पूरे किए"
+  },
+  "auth": {
+    "startLearning": "सीखना शुरू करें",
+    "skipForNow": "अभी छोड़ें",
+    "progressSavedLocally": "आपकी प्रगति इस डिवाइस पर स्थानीय रूप से सहेजी गई है।"
+  },
+  "lessonTitles": {
+    "what-is-ai": "AI क्या है?",
+    "how-machines-learn": "मशीनें कैसे सीखती हैं",
+    "your-first-ai-model": "आपका पहला AI मॉडल"
   }
 }

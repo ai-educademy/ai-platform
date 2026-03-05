@@ -99,7 +99,9 @@
     "license": "MIT License — Open Source",
     "learnHeader": "Learn",
     "communityHeader": "Community",
-    "supportHeader": "Support"
+    "supportHeader": "Support",
+    "programs": "Programs",
+    "dashboard": "Dashboard"
   },
   "about": {
     "title": "About Open AI School",
@@ -167,7 +169,11 @@
     },
     "comingSoon3": {
       "title": "How Chatbots Work"
-    }
+    },
+    "programs": "Programs",
+    "lessonsComingSoon": "Lessons Coming Soon",
+    "checkBackSoon": "Check back soon!",
+    "backToProgram": "Back to"
   },
   "playground": {
     "title": "AI Playground",
@@ -202,6 +208,69 @@
   "programs": {
     "badge": "5 Learning Levels",
     "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now."
+    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "level": "Level",
+    "comingSoon": "Coming Soon",
+    "startLearning": "Start Learning",
+    "hours": "h",
+    "levelLabels": {
+      "1": "Beginner",
+      "2": "Foundation",
+      "3": "Applied",
+      "4": "Advanced",
+      "5": "Expert"
+    },
+    "viewAll": "View All Programs"
+  },
+  "homePrograms": {
+    "startFromZero": "Start from zero",
+    "buildFoundations": "Build foundations",
+    "applyInPractice": "Apply in practice",
+    "goDeep": "Go deep",
+    "masterAI": "Master AI",
+    "start": "Start",
+    "comingSoon": "Coming Soon",
+    "viewAll": "View All Programs"
+  },
+  "programDetail": {
+    "level": "Level",
+    "lessons": "Lessons",
+    "duration": "Duration",
+    "whatYouLearn": "What You'll Learn",
+    "prerequisites": "Prerequisites",
+    "lessonsHeader": "Lessons",
+    "comingSoon": "Lessons Coming Soon",
+    "comingSoonDesc": "We're crafting these lessons with care. Check back soon!",
+    "startFirst": "Start First Lesson",
+    "backToAll": "Back to All Programs"
+  },
+  "dashboard": {
+    "title": "My Learning Dashboard",
+    "titleUser": "{name}'s Dashboard",
+    "subtitle": "Track your AI learning journey across all programs",
+    "overallProgress": "Overall Progress",
+    "lessonsCompleted": "{completed} of {total} lessons completed",
+    "remaining": "{count} remaining",
+    "min": "min",
+    "achievements": "Achievements",
+    "unlocked": "Unlocked!",
+    "browsePrograms": "Browse Programs",
+    "resetProgress": "Reset Progress",
+    "firstStep": "First Step",
+    "firstStepDesc": "Completed your first lesson",
+    "halfWay": "Half Way",
+    "halfWayDesc": "Completed half of all lessons",
+    "aiGraduate": "AI Graduate",
+    "aiGraduateDesc": "Completed all lessons"
+  },
+  "auth": {
+    "startLearning": "Start Learning",
+    "skipForNow": "Skip for now",
+    "progressSavedLocally": "Your progress is saved locally on this device."
+  },
+  "lessonTitles": {
+    "what-is-ai": "What is AI?",
+    "how-machines-learn": "How Machines Learn",
+    "your-first-ai-model": "Your First AI Model"
   }
 }

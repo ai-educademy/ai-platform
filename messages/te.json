@@ -99,7 +99,9 @@
     "license": "MIT లైసెన్స్ — ఓపెన్ సోర్స్",
     "learnHeader": "నేర్చుకోండి",
     "communityHeader": "సంఘం",
-    "supportHeader": "మద్దతు"
+    "supportHeader": "మద్దతు",
+    "programs": "ప్రోగ్రాములు",
+    "dashboard": "డాష్‌బోర్డ"
   },
   "about": {
     "title": "Open AI School గురించి",
@@ -167,7 +169,11 @@
     },
     "comingSoon3": {
       "title": "చాట్‌బాట్‌లు ఎలా పనిచేస్తాయి"
-    }
+    },
+    "programs": "ప్రోగ్రాములు",
+    "lessonsComingSoon": "పాఠాలు త్వరలో",
+    "checkBackSoon": "త్వరలో తిరిగి రండి!",
+    "backToProgram": "తిరిగి"
   },
   "playground": {
     "title": "AI ప్రయోగశాల",
@@ -202,6 +208,69 @@
   "programs": {
     "badge": "5 Learning Levels",
     "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now."
+    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "level": "స్థాయి",
+    "comingSoon": "త్వరలో రాబోతోంది",
+    "startLearning": "నేర్చుకోవడం ప్రారంభించండి",
+    "hours": "గం",
+    "levelLabels": {
+      "1": "ప్రారంభకుడు",
+      "2": "పునాది",
+      "3": "అనువర్తిత",
+      "4": "అధునాతన",
+      "5": "నిపుణుడు"
+    },
+    "viewAll": "అన్ని ప్రోగ్రాములు చూడండి"
+  },
+  "homePrograms": {
+    "startFromZero": "సున్నా నుండి ప్రారంభించండి",
+    "buildFoundations": "పునాదులు నిర్మించండి",
+    "applyInPractice": "ఆచరణలో అన్వయించండి",
+    "goDeep": "లోతుగా వెళ్ళండి",
+    "masterAI": "AI లో నిపుణత సాధించండి",
+    "start": "ప్రారంభించండి",
+    "comingSoon": "త్వరలో రాబోతోంది",
+    "viewAll": "అన్ని ప్రోగ్రాములు చూడండి"
+  },
+  "programDetail": {
+    "level": "స్థాయి",
+    "lessons": "పాఠాలు",
+    "duration": "వ్యవధి",
+    "whatYouLearn": "మీరు ఏమి నేర్చుకుంటారు",
+    "prerequisites": "ముందస్తు అవసరాలు",
+    "lessonsHeader": "పాఠాలు",
+    "comingSoon": "పాఠాలు త్వరలో రాబోతున్నాయి",
+    "comingSoonDesc": "మేము ఈ పాఠాలను జాగ్రత్తగా తయారు చేస్తున్నాము. త్వరలో తిరిగి రండి!",
+    "startFirst": "మొదటి పాఠం ప్రారంభించండి",
+    "backToAll": "అన్ని ప్రోగ్రాములకు తిరిగి"
+  },
+  "dashboard": {
+    "title": "నా లెర్నింగ్ డాష్‌బోర్డ్",
+    "titleUser": "{name} డాష్‌బోర్డ్",
+    "subtitle": "మీ AI నేర్చుకునే ప్రయాణాన్ని ట్రాక్ చేయండి",
+    "overallProgress": "మొత్తం పురోగతి",
+    "lessonsCompleted": "{total} లో {completed} పాఠాలు పూర్తయ్యాయి",
+    "remaining": "{count} మిగిలి ఉన్నాయి",
+    "min": "నిమి",
+    "achievements": "సాధనలు",
+    "unlocked": "అన్‌లాక్!",
+    "browsePrograms": "ప్రోగ్రాములు చూడండి",
+    "resetProgress": "పురోగతి రీసెట్",
+    "firstStep": "మొదటి అడుగు",
+    "firstStepDesc": "మొదటి పాఠం పూర్తి చేశారు",
+    "halfWay": "సగం దారి",
+    "halfWayDesc": "సగం పాఠాలు పూర్తి చేశారు",
+    "aiGraduate": "AI గ్రాడ్యుయేట్",
+    "aiGraduateDesc": "అన్ని పాఠాలు పూర్తి చేశారు"
+  },
+  "auth": {
+    "startLearning": "నేర్చుకోవడం ప్రారంభించండి",
+    "skipForNow": "ప్రస్తుతం దాటవేయండి",
+    "progressSavedLocally": "మీ పురోగతి ఈ పరికరంలో స్థానికంగా సేవ్ చేయబడింది."
+  },
+  "lessonTitles": {
+    "what-is-ai": "AI అంటే ఏమిటి?",
+    "how-machines-learn": "యంత్రాలు ఎలా నేర్చుకుంటాయి",
+    "your-first-ai-model": "మీ మొదటి AI మోడల్"
   }
 }

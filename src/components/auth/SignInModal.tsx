@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 
 export function SignInModal({
@@ -11,6 +12,7 @@ export function SignInModal({
   onClose: () => void;
 }) {
   const { saveProfile } = useGuestProfile();
+  const t = useTranslations("auth");
   const [name, setName] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -80,7 +82,7 @@ export function SignInModal({
               disabled={name.trim().length < 2}
               className="w-full btn-primary py-3.5 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-base disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
             >
-              Start Learning →
+              {t("startLearning")} →
             </button>
 
             <button
@@ -88,13 +90,11 @@ export function SignInModal({
               onClick={onClose}
               className="w-full mt-3 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
             >
-              Skip for now
+              {t("skipForNow")}
             </button>
 
             <p className="text-center text-xs text-[var(--color-text-muted)] mt-4">
-              Your progress is saved locally on this device.
-              <br />
-              No account or email required.
+              {t("progressSavedLocally")}
             </p>
           </form>
         </div>

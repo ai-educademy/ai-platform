@@ -13,7 +13,16 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   const t = await getTranslations();
+  const tp = await getTranslations("homePrograms");
   const basePath = locale === "en" ? "" : `/${locale}`;
+
+  const programDescKeys: Record<string, string> = {
+    "ai-seeds": "startFromZero",
+    "ai-sprouts": "buildFoundations",
+    "ai-branches": "applyInPractice",
+    "ai-canopy": "goDeep",
+    "ai-forest": "masterAI",
+  };
 
   return (
     <>
@@ -176,11 +185,11 @@ export default async function HomePage({
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 max-w-5xl mx-auto">
             {[
-              { slug: "ai-seeds", icon: "🌱", title: "AI Seeds", desc: "Start from zero", color: "#34D399", active: true, level: 1 },
-              { slug: "ai-sprouts", icon: "🌿", title: "AI Sprouts", desc: "Build foundations", color: "#60A5FA", active: false, level: 2 },
-              { slug: "ai-branches", icon: "🌳", title: "AI Branches", desc: "Apply in practice", color: "#F59E0B", active: false, level: 3 },
-              { slug: "ai-canopy", icon: "🏕️", title: "AI Canopy", desc: "Go deep", color: "#8B5CF6", active: false, level: 4 },
-              { slug: "ai-forest", icon: "🌲", title: "AI Forest", desc: "Master AI", color: "#EF4444", active: false, level: 5 },
+              { slug: "ai-seeds", icon: "🌱", title: "AI Seeds", color: "#34D399", active: true, level: 1 },
+              { slug: "ai-sprouts", icon: "🌿", title: "AI Sprouts", color: "#60A5FA", active: false, level: 2 },
+              { slug: "ai-branches", icon: "🌳", title: "AI Branches", color: "#F59E0B", active: false, level: 3 },
+              { slug: "ai-canopy", icon: "🏕️", title: "AI Canopy", color: "#8B5CF6", active: false, level: 4 },
+              { slug: "ai-forest", icon: "🌲", title: "AI Forest", color: "#EF4444", active: false, level: 5 },
             ].map((program, idx) => (
               <ScrollReveal key={program.slug} animation="fade-up" delay={idx * 80}>
                 {program.active ? (
@@ -188,16 +197,16 @@ export default async function HomePage({
                     <div className="h-full p-5 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] card-hover card-glow text-center">
                       <div className="text-3xl mb-2">{program.icon}</div>
                       <h3 className="font-bold text-sm mb-1">{program.title}</h3>
-                      <p className="text-xs text-[var(--color-text-muted)] mb-3">{program.desc}</p>
-                      <span className="text-xs font-semibold" style={{ color: program.color }}>Start →</span>
+                      <p className="text-xs text-[var(--color-text-muted)] mb-3">{tp(programDescKeys[program.slug])}</p>
+                      <span className="text-xs font-semibold" style={{ color: program.color }}>{tp("start")} →</span>
                     </div>
                   </Link>
                 ) : (
                   <div className="h-full p-5 rounded-2xl bg-[var(--color-bg-card)]/50 border border-dashed border-[var(--color-border)] text-center opacity-60">
                     <div className="text-3xl mb-2">{program.icon}</div>
                     <h3 className="font-bold text-sm mb-1">{program.title}</h3>
-                    <p className="text-xs text-[var(--color-text-muted)] mb-3">{program.desc}</p>
-                    <span className="text-xs text-[var(--color-text-muted)]">🔒 Coming Soon</span>
+                    <p className="text-xs text-[var(--color-text-muted)] mb-3">{tp(programDescKeys[program.slug])}</p>
+                    <span className="text-xs text-[var(--color-text-muted)]">🔒 {tp("comingSoon")}</span>
                   </div>
                 )}
               </ScrollReveal>
@@ -210,7 +219,7 @@ export default async function HomePage({
                 href={`${basePath}/programs`}
                 className="text-[var(--color-primary)] font-semibold hover:underline"
               >
-                View All Programs →
+                {tp("viewAll")} →
               </Link>
             </div>
           </ScrollReveal>

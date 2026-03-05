@@ -37,14 +37,14 @@ export default async function ProgramLessonsPage({
       {/* Breadcrumb */}
       <div className="mb-8 text-sm text-[var(--color-text-muted)]">
         <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">
-          Programs
+          {t("programs")}
         </Link>
         <span className="mx-2">›</span>
         <Link href={`${basePath}/programs/${programSlug}`} className="hover:text-[var(--color-primary)] transition-colors">
           {program.title}
         </Link>
         <span className="mx-2">›</span>
-        <span>Lessons</span>
+        <span>{t("title")}</span>
       </div>
 
       <ScrollReveal animation="fade-up">
@@ -114,8 +114,8 @@ export default async function ProgramLessonsPage({
         {lessons.length === 0 && (
           <div className="text-center py-16 rounded-2xl bg-[var(--color-bg-card)] border border-dashed border-[var(--color-border)]">
             <div className="text-4xl mb-3">🚧</div>
-            <p className="font-semibold mb-1">Lessons Coming Soon</p>
-            <p className="text-sm text-[var(--color-text-muted)]">Check back soon!</p>
+            <p className="font-semibold mb-1">{t("lessonsComingSoon")}</p>
+            <p className="text-sm text-[var(--color-text-muted)]">{t("checkBackSoon")}</p>
           </div>
         )}
       </div>
@@ -125,7 +125,7 @@ export default async function ProgramLessonsPage({
           href={`${basePath}/programs/${programSlug}`}
           className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
         >
-          ← Back to {program.title}
+          ← {t("backToProgram")} {program.title}
         </Link>
       </div>
     </div>

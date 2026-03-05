@@ -3,16 +3,15 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { locales } from "@/i18n/request";
 
 export function Footer() {
   const t = useTranslations("footer");
   const pathname = usePathname();
-  const locale = pathname.split("/")[1] || "en";
-  const basePath = ["en", "fr", "nl", "hi", "te"].includes(locale)
-    ? locale === "en"
-      ? ""
-      : `/${locale}`
-    : "";
+
+  const segments = pathname.split("/").filter(Boolean);
+  const locale = (locales as readonly string[]).includes(segments[0]) ? segments[0] : "en";
+  const basePath = locale === "en" ? "" : `/${locale}`;
 
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-bg-card)]">
@@ -24,7 +23,7 @@ export function Footer() {
               <span className="text-lg">🎓</span>
               <span>Open AI School</span>
             </Link>
-            <p className="text-sm text-[var(--color-text-muted)]">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
               {t("tagline")}
             </p>
           </div>
@@ -34,27 +33,27 @@ export function Footer() {
             <h3 className="font-semibold text-sm mb-3">{t("learnHeader")}</h3>
             <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
               <li>
-                <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)]">
-                  Programs
+                <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">
+                  {t("programs")}
                 </Link>
               </li>
               <li>
-                <Link href={`${basePath}/programs/ai-seeds`} className="hover:text-[var(--color-primary)]">
+                <Link href={`${basePath}/programs/ai-seeds`} className="hover:text-[var(--color-primary)] transition-colors">
                   {t("lessons")}
                 </Link>
               </li>
               <li>
-                <Link href={`${basePath}/playground`} className="hover:text-[var(--color-primary)]">
+                <Link href={`${basePath}/playground`} className="hover:text-[var(--color-primary)] transition-colors">
                   {t("playground")}
                 </Link>
               </li>
               <li>
-                <Link href={`${basePath}/dashboard`} className="hover:text-[var(--color-primary)]">
-                  Dashboard
+                <Link href={`${basePath}/dashboard`} className="hover:text-[var(--color-primary)] transition-colors">
+                  {t("dashboard")}
                 </Link>
               </li>
               <li>
-                <Link href={`${basePath}/about`} className="hover:text-[var(--color-primary)]">
+                <Link href={`${basePath}/about`} className="hover:text-[var(--color-primary)] transition-colors">
                   {t("about")}
                 </Link>
               </li>
@@ -66,22 +65,17 @@ export function Footer() {
             <h3 className="font-semibold text-sm mb-3">{t("communityHeader")}</h3>
             <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
               <li>
-                <a
-                  href="https://github.com/open-ai-school"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[var(--color-primary)]"
-                >
+                <a href="https://github.com/open-ai-school" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
                   {t("github")}
                 </a>
               </li>
               <li>
-                <a href="https://github.com/open-ai-school/ai-seeds/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)]">
+                <a href="https://github.com/open-ai-school/ai-seeds/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
                   {t("contributing")}
                 </a>
               </li>
               <li>
-                <a href="https://github.com/open-ai-school/ai-seeds/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)]">
+                <a href="https://github.com/open-ai-school/ai-seeds/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
                   {t("coc")}
                 </a>
               </li>
@@ -93,7 +87,7 @@ export function Footer() {
             <h3 className="font-semibold text-sm mb-3">{t("supportHeader")}</h3>
             <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
               <li>
-                <a href="https://github.com/sponsors/rameshreddy-adutla" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)]">
+                <a href="https://github.com/sponsors/rameshreddy-adutla" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
                   {t("sponsor")} ❤️
                 </a>
               </li>

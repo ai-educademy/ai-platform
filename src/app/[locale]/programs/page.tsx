@@ -15,11 +15,11 @@ export default async function ProgramsPage({
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   const levelLabels: Record<number, string> = {
-    1: "Beginner",
-    2: "Foundation",
-    3: "Applied",
-    4: "Advanced",
-    5: "Expert",
+    1: t("levelLabels.1"),
+    2: t("levelLabels.2"),
+    3: t("levelLabels.3"),
+    4: t("levelLabels.4"),
+    5: t("levelLabels.5"),
   };
 
   return (
@@ -62,10 +62,10 @@ export default async function ProgramsPage({
             <ScrollReveal key={program.slug} animation="fade-up" delay={idx * 100}>
               {isActive ? (
                 <Link href={`${basePath}/programs/${program.slug}`} className="block h-full">
-                  <ProgramCardContent program={program} levelLabels={levelLabels} isActive />
+                  <ProgramCardContent program={program} levelLabels={levelLabels} isActive t={t} />
                 </Link>
               ) : (
-                <ProgramCardContent program={program} levelLabels={levelLabels} isActive={false} />
+                <ProgramCardContent program={program} levelLabels={levelLabels} isActive={false} t={t} />
               )}
             </ScrollReveal>
           );
@@ -79,10 +79,12 @@ function ProgramCardContent({
   program,
   levelLabels,
   isActive,
+  t,
 }: {
   program: { slug: string; level: number; color: string; icon: string; title: string; subtitle: string; description: string; status: string; estimatedHours: number; topics: string[] };
   levelLabels: Record<number, string>;
   isActive: boolean;
+  t: (key: string) => string;
 }) {
   return (
     <div
@@ -94,14 +96,14 @@ function ProgramCardContent({
     >
       <div className="flex items-center gap-3 mb-4">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
+          className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"
           style={{ backgroundColor: `${program.color}20` }}
         >
           {program.icon}
         </div>
-        <div>
-          <h2 className="text-lg font-bold">{program.title}</h2>
-          <p className="text-xs text-[var(--color-text-muted)]">{program.subtitle}</p>
+        <div className="min-w-0">
+          <h2 className="text-lg font-bold truncate">{program.title}</h2>
+          <p className="text-xs text-[var(--color-text-muted)] truncate">{program.subtitle}</p>
         </div>
       </div>
 
@@ -111,13 +113,13 @@ function ProgramCardContent({
 
       <div className="flex flex-wrap gap-2 mb-4">
         <span
-          className="text-xs px-2.5 py-0.5 rounded-full font-medium"
+          className="text-xs px-2.5 py-0.5 rounded-full font-medium whitespace-nowrap"
           style={{ backgroundColor: `${program.color}20`, color: program.color }}
         >
-          Level {program.level} — {levelLabels[program.level]}
+          {t("level")} {program.level} — {levelLabels[program.level]}
         </span>
-        <span className="text-xs px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-600 font-medium dark:bg-gray-800 dark:text-gray-400">
-          ⏱️ ~{program.estimatedHours}h
+        <span className="text-xs px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-600 font-medium dark:bg-gray-800 dark:text-gray-400 whitespace-nowrap">
+          ⏱️ ~{program.estimatedHours}{t("hours")}
         </span>
       </div>
 
@@ -132,7 +134,7 @@ function ProgramCardContent({
       {!isActive && (
         <div className="mt-4 text-center">
           <span className="inline-flex items-center gap-1 text-xs font-medium text-[var(--color-text-muted)]">
-            🔒 Coming Soon
+            🔒 {t("comingSoon")}
           </span>
         </div>
       )}
@@ -140,7 +142,7 @@ function ProgramCardContent({
       {isActive && (
         <div className="mt-4 text-center">
           <span className="inline-flex items-center gap-1 text-sm font-semibold" style={{ color: program.color }}>
-            Start Learning →
+            {t("startLearning")} →
           </span>
         </div>
       )}

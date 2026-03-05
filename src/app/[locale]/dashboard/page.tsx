@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useProgress } from "@/hooks/useProgress";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { ScrollReveal } from "@open-ai-school/ai-ui-library";
+import { locales } from "@/i18n/request";
 
 const PROGRAMS = [
   {
@@ -14,28 +15,22 @@ const PROGRAMS = [
     title: "AI Seeds",
     color: "#34D399",
     lessons: [
-      { slug: "what-is-ai", icon: "🤖", title: "What is AI?", duration: 10 },
-      { slug: "how-machines-learn", icon: "🧠", title: "How Machines Learn", duration: 12 },
-      { slug: "your-first-ai-model", icon: "🎨", title: "Your First AI Model", duration: 15 },
+      { slug: "what-is-ai", icon: "🤖", duration: 10 },
+      { slug: "how-machines-learn", icon: "🧠", duration: 12 },
+      { slug: "your-first-ai-model", icon: "🎨", duration: 15 },
     ],
   },
 ];
 
-const ACHIEVEMENTS = [
-  { id: "first-lesson", icon: "🌱", title: "First Step", description: "Completed your first lesson", threshold: 1 },
-  { id: "half-way", icon: "⚡", title: "Half Way", description: "Completed half of all lessons", threshold: 2 },
-  { id: "all-done", icon: "🏆", title: "AI Graduate", description: "Completed all lessons", threshold: 3 },
-];
-
 export default function DashboardPage() {
-  const t = useTranslations();
+  const t = useTranslations("dashboard");
+  const tl = useTranslations("lessonTitles");
   const { totalCompleted, getProgram, isCompleted, reset } = useProgress();
   const { profile, isSignedIn } = useGuestProfile();
   const pathname = usePathname();
 
-  const allLocales = ["en", "fr", "nl", "hi", "te"];
-  const segments = pathname.split("/");
-  const locale = allLocales.includes(segments[1]) ? segments[1] : "en";
+  const segments = pathname.split("/").filter(Boolean);
+  const locale = (locales as readonly string[]).includes(segments[0]) ? segments[0] : "en";
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   const totalLessons = PROGRAMS.reduce((sum, p) => sum + p.lessons.length, 0);
@@ -50,10 +45,10 @@ export default function DashboardPage() {
             <div className="text-5xl mb-4">{profile?.avatar}</div>
           )}
           <h1 className="text-4xl font-bold mb-2">
-            {isSignedIn ? `${profile?.name}'s Dashboard` : "My Learning Dashboard"}
+            {isSignedIn ? t("titleUser", { name: profile?.name ?? "" }) : t("title")}
           </h1>
           <p className="text-lg text-[var(--color-text-muted)]">
-            Track your AI learning journey across all programs
+            {t("subtitle")}
           </p>
         </div>
       </ScrollReveal>
@@ -62,7 +57,7 @@ export default function DashboardPage() {
       <ScrollReveal animation="scale-in">
         <div className="mb-12 p-8 rounded-3xl glass-card">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">Overall Progress</h2>
+            <h2 className="text-xl font-bold">{t("overallProgress")}</h2>
             <span className="text-3xl font-bold gradient-text-animated">{percentage}%</span>
           </div>
           <div className="h-3 rounded-full bg-[var(--color-border)] overflow-hidden mb-4">
@@ -72,8 +67,8 @@ export default function DashboardPage() {
             />
           </div>
           <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-            <span>{totalCompleted} of {totalLessons} lessons completed</span>
-            <span>{totalLessons - totalCompleted} remaining</span>
+            <span>{t("lessonsCompleted", { completed: totalCompleted, total: totalLessons })}</span>
+            <span>{t("remaining", { count: totalLessons - totalCompleted })}</span>
           </div>
         </div>
       </ScrollReveal>
@@ -90,7 +85,7 @@ export default function DashboardPage() {
             <ScrollReveal animation="fade-up" delay={pIdx * 100}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-2xl">{program.icon}</span>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h2 className="text-xl font-bold">{program.title}</h2>
                   <div className="flex items-center gap-3 mt-1">
                     <div className="flex-1 h-2 rounded-full bg-[var(--color-border)] overflow-hidden">
@@ -99,7 +94,7 @@ export default function DashboardPage() {
                         style={{ width: `${progPct}%`, backgroundColor: program.color }}
                       />
                     </div>
-                    <span className="text-sm font-medium" style={{ color: program.color }}>
+                    <span className="text-sm font-medium shrink-0" style={{ color: program.color }}>
                       {progPct}%
                     </span>
                   </div>
@@ -128,8 +123,8 @@ export default function DashboardPage() {
                           {lesson.icon}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-sm">{lesson.title}</h3>
-                          <span className="text-xs text-[var(--color-text-muted)]">⏱️ {lesson.duration} min</span>
+                          <h3 className="font-bold text-sm truncate">{tl(lesson.slug as any)}</h3>
+                          <span className="text-xs text-[var(--color-text-muted)]">⏱️ {lesson.duration} {t("min")}</span>
                         </div>
                         <div className="shrink-0">
                           {done ? (
@@ -154,10 +149,14 @@ export default function DashboardPage() {
 
       {/* Achievements */}
       <ScrollReveal animation="fade-up">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">🏅 Achievements</h2>
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">🏅 {t("achievements")}</h2>
       </ScrollReveal>
       <div className="grid sm:grid-cols-3 gap-4 mb-12">
-        {ACHIEVEMENTS.map((achievement, idx) => {
+        {[
+          { id: "first-lesson", icon: "🌱", titleKey: "firstStep", descKey: "firstStepDesc", threshold: 1 },
+          { id: "half-way", icon: "⚡", titleKey: "halfWay", descKey: "halfWayDesc", threshold: 2 },
+          { id: "all-done", icon: "🏆", titleKey: "aiGraduate", descKey: "aiGraduateDesc", threshold: 3 },
+        ].map((achievement, idx) => {
           const unlocked = totalCompleted >= achievement.threshold;
           return (
             <ScrollReveal key={achievement.id} animation="scale-in" delay={idx * 100}>
@@ -167,10 +166,10 @@ export default function DashboardPage() {
                   : "bg-[var(--color-bg-card)] border-[var(--color-border)] opacity-40 grayscale"
               }`}>
                 <div className={`text-4xl mb-3 ${unlocked ? "animate-float-slow" : ""}`}>{achievement.icon}</div>
-                <h3 className="font-bold mb-1">{achievement.title}</h3>
-                <p className="text-xs text-[var(--color-text-muted)]">{achievement.description}</p>
+                <h3 className="font-bold mb-1">{t(achievement.titleKey as any)}</h3>
+                <p className="text-xs text-[var(--color-text-muted)]">{t(achievement.descKey as any)}</p>
                 {unlocked && (
-                  <span className="inline-block mt-2 text-xs font-medium text-amber-600 dark:text-amber-400">✨ Unlocked!</span>
+                  <span className="inline-block mt-2 text-xs font-medium text-amber-600 dark:text-amber-400">✨ {t("unlocked")}</span>
                 )}
               </div>
             </ScrollReveal>
@@ -185,14 +184,14 @@ export default function DashboardPage() {
             href={`${basePath}/programs`}
             className="btn-primary px-8 py-4 bg-[var(--color-primary)] text-white rounded-2xl text-lg font-semibold shadow-lg shadow-[var(--color-primary)]/25"
           >
-            Browse Programs →
+            {t("browsePrograms")} →
           </Link>
           {totalCompleted > 0 && (
             <button
               onClick={reset}
               className="px-6 py-3 border border-[var(--color-border)] rounded-xl text-sm text-[var(--color-text-muted)] hover:border-red-300 hover:text-red-500 transition-all cursor-pointer"
             >
-              Reset Progress
+              {t("resetProgress")}
             </button>
           )}
         </div>
