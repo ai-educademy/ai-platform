@@ -40,13 +40,17 @@ graph TB
         PLAT["🌐 ai-platform<br/><small>Next.js App Shell → Vercel</small>"]
         SEEDS["🌱 ai-seeds<br/><small>Level 1: Beginners</small>"]
         SPROUTS["🌿 ai-sprouts<br/><small>Level 2: Foundations</small>"]
-        FUTURE["🌳 ai-branches / ai-canopy / ai-forest<br/><small>Levels 3–5 (coming soon)</small>"]
+        BRANCHES["🌳 ai-branches<br/><small>Level 3: Specialisations</small>"]
+        CANOPY["🏕️ ai-canopy<br/><small>Level 4: Production AI</small>"]
+        FOREST["🌲 ai-forest<br/><small>Level 5: Mastery</small>"]
     end
 
     UI -->|npm install| PLAT
     SEEDS -->|git submodule| PLAT
     SPROUTS -->|git submodule| PLAT
-    FUTURE -.->|git submodule| PLAT
+    BRANCHES -.->|git submodule| PLAT
+    CANOPY -.->|git submodule| PLAT
+    FOREST -.->|git submodule| PLAT
     SEEDS -->|repository_dispatch| PLAT
     SPROUTS -->|repository_dispatch| PLAT
 
@@ -63,9 +67,9 @@ Open AI School follows a **nature growth metaphor** — a seed grows into a fore
 |-------|---------|-------------|--------|
 | 1 | [🌱 AI Seeds](https://github.com/open-ai-school/ai-seeds) | Absolute beginners — no code, no maths | ✅ Live |
 | 2 | [🌿 AI Sprouts](https://github.com/open-ai-school/ai-sprouts) | Foundations — data, algorithms, neural nets | 🚧 Coming soon |
-| 3 | 🌳 AI Branches | Applied AI — real-world projects | 📋 Planned |
-| 4 | 🏕️ AI Canopy | Advanced topics — deep learning, NLP | 📋 Planned |
-| 5 | 🌲 AI Forest | Expert / research — cutting edge AI | 📋 Planned |
+| 3 | [🌳 AI Branches](https://github.com/open-ai-school/ai-branches) | Specialisations — ML, CV, NLP, GenAI | 🚧 Coming soon |
+| 4 | [🏕️ AI Canopy](https://github.com/open-ai-school/ai-canopy) | Production AI — MLOps, RAG, governance | 🚧 Coming soon |
+| 5 | [🌲 AI Forest](https://github.com/open-ai-school/ai-forest) | Mastery — research, leadership, frontier AI | 🚧 Coming soon |
 
 ## 📁 Project Structure
 
@@ -153,6 +157,9 @@ See the repo-specific contributing guides for details.
 | [`ai-ui-library`](https://github.com/open-ai-school/ai-ui-library) | 🎨 Shared design system | [npm](https://www.npmjs.com/package/@open-ai-school/ai-ui-library) · [Storybook](https://open-ai-school.github.io/ai-ui-library/) |
 | [`ai-seeds`](https://github.com/open-ai-school/ai-seeds) | 🌱 Level 1: Absolute beginners | [Live](https://openaischool.vercel.app/programs/ai-seeds) |
 | [`ai-sprouts`](https://github.com/open-ai-school/ai-sprouts) | 🌿 Level 2: Foundations | Coming soon |
+| [`ai-branches`](https://github.com/open-ai-school/ai-branches) | 🌳 Level 3: Specialisations | Coming soon |
+| [`ai-canopy`](https://github.com/open-ai-school/ai-canopy) | 🏕️ Level 4: Production AI | Coming soon |
+| [`ai-forest`](https://github.com/open-ai-school/ai-forest) | 🌲 Level 5: Mastery | Coming soon |
 
 ## 📄 License
 
