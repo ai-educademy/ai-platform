@@ -48,7 +48,7 @@
     },
     "community": {
       "title": "Apprenez Ensemble",
-      "description": "Rejoignez une communauté d'apprenants curieux d'Inde, d'Europe, d'Afrique et d'ailleurs. Posez des questions, partagez vos expériences et aidez à traduire des leçons."
+      "description": "Rejoignez une communauté mondiale d'apprenants curieux. Posez des questions, partagez vos expériences et aidez à traduire des leçons."
     },
     "practical": {
       "title": "L'IA dans la Vie Réelle",
@@ -76,7 +76,7 @@
     }
   },
   "founder": {
-    "description": "Ingénieur logiciel et leader en ingénierie avec plus d'une décennie d'expérience dans la construction de systèmes à grande échelle en Inde, au Royaume-Uni, en Belgique et à travers l'Europe. Ayant dirigé des transformations numériques dans le commerce de détail, la fidélisation et les services financiers, j'ai fondé Open AI School pour rendre l'éducation en IA et en ingénierie accessible gratuitement — dans chaque langue, pour chaque parcours.",
+    "description": "Ingénieur logiciel et leader en ingénierie avec plus d'une décennie d'expérience dans la construction de systèmes à grande échelle dans plusieurs pays d'Asie et d'Europe. Ayant dirigé des transformations numériques dans le commerce de détail, la fidélisation et les services financiers, j'ai fondé Open AI School pour rendre l'éducation en IA et en ingénierie accessible gratuitement — dans chaque langue, pour chaque parcours.",
     "cta": "Lire l'histoire complète",
     "role": "Fondateur · Leader en Ingénierie · Défenseur de l'Open Source"
   },
@@ -108,9 +108,9 @@
     "mission": "Notre Mission",
     "missionText": "Rendre l'éducation à l'IA accessible à chaque étudiant dans le monde — quelle que soit sa langue, son parcours ou qu'il ait jamais écrit une ligne de code.",
     "story": "L'Histoire",
-    "storyText1": "Je suis Ramesh Reddy Adutla — un ingénieur logiciel et leader en ingénierie qui a passé plus d'une décennie à construire des systèmes à grande échelle. J'ai travaillé chez JP Morgan, Sky et Marks & Spencer, et j'ai vécu et travaillé en Inde, en Belgique et au Royaume-Uni.",
-    "storyText2": "Au cours de ma carrière, j'ai vu à quel point l'IA devient transformatrice. Mais j'ai aussi vu que l'éducation à l'IA est concentrée dans les universités coûteuses des pays riches. Les étudiants en Inde, en Afrique et dans de nombreuses régions d'Europe n'ont pas le même accès.",
-    "storyText3": "Quand j'ai dit à un collègue senior que de nombreux étudiants en Inde sont laissés pour compte dans la révolution de l'IA, cela a touché un nerf. Cette conversation a planté une graine — et Open AI School est née pour changer cela.",
+    "storyText1": "Je suis Ramesh Reddy Adutla — un ingénieur logiciel et leader en ingénierie qui a passé plus d'une décennie à construire des systèmes à grande échelle. J'ai travaillé chez JP Morgan, Sky et Marks & Spencer, et j'ai vécu et travaillé dans plusieurs pays d'Asie et d'Europe.",
+    "storyText2": "Au cours de ma carrière, j'ai vu à quel point l'IA devient transformatrice. Mais j'ai aussi vu que l'éducation à l'IA est concentrée dans les universités coûteuses des pays riches. Les étudiants à travers le monde en développement et dans de nombreuses régions d'Europe n'ont pas le même accès.",
+    "storyText3": "Quand j'ai dit à un collègue senior que des millions d'étudiants dans le monde sont laissés pour compte dans la révolution de l'IA, cela a touché un nerf. Cette conversation a planté une graine — et Open AI School est née pour changer cela.",
     "storyText4": "Je parle anglais, français et télougou. J'ai vécu l'expérience multiculturelle. Je crois que la meilleure personne pour combler ce fossé est quelqu'un qui a été des deux côtés.",
     "values": "Nos Valeurs",
     "value1": {
@@ -137,7 +137,6 @@
     "twitter": "X (Twitter)",
     "sponsor": "☕ Offrir un Café",
     "subtitle": "Ingénieur logiciel • Éducateur • Contributeur Open Source",
-    "locations": "🇮🇳 Inde → 🇧🇪 Belgique → 🇬🇧 Royaume-Uni",
     "timeline2011": "Début de carrière en ingénierie logicielle en Inde 🇮🇳",
     "timeline2014": "Déménagement en Belgique — systèmes fintech, apprentissage du français 🇧🇪",
     "timeline2017": "JP Morgan — plateformes de trading et systèmes haute performance 💰",

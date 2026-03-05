@@ -37,9 +37,7 @@ export default function AboutPage() {
           <p className="text-lg text-[var(--color-primary)] font-semibold">
             {t("subtitle")}
           </p>
-          <p className="text-sm text-[var(--color-text-muted)] mt-1">
-            {t("locations")}
-          </p>
+
         </div>
       </ScrollReveal>
 
