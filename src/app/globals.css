@@ -1,45 +1,49 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════
-   Apple-inspired Design System
+   Bold SaaS Design System — Linear / Vercel / Stripe
    ═══════════════════════════════════════════ */
 
 :root {
-  --color-primary: #0071e3;
-  --color-primary-dark: #0077ed;
-  --color-secondary: #ff9f0a;
-  --color-accent: #30d158;
-  --color-bg: #f5f5f7;
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
+  --color-secondary: #ec4899;
+  --color-accent: #10b981;
+  --color-bg: #ffffff;
+  --color-bg-section: #f8fafc;
   --color-bg-card: #ffffff;
-  --color-text: #1d1d1f;
-  --color-text-muted: #86868b;
-  --color-border: #d2d2d7;
-  --color-glass: rgba(245, 245, 247, 0.72);
-  --color-glass-border: rgba(0, 0, 0, 0.06);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-glass: rgba(255, 255, 255, 0.7);
+  --color-glass-border: rgba(99, 102, 241, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08), 0 20px 48px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 60px rgba(99, 102, 241, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 }
 
 .dark {
-  --color-primary: #0a84ff;
-  --color-primary-dark: #409cff;
-  --color-secondary: #ff9f0a;
-  --color-accent: #30d158;
-  --color-bg: #000000;
-  --color-bg-card: #1c1c1e;
-  --color-text: #f5f5f7;
-  --color-text-muted: #98989d;
-  --color-border: #38383a;
-  --color-glass: rgba(28, 28, 30, 0.72);
-  --color-glass-border: rgba(255, 255, 255, 0.06);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --color-primary: #818cf8;
+  --color-primary-dark: #6366f1;
+  --color-secondary: #f472b6;
+  --color-accent: #34d399;
+  --color-bg: #09090b;
+  --color-bg-section: #0f0f12;
+  --color-bg-card: #18181b;
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --color-border: #27272a;
+  --color-glass: rgba(24, 24, 27, 0.8);
+  --color-glass-border: rgba(129, 140, 248, 0.1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.3), 0 20px 48px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(129, 140, 248, 0.25), 0 0 60px rgba(129, 140, 248, 0.08);
 }
 
 html {
@@ -51,25 +55,33 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
 /* ═══════════════════════════════════════════
-   Glass morphism (Apple navbar style)
+   Glass morphism — premium frosted blur
    ═══════════════════════════════════════════ */
 .glass {
   background: var(--color-glass);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(200%) blur(24px);
+  -webkit-backdrop-filter: saturate(200%) blur(24px);
   border-bottom: 1px solid var(--color-glass-border);
 }
 
-/* Friendly, warm styling for beginners */
+/* ═══════════════════════════════════════════
+   Lesson content — rich typography
+   ═══════════════════════════════════════════ */
 .lesson-content h1 {
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 1rem;
+  letter-spacing: -0.025em;
   color: var(--color-primary);
 }
 
@@ -78,6 +90,7 @@ body {
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
 }
 
 .lesson-content p {
@@ -116,12 +129,13 @@ body {
 }
 
 .lesson-content pre {
-  background-color: #1e293b;
+  background-color: #0f172a;
   color: #e2e8f0;
   padding: 1.5rem;
   border-radius: 0.75rem;
   overflow-x: auto;
   margin: 1.5rem 0;
+  border: 1px solid #1e293b;
 }
 
 .lesson-content pre code {
@@ -131,7 +145,9 @@ body {
   color: inherit;
 }
 
-/* Animated gradient for hero */
+/* ═══════════════════════════════════════════
+   Animated gradient for hero
+   ═══════════════════════════════════════════ */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -142,7 +158,9 @@ body {
   animation: gradient-shift 6s ease infinite;
 }
 
-/* Gentle bounce for CTA */
+/* ═══════════════════════════════════════════
+   CTA bounce
+   ═══════════════════════════════════════════ */
 @keyframes gentle-bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
@@ -152,19 +170,48 @@ body {
   animation: gentle-bounce 0.6s ease infinite;
 }
 
-/* Card hover effect */
+/* ═══════════════════════════════════════════
+   Card hover — Linear-style with gradient border reveal
+   ═══════════════════════════════════════════ */
 .card-hover {
+  position: relative;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
 }
 
+.card-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease, background 0.4s ease;
+  pointer-events: none;
+}
+
 .card-hover:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
+.card-hover:hover::before {
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  opacity: 1;
+}
+
 /* ═══════════════════════════════════════════
-   Progress bar
+   Progress bar — gradient fill with shimmer
    ═══════════════════════════════════════════ */
+@keyframes progress-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .progress-bar {
   height: 4px;
   border-radius: 2px;
@@ -175,7 +222,9 @@ body {
 .progress-bar-fill {
   height: 100%;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899, #6366f1);
+  background-size: 200% 100%;
+  animation: progress-shimmer 2.5s linear infinite;
   transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -272,24 +321,24 @@ body {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, var(--color-primary)/10, transparent);
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.12), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
 
 /* ═══════════════════════════════════════════
-   Glassmorphism cards (Apple-style frosted)
+   Glassmorphism cards — premium frosted
    ═══════════════════════════════════════════ */
 .glass-card {
   background: var(--color-glass);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(200%) blur(24px);
+  -webkit-backdrop-filter: saturate(200%) blur(24px);
   border: 1px solid var(--color-glass-border);
   border-radius: var(--radius-lg);
 }
 
 /* ═══════════════════════════════════════════
-   Premium card effects
+   Premium card glow effect
    ═══════════════════════════════════════════ */
 .card-glow {
   position: relative;
@@ -303,7 +352,7 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, var(--color-primary)/6 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -314,11 +363,12 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   Interactive micro-interactions
+   Button — gradient background with glow
    ═══════════════════════════════════════════ */
 .btn-primary {
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -326,7 +376,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
   background-size: 200% 200%;
   background-position: 100% 100%;
   transition: background-position 0.5s ease;
@@ -338,19 +388,19 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--color-primary)/30;
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4), 0 0 60px rgba(99, 102, 241, 0.15);
 }
 
 .btn-primary:active {
   transform: translateY(0);
-  box-shadow: 0 4px 12px var(--color-primary)/20;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
 /* ═══════════════════════════════════════════
    Gradient text animation
    ═══════════════════════════════════════════ */
 .gradient-text-animated {
-  background: linear-gradient(270deg, var(--color-primary), #8b5cf6, var(--color-accent), var(--color-primary));
+  background: linear-gradient(270deg, #6366f1, #a855f7, #ec4899, #6366f1);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -359,20 +409,22 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   Background mesh gradient
+   Background mesh gradient — bold & vibrant
    ═══════════════════════════════════════════ */
 .bg-mesh {
   background:
-    radial-gradient(ellipse at 20% 50%, var(--color-primary)/8 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, #8b5cf6/6 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, var(--color-accent)/5 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 70%, rgba(236, 72, 153, 0.08) 0%, transparent 40%);
 }
 
 .dark .bg-mesh {
   background:
-    radial-gradient(ellipse at 20% 50%, var(--color-primary)/4 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, #8b5cf6/3 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, var(--color-accent)/2 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 70%, rgba(236, 72, 153, 0.06) 0%, transparent 40%);
 }
 
 /* ═══════════════════════════════════════════
@@ -385,12 +437,77 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   Apple-style focus rings
+   Focus rings — indigo branded
    ═══════════════════════════════════════════ */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
+}
+
+/* ═══════════════════════════════════════════
+   New utilities — gradient border
+   ═══════════════════════════════════════════ */
+.gradient-border {
+  position: relative;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   New utilities — text gradient
+   ═══════════════════════════════════════════ */
+.text-gradient {
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ═══════════════════════════════════════════
+   New utilities — dot grid (Stripe-style)
+   ═══════════════════════════════════════════ */
+.bg-grid {
+  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ═══════════════════════════════════════════
+   New utilities — glow effect
+   ═══════════════════════════════════════════ */
+.glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.glow-sm {
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2), 0 0 30px rgba(99, 102, 241, 0.06);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.3), 0 0 60px rgba(236, 72, 153, 0.1);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 60px rgba(16, 185, 129, 0.1);
 }
 
 /* ═══════════════════════════════════════════

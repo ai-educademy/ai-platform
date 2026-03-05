@@ -43,16 +43,16 @@ export function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 glass">
+    <nav className="sticky top-0 z-50 glass border-b border-[var(--color-border)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
             href={`${basePath}/`}
-            className="flex items-center gap-2 font-semibold text-base shrink-0"
+            className="flex items-center gap-2 font-bold text-lg shrink-0"
           >
             <span className="text-xl">🎓</span>
-            <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent whitespace-nowrap">
+            <span className="text-gradient whitespace-nowrap">
               Open AI School
             </span>
           </Link>
@@ -65,7 +65,7 @@ export function Navbar() {
                 href={link.href}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive(link.match)
-                    ? "text-[var(--color-primary)] bg-[var(--color-primary)]/8"
+                    ? "text-[var(--color-primary)] bg-[var(--color-primary)]/10 font-semibold"
                     : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-card)]"
                 }`}
               >
@@ -81,7 +81,7 @@ export function Navbar() {
             <UserMenu />
             <Link
               href={`${basePath}/programs/ai-seeds`}
-              className="ml-1 px-4 py-1.5 bg-[var(--color-primary)] text-white rounded-full text-sm font-medium hover:brightness-110 transition-all active:scale-95 whitespace-nowrap"
+              className="ml-1 px-4 py-1.5 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 shadow-md shadow-indigo-500/25 text-white rounded-full text-sm font-medium transition-all active:scale-95 whitespace-nowrap"
             >
               {t("getStarted")}
             </Link>
@@ -110,8 +110,8 @@ export function Navbar() {
 
         {/* Mobile Nav */}
         {mobileOpen && (
-          <div className="md:hidden pb-4 pt-2 border-t border-[var(--color-border)]">
-            <div className="space-y-1">
+          <div className="md:hidden pb-4 pt-2 mt-2 bg-[var(--color-bg-card)] rounded-2xl shadow-lg border border-[var(--color-border)]">
+            <div className="space-y-1 px-2">
               {links.map((link) => (
                 <Link
                   key={link.match}
@@ -129,7 +129,7 @@ export function Navbar() {
             <div className="mt-3 px-4">
               <Link
                 href={`${basePath}/programs/ai-seeds`}
-                className="block w-full text-center px-4 py-2.5 bg-[var(--color-primary)] text-white rounded-xl text-sm font-medium"
+                className="block w-full text-center px-4 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 shadow-md shadow-indigo-500/25 text-white rounded-xl text-sm font-medium"
               >
                 {t("getStarted")}
               </Link>

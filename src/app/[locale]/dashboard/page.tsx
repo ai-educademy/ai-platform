@@ -37,17 +37,17 @@ export default function DashboardPage() {
   const percentage = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 space-y-0">
       {/* Header */}
       <ScrollReveal animation="fade-up">
         <div className="text-center mb-12">
           {isSignedIn && (
             <div className="text-5xl mb-4">{profile?.avatar}</div>
           )}
-          <h1 className="text-4xl font-bold mb-2">
+          <h1 className="text-4xl font-bold mb-2 text-gradient">
             {isSignedIn ? t("titleUser", { name: profile?.name ?? "" }) : t("title")}
           </h1>
-          <p className="text-lg text-[var(--color-text-muted)]">
+          <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto">
             {t("subtitle")}
           </p>
         </div>
@@ -55,14 +55,14 @@ export default function DashboardPage() {
 
       {/* Overall Progress */}
       <ScrollReveal animation="scale-in">
-        <div className="mb-12 p-8 rounded-3xl glass-card">
+        <div className="mb-12 p-8 rounded-3xl bg-[var(--color-bg-card)] border border-[var(--color-border)] gradient-border">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">{t("overallProgress")}</h2>
-            <span className="text-3xl font-bold gradient-text-animated">{percentage}%</span>
+            <span className="text-3xl font-bold text-gradient">{percentage}%</span>
           </div>
-          <div className="h-3 rounded-full bg-[var(--color-border)] overflow-hidden mb-4">
+          <div className="h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden mb-4">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[var(--color-primary)] via-purple-500 to-[var(--color-accent)] transition-all duration-1000 ease-out"
+              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-1000 ease-out"
               style={{ width: `${percentage}%` }}
             />
           </div>
@@ -84,17 +84,17 @@ export default function DashboardPage() {
           <div key={program.slug} className="mb-12">
             <ScrollReveal animation="fade-up" delay={pIdx * 100}>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-2xl">{program.icon}</span>
+                <span className="text-4xl">{program.icon}</span>
                 <div className="flex-1 min-w-0">
                   <h2 className="text-xl font-bold">{program.title}</h2>
                   <div className="flex items-center gap-3 mt-1">
-                    <div className="flex-1 h-2 rounded-full bg-[var(--color-border)] overflow-hidden">
+                    <div className="flex-1 h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden">
                       <div
-                        className="h-full rounded-full transition-all duration-700"
-                        style={{ width: `${progPct}%`, backgroundColor: program.color }}
+                        className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-700"
+                        style={{ width: `${progPct}%` }}
                       />
                     </div>
-                    <span className="text-sm font-medium shrink-0" style={{ color: program.color }}>
+                    <span className="text-2xl font-bold text-[var(--color-primary)] shrink-0">
                       {progPct}%
                     </span>
                   </div>
@@ -114,11 +114,11 @@ export default function DashboardPage() {
                       <div className={`flex items-center gap-4 p-4 rounded-2xl border transition-all ${
                         done
                           ? "bg-[var(--color-accent)]/5 border-[var(--color-accent)]/20"
-                          : "bg-[var(--color-bg-card)] border-[var(--color-border)]"
+                          : "bg-[var(--color-bg-card)] border-[var(--color-border)] card-hover"
                       }`}>
                         <div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
-                          style={{ backgroundColor: done ? `${program.color}20` : "var(--color-bg-card)" }}
+                          className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0"
+                          style={{ backgroundColor: done ? `${program.color}20` : "var(--color-bg-section)" }}
                         >
                           {lesson.icon}
                         </div>
@@ -149,7 +149,7 @@ export default function DashboardPage() {
 
       {/* Achievements */}
       <ScrollReveal animation="fade-up">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">🏅 {t("achievements")}</h2>
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-gradient">🏅 {t("achievements")}</h2>
       </ScrollReveal>
       <div className="grid sm:grid-cols-3 gap-4 mb-12">
         {[
@@ -162,14 +162,14 @@ export default function DashboardPage() {
             <ScrollReveal key={achievement.id} animation="scale-in" delay={idx * 100}>
               <div className={`text-center p-6 rounded-2xl border transition-all ${
                 unlocked
-                  ? "bg-gradient-to-b from-amber-50 to-amber-100/50 dark:from-amber-900/10 dark:to-amber-800/5 border-amber-200 dark:border-amber-800/30"
-                  : "bg-[var(--color-bg-card)] border-[var(--color-border)] opacity-40 grayscale"
+                  ? "bg-[var(--color-bg-card)] border-[var(--color-border)] gradient-border glow-sm"
+                  : "bg-[var(--color-bg-section)] border-[var(--color-border)] opacity-40 grayscale"
               }`}>
-                <div className={`text-4xl mb-3 ${unlocked ? "animate-float-slow" : ""}`}>{achievement.icon}</div>
+                <div className={`text-5xl mb-3 ${unlocked ? "animate-float-slow" : ""}`}>{achievement.icon}</div>
                 <h3 className="font-bold mb-1">{t(achievement.titleKey as any)}</h3>
                 <p className="text-xs text-[var(--color-text-muted)]">{t(achievement.descKey as any)}</p>
                 {unlocked && (
-                  <span className="inline-block mt-2 text-xs font-medium text-amber-600 dark:text-amber-400">✨ {t("unlocked")}</span>
+                  <span className="inline-block mt-3 text-xs font-semibold text-gradient">✨ {t("unlocked")}</span>
                 )}
               </div>
             </ScrollReveal>
