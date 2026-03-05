@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: [content-update]
 
+concurrency:
+  group: content-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -20,7 +24,7 @@ jobs:
         run: |
           PROGRAM=${{ github.event.client_payload.program }}
           echo "Updating content for: ${PROGRAM:-all}"
-          git submodule update --remote --merge
+          git submodule update --init --remote
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
