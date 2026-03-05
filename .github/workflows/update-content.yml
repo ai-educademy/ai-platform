@@ -14,15 +14,19 @@ permissions:
 jobs:
   update-submodules:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update submodule to latest
         run: |
-          PROGRAM=${{ github.event.client_payload.program }}
+          PROGRAM="${{ github.event.client_payload.program }}"
+          # Sanitise input — only allow alphanumeric, dash, underscore
+          PROGRAM=$(echo "$PROGRAM" | sed 's/[^a-zA-Z0-9_-]//g')
           echo "Updating content for: ${PROGRAM:-all}"
           git submodule update --init --remote
           git config user.name "github-actions[bot]"
@@ -30,7 +34,8 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          PROGRAM=${{ github.event.client_payload.program }}
+          PROGRAM="${{ github.event.client_payload.program }}"
+          PROGRAM=$(echo "$PROGRAM" | sed 's/[^a-zA-Z0-9_-]//g')
           if git diff --quiet; then
             echo "No submodule changes detected"
           else
