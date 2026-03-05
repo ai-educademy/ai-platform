@@ -30,13 +30,13 @@
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.3",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
     "@types/mdx": "^2.0.13",
     "@types/node": "^25.3.3",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "eslint": "^9.39.3",
+    "eslint": "^10.0.2",
     "eslint-config-next": "^16.1.6",
     "playwright": "^1.58.2",
     "typescript": "^5.9.3",
