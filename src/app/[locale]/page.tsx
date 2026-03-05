@@ -346,6 +346,11 @@ export default async function HomePage({
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+          <ScrollReveal animation="fade-up">
+            <div className="text-center mb-8">
+              <span className="text-xs font-semibold tracking-widest uppercase text-[var(--color-text-muted)]">Meet the Founder</span>
+            </div>
+          </ScrollReveal>
           <ScrollReveal animation="scale-in">
             <div className="rounded-3xl overflow-hidden bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-bg-section)] border border-[var(--color-border)] shadow-2xl">
               <div className="grid md:grid-cols-[280px_1fr] items-stretch">
