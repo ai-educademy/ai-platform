@@ -39,6 +39,9 @@ export function LanguageSwitcher() {
       return;
     }
 
+    // Set the NEXT_LOCALE cookie so middleware respects the choice
+    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000;SameSite=Lax`;
+
     const segments = pathname.split("/").filter(Boolean);
 
     // Remove any locale prefix if present (covers both prefixed and unprefixed cases)
@@ -58,8 +61,8 @@ export function LanguageSwitcher() {
     // Ensure clean path (no double slashes, no trailing slash except root)
     newPath = newPath.replace(/\/+/g, "/").replace(/\/$/, "") || "/";
 
-    router.push(newPath);
-    setOpen(false);
+    // Use window.location for a full navigation to ensure middleware processes the new cookie
+    window.location.href = newPath;
   }
 
   return (
