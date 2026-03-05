@@ -302,46 +302,95 @@ export default async function HomePage({
 
       <hr className="section-divider" />
 
-      {/* Founder Preview */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-[var(--color-bg-card)] to-[var(--color-bg)]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      {/* Meet the Creator — AlgoMaster-inspired */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-mesh" />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+          <ScrollReveal animation="fade-up">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium mb-4">
+                👋 {t("founder.badge")}
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold">{t("founder.title")}</h2>
+            </div>
+          </ScrollReveal>
+
           <ScrollReveal animation="scale-in">
-            <div className="mb-6">
-              <div className="relative w-28 h-28 mx-auto">
-                <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-float-slow opacity-60 blur-md" />
-                <div className="relative w-28 h-28 rounded-full overflow-hidden ring-4 ring-[var(--color-primary)]/30 shadow-xl shadow-[var(--color-primary)]/20">
-                  <Image
-                    src="/images/hero/founder-avatar.svg"
-                    alt="Ramesh Reddy Adutla"
-                    width={112}
-                    height={112}
-                    className="w-full h-full"
-                    unoptimized
-                  />
+            <div className="gradient-border rounded-3xl overflow-hidden">
+              <div className="bg-[var(--color-bg-card)] p-8 md:p-12">
+                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                  {/* Photo */}
+                  <div className="shrink-0">
+                    <div className="relative">
+                      <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-50 blur-xl animate-pulse-glow" />
+                      <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-[var(--color-primary)]/30 shadow-2xl">
+                        <Image
+                          src="/images/creator.png"
+                          alt="Ramesh Reddy Adutla — Founder of Open AI School"
+                          width={192}
+                          height={192}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bio */}
+                  <div className="flex-1 text-center md:text-left">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-1">Ramesh Reddy Adutla</h3>
+                    <p className="text-[var(--color-primary)] font-semibold mb-4">{t("founder.role")}</p>
+                    <p className="text-[var(--color-text-muted)] leading-relaxed mb-6 text-lg">
+                      {t("founder.description")}
+                    </p>
+
+                    {/* Social links */}
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
+                      {[
+                        { label: "GitHub", href: "https://github.com/rameshreddy-adutla", icon: "🐙" },
+                        { label: "LinkedIn", href: "https://linkedin.com/in/rameshreddy-adutla", icon: "💼" },
+                        { label: "Dev.to", href: "https://dev.to/rameshreddy-adutla", icon: "📝" },
+                        { label: "Buy me a coffee", href: "https://buymeacoffee.com/rameshreddyadutla", icon: "☕" },
+                      ].map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] text-sm font-medium hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all hover:shadow-md"
+                        >
+                          <span>{link.icon}</span> {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats bar */}
+                <div className="mt-8 pt-8 border-t border-[var(--color-border)] grid grid-cols-2 md:grid-cols-4 gap-6">
+                  {[
+                    { value: "10+", label: t("founder.statYears") },
+                    { value: "Open Source", label: t("founder.statPassion") },
+                    { value: "5", label: t("founder.statLanguages") },
+                    { value: "100%", label: t("founder.statFree") },
+                  ].map((stat) => (
+                    <div key={stat.label} className="text-center">
+                      <div className="text-xl font-bold text-gradient">{stat.value}</div>
+                      <div className="text-xs text-[var(--color-text-muted)]">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={100}>
-            <h2 className="text-3xl font-bold mb-4">{t("founder.title")}</h2>
-            <p className="text-lg text-[var(--color-text-muted)] leading-relaxed max-w-2xl mx-auto mb-8">
-              {t("founder.description")}
-            </p>
-            <div className="flex items-center justify-center gap-4">
+
+          <ScrollReveal animation="fade-up" delay={200}>
+            <div className="text-center mt-8">
               <Link
                 href={`${basePath}/about`}
-                className="btn-primary px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all"
+                className="text-[var(--color-primary)] font-semibold hover:underline"
               >
-                {t("founder.cta")}
+                {t("founder.cta")} →
               </Link>
-              <a
-                href="https://github.com/rameshreddy-adutla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 border border-[var(--color-border)] rounded-xl font-medium hover:border-[var(--color-primary)] transition-all hover:shadow-md"
-              >
-                GitHub ↗
-              </a>
             </div>
           </ScrollReveal>
         </div>

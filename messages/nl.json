@@ -78,7 +78,13 @@
   "founder": {
     "title": "Ontmoet de Oprichter",
     "description": "Gebouwd door Ramesh Reddy Adutla — een software-ingenieur met 14 jaar ervaring in India, België en Londen. Gepassioneerd om AI-onderwijs toegankelijk te maken voor iedereen.",
-    "cta": "Lees het Volledige Verhaal"
+    "cta": "Lees het Volledige Verhaal",
+    "badge": "Ontmoet de Maker",
+    "role": "Oprichter & Maker, Open AI School",
+    "statYears": "Jaar ervaring",
+    "statPassion": "Pleitbezorger",
+    "statLanguages": "Ondersteunde talen",
+    "statFree": "Altijd gratis"
   },
   "cta": {
     "title": "Klaar om te Beginnen?",
@@ -261,7 +267,10 @@
     "halfWay": "Halverwege",
     "halfWayDesc": "De helft van alle lessen voltooid",
     "aiGraduate": "AI-afgestudeerde",
-    "aiGraduateDesc": "Alle lessen voltooid"
+    "aiGraduateDesc": "Alle lessen voltooid",
+    "emptyTitle": "Je leertraject begint hier",
+    "emptySubtitle": "Log in en voltooi je eerste les om je voortgang bij te houden. Het duurt maar 10 minuten!",
+    "emptyStart": "Begin je eerste les"
   },
   "auth": {
     "startLearning": "Begin met leren",

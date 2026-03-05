@@ -36,6 +36,27 @@ export default function DashboardPage() {
   const totalLessons = PROGRAMS.reduce((sum, p) => sum + p.lessons.length, 0);
   const percentage = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
 
+  // Empty state — when user hasn't started any lessons
+  if (totalCompleted === 0 && !isSignedIn) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
+        <ScrollReveal animation="scale-in">
+          <div className="text-7xl mb-6 animate-float-slow">🚀</div>
+          <h1 className="text-4xl font-bold mb-4 text-gradient">{t("emptyTitle")}</h1>
+          <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto mb-10 leading-relaxed">
+            {t("emptySubtitle")}
+          </p>
+          <Link
+            href={`${basePath}/programs/ai-seeds/lessons/what-is-ai`}
+            className="btn-primary inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl text-lg font-bold shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-[1.02] transition-all"
+          >
+            {t("emptyStart")} →
+          </Link>
+        </ScrollReveal>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 space-y-0">
       {/* Header */}

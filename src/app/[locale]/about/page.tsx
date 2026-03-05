@@ -21,15 +21,17 @@ export default function AboutPage() {
       {/* Header */}
       <ScrollReveal animation="scale-in">
         <div className="text-center mb-16">
-          <div className="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden ring-4 ring-[var(--color-primary)]/20 shadow-lg shadow-[var(--color-primary)]/10 animate-float-slow">
-            <Image
-              src="/images/hero/founder-avatar.svg"
-              alt="Ramesh Reddy Adutla — Founder of Open AI School"
-              width={128}
-              height={128}
-              className="w-full h-full"
-              unoptimized
-            />
+          <div className="relative w-36 h-36 mx-auto mb-6">
+            <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-50 blur-xl animate-pulse-glow" />
+            <div className="relative w-36 h-36 rounded-full overflow-hidden ring-4 ring-[var(--color-primary)]/20 shadow-2xl">
+              <Image
+                src="/images/creator.png"
+                alt="Ramesh Reddy Adutla — Founder of Open AI School"
+                width={144}
+                height={144}
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-2">Ramesh Reddy Adutla</h1>
           <p className="text-lg text-[var(--color-primary)] font-semibold">

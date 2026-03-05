@@ -78,7 +78,13 @@
   "founder": {
     "title": "Meet the Founder",
     "description": "Built by Ramesh Reddy Adutla — a software engineer with 14 years of experience across India, Belgium, and London. Passionate about making AI education accessible to everyone, regardless of language or background.",
-    "cta": "Read Full Story"
+    "cta": "Read Full Story",
+    "badge": "Meet the Creator",
+    "role": "Founder & Creator, Open AI School",
+    "statYears": "Years in Engineering",
+    "statPassion": "Advocate",
+    "statLanguages": "Languages Supported",
+    "statFree": "Free Forever"
   },
   "cta": {
     "title": "Ready to Start?",
@@ -261,7 +267,10 @@
     "halfWay": "Half Way",
     "halfWayDesc": "Completed half of all lessons",
     "aiGraduate": "AI Graduate",
-    "aiGraduateDesc": "Completed all lessons"
+    "aiGraduateDesc": "Completed all lessons",
+    "emptyTitle": "Your Learning Journey Starts Here",
+    "emptySubtitle": "Sign in and complete your first lesson to track your progress. It only takes 10 minutes!",
+    "emptyStart": "Start Your First Lesson"
   },
   "auth": {
     "startLearning": "Start Learning",
