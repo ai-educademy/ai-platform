@@ -1,0 +1,36 @@
+name: Update Content Submodules
+
+on:
+  repository_dispatch:
+    types: [content-update]
+
+permissions:
+  contents: write
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update submodule to latest
+        run: |
+          PROGRAM=${{ github.event.client_payload.program }}
+          echo "Updating content for: ${PROGRAM:-all}"
+          git submodule update --remote --merge
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push if changed
+        run: |
+          PROGRAM=${{ github.event.client_payload.program }}
+          if git diff --quiet; then
+            echo "No submodule changes detected"
+          else
+            git add -A
+            git commit -m "chore: update ${PROGRAM:-content} submodule to latest"
+            git push
+          fi
