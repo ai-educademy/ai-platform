@@ -10,7 +10,7 @@
     "about": "About",
     "getStarted": "Start Learning — It's Free",
     "language": "Language",
-    "programs": "Programs",
+    "programs": "Programmes",
     "blog": "Blog",
     "lab": "Lab"
   },
@@ -30,34 +30,34 @@
   },
   "features": {
     "title": "Designed for Absolute Beginners",
-    "subtitle": "You don't need to know programming, maths, or anything technical. We start from the very basics.",
+    "subtitle": "No coding, no maths, no prerequisites. We start from zero.",
     "beginner": {
       "title": "Start from Zero",
-      "description": "Never touched code? Perfect. Our lessons use everyday language and real-world examples you already understand — like how Netflix recommends movies or how your phone recognises your face."
+      "description": "Never touched code? Good. We use everyday language and real-world examples — how Netflix recommends films, how your phone recognises your face."
     },
     "interactive": {
       "title": "Learn by Doing",
-      "description": "Every lesson has hands-on experiments you can try right in your browser. Train an AI to recognise drawings, teach a chatbot to respond, and see results instantly."
+      "description": "Hands-on experiments in your browser. Train an AI to recognise drawings, teach a chatbot — see results instantly."
     },
     "multilingual": {
       "title": "In Your Language",
-      "description": "AI education shouldn't only be available in English. Learn in Hindi, Telugu, French, Dutch, or English — whichever feels like home."
+      "description": "Learn in Hindi, Telugu, French, Dutch, or English — whichever feels like home."
     },
     "free": {
       "title": "Free Forever",
-      "description": "No subscriptions, no paywalls, no 'premium tier'. This is open-source education — built by the community, for the community."
+      "description": "No subscriptions, no paywalls. Open-source, community-built, free forever."
     },
     "community": {
       "title": "Learn Together",
-      "description": "Join a global community of curious learners. Ask questions, share your experiments, and help translate lessons."
+      "description": "Ask questions, share experiments, help translate lessons."
     },
     "practical": {
       "title": "Real-World AI",
-      "description": "Understand how AI works in things you use every day — search engines, voice assistants, social media feeds, self-driving cars, and medical diagnosis."
+      "description": "How AI powers search engines, voice assistants, social feeds, self-driving cars, and medical diagnosis."
     }
   },
   "founder": {
-    "description": "Software engineer and engineering leader with over a decade of experience building large-scale systems across multiple countries in Asia and Europe. Having led digital transformations across retail, loyalty, and financial services, I founded AI Educademy to make world-class AI and engineering education freely accessible — in every language, for every background.",
+    "description": "Engineer and tech lead with a decade of building systems across India, Belgium, and the UK. Founded AI Educademy to make AI education free and accessible — in every language, for every background.",
     "cta": "Read Full Story",
     "role": "Founder · Engineering Leader · Open Source Advocate"
   },
@@ -70,23 +70,23 @@
     "coc": "Code of Conduct",
     "buyMeACoffee": "Buy Me a Coffee",
     "mission": "Free AI education for everyone",
-    "license": "MIT License — Open Source",
+    "license": "MIT Licence — Open Source",
     "learnHeader": "Learn",
     "communityHeader": "Community",
     "supportHeader": "Support",
-    "programs": "Programs",
+    "programs": "Programmes",
     "dashboard": "Dashboard",
     "lab": "Lab"
   },
   "about": {
     "title": "About AI Educademy",
     "mission": "Our Mission",
-    "missionText": "To make AI education accessible to every student in the world — regardless of their language, background, or whether they've ever written a line of code.",
+    "missionText": "AI education for every student, regardless of language, background, or experience.",
     "story": "The Mind Behind the Idea",
-    "storyText1": "I'm Ramesh Reddy Adutla — a software engineer and engineering leader who has spent over a decade building large-scale systems. I've worked at JP Morgan, Sky, and Marks & Spencer, and lived and worked across multiple countries in Asia and Europe.",
-    "storyText2": "In my career, I've seen how transformative AI is becoming. But I've also seen that AI education is concentrated in expensive universities in wealthy countries. Students across the developing world and many parts of Europe don't have the same access.",
-    "storyText3": "A conversation with a senior colleague about millions of students being left out of the AI wave got me thinking. That's how AI Educademy started — a side project that grew into something real.",
-    "storyText4": "I speak English, French, and Telugu. I've lived and worked across India, Belgium, and the UK, so making this work across languages and cultures felt natural.",
+    "storyText1": "I'm Ramesh Reddy Adutla — an engineer who has spent a decade building systems at JP Morgan, Sky, and Marks & Spencer across India, Belgium, and the UK.",
+    "storyText2": "AI is transformative. But AI education is locked behind expensive universities in wealthy countries. Most of the world doesn't have the same access.",
+    "storyText3": "A conversation about millions of students being left behind started this. AI Educademy began as a side project — it grew into something real.",
+    "storyText4": "I speak English, French, and Telugu. Building across languages and cultures felt natural.",
     "values": "Our Values",
     "value1": {
       "title": "Accessible",
@@ -121,11 +121,12 @@
     "timeline2024": "Open-source contributions — Apache Gravitino, GOV.UK, Spring Boot MCP 🌐",
     "timeline2025": "Founded AI Educademy — free AI education for everyone 🎓",
     "pageTitle": "About AI Educademy",
-    "pageDescription": "AI Educademy is a free, open-source AI education platform built for everyone. Learn about our mission to make AI education accessible worldwide."
+    "pageDescription": "AI Educademy is a free, open-source AI education platform built for everyone. Learn about our mission to make AI education accessible worldwide.",
+    "pageSubtitle": "Free, open-source AI education for every student."
   },
   "lessons": {
     "title": "Lessons",
-    "subtitle": "Start from the very beginning. Each lesson builds on the last — no rushing, no assumptions.",
+    "subtitle": "Every lesson builds on the last. No rush, no assumptions.",
     "difficulty": {
       "beginner": "Beginner",
       "intermediate": "Intermediate",
@@ -146,7 +147,7 @@
     "comingSoon3": {
       "title": "How Chatbots Work"
     },
-    "programs": "Programs",
+    "programs": "Programmes",
     "lessonsComingSoon": "Lessons Coming Soon",
     "checkBackSoon": "Check back soon!",
     "backToProgram": "Back to"
@@ -154,10 +155,10 @@
   "programs": {
     "badge": "5 Learning Levels",
     "title": "Choose Your Learning Path",
-    "subtitle": "From absolute beginner to AI expert — pick the level that matches where you are right now.",
+    "subtitle": "Pick the level that matches where you are.",
     "level": "Level",
     "comingSoon": "Coming Soon",
-    "startLearning": "Explore Program",
+    "startLearning": "Explore Programme",
     "hours": "h",
     "levelLabels": {
       "1": "Beginner",
@@ -166,7 +167,7 @@
       "4": "Advanced",
       "5": "Expert"
     },
-    "viewAll": "View All Programs",
+    "viewAll": "View All Programmes",
     "trackAI": "Understanding AI",
     "trackAIDesc": "Grow from zero to AI expert — nature-inspired progression",
     "trackAITagline": "Seeds → Sprouts → Branches → Canopy → Forest",
@@ -174,8 +175,8 @@
     "trackCraftDesc": "Ace your dream interview — workshop-inspired mastery",
     "trackCraftTagline": "Sketch → Chisel → Craft → Polish → Masterpiece",
     "trackCraftBrand": "Learn the algorithms that power AI, design the systems that scale AI, and ace the interviews that land you AI-era jobs.",
-    "pageTitle": "AI & Engineering Programs",
-    "pageDescription": "Explore our free AI learning tracks and software engineering programs. From absolute beginner to advanced — learn at your own pace in 5 languages."
+    "pageTitle": "AI & Engineering Programmes",
+    "pageDescription": "Explore our free AI learning tracks and software engineering programmes. From absolute beginner to advanced — learn at your own pace in 5 languages."
   },
   "homePrograms": {
     "startFromZero": "Start from zero",
@@ -185,7 +186,7 @@
     "masterAI": "Master AI",
     "start": "Start",
     "comingSoon": "Coming Soon",
-    "viewAll": "View All Programs",
+    "viewAll": "View All Programmes",
     "trackAI": "Understanding AI",
     "trackCraft": "Code & Algorithms",
     "trackAIHome": "Grow from zero to AI expert",
@@ -201,19 +202,19 @@
     "comingSoon": "Lessons Coming Soon",
     "comingSoonDesc": "We're crafting these lessons with care. Check back soon!",
     "startFirst": "Start First Lesson",
-    "backToAll": "Back to All Programs"
+    "backToAll": "Back to All Programmes"
   },
   "dashboard": {
     "title": "My Learning Dashboard",
     "titleUser": "{name}'s Dashboard",
-    "subtitle": "Track your AI learning journey across all programs",
+    "subtitle": "Track your progress across all programmes",
     "overallProgress": "Overall Progress",
     "lessonsCompleted": "{completed} of {total} lessons completed",
     "remaining": "{count} remaining",
     "min": "min",
     "achievements": "Achievements",
     "unlocked": "Unlocked!",
-    "browsePrograms": "Browse Programs",
+    "browsePrograms": "Browse Programmes",
     "resetProgress": "Reset Progress",
     "firstStep": "First Step",
     "firstStepDesc": "Completed your first lesson",
@@ -222,7 +223,7 @@
     "aiGraduate": "AI Graduate",
     "aiGraduateDesc": "Completed all lessons",
     "emptyTitle": "Your Learning Journey Starts Here",
-    "emptySubtitle": "Sign in and complete your first lesson to track your progress. It only takes 10 minutes!",
+    "emptySubtitle": "Complete your first lesson to start tracking progress.",
     "emptyStart": "Start Your First Lesson",
     "trackAI": "Understanding AI",
     "trackCraft": "Code & Algorithms",
@@ -302,7 +303,7 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Latest updates and insights from AI Educademy",
+    "subtitle": "Updates and insights",
     "readMore": "Read more",
     "backToBlog": "Back to Blog",
     "publishedOn": "Published on",
@@ -320,7 +321,7 @@
   },
   "newsletter": {
     "title": "Stay in the loop",
-    "subtitle": "Get notified about new lessons, programs, and features",
+    "subtitle": "New lessons and features, straight to your inbox",
     "placeholder": "Enter your email",
     "subscribe": "Subscribe",
     "success": "You're subscribed! 🎉",
@@ -336,7 +337,7 @@
     "subtitle": "Experiment with real AI concepts right in your browser. No installation, no coding — just play and learn!",
     "badge": "Interactive • Fun • Educational",
     "pageTitle": "AI Lab",
-    "pageDescription": "Experiment with AI concepts hands-on. Play mini-games, analyze sentiment, visualize neural networks, explore sorting algorithms, and understand tokenization.",
+    "pageDescription": "Experiment with AI concepts. Analyse sentiment, visualise neural networks, explore sorting algorithms, and understand tokenisation.",
     "footer": "All demos run entirely in your browser — no data is sent to any server.",
     "tabs": {
       "games": {
@@ -356,7 +357,7 @@
         "desc": "Watch algorithms sort in real time"
       },
       "tokenizer": {
-        "label": "Tokenizer",
+        "label": "Tokeniser",
         "desc": "See how AI reads your text"
       }
     },
@@ -530,7 +531,7 @@
     },
     "neuralSection": {
       "title": "Neural Network Visualiser",
-      "description": "See how data flows through a neural network. Adjust inputs and watch activations propagate through hidden layers.",
+      "description": "Watch data flow through a neural network. Adjust inputs and see activations propagate.",
       "input": "Input {num}",
       "forwardPass": "Forward Pass →",
       "explanation": "Adjust the input sliders and click Forward Pass to watch data propagate through the network. Blue connections are positive weights, red are negative. Thicker lines mean stronger connections.",
@@ -541,7 +542,7 @@
     },
     "sortingSection": {
       "title": "Sorting Algorithm Visualiser",
-      "description": "Watch sorting algorithms in action. Compare Bubble Sort, Quick Sort, and Merge Sort side by side.",
+      "description": "Compare Bubble Sort, Quick Sort, and Merge Sort side by side.",
       "bubble": "Bubble Sort",
       "quick": "Quick Sort",
       "merge": "Merge Sort",
@@ -551,17 +552,17 @@
       "sorting": "Sorting..."
     },
     "tokenizerSection": {
-      "title": "AI Tokenizer",
-      "description": "See how large language models break text into tokens — the fundamental unit that AI reads and processes.",
+      "title": "AI Tokeniser",
+      "description": "See how LLMs break text into tokens — the fundamental units AI processes.",
       "placeholder": "Type text to see how AI breaks it into tokens...",
       "tokens": "tokens",
       "characters": "characters",
       "wordsEquivalent": "~{count} words equivalent",
-      "explanation": "AI models don't read text like humans. They break text into tokens — subword pieces that the model processes individually. Longer words get split into smaller chunks."
+      "explanation": "AI doesn't read text like humans. It breaks text into tokens — subword pieces processed individually. Longer words get split into smaller chunks."
     },
     "hub": {
       "title": "AI Lab",
-      "subtitle": "Experiment with real AI concepts through interactive games and tools. No coding required — just play, learn, and have fun!",
+      "subtitle": "Interactive AI games and tools. No coding needed — just play and learn.",
       "badge": "Interactive • Fun • Educational",
       "gamesAvailable": "{count} games available",
       "searchPlaceholder": "Search games...",

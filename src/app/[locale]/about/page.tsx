@@ -14,7 +14,7 @@ export default function AboutPage() {
             {t("title")}
           </h1>
           <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-xl mx-auto">
-            Free, open-source AI education for every student in the world.
+            {t("pageSubtitle")}
           </p>
         </div>
       </ScrollReveal>
