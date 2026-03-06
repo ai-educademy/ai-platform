@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readJsonFile, writeJsonFile } from "@/lib/fileStore";
+import { sendWelcomeEmail } from "@/lib/email";
 
 // TODO: Add rate limiting for production
 
@@ -41,6 +42,9 @@ export async function POST(req: NextRequest) {
 
     subscribers.push({ email: email.toLowerCase(), subscribedAt: new Date().toISOString() });
     await writeJsonFile(FILE, subscribers);
+
+    // Send welcome email (graceful fallback if Resend is not configured)
+    await sendWelcomeEmail(email.toLowerCase());
 
     return NextResponse.json(
       { success: true, message: "Subscribed!" },

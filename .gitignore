@@ -146,3 +146,4 @@ public/swe-worker-*.js
 
 # Analytics data (JSON file store)
 data/
+social-drafts.md
