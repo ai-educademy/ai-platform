@@ -1,15 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readJsonFile, writeJsonFile } from "@/lib/fileStore";
 import { sendWelcomeEmail } from "@/lib/email";
-
-// TODO: Add rate limiting for production
-
-const FILE = "newsletter-subscribers.json";
-
-interface Subscriber {
-  email: string;
-  subscribedAt: string;
-}
+import { addContact, getContacts } from "@/lib/resendContacts";
 
 export async function POST(req: NextRequest) {
   try {
@@ -31,20 +22,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const subscribers = await readJsonFile<Subscriber[]>(FILE, []);
+    const normalised = email.toLowerCase();
+    const result = await addContact(normalised);
 
-    if (subscribers.some((s) => s.email.toLowerCase() === email.toLowerCase())) {
+    if (result === "duplicate") {
       return NextResponse.json(
         { success: true, message: "Already subscribed!" },
         { status: 200 }
       );
     }
 
-    subscribers.push({ email: email.toLowerCase(), subscribedAt: new Date().toISOString() });
-    await writeJsonFile(FILE, subscribers);
-
-    // Send welcome email (graceful fallback if Resend is not configured)
-    await sendWelcomeEmail(email.toLowerCase());
+    await sendWelcomeEmail(normalised);
 
     return NextResponse.json(
       { success: true, message: "Subscribed!" },
@@ -61,8 +49,8 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   try {
-    const subscribers = await readJsonFile<Subscriber[]>(FILE, []);
-    return NextResponse.json({ total: subscribers.length, subscribers });
+    const contacts = await getContacts();
+    return NextResponse.json({ total: contacts.length, subscribers: contacts });
   } catch (error) {
     console.error("Newsletter GET error:", error);
     return NextResponse.json(
