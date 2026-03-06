@@ -91,7 +91,7 @@ export default async function ProgramLessonPage({
       />
 
       {/* Lesson Feedback */}
-      <LessonFeedback lessonSlug={`${programSlug}/${slug}`} />
+      <LessonFeedback lessonSlug={slug} programSlug={programSlug} locale={locale} />
     </div>
   );
 }

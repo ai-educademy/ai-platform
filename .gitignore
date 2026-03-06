@@ -143,3 +143,6 @@ vite.config.ts.timestamp-*
 public/sw.js
 public/sw.js.map
 public/swe-worker-*.js
+
+# Analytics data (JSON file store)
+data/

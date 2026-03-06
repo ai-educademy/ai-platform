@@ -1,35 +1,80 @@
 <div align="center">
 
-# 🌐 Open AI School — Platform
+# 🌐 Open AI School
 
-**A free, multilingual AI education platform for everyone**
+### Learn AI from Zero to Hero — Free & Open Source
 
-[![Live](https://img.shields.io/badge/🚀_Live-openaischool.vercel.app-6366f1)](https://openaischool.vercel.app)
-[![CI](https://github.com/open-ai-school/ai-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/open-ai-school/ai-platform/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![i18n](https://img.shields.io/badge/i18n-5_languages-orange)](https://openaischool.vercel.app)
+<br />
 
-The main application shell that powers **Open AI School** — routing, authentication, internationalization, and program discovery. Built with Next.js 16, TypeScript strict mode, and the shared [`@open-ai-school/ai-ui-library`](https://www.npmjs.com/package/@open-ai-school/ai-ui-library) design system.
+![CI](https://github.com/open-ai-school/ai-platform/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/github/license/open-ai-school/ai-platform)
+![Stars](https://img.shields.io/github/stars/open-ai-school/ai-platform?style=social)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![Languages](https://img.shields.io/badge/Languages-5-orange)
+![Programs](https://img.shields.io/badge/Programs-10-blueviolet)
 
-[**🚀 Start Learning**](https://openaischool.vercel.app) · [**🎨 Storybook**](https://open-ai-school.github.io/ai-ui-library/) · [**📦 npm**](https://www.npmjs.com/package/@open-ai-school/ai-ui-library)
+<br />
+
+A **free, open-source AI education platform** with 10 structured programs across 2 learning tracks, available in 5 languages. From absolute beginners to advanced practitioners — learn AI interactively with MDX lessons, a built-in playground, progress tracking, and certificates.
+
+<br />
+
+[**🚀 Start Learning**](https://openaischool.vercel.app) &nbsp;·&nbsp; [**🎨 Storybook**](https://open-ai-school.github.io/ai-ui-library/) &nbsp;·&nbsp; [**📦 UI Library**](https://www.npmjs.com/package/@open-ai-school/ai-ui-library) &nbsp;·&nbsp; [**🤝 Contributing**](CONTRIBUTING.md)
+
+<br />
 
 </div>
 
 ---
 
+## 📸 Screenshot
+
+> [Screenshot coming soon]
+
+---
+
 ## ✨ Features
 
-- 🗂️ **Multi-program architecture** — extensible program system (`/programs/ai-seeds/lessons/...`)
-- 🔐 **Authentication** — GitHub OAuth via NextAuth.js + guest mode
-- 🌍 **5 languages** — English, French, Dutch, Hindi, Telugu via next-intl
-- 📝 **MDX lessons** — Rich content with frontmatter, syntax highlighting, illustrations
-- 🎨 **Shared design system** — All UI from [`@open-ai-school/ai-ui-library`](https://www.npmjs.com/package/@open-ai-school/ai-ui-library)
-- 🌙 **Dark / light mode** — System preference detection + manual toggle
-- 📊 **Progress tracking** — Per-program, localStorage-based with dashboard
-- 🎮 **AI Playground** — Interactive drawing recogniser
-- ⚡ **Auto-deploy** — Content changes in any course repo trigger platform rebuild
+| | Feature | Description |
+|---|---------|-------------|
+| 🌍 | **Multilingual** | English, French, Dutch, Hindi, Telugu — add your language! |
+| 📚 | **10 Programs** | Structured curriculum across 2 tracks (AI Learning + Craft Engineering) |
+| 🎮 | **Interactive Playground** | AI drawing recogniser — experiment hands-on in the browser |
+| 📱 | **PWA Ready** | Install as an app on any device with offline support |
+| 🏆 | **Progress Tracking** | Per-program dashboard with completion tracking |
+| 🔐 | **Auth + Guest Mode** | GitHub OAuth sign-in or learn as a guest |
+| 🌙 | **Dark / Light Mode** | System preference detection + manual toggle |
+| 📝 | **MDX Lessons** | Rich content with syntax highlighting, illustrations, and interactivity |
+| 🎨 | **Design System** | Shared UI library with [Storybook](https://open-ai-school.github.io/ai-ui-library/) |
+| ⚡ | **Auto-deploy** | Content changes in any course repo trigger instant platform rebuild |
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone with submodules (important!)
+git clone --recurse-submodules https://github.com/open-ai-school/ai-platform.git
+cd ai-platform
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+
+# Start dev server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) 🎉
+
+> **Note:** Content repos are git submodules. If you cloned without `--recurse-submodules`, run:
+> ```bash
+> git submodule update --init --recursive
+> ```
+
+---
 
 ## 🏛️ Platform Architecture
 
@@ -59,17 +104,51 @@ graph TB
     UI -->|deploy| GHP["📖 GitHub Pages<br/><small>Storybook</small>"]
 ```
 
-## 🌱 Learning Path
+---
 
-Open AI School follows a **nature growth metaphor** — a seed grows into a forest:
+## 🌱 Learning Tracks
+
+Open AI School offers **2 learning tracks** with a nature growth metaphor — a seed grows into a forest:
+
+### 🧠 Track 1: AI Learning
 
 | Level | Program | Description | Status |
 |-------|---------|-------------|--------|
 | 1 | [🌱 AI Seeds](https://github.com/open-ai-school/ai-seeds) | Absolute beginners — no code, no maths | ✅ Live |
-| 2 | [🌿 AI Sprouts](https://github.com/open-ai-school/ai-sprouts) | Foundations — data, algorithms, neural nets | 🚧 Coming soon |
-| 3 | [🌳 AI Branches](https://github.com/open-ai-school/ai-branches) | Specialisations — ML, CV, NLP, GenAI | 🚧 Coming soon |
-| 4 | [🏕️ AI Canopy](https://github.com/open-ai-school/ai-canopy) | Production AI — MLOps, RAG, governance | 🚧 Coming soon |
-| 5 | [🌲 AI Forest](https://github.com/open-ai-school/ai-forest) | Mastery — research, leadership, frontier AI | 🚧 Coming soon |
+| 2 | [🌿 AI Sprouts](https://github.com/open-ai-school/ai-sprouts) | Foundations — data, algorithms, neural nets | ✅ Live |
+| 3 | [🌳 AI Branches](https://github.com/open-ai-school/ai-branches) | Specialisations — ML, CV, NLP, GenAI | ✅ Live |
+| 4 | [🏕️ AI Canopy](https://github.com/open-ai-school/ai-canopy) | Production AI — MLOps, RAG, governance | ✅ Live |
+| 5 | [🌲 AI Forest](https://github.com/open-ai-school/ai-forest) | Mastery — research, leadership, frontier AI | ✅ Live |
+
+### 🛠️ Track 2: Craft Engineering
+
+| Level | Program | Description | Status |
+|-------|---------|-------------|--------|
+| 1 | ✏️ AI Sketch | Getting started with AI tools | ✅ Live |
+| 2 | 🪨 AI Chisel | Shaping your AI skills | ✅ Live |
+| 3 | ⚒️ AI Craft | Building with AI | ✅ Live |
+| 4 | 💎 AI Polish | Refining AI solutions | ✅ Live |
+| 5 | 🏆 AI Masterpiece | Creating production-grade AI | ✅ Live |
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| [Next.js](https://nextjs.org/) | 16 | App framework (App Router + Turbopack) |
+| [TypeScript](https://www.typescriptlang.org/) | 5.9 | Type safety (strict mode) |
+| [React](https://react.dev/) | 19 | UI library |
+| [Tailwind CSS](https://tailwindcss.com/) | 4 | Utility-first styling |
+| [next-intl](https://next-intl.dev/) | 4 | Internationalization (5 languages) |
+| [NextAuth.js](https://next-auth.js.org/) | 5 | Authentication (GitHub OAuth) |
+| [MDX](https://mdxjs.com/) | 3 | Rich lesson content |
+| [Framer Motion](https://www.framer.com/motion/) | 12 | Animations & transitions |
+| [Serwist](https://serwist.pages.dev/) | 9 | PWA / Service Worker |
+| [Playwright](https://playwright.dev/) | 1.58 | End-to-end testing |
+| [Vercel](https://vercel.com/) | — | Deployment & analytics |
+
+---
 
 ## 📁 Project Structure
 
@@ -92,63 +171,79 @@ ai-platform/
 │   ├── lib/                       # Data layer (programs, lessons)
 │   └── middleware.ts              # i18n routing middleware
 ├── content/
-│   ├── programs.json              # Program registry
+│   ├── programs.json              # Program registry (10 programs)
 │   └── programs/
 │       ├── ai-seeds/              # ← git submodule
-│       └── ai-sprouts/            # ← git submodule
+│       ├── ai-sprouts/            # ← git submodule
+│       └── ...                    # 10 program submodules
 ├── messages/                      # Translation files (en, fr, nl, hi, te)
+├── e2e/                           # Playwright E2E tests
 └── public/                        # Static assets
 ```
 
-## 🚀 Quick Start
+---
 
-```bash
-# Clone with submodules (important!)
-git clone --recurse-submodules https://github.com/open-ai-school/ai-platform.git
-cd ai-platform
+## 📖 Content Architecture
 
-# Install dependencies
-npm install
+Each program lives in its own repo and is pulled in as a **git submodule**:
 
-# Start dev server
-npm run dev
+```
+content/programs/ai-seeds/
+├── lessons/
+│   ├── en/                        # English lessons
+│   │   ├── 01-what-is-ai.mdx
+│   │   └── 02-ai-in-daily-life.mdx
+│   ├── fr/                        # French lessons
+│   ├── nl/                        # Dutch lessons
+│   ├── hi/                        # Hindi lessons
+│   └── te/                        # Telugu lessons
+└── program.json                   # Program metadata
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+**MDX Frontmatter Schema:**
 
-> **Note:** Content repos are git submodules. If you cloned without `--recurse-submodules`, run:
-> ```bash
-> git submodule update --init --recursive
-> ```
+```yaml
+---
+title: "What is AI?"
+description: "A friendly introduction to Artificial Intelligence"
+order: 1
+duration: "10 min"
+difficulty: "beginner"
+tags: ["ai", "introduction"]
+---
+```
 
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|-----------|---------|
-| [Next.js 16](https://nextjs.org/) | App framework (App Router) |
-| [TypeScript](https://www.typescriptlang.org/) | Type safety (strict mode) |
-| [Tailwind CSS 4](https://tailwindcss.com/) | Utility-first styling |
-| [next-intl](https://next-intl.dev/) | Internationalization |
-| [NextAuth.js](https://next-auth.js.org/) | Authentication (GitHub OAuth) |
-| [MDX](https://mdxjs.com/) | Rich lesson content |
-| [Framer Motion](https://www.framer.com/motion/) | Animations |
-| [Vercel](https://vercel.com/) | Deployment |
-
-## 🌐 Deployment
-
-Deployed automatically to [Vercel](https://vercel.com) on every push to `main`. Content updates in course repos (ai-seeds, ai-sprouts, etc.) trigger a platform rebuild via `repository_dispatch`.
-
-**Live:** [openaischool.vercel.app](https://openaischool.vercel.app)
+---
 
 ## 🤝 Contributing
 
-We welcome contributions! Whether it's:
-- 🌍 **Translating** lessons to new languages
-- 📝 **Writing** new course content
-- 🎨 **Improving** UI components ([ai-ui-library](https://github.com/open-ai-school/ai-ui-library))
-- 🐛 **Fixing** bugs or improving accessibility
+We'd love your help! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.
 
-See the repo-specific contributing guides for details.
+**Quick ways to contribute:**
+
+| Contribution | Where |
+|-------------|-------|
+| 🌍 **Add a translation** | Fork a content repo → add `/lessons/{locale}/` folder |
+| 📝 **Write a lesson** | Create an MDX file following the frontmatter schema |
+| 🎨 **Improve UI** | Contribute to [ai-ui-library](https://github.com/open-ai-school/ai-ui-library) |
+| 🐛 **Fix bugs** | Check [open issues](https://github.com/open-ai-school/ai-platform/issues) |
+| 🌐 **Translate UI strings** | Edit files in `/messages/{locale}.json` |
+| 📖 **Improve docs** | PRs to this README or lesson content |
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] 🏆 Certificate generation on program completion
+- [ ] 🤖 AI tutor chatbot (RAG-based, per-lesson context)
+- [ ] 📊 Analytics dashboard for educators
+- [ ] 🔌 LMS integration (LTI support)
+- [ ] 🌍 Community-driven translation portal
+- [ ] 📱 Native mobile app (React Native)
+- [ ] 🧪 Interactive code exercises with in-browser execution
+- [ ] 🎯 Personalised learning paths
+
+---
 
 ## 📦 Related Repos
 
@@ -156,12 +251,24 @@ See the repo-specific contributing guides for details.
 |------|-------------|-------|
 | [`ai-ui-library`](https://github.com/open-ai-school/ai-ui-library) | 🎨 Shared design system | [npm](https://www.npmjs.com/package/@open-ai-school/ai-ui-library) · [Storybook](https://open-ai-school.github.io/ai-ui-library/) |
 | [`ai-seeds`](https://github.com/open-ai-school/ai-seeds) | 🌱 Level 1: Absolute beginners | [Live](https://openaischool.vercel.app/programs/ai-seeds) |
-| [`ai-sprouts`](https://github.com/open-ai-school/ai-sprouts) | 🌿 Level 2: Foundations | Coming soon |
-| [`ai-branches`](https://github.com/open-ai-school/ai-branches) | 🌳 Level 3: Specialisations | Coming soon |
-| [`ai-canopy`](https://github.com/open-ai-school/ai-canopy) | 🏕️ Level 4: Production AI | Coming soon |
-| [`ai-forest`](https://github.com/open-ai-school/ai-forest) | 🌲 Level 5: Mastery | Coming soon |
+| [`ai-sprouts`](https://github.com/open-ai-school/ai-sprouts) | 🌿 Level 2: Foundations | [Live](https://openaischool.vercel.app/programs/ai-sprouts) |
+| [`ai-branches`](https://github.com/open-ai-school/ai-branches) | 🌳 Level 3: Specialisations | [Live](https://openaischool.vercel.app/programs/ai-branches) |
+| [`ai-canopy`](https://github.com/open-ai-school/ai-canopy) | 🏕️ Level 4: Production AI | [Live](https://openaischool.vercel.app/programs/ai-canopy) |
+| [`ai-forest`](https://github.com/open-ai-school/ai-forest) | 🌲 Level 5: Mastery | [Live](https://openaischool.vercel.app/programs/ai-forest) |
+
+---
 
 ## 📄 License
 
 MIT © [Open AI School](https://github.com/open-ai-school)
+
+---
+
+<div align="center">
+
+**If you find this useful, please ⭐ star the repo!**
+
+Made with ❤️ by the [Open AI School](https://github.com/open-ai-school) community
+
+</div>
 

@@ -2,17 +2,32 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Mail } from "lucide-react";
+import { Mail, Loader2 } from "lucide-react";
 
 const STORAGE_KEY = "open-ai-school-newsletter";
+
+function saveToLocalStorage(email: string) {
+  try {
+    const existing: string[] = JSON.parse(
+      localStorage.getItem(STORAGE_KEY) || "[]"
+    );
+    if (!existing.includes(email)) {
+      existing.push(email);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    }
+  } catch {
+    // localStorage unavailable
+  }
+}
 
 export function NewsletterSignup() {
   const t = useTranslations("newsletter");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -22,14 +37,26 @@ export function NewsletterSignup() {
       return;
     }
 
-    const existing: string[] = JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || "[]"
-    );
-    if (!existing.includes(email)) {
-      existing.push(email);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    setLoading(true);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.message || "Subscription failed");
+      }
+      saveToLocalStorage(email);
+      setSubscribed(true);
+    } catch {
+      // Fallback to localStorage if API fails
+      saveToLocalStorage(email);
+      setSubscribed(true);
+    } finally {
+      setLoading(false);
     }
-    setSubscribed(true);
   };
 
   if (subscribed) {
@@ -51,13 +78,16 @@ export function NewsletterSignup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t("placeholder")}
-            className="w-full pl-9 pr-3 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] min-h-[48px]"
+            disabled={loading}
+            className="w-full pl-9 pr-3 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] min-h-[48px] disabled:opacity-50"
           />
         </div>
         <button
           type="submit"
-          className="px-5 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-sm hover:brightness-110 transition-all cursor-pointer whitespace-nowrap min-h-[48px]"
+          disabled={loading}
+          className="px-5 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-sm hover:brightness-110 transition-all cursor-pointer whitespace-nowrap min-h-[48px] disabled:opacity-50 flex items-center gap-2"
         >
+          {loading && <Loader2 size={16} className="animate-spin" />}
           {t("subscribe")}
         </button>
       </div>

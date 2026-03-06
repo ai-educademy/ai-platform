@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ThumbsUp, ThumbsDown } from "lucide-react";
+import { ThumbsUp, ThumbsDown, Loader2 } from "lucide-react";
 
 const STORAGE_KEY = "open-ai-school-feedback";
 
@@ -13,13 +13,14 @@ interface FeedbackEntry {
   timestamp: string;
 }
 
-export function LessonFeedback({ lessonSlug }: { lessonSlug: string }) {
-  const t = useTranslations("feedback");
-  const [step, setStep] = useState<"ask" | "comment" | "done">("ask");
-  const [helpful, setHelpful] = useState<boolean | null>(null);
-  const [comment, setComment] = useState("");
+interface LessonFeedbackProps {
+  lessonSlug: string;
+  programSlug?: string;
+  locale?: string;
+}
 
-  const saveFeedback = (isHelpful: boolean, text: string) => {
+function saveToLocalStorage(lessonSlug: string, isHelpful: boolean, text: string) {
+  try {
     const existing: FeedbackEntry[] = JSON.parse(
       localStorage.getItem(STORAGE_KEY) || "[]"
     );
@@ -30,6 +31,40 @@ export function LessonFeedback({ lessonSlug }: { lessonSlug: string }) {
       timestamp: new Date().toISOString(),
     });
     localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+  } catch {
+    // localStorage unavailable
+  }
+}
+
+export function LessonFeedback({ lessonSlug, programSlug, locale }: LessonFeedbackProps) {
+  const t = useTranslations("feedback");
+  const [step, setStep] = useState<"ask" | "comment" | "done">("ask");
+  const [helpful, setHelpful] = useState<boolean | null>(null);
+  const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const saveFeedback = async (isHelpful: boolean, text: string) => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          lessonSlug,
+          programSlug: programSlug || "unknown",
+          rating: isHelpful ? "up" : "down",
+          comment: text || undefined,
+          locale: locale || "en",
+        }),
+      });
+      if (!res.ok) throw new Error("API failed");
+      saveToLocalStorage(lessonSlug, isHelpful, text);
+    } catch {
+      // Fallback to localStorage if API fails
+      saveToLocalStorage(lessonSlug, isHelpful, text);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleVote = (isHelpful: boolean) => {
@@ -37,8 +72,8 @@ export function LessonFeedback({ lessonSlug }: { lessonSlug: string }) {
     setStep("comment");
   };
 
-  const handleSubmit = () => {
-    saveFeedback(helpful!, comment);
+  const handleSubmit = async () => {
+    await saveFeedback(helpful!, comment);
     setStep("done");
   };
 
@@ -75,12 +110,15 @@ export function LessonFeedback({ lessonSlug }: { lessonSlug: string }) {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             rows={3}
-            className="w-full p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-sm"
+            disabled={loading}
+            className="w-full p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-sm disabled:opacity-50"
           />
           <button
             onClick={handleSubmit}
-            className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-sm hover:brightness-110 transition-all cursor-pointer min-h-[48px]"
+            disabled={loading}
+            className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-sm hover:brightness-110 transition-all cursor-pointer min-h-[48px] disabled:opacity-50 flex items-center gap-2"
           >
+            {loading && <Loader2 size={16} className="animate-spin" />}
             {t("submit")}
           </button>
         </div>
