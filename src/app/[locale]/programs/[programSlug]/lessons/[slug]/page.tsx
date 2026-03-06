@@ -87,6 +87,8 @@ export default async function ProgramLessonPage({
         basePath={`${programPath}/lessons`}
         programPath={programPath}
         programTitle={program.title}
+        programTrack={program.track}
+        programLevel={program.level}
       />
 
       {/* Lesson Feedback */}

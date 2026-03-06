@@ -59,6 +59,15 @@ export default async function HomePage({
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
           <div className="text-center max-w-4xl mx-auto">
             {/* Title */}
+            <Image
+              src="https://avatars.githubusercontent.com/u/221488107?s=120"
+              alt="AI Educademy"
+              width={80}
+              height={80}
+              className="mx-auto mb-6 rounded-2xl shadow-lg animate-fade-up"
+              style={{ animationDelay: "100ms" }}
+              unoptimized
+            />
             <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-6 animate-fade-up" style={{ animationDelay: "200ms" }}>
               <span className="block">{t("hero.title")}</span>
               <span className="block text-gradient">

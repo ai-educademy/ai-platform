@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { ScrollReveal } from "@ai-educademy/ai-ui-library";
 
 export default function AboutPage() {
@@ -84,11 +85,23 @@ export default function AboutPage() {
           <h2 className="text-sm font-semibold uppercase tracking-widest text-[var(--color-text-muted)] text-center mb-10">
             {t("story")}
           </h2>
-          <div className="space-y-5 text-[var(--color-text-muted)] leading-relaxed">
-            <p>{t("storyText1")}</p>
-            <p>{t("storyText2")}</p>
-            <p>{t("storyText3")}</p>
-            <p>{t("storyText4")}</p>
+          <div className="flex flex-col sm:flex-row gap-8 items-start">
+            <div className="shrink-0 mx-auto sm:mx-0">
+              <Image
+                src="https://avatars.githubusercontent.com/u/134313151?v=4"
+                alt="Ramesh Reddy Adutla"
+                width={120}
+                height={120}
+                className="rounded-2xl shadow-lg"
+                unoptimized
+              />
+            </div>
+            <div className="space-y-5 text-[var(--color-text-muted)] leading-relaxed">
+              <p>{t("storyText1")}</p>
+              <p>{t("storyText2")}</p>
+              <p>{t("storyText3")}</p>
+              <p>{t("storyText4")}</p>
+            </div>
           </div>
         </section>
       </ScrollReveal>

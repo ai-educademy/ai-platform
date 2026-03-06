@@ -3,53 +3,9 @@ import Image from "next/image";
 import { YouTubeEmbed } from "./YouTubeEmbed";
 import { Quiz } from "./Quiz";
 
-const ANIMATION_EMOJIS: Record<string, { emoji: string; label: string }> = {
-  brain: { emoji: "🧠", label: "Brain" },
-  learning: { emoji: "📚", label: "Learning" },
-  network: { emoji: "🌐", label: "Network" },
-  robot: { emoji: "🤖", label: "Robot" },
-  data: { emoji: "📊", label: "Data" },
-  code: { emoji: "💻", label: "Code" },
-  idea: { emoji: "💡", label: "Idea" },
-  rocket: { emoji: "🚀", label: "Rocket" },
-  magic: { emoji: "✨", label: "Magic" },
-  search: { emoji: "🔍", label: "Search" },
-};
-
-function AnimationPlaceholder({
-  type = "brain",
-  caption,
-  alt,
-}: {
-  type?: string;
-  caption?: string;
-  alt?: string;
-  src?: string;
-  loop?: boolean;
-  autoplay?: boolean;
-  height?: number;
-  speed?: number;
-}) {
-  const entry = ANIMATION_EMOJIS[type] || ANIMATION_EMOJIS.brain;
-  return (
-    <figure className="my-8">
-      <div
-        className="animation-placeholder rounded-2xl border border-[var(--color-border)] overflow-hidden bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-accent)]/10 flex flex-col items-center justify-center gap-3 py-12"
-        role="img"
-        aria-label={alt || caption || entry.label}
-      >
-        <span className="animation-placeholder-emoji text-6xl">{entry.emoji}</span>
-        {(caption || alt) && (
-          <span className="text-sm font-medium text-[var(--color-text-muted)]">{caption || alt}</span>
-        )}
-      </div>
-    </figure>
-  );
-}
-
 const components = {
   YouTube: YouTubeEmbed,
-  Animation: AnimationPlaceholder,
+  Animation: () => null,
   Quiz,
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1 className="text-3xl font-bold mt-8 mb-4 text-[var(--color-primary)]" {...props} />
