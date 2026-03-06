@@ -1,12 +1,49 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useTranslations } from "next-intl";
 
 /* ═══════════════════════════════════════════════════════════════
-   10 AI-Themed Mini Games — mobile-friendly, touch-optimised
+   GameShell — consistent wrapper for all mini-games
    ═══════════════════════════════════════════════════════════════ */
+function GameShell({ title, icon, children }: { title: string; icon?: string; children: React.ReactNode }) {
+  return (
+    <div className="space-y-5">
+      {icon && (
+        <div className="flex items-center gap-2.5 pb-3 border-b border-[var(--color-border)]">
+          <span className="text-2xl">{icon}</span>
+          <h3 className="text-lg font-bold">{title}</h3>
+        </div>
+      )}
+      {children}
+    </div>
+  );
+}
 
-/* ─── 1. Emoji Decoder: Guess the AI concept from emojis ─── */
+function StatusBar({ left, right }: { left: React.ReactNode; right?: React.ReactNode }) {
+  return (
+    <div className="flex items-center justify-between text-sm text-[var(--color-text-muted)]">
+      <span>{left}</span>
+      {right && <span>{right}</span>}
+    </div>
+  );
+}
+
+function GameOverScreen({ emoji, stat, label, onReplay }: { emoji: string; stat: string; label: string; onReplay: () => void }) {
+  const t = useTranslations("playground.common");
+  return (
+    <div className="text-center py-8 space-y-4">
+      <div className="text-6xl animate-bounce">{emoji}</div>
+      <p className="text-4xl font-bold">{stat}</p>
+      <p className="text-sm text-[var(--color-text-muted)]">{label}</p>
+      <button onClick={onReplay} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all shadow-lg shadow-indigo-500/20">
+        {t("playAgain")}
+      </button>
+    </div>
+  );
+}
+
+/* ─── 1. Emoji Decoder ─── */
 const EMOJI_PUZZLES = [
   { emojis: "🧠 + 🕸️", answer: "Neural Network", options: ["Neural Network", "Deep Learning", "Decision Tree", "Random Forest"] },
   { emojis: "🤖 + 📝", answer: "Natural Language Processing", options: ["Computer Vision", "Natural Language Processing", "Robotics", "Data Mining"] },
@@ -21,75 +58,61 @@ const EMOJI_PUZZLES = [
 ];
 
 export function EmojiDecoder() {
+  const t = useTranslations("playground");
   const [puzzles, setPuzzles] = useState<typeof EMOJI_PUZZLES>([]);
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [gameOver, setGameOver] = useState(false);
 
-  useEffect(() => {
-    const shuffled = [...EMOJI_PUZZLES].sort(() => Math.random() - 0.5).slice(0, 6);
-    setPuzzles(shuffled);
+  const reset = useCallback(() => {
+    setPuzzles([...EMOJI_PUZZLES].sort(() => Math.random() - 0.5).slice(0, 6));
+    setCurrent(0); setScore(0); setSelected(null); setGameOver(false);
   }, []);
+
+  useEffect(() => { reset(); }, [reset]);
 
   const handleSelect = (option: string) => {
     if (selected) return;
     setSelected(option);
-    const correct = option === puzzles[current].answer;
-    if (correct) setScore(s => s + 1);
+    if (option === puzzles[current].answer) setScore(s => s + 1);
     setTimeout(() => {
-      if (current + 1 >= puzzles.length) {
-        setGameOver(true);
-      } else {
-        setCurrent(c => c + 1);
-        setSelected(null);
-      }
+      if (current + 1 >= puzzles.length) setGameOver(true);
+      else { setCurrent(c => c + 1); setSelected(null); }
     }, 1200);
   };
 
   if (!puzzles.length) return null;
 
   if (gameOver) {
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">{score >= 5 ? "🏆" : score >= 3 ? "👏" : "🎯"}</div>
-        <p className="text-3xl font-bold">{score}/{puzzles.length}</p>
-        <p className="text-sm text-[var(--color-text-muted)]">AI concepts decoded</p>
-        <button onClick={() => { setGameOver(false); setCurrent(0); setScore(0); setSelected(null); setPuzzles([...EMOJI_PUZZLES].sort(() => Math.random() - 0.5).slice(0, 6)); }} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">
-          Play Again
-        </button>
-      </div>
-    );
+    return <GameOverScreen emoji={score >= 5 ? "🏆" : score >= 3 ? "👏" : "🎯"} stat={`${score}/${puzzles.length}`} label={t("common.conceptsDecoded")} onReplay={reset} />;
   }
 
   const puzzle = puzzles[current];
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>Round {current + 1}/{puzzles.length}</span>
-        <span>Score: {score}</span>
-      </div>
-      <div className="text-center py-6">
-        <div className="text-6xl mb-4">{puzzle.emojis}</div>
-        <p className="text-[var(--color-text-muted)]">What AI concept do these emojis represent?</p>
+    <GameShell title={t("games.emojiDecoder.title")} icon="🧩">
+      <StatusBar left={`${t("common.round")} ${current + 1}/${puzzles.length}`} right={`${t("common.score")}: ${score}`} />
+      <div className="text-center py-8">
+        <div className="text-7xl sm:text-8xl mb-5 leading-tight">{puzzle.emojis}</div>
+        <p className="text-[var(--color-text-muted)]">{t("games.emojiDecoder.instruction")}</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {puzzle.options.map(opt => (
           <button key={opt} onClick={() => handleSelect(opt)} disabled={!!selected}
-            className={`p-4 rounded-xl border-2 font-medium text-left transition-all ${
+            className={`min-h-[48px] p-4 rounded-xl border-2 font-medium text-left transition-all ${
               selected === opt
-                ? opt === puzzle.answer ? "border-green-500 bg-green-500/10 text-green-500" : "border-red-500 bg-red-500/10 text-red-500"
-                : selected && opt === puzzle.answer ? "border-green-500 bg-green-500/10" : "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.98]"
+                ? opt === puzzle.answer ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-red-500 bg-red-500/10 text-red-400"
+                : selected && opt === puzzle.answer ? "border-emerald-500 bg-emerald-500/10" : "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.98]"
             }`}>
             {opt}
           </button>
         ))}
       </div>
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 2. Binary Translator: Convert binary to text ─── */
+/* ─── 2. Binary Translator ─── */
 const BINARY_WORDS = [
   { binary: "01001000 01001001", answer: "HI" },
   { binary: "01000001 01001001", answer: "AI" },
@@ -100,15 +123,23 @@ const BINARY_WORDS = [
 ];
 
 export function BinaryTranslator() {
-  const [words] = useState(() => [...BINARY_WORDS].sort(() => Math.random() - 0.5).slice(0, 4));
+  const t = useTranslations("playground");
+  const [words, setWords] = useState<typeof BINARY_WORDS>([]);
   const [current, setCurrent] = useState(0);
   const [input, setInput] = useState("");
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState<"correct" | "wrong" | null>(null);
   const [gameOver, setGameOver] = useState(false);
 
+  const reset = useCallback(() => {
+    setWords([...BINARY_WORDS].sort(() => Math.random() - 0.5).slice(0, 4));
+    setCurrent(0); setInput(""); setScore(0); setFeedback(null); setGameOver(false);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
+
   const handleSubmit = () => {
-    if (!input.trim()) return;
+    if (!input.trim() || !words.length) return;
     const correct = input.trim().toUpperCase() === words[current].answer;
     setFeedback(correct ? "correct" : "wrong");
     if (correct) setScore(s => s + 1);
@@ -118,41 +149,41 @@ export function BinaryTranslator() {
     }, 1000);
   };
 
+  if (!words.length) return null;
+
   if (gameOver) {
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">{score === words.length ? "🤖" : "💻"}</div>
-        <p className="text-3xl font-bold">{score}/{words.length}</p>
-        <p className="text-sm text-[var(--color-text-muted)]">Binary decoded like a machine</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji={score === words.length ? "🤖" : "💻"} stat={`${score}/${words.length}`} label={t("common.binaryDecoded")} onReplay={reset} />;
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>Word {current + 1}/{words.length}</span>
-        <span>Score: {score}</span>
-      </div>
+    <GameShell title={t("games.binaryTranslator.title")} icon="💾">
+      <StatusBar left={`${t("common.round")} ${current + 1}/${words.length}`} right={`${t("common.score")}: ${score}`} />
       <div className="text-center py-4">
-        <p className="text-xs text-[var(--color-text-muted)] mb-2">Hint: Each 8-digit group = one letter (A=65, B=66...)</p>
-        <div className="font-mono text-2xl sm:text-3xl tracking-wider p-4 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">{words[current].binary}</div>
+        <p className="text-xs text-[var(--color-text-muted)] mb-3">{t("games.binaryTranslator.hint")}</p>
+        <div className="font-mono text-2xl sm:text-3xl tracking-wider p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
+          {words[current].binary}
+        </div>
       </div>
-      <div className="flex gap-2">
-        <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSubmit()} placeholder="Type the word..." maxLength={10}
-          className={`flex-1 px-4 py-3 rounded-xl border-2 bg-[var(--color-bg)] text-lg font-mono uppercase tracking-widest text-center transition-colors ${feedback === "correct" ? "border-green-500" : feedback === "wrong" ? "border-red-500" : "border-[var(--color-border)]"}`} />
-        <button onClick={handleSubmit} className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors">Go</button>
+      <div className="flex gap-3">
+        <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSubmit()}
+          placeholder={t("games.binaryTranslator.placeholder")} maxLength={10} inputMode="text" autoCapitalize="characters"
+          className={`flex-1 min-h-[48px] px-4 py-3 rounded-xl border-2 bg-[var(--color-bg)] text-lg font-mono uppercase tracking-widest text-center transition-colors ${
+            feedback === "correct" ? "border-emerald-500" : feedback === "wrong" ? "border-red-500" : "border-[var(--color-border)] focus:border-indigo-500"
+          } focus:outline-none`} />
+        <button onClick={handleSubmit} className="min-h-[48px] px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors">
+          {t("common.go")}
+        </button>
       </div>
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 3. Speed Typer: Type AI terms as fast as possible ─── */
+/* ─── 3. Speed Typer ─── */
 const AI_TERMS = ["machine learning", "neural network", "deep learning", "natural language", "computer vision", "reinforcement", "classification", "regression", "transformer", "attention", "gradient descent", "backpropagation", "convolutional", "generative ai", "large language model"];
 
 export function SpeedTyper() {
-  const [terms] = useState(() => [...AI_TERMS].sort(() => Math.random() - 0.5).slice(0, 8));
+  const t = useTranslations("playground");
+  const [terms, setTerms] = useState<string[]>([]);
   const [current, setCurrent] = useState(0);
   const [input, setInput] = useState("");
   const [started, setStarted] = useState(false);
@@ -161,52 +192,53 @@ export function SpeedTyper() {
   const [gameOver, setGameOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const reset = useCallback(() => {
+    setTerms([...AI_TERMS].sort(() => Math.random() - 0.5).slice(0, 8));
+    setCurrent(0); setInput(""); setStarted(false); setTimes([]); setGameOver(false);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
+
   const handleInput = (val: string) => {
     if (!started) { setStarted(true); setStartTime(Date.now()); }
     setInput(val);
-    if (val.toLowerCase() === terms[current]) {
+    if (terms.length && val.toLowerCase() === terms[current]) {
       const elapsed = Date.now() - startTime;
       setTimes(t => [...t, elapsed]);
-      if (current + 1 >= terms.length) { setGameOver(true); }
+      if (current + 1 >= terms.length) setGameOver(true);
       else { setCurrent(c => c + 1); setInput(""); setStartTime(Date.now()); }
     }
   };
 
   useEffect(() => { inputRef.current?.focus(); }, [current]);
 
+  if (!terms.length) return null;
+
   if (gameOver) {
     const avg = times.reduce((a, b) => a + b, 0) / times.length / 1000;
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">⚡</div>
-        <p className="text-3xl font-bold">{avg.toFixed(1)}s avg</p>
-        <p className="text-sm text-[var(--color-text-muted)]">per term · {terms.length} terms typed</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji="⚡" stat={`${avg.toFixed(1)}s`} label={t("common.perTerm", { count: terms.length })} onReplay={reset} />;
   }
 
   const term = terms[current];
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>Term {current + 1}/{terms.length}</span>
-        <span>{times.length > 0 ? `Last: ${(times[times.length - 1] / 1000).toFixed(1)}s` : "Ready..."}</span>
-      </div>
-      <div className="text-center py-4">
-        <div className="text-3xl sm:text-4xl font-mono font-bold tracking-wide">
+    <GameShell title={t("games.speedTyper.title")} icon="⚡">
+      <StatusBar left={`${t("common.round")} ${current + 1}/${terms.length}`} right={times.length > 0 ? `${(times[times.length - 1] / 1000).toFixed(1)}s` : t("common.ready")} />
+      <div className="text-center py-6">
+        <div className="text-3xl sm:text-5xl font-mono font-bold tracking-wide leading-relaxed">
           {term.split("").map((ch, i) => (
-            <span key={i} className={i < input.length ? (input[i] === ch ? "text-green-500" : "text-red-500") : "text-[var(--color-text-muted)]"}>{ch}</span>
+            <span key={i} className={i < input.length ? (input[i] === ch ? "text-emerald-400" : "text-red-400") : "text-[var(--color-text-muted)] opacity-40"}>
+              {ch}
+            </span>
           ))}
         </div>
       </div>
-      <input ref={inputRef} value={input} onChange={e => handleInput(e.target.value)} placeholder="Start typing..." autoFocus
-        className="w-full px-4 py-3 rounded-xl border-2 border-[var(--color-border)] bg-[var(--color-bg)] text-lg font-mono text-center" />
-    </div>
+      <input ref={inputRef} value={input} onChange={e => handleInput(e.target.value)} placeholder={t("games.speedTyper.placeholder")} autoFocus inputMode="text"
+        className="w-full min-h-[48px] px-4 py-3 rounded-xl border-2 border-[var(--color-border)] bg-[var(--color-bg)] text-lg font-mono text-center focus:border-indigo-500 focus:outline-none transition-colors" />
+    </GameShell>
   );
 }
 
-/* ─── 4. Pattern Matcher: Find the odd one out ─── */
+/* ─── 4. Pattern Matcher (Odd One Out) ─── */
 const PATTERN_ROUNDS = [
   { items: ["CNN", "RNN", "LSTM", "SQL"], odd: "SQL", hint: "Three are neural network architectures" },
   { items: ["Python", "TensorFlow", "PyTorch", "Keras"], odd: "Python", hint: "Three are ML frameworks" },
@@ -219,11 +251,19 @@ const PATTERN_ROUNDS = [
 ];
 
 export function PatternMatcher() {
-  const [rounds] = useState(() => [...PATTERN_ROUNDS].sort(() => Math.random() - 0.5).slice(0, 6));
+  const t = useTranslations("playground");
+  const [rounds, setRounds] = useState<typeof PATTERN_ROUNDS>([]);
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [gameOver, setGameOver] = useState(false);
+
+  const reset = useCallback(() => {
+    setRounds([...PATTERN_ROUNDS].sort(() => Math.random() - 0.5).slice(0, 6));
+    setCurrent(0); setScore(0); setSelected(null); setGameOver(false);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
 
   const handleSelect = (item: string) => {
     if (selected) return;
@@ -238,44 +278,34 @@ export function PatternMatcher() {
   if (!rounds.length) return null;
 
   if (gameOver) {
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">{score >= 5 ? "🧠" : score >= 3 ? "🎯" : "💡"}</div>
-        <p className="text-3xl font-bold">{score}/{rounds.length}</p>
-        <p className="text-sm text-[var(--color-text-muted)]">patterns spotted</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji={score >= 5 ? "🧠" : score >= 3 ? "🎯" : "💡"} stat={`${score}/${rounds.length}`} label={t("common.patternsSpotted")} onReplay={reset} />;
   }
 
   const round = rounds[current];
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>Round {current + 1}/{rounds.length}</span>
-        <span>Score: {score}</span>
-      </div>
-      <div className="text-center py-2">
-        <p className="text-lg font-semibold mb-1">Find the odd one out</p>
+    <GameShell title={t("games.oddOneOut.title")} icon="🔍">
+      <StatusBar left={`${t("common.round")} ${current + 1}/${rounds.length}`} right={`${t("common.score")}: ${score}`} />
+      <div className="text-center py-3">
+        <p className="text-lg font-semibold mb-1">{t("games.oddOneOut.instruction")}</p>
         <p className="text-sm text-[var(--color-text-muted)]">{round.hint}</p>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-4">
         {round.items.map(item => (
           <button key={item} onClick={() => handleSelect(item)} disabled={!!selected}
-            className={`p-5 rounded-xl border-2 text-lg font-bold text-center transition-all ${
+            className={`min-h-[56px] p-5 rounded-xl border-2 text-lg font-bold text-center transition-all hover:shadow-md ${
               selected === item
-                ? item === round.odd ? "border-green-500 bg-green-500/10 text-green-500" : "border-red-500 bg-red-500/10 text-red-500"
-                : selected && item === round.odd ? "border-green-500 bg-green-500/10 text-green-500" : "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.97]"
+                ? item === round.odd ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 scale-105" : "border-red-500 bg-red-500/10 text-red-400"
+                : selected && item === round.odd ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.97]"
             }`}>
             {item}
           </button>
         ))}
       </div>
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 5. Memory Match: Match AI terms with definitions ─── */
+/* ─── 5. Memory Match ─── */
 const MEMORY_PAIRS = [
   { term: "Epoch", def: "One full pass through training data" },
   { term: "Neuron", def: "Basic unit of a neural network" },
@@ -288,20 +318,26 @@ const MEMORY_PAIRS = [
 ];
 
 export function MemoryMatch() {
-  const [pairs] = useState(() => [...MEMORY_PAIRS].sort(() => Math.random() - 0.5).slice(0, 5));
+  const t = useTranslations("playground");
+  const [pairs, setPairs] = useState<typeof MEMORY_PAIRS>([]);
   const [cards, setCards] = useState<{ id: number; text: string; pairId: number; flipped: boolean; matched: boolean }[]>([]);
   const [flippedIds, setFlippedIds] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [matched, setMatched] = useState(0);
 
-  useEffect(() => {
+  const reset = useCallback(() => {
+    const p = [...MEMORY_PAIRS].sort(() => Math.random() - 0.5).slice(0, 5);
+    setPairs(p);
     const c: typeof cards = [];
-    pairs.forEach((p, i) => {
-      c.push({ id: i * 2, text: p.term, pairId: i, flipped: false, matched: false });
-      c.push({ id: i * 2 + 1, text: p.def, pairId: i, flipped: false, matched: false });
+    p.forEach((pair, i) => {
+      c.push({ id: i * 2, text: pair.term, pairId: i, flipped: false, matched: false });
+      c.push({ id: i * 2 + 1, text: pair.def, pairId: i, flipped: false, matched: false });
     });
     setCards(c.sort(() => Math.random() - 0.5));
-  }, [pairs]);
+    setFlippedIds([]); setMoves(0); setMatched(0);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
 
   const handleFlip = (id: number) => {
     if (flippedIds.length >= 2) return;
@@ -331,40 +367,33 @@ export function MemoryMatch() {
   };
 
   if (matched === pairs.length && pairs.length > 0) {
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">🎉</div>
-        <p className="text-3xl font-bold">{moves} moves</p>
-        <p className="text-sm text-[var(--color-text-muted)]">All {pairs.length} pairs matched</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji="🎉" stat={`${moves} ${t("common.moves")}`} label={t("common.allPairsMatched", { count: pairs.length })} onReplay={reset} />;
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>{matched}/{pairs.length} pairs</span>
-        <span>{moves} moves</span>
-      </div>
-      <p className="text-center text-sm text-[var(--color-text-muted)]">Match each AI term with its definition</p>
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+    <GameShell title={t("games.memoryMatch.title")} icon="🃏">
+      <StatusBar left={`${matched}/${pairs.length} ${t("common.pairs")}`} right={`${moves} ${t("common.moves")}`} />
+      <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.memoryMatch.instruction")}</p>
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
         {cards.map(card => (
           <button key={card.id} onClick={() => handleFlip(card.id)}
-            className={`aspect-square sm:aspect-auto sm:p-3 rounded-xl border-2 text-xs sm:text-sm font-medium transition-all flex items-center justify-center text-center ${
-              card.matched ? "border-green-500 bg-green-500/10 text-green-600" :
-              card.flipped ? "border-indigo-500 bg-indigo-500/10" :
-              "border-[var(--color-border)] bg-[var(--color-bg-section)] hover:border-indigo-400 active:scale-[0.97]"
-            }`}>
-            {card.flipped || card.matched ? card.text : "?"}
+            className={`min-h-[64px] sm:min-h-[72px] p-3 rounded-xl border-2 text-xs sm:text-sm font-medium transition-all duration-300 flex items-center justify-center text-center ${
+              card.matched ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" :
+              card.flipped ? "border-indigo-500 bg-indigo-500/10 scale-105" :
+              "border-[var(--color-border)] bg-[var(--color-bg-section)] hover:border-indigo-400 hover:shadow-md active:scale-[0.97]"
+            }`}
+            style={{ perspective: "600px" }}>
+            <span className={`transition-all duration-300 ${card.flipped || card.matched ? "opacity-100" : "opacity-50 text-2xl"}`}>
+              {card.flipped || card.matched ? card.text : "?"}
+            </span>
           </button>
         ))}
       </div>
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 6. AI Timeline: Put AI milestones in chronological order ─── */
+/* ─── 6. AI Timeline ─── */
 const TIMELINE_EVENTS = [
   { year: 1950, event: "Turing Test proposed" },
   { year: 1957, event: "Perceptron invented" },
@@ -379,14 +408,23 @@ const TIMELINE_EVENTS = [
 ];
 
 export function AITimeline() {
-  const [events] = useState(() => [...TIMELINE_EVENTS].sort(() => Math.random() - 0.5).slice(0, 5));
-  const [order, setOrder] = useState<typeof events>([]);
-  const [remaining, setRemaining] = useState<typeof events>([]);
+  const t = useTranslations("playground");
+  const [events, setEvents] = useState<typeof TIMELINE_EVENTS>([]);
+  const [order, setOrder] = useState<typeof TIMELINE_EVENTS>([]);
+  const [remaining, setRemaining] = useState<typeof TIMELINE_EVENTS>([]);
   const [result, setResult] = useState<"correct" | "wrong" | null>(null);
 
-  useEffect(() => { setRemaining([...events].sort(() => Math.random() - 0.5)); }, [events]);
+  const reset = useCallback(() => {
+    const e = [...TIMELINE_EVENTS].sort(() => Math.random() - 0.5).slice(0, 5);
+    setEvents(e);
+    setOrder([]);
+    setRemaining([...e].sort(() => Math.random() - 0.5));
+    setResult(null);
+  }, []);
 
-  const handlePick = (event: typeof events[0]) => {
+  useEffect(() => { reset(); }, [reset]);
+
+  const handlePick = (event: typeof TIMELINE_EVENTS[0]) => {
     setOrder(o => [...o, event]);
     setRemaining(r => r.filter(e => e !== event));
   };
@@ -403,58 +441,65 @@ export function AITimeline() {
     setResult(correct ? "correct" : "wrong");
   };
 
+  if (!events.length) return null;
+
   if (result) {
     const sorted = [...events].sort((a, b) => a.year - b.year);
     return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">{result === "correct" ? "🏆" : "📚"}</div>
-        <p className="text-xl font-bold">{result === "correct" ? "Perfect order!" : "Not quite — here's the correct timeline:"}</p>
+      <div className="text-center py-8 space-y-5">
+        <div className="text-6xl animate-bounce">{result === "correct" ? "🏆" : "📚"}</div>
+        <p className="text-xl font-bold">{result === "correct" ? t("common.perfectOrder") : t("common.notQuiteTimeline")}</p>
         <div className="space-y-2 max-w-sm mx-auto text-left">
-          {sorted.map(e => (
-            <div key={e.year} className="flex gap-3 items-center text-sm">
-              <span className="font-mono font-bold text-indigo-500 w-12">{e.year}</span>
+          {sorted.map((e, i) => (
+            <div key={e.year} className="flex gap-3 items-center text-sm p-2 rounded-lg bg-[var(--color-bg-section)]">
+              <div className="w-2 h-2 rounded-full bg-indigo-500 shrink-0" />
+              <span className="font-mono font-bold text-indigo-400 w-12">{e.year}</span>
               <span>{e.event}</span>
+              {i < sorted.length - 1 && <div className="absolute left-[18px] top-full w-0.5 h-2 bg-indigo-500/30" />}
             </div>
           ))}
         </div>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
+        <button onClick={reset} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">
+          {t("common.playAgain")}
+        </button>
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
-      <p className="text-center text-sm text-[var(--color-text-muted)]">Tap events in chronological order (earliest first)</p>
+    <GameShell title={t("games.aiTimeline.title")} icon="📅">
+      <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.aiTimeline.instruction")}</p>
       {order.length > 0 && (
-        <div className="space-y-1">
-          <p className="text-xs text-[var(--color-text-muted)] font-semibold">Your order:</p>
+        <div className="space-y-1.5">
+          <p className="text-xs text-[var(--color-text-muted)] font-semibold">{t("common.yourOrder")}</p>
           {order.map((e, i) => (
-            <div key={e.year} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-sm">
-              <span className="text-indigo-500 font-bold">{i + 1}.</span> {e.event}
+            <div key={e.year} className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-sm">
+              <span className="text-indigo-400 font-bold w-5">{i + 1}.</span>
+              <span>{e.event}</span>
             </div>
           ))}
-          <button onClick={handleUndo} className="text-xs text-red-400 hover:text-red-300 mt-1">↩ Undo last</button>
+          <button onClick={handleUndo} className="text-xs text-red-400 hover:text-red-300 mt-1 min-h-[32px]">↩ {t("common.undoLast")}</button>
         </div>
       )}
       {remaining.length > 0 ? (
-        <div className="grid grid-cols-1 gap-2">
+        <div className="grid grid-cols-1 gap-2.5">
           {remaining.map(e => (
             <button key={e.year} onClick={() => handlePick(e)}
-              className="p-3 rounded-xl border-2 border-[var(--color-border)] text-sm font-medium hover:border-indigo-400 active:scale-[0.98] transition-all text-left">
+              className="min-h-[48px] p-4 rounded-xl border-2 border-[var(--color-border)] text-sm font-medium hover:border-indigo-400 hover:shadow-md active:scale-[0.98] transition-all text-left">
               {e.event}
             </button>
           ))}
         </div>
       ) : (
-        <button onClick={handleCheck} className="w-full py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-bold hover:brightness-110 transition-all">
-          Check My Order
+        <button onClick={handleCheck} className="w-full min-h-[48px] py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-bold hover:brightness-110 transition-all">
+          {t("common.checkOrder")}
         </button>
       )}
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 7. Bias Detective: Spot the bias in AI scenarios ─── */
+/* ─── 7. Bias Detective ─── */
 const BIAS_SCENARIOS = [
   { scenario: "A hiring AI trained only on tech company data from Silicon Valley is used to screen candidates globally.", bias: "Geographic & cultural bias", explanation: "The model learned patterns from one region and may penalise candidates from different backgrounds." },
   { scenario: "A facial recognition system achieves 99% accuracy on light-skinned faces but only 65% on dark-skinned faces.", bias: "Racial bias in training data", explanation: "The training dataset was not diverse, leading to unequal performance across skin tones." },
@@ -465,53 +510,53 @@ const BIAS_SCENARIOS = [
 ];
 
 export function BiasDetective() {
-  const [scenarios] = useState(() => [...BIAS_SCENARIOS].sort(() => Math.random() - 0.5).slice(0, 4));
+  const t = useTranslations("playground");
+  const [scenarios, setScenarios] = useState<typeof BIAS_SCENARIOS>([]);
   const [current, setCurrent] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [done, setDone] = useState(false);
 
+  const reset = useCallback(() => {
+    setScenarios([...BIAS_SCENARIOS].sort(() => Math.random() - 0.5).slice(0, 4));
+    setCurrent(0); setRevealed(false); setDone(false);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
+
+  if (!scenarios.length) return null;
+
   if (done) {
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">🕵️</div>
-        <p className="text-xl font-bold">Great detective work!</p>
-        <p className="text-sm text-[var(--color-text-muted)]">You reviewed {scenarios.length} bias scenarios. Understanding bias is the first step to building fairer AI.</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji="🕵️" stat={t("common.greatDetective")} label={t("common.reviewedBias", { count: scenarios.length })} onReplay={reset} />;
   }
 
   const s = scenarios[current];
   return (
-    <div className="space-y-5">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>Case {current + 1}/{scenarios.length}</span>
-        <span>🕵️ Bias Detective</span>
-      </div>
-      <div className="p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-        <p className="text-sm leading-relaxed">{s.scenario}</p>
+    <GameShell title={t("games.biasDetective.title")} icon="🕵️">
+      <StatusBar left={`${t("common.round")} ${current + 1}/${scenarios.length}`} />
+      <div className="p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] leading-relaxed">
+        <p className="text-sm sm:text-base">{s.scenario}</p>
       </div>
       {!revealed ? (
-        <button onClick={() => setRevealed(true)} className="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold hover:brightness-110 transition-all">
-          Reveal the Bias
+        <button onClick={() => setRevealed(true)} className="w-full min-h-[48px] py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold hover:brightness-110 transition-all">
+          🔍 {t("games.biasDetective.revealBias")}
         </button>
       ) : (
-        <div className="space-y-3">
-          <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30">
-            <p className="font-bold text-amber-500 text-sm mb-1">{s.bias}</p>
-            <p className="text-sm text-[var(--color-text-muted)]">{s.explanation}</p>
+        <div className="space-y-4">
+          <div className="p-5 rounded-xl bg-amber-500/10 border-2 border-amber-500/30">
+            <p className="font-bold text-amber-400 text-sm mb-2">{s.bias}</p>
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">{s.explanation}</p>
           </div>
           <button onClick={() => { if (current + 1 >= scenarios.length) setDone(true); else { setCurrent(c => c + 1); setRevealed(false); } }}
-            className="w-full py-3 border-2 border-[var(--color-border)] rounded-xl font-semibold hover:border-indigo-400 transition-all">
-            {current + 1 >= scenarios.length ? "Finish" : "Next Case →"}
+            className="w-full min-h-[48px] py-3 border-2 border-[var(--color-border)] rounded-xl font-semibold hover:border-indigo-400 transition-all">
+            {current + 1 >= scenarios.length ? t("common.finish") : `${t("games.biasDetective.nextCase")} →`}
           </button>
         </div>
       )}
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 8. Token Counter: Guess how many tokens a sentence has ─── */
+/* ─── 8. Token Counter ─── */
 const TOKEN_SENTENCES = [
   { text: "Hello world", tokens: 2 },
   { text: "The quick brown fox jumps over the lazy dog", tokens: 9 },
@@ -524,12 +569,20 @@ const TOKEN_SENTENCES = [
 ];
 
 export function TokenCounter() {
-  const [sentences] = useState(() => [...TOKEN_SENTENCES].sort(() => Math.random() - 0.5).slice(0, 5));
+  const t = useTranslations("playground");
+  const [sentences, setSentences] = useState<typeof TOKEN_SENTENCES>([]);
   const [current, setCurrent] = useState(0);
   const [guess, setGuess] = useState(5);
   const [submitted, setSubmitted] = useState(false);
   const [totalDiff, setTotalDiff] = useState(0);
   const [done, setDone] = useState(false);
+
+  const reset = useCallback(() => {
+    setSentences([...TOKEN_SENTENCES].sort(() => Math.random() - 0.5).slice(0, 5));
+    setCurrent(0); setGuess(5); setSubmitted(false); setTotalDiff(0); setDone(false);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
 
   const handleSubmit = () => {
     setSubmitted(true);
@@ -541,53 +594,57 @@ export function TokenCounter() {
     else { setCurrent(c => c + 1); setGuess(5); setSubmitted(false); }
   };
 
+  if (!sentences.length) return null;
+
   if (done) {
     const avgDiff = (totalDiff / sentences.length).toFixed(1);
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">{Number(avgDiff) <= 1 ? "🎯" : Number(avgDiff) <= 2 ? "👍" : "📝"}</div>
-        <p className="text-3xl font-bold">{avgDiff} avg diff</p>
-        <p className="text-sm text-[var(--color-text-muted)]">Average distance from actual token count</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji={Number(avgDiff) <= 1 ? "🎯" : Number(avgDiff) <= 2 ? "👍" : "📝"} stat={`${avgDiff} ${t("common.avgDiff")}`} label={t("common.avgDistance")} onReplay={reset} />;
   }
 
   const s = sentences[current];
+  const diff = Math.abs(guess - s.tokens);
   return (
-    <div className="space-y-5">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>Sentence {current + 1}/{sentences.length}</span>
-      </div>
+    <GameShell title={t("games.tokenCounter.title")} icon="🔢">
+      <StatusBar left={`${t("common.round")} ${current + 1}/${sentences.length}`} />
       <div className="p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] text-center">
-        <p className="text-lg font-medium">&ldquo;{s.text}&rdquo;</p>
+        <p className="text-lg sm:text-xl font-medium">&ldquo;{s.text}&rdquo;</p>
       </div>
       {!submitted ? (
-        <div className="space-y-3">
-          <p className="text-center text-sm text-[var(--color-text-muted)]">How many tokens does an LLM see?</p>
-          <div className="flex items-center justify-center gap-4">
-            <button onClick={() => setGuess(g => Math.max(1, g - 1))} className="w-10 h-10 rounded-full border-2 border-[var(--color-border)] font-bold text-lg hover:border-indigo-400 transition-colors">-</button>
-            <span className="text-4xl font-bold w-16 text-center">{guess}</span>
-            <button onClick={() => setGuess(g => g + 1)} className="w-10 h-10 rounded-full border-2 border-[var(--color-border)] font-bold text-lg hover:border-indigo-400 transition-colors">+</button>
+        <div className="space-y-4">
+          <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.tokenCounter.instruction")}</p>
+          <div className="flex items-center justify-center gap-5">
+            <button onClick={() => setGuess(g => Math.max(1, g - 1))} className="w-12 h-12 rounded-full border-2 border-[var(--color-border)] font-bold text-xl hover:border-indigo-400 transition-colors">−</button>
+            <span className="text-5xl font-bold w-20 text-center tabular-nums">{guess}</span>
+            <button onClick={() => setGuess(g => g + 1)} className="w-12 h-12 rounded-full border-2 border-[var(--color-border)] font-bold text-xl hover:border-indigo-400 transition-colors">+</button>
           </div>
-          <button onClick={handleSubmit} className="w-full py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-bold hover:brightness-110 transition-all">Lock In</button>
+          <button onClick={handleSubmit} className="w-full min-h-[48px] py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-bold hover:brightness-110 transition-all">{t("common.lockIn")}</button>
         </div>
       ) : (
-        <div className="space-y-3 text-center">
-          <p className="text-sm">Actual: <span className="text-2xl font-bold text-indigo-500">{s.tokens}</span> tokens · Your guess: <span className="text-2xl font-bold">{guess}</span></p>
-          <p className={`text-sm font-semibold ${guess === s.tokens ? "text-green-500" : Math.abs(guess - s.tokens) <= 1 ? "text-amber-500" : "text-red-400"}`}>
-            {guess === s.tokens ? "Exact! 🎯" : Math.abs(guess - s.tokens) <= 1 ? "So close!" : `Off by ${Math.abs(guess - s.tokens)}`}
+        <div className="space-y-4 text-center">
+          <div className="flex items-center justify-center gap-6">
+            <div>
+              <p className="text-xs text-[var(--color-text-muted)] mb-1">{t("games.tokenCounter.actual")}</p>
+              <p className="text-3xl font-bold text-indigo-400">{s.tokens}</p>
+            </div>
+            <div className="text-2xl text-[var(--color-text-muted)]">vs</div>
+            <div>
+              <p className="text-xs text-[var(--color-text-muted)] mb-1">{t("games.tokenCounter.yourGuess")}</p>
+              <p className="text-3xl font-bold">{guess}</p>
+            </div>
+          </div>
+          <p className={`text-sm font-semibold ${guess === s.tokens ? "text-emerald-400" : diff <= 1 ? "text-amber-400" : "text-red-400"}`}>
+            {guess === s.tokens ? `${t("games.tokenCounter.exact")} 🎯` : diff <= 1 ? t("games.tokenCounter.soClose") : t("games.tokenCounter.offBy", { count: diff })}
           </p>
-          <button onClick={handleNext} className="w-full py-3 border-2 border-[var(--color-border)] rounded-xl font-semibold hover:border-indigo-400 transition-all">
-            {current + 1 >= sentences.length ? "See Results" : "Next →"}
+          <button onClick={handleNext} className="w-full min-h-[48px] py-3 border-2 border-[var(--color-border)] rounded-xl font-semibold hover:border-indigo-400 transition-all">
+            {current + 1 >= sentences.length ? t("common.seeResults") : `${t("common.next")} →`}
           </button>
         </div>
       )}
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 9. Prompt Engineer: Pick the better prompt ─── */
+/* ─── 9. Prompt Engineer ─── */
 const PROMPT_ROUNDS = [
   { task: "Get a recipe for pasta", bad: "Give me pasta", good: "Give me a simple pasta recipe with ingredients list and step-by-step instructions for 2 servings", why: "Specific prompts with constraints (servings, format) get better results." },
   { task: "Debug Python code", bad: "Fix my code", good: "My Python function raises TypeError on line 12 when passing a list. Here's the code: [code]. What's wrong and how do I fix it?", why: "Including the error, location, and code gives AI context to help effectively." },
@@ -597,12 +654,20 @@ const PROMPT_ROUNDS = [
 ];
 
 export function PromptEngineer() {
-  const [rounds] = useState(() => [...PROMPT_ROUNDS].sort(() => Math.random() - 0.5).slice(0, 4));
+  const t = useTranslations("playground");
+  const [rounds, setRounds] = useState<typeof PROMPT_ROUNDS>([]);
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<"good" | "bad" | null>(null);
   const [options, setOptions] = useState<{ label: string; type: "good" | "bad" }[]>([]);
   const [done, setDone] = useState(false);
+
+  const reset = useCallback(() => {
+    setRounds([...PROMPT_ROUNDS].sort(() => Math.random() - 0.5).slice(0, 4));
+    setCurrent(0); setScore(0); setSelected(null); setDone(false);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
 
   useEffect(() => {
     if (rounds.length > 0 && current < rounds.length) {
@@ -627,49 +692,39 @@ export function PromptEngineer() {
   if (!rounds.length) return null;
 
   if (done) {
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">{score === rounds.length ? "🧙" : score >= 2 ? "📝" : "💡"}</div>
-        <p className="text-3xl font-bold">{score}/{rounds.length}</p>
-        <p className="text-sm text-[var(--color-text-muted)]">prompt engineering score</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji={score === rounds.length ? "🧙" : score >= 2 ? "📝" : "💡"} stat={`${score}/${rounds.length}`} label={t("common.promptScore")} onReplay={reset} />;
   }
 
   return (
-    <div className="space-y-5">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>Round {current + 1}/{rounds.length}</span>
-        <span>Score: {score}</span>
+    <GameShell title={t("games.promptEngineer.title")} icon="🧙">
+      <StatusBar left={`${t("common.round")} ${current + 1}/${rounds.length}`} right={`${t("common.score")}: ${score}`} />
+      <div className="text-center p-4 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
+        <p className="text-xs text-[var(--color-text-muted)] mb-1">{t("games.promptEngineer.task")}:</p>
+        <p className="font-semibold text-base">{rounds[current].task}</p>
       </div>
-      <div className="text-center p-3 rounded-lg bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-        <p className="text-xs text-[var(--color-text-muted)]">Task:</p>
-        <p className="font-semibold">{rounds[current].task}</p>
-      </div>
-      <p className="text-center text-sm text-[var(--color-text-muted)]">Which prompt would work better?</p>
-      <div className="space-y-3">
+      <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.promptEngineer.instruction")}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {options.map((opt, i) => (
           <button key={i} onClick={() => handleSelect(opt.type)} disabled={!!selected}
-            className={`w-full p-4 rounded-xl border-2 text-sm text-left transition-all leading-relaxed ${
-              selected && opt.type === "good" ? "border-green-500 bg-green-500/10" :
+            className={`min-h-[48px] p-5 rounded-xl border-2 text-sm text-left transition-all leading-relaxed ${
+              selected && opt.type === "good" ? "border-emerald-500 bg-emerald-500/10 ring-2 ring-emerald-500/20" :
               selected === opt.type && opt.type === "bad" ? "border-red-500 bg-red-500/10" :
-              !selected ? "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.99]" : "border-[var(--color-border)] opacity-60"
+              !selected ? "border-[var(--color-border)] hover:border-indigo-400 hover:shadow-md active:scale-[0.99]" : "border-[var(--color-border)] opacity-50"
             }`}>
-            &ldquo;{opt.label}&rdquo;
+            <span className="italic">&ldquo;{opt.label}&rdquo;</span>
           </button>
         ))}
       </div>
       {selected && (
-        <div className="p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-sm text-[var(--color-text-muted)]">
+        <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-sm text-[var(--color-text-muted)]">
           💡 {rounds[current].why}
         </div>
       )}
-    </div>
+    </GameShell>
   );
 }
 
-/* ─── 10. AI Jargon Buster: Rapid-fire true/false on AI definitions ─── */
+/* ─── 10. Jargon Buster ─── */
 const JARGON_QUESTIONS = [
   { term: "Hallucination", definition: "When an AI generates false information confidently", correct: true },
   { term: "Overfitting", definition: "When a model performs too well on new data", correct: false },
@@ -686,7 +741,8 @@ const JARGON_QUESTIONS = [
 ];
 
 export function JargonBuster() {
-  const [questions] = useState(() => [...JARGON_QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 8));
+  const t = useTranslations("playground");
+  const [questions, setQuestions] = useState<typeof JARGON_QUESTIONS>([]);
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
@@ -694,8 +750,15 @@ export function JargonBuster() {
   const [timeLeft, setTimeLeft] = useState(10);
   const timerRef = useRef<ReturnType<typeof setInterval>>(undefined);
 
+  const reset = useCallback(() => {
+    setQuestions([...JARGON_QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 8));
+    setCurrent(0); setScore(0); setAnswered(null); setDone(false); setTimeLeft(10);
+  }, []);
+
+  useEffect(() => { reset(); }, [reset]);
+
   useEffect(() => {
-    if (done || answered !== null) return;
+    if (done || answered !== null || !questions.length) return;
     setTimeLeft(10);
     timerRef.current = setInterval(() => {
       setTimeLeft(t => {
@@ -704,12 +767,14 @@ export function JargonBuster() {
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
-  }, [current, done, answered]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current, done, answered, questions.length]);
 
   const handleAnswer = useCallback((userSays: boolean | null) => {
     if (answered !== null) return;
     clearInterval(timerRef.current);
     const q = questions[current];
+    if (!q) return;
     const correct = userSays === q.correct;
     if (correct) setScore(s => s + 1);
     setAnswered(correct);
@@ -719,49 +784,50 @@ export function JargonBuster() {
     }, 1200);
   }, [answered, current, questions]);
 
+  if (!questions.length) return null;
+
   if (done) {
-    return (
-      <div className="text-center py-8 space-y-4">
-        <div className="text-5xl">{score >= 7 ? "🏆" : score >= 5 ? "📖" : "🔍"}</div>
-        <p className="text-3xl font-bold">{score}/{questions.length}</p>
-        <p className="text-sm text-[var(--color-text-muted)]">jargon busted</p>
-        <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">Play Again</button>
-      </div>
-    );
+    return <GameOverScreen emoji={score >= 7 ? "🏆" : score >= 5 ? "📖" : "🔍"} stat={`${score}/${questions.length}`} label={t("common.jargonBusted")} onReplay={reset} />;
   }
 
   const q = questions[current];
   return (
-    <div className="space-y-5">
-      <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-        <span>{current + 1}/{questions.length}</span>
-        <span className={`font-mono font-bold ${timeLeft <= 3 ? "text-red-500" : ""}`}>{timeLeft}s</span>
-        <span>Score: {score}</span>
+    <GameShell title={t("games.jargonBuster.title")} icon="📖">
+      <StatusBar left={`${current + 1}/${questions.length}`} right={`${t("common.score")}: ${score}`} />
+      {/* Timer bar */}
+      <div className="h-2 rounded-full bg-[var(--color-bg-section)] overflow-hidden">
+        <div className={`h-full rounded-full transition-all duration-1000 ease-linear ${timeLeft <= 3 ? "bg-red-500" : "bg-gradient-to-r from-indigo-500 to-violet-500"}`} style={{ width: `${timeLeft * 10}%` }} />
       </div>
-      <div className="h-1 rounded-full bg-[var(--color-bg-section)] overflow-hidden">
-        <div className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-1000" style={{ width: `${timeLeft * 10}%` }} />
+      <div className="text-center text-sm font-mono font-bold">
+        <span className={timeLeft <= 3 ? "text-red-500 animate-pulse" : "text-[var(--color-text-muted)]"}>{timeLeft}s</span>
       </div>
-      <div className="text-center p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-        <p className="text-xs text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">Term</p>
-        <p className="text-2xl font-bold mb-3">{q.term}</p>
+      <div className="text-center p-6 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
+        <p className="text-xs text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">{t("games.jargonBuster.term")}</p>
+        <p className="text-2xl sm:text-3xl font-bold mb-3">{q.term}</p>
         <p className="text-sm text-[var(--color-text-muted)]">&ldquo;{q.definition}&rdquo;</p>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-4">
         <button onClick={() => handleAnswer(true)} disabled={answered !== null}
-          className={`p-4 rounded-xl border-2 font-bold text-lg transition-all ${answered !== null ? (q.correct ? "border-green-500 bg-green-500/10 text-green-500" : "border-[var(--color-border)] opacity-50") : "border-[var(--color-border)] hover:border-green-500 hover:bg-green-500/5 active:scale-[0.97]"}`}>
-          ✅ True
+          className={`min-h-[56px] p-4 rounded-xl border-2 font-bold text-lg transition-all ${
+            answered !== null ? (q.correct ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-[var(--color-border)] opacity-40")
+            : "border-[var(--color-border)] hover:border-emerald-500 hover:bg-emerald-500/5 active:scale-[0.97]"
+          }`}>
+          ✅ {t("games.jargonBuster.true")}
         </button>
         <button onClick={() => handleAnswer(false)} disabled={answered !== null}
-          className={`p-4 rounded-xl border-2 font-bold text-lg transition-all ${answered !== null ? (!q.correct ? "border-green-500 bg-green-500/10 text-green-500" : "border-[var(--color-border)] opacity-50") : "border-[var(--color-border)] hover:border-red-500 hover:bg-red-500/5 active:scale-[0.97]"}`}>
-          ❌ False
+          className={`min-h-[56px] p-4 rounded-xl border-2 font-bold text-lg transition-all ${
+            answered !== null ? (!q.correct ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-[var(--color-border)] opacity-40")
+            : "border-[var(--color-border)] hover:border-red-500 hover:bg-red-500/5 active:scale-[0.97]"
+          }`}>
+          ❌ {t("games.jargonBuster.false")}
         </button>
       </div>
       {answered !== null && (
-        <p className={`text-center text-sm font-semibold ${answered ? "text-green-500" : "text-red-400"}`}>
-          {answered ? "Correct! ✨" : "Not quite!"}
+        <p className={`text-center text-sm font-semibold ${answered ? "text-emerald-400" : "text-red-400"}`}>
+          {answered ? `${t("common.correct")} ✨` : `${t("common.wrong")}`}
         </p>
       )}
-    </div>
+    </GameShell>
   );
 }
 
