@@ -221,7 +221,7 @@ chore(scope): maintenance task
 
 ## 💬 Questions?
 
-- Open a [GitHub Discussion](https://github.com/open-ai-school/ai-platform/discussions)
+- Open a [GitHub Discussion](https://github.com/orgs/open-ai-school/discussions)
 - Check existing issues for answers
 
 Thank you for helping make AI education accessible to everyone! 🌍
