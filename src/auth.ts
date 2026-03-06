@@ -1,7 +1,9 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-import Resend from "next-auth/providers/resend";
+// Resend email provider requires a database adapter for verification tokens.
+// Disabled until a DB adapter (e.g. Prisma, Drizzle) is configured.
+// import Resend from "next-auth/providers/resend";
 
 if (!process.env.AUTH_SECRET) {
   console.warn(
@@ -12,15 +14,6 @@ if (!process.env.AUTH_SECRET) {
 const providers = [];
 if (process.env.AUTH_GITHUB_ID) providers.push(GitHub);
 if (process.env.AUTH_GOOGLE_ID) providers.push(Google);
-const resendKey = process.env.AUTH_RESEND_KEY || process.env.RESEND_API_KEY;
-if (resendKey) {
-  providers.push(
-    Resend({
-      apiKey: resendKey,
-      from: process.env.AUTH_EMAIL_FROM || "AI Educademy <noreply@aieducademy.dev>",
-    })
-  );
-}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers,
