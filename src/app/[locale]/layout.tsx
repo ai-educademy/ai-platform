@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Inter } from "next/font/google";
 import "../globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
@@ -11,6 +12,13 @@ import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 const BASE_URL = "https://openaischool.vercel.app";
 const locales = ["en", "fr", "nl", "hi", "te"];
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  variable: "--font-inter",
+});
 
 export async function generateMetadata({
   params,
@@ -98,7 +106,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir="ltr" suppressHydrationWarning>
+    <html lang={locale} dir="ltr" suppressHydrationWarning className={inter.variable}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
