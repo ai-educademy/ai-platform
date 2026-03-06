@@ -767,7 +767,6 @@ export function JargonBuster() {
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current, done, answered, questions.length]);
 
   const handleAnswer = useCallback((userSays: boolean | null) => {
