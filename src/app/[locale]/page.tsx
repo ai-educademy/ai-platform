@@ -189,7 +189,7 @@ export default async function HomePage({
           <ScrollReveal animation="fade-up">
             <div className="text-center mb-10">
               <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-widest uppercase mb-4">Meet the Founder</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gradient">The Person Behind the Platform</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gradient">The Person Behind the Platform</h2>
             </div>
           </ScrollReveal>
           <ScrollReveal animation="scale-in">

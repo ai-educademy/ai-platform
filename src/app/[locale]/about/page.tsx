@@ -78,6 +78,21 @@ export default function AboutPage() {
         </section>
       </ScrollReveal>
 
+      {/* The Story */}
+      <ScrollReveal animation="fade-up">
+        <section className="mb-24 max-w-3xl mx-auto">
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-[var(--color-text-muted)] text-center mb-10">
+            {t("story")}
+          </h2>
+          <div className="space-y-5 text-[var(--color-text-muted)] leading-relaxed">
+            <p>{t("storyText1")}</p>
+            <p>{t("storyText2")}</p>
+            <p>{t("storyText3")}</p>
+            <p>{t("storyText4")}</p>
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* Open Source */}
       <ScrollReveal animation="fade-up">
         <section className="mb-24 text-center max-w-2xl mx-auto">
@@ -91,7 +106,7 @@ export default function AboutPage() {
             Every lesson, every line of code — free and open source. Fork it, translate it, make it yours.
           </p>
           <a
-            href="https://github.com/open-ai-school"
+            href="https://github.com/ai-educademy"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-[var(--color-border)] text-sm font-medium hover:bg-[var(--color-bg-card)] transition-colors"
