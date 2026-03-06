@@ -1,5 +1,5 @@
 {
-  "name": "@aieducademy/ai-platform",
+  "name": "@ai-educademy/ai-platform",
   "version": "0.1.0",
   "private": true,
   "description": "Main Next.js app shell for AI Educademy — routing, auth, i18n, program registry",

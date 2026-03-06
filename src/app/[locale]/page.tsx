@@ -382,7 +382,7 @@ export default async function HomePage({
 
             <ScrollReveal animation="fade-up" delay={200}>
               <a
-                href="https://github.com/aieducademy/ai-platform"
+                href="https://github.com/ai-educademy/ai-platform"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] card-hover"
@@ -421,7 +421,7 @@ export default async function HomePage({
                 {t("cta.button")} →
               </Link>
               <a
-                href="https://github.com/aieducademy/ai-platform"
+                href="https://github.com/ai-educademy/ai-platform"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-10 py-4 border-2 border-white/30 rounded-2xl text-lg font-bold text-white hover:bg-white/10 hover:border-white/60 transition-all backdrop-blur-sm"

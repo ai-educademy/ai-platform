@@ -31,7 +31,7 @@ git clone --recurse-submodules https://github.com/YOUR_USERNAME/ai-platform.git
 cd ai-platform
 
 # 3. Add upstream remote
-git remote add upstream https://github.com/aieducademy/ai-platform.git
+git remote add upstream https://github.com/ai-educademy/ai-platform.git
 
 # 4. Install dependencies
 npm install
@@ -149,7 +149,7 @@ Example: `content/programs/ai-seeds/lessons/en/03-types-of-ai.mdx`
    ```
 4. **Add as a git submodule:**
    ```bash
-   git submodule add https://github.com/aieducademy/your-program.git content/programs/your-program
+   git submodule add https://github.com/ai-educademy/your-program.git content/programs/your-program
    ```
 
 ---
@@ -184,7 +184,7 @@ We use ESLint with the Next.js recommended config. Fix all lint errors before su
 
 ### Before You Start
 
-1. Check [existing issues](https://github.com/aieducademy/ai-platform/issues) to avoid duplicate work
+1. Check [existing issues](https://github.com/ai-educademy/ai-platform/issues) to avoid duplicate work
 2. For large changes, open an issue first to discuss the approach
 3. Create a feature branch from `main`:
    ```bash

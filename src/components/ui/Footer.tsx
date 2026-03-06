@@ -68,17 +68,17 @@ export function Footer() {
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">{t("communityHeader")}</h3>
             <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
               <li>
-                <a href="https://github.com/aieducademy" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <a href="https://github.com/ai-educademy" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
                   {t("github")}
                 </a>
               </li>
               <li>
-                <a href="https://github.com/aieducademy/ai-platform/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <a href="https://github.com/ai-educademy/ai-platform/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
                   {t("contributing")}
                 </a>
               </li>
               <li>
-                <a href="https://github.com/aieducademy/ai-platform/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <a href="https://github.com/ai-educademy/ai-platform/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
                   {t("coc")}
                 </a>
               </li>

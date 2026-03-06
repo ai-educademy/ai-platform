@@ -58,7 +58,7 @@ export function welcomeEmailHtml(email: string): string {
                     <table cellpadding="0" cellspacing="0" style="width: 100%; background-color: #5a67d8; border-radius: 6px;">
                       <tr>
                         <td style="padding: 12px; text-align: center;">
-                          <a href="https://github.com/aieducademy" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">Join GitHub</a>
+                          <a href="https://github.com/ai-educademy" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">Join GitHub</a>
                         </td>
                       </tr>
                     </table>

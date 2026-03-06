@@ -11,7 +11,7 @@ export function OrganizationJsonLd() {
     logo: `${BASE_URL}/favicon.svg`,
     description:
       "Free, open-source, multilingual AI education platform. Learn Artificial Intelligence from scratch through interactive lessons and hands-on experiments.",
-    sameAs: ["https://github.com/aieducademy"],
+    sameAs: ["https://github.com/ai-educademy"],
     founder: {
       "@type": "Person",
       name: "Ramesh Reddy Adutla",
