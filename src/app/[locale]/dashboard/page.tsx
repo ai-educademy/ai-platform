@@ -5,10 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useProgress } from "@/hooks/useProgress";
+import { useStreak } from "@/hooks/useStreak";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { SignInModal } from "@/components/auth/SignInModal";
+import { Certificate } from "@/components/dashboard/Certificate";
 import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 import { locales } from "@/i18n/request";
+import { Flame, ArrowRight, Trophy } from "lucide-react";
 
 const PROGRAMS = [
   {
@@ -77,9 +80,11 @@ export default function DashboardPage() {
   const t = useTranslations("dashboard");
   const ta = useTranslations("auth");
   const tl = useTranslations("lessonTitles");
-  const { totalCompleted, getProgram, isCompleted, reset } = useProgress();
+  const { totalCompleted, getProgram, isCompleted, getCompletedAt, reset } = useProgress();
+  const { currentStreak, longestStreak } = useStreak();
   const { profile, isSignedIn } = useGuestProfile();
   const [showModal, setShowModal] = useState(false);
+  const [certProgram, setCertProgram] = useState<string | null>(null);
   const pathname = usePathname();
 
   const segments = pathname.split("/").filter(Boolean);
@@ -88,6 +93,31 @@ export default function DashboardPage() {
 
   const totalLessons = PROGRAMS.reduce((sum, p) => sum + p.lessons.length, 0);
   const percentage = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+
+  // Find first incomplete lesson for "Continue Learning"
+  const nextLesson = (() => {
+    for (const program of PROGRAMS) {
+      for (const lesson of program.lessons) {
+        if (!isCompleted(`${program.slug}/${lesson.slug}`)) {
+          return { program, lesson };
+        }
+      }
+    }
+    return null;
+  })();
+
+  // Certificate modal data
+  const certProgramData = certProgram ? PROGRAMS.find((p) => p.slug === certProgram) : null;
+  const certCompletionDate = (() => {
+    if (!certProgramData) return "";
+    const progData = getProgram(certProgramData.slug);
+    const dates = certProgramData.lessons
+      .map((l) => progData.timestamps[l.slug])
+      .filter(Boolean)
+      .sort();
+    const last = dates[dates.length - 1];
+    return last ? new Date(last).toLocaleDateString() : new Date().toLocaleDateString();
+  })();
 
   // Auth gate — prompt to sign in
   if (!isSignedIn) {
@@ -136,6 +166,17 @@ export default function DashboardPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 space-y-0">
+      {/* Certificate Modal */}
+      {certProgramData && (
+        <Certificate
+          programName={certProgramData.title}
+          programIcon={certProgramData.icon}
+          userName={profile?.name || "Learner"}
+          completionDate={certCompletionDate}
+          onClose={() => setCertProgram(null)}
+        />
+      )}
+
       {/* Header */}
       <ScrollReveal animation="fade-up">
         <div className="text-center mb-12">
@@ -150,6 +191,57 @@ export default function DashboardPage() {
           </p>
         </div>
       </ScrollReveal>
+
+      {/* Continue Learning */}
+      <ScrollReveal animation="fade-up">
+        <div className="mb-8 p-6 rounded-3xl bg-gradient-to-r from-indigo-500/10 to-violet-500/10 border border-indigo-500/20">
+          <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
+            <ArrowRight size={20} className="text-indigo-500" />
+            {t("continueLearning")}
+          </h2>
+          {nextLesson ? (
+            <Link
+              href={`${basePath}/programs/${nextLesson.program.slug}/lessons/${nextLesson.lesson.slug}`}
+              className="flex items-center gap-4 p-4 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] card-hover transition-all"
+            >
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0"
+                style={{ backgroundColor: `${nextLesson.program.color}20` }}
+              >
+                {nextLesson.lesson.icon}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-[var(--color-text-muted)] mb-0.5">{nextLesson.program.icon} {nextLesson.program.title}</p>
+                <h3 className="font-bold text-sm truncate">{tl(nextLesson.lesson.slug as any)}</h3>
+                <span className="text-xs text-[var(--color-text-muted)]">⏱️ {nextLesson.lesson.duration} {t("min")}</span>
+              </div>
+              <span className="shrink-0 px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-semibold">
+                {t("continueLesson")} →
+              </span>
+            </Link>
+          ) : (
+            <p className="text-center text-lg font-semibold py-4">{t("allComplete")}</p>
+          )}
+        </div>
+      </ScrollReveal>
+
+      {/* Streak */}
+      {(currentStreak > 0 || longestStreak > 0) && (
+        <ScrollReveal animation="scale-in">
+          <div className="mb-8 flex items-center justify-center gap-6 p-4 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]">
+            <div className="flex items-center gap-2">
+              <Flame size={22} className="text-orange-500" />
+              <span className="font-bold">{t("currentStreak")}:</span>
+              <span className="text-xl font-bold text-gradient">{currentStreak} {t("days")}</span>
+            </div>
+            <div className="w-px h-6 bg-[var(--color-border)]" />
+            <div className="flex items-center gap-2">
+              <span className="font-bold">{t("longestStreak")}:</span>
+              <span className="text-xl font-bold text-gradient">{longestStreak} {t("days")}</span>
+            </div>
+          </div>
+        </ScrollReveal>
+      )}
 
       {/* Overall Progress */}
       <ScrollReveal animation="scale-in">
@@ -209,6 +301,15 @@ export default function DashboardPage() {
                       {progPct}%
                     </span>
                   </div>
+                  {progPct === 100 && (
+                    <button
+                      onClick={() => setCertProgram(program.slug)}
+                      className="mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-yellow-400 to-amber-500 text-white shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer"
+                    >
+                      <Trophy size={14} />
+                      {t("viewCertificate")}
+                    </button>
+                  )}
                 </div>
               </div>
             </ScrollReveal>
