@@ -266,7 +266,7 @@ export default async function HomePage({
                     <div className="absolute -inset-3 rounded-full bg-white/20 blur-xl animate-pulse" />
                     <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-white/30 shadow-2xl">
                       <Image
-                        src="/images/creator.png"
+                        src="https://avatars.githubusercontent.com/u/134313151?v=4"
                         alt="Ramesh Reddy Adutla — Founder of Open AI School"
                         width={512}
                         height={512}
