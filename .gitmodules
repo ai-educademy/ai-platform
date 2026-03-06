@@ -4,3 +4,12 @@
 [submodule "content/programs/ai-sprouts"]
 	path = content/programs/ai-sprouts
 	url = https://github.com/open-ai-school/ai-sprouts.git
+[submodule "content/programs/ai-branches"]
+	path = content/programs/ai-branches
+	url = https://github.com/open-ai-school/ai-branches.git
+[submodule "content/programs/ai-canopy"]
+	path = content/programs/ai-canopy
+	url = https://github.com/open-ai-school/ai-canopy.git
+[submodule "content/programs/ai-forest"]
+	path = content/programs/ai-forest
+	url = https://github.com/open-ai-school/ai-forest.git

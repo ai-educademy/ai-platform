@@ -21,7 +21,7 @@
     {
       "slug": "ai-branches",
       "level": 3,
-      "status": "coming-soon",
+      "status": "active",
       "color": "#F59E0B",
       "icon": "\ud83c\udf33",
       "emoji": "\ud83c\udf33",
@@ -30,7 +30,7 @@
     {
       "slug": "ai-canopy",
       "level": 4,
-      "status": "coming-soon",
+      "status": "active",
       "color": "#8B5CF6",
       "icon": "\ud83c\udfd5\ufe0f",
       "emoji": "\ud83c\udfd5\ufe0f",
@@ -39,7 +39,7 @@
     {
       "slug": "ai-forest",
       "level": 5,
-      "status": "coming-soon",
+      "status": "active",
       "color": "#EF4444",
       "icon": "\ud83c\udf32",
       "emoji": "\ud83c\udf32",
