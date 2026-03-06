@@ -4,23 +4,33 @@ import { useState, useCallback } from "react";
 
 interface QuizProps {
   question: string;
-  options: string[];
-  answer: number;
+  /** Accepts a string[] or a pipe-separated string "A|B|C|D" */
+  options: string[] | string;
+  /** Accepts a number or numeric string */
+  answer: number | string;
   explanation?: string;
 }
 
 /**
  * Interactive multiple-choice quiz with animation feedback.
  *
- * Usage in MDX:
+ * Usage in MDX (pipe-separated strings work reliably with next-mdx-remote RSC):
  *   <Quiz
  *     question="What does AI learn from?"
- *     options={["Magic", "Data", "The internet", "Electricity"]}
- *     answer={1}
+ *     options="Magic|Data|The internet|Electricity"
+ *     answer="1"
  *     explanation="AI systems learn patterns from data — millions of examples!"
  *   />
  */
-export function Quiz({ question, options, answer, explanation }: QuizProps) {
+export function Quiz({ question, options: rawOptions, answer: rawAnswer, explanation }: QuizProps) {
+  const options = Array.isArray(rawOptions)
+    ? rawOptions
+    : typeof rawOptions === "string"
+      ? rawOptions.split("|")
+      : [];
+  const answer = typeof rawAnswer === "number" ? rawAnswer : parseInt(String(rawAnswer), 10) || 0;
+
+  if (!options.length) return null;
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
 
