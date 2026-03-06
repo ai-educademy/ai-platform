@@ -1,91 +1,108 @@
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 
 export default function AboutPage() {
   const t = useTranslations("about");
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24">
-      {/* Header */}
-      <ScrollReveal animation="scale-in">
-        <div className="text-center mb-16">
-          <div className="relative w-36 h-36 mx-auto mb-6">
-            <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-50 blur-xl animate-pulse-glow" />
-            <div className="relative w-36 h-36 rounded-full overflow-hidden ring-4 ring-[var(--color-primary)]/20 shadow-2xl">
-              <Image
-                src="https://avatars.githubusercontent.com/u/134313151?v=4"
-                alt="Ramesh Reddy Adutla — Founder of AI Educademy"
-                width={144}
-                height={144}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-2">Ramesh Reddy Adutla</h1>
-          <p className="text-lg text-[var(--color-primary)] font-semibold">
-            {t("subtitle")}
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-32">
+      {/* Hero */}
+      <ScrollReveal animation="fade-up">
+        <div className="text-center mb-24">
+          <h1 className="text-4xl md:text-6xl font-bold text-gradient mb-4 tracking-tight">
+            {t("title")}
+          </h1>
+          <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-xl mx-auto">
+            Free, open-source AI education for every student in the world.
           </p>
-
         </div>
       </ScrollReveal>
 
       {/* Mission */}
       <ScrollReveal animation="fade-up">
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            🎯 {t("mission")}
-          </h2>
-          <p className="text-lg text-[var(--color-text-muted)] max-w-3xl mx-auto p-6 rounded-2xl glass-card">
-            {t("missionText")}
-          </p>
+        <section className="mb-24 text-center max-w-3xl mx-auto">
+          <blockquote className="text-2xl md:text-3xl font-semibold leading-relaxed text-[var(--color-text)] tracking-tight">
+            &ldquo;{t("missionText")}&rdquo;
+          </blockquote>
         </section>
       </ScrollReveal>
 
-      {/* Story */}
+      {/* What We Believe */}
       <ScrollReveal animation="fade-up">
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            📖 {t("story")}
+        <section className="mb-24">
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-[var(--color-text-muted)] text-center mb-12">
+            {t("values")}
           </h2>
-          <div className="space-y-4 text-lg leading-relaxed text-[var(--color-text-muted)]">
-            <p>{t("storyText1")}</p>
-            <p>{t("storyText2")}</p>
-            <p className="p-6 rounded-2xl bg-gradient-to-r from-[var(--color-primary)]/5 to-[var(--color-accent)]/5 border border-[var(--color-primary)]/20 italic">
-              {t("storyText3")}
-            </p>
-            <p>{t("storyText4")}</p>
+          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
+            {[
+              { icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              ), key: "value1" },
+              { icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              ), key: "value2" },
+              { icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+              ), key: "value3" },
+              { icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                  <path d="M7 15l5-5 5 5" />
+                </svg>
+              ), key: "value4" },
+            ].map(({ icon, key }, i) => (
+              <ScrollReveal key={key} animation="fade-up" delay={i * 80}>
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center">
+                    {icon}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">{t(`${key}.title`)}</h3>
+                    <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                      {t(`${key}.description`)}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </section>
       </ScrollReveal>
 
-      {/* Values */}
-      <section className="mb-16">
-        <ScrollReveal animation="fade-up">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            💎 {t("values")}
-          </h2>
-        </ScrollReveal>
-        <div className="grid sm:grid-cols-2 gap-6">
-          {["value1", "value2", "value3", "value4"].map((key, i) => (
-            <ScrollReveal key={key} animation="fade-up" delay={i * 100}>
-              <div className="gradient-border h-full">
-                <div className="bg-[var(--color-bg-card)] rounded-2xl p-6 card-hover card-glow h-full">
-                  <div className="text-3xl mb-3">
-                    {["🌐", "🤝", "💡", "🔓"][i]}
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">{t(`${key}.title`)}</h3>
-                  <p className="text-[var(--color-text-muted)]">
-                    {t(`${key}.description`)}
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      <hr className="section-divider mb-16" />
+      {/* Open Source */}
+      <ScrollReveal animation="fade-up">
+        <section className="mb-24 text-center max-w-2xl mx-auto">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold mb-3">{t("value4.title")} Source</h2>
+          <p className="text-[var(--color-text-muted)] mb-6 leading-relaxed">
+            Every lesson, every line of code — free and open source. Fork it, translate it, make it yours.
+          </p>
+          <a
+            href="https://github.com/open-ai-school"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-[var(--color-border)] text-sm font-medium hover:bg-[var(--color-bg-card)] transition-colors"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+            View on GitHub
+          </a>
+        </section>
+      </ScrollReveal>
 
       {/* Connect */}
       <ScrollReveal animation="fade-up">

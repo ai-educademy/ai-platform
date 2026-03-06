@@ -112,7 +112,7 @@ export default async function HomePage({
 
           {/* Two track cards */}
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {/* AI Learning Path */}
+            {/* Understanding AI */}
             <ScrollReveal animation="fade-up">
               <div className="gradient-border rounded-2xl h-full">
                 <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
@@ -139,7 +139,7 @@ export default async function HomePage({
               </div>
             </ScrollReveal>
 
-            {/* Craft Engineering */}
+            {/* Code & Algorithms */}
             <ScrollReveal animation="fade-up" delay={100}>
               <div className="gradient-border rounded-2xl h-full">
                 <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">

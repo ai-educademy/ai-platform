@@ -89,8 +89,8 @@ export function Footer() {
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">{t("supportHeader")}</h3>
             <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
               <li>
-                <a href="https://github.com/sponsors/rameshreddy-adutla" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
-                  {t("sponsor")} <span className="text-red-500 animate-pulse">❤️</span>
+                <a href="https://buymeacoffee.com/rameshreddy" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block group">
+                  {t("buyMeACoffee")} <span className="inline-block group-hover:animate-bounce">☕</span>
                 </a>
               </li>
             </ul>
@@ -99,7 +99,7 @@ export function Footer() {
 
         <div className="mt-10 pt-6 relative flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--color-text-muted)]">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
-          <p>{t("madeWith")}</p>
+          <p>{t("mission")}</p>
           <p>{t("license")}</p>
         </div>
       </div>

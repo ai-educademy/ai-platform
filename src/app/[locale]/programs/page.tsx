@@ -105,7 +105,7 @@ export default async function ProgramsPage({
         </div>
       </ScrollReveal>
 
-      {/* AI Learning Path Section */}
+      {/* Understanding AI Section */}
       <section className="mb-20">
         <ScrollReveal animation="fade-up">
           <div className="flex items-center gap-3 mb-8">
@@ -125,7 +125,7 @@ export default async function ProgramsPage({
         </div>
       </section>
 
-      {/* Craft Engineering Section */}
+      {/* Code & Algorithms Section */}
       <section>
         <ScrollReveal animation="fade-up">
           <div className="flex items-center gap-3 mb-3">
