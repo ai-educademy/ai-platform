@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPrograms } from "@/lib/programs";
+import { getAllBlogSlugs } from "@/lib/blog";
 
 const BASE_URL = "https://openaischool.vercel.app";
 const locales = ["en", "fr", "nl", "hi", "te"];
@@ -38,6 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localizedEntries("/about", "monthly", 0.7, now),
     // Lessons listing
     ...localizedEntries("/lessons", "weekly", 0.8, now),
+    // Blog listing
+    ...localizedEntries("/blog", "weekly", 0.8, now),
   ];
 
   // Individual program pages
@@ -57,5 +60,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       localizedEntries(`/programs/${program.slug}/lessons`, "weekly", 0.7, now)
     );
 
-  return [...staticPages, ...programPages, ...programLessonPages];
+  // Individual blog post pages
+  const blogSlugs = getAllBlogSlugs();
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.flatMap((slug) =>
+    localizedEntries(`/blog/${slug}`, "monthly", 0.6, now)
+  );
+
+  return [...staticPages, ...programPages, ...programLessonPages, ...blogPages];
 }

@@ -33,6 +33,7 @@ export function Navbar() {
     { href: `${basePath}/`, label: t("home"), match: "/" },
     { href: `${basePath}/programs`, label: t("programs"), match: "/programs" },
     { href: `${basePath}/playground`, label: t("playground"), match: "/playground" },
+    { href: `${basePath}/blog`, label: t("blog"), match: "/blog" },
     { href: `${basePath}/dashboard`, label: t("dashboard"), match: "/dashboard" },
     { href: `${basePath}/about`, label: t("about"), match: "/about" },
   ];
