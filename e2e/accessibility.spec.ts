@@ -58,7 +58,7 @@ test.describe("Performance", () => {
     });
     await page.goto("/en");
     await page.waitForTimeout(2000);
-    // Filter out known benign errors (hydration warnings, etc.)
+    // Filter out known benign errors (hydration warnings, auth config in CI, etc.)
     const realErrors = errors.filter(
       (e) =>
         !e.includes("hydrat") &&
@@ -67,7 +67,9 @@ test.describe("Performance", () => {
         !e.includes("_vercel/") &&
         !e.includes("MIME type") &&
         !e.includes("Failed to load resource") &&
-        !e.includes("net::ERR_")
+        !e.includes("net::ERR_") &&
+        !e.includes("authjs.dev") &&
+        !e.includes("server configuration")
     );
     expect(realErrors).toHaveLength(0);
   });
