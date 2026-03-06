@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendWelcomeEmail } from "@/lib/email";
-import { addContact, getContacts } from "@/lib/resendContacts";
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,17 +21,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const normalised = email.toLowerCase();
-    const result = await addContact(normalised);
-
-    if (result === "duplicate") {
-      return NextResponse.json(
-        { success: true, message: "Already subscribed!" },
-        { status: 200 }
-      );
-    }
-
-    await sendWelcomeEmail(normalised);
+    await sendWelcomeEmail(email.toLowerCase());
 
     return NextResponse.json(
       { success: true, message: "Subscribed!" },
@@ -40,19 +29,6 @@ export async function POST(req: NextRequest) {
     );
   } catch (error) {
     console.error("Newsletter API error:", error);
-    return NextResponse.json(
-      { success: false, message: "Internal server error" },
-      { status: 500 }
-    );
-  }
-}
-
-export async function GET() {
-  try {
-    const contacts = await getContacts();
-    return NextResponse.json({ total: contacts.length, subscribers: contacts });
-  } catch (error) {
-    console.error("Newsletter GET error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },
       { status: 500 }
