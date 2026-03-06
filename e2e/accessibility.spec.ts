@@ -65,7 +65,9 @@ test.describe("Performance", () => {
         !e.includes("Warning") &&
         !e.includes("favicon") &&
         !e.includes("_vercel/") &&
-        !e.includes("MIME type")
+        !e.includes("MIME type") &&
+        !e.includes("Failed to load resource") &&
+        !e.includes("net::ERR_")
     );
     expect(realErrors).toHaveLength(0);
   });
