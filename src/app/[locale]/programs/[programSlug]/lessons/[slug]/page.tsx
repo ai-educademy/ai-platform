@@ -5,6 +5,7 @@ import { getLesson, getLessons } from "@/lib/lessons";
 import { getProgram } from "@/lib/programs";
 import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 import { LessonComplete } from "@/components/lessons/LessonComplete";
+import { LessonFeedback } from "@/components/lessons/LessonFeedback";
 
 export default async function ProgramLessonPage({
   params,
@@ -88,6 +89,9 @@ export default async function ProgramLessonPage({
         programPath={programPath}
         programTitle={program.title}
       />
+
+      {/* Lesson Feedback */}
+      <LessonFeedback lessonSlug={`${programSlug}/${slug}`} />
     </div>
   );
 }

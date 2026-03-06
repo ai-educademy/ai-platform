@@ -7,6 +7,8 @@ import { ScrollReveal } from "@open-ai-school/ai-ui-library";
 import { ComingSoonCard } from "@/components/ui/ComingSoon";
 import { FloatingParticles } from "@open-ai-school/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
+import { MessageCircle, Star, Mail } from "lucide-react";
+import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 
 export default async function HomePage({
   params,
@@ -16,6 +18,7 @@ export default async function HomePage({
   const { locale } = await params;
   const t = await getTranslations();
   const tp = await getTranslations("homePrograms");
+  const tc = await getTranslations("community");
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   const programDescKeys: Record<string, string> = {
@@ -325,6 +328,76 @@ export default async function HomePage({
               </div>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      <hr className="section-divider" />
+
+      {/* Community Section */}
+      <section className="py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <ScrollReveal animation="fade-up">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                {tc("title")}
+              </h2>
+              <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto">
+                {tc("subtitle")}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Discussions */}
+            <ScrollReveal animation="fade-up">
+              <a
+                href="https://github.com/orgs/open-ai-school/discussions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] card-hover h-full"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center mb-4">
+                  <MessageCircle size={24} className="text-[var(--color-primary)]" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">{tc("discussions")}</h3>
+                <p className="text-sm text-[var(--color-text-muted)]">
+                  {tc("discussionsDesc")}
+                </p>
+              </a>
+            </ScrollReveal>
+
+            {/* Star on GitHub */}
+            <ScrollReveal animation="fade-up" delay={100}>
+              <a
+                href="https://github.com/open-ai-school/ai-platform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] card-hover h-full"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center mb-4">
+                  <Star size={24} className="text-[var(--color-secondary)]" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">{tc("star")}</h3>
+                <p className="text-sm text-[var(--color-text-muted)]">
+                  {tc("starDesc")}
+                </p>
+              </a>
+            </ScrollReveal>
+
+            {/* Newsletter */}
+            <ScrollReveal animation="fade-up" delay={200}>
+              <div className="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] h-full">
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-accent)]/10 flex items-center justify-center mb-4">
+                  <Mail size={24} className="text-[var(--color-accent)]" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">{tc("updates")}</h3>
+                <p className="text-sm text-[var(--color-text-muted)] mb-4">
+                  {tc("updatesDesc")}
+                </p>
+                <NewsletterSignup />
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
