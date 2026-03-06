@@ -11,7 +11,8 @@
     "about": "About",
     "getStarted": "Start Learning — It's Free",
     "language": "Language",
-    "programs": "Programs"
+    "programs": "Programs",
+    "blog": "Blog"
   },
   "hero": {
     "badge": "Free • Open Source • Multilingual",
@@ -448,7 +449,22 @@
     "emptySubtitle": "Sign in and complete your first lesson to track your progress. It only takes 10 minutes!",
     "emptyStart": "Start Your First Lesson",
     "trackAI": "AI Learning Path",
-    "trackCraft": "Craft Engineering"
+    "trackCraft": "Craft Engineering",
+    "certificate": "Certificate",
+    "certificateTitle": "Certificate of Completion",
+    "completedBy": "Completed by",
+    "completionDate": "Completion Date",
+    "downloadCertificate": "Download Certificate",
+    "shareCertificate": "Share",
+    "copiedToClipboard": "Copied to clipboard!",
+    "continueLearning": "Continue Learning",
+    "continueLesson": "Continue",
+    "allComplete": "You've completed everything! 🎉",
+    "streak": "Learning Streak",
+    "currentStreak": "Current Streak",
+    "longestStreak": "Longest Streak",
+    "days": "days",
+    "viewCertificate": "View Certificate"
   },
   "auth": {
     "startLearning": "Start Learning",
@@ -492,5 +508,48 @@
     "star-framework": "The STAR Framework",
     "system-design-communication": "System Design Communication",
     "ai-era-leadership": "AI-Era Leadership"
+  },
+  "pwa": {
+    "install": "Install App",
+    "installPrompt": "Install Open AI School for offline access",
+    "dismiss": "Not now",
+    "offline": "You're Offline",
+    "offlineMessage": "Don't worry — previously visited lessons are still available.",
+    "goHome": "Go to Homepage"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Latest updates and insights from Open AI School",
+    "readMore": "Read more",
+    "backToBlog": "Back to Blog",
+    "publishedOn": "Published on",
+    "minuteRead": "min read",
+    "tags": "Tags"
+  },
+  "feedback": {
+    "title": "Was this lesson helpful?",
+    "helpful": "Yes, helpful!",
+    "notHelpful": "Needs improvement",
+    "tellUsMore": "Tell us more (optional)",
+    "submit": "Submit feedback",
+    "thanks": "Thank you for your feedback!"
+  },
+  "newsletter": {
+    "title": "Stay in the loop",
+    "subtitle": "Get notified about new lessons, programs, and features",
+    "placeholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "success": "You're subscribed! 🎉",
+    "invalidEmail": "Please enter a valid email"
+  },
+  "community": {
+    "title": "Join Our Community",
+    "subtitle": "Learn together, grow together",
+    "discussions": "Join Discussions",
+    "discussionsDesc": "Ask questions, share projects, connect with learners",
+    "star": "Star on GitHub",
+    "starDesc": "Support the project and help it reach more learners",
+    "updates": "Stay Updated",
+    "updatesDesc": "Get notified about new lessons and features"
   }
 }

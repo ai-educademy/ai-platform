@@ -11,7 +11,8 @@
     "getStarted": "Commencer à Apprendre — C'est Gratuit",
     "language": "Langue",
     "dashboard": "Tableau de bord",
-    "programs": "Programmes"
+    "programs": "Programmes",
+    "blog": "Blog"
   },
   "hero": {
     "badge": "Gratuit • Open Source • Multilingue",
@@ -448,7 +449,22 @@
     "emptySubtitle": "Connectez-vous et terminez votre première leçon pour suivre vos progrès. Ça ne prend que 10 minutes !",
     "emptyStart": "Commencer la première leçon",
     "trackAI": "Parcours IA",
-    "trackCraft": "Craft Engineering"
+    "trackCraft": "Craft Engineering",
+    "certificate": "Certificat",
+    "certificateTitle": "Certificat de réussite",
+    "completedBy": "Complété par",
+    "completionDate": "Date de complétion",
+    "downloadCertificate": "Télécharger le certificat",
+    "shareCertificate": "Partager",
+    "copiedToClipboard": "Copié dans le presse-papiers !",
+    "continueLearning": "Continuer à apprendre",
+    "continueLesson": "Continuer",
+    "allComplete": "Vous avez tout terminé ! 🎉",
+    "streak": "Série d'apprentissage",
+    "currentStreak": "Série actuelle",
+    "longestStreak": "Meilleure série",
+    "days": "jours",
+    "viewCertificate": "Voir le certificat"
   },
   "auth": {
     "startLearning": "Commencer à apprendre",
@@ -492,5 +508,48 @@
     "star-framework": "La Méthode STAR",
     "system-design-communication": "Communication en Conception Système",
     "ai-era-leadership": "Leadership à l'Ère de l'IA"
+  },
+  "pwa": {
+    "install": "Installer l'appli",
+    "installPrompt": "Installez Open AI School pour un accès hors ligne",
+    "dismiss": "Pas maintenant",
+    "offline": "Vous êtes hors ligne",
+    "offlineMessage": "Ne vous inquiétez pas — les leçons déjà visitées restent disponibles.",
+    "goHome": "Aller à l'accueil"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Dernières mises à jour et informations d'Open AI School",
+    "readMore": "Lire la suite",
+    "backToBlog": "Retour au Blog",
+    "publishedOn": "Publié le",
+    "minuteRead": "min de lecture",
+    "tags": "Étiquettes"
+  },
+  "feedback": {
+    "title": "Cette leçon vous a-t-elle été utile ?",
+    "helpful": "Oui, utile !",
+    "notHelpful": "À améliorer",
+    "tellUsMore": "Dites-nous en plus (facultatif)",
+    "submit": "Envoyer",
+    "thanks": "Merci pour votre retour !"
+  },
+  "newsletter": {
+    "title": "Restez informé",
+    "subtitle": "Recevez des notifications sur les nouvelles leçons, programmes et fonctionnalités",
+    "placeholder": "Entrez votre email",
+    "subscribe": "S'abonner",
+    "success": "Vous êtes abonné ! 🎉",
+    "invalidEmail": "Veuillez entrer un email valide"
+  },
+  "community": {
+    "title": "Rejoignez notre communauté",
+    "subtitle": "Apprenez ensemble, grandissez ensemble",
+    "discussions": "Rejoindre les discussions",
+    "discussionsDesc": "Posez des questions, partagez des projets, connectez-vous avec d'autres apprenants",
+    "star": "Étoile sur GitHub",
+    "starDesc": "Soutenez le projet et aidez-le à atteindre plus d'apprenants",
+    "updates": "Restez informé",
+    "updatesDesc": "Recevez des notifications sur les nouvelles leçons et fonctionnalités"
   }
 }

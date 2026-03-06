@@ -11,7 +11,8 @@
     "getStarted": "Begin te Leren — Het is Gratis",
     "language": "Taal",
     "dashboard": "Dashboard",
-    "programs": "Programma's"
+    "programs": "Programma's",
+    "blog": "Blog"
   },
   "hero": {
     "badge": "Gratis • Open Source • Meertalig",
@@ -448,7 +449,22 @@
     "emptySubtitle": "Log in en voltooi je eerste les om je voortgang bij te houden. Het duurt maar 10 minuten!",
     "emptyStart": "Begin je eerste les",
     "trackAI": "AI Leerpad",
-    "trackCraft": "Craft Engineering"
+    "trackCraft": "Craft Engineering",
+    "certificate": "Certificaat",
+    "certificateTitle": "Certificaat van voltooiing",
+    "completedBy": "Voltooid door",
+    "completionDate": "Voltooiingsdatum",
+    "downloadCertificate": "Certificaat downloaden",
+    "shareCertificate": "Delen",
+    "copiedToClipboard": "Gekopieerd naar klembord!",
+    "continueLearning": "Verder leren",
+    "continueLesson": "Doorgaan",
+    "allComplete": "Je hebt alles voltooid! 🎉",
+    "streak": "Leerreeks",
+    "currentStreak": "Huidige reeks",
+    "longestStreak": "Langste reeks",
+    "days": "dagen",
+    "viewCertificate": "Certificaat bekijken"
   },
   "auth": {
     "startLearning": "Begin met leren",
@@ -492,5 +508,48 @@
     "star-framework": "Het STAR Framework",
     "system-design-communication": "Systeemontwerp Communicatie",
     "ai-era-leadership": "Leiderschap in het AI-tijdperk"
+  },
+  "pwa": {
+    "install": "App installeren",
+    "installPrompt": "Installeer Open AI School voor offline toegang",
+    "dismiss": "Niet nu",
+    "offline": "Je bent offline",
+    "offlineMessage": "Geen zorgen — eerder bezochte lessen zijn nog beschikbaar.",
+    "goHome": "Ga naar startpagina"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Laatste updates en inzichten van Open AI School",
+    "readMore": "Lees meer",
+    "backToBlog": "Terug naar Blog",
+    "publishedOn": "Gepubliceerd op",
+    "minuteRead": "min leestijd",
+    "tags": "Tags"
+  },
+  "feedback": {
+    "title": "Was deze les nuttig?",
+    "helpful": "Ja, nuttig!",
+    "notHelpful": "Kan beter",
+    "tellUsMore": "Vertel ons meer (optioneel)",
+    "submit": "Feedback verzenden",
+    "thanks": "Bedankt voor uw feedback!"
+  },
+  "newsletter": {
+    "title": "Blijf op de hoogte",
+    "subtitle": "Ontvang meldingen over nieuwe lessen, programma's en functies",
+    "placeholder": "Voer uw e-mail in",
+    "subscribe": "Abonneren",
+    "success": "U bent geabonneerd! 🎉",
+    "invalidEmail": "Voer een geldig e-mailadres in"
+  },
+  "community": {
+    "title": "Word lid van onze community",
+    "subtitle": "Samen leren, samen groeien",
+    "discussions": "Doe mee aan discussies",
+    "discussionsDesc": "Stel vragen, deel projecten, maak contact met andere leerlingen",
+    "star": "Ster op GitHub",
+    "starDesc": "Steun het project en help het meer leerlingen te bereiken",
+    "updates": "Blijf op de hoogte",
+    "updatesDesc": "Ontvang meldingen over nieuwe lessen en functies"
   }
 }
