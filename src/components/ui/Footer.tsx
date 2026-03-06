@@ -45,8 +45,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href={`${basePath}/playground`} className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
-                  {t("playground")}
+                <Link href={`${basePath}/lab`} className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                  {t("lab")}
                 </Link>
               </li>
               <li>

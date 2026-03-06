@@ -6,13 +6,13 @@
   "nav": {
     "home": "Accueil",
     "lessons": "Leçons",
-    "playground": "Terrain de jeu",
     "about": "À propos",
     "getStarted": "Commencer à Apprendre — C'est Gratuit",
     "language": "Langue",
     "dashboard": "Tableau de bord",
     "programs": "Programmes",
-    "blog": "Blog"
+    "blog": "Blog",
+    "lab": "Labo"
   },
   "hero": {
     "badge": "Gratuit • Open Source • Multilingue",
@@ -20,7 +20,7 @@
     "titleHighlight": "pour Tous.",
     "subtitle": "Leçons interactives, expériences pratiques et projets concrets — directement dans votre navigateur. Aucune connaissance en programmation ou en maths requise.",
     "cta": "Commencez Votre Aventure IA",
-    "ctaSecondary": "Explorer le Playground",
+    "ctaSecondary": "Explorer le Labo",
     "students": "Étudiants apprenant",
     "languages": "Langues",
     "lessons": "Leçons interactives",
@@ -90,7 +90,6 @@
   "footer": {
     "tagline": "Éducation IA gratuite pour tous, dans toutes les langues.",
     "lessons": "Leçons",
-    "playground": "Terrain de jeu",
     "about": "À propos",
     "github": "GitHub",
     "contributing": "Contribuer",
@@ -102,7 +101,8 @@
     "communityHeader": "Communauté",
     "supportHeader": "Soutenir",
     "programs": "Programmes",
-    "dashboard": "Tableau de bord"
+    "dashboard": "Tableau de bord",
+    "lab": "Labo"
   },
   "about": {
     "title": "À Propos d'AI Educademy",
@@ -176,204 +176,6 @@
     "lessonsComingSoon": "Leçons à venir",
     "checkBackSoon": "Revenez bientôt !",
     "backToProgram": "Retour à"
-  },
-  "playground": {
-    "title": "Terrain de Jeu IA",
-    "subtitle": "Expérimentez avec de vrais concepts d'IA directement dans votre navigateur. Pas d'installation, pas de code — jouez et apprenez !",
-    "badge": "Interactif • Amusant • Éducatif",
-    "pageTitle": "Terrain de Jeu IA",
-    "pageDescription": "Expérimentez les concepts d'IA en pratique. Jouez à des mini-jeux, analysez les sentiments, visualisez les réseaux neuronaux et explorez la tokenisation.",
-    "footer": "Toutes les démos fonctionnent entièrement dans votre navigateur — aucune donnée n'est envoyée à un serveur.",
-    "tabs": {
-      "games": {
-        "label": "Mini Jeux",
-        "desc": "Un jeu IA aléatoire à chaque visite"
-      },
-      "sentiment": {
-        "label": "Analyse de Sentiment",
-        "desc": "Détectez les émotions dans le texte"
-      },
-      "neural": {
-        "label": "Réseau Neuronal",
-        "desc": "Visualisez comment les neurones apprennent"
-      },
-      "sorting": {
-        "label": "Algorithmes de Tri",
-        "desc": "Regardez les algorithmes trier en temps réel"
-      },
-      "tokenizer": {
-        "label": "Tokeniseur",
-        "desc": "Voyez comment l'IA lit votre texte"
-      }
-    },
-    "aiOrHuman": {
-      "title": "Pouvez-vous faire la différence ?",
-      "description": "Lisez {count} extraits de texte et devinez si chacun a été écrit par un humain ou généré par l'IA. C'est plus difficile qu'on ne le pense.",
-      "startGame": "Commencer",
-      "playAgain": "Rejouer",
-      "human": "Humain",
-      "ai": "IA Générée",
-      "round": "Tour {current} sur {total}",
-      "score": "Score",
-      "streak": "{count} série",
-      "bestStreak": "{count} meilleure série",
-      "accuracy": "{pct}% de précision",
-      "correct": "Correct !",
-      "wrong": "Faux !",
-      "writtenBy": "Écrit par",
-      "writtenByAI": "IA",
-      "writtenByHuman": "un humain",
-      "duration": "~2 minutes",
-      "rounds": "{count} tours",
-      "learnDetection": "Apprenez à détecter l'IA",
-      "scoreTitle90": "Détective IA",
-      "scoreTitle75": "Œil aiguisé",
-      "scoreTitle50": "En progression",
-      "scoreTitleLow": "L'IA vous a trompé"
-    },
-    "common": {
-      "score": "Score",
-      "round": "Tour",
-      "correct": "Correct !",
-      "wrong": "Faux !",
-      "tryAgain": "Réessayer",
-      "next": "Suivant",
-      "playAgain": "Rejouer",
-      "playThisGame": "Jouer à ce jeu",
-      "randomGame": "Jeu aléatoire différent",
-      "newGame": "Nouveau Jeu",
-      "orPickOne": "Ou choisissez :",
-      "finish": "Terminer",
-      "checkOrder": "Vérifier mon ordre",
-      "undoLast": "Annuler le dernier",
-      "yourOrder": "Votre ordre :",
-      "lockIn": "Confirmer",
-      "seeResults": "Voir les résultats",
-      "go": "Go",
-      "startTyping": "Commencez à taper...",
-      "ready": "Prêt...",
-      "lastTime": "Dernier : {time}s",
-      "moves": "coups",
-      "pairs": "paires",
-      "avgDiff": "diff. moy.",
-      "perTerm": "par terme · {count} termes tapés",
-      "avgSeconds": "{avg}s moy.",
-      "patternsSpotted": "motifs repérés",
-      "conceptsDecoded": "concepts IA décodés",
-      "binaryDecoded": "Binaire décodé comme une machine",
-      "jargonBusted": "jargon démystifié",
-      "promptScore": "score d'ingénierie de prompt",
-      "avgDistance": "Distance moyenne du nombre réel de tokens",
-      "greatDetective": "Excellent travail de détective !",
-      "reviewedBias": "Vous avez examiné {count} scénarios de biais. Comprendre les biais est la première étape pour construire une IA plus juste.",
-      "perfectOrder": "Ordre parfait !",
-      "notQuiteTimeline": "Pas tout à fait — voici la chronologie correcte :",
-      "allPairsMatched": "Les {count} paires trouvées"
-    },
-    "games": {
-      "emojiDecoder": {
-        "title": "Décodeur d'Émojis",
-        "instruction": "Quel concept IA ces émojis représentent-ils ?"
-      },
-      "binaryTranslator": {
-        "title": "Traducteur Binaire",
-        "instruction": "Décodez le binaire en un mot",
-        "hint": "Indice : Chaque groupe de 8 chiffres = une lettre (A=65, B=66...)",
-        "placeholder": "Tapez le mot...",
-        "word": "Mot {current}/{total}"
-      },
-      "speedTyper": {
-        "title": "Vitesse de Frappe",
-        "instruction": "Tapez le terme IA le plus vite possible !",
-        "term": "Terme {current}/{total}",
-        "placeholder": "Commencez à taper..."
-      },
-      "oddOneOut": {
-        "title": "L'Intrus",
-        "instruction": "Trouvez l'intrus"
-      },
-      "memoryMatch": {
-        "title": "Jeu de Mémoire",
-        "instruction": "Associez chaque terme IA à sa définition"
-      },
-      "aiTimeline": {
-        "title": "Chronologie IA",
-        "instruction": "Appuyez sur les événements par ordre chronologique (le plus ancien en premier)"
-      },
-      "biasDetective": {
-        "title": "Détective de Biais",
-        "instruction": "Lisez le scénario et repérez le biais",
-        "revealBias": "Révéler le Biais",
-        "case": "Cas {current}/{total}",
-        "nextCase": "Cas Suivant"
-      },
-      "tokenCounter": {
-        "title": "Compteur de Tokens",
-        "instruction": "Combien de tokens un LLM voit-il ?",
-        "sentence": "Phrase {current}/{total}",
-        "actual": "Réel",
-        "tokens": "tokens",
-        "yourGuess": "Votre estimation",
-        "exact": "Exact !",
-        "soClose": "Presque !",
-        "offBy": "Écart de {count}"
-      },
-      "promptEngineer": {
-        "title": "Ingénieur Prompt",
-        "instruction": "Quel prompt fonctionnerait le mieux ?",
-        "task": "Tâche"
-      },
-      "jargonBuster": {
-        "title": "Démystificateur de Jargon",
-        "instruction": "Cette définition est-elle correcte ?",
-        "term": "Terme",
-        "true": "Vrai",
-        "false": "Faux",
-        "timeUp": "Temps écoulé !"
-      }
-    },
-    "sentimentSection": {
-      "title": "Analyse de Sentiment",
-      "description": "Analysez le ton émotionnel de n'importe quel texte grâce au NLP par mots-clés — fonctionne entièrement dans votre navigateur.",
-      "placeholder": "Tapez ou collez du texte pour analyser son sentiment...",
-      "analyse": "Analyser le Sentiment",
-      "analysing": "Analyse en cours...",
-      "confidence": "Confiance",
-      "positive": "Positif",
-      "negative": "Négatif",
-      "neutral": "Neutre"
-    },
-    "neuralSection": {
-      "title": "Visualiseur de Réseau Neuronal",
-      "description": "Voyez comment les données circulent dans un réseau neuronal. Ajustez les entrées et observez les activations se propager à travers les couches cachées.",
-      "input": "Entrée {num}",
-      "forwardPass": "Propagation →",
-      "explanation": "Ajustez les curseurs d'entrée et cliquez sur Propagation pour observer les données traverser le réseau. Les connexions bleues sont des poids positifs, les rouges négatifs. Les lignes plus épaisses signifient des connexions plus fortes.",
-      "layerInput": "Entrée",
-      "layerHidden1": "Cachée 1",
-      "layerHidden2": "Cachée 2",
-      "layerOutput": "Sortie"
-    },
-    "sortingSection": {
-      "title": "Visualiseur d'Algorithmes de Tri",
-      "description": "Regardez les algorithmes de tri en action. Comparez le tri à bulles, le tri rapide et le tri par fusion.",
-      "bubble": "Tri à bulles",
-      "quick": "Tri rapide",
-      "merge": "Tri par fusion",
-      "comparisons": "comparaisons",
-      "shuffle": "Mélanger",
-      "sort": "Trier",
-      "sorting": "Tri en cours..."
-    },
-    "tokenizerSection": {
-      "title": "Tokeniseur IA",
-      "description": "Voyez comment les grands modèles de langage découpent le texte en tokens — l'unité fondamentale que l'IA lit et traite.",
-      "placeholder": "Tapez du texte pour voir comment l'IA le découpe en tokens...",
-      "tokens": "tokens",
-      "characters": "caractères",
-      "wordsEquivalent": "~{count} mots équivalents",
-      "explanation": "Les modèles d'IA ne lisent pas le texte comme les humains. Ils découpent le texte en tokens — des morceaux de sous-mots que le modèle traite individuellement. Les mots plus longs sont divisés en morceaux plus petits."
-    }
   },
   "programs": {
     "badge": "5 niveaux d'apprentissage",
@@ -559,5 +361,215 @@
     "shareDesc": "Aidez les autres à découvrir l'éducation IA gratuite",
     "openSource": "Open Source",
     "openSourceDesc": "Construit ouvertement — code, contributions ou fork"
+  },
+  "lab": {
+    "title": "Labo IA",
+    "subtitle": "Expérimentez avec de vrais concepts d'IA directement dans votre navigateur. Pas d'installation, pas de code — jouez et apprenez !",
+    "badge": "Interactif • Amusant • Éducatif",
+    "pageTitle": "Labo IA",
+    "pageDescription": "Expérimentez les concepts d'IA en pratique. Jouez à des mini-jeux, analysez les sentiments, visualisez les réseaux neuronaux et explorez la tokenisation.",
+    "footer": "Toutes les démos fonctionnent entièrement dans votre navigateur — aucune donnée n'est envoyée à un serveur.",
+    "tabs": {
+      "games": {
+        "label": "Mini Jeux",
+        "desc": "Un jeu IA aléatoire à chaque visite"
+      },
+      "sentiment": {
+        "label": "Analyse de Sentiment",
+        "desc": "Détectez les émotions dans le texte"
+      },
+      "neural": {
+        "label": "Réseau Neuronal",
+        "desc": "Visualisez comment les neurones apprennent"
+      },
+      "sorting": {
+        "label": "Algorithmes de Tri",
+        "desc": "Regardez les algorithmes trier en temps réel"
+      },
+      "tokenizer": {
+        "label": "Tokeniseur",
+        "desc": "Voyez comment l'IA lit votre texte"
+      }
+    },
+    "aiOrHuman": {
+      "title": "Pouvez-vous faire la différence ?",
+      "description": "Lisez {count} extraits de texte et devinez si chacun a été écrit par un humain ou généré par l'IA. C'est plus difficile qu'on ne le pense.",
+      "startGame": "Commencer",
+      "playAgain": "Rejouer",
+      "human": "Humain",
+      "ai": "IA Générée",
+      "round": "Tour {current} sur {total}",
+      "score": "Score",
+      "streak": "{count} série",
+      "bestStreak": "{count} meilleure série",
+      "accuracy": "{pct}% de précision",
+      "correct": "Correct !",
+      "wrong": "Faux !",
+      "writtenBy": "Écrit par",
+      "writtenByAI": "IA",
+      "writtenByHuman": "un humain",
+      "duration": "~2 minutes",
+      "rounds": "{count} tours",
+      "learnDetection": "Apprenez à détecter l'IA",
+      "scoreTitle90": "Détective IA",
+      "scoreTitle75": "Œil aiguisé",
+      "scoreTitle50": "En progression",
+      "scoreTitleLow": "L'IA vous a trompé"
+    },
+    "common": {
+      "score": "Score",
+      "round": "Tour",
+      "correct": "Correct !",
+      "wrong": "Faux !",
+      "tryAgain": "Réessayer",
+      "next": "Suivant",
+      "playAgain": "Rejouer",
+      "playThisGame": "Jouer à ce jeu",
+      "randomGame": "Jeu aléatoire différent",
+      "newGame": "Nouveau Jeu",
+      "orPickOne": "Ou choisissez :",
+      "finish": "Terminer",
+      "checkOrder": "Vérifier mon ordre",
+      "undoLast": "Annuler le dernier",
+      "yourOrder": "Votre ordre :",
+      "lockIn": "Confirmer",
+      "seeResults": "Voir les résultats",
+      "go": "Go",
+      "startTyping": "Commencez à taper...",
+      "ready": "Prêt...",
+      "lastTime": "Dernier : {time}s",
+      "moves": "coups",
+      "pairs": "paires",
+      "avgDiff": "diff. moy.",
+      "perTerm": "par terme · {count} termes tapés",
+      "avgSeconds": "{avg}s moy.",
+      "patternsSpotted": "motifs repérés",
+      "conceptsDecoded": "concepts IA décodés",
+      "binaryDecoded": "Binaire décodé comme une machine",
+      "jargonBusted": "jargon démystifié",
+      "promptScore": "score d'ingénierie de prompt",
+      "avgDistance": "Distance moyenne du nombre réel de tokens",
+      "greatDetective": "Excellent travail de détective !",
+      "reviewedBias": "Vous avez examiné {count} scénarios de biais. Comprendre les biais est la première étape pour construire une IA plus juste.",
+      "perfectOrder": "Ordre parfait !",
+      "notQuiteTimeline": "Pas tout à fait — voici la chronologie correcte :",
+      "allPairsMatched": "Les {count} paires trouvées"
+    },
+    "games": {
+      "emojiDecoder": {
+        "title": "Décodeur d'Émojis",
+        "instruction": "Quel concept IA ces émojis représentent-ils ?"
+      },
+      "binaryTranslator": {
+        "title": "Traducteur Binaire",
+        "instruction": "Décodez le binaire en un mot",
+        "hint": "Indice : Chaque groupe de 8 chiffres = une lettre (A=65, B=66...)",
+        "placeholder": "Tapez le mot...",
+        "word": "Mot {current}/{total}"
+      },
+      "speedTyper": {
+        "title": "Vitesse de Frappe",
+        "instruction": "Tapez le terme IA le plus vite possible !",
+        "term": "Terme {current}/{total}",
+        "placeholder": "Commencez à taper..."
+      },
+      "oddOneOut": {
+        "title": "L'Intrus",
+        "instruction": "Trouvez l'intrus"
+      },
+      "memoryMatch": {
+        "title": "Jeu de Mémoire",
+        "instruction": "Associez chaque terme IA à sa définition"
+      },
+      "aiTimeline": {
+        "title": "Chronologie IA",
+        "instruction": "Appuyez sur les événements par ordre chronologique (le plus ancien en premier)"
+      },
+      "biasDetective": {
+        "title": "Détective de Biais",
+        "instruction": "Lisez le scénario et repérez le biais",
+        "revealBias": "Révéler le Biais",
+        "case": "Cas {current}/{total}",
+        "nextCase": "Cas Suivant"
+      },
+      "tokenCounter": {
+        "title": "Compteur de Tokens",
+        "instruction": "Combien de tokens un LLM voit-il ?",
+        "sentence": "Phrase {current}/{total}",
+        "actual": "Réel",
+        "tokens": "tokens",
+        "yourGuess": "Votre estimation",
+        "exact": "Exact !",
+        "soClose": "Presque !",
+        "offBy": "Écart de {count}"
+      },
+      "promptEngineer": {
+        "title": "Ingénieur Prompt",
+        "instruction": "Quel prompt fonctionnerait le mieux ?",
+        "task": "Tâche"
+      },
+      "jargonBuster": {
+        "title": "Démystificateur de Jargon",
+        "instruction": "Cette définition est-elle correcte ?",
+        "term": "Terme",
+        "true": "Vrai",
+        "false": "Faux",
+        "timeUp": "Temps écoulé !"
+      },
+      "neuralNetwork": {
+        "title": "Neural Network Playground",
+        "instruction": "Place data points and train a neural network to classify them"
+      },
+      "promptDojo": {
+        "title": "Prompt Engineering Dojo",
+        "instruction": "Craft the perfect prompt to match the target output"
+      },
+      "algoRace": {
+        "title": "Algorithm Race",
+        "instruction": "Bet on a sorting algorithm and watch them race!"
+      }
+    },
+    "sentimentSection": {
+      "title": "Analyse de Sentiment",
+      "description": "Analysez le ton émotionnel de n'importe quel texte grâce au NLP par mots-clés — fonctionne entièrement dans votre navigateur.",
+      "placeholder": "Tapez ou collez du texte pour analyser son sentiment...",
+      "analyse": "Analyser le Sentiment",
+      "analysing": "Analyse en cours...",
+      "confidence": "Confiance",
+      "positive": "Positif",
+      "negative": "Négatif",
+      "neutral": "Neutre"
+    },
+    "neuralSection": {
+      "title": "Visualiseur de Réseau Neuronal",
+      "description": "Voyez comment les données circulent dans un réseau neuronal. Ajustez les entrées et observez les activations se propager à travers les couches cachées.",
+      "input": "Entrée {num}",
+      "forwardPass": "Propagation →",
+      "explanation": "Ajustez les curseurs d'entrée et cliquez sur Propagation pour observer les données traverser le réseau. Les connexions bleues sont des poids positifs, les rouges négatifs. Les lignes plus épaisses signifient des connexions plus fortes.",
+      "layerInput": "Entrée",
+      "layerHidden1": "Cachée 1",
+      "layerHidden2": "Cachée 2",
+      "layerOutput": "Sortie"
+    },
+    "sortingSection": {
+      "title": "Visualiseur d'Algorithmes de Tri",
+      "description": "Regardez les algorithmes de tri en action. Comparez le tri à bulles, le tri rapide et le tri par fusion.",
+      "bubble": "Tri à bulles",
+      "quick": "Tri rapide",
+      "merge": "Tri par fusion",
+      "comparisons": "comparaisons",
+      "shuffle": "Mélanger",
+      "sort": "Trier",
+      "sorting": "Tri en cours..."
+    },
+    "tokenizerSection": {
+      "title": "Tokeniseur IA",
+      "description": "Voyez comment les grands modèles de langage découpent le texte en tokens — l'unité fondamentale que l'IA lit et traite.",
+      "placeholder": "Tapez du texte pour voir comment l'IA le découpe en tokens...",
+      "tokens": "tokens",
+      "characters": "caractères",
+      "wordsEquivalent": "~{count} mots équivalents",
+      "explanation": "Les modèles d'IA ne lisent pas le texte comme les humains. Ils découpent le texte en tokens — des morceaux de sous-mots que le modèle traite individuellement. Les mots plus longs sont divisés en morceaux plus petits."
+    }
   }
 }

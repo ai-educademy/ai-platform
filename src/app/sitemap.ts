@@ -33,8 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localizedEntries("", "weekly", 1.0, now),
     // Programs listing
     ...localizedEntries("/programs", "weekly", 0.9, now),
-    // Playground
-    ...localizedEntries("/playground", "monthly", 0.8, now),
+    // Lab
+    ...localizedEntries("/lab", "monthly", 0.8, now),
     // About
     ...localizedEntries("/about", "monthly", 0.7, now),
     // Lessons listing

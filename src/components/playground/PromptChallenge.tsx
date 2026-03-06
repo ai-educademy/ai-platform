@@ -1,4 +1,6 @@
 "use client";
 
-// Re-export PromptEngineer from MiniGames as a standalone component
-export { PromptEngineer as default } from "./MiniGames";
+// Placeholder — PromptEngineer quiz was replaced by PromptEngineeringDojo in MiniGames
+export default function PromptChallenge() {
+  return null;
+}

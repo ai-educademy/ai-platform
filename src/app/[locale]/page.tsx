@@ -80,7 +80,7 @@ export default async function HomePage({
                 {t("hero.cta")} →
               </Link>
               <Link
-                href={`${basePath}/playground`}
+                href={`${basePath}/lab`}
                 className="px-10 py-4 border-2 border-[var(--color-border)] rounded-2xl text-lg font-bold hover:border-indigo-500 hover:text-indigo-500 transition-all hover:shadow-lg backdrop-blur-sm"
               >
                 {t("hero.ctaSecondary")} →

@@ -38,7 +38,7 @@ export function Navbar() {
 
   const links = [
     { href: `${basePath}/programs`, label: t("programs"), match: "/programs" },
-    { href: `${basePath}/playground`, label: t("playground"), match: "/playground" },
+    { href: `${basePath}/lab`, label: t("lab"), match: "/lab" },
     { href: `${basePath}/blog`, label: t("blog"), match: "/blog" },
     { href: `${basePath}/about`, label: t("about"), match: "/about" },
   ];

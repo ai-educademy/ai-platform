@@ -6,13 +6,13 @@
   "nav": {
     "home": "Home",
     "lessons": "Lessen",
-    "playground": "Speeltuin",
     "about": "Over ons",
     "getStarted": "Begin te Leren — Het is Gratis",
     "language": "Taal",
     "dashboard": "Dashboard",
     "programs": "Programma's",
-    "blog": "Blog"
+    "blog": "Blog",
+    "lab": "Lab"
   },
   "hero": {
     "badge": "Gratis • Open Source • Meertalig",
@@ -20,7 +20,7 @@
     "titleHighlight": "voor Iedereen.",
     "subtitle": "Interactieve lessen, praktische experimenten en echte projecten — rechtstreeks in je browser. Geen programmeer- of wiskundekennis vereist.",
     "cta": "Begin Je AI Reis",
-    "ctaSecondary": "Verken de Playground",
+    "ctaSecondary": "Verken Lab",
     "students": "Studenten leren",
     "languages": "Talen",
     "lessons": "Interactieve lessen",
@@ -90,7 +90,6 @@
   "footer": {
     "tagline": "Gratis AI-onderwijs voor iedereen, in elke taal.",
     "lessons": "Lessen",
-    "playground": "Speeltuin",
     "about": "Over ons",
     "github": "GitHub",
     "contributing": "Bijdragen",
@@ -102,7 +101,8 @@
     "communityHeader": "Community",
     "supportHeader": "Ondersteuning",
     "programs": "Programma's",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "lab": "Lab"
   },
   "about": {
     "title": "Over AI Educademy",
@@ -176,204 +176,6 @@
     "lessonsComingSoon": "Lessen komen binnenkort",
     "checkBackSoon": "Kom snel terug!",
     "backToProgram": "Terug naar"
-  },
-  "playground": {
-    "title": "AI Speeltuin",
-    "subtitle": "Experimenteer met echte AI-concepten in je browser. Geen installatie, geen code — gewoon spelen en leren!",
-    "badge": "Interactief • Leuk • Leerzaam",
-    "pageTitle": "AI Speeltuin",
-    "pageDescription": "Experimenteer hands-on met AI-concepten. Speel minigames, analyseer sentiment, visualiseer neurale netwerken en verken tokenisatie.",
-    "footer": "Alle demo's draaien volledig in je browser — er worden geen gegevens naar een server gestuurd.",
-    "tabs": {
-      "games": {
-        "label": "Minispellen",
-        "desc": "Willekeurig AI-spel bij elk bezoek"
-      },
-      "sentiment": {
-        "label": "Sentimentanalyse",
-        "desc": "Detecteer emoties in tekst"
-      },
-      "neural": {
-        "label": "Neuraal Netwerk",
-        "desc": "Visualiseer hoe neuronen leren"
-      },
-      "sorting": {
-        "label": "Sorteeralgoritmen",
-        "desc": "Bekijk algoritmen in realtime sorteren"
-      },
-      "tokenizer": {
-        "label": "Tokenizer",
-        "desc": "Zie hoe AI je tekst leest"
-      }
-    },
-    "aiOrHuman": {
-      "title": "Kun je het verschil zien?",
-      "description": "Lees {count} tekstfragmenten en raad of elk door een mens geschreven is of door AI gegenereerd. Het is moeilijker dan je denkt.",
-      "startGame": "Spel Starten",
-      "playAgain": "Opnieuw Spelen",
-      "human": "Mens",
-      "ai": "AI Gegenereerd",
-      "round": "Ronde {current} van {total}",
-      "score": "Score",
-      "streak": "{count} reeks",
-      "bestStreak": "{count} beste reeks",
-      "accuracy": "{pct}% nauwkeurig",
-      "correct": "Juist!",
-      "wrong": "Fout!",
-      "writtenBy": "Geschreven door",
-      "writtenByAI": "AI",
-      "writtenByHuman": "een mens",
-      "duration": "~2 minuten",
-      "rounds": "{count} rondes",
-      "learnDetection": "Leer AI-detectie",
-      "scoreTitle90": "AI Detective",
-      "scoreTitle75": "Scherp Oog",
-      "scoreTitle50": "Op Weg",
-      "scoreTitleLow": "AI Heeft Je Gefopt"
-    },
-    "common": {
-      "score": "Score",
-      "round": "Ronde",
-      "correct": "Juist!",
-      "wrong": "Fout!",
-      "tryAgain": "Probeer Opnieuw",
-      "next": "Volgende",
-      "playAgain": "Opnieuw Spelen",
-      "playThisGame": "Speel Dit Spel",
-      "randomGame": "Ander Willekeurig Spel",
-      "newGame": "Nieuw Spel",
-      "orPickOne": "Of kies er een:",
-      "finish": "Voltooien",
-      "checkOrder": "Controleer Mijn Volgorde",
-      "undoLast": "Laatste ongedaan maken",
-      "yourOrder": "Jouw volgorde:",
-      "lockIn": "Bevestigen",
-      "seeResults": "Resultaten Bekijken",
-      "go": "Go",
-      "startTyping": "Begin te typen...",
-      "ready": "Klaar...",
-      "lastTime": "Laatste: {time}s",
-      "moves": "zetten",
-      "pairs": "paren",
-      "avgDiff": "gem. verschil",
-      "perTerm": "per term · {count} termen getypt",
-      "avgSeconds": "{avg}s gem.",
-      "patternsSpotted": "patronen gespot",
-      "conceptsDecoded": "AI-concepten gedecodeerd",
-      "binaryDecoded": "Binair gedecodeerd als een machine",
-      "jargonBusted": "jargon ontrafeld",
-      "promptScore": "prompt engineering score",
-      "avgDistance": "Gemiddelde afstand tot werkelijk aantal tokens",
-      "greatDetective": "Geweldig detectivewerk!",
-      "reviewedBias": "Je hebt {count} biasscenario's bekeken. Bias begrijpen is de eerste stap naar eerlijkere AI.",
-      "perfectOrder": "Perfecte volgorde!",
-      "notQuiteTimeline": "Niet helemaal — hier is de juiste tijdlijn:",
-      "allPairsMatched": "Alle {count} paren gevonden"
-    },
-    "games": {
-      "emojiDecoder": {
-        "title": "Emoji Decoder",
-        "instruction": "Welk AI-concept stellen deze emoji's voor?"
-      },
-      "binaryTranslator": {
-        "title": "Binaire Vertaler",
-        "instruction": "Decodeer het binaire getal naar een woord",
-        "hint": "Hint: Elke groep van 8 cijfers = één letter (A=65, B=66...)",
-        "placeholder": "Typ het woord...",
-        "word": "Woord {current}/{total}"
-      },
-      "speedTyper": {
-        "title": "Sneltyper",
-        "instruction": "Typ de AI-term zo snel mogelijk!",
-        "term": "Term {current}/{total}",
-        "placeholder": "Begin te typen..."
-      },
-      "oddOneOut": {
-        "title": "Vreemde Eend",
-        "instruction": "Vind de vreemde eend"
-      },
-      "memoryMatch": {
-        "title": "Memory",
-        "instruction": "Koppel elke AI-term aan zijn definitie"
-      },
-      "aiTimeline": {
-        "title": "AI Tijdlijn",
-        "instruction": "Tik op gebeurtenissen in chronologische volgorde (oudste eerst)"
-      },
-      "biasDetective": {
-        "title": "Bias Detective",
-        "instruction": "Lees het scenario en spot de bias",
-        "revealBias": "Onthul de Bias",
-        "case": "Zaak {current}/{total}",
-        "nextCase": "Volgende Zaak"
-      },
-      "tokenCounter": {
-        "title": "Token Teller",
-        "instruction": "Hoeveel tokens ziet een LLM?",
-        "sentence": "Zin {current}/{total}",
-        "actual": "Werkelijk",
-        "tokens": "tokens",
-        "yourGuess": "Jouw schatting",
-        "exact": "Precies!",
-        "soClose": "Bijna!",
-        "offBy": "Verschil van {count}"
-      },
-      "promptEngineer": {
-        "title": "Prompt Engineer",
-        "instruction": "Welke prompt zou beter werken?",
-        "task": "Taak"
-      },
-      "jargonBuster": {
-        "title": "Jargon Ontrafelen",
-        "instruction": "Is deze definitie correct?",
-        "term": "Term",
-        "true": "Waar",
-        "false": "Onwaar",
-        "timeUp": "Tijd is op!"
-      }
-    },
-    "sentimentSection": {
-      "title": "Sentimentanalyse",
-      "description": "Analyseer de emotionele toon van elke tekst met op trefwoorden gebaseerde NLP — draait volledig in je browser.",
-      "placeholder": "Typ of plak tekst om het sentiment te analyseren...",
-      "analyse": "Sentiment Analyseren",
-      "analysing": "Analyseren...",
-      "confidence": "Vertrouwen",
-      "positive": "Positief",
-      "negative": "Negatief",
-      "neutral": "Neutraal"
-    },
-    "neuralSection": {
-      "title": "Neuraal Netwerk Visualisatie",
-      "description": "Zie hoe data door een neuraal netwerk stroomt. Pas invoer aan en kijk hoe activaties zich door verborgen lagen verspreiden.",
-      "input": "Invoer {num}",
-      "forwardPass": "Voorwaartse Doorgang →",
-      "explanation": "Pas de invoerschuifregelaars aan en klik op Voorwaartse Doorgang om data door het netwerk te zien stromen. Blauwe verbindingen zijn positieve gewichten, rode zijn negatief. Dikkere lijnen betekenen sterkere verbindingen.",
-      "layerInput": "Invoer",
-      "layerHidden1": "Verborgen 1",
-      "layerHidden2": "Verborgen 2",
-      "layerOutput": "Uitvoer"
-    },
-    "sortingSection": {
-      "title": "Sorteeralgoritme Visualisatie",
-      "description": "Bekijk sorteeralgoritmen in actie. Vergelijk Bubble Sort, Quick Sort en Merge Sort naast elkaar.",
-      "bubble": "Bubble Sort",
-      "quick": "Quick Sort",
-      "merge": "Merge Sort",
-      "comparisons": "vergelijkingen",
-      "shuffle": "Schudden",
-      "sort": "Sorteren",
-      "sorting": "Sorteren..."
-    },
-    "tokenizerSection": {
-      "title": "AI Tokenizer",
-      "description": "Zie hoe grote taalmodellen tekst in tokens opsplitsen — de fundamentele eenheid die AI leest en verwerkt.",
-      "placeholder": "Typ tekst om te zien hoe AI het in tokens opdeelt...",
-      "tokens": "tokens",
-      "characters": "tekens",
-      "wordsEquivalent": "~{count} woorden equivalent",
-      "explanation": "AI-modellen lezen tekst niet zoals mensen. Ze splitsen tekst op in tokens — subwoordstukken die het model individueel verwerkt. Langere woorden worden in kleinere stukken gesplitst."
-    }
   },
   "programs": {
     "badge": "5 leerniveaus",
@@ -559,5 +361,215 @@
     "shareDesc": "Help anderen gratis AI-onderwijs te ontdekken",
     "openSource": "Open Source",
     "openSourceDesc": "Open gebouwd — bekijk code, draag bij of fork"
+  },
+  "lab": {
+    "title": "AI Lab",
+    "subtitle": "Experimenteer met echte AI-concepten in je browser. Geen installatie, geen code — gewoon spelen en leren!",
+    "badge": "Interactief • Leuk • Leerzaam",
+    "pageTitle": "AI Lab",
+    "pageDescription": "Experimenteer hands-on met AI-concepten. Speel minigames, analyseer sentiment, visualiseer neurale netwerken en verken tokenisatie.",
+    "footer": "Alle demo's draaien volledig in je browser — er worden geen gegevens naar een server gestuurd.",
+    "tabs": {
+      "games": {
+        "label": "Minispellen",
+        "desc": "Willekeurig AI-spel bij elk bezoek"
+      },
+      "sentiment": {
+        "label": "Sentimentanalyse",
+        "desc": "Detecteer emoties in tekst"
+      },
+      "neural": {
+        "label": "Neuraal Netwerk",
+        "desc": "Visualiseer hoe neuronen leren"
+      },
+      "sorting": {
+        "label": "Sorteeralgoritmen",
+        "desc": "Bekijk algoritmen in realtime sorteren"
+      },
+      "tokenizer": {
+        "label": "Tokenizer",
+        "desc": "Zie hoe AI je tekst leest"
+      }
+    },
+    "aiOrHuman": {
+      "title": "Kun je het verschil zien?",
+      "description": "Lees {count} tekstfragmenten en raad of elk door een mens geschreven is of door AI gegenereerd. Het is moeilijker dan je denkt.",
+      "startGame": "Spel Starten",
+      "playAgain": "Opnieuw Spelen",
+      "human": "Mens",
+      "ai": "AI Gegenereerd",
+      "round": "Ronde {current} van {total}",
+      "score": "Score",
+      "streak": "{count} reeks",
+      "bestStreak": "{count} beste reeks",
+      "accuracy": "{pct}% nauwkeurig",
+      "correct": "Juist!",
+      "wrong": "Fout!",
+      "writtenBy": "Geschreven door",
+      "writtenByAI": "AI",
+      "writtenByHuman": "een mens",
+      "duration": "~2 minuten",
+      "rounds": "{count} rondes",
+      "learnDetection": "Leer AI-detectie",
+      "scoreTitle90": "AI Detective",
+      "scoreTitle75": "Scherp Oog",
+      "scoreTitle50": "Op Weg",
+      "scoreTitleLow": "AI Heeft Je Gefopt"
+    },
+    "common": {
+      "score": "Score",
+      "round": "Ronde",
+      "correct": "Juist!",
+      "wrong": "Fout!",
+      "tryAgain": "Probeer Opnieuw",
+      "next": "Volgende",
+      "playAgain": "Opnieuw Spelen",
+      "playThisGame": "Speel Dit Spel",
+      "randomGame": "Ander Willekeurig Spel",
+      "newGame": "Nieuw Spel",
+      "orPickOne": "Of kies er een:",
+      "finish": "Voltooien",
+      "checkOrder": "Controleer Mijn Volgorde",
+      "undoLast": "Laatste ongedaan maken",
+      "yourOrder": "Jouw volgorde:",
+      "lockIn": "Bevestigen",
+      "seeResults": "Resultaten Bekijken",
+      "go": "Go",
+      "startTyping": "Begin te typen...",
+      "ready": "Klaar...",
+      "lastTime": "Laatste: {time}s",
+      "moves": "zetten",
+      "pairs": "paren",
+      "avgDiff": "gem. verschil",
+      "perTerm": "per term · {count} termen getypt",
+      "avgSeconds": "{avg}s gem.",
+      "patternsSpotted": "patronen gespot",
+      "conceptsDecoded": "AI-concepten gedecodeerd",
+      "binaryDecoded": "Binair gedecodeerd als een machine",
+      "jargonBusted": "jargon ontrafeld",
+      "promptScore": "prompt engineering score",
+      "avgDistance": "Gemiddelde afstand tot werkelijk aantal tokens",
+      "greatDetective": "Geweldig detectivewerk!",
+      "reviewedBias": "Je hebt {count} biasscenario's bekeken. Bias begrijpen is de eerste stap naar eerlijkere AI.",
+      "perfectOrder": "Perfecte volgorde!",
+      "notQuiteTimeline": "Niet helemaal — hier is de juiste tijdlijn:",
+      "allPairsMatched": "Alle {count} paren gevonden"
+    },
+    "games": {
+      "emojiDecoder": {
+        "title": "Emoji Decoder",
+        "instruction": "Welk AI-concept stellen deze emoji's voor?"
+      },
+      "binaryTranslator": {
+        "title": "Binaire Vertaler",
+        "instruction": "Decodeer het binaire getal naar een woord",
+        "hint": "Hint: Elke groep van 8 cijfers = één letter (A=65, B=66...)",
+        "placeholder": "Typ het woord...",
+        "word": "Woord {current}/{total}"
+      },
+      "speedTyper": {
+        "title": "Sneltyper",
+        "instruction": "Typ de AI-term zo snel mogelijk!",
+        "term": "Term {current}/{total}",
+        "placeholder": "Begin te typen..."
+      },
+      "oddOneOut": {
+        "title": "Vreemde Eend",
+        "instruction": "Vind de vreemde eend"
+      },
+      "memoryMatch": {
+        "title": "Memory",
+        "instruction": "Koppel elke AI-term aan zijn definitie"
+      },
+      "aiTimeline": {
+        "title": "AI Tijdlijn",
+        "instruction": "Tik op gebeurtenissen in chronologische volgorde (oudste eerst)"
+      },
+      "biasDetective": {
+        "title": "Bias Detective",
+        "instruction": "Lees het scenario en spot de bias",
+        "revealBias": "Onthul de Bias",
+        "case": "Zaak {current}/{total}",
+        "nextCase": "Volgende Zaak"
+      },
+      "tokenCounter": {
+        "title": "Token Teller",
+        "instruction": "Hoeveel tokens ziet een LLM?",
+        "sentence": "Zin {current}/{total}",
+        "actual": "Werkelijk",
+        "tokens": "tokens",
+        "yourGuess": "Jouw schatting",
+        "exact": "Precies!",
+        "soClose": "Bijna!",
+        "offBy": "Verschil van {count}"
+      },
+      "promptEngineer": {
+        "title": "Prompt Engineer",
+        "instruction": "Welke prompt zou beter werken?",
+        "task": "Taak"
+      },
+      "jargonBuster": {
+        "title": "Jargon Ontrafelen",
+        "instruction": "Is deze definitie correct?",
+        "term": "Term",
+        "true": "Waar",
+        "false": "Onwaar",
+        "timeUp": "Tijd is op!"
+      },
+      "neuralNetwork": {
+        "title": "Neural Network Playground",
+        "instruction": "Place data points and train a neural network to classify them"
+      },
+      "promptDojo": {
+        "title": "Prompt Engineering Dojo",
+        "instruction": "Craft the perfect prompt to match the target output"
+      },
+      "algoRace": {
+        "title": "Algorithm Race",
+        "instruction": "Bet on a sorting algorithm and watch them race!"
+      }
+    },
+    "sentimentSection": {
+      "title": "Sentimentanalyse",
+      "description": "Analyseer de emotionele toon van elke tekst met op trefwoorden gebaseerde NLP — draait volledig in je browser.",
+      "placeholder": "Typ of plak tekst om het sentiment te analyseren...",
+      "analyse": "Sentiment Analyseren",
+      "analysing": "Analyseren...",
+      "confidence": "Vertrouwen",
+      "positive": "Positief",
+      "negative": "Negatief",
+      "neutral": "Neutraal"
+    },
+    "neuralSection": {
+      "title": "Neuraal Netwerk Visualisatie",
+      "description": "Zie hoe data door een neuraal netwerk stroomt. Pas invoer aan en kijk hoe activaties zich door verborgen lagen verspreiden.",
+      "input": "Invoer {num}",
+      "forwardPass": "Voorwaartse Doorgang →",
+      "explanation": "Pas de invoerschuifregelaars aan en klik op Voorwaartse Doorgang om data door het netwerk te zien stromen. Blauwe verbindingen zijn positieve gewichten, rode zijn negatief. Dikkere lijnen betekenen sterkere verbindingen.",
+      "layerInput": "Invoer",
+      "layerHidden1": "Verborgen 1",
+      "layerHidden2": "Verborgen 2",
+      "layerOutput": "Uitvoer"
+    },
+    "sortingSection": {
+      "title": "Sorteeralgoritme Visualisatie",
+      "description": "Bekijk sorteeralgoritmen in actie. Vergelijk Bubble Sort, Quick Sort en Merge Sort naast elkaar.",
+      "bubble": "Bubble Sort",
+      "quick": "Quick Sort",
+      "merge": "Merge Sort",
+      "comparisons": "vergelijkingen",
+      "shuffle": "Schudden",
+      "sort": "Sorteren",
+      "sorting": "Sorteren..."
+    },
+    "tokenizerSection": {
+      "title": "AI Tokenizer",
+      "description": "Zie hoe grote taalmodellen tekst in tokens opsplitsen — de fundamentele eenheid die AI leest en verwerkt.",
+      "placeholder": "Typ tekst om te zien hoe AI het in tokens opdeelt...",
+      "tokens": "tokens",
+      "characters": "tekens",
+      "wordsEquivalent": "~{count} woorden equivalent",
+      "explanation": "AI-modellen lezen tekst niet zoals mensen. Ze splitsen tekst op in tokens — subwoordstukken die het model individueel verwerkt. Langere woorden worden in kleinere stukken gesplitst."
+    }
   }
 }

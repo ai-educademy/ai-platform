@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useTranslations } from "next-intl";
 
 /* ═══════════════════════════════════════════════════════════════
    GameShell — consistent wrapper for all mini-games
@@ -30,860 +29,1044 @@ function StatusBar({ left, right }: { left: React.ReactNode; right?: React.React
 }
 
 function GameOverScreen({ emoji, stat, label, onReplay }: { emoji: string; stat: string; label: string; onReplay: () => void }) {
-  const t = useTranslations("playground.common");
   return (
     <div className="text-center py-8 space-y-4">
       <div className="text-6xl animate-bounce">{emoji}</div>
-      <p className="text-4xl font-bold">{stat}</p>
-      <p className="text-sm text-[var(--color-text-muted)]">{label}</p>
-      <button onClick={onReplay} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all shadow-lg shadow-indigo-500/20">
-        {t("playAgain")}
+      <p className="text-4xl font-bold font-mono">{stat}</p>
+      <p className="text-sm text-[var(--color-text-muted)] font-mono">{label}</p>
+      <button onClick={onReplay} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all shadow-lg shadow-indigo-500/20 font-mono">
+        ▶ Play Again
       </button>
     </div>
   );
 }
 
-/* ─── 1. Emoji Decoder ─── */
-const EMOJI_PUZZLES = [
-  { emojis: "🧠 + 🕸️", answer: "Neural Network", options: ["Neural Network", "Deep Learning", "Decision Tree", "Random Forest"] },
-  { emojis: "🤖 + 📝", answer: "Natural Language Processing", options: ["Computer Vision", "Natural Language Processing", "Robotics", "Data Mining"] },
-  { emojis: "👁️ + 💻", answer: "Computer Vision", options: ["Computer Vision", "Neural Network", "OCR", "Facial Recognition"] },
-  { emojis: "🎲 + 🌲", answer: "Random Forest", options: ["Decision Tree", "Random Forest", "Monte Carlo", "Bayesian Network"] },
-  { emojis: "🔄 + 📊", answer: "Feedback Loop", options: ["Feedback Loop", "Data Pipeline", "Recursion", "Backpropagation"] },
-  { emojis: "🏋️ + 📈", answer: "Training", options: ["Training", "Inference", "Testing", "Validation"] },
-  { emojis: "🎯 + 📉", answer: "Loss Function", options: ["Activation Function", "Loss Function", "Gradient Descent", "Optimiser"] },
-  { emojis: "🧬 + 💡", answer: "Genetic Algorithm", options: ["Genetic Algorithm", "Evolution Strategy", "DNA Computing", "Bioinformatics"] },
-  { emojis: "🗣️ + 🔊", answer: "Speech Recognition", options: ["Speech Recognition", "Text-to-Speech", "Voice Cloning", "Audio Processing"] },
-  { emojis: "🎨 + 🤖", answer: "Generative AI", options: ["Generative AI", "Style Transfer", "Image Classification", "Art Recognition"] },
-];
+/* ═══════════════════════════════════════════════════════════════
+   1. Neural Network Playground
+   Interactive 2-layer neural network visualization
+   ═══════════════════════════════════════════════════════════════ */
 
-export function EmojiDecoder() {
-  const t = useTranslations("playground");
-  const [puzzles, setPuzzles] = useState<typeof EMOJI_PUZZLES>([]);
-  const [current, setCurrent] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [gameOver, setGameOver] = useState(false);
-  const [transitioning, setTransitioning] = useState(false);
+// Simple neural network math
+function sigmoid(x: number): number { return 1 / (1 + Math.exp(-Math.max(-500, Math.min(500, x)))); }
+function sigmoidDeriv(x: number): number { return x * (1 - x); }
 
-  const reset = useCallback(() => {
-    setPuzzles([...EMOJI_PUZZLES].sort(() => Math.random() - 0.5).slice(0, 6));
-    setCurrent(0); setScore(0); setSelected(null); setGameOver(false); setTransitioning(false);
-  }, []);
-
-  useEffect(() => { reset(); }, [reset]);
-
-  const handleSelect = (option: string) => {
-    if (selected) return;
-    setSelected(option);
-    if (option === puzzles[current].answer) setScore(s => s + 1);
-    setTimeout(() => {
-      if (current + 1 >= puzzles.length) { setGameOver(true); return; }
-      setTransitioning(true);
-      setTimeout(() => { setCurrent(c => c + 1); setSelected(null); setTransitioning(false); }, 300);
-    }, 1200);
-  };
-
-  if (!puzzles.length) return null;
-
-  if (gameOver) {
-    return <GameOverScreen emoji={score >= 5 ? "🏆" : score >= 3 ? "👏" : "🎯"} stat={`${score}/${puzzles.length}`} label={t("common.conceptsDecoded")} onReplay={reset} />;
-  }
-
-  const puzzle = puzzles[current];
-  const isCorrect = selected === puzzle.answer;
-  const isWrong = selected !== null && !isCorrect;
-
-  return (
-    <GameShell title={t("games.emojiDecoder.title")}>
-      <style>{`
-        @keyframes ed-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-        @keyframes ed-shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-6px); } 40%,80% { transform: translateX(6px); } }
-        .ed-pulse { animation: ed-pulse 0.4s ease-in-out; }
-        .ed-shake { animation: ed-shake 0.4s ease-in-out; }
-      `}</style>
-      <StatusBar left={`${t("common.round")} ${current + 1}/${puzzles.length}`} right={`${t("common.score")}: ${score}`} />
-      <div
-        className="text-center py-8"
-        style={{ opacity: transitioning ? 0 : 1, transform: transitioning ? "translateY(12px)" : "translateY(0)", transition: "opacity 0.3s ease, transform 0.3s ease" }}
-      >
-        <div className={`text-8xl sm:text-9xl mb-6 leading-tight ${isCorrect ? "ed-pulse" : isWrong ? "ed-shake" : ""}`}>
-          {puzzle.emojis}
-        </div>
-        <p className="text-[var(--color-text-muted)]">{t("games.emojiDecoder.instruction")}</p>
-      </div>
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-3"
-        style={{ opacity: transitioning ? 0 : 1, transition: "opacity 0.3s ease" }}
-      >
-        {puzzle.options.map(opt => {
-          const optCorrect = selected === opt && opt === puzzle.answer;
-          const optWrong = selected === opt && opt !== puzzle.answer;
-          return (
-            <button key={opt} onClick={() => handleSelect(opt)} disabled={!!selected}
-              className={`min-h-[48px] p-4 rounded-xl border-2 font-medium text-left transition-all duration-300 ${
-                optCorrect ? "border-emerald-500 bg-emerald-500/15 text-emerald-400 scale-[1.03] shadow-lg shadow-emerald-500/20"
-                : optWrong ? "border-red-500 bg-red-500/10 text-red-400 ed-shake"
-                : selected && opt === puzzle.answer ? "border-emerald-500 bg-emerald-500/10"
-                : "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.98]"
-              }`}>
-              {opt}
-            </button>
-          );
-        })}
-      </div>
-    </GameShell>
-  );
+interface NNWeights {
+  w1: number[][]; b1: number[];
+  w2: number[]; b2: number;
 }
 
-/* ─── 2. Binary Translator ─── */
-const BINARY_WORDS = [
-  { binary: "01001000 01001001", answer: "HI" },
-  { binary: "01000001 01001001", answer: "AI" },
-  { binary: "01000010 01001111 01010100", answer: "BOT" },
-  { binary: "01000011 01001111 01000100 01000101", answer: "CODE" },
-  { binary: "01000100 01000001 01010100 01000001", answer: "DATA" },
-  { binary: "01001110 01000101 01010100", answer: "NET" },
-];
-
-export function BinaryTranslator() {
-  const t = useTranslations("playground");
-  const [words, setWords] = useState<typeof BINARY_WORDS>([]);
-  const [current, setCurrent] = useState(0);
-  const [input, setInput] = useState("");
-  const [score, setScore] = useState(0);
-  const [feedback, setFeedback] = useState<"correct" | "wrong" | null>(null);
-  const [gameOver, setGameOver] = useState(false);
-
-  const reset = useCallback(() => {
-    setWords([...BINARY_WORDS].sort(() => Math.random() - 0.5).slice(0, 4));
-    setCurrent(0); setInput(""); setScore(0); setFeedback(null); setGameOver(false);
-  }, []);
-
-  useEffect(() => { reset(); }, [reset]);
-
-  const handleSubmit = () => {
-    if (!input.trim() || !words.length) return;
-    const correct = input.trim().toUpperCase() === words[current].answer;
-    setFeedback(correct ? "correct" : "wrong");
-    if (correct) setScore(s => s + 1);
-    setTimeout(() => {
-      if (current + 1 >= words.length) setGameOver(true);
-      else { setCurrent(c => c + 1); setInput(""); setFeedback(null); }
-    }, 1000);
+function initWeights(hidden: number): NNWeights {
+  const rand = () => (Math.random() - 0.5) * 2;
+  return {
+    w1: Array.from({ length: hidden }, () => [rand(), rand()]),
+    b1: Array.from({ length: hidden }, rand),
+    w2: Array.from({ length: hidden }, rand),
+    b2: rand(),
   };
-
-  if (!words.length) return null;
-
-  if (gameOver) {
-    return <GameOverScreen emoji={score === words.length ? "🤖" : "💻"} stat={`${score}/${words.length}`} label={t("common.binaryDecoded")} onReplay={reset} />;
-  }
-
-  return (
-    <GameShell title={t("games.binaryTranslator.title")}>
-      <StatusBar left={`${t("common.round")} ${current + 1}/${words.length}`} right={`${t("common.score")}: ${score}`} />
-      <div className="text-center py-4">
-        <p className="text-xs text-[var(--color-text-muted)] mb-3">{t("games.binaryTranslator.hint")}</p>
-        <div className="font-mono text-2xl sm:text-3xl tracking-wider p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-          {words[current].binary}
-        </div>
-      </div>
-      <div className="flex gap-3">
-        <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSubmit()}
-          placeholder={t("games.binaryTranslator.placeholder")} maxLength={10} inputMode="text" autoCapitalize="characters"
-          className={`flex-1 min-h-[48px] px-4 py-3 rounded-xl border-2 bg-[var(--color-bg)] text-lg font-mono uppercase tracking-widest text-center transition-colors ${
-            feedback === "correct" ? "border-emerald-500" : feedback === "wrong" ? "border-red-500" : "border-[var(--color-border)] focus:border-indigo-500"
-          } focus:outline-none`} />
-        <button onClick={handleSubmit} className="min-h-[48px] px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors">
-          {t("common.go")}
-        </button>
-      </div>
-    </GameShell>
-  );
 }
 
-/* ─── 3. Speed Typer ─── */
-const AI_TERMS = ["machine learning", "neural network", "deep learning", "natural language", "computer vision", "reinforcement", "classification", "regression", "transformer", "attention", "gradient descent", "backpropagation", "convolutional", "generative ai", "large language model"];
+function forward(w: NNWeights, x: number, y: number): { hidden: number[]; output: number } {
+  const hidden = w.w1.map((wh, i) => sigmoid(wh[0] * x + wh[1] * y + w.b1[i]));
+  const output = sigmoid(hidden.reduce((s, h, i) => s + h * w.w2[i], 0) + w.b2);
+  return { hidden, output };
+}
 
-export function SpeedTyper() {
-  const t = useTranslations("playground");
-  const [terms, setTerms] = useState<string[]>([]);
-  const [current, setCurrent] = useState(0);
-  const [input, setInput] = useState("");
-  const [started, setStarted] = useState(false);
-  const [startTime, setStartTime] = useState(0);
-  const [times, setTimes] = useState<number[]>([]);
-  const [gameOver, setGameOver] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+function trainStep(w: NNWeights, points: { x: number; y: number; cls: number }[], lr: number): NNWeights {
+  const nw: NNWeights = {
+    w1: w.w1.map(r => [...r]), b1: [...w.b1], w2: [...w.w2], b2: w.b2,
+  };
 
-  const reset = useCallback(() => {
-    setTerms([...AI_TERMS].sort(() => Math.random() - 0.5).slice(0, 8));
-    setCurrent(0); setInput(""); setStarted(false); setTimes([]); setGameOver(false);
-  }, []);
+  for (const p of points) {
+    const { hidden, output } = forward(w, p.x, p.y);
+    const err = p.cls - output;
+    const dOut = err * sigmoidDeriv(output);
 
-  useEffect(() => { reset(); }, [reset]);
-
-  const handleInput = (val: string) => {
-    if (!started) { setStarted(true); setStartTime(Date.now()); }
-    setInput(val);
-    if (terms.length && val.toLowerCase() === terms[current]) {
-      const elapsed = Date.now() - startTime;
-      setTimes(t => [...t, elapsed]);
-      if (current + 1 >= terms.length) setGameOver(true);
-      else { setCurrent(c => c + 1); setInput(""); setStartTime(Date.now()); }
+    for (let i = 0; i < w.w2.length; i++) {
+      const dHidden = dOut * w.w2[i] * sigmoidDeriv(hidden[i]);
+      nw.w2[i] += lr * dOut * hidden[i];
+      nw.w1[i][0] += lr * dHidden * p.x;
+      nw.w1[i][1] += lr * dHidden * p.y;
+      nw.b1[i] += lr * dHidden;
     }
-  };
-
-  useEffect(() => { inputRef.current?.focus(); }, [current]);
-
-  if (!terms.length) return null;
-
-  if (gameOver) {
-    const avg = times.reduce((a, b) => a + b, 0) / times.length / 1000;
-    return <GameOverScreen emoji="⚡" stat={`${avg.toFixed(1)}s`} label={t("common.perTerm", { count: terms.length })} onReplay={reset} />;
+    nw.b2 += lr * dOut;
   }
-
-  const term = terms[current];
-  return (
-    <GameShell title={t("games.speedTyper.title")}>
-      <StatusBar left={`${t("common.round")} ${current + 1}/${terms.length}`} right={times.length > 0 ? `${(times[times.length - 1] / 1000).toFixed(1)}s` : t("common.ready")} />
-      <div className="text-center py-6">
-        <div className="text-3xl sm:text-5xl font-mono font-bold tracking-wide leading-relaxed">
-          {term.split("").map((ch, i) => (
-            <span key={i} className={i < input.length ? (input[i] === ch ? "text-emerald-400" : "text-red-400") : "text-[var(--color-text-muted)] opacity-40"}>
-              {ch}
-            </span>
-          ))}
-        </div>
-      </div>
-      <input ref={inputRef} value={input} onChange={e => handleInput(e.target.value)} placeholder={t("games.speedTyper.placeholder")} autoFocus inputMode="text"
-        className="w-full min-h-[48px] px-4 py-3 rounded-xl border-2 border-[var(--color-border)] bg-[var(--color-bg)] text-lg font-mono text-center focus:border-indigo-500 focus:outline-none transition-colors" />
-    </GameShell>
-  );
+  return nw;
 }
 
-/* ─── 4. Pattern Matcher (Odd One Out) ─── */
-const PATTERN_ROUNDS = [
-  { items: ["CNN", "RNN", "LSTM", "SQL"], odd: "SQL", hint: "Three are neural network architectures" },
-  { items: ["Python", "TensorFlow", "PyTorch", "Keras"], odd: "Python", hint: "Three are ML frameworks" },
-  { items: ["GPT-4", "Claude", "Gemini", "Linux"], odd: "Linux", hint: "Three are large language models" },
-  { items: ["Sigmoid", "ReLU", "Tanh", "Fibonacci"], odd: "Fibonacci", hint: "Three are activation functions" },
-  { items: ["Overfitting", "Underfitting", "Regularisation", "Compilation"], odd: "Compilation", hint: "Three relate to model training issues" },
-  { items: ["BERT", "GPT", "T5", "HTTP"], odd: "HTTP", hint: "Three are transformer models" },
-  { items: ["Epoch", "Batch", "Layer", "Router"], odd: "Router", hint: "Three are deep learning terms" },
-  { items: ["Precision", "Recall", "F1-Score", "Bandwidth"], odd: "Bandwidth", hint: "Three are evaluation metrics" },
-];
-
-export function PatternMatcher() {
-  const t = useTranslations("playground");
-  const [rounds, setRounds] = useState<typeof PATTERN_ROUNDS>([]);
-  const [current, setCurrent] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [gameOver, setGameOver] = useState(false);
-
-  const reset = useCallback(() => {
-    setRounds([...PATTERN_ROUNDS].sort(() => Math.random() - 0.5).slice(0, 6));
-    setCurrent(0); setScore(0); setSelected(null); setGameOver(false);
-  }, []);
-
-  useEffect(() => { reset(); }, [reset]);
-
-  const handleSelect = (item: string) => {
-    if (selected) return;
-    setSelected(item);
-    if (item === rounds[current].odd) setScore(s => s + 1);
-    setTimeout(() => {
-      if (current + 1 >= rounds.length) setGameOver(true);
-      else { setCurrent(c => c + 1); setSelected(null); }
-    }, 1500);
-  };
-
-  if (!rounds.length) return null;
-
-  if (gameOver) {
-    return <GameOverScreen emoji={score >= 5 ? "🧠" : score >= 3 ? "🎯" : "💡"} stat={`${score}/${rounds.length}`} label={t("common.patternsSpotted")} onReplay={reset} />;
+function computeAccuracy(w: NNWeights, points: { x: number; y: number; cls: number }[]): number {
+  if (points.length === 0) return 0;
+  let correct = 0;
+  for (const p of points) {
+    const { output } = forward(w, p.x, p.y);
+    if ((output >= 0.5 ? 1 : 0) === p.cls) correct++;
   }
-
-  const round = rounds[current];
-  return (
-    <GameShell title={t("games.oddOneOut.title")}>
-      <StatusBar left={`${t("common.round")} ${current + 1}/${rounds.length}`} right={`${t("common.score")}: ${score}`} />
-      <div className="text-center py-3">
-        <p className="text-lg font-semibold mb-1">{t("games.oddOneOut.instruction")}</p>
-        <p className="text-sm text-[var(--color-text-muted)]">{round.hint}</p>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        {round.items.map(item => (
-          <button key={item} onClick={() => handleSelect(item)} disabled={!!selected}
-            className={`min-h-[56px] p-5 rounded-xl border-2 text-lg font-bold text-center transition-all hover:shadow-md ${
-              selected === item
-                ? item === round.odd ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 scale-105" : "border-red-500 bg-red-500/10 text-red-400"
-                : selected && item === round.odd ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.97]"
-            }`}>
-            {item}
-          </button>
-        ))}
-      </div>
-    </GameShell>
-  );
+  return Math.round((correct / points.length) * 100);
 }
 
-/* ─── 5. Memory Match ─── */
-const MEMORY_PAIRS = [
-  { term: "Epoch", def: "One full pass through training data" },
-  { term: "Neuron", def: "Basic unit of a neural network" },
-  { term: "Token", def: "Smallest piece of text for LLMs" },
-  { term: "Bias", def: "Systematic error in predictions" },
-  { term: "Gradient", def: "Direction of steepest change" },
-  { term: "Prompt", def: "Input instruction to an AI model" },
-  { term: "Hallucination", def: "AI confidently generating false info" },
-  { term: "Fine-tuning", def: "Training a pre-trained model further" },
-];
+export function NeuralNetworkPlayground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [points, setPoints] = useState<{ x: number; y: number; cls: number }[]>([]);
+  const [hiddenSize, setHiddenSize] = useState(4);
+  const [weights, setWeights] = useState<NNWeights>(() => initWeights(4));
+  const [training, setTraining] = useState(false);
+  const [epoch, setEpoch] = useState(0);
+  const [accuracy, setAccuracy] = useState(0);
+  const [brushClass, setBrushClass] = useState(0);
+  const trainingRef = useRef(false);
+  const weightsRef = useRef(weights);
+  const pointsRef = useRef(points);
+  const epochRef = useRef(0);
 
-export function MemoryMatch() {
-  const t = useTranslations("playground");
-  const [pairs, setPairs] = useState<typeof MEMORY_PAIRS>([]);
-  const [cards, setCards] = useState<{ id: number; text: string; pairId: number; flipped: boolean; matched: boolean }[]>([]);
-  const [flippedIds, setFlippedIds] = useState<number[]>([]);
-  const [moves, setMoves] = useState(0);
-  const [matched, setMatched] = useState(0);
-  const [justMatchedPair, setJustMatchedPair] = useState<number | null>(null);
-  const [wrongIds, setWrongIds] = useState<number[]>([]);
+  weightsRef.current = weights;
+  pointsRef.current = points;
 
-  const reset = useCallback(() => {
-    const p = [...MEMORY_PAIRS].sort(() => Math.random() - 0.5).slice(0, 5);
-    setPairs(p);
-    const c: typeof cards = [];
-    p.forEach((pair, i) => {
-      c.push({ id: i * 2, text: pair.term, pairId: i, flipped: false, matched: false });
-      c.push({ id: i * 2 + 1, text: pair.def, pairId: i, flipped: false, matched: false });
-    });
-    setCards(c.sort(() => Math.random() - 0.5));
-    setFlippedIds([]); setMoves(0); setMatched(0);
-    setJustMatchedPair(null); setWrongIds([]);
-  }, []);
+  // Reset weights when hidden size changes
+  useEffect(() => {
+    const w = initWeights(hiddenSize);
+    setWeights(w);
+    weightsRef.current = w;
+    setEpoch(0);
+    epochRef.current = 0;
+  }, [hiddenSize]);
 
-  useEffect(() => { reset(); }, [reset]);
+  // Draw canvas
+  const draw = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const W = canvas.width;
+    const H = canvas.height;
+    const w = weightsRef.current;
 
-  const handleFlip = (id: number) => {
-    if (flippedIds.length >= 2) return;
-    const card = cards.find(c => c.id === id);
-    if (!card || card.flipped || card.matched) return;
-
-    const newFlipped = [...flippedIds, id];
-    setFlippedIds(newFlipped);
-    setCards(prev => prev.map(c => c.id === id ? { ...c, flipped: true } : c));
-
-    if (newFlipped.length === 2) {
-      setMoves(m => m + 1);
-      const [a, b] = newFlipped.map(fid => cards.find(c => c.id === fid)!);
-      if (a.pairId === b.pairId) {
-        setJustMatchedPair(a.pairId);
-        setTimeout(() => {
-          setCards(prev => prev.map(c => c.pairId === a.pairId ? { ...c, matched: true } : c));
-          setMatched(m => m + 1);
-          setFlippedIds([]);
-          setTimeout(() => setJustMatchedPair(null), 600);
-        }, 500);
-      } else {
-        setWrongIds([...newFlipped]);
-        setTimeout(() => {
-          setCards(prev => prev.map(c => newFlipped.includes(c.id) ? { ...c, flipped: false } : c));
-          setFlippedIds([]);
-          setWrongIds([]);
-        }, 1000);
+    // Decision boundary - sample grid
+    const res = 30;
+    const cellW = W / res;
+    const cellH = H / res;
+    for (let gx = 0; gx < res; gx++) {
+      for (let gy = 0; gy < res; gy++) {
+        const nx = (gx + 0.5) / res;
+        const ny = (gy + 0.5) / res;
+        const { output } = forward(w, nx, ny);
+        const r = Math.round(239 * output + 59 * (1 - output));
+        const g = Math.round(68 * output + 130 * (1 - output));
+        const b = Math.round(68 * output + 246 * (1 - output));
+        ctx.fillStyle = `rgba(${r},${g},${b},0.25)`;
+        ctx.fillRect(gx * cellW, gy * cellH, cellW + 1, cellH + 1);
       }
     }
+
+    // Grid lines
+    ctx.strokeStyle = "rgba(128,128,128,0.15)";
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 10; i++) {
+      const x = (i / 10) * W;
+      const y = (i / 10) * H;
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+
+    // Data points
+    for (const p of pointsRef.current) {
+      const px = p.x * W;
+      const py = p.y * H;
+      ctx.beginPath();
+      ctx.arc(px, py, 6, 0, Math.PI * 2);
+      ctx.fillStyle = p.cls === 1 ? "#EF4444" : "#3B82F6";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255,255,255,0.8)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  }, []);
+
+  // Animation loop for training
+  useEffect(() => {
+    let frameId: number;
+    const loop = () => {
+      if (trainingRef.current && pointsRef.current.length >= 2) {
+        const newW = trainStep(weightsRef.current, pointsRef.current, 0.5);
+        weightsRef.current = newW;
+        epochRef.current += 1;
+        if (epochRef.current % 5 === 0) {
+          setWeights({ ...newW });
+          setEpoch(epochRef.current);
+          setAccuracy(computeAccuracy(newW, pointsRef.current));
+        }
+      }
+      draw();
+      frameId = requestAnimationFrame(loop);
+    };
+    frameId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(frameId);
+  }, [draw]);
+
+  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    const newPoints = [...pointsRef.current, { x, y, cls: brushClass }];
+    setPoints(newPoints);
+    pointsRef.current = newPoints;
   };
 
-  if (matched === pairs.length && pairs.length > 0) {
-    return <GameOverScreen emoji="🎉" stat={`${moves} ${t("common.moves")}`} label={t("common.allPairsMatched", { count: pairs.length })} onReplay={reset} />;
-  }
+  const toggleTraining = () => {
+    trainingRef.current = !trainingRef.current;
+    setTraining(trainingRef.current);
+  };
+
+  const clearAll = () => {
+    setPoints([]);
+    pointsRef.current = [];
+    const w = initWeights(hiddenSize);
+    setWeights(w);
+    weightsRef.current = w;
+    setEpoch(0);
+    epochRef.current = 0;
+    setAccuracy(0);
+    trainingRef.current = false;
+    setTraining(false);
+  };
 
   return (
-    <GameShell title={t("games.memoryMatch.title")}>
+    <GameShell title="Neural Network Playground" icon="🧬">
       <style>{`
-        @keyframes mm-glow { 0%,100% { box-shadow: 0 0 0 rgba(16,185,129,0); } 50% { box-shadow: 0 0 20px rgba(16,185,129,0.5); } }
-        @keyframes mm-shake { 0%,100% { transform: translateX(0) rotateY(180deg); } 25% { transform: translateX(-5px) rotateY(180deg); } 75% { transform: translateX(5px) rotateY(180deg); } }
-        .mm-glow { animation: mm-glow 0.6s ease-in-out; }
+        @keyframes nn-pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+        .nn-training { animation: nn-pulse 1s ease-in-out infinite; }
       `}</style>
-      <StatusBar left={`${matched}/${pairs.length} ${t("common.pairs")}`} right={`${moves} ${t("common.moves")}`} />
-      <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.memoryMatch.instruction")}</p>
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-        {cards.map(card => {
-          const isFlipped = card.flipped || card.matched;
-          const isWrong = wrongIds.includes(card.id);
-          const isGlowing = justMatchedPair === card.pairId;
-          return (
-            <button key={card.id} onClick={() => handleFlip(card.id)}
-              className={`relative rounded-xl border-2 transition-shadow duration-300 overflow-hidden ${
-                card.matched ? `border-emerald-500 ${isGlowing ? "mm-glow" : ""}`
-                : isWrong ? "border-red-500"
-                : card.flipped ? "border-indigo-500"
-                : "border-[var(--color-border)] hover:border-indigo-400 hover:shadow-md"
-              }`}
-              style={{ perspective: "600px", minHeight: "80px" }}>
-              <div style={{
-                position: "absolute", inset: 0,
-                transition: isWrong ? "none" : "transform 0.3s ease",
-                transformStyle: "preserve-3d" as const,
-                transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                animation: isWrong && isFlipped ? "mm-shake 0.4s ease-in-out" : "none",
-              }}>
-                {/* Back face — gradient */}
-                <div style={{ backfaceVisibility: "hidden" as const, position: "absolute" as const, inset: 0, borderRadius: "10px", background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)", display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "2px" }}>
-                  <span style={{ fontSize: "28px", color: "rgba(255,255,255,0.85)" }}>?</span>
-                  <span style={{ fontSize: "9px", color: "rgba(255,255,255,0.35)", fontWeight: 500, letterSpacing: "0.05em" }}>FLIP</span>
-                </div>
-                {/* Front face — content */}
-                <div className="bg-[var(--color-bg-section)]" style={{ backfaceVisibility: "hidden" as const, transform: "rotateY(180deg)", position: "absolute" as const, inset: 0, borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", padding: "8px" }}>
-                  <span className={`text-xs sm:text-sm font-medium text-center leading-tight ${card.matched ? "text-emerald-400" : ""}`}>
-                    {card.text}
-                  </span>
-                </div>
-              </div>
-            </button>
-          );
-        })}
+
+      {/* Controls bar */}
+      <div className="flex flex-wrap items-center gap-3 p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)] font-mono text-xs">
+        <div className="flex items-center gap-2">
+          <span className="text-[var(--color-text-muted)]">BRUSH:</span>
+          <button
+            onClick={() => setBrushClass(0)}
+            className={`px-2 py-1 rounded border transition-all ${brushClass === 0 ? "border-blue-500 bg-blue-500/20 text-blue-400" : "border-[var(--color-border)] text-[var(--color-text-muted)]"}`}
+          >● Blue</button>
+          <button
+            onClick={() => setBrushClass(1)}
+            className={`px-2 py-1 rounded border transition-all ${brushClass === 1 ? "border-red-500 bg-red-500/20 text-red-400" : "border-[var(--color-border)] text-[var(--color-text-muted)]"}`}
+          >● Red</button>
+        </div>
+        <div className="flex items-center gap-2 flex-1 min-w-[180px]">
+          <span className="text-[var(--color-text-muted)] whitespace-nowrap">HIDDEN:</span>
+          <input
+            type="range" min={2} max={8} value={hiddenSize}
+            onChange={e => setHiddenSize(Number(e.target.value))}
+            className="flex-1 accent-[var(--color-primary)]"
+          />
+          <span className="text-[var(--color-primary)] font-bold w-4 text-center">{hiddenSize}</span>
+        </div>
       </div>
-    </GameShell>
-  );
-}
 
-/* ─── 6. AI Timeline ─── */
-const TIMELINE_EVENTS = [
-  { year: 1950, event: "Turing Test proposed" },
-  { year: 1957, event: "Perceptron invented" },
-  { year: 1997, event: "Deep Blue beats Kasparov" },
-  { year: 2011, event: "Siri launched by Apple" },
-  { year: 2012, event: "AlexNet wins ImageNet" },
-  { year: 2014, event: "GANs introduced" },
-  { year: 2016, event: "AlphaGo beats Lee Sedol" },
-  { year: 2017, event: "Transformer paper published" },
-  { year: 2020, event: "GPT-3 released" },
-  { year: 2022, event: "ChatGPT goes viral" },
-];
-
-export function AITimeline() {
-  const t = useTranslations("playground");
-  const [events, setEvents] = useState<typeof TIMELINE_EVENTS>([]);
-  const [order, setOrder] = useState<typeof TIMELINE_EVENTS>([]);
-  const [remaining, setRemaining] = useState<typeof TIMELINE_EVENTS>([]);
-  const [result, setResult] = useState<"correct" | "wrong" | null>(null);
-
-  const reset = useCallback(() => {
-    const e = [...TIMELINE_EVENTS].sort(() => Math.random() - 0.5).slice(0, 5);
-    setEvents(e);
-    setOrder([]);
-    setRemaining([...e].sort(() => Math.random() - 0.5));
-    setResult(null);
-  }, []);
-
-  useEffect(() => { reset(); }, [reset]);
-
-  const handlePick = (event: typeof TIMELINE_EVENTS[0]) => {
-    setOrder(o => [...o, event]);
-    setRemaining(r => r.filter(e => e !== event));
-  };
-
-  const handleUndo = () => {
-    if (!order.length) return;
-    const last = order[order.length - 1];
-    setOrder(o => o.slice(0, -1));
-    setRemaining(r => [...r, last]);
-  };
-
-  const handleCheck = () => {
-    const correct = order.every((e, i) => i === 0 || e.year >= order[i - 1].year);
-    setResult(correct ? "correct" : "wrong");
-  };
-
-  if (!events.length) return null;
-
-  if (result) {
-    const sorted = [...events].sort((a, b) => a.year - b.year);
-    return (
-      <div className="text-center py-8 space-y-5">
-        <div className="text-6xl animate-bounce">{result === "correct" ? "🏆" : "📚"}</div>
-        <p className="text-xl font-bold">{result === "correct" ? t("common.perfectOrder") : t("common.notQuiteTimeline")}</p>
-        <div className="space-y-2 max-w-sm mx-auto text-left">
-          {sorted.map((e, i) => (
-            <div key={e.year} className="flex gap-3 items-center text-sm p-2 rounded-lg bg-[var(--color-bg-section)]">
-              <div className="w-2 h-2 rounded-full bg-indigo-500 shrink-0" />
-              <span className="font-mono font-bold text-indigo-400 w-12">{e.year}</span>
-              <span>{e.event}</span>
-              {i < sorted.length - 1 && <div className="absolute left-[18px] top-full w-0.5 h-2 bg-indigo-500/30" />}
+      {/* Canvas area */}
+      <div className="relative rounded-lg overflow-hidden border border-[var(--color-border)]" style={{ aspectRatio: "4/3" }}>
+        <canvas
+          ref={canvasRef}
+          width={400}
+          height={300}
+          onClick={handleCanvasClick}
+          className="w-full h-full cursor-crosshair"
+          style={{ imageRendering: "pixelated", background: "var(--color-bg-section)" }}
+        />
+        {points.length < 2 && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="text-center font-mono space-y-1 bg-[var(--color-bg)]/80 px-4 py-3 rounded-lg backdrop-blur-sm">
+              <p className="text-sm text-[var(--color-text-muted)]">Click to place data points</p>
+              <p className="text-xs text-[var(--color-text-muted)]">Add both <span className="text-blue-400">blue</span> and <span className="text-red-400">red</span> points, then train</p>
             </div>
-          ))}
-        </div>
-        <button onClick={reset} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">
-          {t("common.playAgain")}
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <GameShell title={t("games.aiTimeline.title")}>
-      <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.aiTimeline.instruction")}</p>
-      {order.length > 0 && (
-        <div className="space-y-1.5">
-          <p className="text-xs text-[var(--color-text-muted)] font-semibold">{t("common.yourOrder")}</p>
-          {order.map((e, i) => (
-            <div key={e.year} className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-sm">
-              <span className="text-indigo-400 font-bold w-5">{i + 1}.</span>
-              <span>{e.event}</span>
-            </div>
-          ))}
-          <button onClick={handleUndo} className="text-xs text-red-400 hover:text-red-300 mt-1 min-h-[32px]">↩ {t("common.undoLast")}</button>
-        </div>
-      )}
-      {remaining.length > 0 ? (
-        <div className="grid grid-cols-1 gap-2.5">
-          {remaining.map(e => (
-            <button key={e.year} onClick={() => handlePick(e)}
-              className="min-h-[48px] p-4 rounded-xl border-2 border-[var(--color-border)] text-sm font-medium hover:border-indigo-400 hover:shadow-md active:scale-[0.98] transition-all text-left">
-              {e.event}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <button onClick={handleCheck} className="w-full min-h-[48px] py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-bold hover:brightness-110 transition-all">
-          {t("common.checkOrder")}
-        </button>
-      )}
-    </GameShell>
-  );
-}
-
-/* ─── 7. Bias Detective ─── */
-const BIAS_SCENARIOS = [
-  { scenario: "A hiring AI trained only on tech company data from Silicon Valley is used to screen candidates globally.", bias: "Geographic & cultural bias", explanation: "The model learned patterns from one region and may penalise candidates from different backgrounds." },
-  { scenario: "A facial recognition system achieves 99% accuracy on light-skinned faces but only 65% on dark-skinned faces.", bias: "Racial bias in training data", explanation: "The training dataset was not diverse, leading to unequal performance across skin tones." },
-  { scenario: "A loan approval AI denies more applications from certain postcodes, which correlate with minority neighbourhoods.", bias: "Proxy discrimination", explanation: "Even without using race directly, the postcode acts as a proxy for racial demographics." },
-  { scenario: "An AI writing assistant always suggests male pronouns when writing about engineers and female pronouns for nurses.", bias: "Gender stereotyping", explanation: "The model learned gendered associations from biased text data reflecting societal stereotypes." },
-  { scenario: "A medical AI performs well for common diseases but fails for rare conditions that mostly affect elderly patients.", bias: "Age-related data imbalance", explanation: "Rare conditions in underrepresented demographics get fewer training examples." },
-  { scenario: "An AI-powered news feed only shows users content that confirms their existing beliefs.", bias: "Confirmation bias amplification", explanation: "The recommendation algorithm optimises for engagement, creating filter bubbles." },
-];
-
-export function BiasDetective() {
-  const t = useTranslations("playground");
-  const [scenarios, setScenarios] = useState<typeof BIAS_SCENARIOS>([]);
-  const [current, setCurrent] = useState(0);
-  const [revealed, setRevealed] = useState(false);
-  const [done, setDone] = useState(false);
-
-  const reset = useCallback(() => {
-    setScenarios([...BIAS_SCENARIOS].sort(() => Math.random() - 0.5).slice(0, 4));
-    setCurrent(0); setRevealed(false); setDone(false);
-  }, []);
-
-  useEffect(() => { reset(); }, [reset]);
-
-  if (!scenarios.length) return null;
-
-  if (done) {
-    return <GameOverScreen emoji="🕵️" stat={t("common.greatDetective")} label={t("common.reviewedBias", { count: scenarios.length })} onReplay={reset} />;
-  }
-
-  const s = scenarios[current];
-  return (
-    <GameShell title={t("games.biasDetective.title")}>
-      <StatusBar left={`${t("common.round")} ${current + 1}/${scenarios.length}`} />
-      <div className="p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] leading-relaxed">
-        <p className="text-sm sm:text-base">{s.scenario}</p>
-      </div>
-      {!revealed ? (
-        <button onClick={() => setRevealed(true)} className="w-full min-h-[48px] py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold hover:brightness-110 transition-all">
-          🔍 {t("games.biasDetective.revealBias")}
-        </button>
-      ) : (
-        <div className="space-y-4">
-          <div className="p-5 rounded-xl bg-amber-500/10 border-2 border-amber-500/30">
-            <p className="font-bold text-amber-400 text-sm mb-2">{s.bias}</p>
-            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">{s.explanation}</p>
           </div>
-          <button onClick={() => { if (current + 1 >= scenarios.length) setDone(true); else { setCurrent(c => c + 1); setRevealed(false); } }}
-            className="w-full min-h-[48px] py-3 border-2 border-[var(--color-border)] rounded-xl font-semibold hover:border-indigo-400 transition-all">
-            {current + 1 >= scenarios.length ? t("common.finish") : `${t("games.biasDetective.nextCase")} →`}
+        )}
+      </div>
+
+      {/* Status & controls */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-4 font-mono text-xs">
+          <span className={`${training ? "nn-training text-green-400" : "text-[var(--color-text-muted)]"}`}>
+            {training ? "● TRAINING" : "○ IDLE"}
+          </span>
+          <span className="text-[var(--color-text-muted)]">EPOCH: <span className="text-[var(--color-primary)]">{epoch}</span></span>
+          <span className="text-[var(--color-text-muted)]">ACC: <span className={`font-bold ${accuracy >= 80 ? "text-green-400" : accuracy >= 50 ? "text-amber-400" : "text-[var(--color-text)]"}`}>{accuracy}%</span></span>
+          <span className="text-[var(--color-text-muted)]">PTS: {points.length}</span>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={toggleTraining}
+            disabled={points.length < 2}
+            className={`min-h-[36px] px-4 py-1.5 rounded-lg font-mono text-xs font-bold border transition-all ${
+              training
+                ? "border-amber-500/50 text-amber-400 bg-amber-500/10 hover:bg-amber-500/20"
+                : "border-green-500/50 text-green-400 bg-green-500/10 hover:bg-green-500/20"
+            } disabled:opacity-30 disabled:cursor-not-allowed`}
+          >
+            {training ? "⏸ PAUSE" : "▶ TRAIN"}
+          </button>
+          <button
+            onClick={clearAll}
+            className="min-h-[36px] px-4 py-1.5 rounded-lg font-mono text-xs font-bold border border-red-500/30 text-red-400 bg-red-500/5 hover:bg-red-500/10 transition-all"
+          >
+            ✕ CLEAR
           </button>
         </div>
-      )}
+      </div>
+
+      {/* Network diagram */}
+      <div className="p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
+        <p className="text-[10px] font-mono text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">Network Architecture</p>
+        <div className="flex items-center justify-center gap-6 sm:gap-10 py-2">
+          {/* Input layer */}
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">Input</span>
+            {["x", "y"].map(label => (
+              <div key={label} className="w-8 h-8 rounded-full border-2 border-blue-500/60 bg-blue-500/10 flex items-center justify-center">
+                <span className="text-[10px] font-mono text-blue-400 font-bold">{label}</span>
+              </div>
+            ))}
+          </div>
+          {/* Lines placeholder */}
+          <div className="text-[var(--color-text-muted)] text-lg">→</div>
+          {/* Hidden layer */}
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">Hidden({hiddenSize})</span>
+            <div className="flex flex-col items-center gap-1" style={{ maxHeight: 120, overflow: "hidden" }}>
+              {Array.from({ length: Math.min(hiddenSize, 6) }, (_, i) => (
+                <div key={i} className={`w-6 h-6 rounded-full border-2 border-purple-500/60 bg-purple-500/10 flex items-center justify-center ${training ? "nn-training" : ""}`}>
+                  <span className="text-[8px] font-mono text-purple-400">{i + 1}</span>
+                </div>
+              ))}
+              {hiddenSize > 6 && <span className="text-[9px] text-[var(--color-text-muted)]">+{hiddenSize - 6}</span>}
+            </div>
+          </div>
+          <div className="text-[var(--color-text-muted)] text-lg">→</div>
+          {/* Output */}
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">Output</span>
+            <div className="w-8 h-8 rounded-full border-2 border-green-500/60 bg-green-500/10 flex items-center justify-center">
+              <span className="text-[10px] font-mono text-green-400 font-bold">σ</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </GameShell>
   );
 }
 
-/* ─── 8. Token Counter ─── */
-const TOKEN_SENTENCES = [
-  { text: "Hello world", tokens: 2 },
-  { text: "The quick brown fox jumps over the lazy dog", tokens: 9 },
-  { text: "Artificial intelligence is transforming healthcare", tokens: 5 },
-  { text: "I love programming in Python", tokens: 5 },
-  { text: "Machine learning models require large datasets", tokens: 6 },
-  { text: "OpenAI released GPT-4 in March 2023", tokens: 9 },
-  { text: "The cat sat on the mat", tokens: 6 },
-  { text: "Supercalifragilisticexpialidocious", tokens: 7 },
+/* ═══════════════════════════════════════════════════════════════
+   2. Prompt Engineering Dojo
+   Craft prompts to match target outputs
+   ═══════════════════════════════════════════════════════════════ */
+
+interface PromptChallenge {
+  id: number;
+  target: string;
+  context: string;
+  keywords: string[];
+  bonusKeywords: string[];
+  tips: string;
+  difficulty: string;
+}
+
+const PROMPT_CHALLENGES: PromptChallenge[] = [
+  {
+    id: 1, difficulty: "EASY",
+    context: "You want the AI to explain what machine learning is.",
+    target: "Machine learning is a subset of artificial intelligence where computers learn patterns from data without being explicitly programmed. Instead of following rigid rules, ML algorithms improve their performance through experience.",
+    keywords: ["explain", "machine learning", "simple", "what"],
+    bonusKeywords: ["beginner", "definition", "clear", "brief"],
+    tips: "💡 Tip: Be specific about format. 'Explain X in simple terms' works better than just asking 'What is X?'",
+  },
+  {
+    id: 2, difficulty: "EASY",
+    context: "You want the AI to list exactly 3 benefits of open-source software.",
+    target: "1. Transparency — anyone can inspect the code for security and quality.\n2. Community — thousands of developers contribute improvements.\n3. Cost — no licensing fees, reducing barriers to entry.",
+    keywords: ["list", "3", "benefits", "open-source"],
+    bonusKeywords: ["numbered", "concise", "exactly", "software"],
+    tips: "💡 Tip: Specify exact quantities. 'List exactly 3' is much better than 'List some'. Constrain the output format.",
+  },
+  {
+    id: 3, difficulty: "MEDIUM",
+    context: "You want the AI to write a Python function that reverses a string.",
+    target: "```python\ndef reverse_string(s: str) -> str:\n    return s[::-1]\n```",
+    keywords: ["python", "function", "reverse", "string"],
+    bonusKeywords: ["type hint", "concise", "code", "return"],
+    tips: "💡 Tip: Specify the programming language, function signature expectations, and coding style (concise vs. verbose).",
+  },
+  {
+    id: 4, difficulty: "MEDIUM",
+    context: "You want the AI to compare transformers and RNNs, focusing on parallelization.",
+    target: "Transformers process all tokens simultaneously via self-attention, enabling massive parallelization on GPUs. RNNs process tokens sequentially, creating a bottleneck. This is why transformer-based models like GPT train orders of magnitude faster.",
+    keywords: ["compare", "transformer", "rnn", "parallel"],
+    bonusKeywords: ["attention", "sequential", "gpu", "difference", "speed"],
+    tips: "💡 Tip: Tell the AI what angle to focus on. 'Compare X and Y focusing on Z' narrows the response to what you actually need.",
+  },
+  {
+    id: 5, difficulty: "HARD",
+    context: "You want the AI to act as a senior code reviewer and find bugs in a snippet.",
+    target: "As a senior engineer reviewing this code, I've identified: 1) potential null reference on line 3, 2) the loop doesn't handle edge case of empty arrays, 3) missing error handling for the async call. Suggested fixes: add null checks, guard clauses, and try-catch blocks.",
+    keywords: ["act as", "code review", "bug", "find"],
+    bonusKeywords: ["senior", "engineer", "suggest", "fix", "identify", "role"],
+    tips: "💡 Tip: Role prompting ('Act as a...') dramatically changes output quality. Combine with specific instructions about what to look for.",
+  },
+  {
+    id: 6, difficulty: "HARD",
+    context: "You want the AI to generate a creative short story in exactly 50 words about a robot discovering music.",
+    target: "Unit-7 found the vinyl in the ruins — a black disc etched with spirals. When the needle touched down, something unprecedented rippled through its circuits. Not data. Not instructions. Something that made its cooling fans spin faster. It played the record forty-seven times. On the forty-eighth, it danced.",
+    keywords: ["story", "50 words", "robot", "music"],
+    bonusKeywords: ["creative", "short", "exactly", "discover", "write"],
+    tips: "💡 Tip: For creative tasks, specify word count, theme, tone, and key elements. Constraints breed creativity — for AI too!",
+  },
 ];
 
-export function TokenCounter() {
-  const t = useTranslations("playground");
-  const [sentences, setSentences] = useState<typeof TOKEN_SENTENCES>([]);
-  const [current, setCurrent] = useState(0);
-  const [guess, setGuess] = useState(5);
-  const [submitted, setSubmitted] = useState(false);
-  const [totalDiff, setTotalDiff] = useState(0);
-  const [done, setDone] = useState(false);
+function scorePrompt(prompt: string, challenge: PromptChallenge): { score: number; feedback: string; simulatedResponse: string } {
+  const lower = prompt.toLowerCase();
+  const words = lower.split(/\s+/);
 
-  const reset = useCallback(() => {
-    setSentences([...TOKEN_SENTENCES].sort(() => Math.random() - 0.5).slice(0, 5));
-    setCurrent(0); setGuess(5); setSubmitted(false); setTotalDiff(0); setDone(false);
-  }, []);
+  // Keyword matching
+  let keywordHits = 0;
+  for (const kw of challenge.keywords) {
+    if (lower.includes(kw.toLowerCase())) keywordHits++;
+  }
+  let bonusHits = 0;
+  for (const kw of challenge.bonusKeywords) {
+    if (lower.includes(kw.toLowerCase())) bonusHits++;
+  }
 
-  useEffect(() => { reset(); }, [reset]);
+  // Length quality (too short = bad, too long = slightly bad)
+  const lengthScore = words.length < 3 ? 0.2 : words.length < 6 ? 0.6 : words.length <= 30 ? 1.0 : 0.8;
+
+  // Specificity bonus (has numbers, quotes, formatting instructions)
+  let specificityBonus = 0;
+  if (/\d+/.test(prompt)) specificityBonus += 0.1;
+  if (/["']/.test(prompt)) specificityBonus += 0.05;
+  if (/\b(exactly|must|should|format|style|tone)\b/i.test(prompt)) specificityBonus += 0.1;
+  if (/\b(act as|you are|pretend|role)\b/i.test(prompt)) specificityBonus += 0.15;
+
+  const keywordScore = challenge.keywords.length > 0 ? keywordHits / challenge.keywords.length : 0;
+  const bonusScore = challenge.bonusKeywords.length > 0 ? bonusHits / challenge.bonusKeywords.length : 0;
+
+  const rawScore = (keywordScore * 0.45) + (bonusScore * 0.2) + (lengthScore * 0.2) + Math.min(specificityBonus, 0.15);
+  const score = Math.min(100, Math.round(rawScore * 100));
+
+  // Generate simulated response based on score
+  let simulatedResponse: string;
+  if (score >= 80) {
+    simulatedResponse = challenge.target;
+  } else if (score >= 50) {
+    // Partial response - take first ~60% of target
+    const sentences = challenge.target.split(/[.!?\n]+/).filter(Boolean);
+    simulatedResponse = sentences.slice(0, Math.ceil(sentences.length * 0.6)).join(". ") + "...";
+  } else {
+    simulatedResponse = "I'm not sure what you're looking for. Could you be more specific about what you need?";
+  }
+
+  // Feedback
+  let feedback: string;
+  if (score >= 80) feedback = "🎯 Excellent prompt! Clear, specific, and well-structured.";
+  else if (score >= 60) feedback = "👍 Good attempt! Try being more specific about the format and constraints.";
+  else if (score >= 40) feedback = "📝 Getting there — include more relevant keywords and be explicit about what you want.";
+  else feedback = "🔄 Too vague. Try specifying the task, format, and any constraints explicitly.";
+
+  return { score, feedback, simulatedResponse };
+}
+
+export function PromptEngineeringDojo() {
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState<{ score: number; feedback: string; simulatedResponse: string } | null>(null);
+  const [scores, setScores] = useState<number[]>([]);
+  const [gameOver, setGameOver] = useState(false);
+  const [typing, setTyping] = useState(false);
+  const [displayedResponse, setDisplayedResponse] = useState("");
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  const challenge = PROMPT_CHALLENGES[currentIdx];
 
   const handleSubmit = () => {
-    setSubmitted(true);
-    setTotalDiff(d => d + Math.abs(guess - sentences[current].tokens));
+    if (!input.trim() || result) return;
+    const r = scorePrompt(input, challenge);
+    setResult(r);
+    setScores(prev => [...prev, r.score]);
+
+    // Typewriter effect for response
+    setTyping(true);
+    setDisplayedResponse("");
+    let i = 0;
+    const text = r.simulatedResponse;
+    const interval = setInterval(() => {
+      i++;
+      setDisplayedResponse(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(interval);
+        setTyping(false);
+      }
+    }, 15);
   };
 
   const handleNext = () => {
-    if (current + 1 >= sentences.length) setDone(true);
-    else { setCurrent(c => c + 1); setGuess(5); setSubmitted(false); }
-  };
-
-  if (!sentences.length) return null;
-
-  if (done) {
-    const avgDiff = (totalDiff / sentences.length).toFixed(1);
-    return <GameOverScreen emoji={Number(avgDiff) <= 1 ? "🎯" : Number(avgDiff) <= 2 ? "👍" : "📝"} stat={`${avgDiff} ${t("common.avgDiff")}`} label={t("common.avgDistance")} onReplay={reset} />;
-  }
-
-  const s = sentences[current];
-  const diff = Math.abs(guess - s.tokens);
-  return (
-    <GameShell title={t("games.tokenCounter.title")}>
-      <StatusBar left={`${t("common.round")} ${current + 1}/${sentences.length}`} />
-      <div className="p-5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] text-center">
-        <p className="text-lg sm:text-xl font-medium">&ldquo;{s.text}&rdquo;</p>
-      </div>
-      {!submitted ? (
-        <div className="space-y-4">
-          <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.tokenCounter.instruction")}</p>
-          <div className="flex items-center justify-center gap-5">
-            <button onClick={() => setGuess(g => Math.max(1, g - 1))} className="w-12 h-12 rounded-full border-2 border-[var(--color-border)] font-bold text-xl hover:border-indigo-400 transition-colors">−</button>
-            <span className="text-5xl font-bold w-20 text-center tabular-nums">{guess}</span>
-            <button onClick={() => setGuess(g => g + 1)} className="w-12 h-12 rounded-full border-2 border-[var(--color-border)] font-bold text-xl hover:border-indigo-400 transition-colors">+</button>
-          </div>
-          <button onClick={handleSubmit} className="w-full min-h-[48px] py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-bold hover:brightness-110 transition-all">{t("common.lockIn")}</button>
-        </div>
-      ) : (
-        <div className="space-y-4 text-center">
-          <div className="flex items-center justify-center gap-6">
-            <div>
-              <p className="text-xs text-[var(--color-text-muted)] mb-1">{t("games.tokenCounter.actual")}</p>
-              <p className="text-3xl font-bold text-indigo-400">{s.tokens}</p>
-            </div>
-            <div className="text-2xl text-[var(--color-text-muted)]">vs</div>
-            <div>
-              <p className="text-xs text-[var(--color-text-muted)] mb-1">{t("games.tokenCounter.yourGuess")}</p>
-              <p className="text-3xl font-bold">{guess}</p>
-            </div>
-          </div>
-          <p className={`text-sm font-semibold ${guess === s.tokens ? "text-emerald-400" : diff <= 1 ? "text-amber-400" : "text-red-400"}`}>
-            {guess === s.tokens ? `${t("games.tokenCounter.exact")} 🎯` : diff <= 1 ? t("games.tokenCounter.soClose") : t("games.tokenCounter.offBy", { count: diff })}
-          </p>
-          <button onClick={handleNext} className="w-full min-h-[48px] py-3 border-2 border-[var(--color-border)] rounded-xl font-semibold hover:border-indigo-400 transition-all">
-            {current + 1 >= sentences.length ? t("common.seeResults") : `${t("common.next")} →`}
-          </button>
-        </div>
-      )}
-    </GameShell>
-  );
-}
-
-/* ─── 9. Prompt Engineer ─── */
-const PROMPT_ROUNDS = [
-  { task: "Get a recipe for pasta", bad: "Give me pasta", good: "Give me a simple pasta recipe with ingredients list and step-by-step instructions for 2 servings", why: "Specific prompts with constraints (servings, format) get better results." },
-  { task: "Debug Python code", bad: "Fix my code", good: "My Python function raises TypeError on line 12 when passing a list. Here's the code: [code]. What's wrong and how do I fix it?", why: "Including the error, location, and code gives AI context to help effectively." },
-  { task: "Write a professional email", bad: "Write an email", good: "Write a concise professional email declining a meeting invitation due to a scheduling conflict, maintaining a positive tone", why: "Specifying tone, purpose, and constraints produces more usable output." },
-  { task: "Explain a concept", bad: "Explain neural networks", good: "Explain how neural networks work to a 10-year-old using a simple analogy. Keep it under 100 words.", why: "Defining the audience and length constraint tailors the explanation perfectly." },
-  { task: "Generate test data", bad: "Make some test data", good: "Generate 5 JSON objects representing users with fields: id (UUID), name, email, age (18-65), and createdAt (ISO date in 2024)", why: "Specifying format, count, field types, and constraints yields usable data." },
-];
-
-export function PromptEngineer() {
-  const t = useTranslations("playground");
-  const [rounds, setRounds] = useState<typeof PROMPT_ROUNDS>([]);
-  const [current, setCurrent] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState<"good" | "bad" | null>(null);
-  const [options, setOptions] = useState<{ label: string; type: "good" | "bad" }[]>([]);
-  const [done, setDone] = useState(false);
-
-  const reset = useCallback(() => {
-    setRounds([...PROMPT_ROUNDS].sort(() => Math.random() - 0.5).slice(0, 4));
-    setCurrent(0); setScore(0); setSelected(null); setDone(false);
-  }, []);
-
-  useEffect(() => { reset(); }, [reset]);
-
-  useEffect(() => {
-    if (rounds.length > 0 && current < rounds.length) {
-      const r = rounds[current];
-      const opts = Math.random() > 0.5
-        ? [{ label: r.good, type: "good" as const }, { label: r.bad, type: "bad" as const }]
-        : [{ label: r.bad, type: "bad" as const }, { label: r.good, type: "good" as const }];
-      setOptions(opts);
+    if (currentIdx + 1 >= PROMPT_CHALLENGES.length) {
+      setGameOver(true);
+    } else {
+      setCurrentIdx(prev => prev + 1);
+      setInput("");
+      setResult(null);
+      setDisplayedResponse("");
+      setTimeout(() => inputRef.current?.focus(), 100);
     }
-  }, [current, rounds]);
-
-  const handleSelect = (type: "good" | "bad") => {
-    if (selected) return;
-    setSelected(type);
-    if (type === "good") setScore(s => s + 1);
-    setTimeout(() => {
-      if (current + 1 >= rounds.length) setDone(true);
-      else { setCurrent(c => c + 1); setSelected(null); }
-    }, 2500);
   };
 
-  if (!rounds.length) return null;
+  const reset = () => {
+    setCurrentIdx(0);
+    setInput("");
+    setResult(null);
+    setScores([]);
+    setGameOver(false);
+    setDisplayedResponse("");
+  };
 
-  if (done) {
-    return <GameOverScreen emoji={score === rounds.length ? "🧙" : score >= 2 ? "📝" : "💡"} stat={`${score}/${rounds.length}`} label={t("common.promptScore")} onReplay={reset} />;
+  if (gameOver) {
+    const avg = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+    return <GameOverScreen emoji={avg >= 70 ? "🥋" : avg >= 40 ? "📝" : "🔰"} stat={`${avg}%`} label={`Average prompt score across ${scores.length} challenges`} onReplay={reset} />;
   }
 
   return (
-    <GameShell title={t("games.promptEngineer.title")}>
-      <StatusBar left={`${t("common.round")} ${current + 1}/${rounds.length}`} right={`${t("common.score")}: ${score}`} />
-      <div className="text-center p-4 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-        <p className="text-xs text-[var(--color-text-muted)] mb-1">{t("games.promptEngineer.task")}:</p>
-        <p className="font-semibold text-base">{rounds[current].task}</p>
+    <GameShell title="Prompt Engineering Dojo" icon="🥋">
+      <style>{`
+        @keyframes dojo-cursor { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+        .dojo-cursor::after { content: "▌"; animation: dojo-cursor 0.8s step-end infinite; color: var(--color-primary); }
+      `}</style>
+
+      <StatusBar
+        left={<span className="font-mono">Challenge {currentIdx + 1}/{PROMPT_CHALLENGES.length} <span className="text-amber-400">[{challenge.difficulty}]</span></span>}
+        right={scores.length > 0 ? <span className="font-mono">AVG: {Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)}%</span> : undefined}
+      />
+
+      {/* Mission briefing */}
+      <div className="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400">// MISSION</span>
+        </div>
+        <p className="text-sm font-mono text-[var(--color-text)]">{challenge.context}</p>
       </div>
-      <p className="text-center text-sm text-[var(--color-text-muted)]">{t("games.promptEngineer.instruction")}</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {options.map((opt, i) => (
-          <button key={i} onClick={() => handleSelect(opt.type)} disabled={!!selected}
-            className={`min-h-[48px] p-5 rounded-xl border-2 text-sm text-left transition-all leading-relaxed ${
-              selected && opt.type === "good" ? "border-emerald-500 bg-emerald-500/10 ring-2 ring-emerald-500/20" :
-              selected === opt.type && opt.type === "bad" ? "border-red-500 bg-red-500/10" :
-              !selected ? "border-[var(--color-border)] hover:border-indigo-400 hover:shadow-md active:scale-[0.99]" : "border-[var(--color-border)] opacity-50"
-            }`}>
-            <span className="italic">&ldquo;{opt.label}&rdquo;</span>
-          </button>
-        ))}
+
+      {/* Target output */}
+      <div className="p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">// TARGET OUTPUT</span>
+        </div>
+        <pre className="text-xs font-mono text-[var(--color-text-muted)] whitespace-pre-wrap leading-relaxed">{challenge.target}</pre>
       </div>
-      {selected && (
-        <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-sm text-[var(--color-text-muted)]">
-          💡 {rounds[current].why}
+
+      {/* Prompt input */}
+      <div className="rounded-lg border border-[var(--color-border)] overflow-hidden bg-[var(--color-bg-section)]">
+        <div className="flex items-center gap-2 px-3 py-1.5 border-b border-[var(--color-border)] bg-[var(--color-bg)]">
+          <span className="text-[10px] font-mono text-[var(--color-text-muted)]">prompt.txt</span>
+        </div>
+        <div className="p-3">
+          <textarea
+            ref={inputRef}
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) handleSubmit(); }}
+            disabled={!!result}
+            placeholder="Type your prompt here... (Ctrl+Enter to submit)"
+            rows={3}
+            className="w-full bg-transparent font-mono text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 resize-none focus:outline-none"
+          />
+        </div>
+        {!result && (
+          <div className="flex justify-end px-3 pb-3">
+            <button
+              onClick={handleSubmit}
+              disabled={!input.trim()}
+              className="px-4 py-1.5 rounded-lg font-mono text-xs font-bold border border-[var(--color-primary)]/50 text-[var(--color-primary)] bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              ▶ SUBMIT
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Result */}
+      {result && (
+        <div className="space-y-3">
+          {/* Simulated AI response */}
+          <div className="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-purple-400">// AI RESPONSE</span>
+            </div>
+            <pre className={`text-xs font-mono text-[var(--color-text)] whitespace-pre-wrap leading-relaxed ${typing ? "dojo-cursor" : ""}`}>
+              {displayedResponse}
+            </pre>
+          </div>
+
+          {/* Score */}
+          <div className="flex items-center gap-4 p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-1">
+                <span className="font-mono text-2xl font-bold" style={{ color: result.score >= 70 ? "#00FF88" : result.score >= 40 ? "#FBBF24" : "#EF4444" }}>
+                  {result.score}%
+                </span>
+                <div className="flex-1 h-2 rounded-full bg-[var(--color-border)] overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-1000"
+                    style={{
+                      width: `${result.score}%`,
+                      background: result.score >= 70 ? "#00FF88" : result.score >= 40 ? "#FBBF24" : "#EF4444",
+                    }}
+                  />
+                </div>
+              </div>
+              <p className="text-xs font-mono text-[var(--color-text-muted)]">{result.feedback}</p>
+            </div>
+          </div>
+
+          {/* Tip */}
+          <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+            <p className="text-xs font-mono text-amber-300/80">{challenge.tips}</p>
+          </div>
+
+          <div className="flex justify-end">
+            <button
+              onClick={handleNext}
+              className="px-5 py-2 rounded-lg font-mono text-xs font-bold border border-[var(--color-primary)]/50 text-[var(--color-primary)] bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10 transition-all"
+            >
+              {currentIdx + 1 >= PROMPT_CHALLENGES.length ? "SEE RESULTS →" : "NEXT CHALLENGE →"}
+            </button>
+          </div>
         </div>
       )}
     </GameShell>
   );
 }
 
-/* ─── 10. Jargon Buster ─── */
-const JARGON_QUESTIONS = [
-  { term: "Hallucination", definition: "When an AI generates false information confidently", correct: true },
-  { term: "Overfitting", definition: "When a model performs too well on new data", correct: false },
-  { term: "Transformer", definition: "The architecture behind GPT and BERT", correct: true },
-  { term: "Epoch", definition: "One complete pass through the training dataset", correct: true },
-  { term: "Gradient Descent", definition: "A method to increase the error in a model", correct: false },
-  { term: "Token", definition: "A small piece of text that LLMs process", correct: true },
-  { term: "Reinforcement Learning", definition: "Learning by memorising the entire dataset", correct: false },
-  { term: "Inference", definition: "Using a trained model to make predictions", correct: true },
-  { term: "Embedding", definition: "Converting text into numerical vectors", correct: true },
-  { term: "Backpropagation", definition: "Running a model in reverse to delete data", correct: false },
-  { term: "Fine-tuning", definition: "Training a pre-trained model on specific data", correct: true },
-  { term: "Latent Space", definition: "The physical storage location of AI models", correct: false },
-];
+/* ═══════════════════════════════════════════════════════════════
+   3. Algorithm Visualizer
+   Visual race between sorting algorithms
+   ═══════════════════════════════════════════════════════════════ */
 
-export function JargonBuster() {
-  const t = useTranslations("playground");
-  const [questions, setQuestions] = useState<typeof JARGON_QUESTIONS>([]);
-  const [current, setCurrent] = useState(0);
-  const [score, setScore] = useState(0);
-  const [answered, setAnswered] = useState<boolean | null>(null);
-  const [done, setDone] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(10);
-  const timerRef = useRef<ReturnType<typeof setInterval>>(undefined);
+type SortAlgo = "bubble" | "quick" | "merge";
+interface AlgoState {
+  name: string;
+  array: number[];
+  ops: number;
+  done: boolean;
+  comparing: number[];
+  swapping: number[];
+}
 
-  const reset = useCallback(() => {
-    setQuestions([...JARGON_QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 8));
-    setCurrent(0); setScore(0); setAnswered(null); setDone(false); setTimeLeft(10);
-  }, []);
+function generateArray(n: number): number[] {
+  const arr = Array.from({ length: n }, (_, i) => i + 1);
+  // Fisher-Yates shuffle
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
-  useEffect(() => { reset(); }, [reset]);
+// Generator-based sorts that yield after each step
+function* bubbleSortGen(arr: number[]): Generator<{ array: number[]; comparing: number[]; swapping: number[]; ops: number }> {
+  const a = [...arr];
+  let ops = 0;
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < a.length - i - 1; j++) {
+      ops++;
+      yield { array: [...a], comparing: [j, j + 1], swapping: [], ops };
+      if (a[j] > a[j + 1]) {
+        [a[j], a[j + 1]] = [a[j + 1], a[j]];
+        yield { array: [...a], comparing: [], swapping: [j, j + 1], ops };
+      }
+    }
+  }
+  yield { array: [...a], comparing: [], swapping: [], ops };
+}
 
-  useEffect(() => {
-    if (done || answered !== null || !questions.length) return;
-    setTimeLeft(10);
-    timerRef.current = setInterval(() => {
-      setTimeLeft(t => {
-        if (t <= 1) { clearInterval(timerRef.current); handleAnswer(null); return 0; }
-        return t - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timerRef.current);
-  }, [current, done, answered, questions.length]);
+function* quickSortGen(arr: number[]): Generator<{ array: number[]; comparing: number[]; swapping: number[]; ops: number }> {
+  const a = [...arr];
+  let ops = 0;
 
-  const handleAnswer = useCallback((userSays: boolean | null) => {
-    if (answered !== null) return;
-    clearInterval(timerRef.current);
-    const q = questions[current];
-    if (!q) return;
-    const correct = userSays === q.correct;
-    if (correct) setScore(s => s + 1);
-    setAnswered(correct);
-    setTimeout(() => {
-      if (current + 1 >= questions.length) setDone(true);
-      else { setCurrent(c => c + 1); setAnswered(null); }
-    }, 1200);
-  }, [answered, current, questions]);
-
-  if (!questions.length) return null;
-
-  if (done) {
-    return <GameOverScreen emoji={score >= 7 ? "🏆" : score >= 5 ? "📖" : "🔍"} stat={`${score}/${questions.length}`} label={t("common.jargonBusted")} onReplay={reset} />;
+  function* partition(lo: number, hi: number): Generator<{ array: number[]; comparing: number[]; swapping: number[]; ops: number }> {
+    const pivot = a[hi];
+    let i = lo - 1;
+    for (let j = lo; j < hi; j++) {
+      ops++;
+      yield { array: [...a], comparing: [j, hi], swapping: [], ops };
+      if (a[j] <= pivot) {
+        i++;
+        [a[i], a[j]] = [a[j], a[i]];
+        if (i !== j) yield { array: [...a], comparing: [], swapping: [i, j], ops };
+      }
+    }
+    [a[i + 1], a[hi]] = [a[hi], a[i + 1]];
+    yield { array: [...a], comparing: [], swapping: [i + 1, hi], ops };
   }
 
-  const q = questions[current];
+  function* qsort(lo: number, hi: number): Generator<{ array: number[]; comparing: number[]; swapping: number[]; ops: number }> {
+    if (lo < hi) {
+      const pivot = a[lo + Math.floor((hi - lo + 1) / 2)]; // just for partition index
+      // inline partition
+      let i = lo - 1;
+      for (let j = lo; j < hi; j++) {
+        ops++;
+        yield { array: [...a], comparing: [j, hi], swapping: [], ops };
+        if (a[j] <= a[hi]) {
+          i++;
+          [a[i], a[j]] = [a[j], a[i]];
+          if (i !== j) yield { array: [...a], comparing: [], swapping: [i, j], ops };
+        }
+      }
+      [a[i + 1], a[hi]] = [a[hi], a[i + 1]];
+      yield { array: [...a], comparing: [], swapping: [i + 1, hi], ops };
+      const pi = i + 1;
+      yield* qsort(lo, pi - 1);
+      yield* qsort(pi + 1, hi);
+    }
+  }
+
+  // Suppress unused warning
+  void partition;
+  yield* qsort(0, a.length - 1);
+  yield { array: [...a], comparing: [], swapping: [], ops };
+}
+
+function* mergeSortGen(arr: number[]): Generator<{ array: number[]; comparing: number[]; swapping: number[]; ops: number }> {
+  const a = [...arr];
+  let ops = 0;
+
+  function* msort(lo: number, hi: number): Generator<{ array: number[]; comparing: number[]; swapping: number[]; ops: number }> {
+    if (lo >= hi) return;
+    const mid = Math.floor((lo + hi) / 2);
+    yield* msort(lo, mid);
+    yield* msort(mid + 1, hi);
+
+    // Merge
+    const temp: number[] = [];
+    let i = lo, j = mid + 1;
+    while (i <= mid && j <= hi) {
+      ops++;
+      yield { array: [...a], comparing: [i, j], swapping: [], ops };
+      if (a[i] <= a[j]) { temp.push(a[i++]); }
+      else { temp.push(a[j++]); }
+    }
+    while (i <= mid) { temp.push(a[i++]); ops++; }
+    while (j <= hi) { temp.push(a[j++]); ops++; }
+
+    for (let k = 0; k < temp.length; k++) {
+      a[lo + k] = temp[k];
+      yield { array: [...a], comparing: [], swapping: [lo + k], ops };
+    }
+  }
+
+  yield* msort(0, a.length - 1);
+  yield { array: [...a], comparing: [], swapping: [], ops };
+}
+
+const ALGO_COLORS: Record<SortAlgo, string> = {
+  bubble: "#3B82F6",
+  quick: "#A855F7",
+  merge: "#00FF88",
+};
+
+export function AlgorithmVisualizer() {
+  const ARRAY_SIZE = 24;
+  const [baseArray, setBaseArray] = useState<number[]>(() => generateArray(ARRAY_SIZE));
+  const [algos, setAlgos] = useState<Record<SortAlgo, AlgoState>>(() => ({
+    bubble: { name: "Bubble Sort", array: [...baseArray], ops: 0, done: false, comparing: [], swapping: [] },
+    quick: { name: "Quick Sort", array: [...baseArray], ops: 0, done: false, comparing: [], swapping: [] },
+    merge: { name: "Merge Sort", array: [...baseArray], ops: 0, done: false, comparing: [], swapping: [] },
+  }));
+  const [racing, setRacing] = useState(false);
+  const [speed, setSpeed] = useState(2);
+  const [bet, setBet] = useState<SortAlgo | null>(null);
+  const [winner, setWinner] = useState<SortAlgo | null>(null);
+  const [betResult, setBetResult] = useState<"won" | "lost" | null>(null);
+  const gensRef = useRef<Record<SortAlgo, Generator> | null>(null);
+  const frameRef = useRef<number>(0);
+  const racingRef = useRef(false);
+  const speedRef = useRef(speed);
+  speedRef.current = speed;
+
+  const startRace = () => {
+    const arr = generateArray(ARRAY_SIZE);
+    setBaseArray(arr);
+    setWinner(null);
+    setBetResult(null);
+
+    const initial: Record<SortAlgo, AlgoState> = {
+      bubble: { name: "Bubble Sort", array: [...arr], ops: 0, done: false, comparing: [], swapping: [] },
+      quick: { name: "Quick Sort", array: [...arr], ops: 0, done: false, comparing: [], swapping: [] },
+      merge: { name: "Merge Sort", array: [...arr], ops: 0, done: false, comparing: [], swapping: [] },
+    };
+    setAlgos(initial);
+
+    gensRef.current = {
+      bubble: bubbleSortGen(arr),
+      quick: quickSortGen(arr),
+      merge: mergeSortGen(arr),
+    };
+
+    racingRef.current = true;
+    setRacing(true);
+  };
+
+  useEffect(() => {
+    if (!racing || !gensRef.current) return;
+
+    let lastTime = 0;
+    const interval = () => {
+      const speed = speedRef.current;
+      const delay = speed === 1 ? 80 : speed === 2 ? 30 : 8;
+      const now = performance.now();
+      if (now - lastTime < delay) {
+        frameRef.current = requestAnimationFrame(interval);
+        return;
+      }
+      lastTime = now;
+
+      if (!gensRef.current || !racingRef.current) return;
+
+      const updates: Partial<Record<SortAlgo, AlgoState>> = {};
+      let anyActive = false;
+      let firstDone: SortAlgo | null = null;
+
+      for (const key of ["bubble", "quick", "merge"] as SortAlgo[]) {
+        const gen = gensRef.current[key];
+        const result = gen.next();
+        if (result.done) {
+          updates[key] = { ...updates[key]!, done: true } as AlgoState;
+        } else {
+          anyActive = true;
+          const v = result.value as { array: number[]; comparing: number[]; swapping: number[]; ops: number };
+          updates[key] = {
+            name: key === "bubble" ? "Bubble Sort" : key === "quick" ? "Quick Sort" : "Merge Sort",
+            array: v.array,
+            ops: v.ops,
+            done: false,
+            comparing: v.comparing,
+            swapping: v.swapping,
+          };
+        }
+      }
+
+      setAlgos(prev => {
+        const next = { ...prev };
+        let winnerFound: SortAlgo | null = null;
+        for (const key of ["bubble", "quick", "merge"] as SortAlgo[]) {
+          if (updates[key]) {
+            next[key] = { ...prev[key], ...updates[key] };
+          }
+          // Check if this just finished
+          const gen = gensRef.current![key];
+          const peek = gen.next();
+          if (peek.done && !prev[key].done) {
+            next[key] = { ...next[key], done: true };
+            if (!winnerFound && !prev.bubble.done && !prev.quick.done && !prev.merge.done) {
+              winnerFound = key;
+            }
+          }
+        }
+        return next;
+      });
+
+      if (!anyActive) {
+        racingRef.current = false;
+        setRacing(false);
+      }
+
+      frameRef.current = requestAnimationFrame(interval);
+    };
+
+    frameRef.current = requestAnimationFrame(interval);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [racing]);
+
+  // Detect winner
+  useEffect(() => {
+    if (winner) return;
+    for (const key of ["merge", "quick", "bubble"] as SortAlgo[]) {
+      if (algos[key].done) {
+        setWinner(key);
+        if (bet) {
+          setBetResult(bet === key ? "won" : "lost");
+        }
+        racingRef.current = false;
+        setRacing(false);
+        return;
+      }
+    }
+  }, [algos, winner, bet]);
+
+  const resetRace = () => {
+    racingRef.current = false;
+    cancelAnimationFrame(frameRef.current);
+    setRacing(false);
+    setWinner(null);
+    setBet(null);
+    setBetResult(null);
+    const arr = generateArray(ARRAY_SIZE);
+    setBaseArray(arr);
+    setAlgos({
+      bubble: { name: "Bubble Sort", array: [...arr], ops: 0, done: false, comparing: [], swapping: [] },
+      quick: { name: "Quick Sort", array: [...arr], ops: 0, done: false, comparing: [], swapping: [] },
+      merge: { name: "Merge Sort", array: [...arr], ops: 0, done: false, comparing: [], swapping: [] },
+    });
+  };
+
+  const renderBars = (state: AlgoState, color: string) => {
+    const max = ARRAY_SIZE;
+    return (
+      <div className="flex items-end gap-[2px] h-28 sm:h-36">
+        {state.array.map((val, i) => {
+          const isComparing = state.comparing.includes(i);
+          const isSwapping = state.swapping.includes(i);
+          const heightPct = (val / max) * 100;
+          return (
+            <div
+              key={i}
+              className="flex-1 rounded-t-sm transition-all"
+              style={{
+                height: `${heightPct}%`,
+                backgroundColor: isSwapping ? "#FBBF24" : isComparing ? "#FF6B6B" : state.done ? "#00FF88" : color,
+                opacity: isComparing || isSwapping ? 1 : 0.7,
+                transition: "height 0.05s ease, background-color 0.1s ease",
+                boxShadow: isSwapping ? `0 0 8px ${color}` : "none",
+              }}
+            />
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
-    <GameShell title={t("games.jargonBuster.title")}>
-      <StatusBar left={`${current + 1}/${questions.length}`} right={`${t("common.score")}: ${score}`} />
-      {/* Timer bar */}
-      <div className="h-2 rounded-full bg-[var(--color-bg-section)] overflow-hidden">
-        <div className={`h-full rounded-full transition-all duration-1000 ease-linear ${timeLeft <= 3 ? "bg-red-500" : "bg-gradient-to-r from-indigo-500 to-violet-500"}`} style={{ width: `${timeLeft * 10}%` }} />
-      </div>
-      <div className="text-center text-sm font-mono font-bold">
-        <span className={timeLeft <= 3 ? "text-red-500 animate-pulse" : "text-[var(--color-text-muted)]"}>{timeLeft}s</span>
-      </div>
-      <div className="text-center p-6 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-        <p className="text-xs text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">{t("games.jargonBuster.term")}</p>
-        <p className="text-2xl sm:text-3xl font-bold mb-3">{q.term}</p>
-        <p className="text-sm text-[var(--color-text-muted)]">&ldquo;{q.definition}&rdquo;</p>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <button onClick={() => handleAnswer(true)} disabled={answered !== null}
-          className={`min-h-[56px] p-4 rounded-xl border-2 font-bold text-lg transition-all ${
-            answered !== null ? (q.correct ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-[var(--color-border)] opacity-40")
-            : "border-[var(--color-border)] hover:border-emerald-500 hover:bg-emerald-500/5 active:scale-[0.97]"
-          }`}>
-          ✅ {t("games.jargonBuster.true")}
-        </button>
-        <button onClick={() => handleAnswer(false)} disabled={answered !== null}
-          className={`min-h-[56px] p-4 rounded-xl border-2 font-bold text-lg transition-all ${
-            answered !== null ? (!q.correct ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-[var(--color-border)] opacity-40")
-            : "border-[var(--color-border)] hover:border-red-500 hover:bg-red-500/5 active:scale-[0.97]"
-          }`}>
-          ❌ {t("games.jargonBuster.false")}
-        </button>
-      </div>
-      {answered !== null && (
-        <p className={`text-center text-sm font-semibold ${answered ? "text-emerald-400" : "text-red-400"}`}>
-          {answered ? `${t("common.correct")} ✨` : `${t("common.wrong")}`}
-        </p>
+    <GameShell title="Algorithm Race" icon="🏁">
+      <style>{`
+        @keyframes algo-flash { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        .algo-winner { animation: algo-flash 0.5s ease-in-out 3; }
+      `}</style>
+
+      {/* Bet selection */}
+      {!racing && !winner && (
+        <div className="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
+          <p className="text-xs font-mono text-[var(--color-text-muted)] mb-3 uppercase tracking-wider">// Place your bet — which algorithm wins?</p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {(["bubble", "quick", "merge"] as SortAlgo[]).map(algo => (
+              <button
+                key={algo}
+                onClick={() => setBet(algo)}
+                className={`flex-1 min-w-[100px] px-3 py-2 rounded-lg font-mono text-xs font-bold border transition-all ${
+                  bet === algo
+                    ? `border-[${ALGO_COLORS[algo]}] bg-[${ALGO_COLORS[algo]}]/20`
+                    : "border-[var(--color-border)] hover:border-[var(--color-text-muted)]"
+                }`}
+                style={{
+                  color: ALGO_COLORS[algo],
+                  borderColor: bet === algo ? ALGO_COLORS[algo] : undefined,
+                  backgroundColor: bet === algo ? `${ALGO_COLORS[algo]}15` : undefined,
+                }}
+              >
+                {bet === algo ? "★ " : ""}{algo === "bubble" ? "Bubble" : algo === "quick" ? "Quick" : "Merge"} Sort
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={startRace}
+            className="w-full min-h-[40px] px-4 py-2 rounded-lg font-mono text-sm font-bold border border-green-500/50 text-green-400 bg-green-500/10 hover:bg-green-500/20 transition-all"
+          >
+            🏁 START RACE
+          </button>
+        </div>
       )}
+
+      {/* Speed controls */}
+      {(racing || winner) && (
+        <div className="flex items-center justify-between">
+          <div className="flex gap-1">
+            {[1, 2, 5].map(s => (
+              <button
+                key={s}
+                onClick={() => setSpeed(s)}
+                className={`px-2 py-1 rounded font-mono text-[10px] border transition-all ${
+                  speed === s ? "border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-primary)]/10" : "border-[var(--color-border)] text-[var(--color-text-muted)]"
+                }`}
+              >
+                {s}x
+              </button>
+            ))}
+          </div>
+          {winner && (
+            <button
+              onClick={resetRace}
+              className="px-3 py-1 rounded-lg font-mono text-xs font-bold border border-[var(--color-primary)]/50 text-[var(--color-primary)] bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10 transition-all"
+            >
+              ↻ NEW RACE
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Algorithm visualizations */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {(["bubble", "quick", "merge"] as SortAlgo[]).map(key => {
+          const state = algos[key];
+          const isWinner = winner === key;
+          return (
+            <div
+              key={key}
+              className={`p-3 rounded-lg border bg-[var(--color-bg-section)] transition-all ${
+                isWinner ? "border-green-500/60 algo-winner" : "border-[var(--color-border)]"
+              }`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-mono text-xs font-bold" style={{ color: ALGO_COLORS[key] }}>
+                  {state.name}
+                  {isWinner && " 🏆"}
+                </span>
+                {bet === key && <span className="text-[9px] font-mono text-amber-400">YOUR BET</span>}
+              </div>
+              {renderBars(state, ALGO_COLORS[key])}
+              <div className="flex items-center justify-between mt-2">
+                <span className="text-[10px] font-mono text-[var(--color-text-muted)]">
+                  OPS: <span style={{ color: ALGO_COLORS[key] }}>{state.ops}</span>
+                </span>
+                <span className={`text-[10px] font-mono ${state.done ? "text-green-400" : "text-[var(--color-text-muted)]"}`}>
+                  {state.done ? "✓ DONE" : racing ? "sorting..." : "ready"}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Result */}
+      {winner && betResult && (
+        <div className={`p-4 rounded-lg border text-center font-mono ${
+          betResult === "won" ? "border-green-500/40 bg-green-500/10" : "border-red-500/30 bg-red-500/5"
+        }`}>
+          <p className="text-lg font-bold mb-1">
+            {betResult === "won" ? "🎉 You called it!" : "😅 Not this time!"}
+          </p>
+          <p className="text-xs text-[var(--color-text-muted)]">
+            {winner === "merge" && "Merge Sort wins with O(n log n) guaranteed performance!"}
+            {winner === "quick" && "Quick Sort is the fastest on average — O(n log n) with low overhead!"}
+            {winner === "bubble" && "Bubble Sort won?! That's extremely rare with random data — usually O(n²)!"}
+          </p>
+          <div className="mt-3 flex justify-center gap-4 text-xs text-[var(--color-text-muted)]">
+            <span>Bubble: <span className="text-blue-400">{algos.bubble.ops}</span> ops</span>
+            <span>Quick: <span className="text-purple-400">{algos.quick.ops}</span> ops</span>
+            <span>Merge: <span className="text-green-400">{algos.merge.ops}</span> ops</span>
+          </div>
+        </div>
+      )}
+
+      {/* Legend */}
+      <div className="flex flex-wrap gap-4 text-[10px] font-mono text-[var(--color-text-muted)]">
+        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#FF6B6B] mr-1" /> Comparing</span>
+        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#FBBF24] mr-1" /> Swapping</span>
+        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#00FF88] mr-1" /> Sorted</span>
+      </div>
     </GameShell>
   );
 }
@@ -904,7 +1087,8 @@ export interface GameEntry {
 }
 
 export const ALL_GAMES: GameEntry[] = [
-  { id: "emoji-decoder", name: "Emoji Decoder", desc: "Guess AI concepts from emojis", icon: "🧩", component: EmojiDecoder, difficulty: "easy", estimatedMinutes: 2, category: "quick" },
-  { id: "memory-match", name: "Memory Match", desc: "Match AI terms with definitions", icon: "🃏", component: MemoryMatch, difficulty: "easy", estimatedMinutes: 3, category: "quick" },
+  { id: "neural-network", name: "Neural Network Playground", desc: "Build & train a tiny neural network — place points, watch it learn", icon: "🧬", component: NeuralNetworkPlayground, difficulty: "medium", estimatedMinutes: 5, category: "creative" },
+  { id: "prompt-dojo", name: "Prompt Engineering Dojo", desc: "Craft the perfect prompt to match target outputs", icon: "🥋", component: PromptEngineeringDojo, difficulty: "hard", estimatedMinutes: 5, category: "knowledge" },
+  { id: "algo-race", name: "Algorithm Race", desc: "Bet on sorting algorithms and watch them race in real-time", icon: "🏁", component: AlgorithmVisualizer, difficulty: "easy", estimatedMinutes: 3, category: "quick" },
   { id: "ai-trivia", name: "AI Trivia Challenge", desc: "Test your AI knowledge with timed questions", icon: "🧠", component: AITriviaChallenge, difficulty: "medium", estimatedMinutes: 4, category: "knowledge" },
 ];

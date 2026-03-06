@@ -1,4 +1,6 @@
 "use client";
 
-// Re-export BiasDetective from MiniGames as a standalone component
-export { BiasDetective as default } from "./MiniGames";
+// Placeholder — BiasDetective was removed when MiniGames was rebuilt with new experiments
+export default function EthicsScenario() {
+  return null;
+}

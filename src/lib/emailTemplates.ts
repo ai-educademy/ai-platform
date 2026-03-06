@@ -49,7 +49,7 @@ export function welcomeEmailHtml(email: string): string {
                     <table cellpadding="0" cellspacing="0" style="width: 100%; background-color: #764ba2; border-radius: 6px;">
                       <tr>
                         <td style="padding: 12px; text-align: center;">
-                          <a href="https://aieducademy.vercel.app/playground" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">Try Playground</a>
+                          <a href="https://aieducademy.vercel.app/lab" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">Try AI Lab</a>
                         </td>
                       </tr>
                     </table>

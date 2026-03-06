@@ -9,12 +9,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "playground" });
+  const t = await getTranslations({ locale, namespace: "lab" });
   return {
     title: t("pageTitle"),
     description: t("pageDescription"),
     alternates: {
-      canonical: `${BASE_URL}/${locale}/playground`,
+      canonical: `${BASE_URL}/${locale}/lab`,
     },
     openGraph: {
       title: `${t("pageTitle")} | AI Educademy`,
@@ -23,7 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export default function PlaygroundLayout({
+export default function LabLayout({
   children,
 }: {
   children: React.ReactNode;
