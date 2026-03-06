@@ -12,10 +12,11 @@ if (!process.env.AUTH_SECRET) {
 const providers = [];
 if (process.env.AUTH_GITHUB_ID) providers.push(GitHub);
 if (process.env.AUTH_GOOGLE_ID) providers.push(Google);
-if (process.env.AUTH_RESEND_KEY) {
+const resendKey = process.env.AUTH_RESEND_KEY || process.env.RESEND_API_KEY;
+if (resendKey) {
   providers.push(
     Resend({
-      apiKey: process.env.AUTH_RESEND_KEY,
+      apiKey: resendKey,
       from: process.env.AUTH_EMAIL_FROM || "Open AI School <noreply@openaischool.dev>",
     })
   );
