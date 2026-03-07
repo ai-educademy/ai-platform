@@ -185,7 +185,7 @@ export function LessonComplete({
 
     const allComplete = seq.every((prog) => {
       const total = trackLessonCounts[prog.slug] || 0;
-      if (total === 0) return true;
+      if (total === 0) return false; // skip — no lessons means not trackable
       const progProgress = allData[prog.slug];
       if (!progProgress) return false;
       return progProgress.completed.length >= total;
@@ -216,10 +216,15 @@ export function LessonComplete({
     if (!completed && !justCompleted) {
       markComplete(slug);
       setJustCompleted(true);
-      // Check track completion after a brief delay so progress state updates
-      setTimeout(checkTrackCompletion, 100);
     }
-  }, [completed, justCompleted, markComplete, slug, checkTrackCompletion]);
+  }, [completed, justCompleted, markComplete, slug]);
+
+  // Check track completion whenever progress data changes
+  useEffect(() => {
+    if (justCompleted) {
+      checkTrackCompletion();
+    }
+  }, [justCompleted, allData, checkTrackCompletion]);
 
   useEffect(() => {
     const el = endRef.current;
@@ -314,7 +319,7 @@ export function LessonComplete({
               href={programPath.replace(/\/[^/]+$/, `/${nextProgram.slug}`)}
               className="group flex items-center gap-2 text-sm font-medium px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl hover:shadow-lg transition-all"
             >
-              <span>Next: {nextProgram.icon} {nextProgram.title}</span>
+              <span>{nextProgram.icon} {nextProgram.title}</span>
               <span className="shrink-0 group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           ) : (

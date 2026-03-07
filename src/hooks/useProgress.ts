@@ -60,7 +60,7 @@ function migrateGlobalKey(userId: string | null) {
 }
 
 export function useProgress(programSlug?: string) {
-  const { data: session } = useSession();
+  const { data: session, status: sessionStatus } = useSession();
   const [data, setData] = useState<ProgressData>({});
   const [storageKey, setStorageKey] = useState<string>(`${STORAGE_PREFIX}-guest`);
   const [isGuest, setIsGuest] = useState(true);
@@ -75,6 +75,9 @@ export function useProgress(programSlug?: string) {
   }, [session]);
 
   useEffect(() => {
+    // Don't run while NextAuth is still loading — prevents wiping progress
+    if (sessionStatus === "loading") return;
+
     const userId = resolveUserId();
     migrateGlobalKey(userId);
     const key = storageKeyFor(userId);
@@ -93,7 +96,7 @@ export function useProgress(programSlug?: string) {
         setData({});
       }
     }
-  }, [resolveUserId]);
+  }, [resolveUserId, sessionStatus]);
 
   const getProgram = useCallback(
     (slug: string): ProgramProgress => data[slug] || emptyProgram(),

@@ -23,7 +23,7 @@ const GAME_ROUNDS = [
 const totalRounds = 8;
 
 export default function AIOrHumanGame() {
-  const t = useTranslations("playground");
+  const t = useTranslations("lab");
   const [gameState, setGameState] = useState<"intro" | "playing" | "result">("intro");
   const [rounds, setRounds] = useState<typeof GAME_ROUNDS>([]);
   const [currentRound, setCurrentRound] = useState(0);

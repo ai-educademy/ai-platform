@@ -221,7 +221,7 @@ export default function LabPage() {
             backgroundColor: "rgba(0,0,0,0.75)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
-            ...(closing ? { opacity: 0, transition: "opacity 0.3s ease" } : {}),
+            ...(closing ? { opacity: 0, backdropFilter: "blur(0px)", WebkitBackdropFilter: "blur(0px)", transition: "opacity 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease" } : {}),
           }}
           onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
         >

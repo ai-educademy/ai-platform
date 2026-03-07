@@ -61,9 +61,6 @@ export default async function ProgramsPage({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
       <ScrollReveal animation="fade-up">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium mb-6">
-            🎓 {t("badge")}
-          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">{t("title")}</h1>
           <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto">
             {t("subtitle")}

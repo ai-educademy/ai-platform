@@ -10,7 +10,7 @@
     "about": "About",
     "getStarted": "Start Learning, It's Free",
     "language": "Language",
-    "programs": "Academies",
+    "programs": "Academics",
     "blog": "Blog",
     "lab": "Lab"
   },
@@ -136,8 +136,8 @@
     "startLesson": "Start Lesson",
     "comingSoon": "Coming Soon",
     "previousLesson": "Previous Lesson",
-    "nextLesson": "Next Lesson",
-    "backToLessons": "← Back to All Lessons",
+    "nextLesson": "",
+    "backToLessons": "← Lessons",
     "comingSoon1": {
       "title": "AI in the Real World"
     },
@@ -147,18 +147,18 @@
     "comingSoon3": {
       "title": "How Chatbots Work"
     },
-    "programs": "Academies",
+    "programs": "Academics",
     "lessonsComingSoon": "Lessons Coming Soon",
     "checkBackSoon": "Check back soon!",
     "backToProgram": "Back to"
   },
   "programs": {
-    "badge": "5 Learning Levels",
+    "badge": "",
     "title": "Choose Your Learning Path",
     "subtitle": "Pick the level that matches where you are.",
     "level": "Level",
     "comingSoon": "Coming Soon",
-    "startLearning": "Explore Academy",
+    "startLearning": "Start Learning",
     "hours": "h",
     "levelLabels": {
       "1": "Beginner",
@@ -167,7 +167,7 @@
       "4": "Advanced",
       "5": "Expert"
     },
-    "viewAll": "View All Academies",
+    "viewAll": "View All",
     "trackAI": "Understanding AI",
     "trackAIDesc": "Grow from zero to AI expert, nature-inspired progression",
     "trackAITagline": "Seeds → Sprouts → Branches → Canopy → Forest",
@@ -175,8 +175,8 @@
     "trackCraftDesc": "Ace your dream interview, workshop-inspired mastery",
     "trackCraftTagline": "Sketch → Chisel → Craft → Polish → Masterpiece",
     "trackCraftBrand": "Learn the algorithms that power AI, design the systems that scale AI, and ace the interviews that land you AI-era jobs.",
-    "pageTitle": "AI & Engineering Academies",
-    "pageDescription": "Explore our free AI learning tracks and software engineering academies. From absolute beginner to advanced, learn at your own pace in 5 languages.",
+    "pageTitle": "AI & Engineering Academics",
+    "pageDescription": "Explore our free AI learning tracks and software engineering academics. From absolute beginner to advanced, learn at your own pace in 5 languages.",
     "tileLabel": {
       "ai-seeds": "Basics",
       "ai-sprouts": "Algorithms",
@@ -219,14 +219,14 @@
   "dashboard": {
     "title": "My Learning Dashboard",
     "titleUser": "{name}'s Dashboard",
-    "subtitle": "Track your progress across all academies",
+    "subtitle": "Your progress across all academics",
     "overallProgress": "Overall Progress",
     "lessonsCompleted": "{completed} of {total} lessons completed",
     "remaining": "{count} remaining",
     "min": "min",
     "achievements": "Achievements",
     "unlocked": "Unlocked!",
-    "browsePrograms": "Browse Academies",
+    "browsePrograms": "Academics",
     "resetProgress": "Reset Progress",
     "firstStep": "First Step",
     "firstStepDesc": "Completed your first lesson",
@@ -234,9 +234,9 @@
     "halfWayDesc": "Completed half of all lessons",
     "aiGraduate": "AI Graduate",
     "aiGraduateDesc": "Completed all lessons",
-    "emptyTitle": "Your Learning Journey Starts Here",
-    "emptySubtitle": "Complete your first lesson to start tracking progress.",
-    "emptyStart": "Start Your First Lesson",
+    "emptyTitle": "No Progress Yet",
+    "emptySubtitle": "Complete a lesson to start tracking.",
+    "emptyStart": "Begin",
     "trackAI": "Understanding AI",
     "trackCraft": "Code & Algorithms",
     "certificate": "Certificate",
@@ -246,7 +246,7 @@
     "downloadCertificate": "Download Certificate",
     "shareCertificate": "Share",
     "copiedToClipboard": "Copied to clipboard!",
-    "continueLearning": "Continue Learning",
+    "continueLearning": "Up Next",
     "continueLesson": "Continue",
     "allComplete": "You've completed everything! 🎉",
     "streak": "Learning Streak",
@@ -330,13 +330,13 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Updates and insights",
+    "subtitle": "Thoughts on AI, engineering, and education",
     "readMore": "Read more",
-    "backToBlog": "Back to Blog",
+    "backToBlog": "← Blog",
     "publishedOn": "Published on",
     "minuteRead": "min read",
     "tags": "Tags",
-    "badge": "Latest Posts"
+    "badge": ""
   },
   "feedback": {
     "title": "Was this lesson helpful?",

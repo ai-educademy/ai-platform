@@ -68,7 +68,7 @@ export default function GameCard({
   game: GameMeta;
   onPlay: (game: GameMeta) => void;
 }) {
-  const t = useTranslations("playground.hub");
+  const t = useTranslations("lab.hub");
   const [bestScore, setBestScore] = useState<number | null>(null);
 
   useEffect(() => {

@@ -304,7 +304,7 @@ export default async function HomePage({
                     {[
                       { value: "15+", label: "Years Engineering" },
                       { value: "14", label: "Open Source Repos" },
-                      { value: "3", label: "Countries Lived" },
+                      { value: "3", label: "Continents Worked" },
                     ].map((stat) => (
                       <div key={stat.label} className="text-center p-3 rounded-xl bg-[var(--color-bg-section)]">
                         <div className="text-2xl font-bold text-gradient">{stat.value}</div>

@@ -45,9 +45,6 @@ export default async function BlogPage({
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
       {/* Hero */}
       <div className="text-center mb-16">
-        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium mb-6">
-          📝 {t("badge")}
-        </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">
           {t("title")}
         </h1>
@@ -108,9 +105,9 @@ export default async function BlogPage({
                     ))}
                   </div>
 
-                  {/* Read more */}
+                  {/* Arrow indicator */}
                   <span className="text-sm font-medium text-[var(--color-primary)] inline-flex items-center gap-1">
-                    {t("readMore")} <span aria-hidden="true">→</span>
+                    <span aria-hidden="true">→</span>
                   </span>
                 </div>
               </article>

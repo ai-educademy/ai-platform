@@ -53,7 +53,7 @@ function addToLeaderboard(entry: LeaderboardEntry) {
 }
 
 export default function AITriviaChallenge() {
-  const t = useTranslations("playground");
+  const t = useTranslations("lab");
   const [gameState, setGameState] = useState<"intro" | "playing" | "result">("intro");
   const [questions, setQuestions] = useState<typeof TRIVIA_QUESTIONS>([]);
   const [current, setCurrent] = useState(0);
