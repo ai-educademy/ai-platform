@@ -4,6 +4,7 @@ import Image from "next/image";
 import { CourseProgress } from "@ai-educademy/ai-ui-library";
 import { WelcomeBanner } from "@ai-educademy/ai-ui-library";
 import { ScrollReveal } from "@ai-educademy/ai-ui-library";
+import { ClickableCard } from "@/components/ui/ClickableCard";
 import { ComingSoonCard } from "@/components/ui/ComingSoon";
 import { FloatingParticles } from "@ai-educademy/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
@@ -136,90 +137,90 @@ export default async function HomePage({
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             {/* Understanding AI */}
             <ScrollReveal animation="fade-up">
-              <div className="gradient-border rounded-2xl h-full">
-                <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-3xl">🌳</span>
-                    <Link href={`${basePath}/programs`} className="hover:underline">
+              <ClickableCard href={`${basePath}/programs`} className="block h-full">
+                <div className="gradient-border rounded-2xl h-full card-hover cursor-pointer">
+                  <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-3xl">🌳</span>
                       <h3 className="text-xl font-bold">{tp("trackAI")}</h3>
-                    </Link>
-                  </div>
-                  <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackAIHome")}</p>
-                  <div className="grid grid-cols-5 gap-2">
-                    {aiLearningPrograms.map((program) => {
-                      const href = firstLessonSlugs[program.slug]
-                        ? `${basePath}/programs/${program.slug}/lessons/${firstLessonSlugs[program.slug]}`
-                        : `${basePath}/programs/${program.slug}`;
-                      const lessons = lessonNames[program.slug] || [];
-                      return program.active ? (
-                        <Link key={program.slug} href={href} className="block group relative">
-                          <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
-                            <div className="text-2xl mb-1">{program.icon}</div>
-                            <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
-                          </div>
-                          {lessons.length > 0 && (
-                            <div className="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 z-30 mt-2 w-48">
-                              <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg shadow-xl p-2 space-y-1">
-                                {lessons.map((name, i) => (
-                                  <div key={i} className="text-[10px] text-[var(--color-text-muted)] truncate px-2 py-1 rounded hover:bg-[var(--color-primary)]/10">
-                                    {name}
-                                  </div>
-                                ))}
-                              </div>
+                    </div>
+                    <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackAIHome")}</p>
+                    <div className="grid grid-cols-5 gap-2">
+                      {aiLearningPrograms.map((program) => {
+                        const href = firstLessonSlugs[program.slug]
+                          ? `${basePath}/programs/${program.slug}/lessons/${firstLessonSlugs[program.slug]}`
+                          : `${basePath}/programs/${program.slug}`;
+                        const lessons = lessonNames[program.slug] || [];
+                        return program.active ? (
+                          <Link key={program.slug} href={href} className="block group relative">
+                            <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
+                              <div className="text-2xl mb-1">{program.icon}</div>
+                              <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
                             </div>
-                          )}
-                        </Link>
-                      ) : (
-                        <ComingSoonCard key={program.slug} icon={program.icon} label={program.title.replace("AI ", "")} />
-                      );
-                    })}
+                            {lessons.length > 0 && (
+                              <div className="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 z-30 mt-2 w-48">
+                                <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg shadow-xl p-2 space-y-1">
+                                  {lessons.map((name, i) => (
+                                    <div key={i} className="text-[10px] text-[var(--color-text-muted)] truncate px-2 py-1 rounded hover:bg-[var(--color-primary)]/10">
+                                      {name}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </Link>
+                        ) : (
+                          <ComingSoonCard key={program.slug} icon={program.icon} label={program.title.replace("AI ", "")} />
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ClickableCard>
             </ScrollReveal>
 
             {/* Code & Algorithms */}
             <ScrollReveal animation="fade-up" delay={100}>
-              <div className="gradient-border rounded-2xl h-full">
-                <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-3xl">🔨</span>
-                    <Link href={`${basePath}/programs`} className="hover:underline">
+              <ClickableCard href={`${basePath}/programs`} className="block h-full">
+                <div className="gradient-border rounded-2xl h-full card-hover cursor-pointer">
+                  <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-3xl">🔨</span>
                       <h3 className="text-xl font-bold">{tp("trackCraft")}</h3>
-                    </Link>
-                  </div>
-                  <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackCraftHome")}</p>
-                  <div className="grid grid-cols-5 gap-2">
-                    {craftPrograms.map((program) => {
-                      const href = firstLessonSlugs[program.slug]
-                        ? `${basePath}/programs/${program.slug}/lessons/${firstLessonSlugs[program.slug]}`
-                        : `${basePath}/programs/${program.slug}`;
-                      const lessons = lessonNames[program.slug] || [];
-                      return program.active ? (
-                        <Link key={program.slug} href={href} className="block group relative">
-                          <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
-                            <div className="text-2xl mb-1">{program.icon}</div>
-                            <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
-                          </div>
-                          {lessons.length > 0 && (
-                            <div className="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 z-30 mt-2 w-48">
-                              <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg shadow-xl p-2 space-y-1">
-                                {lessons.map((name, i) => (
-                                  <div key={i} className="text-[10px] text-[var(--color-text-muted)] truncate px-2 py-1 rounded hover:bg-[var(--color-primary)]/10">
-                                    {name}
-                                  </div>
-                                ))}
-                              </div>
+                    </div>
+                    <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackCraftHome")}</p>
+                    <div className="grid grid-cols-5 gap-2">
+                      {craftPrograms.map((program) => {
+                        const href = firstLessonSlugs[program.slug]
+                          ? `${basePath}/programs/${program.slug}/lessons/${firstLessonSlugs[program.slug]}`
+                          : `${basePath}/programs/${program.slug}`;
+                        const lessons = lessonNames[program.slug] || [];
+                        return program.active ? (
+                          <Link key={program.slug} href={href} className="block group relative">
+                            <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
+                              <div className="text-2xl mb-1">{program.icon}</div>
+                              <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
                             </div>
-                          )}
-                        </Link>
-                      ) : (
-                        <ComingSoonCard key={program.slug} icon={program.icon} label={program.title.replace("AI ", "")} />
-                      );
-                    })}
+                            {lessons.length > 0 && (
+                              <div className="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 z-30 mt-2 w-48">
+                                <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg shadow-xl p-2 space-y-1">
+                                  {lessons.map((name, i) => (
+                                    <div key={i} className="text-[10px] text-[var(--color-text-muted)] truncate px-2 py-1 rounded hover:bg-[var(--color-primary)]/10">
+                                      {name}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </Link>
+                        ) : (
+                          <ComingSoonCard key={program.slug} icon={program.icon} label={program.title.replace("AI ", "")} />
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ClickableCard>
             </ScrollReveal>
           </div>
 
