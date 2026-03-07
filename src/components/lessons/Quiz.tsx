@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 interface QuizProps {
   question: string;
@@ -23,6 +24,7 @@ interface QuizProps {
  *   />
  */
 export function Quiz({ question, options: rawOptions, answer: rawAnswer, explanation }: QuizProps) {
+  const t = useTranslations("lessons");
   const options = Array.isArray(rawOptions)
     ? rawOptions
     : typeof rawOptions === "string"
@@ -131,7 +133,7 @@ export function Quiz({ question, options: rawOptions, answer: rawAnswer, explana
             disabled={selected === null}
             className="px-6 py-2.5 rounded-xl bg-[var(--color-primary)] text-white text-sm font-semibold shadow-sm transition-all duration-200 hover:opacity-90 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            Check Answer
+            {t("checkAnswer")}
           </button>
         ) : (
           <div className="space-y-4">
@@ -144,7 +146,7 @@ export function Quiz({ question, options: rawOptions, answer: rawAnswer, explana
               }`}
             >
               <span className="text-xl">{isCorrect ? "🎉" : "💡"}</span>
-              {isCorrect ? "Correct! Great job!" : "Not quite — but that's how we learn!"}
+              {isCorrect ? t("quizCorrect") : t("quizIncorrect")}
             </div>
 
             {/* Explanation */}
@@ -159,7 +161,7 @@ export function Quiz({ question, options: rawOptions, answer: rawAnswer, explana
                 onClick={handleRetry}
                 className="px-5 py-2 rounded-xl border border-[var(--color-border)] text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-bg)] transition-colors"
               >
-                Try Again
+                {t("tryAgain")}
               </button>
             )}
           </div>

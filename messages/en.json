@@ -153,8 +153,20 @@
     "programs": "Academics",
     "lessonsComingSoon": "Lessons Coming Soon",
     "checkBackSoon": "Check back soon!",
-    "backToProgram": "Back to",
-    "breadcrumbLessons": "Lessons"
+    "backToProgram": "Back to program",
+    "breadcrumbLessons": "Lessons",
+    "trackComplete": "Track Complete!",
+    "trackCompleteDesc": "You have finished every lesson in",
+    "trackCompleteDismiss": "Brilliant — carry on!",
+    "lessonOf": "Lesson {current} of {total}",
+    "completedOf": "{completed} of {total} completed",
+    "allPrograms": "All Programs",
+    "trackAI": "Understanding AI",
+    "trackCraft": "Code & Algorithms",
+    "checkAnswer": "Check Answer",
+    "quizCorrect": "Correct! Great job!",
+    "quizIncorrect": "Not quite — but that is how we learn!",
+    "tryAgain": "Try Again"
   },
   "programs": {
     "badge": "",

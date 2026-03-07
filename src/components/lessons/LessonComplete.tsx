@@ -3,6 +3,7 @@
 import { useProgress } from "@/hooks/useProgress";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 interface LessonCompleteProps {
   slug: string; // "programSlug/lessonSlug"
@@ -37,11 +38,6 @@ const PROGRAM_SEQUENCE: Record<string, { slug: string; title: string; icon: stri
     { slug: "ai-polish", title: "AI Polish", icon: "💎" },
     { slug: "ai-masterpiece", title: "AI Masterpiece", icon: "🏆" },
   ],
-};
-
-const TRACK_NAMES: Record<string, string> = {
-  "ai-learning": "Understanding AI",
-  "craft-engineering": "Code & Algorithms",
 };
 
 /* ── Canvas Confetti ── */
@@ -122,6 +118,7 @@ function ConfettiOverlay({ onDone }: { onDone: () => void }) {
 }
 
 function CelebrationModal({ trackName, onClose }: { trackName: string; onClose: () => void }) {
+  const t = useTranslations("lessons");
   return (
     <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div
@@ -130,10 +127,10 @@ function CelebrationModal({ trackName, onClose }: { trackName: string; onClose: 
       >
         <div className="text-6xl mb-4">🎉</div>
         <h2 className="text-2xl font-bold text-[var(--color-text)] mb-2">
-          Track Complete!
+          {t("trackComplete")}
         </h2>
         <p className="text-[var(--color-text-muted)] mb-1">
-          You&apos;ve finished every lesson in
+          {t("trackCompleteDesc")}
         </p>
         <p className="text-lg font-semibold text-[var(--color-primary)] mb-6">
           {trackName}
@@ -142,7 +139,7 @@ function CelebrationModal({ trackName, onClose }: { trackName: string; onClose: 
           onClick={onClose}
           className="px-6 py-2.5 rounded-xl bg-[var(--color-primary)] text-white font-medium hover:brightness-110 transition-all"
         >
-          Brilliant — carry on!
+          {t("trackCompleteDismiss")}
         </button>
       </div>
     </div>
@@ -166,6 +163,8 @@ export function LessonComplete({
   trackLessonCounts,
 }: LessonCompleteProps) {
   const { isCompleted, markComplete, getProgram, allData } = useProgress(programSlug);
+  const tL = useTranslations("lessons");
+  const tPT = useTranslations("programTitles");
   const [justCompleted, setJustCompleted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
@@ -259,7 +258,7 @@ export function LessonComplete({
       {showConfetti && <ConfettiOverlay onDone={() => setShowConfetti(false)} />}
       {showCelebration && (
         <CelebrationModal
-          trackName={TRACK_NAMES[programTrack] || programTrack}
+          trackName={programTrack === "ai-learning" ? tL("trackAI") : tL("trackCraft")}
           onClose={() => setShowCelebration(false)}
         />
       )}
@@ -274,10 +273,10 @@ export function LessonComplete({
         {/* Progress indicator */}
         <div className="flex items-center justify-between text-sm text-[var(--color-text-muted)]">
           <span>
-            Lesson {currentIndex + 1} of {totalLessons}
+            {tL("lessonOf", { current: currentIndex + 1, total: totalLessons })}
           </span>
           <span>
-            {progCompleted} of {totalLessons} completed
+            {tL("completedOf", { completed: progCompleted, total: totalLessons })}
           </span>
         </div>
         <div className="progress-bar">
@@ -303,7 +302,7 @@ export function LessonComplete({
               className="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
             >
               <span className="shrink-0 group-hover:-translate-x-1 transition-transform">←</span>
-              <span>Back to program</span>
+              <span>{tL("backToProgram")}</span>
             </Link>
           )}
           {nextSlug ? (
@@ -319,7 +318,7 @@ export function LessonComplete({
               href={programPath.replace(/\/[^/]+$/, `/${nextProgram.slug}`)}
               className="group flex items-center gap-2 text-sm font-medium px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl hover:shadow-lg transition-all"
             >
-              <span>{nextProgram.icon} {nextProgram.title}</span>
+              <span>{nextProgram.icon} {tPT(nextProgram.slug)}</span>
               <span className="shrink-0 group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           ) : (
@@ -327,7 +326,7 @@ export function LessonComplete({
               href={programPath.replace(/\/[^/]+$/, "")}
               className="group flex items-center gap-2 text-sm font-medium px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl hover:shadow-lg transition-all"
             >
-              <span>All Programs</span>
+              <span>{tL("allPrograms")}</span>
               <span className="shrink-0 group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           )}

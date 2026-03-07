@@ -154,8 +154,20 @@
     "programs": "Programma's",
     "lessonsComingSoon": "Lessen komen binnenkort",
     "checkBackSoon": "Kom snel terug!",
-    "backToProgram": "Terug naar",
-    "breadcrumbLessons": "Lessen"
+    "backToProgram": "Terug naar programma",
+    "breadcrumbLessons": "Lessen",
+    "trackComplete": "Traject voltooid!",
+    "trackCompleteDesc": "Je hebt alle lessen voltooid in",
+    "trackCompleteDismiss": "Briljant — ga verder!",
+    "lessonOf": "Les {current} van {total}",
+    "completedOf": "{completed} van {total} voltooid",
+    "allPrograms": "Alle programmas",
+    "trackAI": "AI Begrijpen",
+    "trackCraft": "Code & Algoritmen",
+    "checkAnswer": "Controleren",
+    "quizCorrect": "Correct! Goed gedaan!",
+    "quizIncorrect": "Niet helemaal — maar zo leren we!",
+    "tryAgain": "Opnieuw proberen"
   },
   "programs": {
     "badge": "5 leerniveaus",

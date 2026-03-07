@@ -153,8 +153,20 @@
     "programs": "Programmes",
     "lessonsComingSoon": "Leçons à venir",
     "checkBackSoon": "Revenez bientôt !",
-    "backToProgram": "Retour à",
-    "breadcrumbLessons": "Leçons"
+    "backToProgram": "Retour au programme",
+    "breadcrumbLessons": "Leçons",
+    "trackComplete": "Parcours terminé !",
+    "trackCompleteDesc": "Vous avez terminé toutes les leçons de",
+    "trackCompleteDismiss": "Brillant — continuez !",
+    "lessonOf": "Leçon {current} sur {total}",
+    "completedOf": "{completed} sur {total} terminées",
+    "allPrograms": "Tous les programmes",
+    "trackAI": "Comprendre l'IA",
+    "trackCraft": "Code & Algorithmes",
+    "checkAnswer": "Vérifier",
+    "quizCorrect": "Correct ! Bravo !",
+    "quizIncorrect": "Pas tout à fait — mais on apprend comme ça !",
+    "tryAgain": "Réessayer"
   },
   "programs": {
     "badge": "5 niveaux d'apprentissage",

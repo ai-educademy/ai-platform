@@ -155,8 +155,20 @@
     "programs": "ప్రోగ్రాములు",
     "lessonsComingSoon": "పాఠాలు త్వరలో",
     "checkBackSoon": "త్వరలో తిరిగి రండి!",
-    "backToProgram": "తిరిగి",
-    "breadcrumbLessons": "పాఠాలు"
+    "backToProgram": "ప్రోగ్రామ్‌కు తిరిగి",
+    "breadcrumbLessons": "పాఠాలు",
+    "trackComplete": "ట్రాక్ పూర్తి!",
+    "trackCompleteDesc": "మీరు అన్ని పాఠాలను పూర్తి చేసారు",
+    "trackCompleteDismiss": "అద్భుతం — కొనసాగించండి!",
+    "lessonOf": "పాఠం {current} / {total}",
+    "completedOf": "{completed} / {total} పూర్తి",
+    "allPrograms": "అన్ని ప్రోగ్రామ్‌లు",
+    "trackAI": "AI అర్థం చేసుకోండి",
+    "trackCraft": "కోడ్ & అల్గారిథమ్‌లు",
+    "checkAnswer": "సమాధానం తనిఖీ",
+    "quizCorrect": "సరైనది! అద్భుతం!",
+    "quizIncorrect": "సరిగ్గా కాదు — కానీ అలాగే నేర్చుకుంటాం!",
+    "tryAgain": "మళ్ళీ ప్రయత్నించండి"
   },
   "programs": {
     "badge": "5 నేర్చుకునే స్థాయిలు",

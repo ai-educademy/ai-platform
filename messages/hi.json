@@ -153,8 +153,20 @@
     "programs": "कार्यक्रम",
     "lessonsComingSoon": "पाठ जल्द आ रहे हैं",
     "checkBackSoon": "जल्द वापस आएं!",
-    "backToProgram": "वापस",
-    "breadcrumbLessons": "पाठ"
+    "backToProgram": "प्रोग्राम पर वापस",
+    "breadcrumbLessons": "पाठ",
+    "trackComplete": "ट्रैक पूरा!",
+    "trackCompleteDesc": "आपने इसमें सभी पाठ पूरे कर लिए हैं",
+    "trackCompleteDismiss": "शानदार — आगे बढ़ें!",
+    "lessonOf": "पाठ {current} / {total}",
+    "completedOf": "{completed} / {total} पूर्ण",
+    "allPrograms": "सभी प्रोग्राम",
+    "trackAI": "AI को समझें",
+    "trackCraft": "कोड और एल्गोरिदम",
+    "checkAnswer": "उत्तर जांचें",
+    "quizCorrect": "सही! बहुत बढ़िया!",
+    "quizIncorrect": "बिल्कुल नहीं — लेकिन ऐसे ही हम सीखते हैं!",
+    "tryAgain": "फिर से कोशिश करें"
   },
   "programs": {
     "badge": "5 सीखने के स्तर",
