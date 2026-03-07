@@ -18,6 +18,7 @@ function drawCertificate(
   programIcon: string,
   userName: string,
   completionDate: string,
+  labels: { title: string; certifies: string; completed: string; datePrefix: string; org: string },
 ) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
@@ -53,7 +54,7 @@ function drawCertificate(
   // Title
   ctx.font = "bold 32px system-ui, -apple-system, sans-serif";
   ctx.fillStyle = "#1e1b4b";
-  ctx.fillText("Certificate of Completion", W / 2, 145);
+  ctx.fillText(labels.title, W / 2, 145);
 
   // Decorative line
   const lineGrd = ctx.createLinearGradient(200, 0, 600, 0);
@@ -69,7 +70,7 @@ function drawCertificate(
   // "This certifies that"
   ctx.font = "16px system-ui, -apple-system, sans-serif";
   ctx.fillStyle = "#6b7280";
-  ctx.fillText("This certifies that", W / 2, 210);
+  ctx.fillText(labels.certifies, W / 2, 210);
 
   // User name
   ctx.font = "bold 28px system-ui, -apple-system, sans-serif";
@@ -79,7 +80,7 @@ function drawCertificate(
   // "has successfully completed"
   ctx.font = "16px system-ui, -apple-system, sans-serif";
   ctx.fillStyle = "#6b7280";
-  ctx.fillText("has successfully completed", W / 2, 300);
+  ctx.fillText(labels.completed, W / 2, 300);
 
   // Program icon + name
   ctx.font = "36px serif";
@@ -91,12 +92,12 @@ function drawCertificate(
   // Date
   ctx.font = "14px system-ui, -apple-system, sans-serif";
   ctx.fillStyle = "#9ca3af";
-  ctx.fillText(`Completed on ${completionDate}`, W / 2, 440);
+  ctx.fillText(`${labels.datePrefix} ${completionDate}`, W / 2, 440);
 
   // Branding
   ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
   ctx.fillStyle = "#1e1b4b";
-  ctx.fillText("AI Educademy", W / 2, 520);
+  ctx.fillText(labels.org, W / 2, 520);
   ctx.font = "12px system-ui, -apple-system, sans-serif";
   ctx.fillStyle = "#9ca3af";
   ctx.fillText("aieducademy.org", W / 2, 545);
@@ -112,7 +113,13 @@ export function Certificate({ programName, programIcon, userName, completionDate
     (node: HTMLCanvasElement | null) => {
       if (node && !drawn) {
         (canvasRef as React.MutableRefObject<HTMLCanvasElement>).current = node;
-        drawCertificate(node, programName, programIcon, userName, completionDate);
+        drawCertificate(node, programName, programIcon, userName, completionDate, {
+          title: t("certTitle"),
+          certifies: t("certCertifies"),
+          completed: t("certCompleted"),
+          datePrefix: t("certDate"),
+          org: t("certOrg"),
+        });
         setDrawn(true);
       }
     },

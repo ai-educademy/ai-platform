@@ -62,7 +62,9 @@
     "role": "Oprichter · Engineering Leader · Open Source Voorvechter",
     "statContinents": "Continenten Gewerkt",
     "statRepos": "Open Source Repo's",
-    "statYears": "Jaren Engineering"
+    "statYears": "Jaren Engineering",
+    "brainsTitle": "Het brein achter het idee",
+    "buyCoffee": "Koop een koffie voor me"
   },
   "cta": {},
   "footer": {
@@ -126,7 +128,10 @@
     "timeline2025": "Oprichting van AI Educademy — gratis AI-onderwijs voor iedereen 🎓",
     "pageTitle": "Over AI Educademy",
     "pageDescription": "AI Educademy is een gratis, open-source AI-onderwijsplatform voor iedereen. Leer over onze missie om AI-onderwijs wereldwijd toegankelijk te maken.",
-    "pageSubtitle": "Gratis, open-source AI-onderwijs voor elke student."
+    "pageSubtitle": "Gratis, open-source AI-onderwijs voor elke student.",
+    "openSourceTitle": "Open Source",
+    "openSourceDesc": "Elke les, elke regel code — gratis en open source. Fork het, vertaal het, maak het van jou.",
+    "viewOnGithub": "Bekijk op GitHub"
   },
   "lessons": {
     "title": "Lessen",
@@ -167,7 +172,11 @@
     "checkAnswer": "Controleren",
     "quizCorrect": "Correct! Goed gedaan!",
     "quizIncorrect": "Niet helemaal — maar zo leren we!",
-    "tryAgain": "Opnieuw proberen"
+    "tryAgain": "Opnieuw proberen",
+    "quickCheck": "Snelle controle",
+    "animationError": "Animatie kon niet laden",
+    "videoFallback": "Video",
+    "shortBadge": "KORT"
   },
   "programs": {
     "badge": "5 leerniveaus",
@@ -290,7 +299,12 @@
     "emptyLearn": "Leren",
     "emptyPractice": "Oefenen",
     "emptyEarn": "Verdienen",
-    "defaultUser": "Leerling"
+    "defaultUser": "Leerling",
+    "certTitle": "Certificaat van voltooiing",
+    "certCertifies": "Dit bevestigt dat",
+    "certCompleted": "heeft succesvol afgerond",
+    "certDate": "Voltooid op",
+    "certOrg": "AI Educademy"
   },
   "auth": {
     "startLearning": "Begin met leren",
@@ -323,7 +337,11 @@
     "emailPlaceholder": "jij@voorbeeld.com",
     "sendMagicLink": "Stuur me een magische link",
     "magicLinkSent": "Controleer je inbox! We hebben je een inloglink gestuurd.",
-    "magicLinkError": "Kon magische link niet verzenden. Probeer opnieuw."
+    "magicLinkError": "Kon magische link niet verzenden. Probeer opnieuw.",
+    "errorOAuth": "Dit e-mailadres is al gekoppeld aan een andere provider.",
+    "errorGeneric": "Er is iets misgegaan. Probeer het opnieuw.",
+    "learner": "Leerling",
+    "guestLearner": "Gastleerling"
   },
   "lessonTitles": {
     "agentic-workflows": "Agentische Workflows",
@@ -443,7 +461,8 @@
     "publishedOn": "Gepubliceerd op",
     "minuteRead": "min leestijd",
     "tags": "Tags",
-    "badge": "Laatste Berichten"
+    "badge": "Laatste Berichten",
+    "noPosts": "Nog geen berichten. Kom snel terug!"
   },
   "feedback": {
     "title": "Was deze les nuttig?",
@@ -650,7 +669,14 @@
         "timeLeft": "{seconds}s",
         "timesUp": "Tijd is op!",
         "title": "AI Trivia Uitdaging",
-        "wrongAnswer": "Het antwoord was: {answer}"
+        "wrongAnswer": "Het antwoord was: {answer}",
+        "perQuestion": "per vraag",
+        "questions": "vragen",
+        "speedBonus": "Snelheidsbonus vermenigvuldiger"
+      },
+      "aiOrHuman": {
+        "press1": "Druk 1",
+        "press2": "Druk 2"
       }
     },
     "sentimentSection": {
@@ -718,6 +744,88 @@
       "searchPlaceholder": "Spellen zoeken...",
       "subtitle": "Interactieve AI-spellen en tools. Geen code nodig, gewoon spelen en leren.",
       "title": "AI Lab"
+    },
+    "categoryNlp": "NLP",
+    "categoryLogic": "Logica",
+    "diffEasy": "MAKKELIJK",
+    "diffMedium": "GEM",
+    "diffHard": "MOEILIJK",
+    "filterAll": "ALLES",
+    "initializing": "AI Lab wordt gestart...",
+    "experimentsLoaded": "experimenten geladen",
+    "allSystemsOp": "alle systemen operationeel",
+    "featuredExperiment": "Uitgelicht experiment",
+    "runButton": "START",
+    "playground": {
+      "neuralTitle": "Neuraal netwerk speeltuin",
+      "brush": "KWAST:",
+      "blue": "Blauw",
+      "red": "Rood",
+      "hidden": "VERBORGEN:",
+      "clickToPlace": "Klik om te plaatsen",
+      "addBothPoints": "Voeg blauwe en rode punten toe, dan trainen",
+      "training": "TRAINING",
+      "idle": "INACTIEF",
+      "epoch": "EPOCHE:",
+      "accuracy": "NAUWK:",
+      "points": "PNT:",
+      "pause": "PAUZE",
+      "train": "TRAINEN",
+      "clear": "WISSEN",
+      "networkArch": "Netwerkarchitectuur",
+      "inputLayer": "Invoer",
+      "hiddenLayer": "Verborgen",
+      "outputLayer": "Uitvoer",
+      "playAgain": "Opnieuw Spelen",
+      "algoRace": "Algoritme Race",
+      "bubbleSort": "Bubble Sort",
+      "quickSort": "Quick Sort",
+      "mergeSort": "Merge Sort",
+      "perQuestion": "per vraag",
+      "questions": "vragen",
+      "speedBonus": "Snelheidsbonus vermenigvuldiger",
+      "press1": "Druk 1",
+      "press2": "Druk 2",
+      "serverLabel": "Server",
+      "dbLabel": "DB",
+      "gateLabel": "Poort",
+      "serviceLabel": "Service",
+      "queueLabel": "Wachtrij",
+      "clientLabel": "Client",
+      "cloudLabel": "Cloud",
+      "textLabel": "Tekst",
+      "saved": "Opgeslagen",
+      "clickTarget": "Klik doelvorm",
+      "clickSource": "Klik bronvorm",
+      "clickToPlaceShape": "Klik om te plaatsen",
+      "selectOrDrag": "Selecteer of sleep",
+      "deleteTooltip": "Verwijderen",
+      "connectTooltip": "Vormen verbinden",
+      "shapeServer": "Server",
+      "shapeDB": "DB",
+      "shapeGate": "Gateway",
+      "shapeService": "Service",
+      "shapeQueue": "Wachtrij",
+      "shapeClient": "Client",
+      "shapeCloud": "Cloud",
+      "shapeText": "Tekst",
+      "yourDesigns": "Uw Ontwerpen",
+      "newCanvas": "Nieuw Canvas",
+      "noDesigns": "Nog geen opgeslagen ontwerpen. Start een nieuw canvas!",
+      "promptTitle": "Prompt Engineering Dojo",
+      "submit": "INDIENEN",
+      "seeResults": "RESULTATEN BEKIJKEN",
+      "nextChallenge": "VOLGENDE UITDAGING",
+      "gameNeuralName": "Neuraal Netwerk Speeltuin",
+      "gameNeuralDesc": "Bouw en train een klein neuraal netwerk",
+      "gamePromptName": "Prompt Engineering Dojo",
+      "gamePromptDesc": "Maak de perfecte prompt om doeluitvoer te matchen",
+      "gameAlgoName": "Algoritme Race",
+      "gameAlgoDesc": "Wed op sorteeralgoritmen en kijk ze racen",
+      "gameTriviaName": "AI Trivia Uitdaging",
+      "gameTriviaDesc": "Test je AI-kennis met getimede vragen",
+      "gameDesignName": "Systeemontwerp Canvas",
+      "gameDesignDesc": "Sleep, verbind en ontwerp — oefen architectuurdiagrammen"
     }
   },
   "programTitles": {
@@ -755,5 +863,10 @@
     "ai-seeds": "Begin vanaf absoluut nul. Geen codering, geen wiskunde — gewoon eenvoudige taal en alledaagse voorbeelden. Perfect voor iedereen die nieuwsgierig is naar AI maar het nog nooit heeft verkend.",
     "ai-sketch": "Beheers de fundamentele datastructuren en algoritmen die AI-systemen aandrijven. Arrays, hash maps, strings en sortering — gevisualiseerd met diagrammen, uitgelegd met AI-toepassingen uit de echte wereld.",
     "ai-sprouts": "Klaar om te groeien? Duik in de bouwstenen van AI — data, algoritmen en neurale netwerken. Praktische oefeningen helpen je intuïtie op te bouwen voordat je code schrijft."
+  },
+  "ui": {
+    "light": "Licht",
+    "dark": "Donker",
+    "comingSoon": "Binnenkort"
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { SystemDesignCanvas } from "./SystemDesignCanvas";
 
 /* ═══════════════════════════════════════════════════════════════
@@ -29,14 +30,14 @@ function StatusBar({ left, right }: { left: React.ReactNode; right?: React.React
   );
 }
 
-function GameOverScreen({ emoji, stat, label, onReplay }: { emoji: string; stat: string; label: string; onReplay: () => void }) {
+function GameOverScreen({ emoji, stat, label, onReplay, replayText }: { emoji: string; stat: string; label: string; onReplay: () => void; replayText?: string }) {
   return (
     <div className="text-center py-8 space-y-4">
       <div className="text-6xl animate-bounce">{emoji}</div>
       <p className="text-4xl font-bold font-mono">{stat}</p>
       <p className="text-sm text-[var(--color-text-muted)] font-mono">{label}</p>
       <button onClick={onReplay} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all shadow-lg shadow-indigo-500/20 font-mono">
-        ▶ Play Again
+        ▶ {replayText || "Play Again"}
       </button>
     </div>
   );
@@ -105,6 +106,7 @@ function computeAccuracy(w: NNWeights, points: { x: number; y: number; cls: numb
 }
 
 export function NeuralNetworkPlayground() {
+  const tp = useTranslations("lab.playground");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number; cls: number }[]>([]);
   const [hiddenSize, setHiddenSize] = useState(4);
@@ -232,7 +234,7 @@ export function NeuralNetworkPlayground() {
   };
 
   return (
-    <GameShell title="Neural Network Playground" icon="🧬">
+    <GameShell title={tp("neuralTitle")} icon="🧬">
       <style>{`
         @keyframes nn-pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
         .nn-training { animation: nn-pulse 1s ease-in-out infinite; }
@@ -241,18 +243,18 @@ export function NeuralNetworkPlayground() {
       {/* Controls bar */}
       <div className="flex flex-wrap items-center gap-3 p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)] font-mono text-xs">
         <div className="flex items-center gap-2">
-          <span className="text-[var(--color-text-muted)]">BRUSH:</span>
+          <span className="text-[var(--color-text-muted)]">{tp("brush")}</span>
           <button
             onClick={() => setBrushClass(0)}
             className={`px-2 py-1 rounded border transition-all ${brushClass === 0 ? "border-blue-500 bg-blue-500/20 text-blue-400" : "border-[var(--color-border)] text-[var(--color-text-muted)]"}`}
-          >● Blue</button>
+          >● {tp("blue")}</button>
           <button
             onClick={() => setBrushClass(1)}
             className={`px-2 py-1 rounded border transition-all ${brushClass === 1 ? "border-red-500 bg-red-500/20 text-red-400" : "border-[var(--color-border)] text-[var(--color-text-muted)]"}`}
-          >● Red</button>
+          >● {tp("red")}</button>
         </div>
         <div className="flex items-center gap-2 flex-1 min-w-[180px]">
-          <span className="text-[var(--color-text-muted)] whitespace-nowrap">HIDDEN:</span>
+          <span className="text-[var(--color-text-muted)] whitespace-nowrap">{tp("hidden")}</span>
           <input
             type="range" min={2} max={8} value={hiddenSize}
             onChange={e => setHiddenSize(Number(e.target.value))}
@@ -275,8 +277,8 @@ export function NeuralNetworkPlayground() {
         {points.length < 2 && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="text-center font-mono space-y-1 bg-[var(--color-bg)]/80 px-4 py-3 rounded-lg backdrop-blur-sm">
-              <p className="text-sm text-[var(--color-text-muted)]">Click to place data points</p>
-              <p className="text-xs text-[var(--color-text-muted)]">Add both <span className="text-blue-400">blue</span> and <span className="text-red-400">red</span> points, then train</p>
+              <p className="text-sm text-[var(--color-text-muted)]">{tp("clickToPlace")}</p>
+              <p className="text-xs text-[var(--color-text-muted)]">{tp("addBothPoints")}</p>
             </div>
           </div>
         )}
@@ -286,11 +288,11 @@ export function NeuralNetworkPlayground() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-4 font-mono text-xs">
           <span className={`${training ? "nn-training text-green-400" : "text-[var(--color-text-muted)]"}`}>
-            {training ? "● TRAINING" : "○ IDLE"}
+            {training ? `● ${tp("training")}` : `○ ${tp("idle")}`}
           </span>
-          <span className="text-[var(--color-text-muted)]">EPOCH: <span className="text-[var(--color-primary)]">{epoch}</span></span>
-          <span className="text-[var(--color-text-muted)]">ACC: <span className={`font-bold ${accuracy >= 80 ? "text-green-400" : accuracy >= 50 ? "text-amber-400" : "text-[var(--color-text)]"}`}>{accuracy}%</span></span>
-          <span className="text-[var(--color-text-muted)]">PTS: {points.length}</span>
+          <span className="text-[var(--color-text-muted)]">{tp("epoch")} <span className="text-[var(--color-primary)]">{epoch}</span></span>
+          <span className="text-[var(--color-text-muted)]">{tp("accuracy")} <span className={`font-bold ${accuracy >= 80 ? "text-green-400" : accuracy >= 50 ? "text-amber-400" : "text-[var(--color-text)]"}`}>{accuracy}%</span></span>
+          <span className="text-[var(--color-text-muted)]">{tp("points")} {points.length}</span>
         </div>
         <div className="flex gap-2">
           <button
@@ -302,24 +304,24 @@ export function NeuralNetworkPlayground() {
                 : "border-green-500/50 text-green-400 bg-green-500/10 hover:bg-green-500/20"
             } disabled:opacity-30 disabled:cursor-not-allowed`}
           >
-            {training ? "⏸ PAUSE" : "▶ TRAIN"}
+            {training ? `⏸ ${tp("pause")}` : `▶ ${tp("train")}`}
           </button>
           <button
             onClick={clearAll}
             className="min-h-[36px] px-4 py-1.5 rounded-lg font-mono text-xs font-bold border border-red-500/30 text-red-400 bg-red-500/5 hover:bg-red-500/10 transition-all"
           >
-            ✕ CLEAR
+            ✕ {tp("clear")}
           </button>
         </div>
       </div>
 
       {/* Network diagram */}
       <div className="p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
-        <p className="text-[10px] font-mono text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">Network Architecture</p>
+        <p className="text-[10px] font-mono text-[var(--color-text-muted)] mb-2 uppercase tracking-wider">{tp("networkArch")}</p>
         <div className="flex items-center justify-center gap-6 sm:gap-10 py-2">
           {/* Input layer */}
           <div className="flex flex-col items-center gap-2">
-            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">Input</span>
+            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">{tp("inputLayer")}</span>
             {["x", "y"].map(label => (
               <div key={label} className="w-8 h-8 rounded-full border-2 border-blue-500/60 bg-blue-500/10 flex items-center justify-center">
                 <span className="text-[10px] font-mono text-blue-400 font-bold">{label}</span>
@@ -330,7 +332,7 @@ export function NeuralNetworkPlayground() {
           <div className="text-[var(--color-text-muted)] text-lg">→</div>
           {/* Hidden layer */}
           <div className="flex flex-col items-center gap-1">
-            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">Hidden({hiddenSize})</span>
+            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">{tp("hiddenLayer")}({hiddenSize})</span>
             <div className="flex flex-col items-center gap-1" style={{ maxHeight: 120, overflow: "hidden" }}>
               {Array.from({ length: Math.min(hiddenSize, 6) }, (_, i) => (
                 <div key={i} className={`w-6 h-6 rounded-full border-2 border-purple-500/60 bg-purple-500/10 flex items-center justify-center ${training ? "nn-training" : ""}`}>
@@ -343,7 +345,7 @@ export function NeuralNetworkPlayground() {
           <div className="text-[var(--color-text-muted)] text-lg">→</div>
           {/* Output */}
           <div className="flex flex-col items-center gap-2">
-            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">Output</span>
+            <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase">{tp("outputLayer")}</span>
             <div className="w-8 h-8 rounded-full border-2 border-green-500/60 bg-green-500/10 flex items-center justify-center">
               <span className="text-[10px] font-mono text-green-400 font-bold">σ</span>
             </div>
@@ -473,6 +475,7 @@ function scorePrompt(prompt: string, challenge: PromptChallenge): { score: numbe
 }
 
 export function PromptEngineeringDojo() {
+  const tp = useTranslations("lab.playground");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [input, setInput] = useState("");
   const [result, setResult] = useState<{ score: number; feedback: string; simulatedResponse: string } | null>(null);
@@ -532,7 +535,7 @@ export function PromptEngineeringDojo() {
   }
 
   return (
-    <GameShell title="Prompt Engineering Dojo" icon="🥋">
+    <GameShell title={tp("promptTitle")} icon="🥋">
       <style>{`
         @keyframes dojo-cursor { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
         .dojo-cursor::after { content: "▌"; animation: dojo-cursor 0.8s step-end infinite; color: var(--color-primary); }
@@ -583,7 +586,7 @@ export function PromptEngineeringDojo() {
               disabled={!input.trim()}
               className="px-4 py-1.5 rounded-lg font-mono text-xs font-bold border border-[var(--color-primary)]/50 text-[var(--color-primary)] bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              ▶ SUBMIT
+              ▶ {tp("submit")}
             </button>
           </div>
         )}
@@ -633,7 +636,7 @@ export function PromptEngineeringDojo() {
               onClick={handleNext}
               className="px-5 py-2 rounded-lg font-mono text-xs font-bold border border-[var(--color-primary)]/50 text-[var(--color-primary)] bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10 transition-all"
             >
-              {currentIdx + 1 >= PROMPT_CHALLENGES.length ? "SEE RESULTS →" : "NEXT CHALLENGE →"}
+              {currentIdx + 1 >= PROMPT_CHALLENGES.length ? `${tp("seeResults")} →` : `${tp("nextChallenge")} →`}
             </button>
           </div>
         </div>
@@ -771,6 +774,7 @@ const ALGO_COLORS: Record<SortAlgo, string> = {
 };
 
 export function AlgorithmVisualizer() {
+  const tp = useTranslations("lab.playground");
   const ARRAY_SIZE = 24;
   const [baseArray, setBaseArray] = useState<number[]>(() => generateArray(ARRAY_SIZE));
   const [algos, setAlgos] = useState<Record<SortAlgo, AlgoState>>(() => ({
@@ -942,7 +946,7 @@ export function AlgorithmVisualizer() {
   };
 
   return (
-    <GameShell title="Algorithm Race" icon="🏁">
+    <GameShell title={tp("algoRace")} icon="🏁">
       <style>{`
         @keyframes algo-flash { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
         .algo-winner { animation: algo-flash 0.5s ease-in-out 3; }
@@ -968,7 +972,7 @@ export function AlgorithmVisualizer() {
                   backgroundColor: bet === algo ? `${ALGO_COLORS[algo]}15` : undefined,
                 }}
               >
-                {bet === algo ? "★ " : ""}{algo === "bubble" ? "Bubble" : algo === "quick" ? "Quick" : "Merge"} Sort
+                {bet === algo ? "★ " : ""}{algo === "bubble" ? tp("bubbleSort") : algo === "quick" ? tp("quickSort") : tp("mergeSort")}
               </button>
             ))}
           </div>
@@ -1088,9 +1092,9 @@ export interface GameEntry {
 }
 
 export const ALL_GAMES: GameEntry[] = [
-  { id: "neural-network", name: "Neural Network Playground", desc: "Build & train a tiny neural network — place points, watch it learn", icon: "🧬", component: NeuralNetworkPlayground, difficulty: "medium", estimatedMinutes: 5, category: "creative" },
-  { id: "prompt-dojo", name: "Prompt Engineering Dojo", desc: "Craft the perfect prompt to match target outputs", icon: "🥋", component: PromptEngineeringDojo, difficulty: "hard", estimatedMinutes: 5, category: "knowledge" },
-  { id: "algo-race", name: "Algorithm Race", desc: "Bet on sorting algorithms and watch them race in real-time", icon: "🏁", component: AlgorithmVisualizer, difficulty: "easy", estimatedMinutes: 3, category: "quick" },
-  { id: "ai-trivia", name: "AI Trivia Challenge", desc: "Test your AI knowledge with timed questions", icon: "🧠", component: AITriviaChallenge, difficulty: "medium", estimatedMinutes: 4, category: "knowledge" },
-  { id: "system-design", name: "System Design Canvas", desc: "Drag, connect, and design — practise architecture diagrams", icon: "🏗️", component: SystemDesignCanvas, difficulty: "medium", estimatedMinutes: 10, category: "quick" },
+  { id: "neural-network", name: "gameNeuralName", desc: "gameNeuralDesc", icon: "🧬", component: NeuralNetworkPlayground, difficulty: "medium", estimatedMinutes: 5, category: "creative" },
+  { id: "prompt-dojo", name: "gamePromptName", desc: "gamePromptDesc", icon: "🥋", component: PromptEngineeringDojo, difficulty: "hard", estimatedMinutes: 5, category: "knowledge" },
+  { id: "algo-race", name: "gameAlgoName", desc: "gameAlgoDesc", icon: "🏁", component: AlgorithmVisualizer, difficulty: "easy", estimatedMinutes: 3, category: "quick" },
+  { id: "ai-trivia", name: "gameTriviaName", desc: "gameTriviaDesc", icon: "🧠", component: AITriviaChallenge, difficulty: "medium", estimatedMinutes: 4, category: "knowledge" },
+  { id: "system-design", name: "gameDesignName", desc: "gameDesignDesc", icon: "🏗️", component: SystemDesignCanvas, difficulty: "medium", estimatedMinutes: 10, category: "quick" },
 ];

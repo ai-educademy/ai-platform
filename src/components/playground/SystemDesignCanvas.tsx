@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect, type MouseEvent as RMouseEvent } from "react";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 /* ── types ─────────────────────────────────────────────────────── */
 type ShapeKind = "server" | "database" | "decision" | "service" | "queue" | "client" | "cloud" | "text";
@@ -44,15 +45,15 @@ const COLORS: Record<ShapeKind, string> = {
   text: "#94a3b8",
 };
 
-const PALETTE: { kind: ShapeKind; label: string; icon: string }[] = [
-  { kind: "server", label: "Server", icon: "▭" },
-  { kind: "database", label: "DB", icon: "◎" },
-  { kind: "decision", label: "Gate", icon: "◇" },
-  { kind: "service", label: "Service", icon: "⬭" },
-  { kind: "queue", label: "Queue", icon: "⊞" },
-  { kind: "client", label: "Client", icon: "◻" },
-  { kind: "cloud", label: "Cloud", icon: "☁" },
-  { kind: "text", label: "Text", icon: "T" },
+const PALETTE: { kind: ShapeKind; labelKey: string; icon: string }[] = [
+  { kind: "server", labelKey: "shapeServer", icon: "▭" },
+  { kind: "database", labelKey: "shapeDB", icon: "◎" },
+  { kind: "decision", labelKey: "shapeGate", icon: "◇" },
+  { kind: "service", labelKey: "shapeService", icon: "⬭" },
+  { kind: "queue", labelKey: "shapeQueue", icon: "⊞" },
+  { kind: "client", labelKey: "shapeClient", icon: "◻" },
+  { kind: "cloud", labelKey: "shapeCloud", icon: "☁" },
+  { kind: "text", labelKey: "shapeText", icon: "T" },
 ];
 
 const W = 120, H = 60;
@@ -127,6 +128,7 @@ const ZOOM_MIN = 0.25, ZOOM_MAX = 3, ZOOM_STEP = 0.15;
 /* ── main component ───────────────────────────────────────────── */
 export function SystemDesignCanvas() {
   const { data: authSession } = useSession();
+  const tp = useTranslations("lab.playground");
   const userKeyRef = useRef("");
 
   const [shapes, setShapes] = useState<Shape[]>([]);
@@ -187,7 +189,7 @@ export function SystemDesignCanvas() {
       }
       saveCanvases(key, list);
       setSavedList(list);
-      setSaveIndicator("Saved");
+      setSaveIndicator(tp("saved"));
       setTimeout(() => setSaveIndicator(null), 1500);
     }, 800);
 
@@ -443,8 +445,8 @@ export function SystemDesignCanvas() {
   };
 
   const statusText = connectMode
-    ? connectFrom ? "Click target shape" : "Click source shape"
-    : activeTool ? `Click to place ${activeTool}` : "Select a shape or drag";
+    ? connectFrom ? tp("clickTarget") : tp("clickSource")
+    : activeTool ? tp("clickToPlace") : tp("selectOrDrag");
 
   const zoomPct = Math.round(zoom * 100);
 
@@ -452,7 +454,7 @@ export function SystemDesignCanvas() {
   if (showPicker) {
     return (
       <div className="flex flex-col w-full items-center justify-center gap-6 p-8" style={{ color: "var(--color-text)", minHeight: 450, background: "var(--color-bg-card)" }}>
-        <h3 className="text-lg font-semibold">Your Designs</h3>
+        <h3 className="text-lg font-semibold">{tp("yourDesigns")}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-2xl">
           {/* new canvas card */}
           <button
@@ -461,7 +463,7 @@ export function SystemDesignCanvas() {
             style={{ borderColor: "var(--color-border)", color: "var(--color-text-muted)" }}
           >
             <span className="text-3xl">+</span>
-            <span className="text-sm font-medium">New Canvas</span>
+            <span className="text-sm font-medium">{tp("newCanvas")}</span>
           </button>
           {/* saved canvases */}
           {savedList.map((c) => (
@@ -490,7 +492,7 @@ export function SystemDesignCanvas() {
           ))}
         </div>
         {savedList.length === 0 && (
-          <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>No saved designs yet. Start a new canvas!</p>
+          <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>{tp("noDesigns")}</p>
         )}
       </div>
     );
@@ -538,9 +540,9 @@ export function SystemDesignCanvas() {
               background: activeTool === p.kind ? `${COLORS[p.kind]}20` : "transparent",
               color: activeTool === p.kind ? COLORS[p.kind] : "var(--color-text)",
             }}
-            title={p.label}
+            title={tp(p.labelKey as any)}
           >
-            <span className="mr-0.5">{p.icon}</span><span className="hidden sm:inline">{p.label}</span>
+            <span className="mr-0.5">{p.icon}</span><span className="hidden sm:inline">{tp(p.labelKey as any)}</span>
           </button>
         ))}
         <div className="w-px h-5 mx-0.5" style={{ background: "var(--color-border)" }} />

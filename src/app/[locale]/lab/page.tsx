@@ -16,15 +16,15 @@ const NEON = {
 };
 
 /* ─── Category → tag labels & neon accent ─── */
-const CATEGORY_TAG: Partial<Record<GameCategory, { label: string; color: string }>> = {
-  knowledge: { label: "NLP", color: NEON.cyan },
-  quick: { label: "Logic", color: NEON.green },
+const CATEGORY_TAG_KEYS: Partial<Record<GameCategory, { key: string; color: string }>> = {
+  knowledge: { key: "categoryNlp", color: NEON.cyan },
+  quick: { key: "categoryLogic", color: NEON.green },
 };
 
-const DIFFICULTY_BADGE: Record<string, { label: string; color: string }> = {
-  easy: { label: "EASY", color: NEON.green },
-  medium: { label: "MED", color: NEON.amber },
-  hard: { label: "HARD", color: NEON.red },
+const DIFFICULTY_BADGE_KEYS: Record<string, { key: string; color: string }> = {
+  easy: { key: "diffEasy", color: NEON.green },
+  medium: { key: "diffMedium", color: NEON.amber },
+  hard: { key: "diffHard", color: NEON.red },
 };
 
 /* ─── CSS Animations ─── */
@@ -161,10 +161,10 @@ function TerminalTitleBar({ title, tag }: { title: string; tag?: { label: string
 }
 
 /* ─── Filter tag pills ─── */
-const ALL_CATEGORIES: Array<{ key: GameCategory | "all"; label: string; color: string }> = [
-  { key: "all", label: "ALL", color: NEON.cyan },
-  { key: "knowledge", label: "NLP", color: NEON.cyan },
-  { key: "quick", label: "LOGIC", color: NEON.green },
+const ALL_CATEGORIES: Array<{ key: GameCategory | "all"; labelKey: string; color: string }> = [
+  { key: "all", labelKey: "filterAll", color: NEON.cyan },
+  { key: "knowledge", labelKey: "categoryNlp", color: NEON.cyan },
+  { key: "quick", labelKey: "categoryLogic", color: NEON.green },
 ];
 
 /* ─── Main Page ─── */
@@ -175,7 +175,7 @@ export default function LabPage() {
   const [closing, setClosing] = useState(false);
   const [filter, setFilter] = useState<GameCategory | "all">("all");
 
-  const { displayed: heroText, done: heroDone } = useTypingEffect("> Initializing AI Lab...", 50);
+  const { displayed: heroText, done: heroDone } = useTypingEffect(`> ${t("initializing")}`, 50);
 
   const allGames = useMemo(() => buildGameList(), []);
 
@@ -210,7 +210,7 @@ export default function LabPage() {
   /* ─── Active Game Overlay ─── */
   if (activeGame) {
     const GameComponent = activeGame.component;
-    const diff = DIFFICULTY_BADGE[activeGame.difficulty];
+    const diff = DIFFICULTY_BADGE_KEYS[activeGame.difficulty];
     return (
       <>
         <style>{PLAYGROUND_STYLES}</style>
@@ -248,7 +248,7 @@ export default function LabPage() {
               <div className="flex items-center gap-3 pr-4">
                 {diff && (
                   <span className="font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded border" style={{ color: diff.color, borderColor: `${diff.color}33` }}>
-                    {diff.label}
+                    {t(diff.key as any)}
                   </span>
                 )}
                 <span className="text-[10px] text-[var(--color-text-muted)] hidden sm:inline font-mono">ESC</span>
@@ -292,9 +292,9 @@ export default function LabPage() {
               <span className="text-[var(--color-text)]">Experiment Lab</span>
             </h1>
             <p className="text-sm text-[var(--color-text-muted)] font-mono">
-              {allGames.length} experiments loaded{" "}
+              {allGames.length} {t("experimentsLoaded")}{" "}
               <span className="text-green-500">●</span>{" "}
-              all systems operational
+              {t("allSystemsOp")}
             </p>
           </div>
 
@@ -303,21 +303,21 @@ export default function LabPage() {
             onClick={() => handlePlay(FEATURED_GAME)}
             className="group relative w-full mb-8 rounded-xl border border-[var(--color-border)] text-left cursor-pointer overflow-hidden pg-featured-glow bg-[var(--color-bg-card)]"
           >
-            <TerminalTitleBar title="featured_experiment.exe" tag={{ label: "FEATURED", color: NEON.cyan }} />
+            <TerminalTitleBar title="featured_experiment.exe" tag={{ label: t("featuredExperiment"), color: NEON.cyan }} />
             <div className="px-5 py-5 sm:px-6 sm:py-6 flex items-center gap-5">
               <span className="text-4xl sm:text-5xl shrink-0" style={{ animation: "pg-float 3s ease-in-out infinite" }}>{FEATURED_GAME.icon}</span>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-primary)]">Featured Experiment</span>
-                  <span className="font-mono text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded border" style={{ color: DIFFICULTY_BADGE[FEATURED_GAME.difficulty].color, borderColor: `${DIFFICULTY_BADGE[FEATURED_GAME.difficulty].color}33` }}>
-                    {DIFFICULTY_BADGE[FEATURED_GAME.difficulty].label}
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-primary)]">{t("featuredExperiment")}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded border" style={{ color: DIFFICULTY_BADGE_KEYS[FEATURED_GAME.difficulty].color, borderColor: `${DIFFICULTY_BADGE_KEYS[FEATURED_GAME.difficulty].color}33` }}>
+                    {t(DIFFICULTY_BADGE_KEYS[FEATURED_GAME.difficulty].key as any)}
                   </span>
                 </div>
                 <h2 className="text-lg sm:text-xl font-mono font-bold text-[var(--color-text)] truncate">{FEATURED_GAME.name}</h2>
                 <p className="text-sm text-[var(--color-text-muted)] mt-0.5 line-clamp-1 font-mono">{FEATURED_GAME.desc}</p>
               </div>
               <div className="shrink-0 hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg font-mono text-xs font-bold border border-[var(--color-primary)]/40 text-[var(--color-primary)] bg-[var(--color-primary)]/5 transition-all group-hover:border-opacity-60">
-                {"> RUN"}
+                {`> ${t("runButton")}`}
               </div>
             </div>
           </button>
@@ -335,7 +335,7 @@ export default function LabPage() {
                   backgroundColor: filter === cat.key ? cat.color : "transparent",
                 }}
               >
-                {cat.label}
+                {t(cat.labelKey as any)}
               </button>
             ))}
           </div>
@@ -349,8 +349,9 @@ export default function LabPage() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredGames.map((game, i) => {
-                const diff = DIFFICULTY_BADGE[game.difficulty];
-                const tag = CATEGORY_TAG[game.category];
+                const diff = DIFFICULTY_BADGE_KEYS[game.difficulty];
+                const tagDef = CATEGORY_TAG_KEYS[game.category];
+                const tag = tagDef ? { label: t(tagDef.key as any), color: tagDef.color } : undefined;
                 return (
                   <button
                     key={game.id}
@@ -371,7 +372,7 @@ export default function LabPage() {
                           className="font-mono text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded border"
                           style={{ color: diff.color, borderColor: `${diff.color}33` }}
                         >
-                          {diff.label}
+                          {t(diff.key as any)}
                         </span>
                       </div>
 
@@ -389,7 +390,7 @@ export default function LabPage() {
                           ~{game.estimatedMinutes} min
                         </span>
                         <span className="text-[10px] font-mono font-bold opacity-0 group-hover:opacity-100 transition-opacity text-[var(--color-primary)]">
-                          {">"} RUN →
+                          {">"} {t("runButton")} →
                         </span>
                       </div>
                     </div>

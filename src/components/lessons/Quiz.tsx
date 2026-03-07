@@ -62,7 +62,7 @@ export function Quiz({ question, options: rawOptions, answer: rawAnswer, explana
       <div className="px-6 py-4 bg-[var(--color-primary)]/8 border-b border-[var(--color-border)]">
         <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
           <span className="text-lg">🧠</span>
-          Quick Check
+          {t("quickCheck")}
         </div>
       </div>
 

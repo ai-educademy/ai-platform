@@ -62,7 +62,9 @@
     "role": "Fondateur · Leader en Ingénierie · Défenseur de l'Open Source",
     "statContinents": "Continents parcourus",
     "statRepos": "Dépôts Open Source",
-    "statYears": "Années d'ingénierie"
+    "statYears": "Années d'ingénierie",
+    "brainsTitle": "Le cerveau derrière l’idée",
+    "buyCoffee": "Offrez-moi un café"
   },
   "footer": {
     "tagline": "Éducation IA gratuite pour tous, dans toutes les langues.",
@@ -125,7 +127,10 @@
     "timeline2025": "Fondation d'AI Educademy — éducation IA gratuite pour tous 🎓",
     "pageTitle": "À Propos d'AI Educademy",
     "pageDescription": "AI Educademy est une plateforme éducative IA gratuite et open-source construite pour tous. Découvrez notre mission de rendre l'éducation IA accessible dans le monde entier.",
-    "pageSubtitle": "Éducation IA gratuite et open-source pour chaque étudiant."
+    "pageSubtitle": "Éducation IA gratuite et open-source pour chaque étudiant.",
+    "openSourceTitle": "Open Source",
+    "openSourceDesc": "Chaque leçon, chaque ligne de code — gratuit et open source. Forkez, traduisez, appropriez-vous-le.",
+    "viewOnGithub": "Voir sur GitHub"
   },
   "lessons": {
     "title": "Leçons",
@@ -166,7 +171,11 @@
     "checkAnswer": "Vérifier",
     "quizCorrect": "Correct ! Bravo !",
     "quizIncorrect": "Pas tout à fait — mais on apprend comme ça !",
-    "tryAgain": "Réessayer"
+    "tryAgain": "Réessayer",
+    "quickCheck": "Vérification rapide",
+    "animationError": "L’animation n’a pas pu se charger",
+    "videoFallback": "Vidéo",
+    "shortBadge": "COURT"
   },
   "programs": {
     "badge": "5 niveaux d'apprentissage",
@@ -289,7 +298,12 @@
     "emptyLearn": "Apprendre",
     "emptyPractice": "Pratiquer",
     "emptyEarn": "Gagner",
-    "defaultUser": "Apprenant"
+    "defaultUser": "Apprenant",
+    "certTitle": "Certificat de réussite",
+    "certCertifies": "Ceci certifie que",
+    "certCompleted": "a terminé avec succès",
+    "certDate": "Terminé le",
+    "certOrg": "AI Educademy"
   },
   "auth": {
     "startLearning": "Commencer à apprendre",
@@ -322,7 +336,11 @@
     "emailPlaceholder": "vous@exemple.com",
     "sendMagicLink": "Envoyez-moi un lien magique",
     "magicLinkSent": "Vérifiez votre boîte de réception ! Nous vous avons envoyé un lien de connexion.",
-    "magicLinkError": "Impossible d'envoyer le lien. Réessayez."
+    "magicLinkError": "Impossible d'envoyer le lien. Réessayez.",
+    "errorOAuth": "Cet email est déjà associé à un autre fournisseur.",
+    "errorGeneric": "Une erreur est survenue. Veuillez réessayer.",
+    "learner": "Apprenant",
+    "guestLearner": "Apprenant invité"
   },
   "lessonTitles": {
     "agentic-workflows": "Workflows Agentiques",
@@ -442,7 +460,8 @@
     "publishedOn": "Publié le",
     "minuteRead": "min de lecture",
     "tags": "Étiquettes",
-    "badge": "Derniers Articles"
+    "badge": "Derniers Articles",
+    "noPosts": "Pas encore de publications. Revenez bientôt !"
   },
   "feedback": {
     "title": "Cette leçon vous a-t-elle été utile ?",
@@ -649,7 +668,14 @@
         "timeLeft": "{seconds}s",
         "timesUp": "Temps écoulé !",
         "title": "Défi Trivia IA",
-        "wrongAnswer": "La réponse était : {answer}"
+        "wrongAnswer": "La réponse était : {answer}",
+        "perQuestion": "par question",
+        "questions": "questions",
+        "speedBonus": "Multiplicateur de vitesse"
+      },
+      "aiOrHuman": {
+        "press1": "Appuyez 1",
+        "press2": "Appuyez 2"
       }
     },
     "sentimentSection": {
@@ -717,6 +743,88 @@
       "searchPlaceholder": "Rechercher des jeux...",
       "subtitle": "Jeux et outils interactifs sur l'IA. Pas besoin de coder, jouez et apprenez.",
       "title": "Labo IA"
+    },
+    "categoryNlp": "NLP",
+    "categoryLogic": "Logique",
+    "diffEasy": "FACILE",
+    "diffMedium": "MOY",
+    "diffHard": "DIF",
+    "filterAll": "TOUT",
+    "initializing": "Initialisation du labo IA...",
+    "experimentsLoaded": "expériences chargées",
+    "allSystemsOp": "tous les systèmes opérationnels",
+    "featuredExperiment": "Expérience vedette",
+    "runButton": "LANCER",
+    "playground": {
+      "neuralTitle": "Terrain de jeu réseau neuronal",
+      "brush": "PINCEAU :",
+      "blue": "Bleu",
+      "red": "Rouge",
+      "hidden": "CACHÉ :",
+      "clickToPlace": "Cliquez pour placer",
+      "addBothPoints": "Ajoutez des points bleus et rouges, puis entraînez",
+      "training": "ENTRAÎNEMENT",
+      "idle": "INACTIF",
+      "epoch": "ÉPOQUE :",
+      "accuracy": "PRÉC :",
+      "points": "PTS :",
+      "pause": "PAUSE",
+      "train": "ENTRAÎNER",
+      "clear": "EFFACER",
+      "networkArch": "Architecture du réseau",
+      "inputLayer": "Entrée",
+      "hiddenLayer": "Caché",
+      "outputLayer": "Sortie",
+      "playAgain": "Rejouer",
+      "algoRace": "Course d'Algorithmes",
+      "bubbleSort": "Tri à Bulles",
+      "quickSort": "Tri Rapide",
+      "mergeSort": "Tri Fusion",
+      "perQuestion": "par question",
+      "questions": "questions",
+      "speedBonus": "Multiplicateur de vitesse",
+      "press1": "Appuyez 1",
+      "press2": "Appuyez 2",
+      "serverLabel": "Serveur",
+      "dbLabel": "BD",
+      "gateLabel": "Porte",
+      "serviceLabel": "Service",
+      "queueLabel": "File",
+      "clientLabel": "Client",
+      "cloudLabel": "Cloud",
+      "textLabel": "Texte",
+      "saved": "Sauvegardé",
+      "clickTarget": "Cliquez sur la forme cible",
+      "clickSource": "Cliquez sur la forme source",
+      "clickToPlaceShape": "Cliquez pour placer",
+      "selectOrDrag": "Sélectionnez ou glissez",
+      "deleteTooltip": "Supprimer",
+      "connectTooltip": "Connecter les formes",
+      "shapeServer": "Serveur",
+      "shapeDB": "BDD",
+      "shapeGate": "Passerelle",
+      "shapeService": "Service",
+      "shapeQueue": "File",
+      "shapeClient": "Client",
+      "shapeCloud": "Cloud",
+      "shapeText": "Texte",
+      "yourDesigns": "Vos Conceptions",
+      "newCanvas": "Nouveau Canevas",
+      "noDesigns": "Aucun design sauvegardé. Commencez un nouveau canevas !",
+      "promptTitle": "Dojo de Prompt Engineering",
+      "submit": "SOUMETTRE",
+      "seeResults": "VOIR LES RÉSULTATS",
+      "nextChallenge": "DÉFI SUIVANT",
+      "gameNeuralName": "Aire de Jeu Réseau Neuronal",
+      "gameNeuralDesc": "Construisez et entraînez un petit réseau neuronal",
+      "gamePromptName": "Dojo de Prompt Engineering",
+      "gamePromptDesc": "Créez le prompt parfait pour correspondre aux sorties cibles",
+      "gameAlgoName": "Course d'Algorithmes",
+      "gameAlgoDesc": "Pariez sur les algorithmes de tri et regardez-les courir",
+      "gameTriviaName": "Défi Trivia IA",
+      "gameTriviaDesc": "Testez vos connaissances en IA avec des questions chronométrées",
+      "gameDesignName": "Canevas de Conception Système",
+      "gameDesignDesc": "Glissez, connectez et concevez — pratiquez les diagrammes d'architecture"
     }
   },
   "programTitles": {
@@ -754,5 +862,10 @@
     "ai-seeds": "Commencez à partir de zéro absolu. Pas de code, pas de maths — juste un langage simple et des exemples du quotidien. Parfait pour quiconque est curieux de l'AI mais ne l'a jamais exploré.",
     "ai-sketch": "Maîtrisez les structures de données et algorithmes fondamentaux qui alimentent les systèmes AI. Tableaux, tables de hachage, chaînes et tri — visualisés avec des diagrammes, expliqués avec des applications AI du monde réel.",
     "ai-sprouts": "Prêt à grandir ? Plongez dans les éléments constitutifs de l'AI — données, algorithmes et réseaux de neurones. Des exercices pratiques vous aident à développer l'intuition avant d'écrire du code."
+  },
+  "ui": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "comingSoon": "Bientôt"
   }
 }

@@ -62,7 +62,9 @@
     "role": "Engineering Leader · Open Source Builder · London",
     "statYears": "Years Engineering",
     "statRepos": "Open Source Repos",
-    "statContinents": "Continents Worked"
+    "statContinents": "Continents Worked",
+    "brainsTitle": "Brains Behind the Idea",
+    "buyCoffee": "Buy me a coffee"
   },
   "footer": {
     "tagline": "Free AI education for everyone, in every language.",
@@ -125,7 +127,10 @@
     "timeline2025": "Founded AI Educademy, free AI education for everyone 🎓",
     "pageTitle": "About AI Educademy",
     "pageDescription": "AI Educademy is a free, open-source AI education platform built for everyone. Learn about our mission to make AI education accessible worldwide.",
-    "pageSubtitle": "Free, open-source AI education for every student."
+    "pageSubtitle": "Free, open-source AI education for every student.",
+    "openSourceTitle": "Open Source",
+    "openSourceDesc": "Every lesson, every line of code — free and open source. Fork it, translate it, make it yours.",
+    "viewOnGithub": "View on GitHub"
   },
   "lessons": {
     "title": "Lessons",
@@ -166,7 +171,11 @@
     "checkAnswer": "Check Answer",
     "quizCorrect": "Correct! Great job!",
     "quizIncorrect": "Not quite — but that is how we learn!",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "quickCheck": "Quick Check",
+    "animationError": "Animation could not load",
+    "videoFallback": "Video",
+    "shortBadge": "SHORT"
   },
   "programs": {
     "badge": "",
@@ -289,7 +298,12 @@
     "emptyLearn": "Learn",
     "emptyPractice": "Practice",
     "emptyEarn": "Earn",
-    "defaultUser": "Learner"
+    "defaultUser": "Learner",
+    "certTitle": "Certificate of Completion",
+    "certCertifies": "This certifies that",
+    "certCompleted": "has successfully completed",
+    "certDate": "Completed on",
+    "certOrg": "AI Educademy"
   },
   "auth": {
     "startLearning": "Start Learning",
@@ -322,7 +336,11 @@
     "emailPlaceholder": "you@example.com",
     "sendMagicLink": "Email me a magic link",
     "magicLinkSent": "Check your inbox! We sent you a sign-in link.",
-    "magicLinkError": "Could not send magic link. Try again."
+    "magicLinkError": "Could not send magic link. Try again.",
+    "errorOAuth": "This email is already associated with another provider.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "learner": "Learner",
+    "guestLearner": "Guest learner"
   },
   "lessonTitles": {
     "agentic-workflows": "Agentic Workflows",
@@ -442,7 +460,8 @@
     "publishedOn": "Published on",
     "minuteRead": "min read",
     "tags": "Tags",
-    "badge": ""
+    "badge": "",
+    "noPosts": "No posts yet. Check back soon!"
   },
   "feedback": {
     "title": "Was this lesson helpful?",
@@ -637,7 +656,10 @@
         "noScores": "No scores yet. Be the first!",
         "fastAnswer": "Lightning fast!",
         "goodSpeed": "Good speed!",
-        "justInTime": "Just in time!"
+        "justInTime": "Just in time!",
+        "perQuestion": "per question",
+        "questions": "questions",
+        "speedBonus": "Speed bonus multiplier"
       },
       "neuralNetwork": {
         "title": "Neural Network Sandbox",
@@ -650,6 +672,10 @@
       "algoRace": {
         "title": "Algorithm Race",
         "instruction": "Bet on a sorting algorithm and watch them race!"
+      },
+      "aiOrHuman": {
+        "press1": "Press 1",
+        "press2": "Press 2"
       }
     },
     "sentimentSection": {
@@ -717,7 +743,89 @@
       "roundOf": "Round {current} of {total}",
       "highScore": "New High Score!",
       "closeGame": "Close"
-    }
+    },
+    "playground": {
+      "neuralTitle": "Neural Network Playground",
+      "brush": "BRUSH:",
+      "blue": "Blue",
+      "red": "Red",
+      "hidden": "HIDDEN:",
+      "clickToPlace": "Click to place shape",
+      "addBothPoints": "Add both blue and red points, then train",
+      "training": "TRAINING",
+      "idle": "IDLE",
+      "epoch": "EPOCH:",
+      "accuracy": "ACC:",
+      "points": "PTS:",
+      "pause": "PAUSE",
+      "train": "TRAIN",
+      "clear": "CLEAR",
+      "networkArch": "Network Architecture",
+      "inputLayer": "Input",
+      "hiddenLayer": "Hidden",
+      "outputLayer": "Output",
+      "playAgain": "Play Again",
+      "algoRace": "Algorithm Race",
+      "bubbleSort": "Bubble Sort",
+      "quickSort": "Quick Sort",
+      "mergeSort": "Merge Sort",
+      "perQuestion": "per question",
+      "questions": "questions",
+      "speedBonus": "Speed bonus multiplier",
+      "press1": "Press 1",
+      "press2": "Press 2",
+      "serverLabel": "Server",
+      "dbLabel": "DB",
+      "gateLabel": "Gate",
+      "serviceLabel": "Service",
+      "queueLabel": "Queue",
+      "clientLabel": "Client",
+      "cloudLabel": "Cloud",
+      "textLabel": "Text",
+      "saved": "Saved",
+      "clickTarget": "Click target shape",
+      "clickSource": "Click source shape",
+      "clickToPlaceShape": "Click to place",
+      "selectOrDrag": "Select a shape or drag",
+      "deleteTooltip": "Delete",
+      "connectTooltip": "Connect shapes",
+      "shapeServer": "Server",
+      "shapeDB": "DB",
+      "shapeGate": "Gate",
+      "shapeService": "Service",
+      "shapeQueue": "Queue",
+      "shapeClient": "Client",
+      "shapeCloud": "Cloud",
+      "shapeText": "Text",
+      "yourDesigns": "Your Designs",
+      "newCanvas": "New Canvas",
+      "noDesigns": "No saved designs yet. Start a new canvas!",
+      "promptTitle": "Prompt Engineering Dojo",
+      "submit": "SUBMIT",
+      "seeResults": "SEE RESULTS",
+      "nextChallenge": "NEXT CHALLENGE",
+      "gameNeuralName": "Neural Network Playground",
+      "gameNeuralDesc": "Build & train a tiny neural network — place points, watch it learn",
+      "gamePromptName": "Prompt Engineering Dojo",
+      "gamePromptDesc": "Craft the perfect prompt to match target outputs",
+      "gameAlgoName": "Algorithm Race",
+      "gameAlgoDesc": "Bet on sorting algorithms and watch them race in real-time",
+      "gameTriviaName": "AI Trivia Challenge",
+      "gameTriviaDesc": "Test your AI knowledge with timed questions",
+      "gameDesignName": "System Design Canvas",
+      "gameDesignDesc": "Drag, connect, and design — practise architecture diagrams"
+    },
+    "categoryNlp": "NLP",
+    "categoryLogic": "Logic",
+    "diffEasy": "EASY",
+    "diffMedium": "MED",
+    "diffHard": "HARD",
+    "filterAll": "ALL",
+    "initializing": "Initializing AI Lab...",
+    "experimentsLoaded": "experiments loaded",
+    "allSystemsOp": "all systems operational",
+    "featuredExperiment": "Featured Experiment",
+    "runButton": "RUN"
   },
   "programTitles": {
     "ai-branches": "AI Branches",
@@ -754,5 +862,10 @@
     "ai-seeds": "Start from absolute zero. No coding, no maths — just plain language and everyday examples. Perfect for anyone who's curious about AI but has never explored it.",
     "ai-sketch": "Master the fundamental data structures and algorithms that power AI systems. Arrays, hash maps, strings, and sorting — visualised with diagrams, explained with AI real-world applications.",
     "ai-sprouts": "Ready to grow? Dive into the building blocks of AI — data, algorithms, and neural networks. Hands-on exercises help you build intuition before writing code."
+  },
+  "ui": {
+    "light": "Light",
+    "dark": "Dark",
+    "comingSoon": "Soon"
   }
 }

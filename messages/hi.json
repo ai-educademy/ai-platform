@@ -62,7 +62,9 @@
     "role": "संस्थापक · इंजीनियरिंग लीडर · ओपन सोर्स समर्थक",
     "statContinents": "महाद्वीपों में कार्य अनुभव",
     "statRepos": "ओपन सोर्स रिपॉज़िटरीज़",
-    "statYears": "वर्षों का इंजीनियरिंग अनुभव"
+    "statYears": "वर्षों का इंजीनियरिंग अनुभव",
+    "brainsTitle": "इस विचार के पीछे का दिमाग",
+    "buyCoffee": "मुझे एक कॉफ़ी दिलाएं"
   },
   "footer": {
     "tagline": "सभी के लिए, हर भाषा में मुफ्त AI शिक्षा।",
@@ -125,7 +127,10 @@
     "timeline2025": "AI Educademy की स्थापना — सभी के लिए मुफ्त AI शिक्षा 🎓",
     "pageTitle": "AI Educademy के बारे में",
     "pageDescription": "AI Educademy सभी के लिए बनाया गया एक मुफ्त, ओपन-सोर्स AI शिक्षा प्लेटफॉर्म है। दुनिया भर में AI शिक्षा को सुलभ बनाने के हमारे मिशन के बारे में जानें।",
-    "pageSubtitle": "हर छात्र के लिए मुफ्त, ओपन-सोर्स AI शिक्षा।"
+    "pageSubtitle": "हर छात्र के लिए मुफ्त, ओपन-सोर्स AI शिक्षा।",
+    "openSourceTitle": "ओपन सोर्स",
+    "openSourceDesc": "हर पाठ, कोड की हर पंक्ति — मुफ्त और ओपन सोर्स। इसे फोर्क करें, अनुवाद करें, अपना बनाएं।",
+    "viewOnGithub": "GitHub पर देखें"
   },
   "lessons": {
     "title": "पाठ",
@@ -166,7 +171,11 @@
     "checkAnswer": "उत्तर जांचें",
     "quizCorrect": "सही! बहुत बढ़िया!",
     "quizIncorrect": "बिल्कुल नहीं — लेकिन ऐसे ही हम सीखते हैं!",
-    "tryAgain": "फिर से कोशिश करें"
+    "tryAgain": "फिर से कोशिश करें",
+    "quickCheck": "त्वरित जांच",
+    "animationError": "एनिमेशन लोड नहीं हो सका",
+    "videoFallback": "वीडियो",
+    "shortBadge": "शॉर्ट"
   },
   "programs": {
     "badge": "5 सीखने के स्तर",
@@ -289,7 +298,12 @@
     "emptyLearn": "सीखें",
     "emptyPractice": "अभ्यास करें",
     "emptyEarn": "अर्जित करें",
-    "defaultUser": "शिक्षार्थी"
+    "defaultUser": "शिक्षार्थी",
+    "certTitle": "पूर्णता प्रमाणपत्र",
+    "certCertifies": "यह प्रमाणित करता है कि",
+    "certCompleted": "ने सफलतापूर्वक पूरा किया",
+    "certDate": "पूर्ण तिथि",
+    "certOrg": "AI Educademy"
   },
   "auth": {
     "startLearning": "सीखना शुरू करें",
@@ -322,7 +336,11 @@
     "emailPlaceholder": "aap@example.com",
     "sendMagicLink": "मुझे एक मैजिक लिंक भेजें",
     "magicLinkSent": "अपना इनबॉक्स देखें! हमने आपको एक साइन-इन लिंक भेजा है।",
-    "magicLinkError": "मैजिक लिंक नहीं भेज सका। पुनः प्रयास करें।"
+    "magicLinkError": "मैजिक लिंक नहीं भेज सका। पुनः प्रयास करें।",
+    "errorOAuth": "यह ईमेल पहले से किसी अन्य प्रदाता से जुड़ा है।",
+    "errorGeneric": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
+    "learner": "शिक्षार्थी",
+    "guestLearner": "अतिथि शिक्षार्थी"
   },
   "lessonTitles": {
     "agentic-workflows": "एजेंटिक वर्कफ़्लो",
@@ -442,7 +460,8 @@
     "publishedOn": "प्रकाशित",
     "minuteRead": "मिनट पढ़ने का समय",
     "tags": "टैग",
-    "badge": "नवीनतम लेख"
+    "badge": "नवीनतम लेख",
+    "noPosts": "अभी तक कोई पोस्ट नहीं। जल्द वापस आएं!"
   },
   "feedback": {
     "title": "क्या यह पाठ सहायक था?",
@@ -649,7 +668,14 @@
         "timeLeft": "{seconds}s",
         "timesUp": "समय समाप्त!",
         "title": "AI ट्रिविया चैलेंज",
-        "wrongAnswer": "सही उत्तर था: {answer}"
+        "wrongAnswer": "सही उत्तर था: {answer}",
+        "perQuestion": "प्रति प्रश्न",
+        "questions": "प्रश्न",
+        "speedBonus": "गति बोनस गुणक"
+      },
+      "aiOrHuman": {
+        "press1": "1 दबाएँ",
+        "press2": "2 दबाएँ"
       }
     },
     "sentimentSection": {
@@ -717,6 +743,88 @@
       "searchPlaceholder": "गेम्स खोजें...",
       "subtitle": "इंटरैक्टिव AI गेम्स और टूल्स। कोडिंग की ज़रूरत नहीं, बस खेलें और सीखें।",
       "title": "AI लैब"
+    },
+    "categoryNlp": "NLP",
+    "categoryLogic": "तर्क",
+    "diffEasy": "आसान",
+    "diffMedium": "मध्यम",
+    "diffHard": "कठिन",
+    "filterAll": "सभी",
+    "initializing": "AI लैब प्रारंभ हो रहा है...",
+    "experimentsLoaded": "प्रयोग लोड किए गए",
+    "allSystemsOp": "सभी सिस्टम कार्यरत",
+    "featuredExperiment": "विशेष प्रयोग",
+    "runButton": "चलाएं",
+    "playground": {
+      "neuralTitle": "न्यूरल नेटवर्क प्लेग्राउंड",
+      "brush": "ब्रश:",
+      "blue": "नीला",
+      "red": "लाल",
+      "hidden": "हिडन:",
+      "clickToPlace": "आकार रखने के लिए क्लिक करें",
+      "addBothPoints": "नीले और लाल दोनों बिंदु जोड़ें, फिर प्रशिक्षित करें",
+      "training": "ट्रेनिंग",
+      "idle": "निष्क्रिय",
+      "epoch": "एपॉक:",
+      "accuracy": "सटीकता:",
+      "points": "पॉइंट:",
+      "pause": "रोकें",
+      "train": "ट्रेन",
+      "clear": "मिटाएं",
+      "networkArch": "नेटवर्क आर्किटेक्चर",
+      "inputLayer": "इनपुट",
+      "hiddenLayer": "हिडन",
+      "outputLayer": "आउटपुट",
+      "playAgain": "फिर से खेलें",
+      "algoRace": "एल्गोरिदम रेस",
+      "bubbleSort": "बबल सॉर्ट",
+      "quickSort": "क्विक सॉर्ट",
+      "mergeSort": "मर्ज सॉर्ट",
+      "perQuestion": "प्रति प्रश्न",
+      "questions": "प्रश्न",
+      "speedBonus": "गति बोनस गुणक",
+      "press1": "1 दबाएं",
+      "press2": "2 दबाएं",
+      "serverLabel": "सर्वर",
+      "dbLabel": "DB",
+      "gateLabel": "गेट",
+      "serviceLabel": "सेवा",
+      "queueLabel": "क्यू",
+      "clientLabel": "क्लाइंट",
+      "cloudLabel": "क्लाउड",
+      "textLabel": "टेक्स्ट",
+      "saved": "सहेजा गया",
+      "clickTarget": "लक्ष्य आकार क्लिक करें",
+      "clickSource": "स्रोत आकार क्लिक करें",
+      "clickToPlaceShape": "रखने के लिए क्लिक करें",
+      "selectOrDrag": "आकार चुनें या खींचें",
+      "deleteTooltip": "हटाएं",
+      "connectTooltip": "आकारों को जोड़ें",
+      "shapeServer": "सर्वर",
+      "shapeDB": "डीबी",
+      "shapeGate": "गेट",
+      "shapeService": "सेवा",
+      "shapeQueue": "कतार",
+      "shapeClient": "क्लाइंट",
+      "shapeCloud": "क्लाउड",
+      "shapeText": "टेक्स्ट",
+      "yourDesigns": "आपके डिज़ाइन",
+      "newCanvas": "नया कैनवास",
+      "noDesigns": "अभी तक कोई सहेजा हुआ डिज़ाइन नहीं। एक नया कैनवास शुरू करें!",
+      "promptTitle": "प्रॉम्प्ट इंजीनियरिंग डोजो",
+      "submit": "जमा करें",
+      "seeResults": "परिणाम देखें",
+      "nextChallenge": "अगली चुनौती",
+      "gameNeuralName": "न्यूरल नेटवर्क खेल का मैदान",
+      "gameNeuralDesc": "एक छोटा न्यूरल नेटवर्क बनाएं और प्रशिक्षित करें",
+      "gamePromptName": "प्रॉम्प्ट इंजीनियरिंग डोजो",
+      "gamePromptDesc": "लक्ष्य आउटपुट से मेल खाने के लिए सही प्रॉम्प्ट बनाएं",
+      "gameAlgoName": "एल्गोरिदम रेस",
+      "gameAlgoDesc": "सॉर्टिंग एल्गोरिदम पर दांव लगाएं और उन्हें दौड़ते देखें",
+      "gameTriviaName": "AI ट्रिविया चुनौती",
+      "gameTriviaDesc": "समयबद्ध प्रश्नों के साथ अपने AI ज्ञान का परीक्षण करें",
+      "gameDesignName": "सिस्टम डिज़ाइन कैनवास",
+      "gameDesignDesc": "खींचें, जोड़ें और डिज़ाइन करें — आर्किटेक्चर आरेखों का अभ्यास करें"
     }
   },
   "programTitles": {
@@ -754,5 +862,10 @@
     "ai-seeds": "बिल्कुल शून्य से शुरू करें। कोई कोडिंग नहीं, कोई गणित नहीं — बस सरल भाषा और रोज़मर्रा के उदाहरण। AI के बारे में जिज्ञासु किसी भी व्यक्ति के लिए बिल्कुल सही जिसने कभी इसे नहीं खोजा।",
     "ai-sketch": "AI सिस्टम को शक्ति देने वाली मूलभूत डेटा संरचनाओं और एल्गोरिदम में महारत हासिल करें। ऐरे, हैश मैप, स्ट्रिंग, और सॉर्टिंग — आरेखों के साथ विज़ुअलाइज़ किया गया, AI वास्तविक दुनिया के अनुप्रयोगों के साथ समझाया गया।",
     "ai-sprouts": "आगे बढ़ने के लिए तैयार हैं? AI के निर्माण खंडों में गोता लगाएं — डेटा, एल्गोरिदम, और न्यूरल नेटवर्क। हैंड्स-ऑन अभ्यास कोड लिखने से पहले अंतर्ज्ञान बनाने में मदद करते हैं।"
+  },
+  "ui": {
+    "light": "लाइट",
+    "dark": "डार्क",
+    "comingSoon": "जल्द"
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 interface YouTubeEmbedProps {
   id: string;
@@ -19,6 +20,7 @@ interface YouTubeEmbedProps {
  *   <YouTube id="dQw4w9WgXcQ" start={30} />   ← start at 30 seconds
  */
 export function YouTubeEmbed({ id, title, short = false, start }: YouTubeEmbedProps) {
+  const t = useTranslations("lessons");
   const [loaded, setLoaded] = useState(false);
 
   const handlePlay = useCallback(() => setLoaded(true), []);
@@ -43,7 +45,7 @@ export function YouTubeEmbed({ id, title, short = false, start }: YouTubeEmbedPr
         {loaded ? (
           <iframe
             src={embedUrl}
-            title={title || "Video"}
+            title={title || t("videoFallback")}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="absolute inset-0 w-full h-full"
@@ -74,7 +76,7 @@ export function YouTubeEmbed({ id, title, short = false, start }: YouTubeEmbedPr
             {/* Duration badge */}
             {short && (
               <div className="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider">
-                SHORT
+                {t("shortBadge")}
               </div>
             )}
           </button>

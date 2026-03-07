@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import Lottie from "lottie-react";
 
 interface LottieAnimationProps {
@@ -31,6 +32,7 @@ export function LottieAnimation({
   height = 280,
   speed = 1,
 }: LottieAnimationProps) {
+  const t = useTranslations("lessons");
   const containerRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<{ play: () => void; pause: () => void; setSpeed: (s: number) => void } | null>(null);
   const [animationData, setAnimationData] = useState<object | null>(null);
@@ -80,7 +82,7 @@ export function LottieAnimation({
         {error ? (
           <div className="text-[var(--color-text-muted)] text-sm flex flex-col items-center gap-2 p-8">
             <span className="text-3xl">🎭</span>
-            <span>Animation couldn&apos;t load</span>
+            <span>{t("animationError")}</span>
           </div>
         ) : animationData ? (
           <Lottie

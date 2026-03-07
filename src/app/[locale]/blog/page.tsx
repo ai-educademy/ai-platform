@@ -56,7 +56,7 @@ export default async function BlogPage({
       {/* Blog Grid */}
       {posts.length === 0 ? (
         <p className="text-center text-[var(--color-text-muted)]">
-          No posts yet. Check back soon!
+          {t("noPosts")}
         </p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

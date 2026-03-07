@@ -245,7 +245,7 @@ export default async function HomePage({
             <div className="text-center mb-10">
               <h2 className="text-2xl sm:text-3xl font-bold text-gradient flex items-center justify-center gap-3">
                 <Image src="/images/lightbulb.svg" alt="" width={32} height={32} className="inline-block" />
-                Brains Behind the Idea
+                {t("founder.brainsTitle")}
               </h2>
             </div>
           </ScrollReveal>
@@ -328,7 +328,7 @@ export default async function HomePage({
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-2.5 border border-[var(--color-border)] rounded-xl text-sm font-semibold hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
                     >
-                      ☕ Buy me a coffee
+                      ☕ {t("founder.buyCoffee")}
                     </a>
                   </div>
                 </div>

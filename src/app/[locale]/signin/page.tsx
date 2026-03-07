@@ -38,8 +38,8 @@ export default function SignInPage() {
         {error && (
           <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center">
             {error === "OAuthAccountNotLinked"
-              ? "This email is already associated with another provider."
-              : "Something went wrong. Please try again."}
+              ? t("errorOAuth")
+              : t("errorGeneric")}
           </div>
         )}
 

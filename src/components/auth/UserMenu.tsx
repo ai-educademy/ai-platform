@@ -22,7 +22,7 @@ export function UserMenu() {
   // Prefer NextAuth session, fall back to guest profile
   const user = session?.user;
   const isSignedIn = !!user || isGuestSignedIn;
-  const displayName = user?.name || profile?.name || "Learner";
+  const displayName = user?.name || profile?.name || t("learner");
   const avatar = user?.image || null;
   const displayAvatar = profile?.avatar || "👤";
   const email = user?.email || null;
@@ -85,7 +85,7 @@ export function UserMenu() {
                 <div className="min-w-0">
                   <p className="text-sm font-semibold truncate">{displayName}</p>
                   <p className="text-xs text-[var(--color-text-muted)] truncate">
-                    {email || (profile?.username ? `@${profile.username}` : "Guest learner")}
+                    {email || (profile?.username ? `@${profile.username}` : t("guestLearner"))}
                   </p>
                 </div>
               </div>

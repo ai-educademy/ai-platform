@@ -69,6 +69,7 @@ export default function GameCard({
   onPlay: (game: GameMeta) => void;
 }) {
   const t = useTranslations("lab.hub");
+  const tp = useTranslations("lab.playground");
   const [bestScore, setBestScore] = useState<number | null>(null);
 
   useEffect(() => {
@@ -98,10 +99,10 @@ export default function GameCard({
 
         {/* Title + description */}
         <h3 className="font-bold text-sm mb-1 group-hover:text-[var(--color-primary)] transition-colors">
-          {game.name}
+          {tp(game.name as any)}
         </h3>
         <p className="text-xs text-[var(--color-text-muted)] leading-relaxed mb-3 flex-1">
-          {game.desc}
+          {tp(game.desc as any)}
         </p>
 
         {/* Footer: time + score */}

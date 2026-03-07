@@ -171,13 +171,13 @@ export default function AITriviaChallenge() {
         </div>
         <div className="flex flex-wrap justify-center gap-3 text-sm text-[var(--color-text-muted)]">
           <span className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-            ⏱️ {SECONDS_PER_QUESTION}s per question
+            ⏱️ {SECONDS_PER_QUESTION}s {t("games.aiTrivia.perQuestion")}
           </span>
           <span className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-            🎯 {totalQuestions} questions
+            🎯 {totalQuestions} {t("games.aiTrivia.questions")}
           </span>
           <span className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[var(--color-bg-section)] border border-[var(--color-border)]">
-            ⚡ Speed bonus multiplier
+            ⚡ {t("games.aiTrivia.speedBonus")}
           </span>
         </div>
         <button onClick={startGame} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg shadow-indigo-500/25">
