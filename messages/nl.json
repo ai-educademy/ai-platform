@@ -191,7 +191,7 @@
         "title": "AI Begrijpen",
         "desc": "Van nul naar AI-expert — door natuur geïnspireerde progressie",
         "tagline": "Zaden → Spruiten → Takken → Bladerdak → Bos",
-        "brand": ""
+        "brand": "Begrijp hoe machines denken, leren en creëren — van je eerste 'wat is AI?' tot het bouwen van productiesystemen."
       },
       "craft-engineering": {
         "title": "Code & Algoritmen",
@@ -199,7 +199,16 @@
         "tagline": "Schets → Beitel → Ambacht → Polijst → Meesterwerk",
         "brand": "Leer de algoritmes achter AI, ontwerp de systemen die AI schalen, en slaag voor de interviews."
       }
-    }
+    },
+    "statsTracksLabel": "Trajecten",
+    "statsProgramsLabel": "Programma's",
+    "statsLessonsLabel": "Lessen",
+    "lessonsCount": "{count} lessen",
+    "moreLessons": "+{count} meer",
+    "showLess": "Minder tonen",
+    "searchPlaceholder": "Zoek programma's, lessen, onderwerpen…",
+    "noResults": "Geen resultaten gevonden",
+    "allTracks": "Alle trajecten"
   },
   "homePrograms": {
     "startFromZero": "Begin vanaf nul",
@@ -692,5 +701,41 @@
       "subtitle": "Interactieve AI-spellen en tools. Geen code nodig, gewoon spelen en leren.",
       "title": "AI Lab"
     }
+  },
+  "programTitles": {
+    "ai-branches": "AI Branches",
+    "ai-canopy": "AI Canopy",
+    "ai-chisel": "AI Chisel",
+    "ai-craft": "AI Craft",
+    "ai-forest": "AI Forest",
+    "ai-masterpiece": "AI Masterpiece",
+    "ai-polish": "AI Polish",
+    "ai-seeds": "AI Seeds",
+    "ai-sketch": "AI Sketch",
+    "ai-sprouts": "AI Sprouts"
+  },
+  "programSubtitles": {
+    "ai-branches": "Ontdek toepassingen in de echte wereld",
+    "ai-canopy": "Diepgaande duik in AI-systemen",
+    "ai-chisel": "Precisie vormen — Tussenliggende patronen",
+    "ai-craft": "Vaardigheden opbouwen — Systeemontwerp",
+    "ai-forest": "Beheers het AI-ecosysteem",
+    "ai-masterpiece": "Portfolio-klaar — Complete casestudies",
+    "ai-polish": "Excellentie verfijnen — Gedragsmatige beheersing",
+    "ai-seeds": "Plant je eerste AI-kennis",
+    "ai-sketch": "Ruwe schetsen — DSA-fundamenten",
+    "ai-sprouts": "Bouw je AI-basis op"
+  },
+  "programDescriptions": {
+    "ai-branches": "Zie AI in actie in verschillende sectoren — gezondheidszorg, financiën, creatieve kunst en meer. Begin met het bouwen van eenvoudige projecten en begrijp de tools die professionals gebruiken.",
+    "ai-canopy": "Duik dieper in neurale netwerken, grote taalmodellen en AI-systeemontwerp. Leer AI-tools kritisch te evalueren en begrijp de engineering achter moderne AI.",
+    "ai-chisel": "Ga verder met tussenliggende algoritmische patronen: twee pointers, sliding window, BFS/DFS en boomparcours. Elk patroon is gekoppeld aan echte AI/ML-toepassingen.",
+    "ai-craft": "Ontwerp grootschalige systemen die AI aandrijven: aanbevelingsengines, zoek-autocomplete, rate limiters. Leer te denken in architecturen, niet alleen in code.",
+    "ai-forest": "Het volledige plaatje — AI-onderzoek, productie-AI-systemen bouwen, bijdragen aan open-source AI en begrijpen waar het vakgebied naartoe gaat. Voor wie de toekomst wil vormgeven.",
+    "ai-masterpiece": "Capstone-projecten die DSA, systeemontwerp en gedragsvaardigheden combineren. Ontwerp echte systemen van begin tot eind en bouw je engineeringportfolio op.",
+    "ai-polish": "Beheers het gedragsinterview met gestructureerde frameworks. STAR-methode, leiderschapsprincipes, AI-tijdperkscenario's en communicatiestrategieën.",
+    "ai-seeds": "Begin vanaf absoluut nul. Geen codering, geen wiskunde — gewoon eenvoudige taal en alledaagse voorbeelden. Perfect voor iedereen die nieuwsgierig is naar AI maar het nog nooit heeft verkend.",
+    "ai-sketch": "Beheers de fundamentele datastructuren en algoritmen die AI-systemen aandrijven. Arrays, hash maps, strings en sortering — gevisualiseerd met diagrammen, uitgelegd met AI-toepassingen uit de echte wereld.",
+    "ai-sprouts": "Klaar om te groeien? Duik in de bouwstenen van AI — data, algoritmen en neurale netwerken. Praktische oefeningen helpen je intuïtie op te bouwen voordat je code schrijft."
   }
 }

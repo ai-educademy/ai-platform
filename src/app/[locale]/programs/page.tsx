@@ -35,10 +35,13 @@ export default async function ProgramsPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations("programs");
+  const tPT = await getTranslations("programTitles");
+  const tPS = await getTranslations("programSubtitles");
+  const tPD = await getTranslations("programDescriptions");
+  const tLT = await getTranslations("lessonTitles");
   const tracks = getTracks();
   const basePath = locale === "en" ? "" : `/${locale}`;
 
-  // Build serialisable data for the client component
   const trackData: TrackData[] = tracks.map((track) => ({
     slug: track.slug,
     icon: track.icon,
@@ -56,9 +59,9 @@ export default async function ProgramsPage({
       return {
         slug: p.slug,
         icon: p.icon,
-        title: p.title,
-        subtitle: p.subtitle,
-        description: p.description,
+        title: tPT(p.slug),
+        subtitle: tPS(p.slug),
+        description: tPD(p.slug),
         color: p.color,
         level: p.level,
         status: p.status,
@@ -68,7 +71,7 @@ export default async function ProgramsPage({
         firstLessonSlug: lessons[0]?.slug,
         lessons: lessons.map((l) => ({
           slug: l.slug,
-          title: l.title,
+          title: tLT(l.slug),
           icon: l.icon ?? "📄",
           duration: l.duration,
         })),
@@ -98,6 +101,15 @@ export default async function ProgramsPage({
         level: t("level"),
         viewAll: t("viewAll"),
         levelLabels,
+        statsTracksLabel: t("statsTracksLabel"),
+        statsProgramsLabel: t("statsProgramsLabel"),
+        statsLessonsLabel: t("statsLessonsLabel"),
+        lessonsCount: t("lessonsCount"),
+        moreLessons: t("moreLessons"),
+        showLess: t("showLess"),
+        searchPlaceholder: t("searchPlaceholder"),
+        noResults: t("noResults"),
+        allTracks: t("allTracks"),
       }}
     />
   );

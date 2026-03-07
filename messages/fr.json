@@ -190,7 +190,7 @@
         "title": "Comprendre l'IA",
         "desc": "De zéro à expert en IA — progression inspirée de la nature",
         "tagline": "Graines → Pousses → Branches → Canopée → Forêt",
-        "brand": ""
+        "brand": "Comprenez comment les machines pensent, apprennent et créent — de votre premier « qu'est-ce que l'AI ? » à la construction de systèmes en production."
       },
       "craft-engineering": {
         "title": "Code & Algorithmes",
@@ -198,7 +198,16 @@
         "tagline": "Esquisse → Ciseau → Artisanat → Polissage → Chef-d'œuvre",
         "brand": "Apprenez les algorithmes qui alimentent l'IA, concevez les systèmes qui la mettent à l'échelle, et réussissez les entretiens."
       }
-    }
+    },
+    "statsTracksLabel": "Parcours",
+    "statsProgramsLabel": "Programmes",
+    "statsLessonsLabel": "Leçons",
+    "lessonsCount": "{count} leçons",
+    "moreLessons": "+{count} de plus",
+    "showLess": "Afficher moins",
+    "searchPlaceholder": "Rechercher des programmes, leçons, sujets…",
+    "noResults": "Aucun résultat trouvé",
+    "allTracks": "Tous les parcours"
   },
   "homePrograms": {
     "startFromZero": "Partir de zéro",
@@ -691,5 +700,41 @@
       "subtitle": "Jeux et outils interactifs sur l'IA. Pas besoin de coder, jouez et apprenez.",
       "title": "Labo IA"
     }
+  },
+  "programTitles": {
+    "ai-branches": "AI Branches",
+    "ai-canopy": "AI Canopy",
+    "ai-chisel": "AI Chisel",
+    "ai-craft": "AI Craft",
+    "ai-forest": "AI Forest",
+    "ai-masterpiece": "AI Masterpiece",
+    "ai-polish": "AI Polish",
+    "ai-seeds": "AI Seeds",
+    "ai-sketch": "AI Sketch",
+    "ai-sprouts": "AI Sprouts"
+  },
+  "programSubtitles": {
+    "ai-branches": "Explorez les applications du monde réel",
+    "ai-canopy": "Plongée approfondie dans les systèmes d'AI",
+    "ai-chisel": "Sculpter la précision — Patterns intermédiaires",
+    "ai-craft": "Développer les compétences — Conception de systèmes",
+    "ai-forest": "Maîtrisez l'écosystème AI",
+    "ai-masterpiece": "Prêt pour le portfolio — Études de cas complètes",
+    "ai-polish": "Perfectionner l'excellence — Maîtrise comportementale",
+    "ai-seeds": "Plantez vos premières connaissances en AI",
+    "ai-sketch": "Ébauches — Fondamentaux du DSA",
+    "ai-sprouts": "Construisez vos bases en AI"
+  },
+  "programDescriptions": {
+    "ai-branches": "Voyez l'AI en action dans différents secteurs — santé, finance, arts créatifs, et plus encore. Commencez à construire des projets simples et comprenez les outils utilisés par les professionnels.",
+    "ai-canopy": "Approfondissez les réseaux de neurones, les grands modèles de langage et la conception de systèmes AI. Apprenez à évaluer les outils AI de manière critique et à comprendre l'ingénierie derrière l'AI moderne.",
+    "ai-chisel": "Progressez avec des patterns algorithmiques intermédiaires : deux pointeurs, fenêtre glissante, BFS/DFS et parcours d'arbres. Chaque pattern est lié à des applications AI/ML réelles.",
+    "ai-craft": "Concevez des systèmes à grande échelle qui alimentent l'AI : moteurs de recommandation, autocomplétion de recherche, limiteurs de débit. Apprenez à penser en architectures, pas seulement en code.",
+    "ai-forest": "La vue d'ensemble — recherche en AI, construction de systèmes AI en production, contribution à l'AI open-source, et compréhension de la direction du domaine. Pour ceux qui veulent façonner l'avenir.",
+    "ai-masterpiece": "Projets de synthèse combinant DSA, conception de systèmes et compétences comportementales. Concevez des systèmes réels de bout en bout et construisez votre portfolio d'ingénierie.",
+    "ai-polish": "Maîtrisez l'entretien comportemental avec des cadres structurés. Méthode STAR, principes de leadership, scénarios de l'ère AI et stratégies de communication.",
+    "ai-seeds": "Commencez à partir de zéro absolu. Pas de code, pas de maths — juste un langage simple et des exemples du quotidien. Parfait pour quiconque est curieux de l'AI mais ne l'a jamais exploré.",
+    "ai-sketch": "Maîtrisez les structures de données et algorithmes fondamentaux qui alimentent les systèmes AI. Tableaux, tables de hachage, chaînes et tri — visualisés avec des diagrammes, expliqués avec des applications AI du monde réel.",
+    "ai-sprouts": "Prêt à grandir ? Plongez dans les éléments constitutifs de l'AI — données, algorithmes et réseaux de neurones. Des exercices pratiques vous aident à développer l'intuition avant d'écrire du code."
   }
 }

@@ -190,7 +190,7 @@
         "title": "Understanding AI",
         "desc": "Grow from zero to AI expert, nature-inspired progression",
         "tagline": "Seeds → Sprouts → Branches → Canopy → Forest",
-        "brand": ""
+        "brand": "Understand how machines think, learn, and create — from your first \"what is AI?\" to building production systems."
       },
       "craft-engineering": {
         "title": "Code & Algorithms",
@@ -198,7 +198,16 @@
         "tagline": "Sketch → Chisel → Craft → Polish → Masterpiece",
         "brand": "Learn the algorithms that power AI, design the systems that scale AI, and ace the interviews that land you AI-era jobs."
       }
-    }
+    },
+    "statsTracksLabel": "Tracks",
+    "statsProgramsLabel": "Programs",
+    "statsLessonsLabel": "Lessons",
+    "lessonsCount": "{count} lessons",
+    "moreLessons": "+{count} more",
+    "showLess": "Show less",
+    "searchPlaceholder": "Search programs, lessons, topics…",
+    "noResults": "No results found",
+    "allTracks": "All Tracks"
   },
   "homePrograms": {
     "startFromZero": "Start from zero",
@@ -691,5 +700,41 @@
       "highScore": "New High Score!",
       "closeGame": "Close"
     }
+  },
+  "programTitles": {
+    "ai-branches": "AI Branches",
+    "ai-canopy": "AI Canopy",
+    "ai-chisel": "AI Chisel",
+    "ai-craft": "AI Craft",
+    "ai-forest": "AI Forest",
+    "ai-masterpiece": "AI Masterpiece",
+    "ai-polish": "AI Polish",
+    "ai-seeds": "AI Seeds",
+    "ai-sketch": "AI Sketch",
+    "ai-sprouts": "AI Sprouts"
+  },
+  "programSubtitles": {
+    "ai-branches": "Explore Real-World Applications",
+    "ai-canopy": "Deep Dive into AI Systems",
+    "ai-chisel": "Carving Precision — Intermediate Patterns",
+    "ai-craft": "Building Skill — System Design",
+    "ai-forest": "Master the AI Ecosystem",
+    "ai-masterpiece": "Portfolio-Ready — End-to-End Case Studies",
+    "ai-polish": "Refining Excellence — Behavioral Mastery",
+    "ai-seeds": "Plant Your First AI Knowledge",
+    "ai-sketch": "Rough Outlines — DSA Fundamentals",
+    "ai-sprouts": "Build Your AI Foundations"
+  },
+  "programDescriptions": {
+    "ai-branches": "See AI in action across industries — healthcare, finance, creative arts, and more. Start building simple projects and understand the tools professionals use.",
+    "ai-canopy": "Go deeper into neural networks, large language models, and AI system design. Learn to evaluate AI tools critically and understand the engineering behind modern AI.",
+    "ai-chisel": "Level up with intermediate algorithmic patterns: two pointers, sliding window, BFS/DFS, and tree traversals. Each pattern tied to real AI/ML applications.",
+    "ai-craft": "Design large-scale systems that power AI: recommendation engines, search autocomplete, rate limiters. Learn to think in architectures, not just code.",
+    "ai-forest": "The complete picture — AI research, building production AI systems, contributing to open-source AI, and understanding where the field is heading. For those who want to shape the future.",
+    "ai-masterpiece": "Capstone projects combining DSA, system design, and behavioral skills. Design real systems end-to-end and build your engineering portfolio.",
+    "ai-polish": "Master the behavioral interview with structured frameworks. STAR method, leadership principles, AI-era scenarios, and communication strategies.",
+    "ai-seeds": "Start from absolute zero. No coding, no maths — just plain language and everyday examples. Perfect for anyone who's curious about AI but has never explored it.",
+    "ai-sketch": "Master the fundamental data structures and algorithms that power AI systems. Arrays, hash maps, strings, and sorting — visualised with diagrams, explained with AI real-world applications.",
+    "ai-sprouts": "Ready to grow? Dive into the building blocks of AI — data, algorithms, and neural networks. Hands-on exercises help you build intuition before writing code."
   }
 }
