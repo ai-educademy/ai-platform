@@ -7,6 +7,7 @@ import { ScrollReveal } from "@ai-educademy/ai-ui-library";
 import { ComingSoonCard } from "@/components/ui/ComingSoon";
 import { FloatingParticles } from "@ai-educademy/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
+import { getLessons } from "@/lib/lessons";
 import { Mail, Github } from "lucide-react";
 import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 import NeuralBackground from "@/components/ui/NeuralBackground";
@@ -48,6 +49,18 @@ export default async function HomePage({
     level: p.level,
     desc: p.subtitle,
   }));
+
+  // Resolve first lesson slugs for direct navigation
+  const allHomePrograms = [...aiLearningPrograms, ...craftPrograms];
+  const firstLessonSlugs: Record<string, string | undefined> = {};
+  const lessonNames: Record<string, string[]> = {};
+  for (const p of allHomePrograms) {
+    if (p.active) {
+      const lessons = getLessons(p.slug, locale);
+      firstLessonSlugs[p.slug] = lessons[0]?.slug;
+      lessonNames[p.slug] = lessons.map((l) => l.title);
+    }
+  }
 
   return (
     <>
@@ -127,22 +140,39 @@ export default async function HomePage({
                 <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-3xl">🌳</span>
-                    <h3 className="text-xl font-bold">{tp("trackAI")}</h3>
+                    <Link href={`${basePath}/programs`} className="hover:underline">
+                      <h3 className="text-xl font-bold">{tp("trackAI")}</h3>
+                    </Link>
                   </div>
                   <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackAIHome")}</p>
                   <div className="grid grid-cols-5 gap-2">
-                    {aiLearningPrograms.map((program) => (
-                      program.active ? (
-                        <Link key={program.slug} href={`${basePath}/programs/${program.slug}`} className="block">
+                    {aiLearningPrograms.map((program) => {
+                      const href = firstLessonSlugs[program.slug]
+                        ? `${basePath}/programs/${program.slug}/lessons/${firstLessonSlugs[program.slug]}`
+                        : `${basePath}/programs/${program.slug}`;
+                      const lessons = lessonNames[program.slug] || [];
+                      return program.active ? (
+                        <Link key={program.slug} href={href} className="block group relative">
                           <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
                             <div className="text-2xl mb-1">{program.icon}</div>
                             <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
                           </div>
+                          {lessons.length > 0 && (
+                            <div className="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 z-30 mt-2 w-48">
+                              <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg shadow-xl p-2 space-y-1">
+                                {lessons.map((name, i) => (
+                                  <div key={i} className="text-[10px] text-[var(--color-text-muted)] truncate px-2 py-1 rounded hover:bg-[var(--color-primary)]/10">
+                                    {name}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </Link>
                       ) : (
                         <ComingSoonCard key={program.slug} icon={program.icon} label={program.title.replace("AI ", "")} />
-                      )
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -154,22 +184,39 @@ export default async function HomePage({
                 <div className="bg-[var(--color-bg-card)] rounded-2xl p-8 h-full">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-3xl">🔨</span>
-                    <h3 className="text-xl font-bold">{tp("trackCraft")}</h3>
+                    <Link href={`${basePath}/programs`} className="hover:underline">
+                      <h3 className="text-xl font-bold">{tp("trackCraft")}</h3>
+                    </Link>
                   </div>
                   <p className="text-sm text-[var(--color-text-muted)] mb-6">{tp("trackCraftHome")}</p>
                   <div className="grid grid-cols-5 gap-2">
-                    {craftPrograms.map((program) => (
-                      program.active ? (
-                        <Link key={program.slug} href={`${basePath}/programs/${program.slug}`} className="block">
+                    {craftPrograms.map((program) => {
+                      const href = firstLessonSlugs[program.slug]
+                        ? `${basePath}/programs/${program.slug}/lessons/${firstLessonSlugs[program.slug]}`
+                        : `${basePath}/programs/${program.slug}`;
+                      const lessons = lessonNames[program.slug] || [];
+                      return program.active ? (
+                        <Link key={program.slug} href={href} className="block group relative">
                           <div className="text-center p-3 rounded-xl border border-[var(--color-border)] card-hover" style={{ borderLeftColor: program.color, borderLeftWidth: 3 }}>
                             <div className="text-2xl mb-1">{program.icon}</div>
                             <div className="text-[10px] font-bold truncate">{program.title.replace("AI ", "")}</div>
                           </div>
+                          {lessons.length > 0 && (
+                            <div className="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 z-30 mt-2 w-48">
+                              <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg shadow-xl p-2 space-y-1">
+                                {lessons.map((name, i) => (
+                                  <div key={i} className="text-[10px] text-[var(--color-text-muted)] truncate px-2 py-1 rounded hover:bg-[var(--color-primary)]/10">
+                                    {name}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </Link>
                       ) : (
                         <ComingSoonCard key={program.slug} icon={program.icon} label={program.title.replace("AI ", "")} />
-                      )
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
