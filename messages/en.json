@@ -74,7 +74,7 @@
     "learnHeader": "Learn",
     "communityHeader": "Community",
     "supportHeader": "Support",
-    "programs": "Academies",
+    "programs": "Academics",
     "dashboard": "Dashboard",
     "lab": "Lab"
   },
@@ -198,7 +198,7 @@
     "masterAI": "Master AI",
     "start": "Start",
     "comingSoon": "Coming Soon",
-    "viewAll": "View All Academies",
+    "viewAll": "View All Academics",
     "trackAI": "Understanding AI",
     "trackCraft": "Code & Algorithms",
     "trackAIHome": "Grow from zero to AI expert",
@@ -214,7 +214,7 @@
     "comingSoon": "Lessons Coming Soon",
     "comingSoonDesc": "We're crafting these lessons with care. Check back soon!",
     "startFirst": "Start First Lesson",
-    "backToAll": "Back to All Academies"
+    "backToAll": "Back to All Academics"
   },
   "dashboard": {
     "title": "My Learning Dashboard",
