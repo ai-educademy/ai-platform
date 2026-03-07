@@ -60,7 +60,7 @@ export default async function HomePage({
           <div className="text-center max-w-4xl mx-auto">
             {/* Title */}
             <Image
-              src="https://avatars.githubusercontent.com/u/221488107?s=120"
+              src="https://avatars.githubusercontent.com/u/265648179?v=4"
               alt="AI Educademy"
               width={80}
               height={80}
