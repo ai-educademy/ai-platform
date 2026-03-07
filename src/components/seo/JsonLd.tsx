@@ -1,6 +1,6 @@
 "use client";
 
-const BASE_URL = "https://aieducademy.vercel.app";
+const BASE_URL = "https://aieducademy.org";
 
 export function OrganizationJsonLd() {
   const jsonLd = {

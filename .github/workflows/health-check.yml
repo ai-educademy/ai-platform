@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Check production site
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://aieducademy.vercel.app)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://aieducademy.org)
           echo "Status: $STATUS"
           if [ "$STATUS" != "200" ]; then
             echo "::error::Production site returned $STATUS"
@@ -20,7 +20,7 @@ jobs:
 
       - name: Check API health
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://aieducademy.vercel.app/api/analytics/summary)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://aieducademy.org/api/analytics/summary)
           echo "API Status: $STATUS"
           if [ "$STATUS" != "200" ]; then
             echo "::warning::API endpoint returned $STATUS"
@@ -28,7 +28,7 @@ jobs:
 
       - name: Check sitemap
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://aieducademy.vercel.app/sitemap.xml)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://aieducademy.org/sitemap.xml)
           echo "Sitemap Status: $STATUS"
           if [ "$STATUS" != "200" ]; then
             echo "::warning::Sitemap returned $STATUS"

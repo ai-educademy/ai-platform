@@ -11,7 +11,7 @@ import { Providers } from "@/components/ui/Providers";
 
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
-const BASE_URL = "https://aieducademy.vercel.app";
+const BASE_URL = "https://aieducademy.org";
 const locales = ["en", "fr", "nl", "hi", "te"];
 
 const inter = Inter({

@@ -99,7 +99,7 @@ function drawCertificate(
   ctx.fillText("AI Educademy", W / 2, 520);
   ctx.font = "12px system-ui, -apple-system, sans-serif";
   ctx.fillStyle = "#9ca3af";
-  ctx.fillText("aieducademy.vercel.app", W / 2, 545);
+  ctx.fillText("aieducademy.org", W / 2, 545);
 }
 
 export function Certificate({ programName, programIcon, userName, completionDate, onClose }: CertificateProps) {

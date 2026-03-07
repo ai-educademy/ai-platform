@@ -19,7 +19,7 @@ A **free, open-source AI education platform** with 10 structured programs across
 
 <br />
 
-[**🚀 Start Learning**](https://aieducademy.vercel.app) &nbsp;·&nbsp; [**🎨 Storybook**](https://aieducademy.github.io/ai-ui-library/) &nbsp;·&nbsp; [**📦 UI Library**](https://www.npmjs.com/package/@aieducademy/ai-ui-library) &nbsp;·&nbsp; [**🤝 Contributing**](CONTRIBUTING.md)
+[**🚀 Start Learning**](https://aieducademy.org) &nbsp;·&nbsp; [**🎨 Storybook**](https://aieducademy.github.io/ai-ui-library/) &nbsp;·&nbsp; [**📦 UI Library**](https://www.npmjs.com/package/@aieducademy/ai-ui-library) &nbsp;·&nbsp; [**🤝 Contributing**](CONTRIBUTING.md)
 
 <br />
 
@@ -99,7 +99,7 @@ graph TB
     SEEDS -->|repository_dispatch| PLAT
     SPROUTS -->|repository_dispatch| PLAT
 
-    PLAT -->|deploy| VERCEL["▲ Vercel<br/><small>aieducademy.vercel.app</small>"]
+    PLAT -->|deploy| VERCEL["▲ Vercel<br/><small>aieducademy.org</small>"]
     UI -->|publish| NPM["📦 npm<br/><small>@aieducademy/ai-ui-library</small>"]
     UI -->|deploy| GHP["📖 GitHub Pages<br/><small>Storybook</small>"]
 ```
@@ -250,11 +250,11 @@ We'd love your help! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full gui
 | Repo | Description | Links |
 |------|-------------|-------|
 | [`ai-ui-library`](https://github.com/ai-educademy/ai-ui-library) | 🎨 Shared design system | [npm](https://www.npmjs.com/package/@aieducademy/ai-ui-library) · [Storybook](https://aieducademy.github.io/ai-ui-library/) |
-| [`ai-seeds`](https://github.com/ai-educademy/ai-seeds) | 🌱 Level 1: Absolute beginners | [Live](https://aieducademy.vercel.app/programs/ai-seeds) |
-| [`ai-sprouts`](https://github.com/ai-educademy/ai-sprouts) | 🌿 Level 2: Foundations | [Live](https://aieducademy.vercel.app/programs/ai-sprouts) |
-| [`ai-branches`](https://github.com/ai-educademy/ai-branches) | 🌳 Level 3: Specialisations | [Live](https://aieducademy.vercel.app/programs/ai-branches) |
-| [`ai-canopy`](https://github.com/ai-educademy/ai-canopy) | 🏕️ Level 4: Production AI | [Live](https://aieducademy.vercel.app/programs/ai-canopy) |
-| [`ai-forest`](https://github.com/ai-educademy/ai-forest) | 🌲 Level 5: Mastery | [Live](https://aieducademy.vercel.app/programs/ai-forest) |
+| [`ai-seeds`](https://github.com/ai-educademy/ai-seeds) | 🌱 Level 1: Absolute beginners | [Live](https://aieducademy.org/programs/ai-seeds) |
+| [`ai-sprouts`](https://github.com/ai-educademy/ai-sprouts) | 🌿 Level 2: Foundations | [Live](https://aieducademy.org/programs/ai-sprouts) |
+| [`ai-branches`](https://github.com/ai-educademy/ai-branches) | 🌳 Level 3: Specialisations | [Live](https://aieducademy.org/programs/ai-branches) |
+| [`ai-canopy`](https://github.com/ai-educademy/ai-canopy) | 🏕️ Level 4: Production AI | [Live](https://aieducademy.org/programs/ai-canopy) |
+| [`ai-forest`](https://github.com/ai-educademy/ai-forest) | 🌲 Level 5: Mastery | [Live](https://aieducademy.org/programs/ai-forest) |
 
 ---
 

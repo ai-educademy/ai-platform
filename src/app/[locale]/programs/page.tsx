@@ -7,7 +7,7 @@ import { ScrollReveal } from "@ai-educademy/ai-ui-library";
 import { ComingSoonProgramCard } from "@/components/ui/ComingSoon";
 import type { ProgramMeta } from "@/lib/programs";
 
-const BASE_URL = "https://aieducademy.vercel.app";
+const BASE_URL = "https://aieducademy.org";
 
 export async function generateMetadata({
   params,

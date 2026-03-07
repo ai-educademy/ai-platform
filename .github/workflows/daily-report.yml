@@ -16,7 +16,7 @@ jobs:
       - name: Gather analytics and send report
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          SITE_URL: https://aieducademy.vercel.app
+          SITE_URL: https://aieducademy.org
         run: |
           echo "📊 Open AI School — Daily Report"
           echo "================================="
@@ -65,7 +65,7 @@ jobs:
           echo ""
           echo "🔒 SSL Certificate"
           echo "───────────────────"
-          EXPIRY=$(echo | openssl s_client -connect aieducademy.vercel.app:443 -servername aieducademy.vercel.app 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
+          EXPIRY=$(echo | openssl s_client -connect aieducademy.org:443 -servername aieducademy.org 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
           echo "  Expires: ${EXPIRY:-Unable to check}"
 
           # --- GitHub Repo Stats ---

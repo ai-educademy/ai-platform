@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/blog";
 
-const BASE_URL = "https://aieducademy.vercel.app";
+const BASE_URL = "https://aieducademy.org";
 
 export async function generateMetadata({
   params,

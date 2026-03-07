@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { getBlogPost } from "@/lib/blog";
 import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 
-const BASE_URL = "https://aieducademy.vercel.app";
+const BASE_URL = "https://aieducademy.org";
 
 export async function generateMetadata({
   params,

@@ -131,7 +131,7 @@ export default function Image() {
             display: "flex",
           }}
         >
-          aieducademy.vercel.app
+          aieducademy.org
         </div>
       </div>
     ),

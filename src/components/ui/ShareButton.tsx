@@ -13,10 +13,10 @@ export function ShareButton() {
           navigator.share({
             title: "AI Educademy",
             text: "Free AI education for everyone",
-            url: "https://aieducademy.vercel.app",
+            url: "https://aieducademy.org",
           });
         } else {
-          navigator.clipboard?.writeText("https://aieducademy.vercel.app");
+          navigator.clipboard?.writeText("https://aieducademy.org");
         }
       }}
       className="w-full flex items-center gap-4 p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] card-hover text-left cursor-pointer"
