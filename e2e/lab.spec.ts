@@ -30,7 +30,7 @@ test.describe("Lab", () => {
   });
 
   test("all tabs are clickable", async ({ page }) => {
-    const tabTexts = ["ALL", "NLP", "LOGIC", "ETHICS", "NEURAL_NET"];
+    const tabTexts = ["ALL", "NLP", "LOGIC"];
     for (const text of tabTexts) {
       const tab = page.getByRole("button", { name: text, exact: true });
       if (await tab.isVisible()) {

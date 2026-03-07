@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { getLesson, getLessons } from "@/lib/lessons";
-import { getProgram } from "@/lib/programs";
+import { getProgram, getProgramsByTrack } from "@/lib/programs";
 import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 import { LessonComplete } from "@/components/lessons/LessonComplete";
 import { LessonFeedback } from "@/components/lessons/LessonFeedback";
@@ -30,6 +30,13 @@ export default async function ProgramLessonPage({
 
   const basePath = locale === "en" ? "" : `/${locale}`;
   const programPath = `${basePath}/programs/${programSlug}`;
+
+  // Build lesson counts for all programs in this track (for confetti)
+  const trackPrograms = getProgramsByTrack(program.track);
+  const trackLessonCounts: Record<string, number> = {};
+  for (const tp of trackPrograms) {
+    trackLessonCounts[tp.slug] = getLessons(tp.slug, locale).length;
+  }
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-24">
@@ -89,6 +96,7 @@ export default async function ProgramLessonPage({
         programTitle={program.title}
         programTrack={program.track}
         programLevel={program.level}
+        trackLessonCounts={trackLessonCounts}
       />
 
       {/* Lesson Feedback */}

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" fill="none">
+  <defs>
+    <linearGradient id="co-bg" x1="0" y1="0" x2="720" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ede9fe"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="400" fill="url(#co-bg)" rx="20"/>
+  <text x="360" y="42" text-anchor="middle" font-family="system-ui" font-size="20" font-weight="700" fill="#4338ca">Computer Vision Basics</text>
+  <text x="360" y="64" text-anchor="middle" font-family="system-ui" font-size="13" fill="#6366f1">Photo → Pixels → Features → Label</text>
+  <!-- Photo placeholder -->
+  <rect x="30" y="100" width="130" height="160" rx="14" fill="#fff" fill-opacity=".85" stroke="#c7d2fe" stroke-width="2"/>
+  <text x="95" y="135" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">Input Image</text>
+  <rect x="50" y="148" width="90" height="80" rx="8" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="95" y="198" text-anchor="middle" font-size="40">🐕</text>
+  <text x="95" y="248" text-anchor="middle" font-family="system-ui" font-size="10" fill="#818cf8">Photo of a dog</text>
+  <!-- Arrow -->
+  <path d="M168 180 L198 180" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="198,174 212,180 198,186" fill="#818cf8"/>
+  <!-- Pixel grid -->
+  <rect x="220" y="100" width="130" height="160" rx="14" fill="#fff" fill-opacity=".85" stroke="#6366f1" stroke-width="2"/>
+  <text x="285" y="130" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">Pixels</text>
+  <!-- 4x4 grid -->
+  <rect x="243" y="145" width="20" height="20" rx="2" fill="#c7d2fe"/>
+  <rect x="265" y="145" width="20" height="20" rx="2" fill="#818cf8"/>
+  <rect x="287" y="145" width="20" height="20" rx="2" fill="#6366f1"/>
+  <rect x="309" y="145" width="20" height="20" rx="2" fill="#c7d2fe"/>
+  <rect x="243" y="167" width="20" height="20" rx="2" fill="#6366f1"/>
+  <rect x="265" y="167" width="20" height="20" rx="2" fill="#4338ca"/>
+  <rect x="287" y="167" width="20" height="20" rx="2" fill="#4338ca"/>
+  <rect x="309" y="167" width="20" height="20" rx="2" fill="#818cf8"/>
+  <rect x="243" y="189" width="20" height="20" rx="2" fill="#818cf8"/>
+  <rect x="265" y="189" width="20" height="20" rx="2" fill="#4338ca"/>
+  <rect x="287" y="189" width="20" height="20" rx="2" fill="#6366f1"/>
+  <rect x="309" y="189" width="20" height="20" rx="2" fill="#c7d2fe"/>
+  <rect x="243" y="211" width="20" height="20" rx="2" fill="#e0e7ff"/>
+  <rect x="265" y="211" width="20" height="20" rx="2" fill="#818cf8"/>
+  <rect x="287" y="211" width="20" height="20" rx="2" fill="#c7d2fe"/>
+  <rect x="309" y="211" width="20" height="20" rx="2" fill="#e0e7ff"/>
+  <text x="285" y="250" text-anchor="middle" font-family="system-ui" font-size="10" fill="#818cf8">RGB values</text>
+  <!-- Arrow -->
+  <path d="M358 180 L388 180" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="388,174 402,180 388,186" fill="#818cf8"/>
+  <!-- Feature extraction -->
+  <rect x="410" y="100" width="130" height="160" rx="14" fill="#fff" fill-opacity=".85" stroke="#6366f1" stroke-width="2"/>
+  <text x="475" y="128" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">Features</text>
+  <text x="475" y="162" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6366f1">🔲 Edges</text>
+  <text x="475" y="182" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6366f1">🔵 Shapes</text>
+  <text x="475" y="202" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6366f1">👁️ Eyes</text>
+  <text x="475" y="222" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6366f1">🦴 Body parts</text>
+  <text x="475" y="250" text-anchor="middle" font-family="system-ui" font-size="10" fill="#818cf8">CNN layers</text>
+  <!-- Arrow -->
+  <path d="M548 180 L578 180" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="578,174 592,180 578,186" fill="#818cf8"/>
+  <!-- Label output -->
+  <rect x="600" y="115" width="90" height="130" rx="14" fill="#fff" fill-opacity=".85" stroke="#4338ca" stroke-width="2.5"/>
+  <text x="645" y="150" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">Label</text>
+  <text x="645" y="185" text-anchor="middle" font-size="30">🏷️</text>
+  <rect x="612" y="200" width="66" height="28" rx="8" fill="#4338ca"/>
+  <text x="645" y="219" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="700" fill="#fff">Dog</text>
+  <!-- Bottom info -->
+  <rect x="160" y="320" width="400" height="36" rx="12" fill="#fff" fill-opacity=".6" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="360" y="344" text-anchor="middle" font-family="system-ui" font-size="11" fill="#4338ca">CNN layers learn edges → shapes → objects</text>
+</svg>

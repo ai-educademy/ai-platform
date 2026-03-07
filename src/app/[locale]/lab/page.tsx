@@ -16,11 +16,9 @@ const NEON = {
 };
 
 /* ─── Category → tag labels & neon accent ─── */
-const CATEGORY_TAG: Record<GameCategory, { label: string; color: string }> = {
+const CATEGORY_TAG: Partial<Record<GameCategory, { label: string; color: string }>> = {
   knowledge: { label: "NLP", color: NEON.cyan },
   quick: { label: "Logic", color: NEON.green },
-  ethics: { label: "Ethics", color: NEON.amber },
-  creative: { label: "Neural Networks", color: NEON.purple },
 };
 
 const DIFFICULTY_BADGE: Record<string, { label: string; color: string }> = {
@@ -167,8 +165,6 @@ const ALL_CATEGORIES: Array<{ key: GameCategory | "all"; label: string; color: s
   { key: "all", label: "ALL", color: NEON.cyan },
   { key: "knowledge", label: "NLP", color: NEON.cyan },
   { key: "quick", label: "LOGIC", color: NEON.green },
-  { key: "ethics", label: "ETHICS", color: NEON.amber },
-  { key: "creative", label: "NEURAL_NET", color: NEON.purple },
 ];
 
 /* ─── Main Page ─── */

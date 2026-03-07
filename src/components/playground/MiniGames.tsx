@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { SystemDesignCanvas } from "./SystemDesignCanvas";
 
 /* ═══════════════════════════════════════════════════════════════
    GameShell — consistent wrapper for all mini-games
@@ -1091,4 +1092,5 @@ export const ALL_GAMES: GameEntry[] = [
   { id: "prompt-dojo", name: "Prompt Engineering Dojo", desc: "Craft the perfect prompt to match target outputs", icon: "🥋", component: PromptEngineeringDojo, difficulty: "hard", estimatedMinutes: 5, category: "knowledge" },
   { id: "algo-race", name: "Algorithm Race", desc: "Bet on sorting algorithms and watch them race in real-time", icon: "🏁", component: AlgorithmVisualizer, difficulty: "easy", estimatedMinutes: 3, category: "quick" },
   { id: "ai-trivia", name: "AI Trivia Challenge", desc: "Test your AI knowledge with timed questions", icon: "🧠", component: AITriviaChallenge, difficulty: "medium", estimatedMinutes: 4, category: "knowledge" },
+  { id: "system-design", name: "System Design Canvas", desc: "Drag, connect, and design — practise architecture diagrams", icon: "🏗️", component: SystemDesignCanvas, difficulty: "medium", estimatedMinutes: 10, category: "quick" },
 ];

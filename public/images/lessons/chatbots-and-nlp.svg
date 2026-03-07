@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" fill="none">
+  <defs>
+    <linearGradient id="ch-bg" x1="0" y1="0" x2="720" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ede9fe"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="400" fill="url(#ch-bg)" rx="20"/>
+  <text x="360" y="42" text-anchor="middle" font-family="system-ui" font-size="20" font-weight="700" fill="#4338ca">Chatbots &amp; NLP Pipeline</text>
+  <text x="360" y="64" text-anchor="middle" font-family="system-ui" font-size="13" fill="#6366f1">From user message to chatbot response</text>
+  <!-- User message -->
+  <rect x="30" y="120" width="130" height="160" rx="16" fill="#fff" fill-opacity=".85" stroke="#c7d2fe" stroke-width="2"/>
+  <text x="95" y="160" text-anchor="middle" font-size="32">👤</text>
+  <text x="95" y="190" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">User</text>
+  <rect x="48" y="205" width="94" height="50" rx="10" fill="#6366f1" fill-opacity=".12" stroke="#818cf8" stroke-width="1"/>
+  <text x="95" y="225" text-anchor="middle" font-family="system-ui" font-size="10" fill="#4338ca">"What's the</text>
+  <text x="95" y="240" text-anchor="middle" font-family="system-ui" font-size="10" fill="#4338ca">weather today?"</text>
+  <!-- Arrow -->
+  <path d="M165 200 L192 200" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="192,194 204,200 192,206" fill="#818cf8"/>
+  <!-- Tokenisation -->
+  <rect x="210" y="130" width="110" height="140" rx="14" fill="#fff" fill-opacity=".85" stroke="#6366f1" stroke-width="2"/>
+  <text x="265" y="160" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">Tokenise</text>
+  <text x="265" y="180" text-anchor="middle" font-size="20">✂️</text>
+  <rect x="222" y="195" width="42" height="18" rx="4" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="243" y="208" text-anchor="middle" font-family="system-ui" font-size="8" fill="#6366f1">What</text>
+  <rect x="268" y="195" width="42" height="18" rx="4" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="289" y="208" text-anchor="middle" font-family="system-ui" font-size="8" fill="#6366f1">weather</text>
+  <rect x="222" y="218" width="42" height="18" rx="4" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="243" y="231" text-anchor="middle" font-family="system-ui" font-size="8" fill="#6366f1">today</text>
+  <text x="265" y="256" text-anchor="middle" font-family="system-ui" font-size="9" fill="#818cf8">Split into tokens</text>
+  <!-- Arrow -->
+  <path d="M325 200 L348 200" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="348,194 360,200 348,206" fill="#818cf8"/>
+  <!-- Understanding -->
+  <rect x="365" y="130" width="110" height="140" rx="14" fill="#fff" fill-opacity=".85" stroke="#6366f1" stroke-width="2"/>
+  <text x="420" y="160" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">Understand</text>
+  <text x="420" y="182" text-anchor="middle" font-size="20">🧠</text>
+  <text x="420" y="207" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6366f1">Intent:</text>
+  <rect x="383" y="212" width="74" height="20" rx="6" fill="#4338ca" fill-opacity=".12"/>
+  <text x="420" y="226" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="600" fill="#4338ca">get_weather</text>
+  <text x="420" y="248" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6366f1">Entity: today</text>
+  <text x="420" y="262" text-anchor="middle" font-family="system-ui" font-size="9" fill="#818cf8">NLU engine</text>
+  <!-- Arrow -->
+  <path d="M480 200 L508 200" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="508,194 520,200 508,206" fill="#818cf8"/>
+  <!-- Response -->
+  <rect x="525" y="120" width="160" height="160" rx="16" fill="#fff" fill-opacity=".85" stroke="#c7d2fe" stroke-width="2"/>
+  <text x="605" y="160" text-anchor="middle" font-size="32">🤖</text>
+  <text x="605" y="190" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#4338ca">Chatbot</text>
+  <rect x="545" y="205" width="120" height="50" rx="10" fill="#4338ca" fill-opacity=".1" stroke="#818cf8" stroke-width="1"/>
+  <text x="605" y="225" text-anchor="middle" font-family="system-ui" font-size="10" fill="#4338ca">"It's 22°C and</text>
+  <text x="605" y="240" text-anchor="middle" font-family="system-ui" font-size="10" fill="#4338ca">sunny today! ☀️"</text>
+  <!-- Bottom flow label -->
+  <rect x="140" y="335" width="440" height="34" rx="12" fill="#4338ca" fill-opacity=".06" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="360" y="357" text-anchor="middle" font-family="system-ui" font-size="11" fill="#4338ca">NLP Pipeline: Input → Tokenise → Understand → Respond</text>
+</svg>

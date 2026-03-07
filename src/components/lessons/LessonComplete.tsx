@@ -18,6 +18,8 @@ interface LessonCompleteProps {
   programTitle: string;
   programTrack: string;
   programLevel: number;
+  /** Total lessons per program in this track: { "ai-seeds": 3, "ai-sprouts": 3, ... } */
+  trackLessonCounts?: Record<string, number>;
 }
 
 const PROGRAM_SEQUENCE: Record<string, { slug: string; title: string; icon: string }[]> = {
@@ -37,6 +39,116 @@ const PROGRAM_SEQUENCE: Record<string, { slug: string; title: string; icon: stri
   ],
 };
 
+const TRACK_NAMES: Record<string, string> = {
+  "ai-learning": "Understanding AI",
+  "craft-engineering": "Code & Algorithms",
+};
+
+/* ── Canvas Confetti ── */
+function ConfettiOverlay({ onDone }: { onDone: () => void }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colours = ["#6366f1", "#f43f5e", "#fbbf24", "#10b981", "#8b5cf6", "#06b6d4", "#f97316", "#ec4899"];
+    const particles: Array<{
+      x: number; y: number; vx: number; vy: number;
+      w: number; h: number; colour: string; rot: number; vr: number;
+      gravity: number; opacity: number;
+    }> = [];
+
+    for (let i = 0; i < 200; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: -Math.random() * canvas.height * 0.5,
+        vx: (Math.random() - 0.5) * 8,
+        vy: Math.random() * 3 + 2,
+        w: Math.random() * 8 + 4,
+        h: Math.random() * 6 + 2,
+        colour: colours[Math.floor(Math.random() * colours.length)],
+        rot: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.3,
+        gravity: 0.05 + Math.random() * 0.05,
+        opacity: 1,
+      });
+    }
+
+    let frame = 0;
+    let raf: number;
+    const animate = () => {
+      frame++;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = 0;
+      for (const p of particles) {
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        if (frame > 120) p.opacity = Math.max(0, p.opacity - 0.01);
+        if (p.opacity <= 0 || p.y > canvas.height + 50) continue;
+        alive++;
+        ctx.save();
+        ctx.globalAlpha = p.opacity;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.colour;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      }
+      if (alive > 0 && frame < 300) {
+        raf = requestAnimationFrame(animate);
+      } else {
+        onDone();
+      }
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, [onDone]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 z-[9999] pointer-events-none"
+      style={{ width: "100vw", height: "100vh" }}
+    />
+  );
+}
+
+function CelebrationModal({ trackName, onClose }: { trackName: string; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+      <div
+        className="relative mx-4 max-w-md w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-8 text-center shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="text-6xl mb-4">🎉</div>
+        <h2 className="text-2xl font-bold text-[var(--color-text)] mb-2">
+          Track Complete!
+        </h2>
+        <p className="text-[var(--color-text-muted)] mb-1">
+          You&apos;ve finished every lesson in
+        </p>
+        <p className="text-lg font-semibold text-[var(--color-primary)] mb-6">
+          {trackName}
+        </p>
+        <button
+          onClick={onClose}
+          className="px-6 py-2.5 rounded-xl bg-[var(--color-primary)] text-white font-medium hover:brightness-110 transition-all"
+        >
+          Brilliant — carry on!
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function LessonComplete({
   slug,
   programSlug,
@@ -51,15 +163,40 @@ export function LessonComplete({
   programTitle,
   programTrack,
   programLevel,
+  trackLessonCounts,
 }: LessonCompleteProps) {
-  const { isCompleted, markComplete, getProgram } = useProgress(programSlug);
+  const { isCompleted, markComplete, getProgram, allData } = useProgress(programSlug);
   const [justCompleted, setJustCompleted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [showCelebration, setShowCelebration] = useState(false);
+  const confettiTriggered = useRef(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const endRef = useRef<HTMLDivElement>(null);
   const completed = isCompleted(slug);
 
   const progData = getProgram(programSlug);
   const progCompleted = progData.completed.length;
+
+  // Check if entire track is complete after marking this lesson
+  const checkTrackCompletion = useCallback(() => {
+    if (confettiTriggered.current) return;
+    const seq = PROGRAM_SEQUENCE[programTrack];
+    if (!seq || !trackLessonCounts) return;
+
+    const allComplete = seq.every((prog) => {
+      const total = trackLessonCounts[prog.slug] || 0;
+      if (total === 0) return true;
+      const progProgress = allData[prog.slug];
+      if (!progProgress) return false;
+      return progProgress.completed.length >= total;
+    });
+
+    if (allComplete) {
+      confettiTriggered.current = true;
+      setShowConfetti(true);
+      setShowCelebration(true);
+    }
+  }, [programTrack, trackLessonCounts, allData]);
 
   // Scroll progress tracking
   useEffect(() => {
@@ -79,8 +216,10 @@ export function LessonComplete({
     if (!completed && !justCompleted) {
       markComplete(slug);
       setJustCompleted(true);
+      // Check track completion after a brief delay so progress state updates
+      setTimeout(checkTrackCompletion, 100);
     }
-  }, [completed, justCompleted, markComplete, slug]);
+  }, [completed, justCompleted, markComplete, slug, checkTrackCompletion]);
 
   useEffect(() => {
     const el = endRef.current;
@@ -111,6 +250,15 @@ export function LessonComplete({
 
   return (
     <>
+      {/* Confetti celebration for track completion */}
+      {showConfetti && <ConfettiOverlay onDone={() => setShowConfetti(false)} />}
+      {showCelebration && (
+        <CelebrationModal
+          trackName={TRACK_NAMES[programTrack] || programTrack}
+          onClose={() => setShowCelebration(false)}
+        />
+      )}
+
       {/* Scroll progress bar (fixed at top) */}
       <div
         className="lesson-scroll-progress"
