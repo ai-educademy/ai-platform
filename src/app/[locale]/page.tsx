@@ -1,12 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import Image from "next/image";
-import { CourseProgress } from "@ai-educademy/ai-ui-library";
-import { WelcomeBanner } from "@ai-educademy/ai-ui-library";
-import { ScrollReveal } from "@ai-educademy/ai-ui-library";
+import { CourseProgress, ScrollReveal, FloatingParticles } from "@ai-educademy/ai-ui-library";
 import { ClickableCard } from "@/components/ui/ClickableCard";
 import { ComingSoonCard } from "@/components/ui/ComingSoon";
-import { FloatingParticles } from "@ai-educademy/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { Mail, Github } from "lucide-react";
@@ -112,7 +109,6 @@ export default async function HomePage({
 
             {/* Progress tracker (shows only when user has started) */}
             <CourseProgress totalLessons={3} basePath={basePath} />
-            <WelcomeBanner basePath={basePath} />
           </div>
         </div>
       </section>
@@ -239,14 +235,16 @@ export default async function HomePage({
 
       <hr className="section-divider" />
 
-      {/* Meet the Founder */}
+      {/* Brains Behind the Idea */}
       <section className="py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <ScrollReveal animation="fade-up">
             <div className="text-center mb-10">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-widest uppercase mb-4">Meet the Founder</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gradient">The Person Behind the Platform</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gradient flex items-center justify-center gap-3">
+                <Image src="/images/lightbulb.svg" alt="" width={32} height={32} className="inline-block" />
+                Brains Behind the Idea
+              </h2>
             </div>
           </ScrollReveal>
           <ScrollReveal animation="scale-in">
@@ -259,7 +257,7 @@ export default async function HomePage({
                     <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-white/30 shadow-2xl">
                       <Image
                         src="https://avatars.githubusercontent.com/u/134313151?v=4"
-                        alt="Ramesh Reddy Adutla — Founder of AI Educademy"
+                        alt="Ramesh Reddy Adutla"
                         width={512}
                         height={512}
                         className="w-full h-full object-cover"
@@ -301,12 +299,12 @@ export default async function HomePage({
                     {t("founder.description")}
                   </p>
 
-                  {/* Stats row */}
+                  {/* Stats row — personal, from GitHub */}
                   <div className="grid grid-cols-3 gap-4 mb-8">
                     {[
-                      { value: "10+", label: "Years in Tech" },
-                      { value: "150+", label: "Free Lessons" },
-                      { value: "5", label: "Languages" },
+                      { value: "15+", label: "Years Engineering" },
+                      { value: "14", label: "Open Source Repos" },
+                      { value: "3", label: "Countries Lived" },
                     ].map((stat) => (
                       <div key={stat.label} className="text-center p-3 rounded-xl bg-[var(--color-bg-section)]">
                         <div className="text-2xl font-bold text-gradient">{stat.value}</div>

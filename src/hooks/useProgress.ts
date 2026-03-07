@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 const STORAGE_PREFIX = "aieducademy-progress";
 const SESSION_KEY = "aieducademy-session";
@@ -16,8 +17,8 @@ function emptyProgram(): ProgramProgress {
   return { completed: [], timestamps: {} };
 }
 
-/** Returns the signed-in username, or null for guests */
-function getSignedInUser(): string | null {
+/** Returns the guest profile username, or null */
+function getGuestUser(): string | null {
   try {
     const session = localStorage.getItem(SESSION_KEY);
     if (session) {
@@ -28,9 +29,8 @@ function getSignedInUser(): string | null {
   return null;
 }
 
-function getStorageKey(): string {
-  const user = getSignedInUser();
-  return user ? `${STORAGE_PREFIX}-${user}` : `${STORAGE_PREFIX}-guest`;
+function storageKeyFor(userId: string | null): string {
+  return userId ? `${STORAGE_PREFIX}-${userId}` : `${STORAGE_PREFIX}-guest`;
 }
 
 function migrateOldFormat(stored: string): ProgressData {
@@ -49,10 +49,10 @@ function migrateOldFormat(stored: string): ProgressData {
 }
 
 // Migrate legacy global key to user-scoped key on first load
-function migrateGlobalKey() {
+function migrateGlobalKey(userId: string | null) {
   const legacy = localStorage.getItem(STORAGE_PREFIX);
   if (!legacy) return;
-  const userKey = getStorageKey();
+  const userKey = storageKeyFor(userId);
   if (!localStorage.getItem(userKey)) {
     localStorage.setItem(userKey, legacy);
   }
@@ -60,24 +60,32 @@ function migrateGlobalKey() {
 }
 
 export function useProgress(programSlug?: string) {
+  const { data: session } = useSession();
   const [data, setData] = useState<ProgressData>({});
   const [storageKey, setStorageKey] = useState<string>(`${STORAGE_PREFIX}-guest`);
   const [isGuest, setIsGuest] = useState(true);
 
-  useEffect(() => {
-    migrateGlobalKey();
-    const key = getStorageKey();
-    const guest = getSignedInUser() === null;
-    setStorageKey(key);
-    setIsGuest(guest);
+  // Resolve user identity from guest profile OR NextAuth OAuth session
+  const resolveUserId = useCallback((): string | null => {
+    const guest = getGuestUser();
+    if (guest) return guest;
+    const oauthId = session?.user?.email || session?.user?.name;
+    if (oauthId) return `oauth-${oauthId}`;
+    return null;
+  }, [session]);
 
-    if (guest) {
-      // Guest: never load from storage — progress is ephemeral (in-memory only)
-      // Also clean up any stale guest data from previous sessions
+  useEffect(() => {
+    const userId = resolveUserId();
+    migrateGlobalKey(userId);
+    const key = storageKeyFor(userId);
+    const signedIn = userId !== null;
+    setStorageKey(key);
+    setIsGuest(!signedIn);
+
+    if (!signedIn) {
       localStorage.removeItem(`${STORAGE_PREFIX}-guest`);
       setData({});
     } else {
-      // Signed-in: load persisted progress
       const stored = localStorage.getItem(key);
       if (stored) {
         setData(migrateOldFormat(stored));
@@ -85,7 +93,7 @@ export function useProgress(programSlug?: string) {
         setData({});
       }
     }
-  }, []);
+  }, [resolveUserId]);
 
   const getProgram = useCallback(
     (slug: string): ProgramProgress => data[slug] || emptyProgram(),

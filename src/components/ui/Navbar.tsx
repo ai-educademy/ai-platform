@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { locales } from "@/i18n/request";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
@@ -17,6 +18,8 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { profile } = useGuestProfile();
+  const { data: session } = useSession();
+  const isSignedIn = !!profile || !!session?.user;
 
   const segments = pathname.split("/").filter(Boolean);
   const locale = (locales as readonly string[]).includes(segments[0]) ? segments[0] : "en";
@@ -43,7 +46,7 @@ export function Navbar() {
     { href: `${basePath}/about`, label: t("about"), match: "/about" },
   ];
 
-  if (profile) {
+  if (isSignedIn) {
     links.push({ href: `${basePath}/dashboard`, label: t("dashboard"), match: "/dashboard" });
   }
 

@@ -57,9 +57,9 @@
     }
   },
   "founder": {
-    "description": "Engineer and tech lead with a decade of building systems across India, Belgium, and the UK. Founded AI Educademy to make AI education free and accessible, in every language, for every background.",
-    "cta": "Read Full Story",
-    "role": "Founder · Engineering Leader · Open Source Advocate"
+    "description": "Engineering leader with 15+ years building large-scale systems at JP Morgan, Sky, and Marks & Spencer across Asia and Europe. Based in London. Speaks English, French, and Telugu. Builds things that make complex ideas accessible.",
+    "cta": "More About Me",
+    "role": "Engineering Leader · Open Source Builder · London"
   },
   "footer": {
     "tagline": "Free AI education for everyone, in every language.",
@@ -303,7 +303,22 @@
     "design-recommendation-engine": "Design a Recommendation Engine",
     "star-framework": "The STAR Framework",
     "system-design-communication": "System Design Communication",
-    "ai-era-leadership": "AI-Era Leadership"
+    "ai-era-leadership": "AI-Era Leadership",
+    "algorithms-explained": "Algorithms Explained",
+    "datasets-and-data": "Datasets and Data",
+    "neural-networks-intro": "Introduction to Neural Networks",
+    "ai-in-healthcare": "AI in Healthcare",
+    "chatbots-and-nlp": "Chatbots and NLP",
+    "computer-vision-basics": "Computer Vision Basics",
+    "deep-neural-networks": "Deep Neural Networks",
+    "large-language-models": "Large Language Models",
+    "prompt-engineering-mastery": "Prompt Engineering Mastery",
+    "building-ai-products": "Building AI Products",
+    "future-of-ai": "The Future of AI",
+    "open-source-ai": "Open-Source AI",
+    "design-twitter-ai-feed": "Design Twitter AI Feed",
+    "engineering-portfolio": "Engineering Portfolio",
+    "full-mock-interview": "Full Mock Interview"
   },
   "pwa": {
     "install": "Install App",

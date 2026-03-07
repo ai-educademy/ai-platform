@@ -27,6 +27,54 @@ const PROGRAMS = [
     ],
   },
   {
+    slug: "ai-sprouts",
+    icon: "🌿",
+    title: "AI Sprouts",
+    color: "#60A5FA",
+    track: "ai-learning",
+    lessons: [
+      { slug: "algorithms-explained", icon: "🧮", duration: 30 },
+      { slug: "datasets-and-data", icon: "📊", duration: 25 },
+      { slug: "neural-networks-intro", icon: "🧠", duration: 35 },
+    ],
+  },
+  {
+    slug: "ai-branches",
+    icon: "🌳",
+    title: "AI Branches",
+    color: "#F59E0B",
+    track: "ai-learning",
+    lessons: [
+      { slug: "ai-in-healthcare", icon: "🏥", duration: 30 },
+      { slug: "chatbots-and-nlp", icon: "💬", duration: 35 },
+      { slug: "computer-vision-basics", icon: "👁️", duration: 35 },
+    ],
+  },
+  {
+    slug: "ai-canopy",
+    icon: "🏕️",
+    title: "AI Canopy",
+    color: "#8B5CF6",
+    track: "ai-learning",
+    lessons: [
+      { slug: "deep-neural-networks", icon: "🔬", duration: 40 },
+      { slug: "large-language-models", icon: "📝", duration: 45 },
+      { slug: "prompt-engineering-mastery", icon: "✨", duration: 40 },
+    ],
+  },
+  {
+    slug: "ai-forest",
+    icon: "🌲",
+    title: "AI Forest",
+    color: "#EF4444",
+    track: "ai-learning",
+    lessons: [
+      { slug: "building-ai-products", icon: "🚀", duration: 45 },
+      { slug: "future-of-ai", icon: "🔮", duration: 45 },
+      { slug: "open-source-ai", icon: "🌐", duration: 40 },
+    ],
+  },
+  {
     slug: "ai-sketch",
     icon: "✏️",
     title: "AI Sketch",
@@ -72,6 +120,18 @@ const PROGRAMS = [
       { slug: "star-framework", icon: "⭐", duration: 15 },
       { slug: "system-design-communication", icon: "💬", duration: 20 },
       { slug: "ai-era-leadership", icon: "🧭", duration: 20 },
+    ],
+  },
+  {
+    slug: "ai-masterpiece",
+    icon: "🏆",
+    title: "AI Masterpiece",
+    color: "#EAB308",
+    track: "craft-engineering",
+    lessons: [
+      { slug: "design-twitter-ai-feed", icon: "🐦", duration: 30 },
+      { slug: "engineering-portfolio", icon: "💼", duration: 25 },
+      { slug: "full-mock-interview", icon: "🎯", duration: 60 },
     ],
   },
 ];

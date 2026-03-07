@@ -14,16 +14,24 @@ export async function sendWelcomeEmail(email: string): Promise<void> {
 
     const htmlContent = welcomeEmailHtml(email);
 
-    await resend.emails.send({
-      from: "AI Educademy <onboarding@resend.dev>",
+    // Note: onboarding@resend.dev can only deliver to the Resend account owner's
+    // email on the free plan. To send to any subscriber, add and verify a custom
+    // domain in the Resend dashboard (e.g. noreply@aieducademy.com).
+    const fromAddress = process.env.RESEND_FROM_EMAIL || "AI Educademy <onboarding@resend.dev>";
+
+    const result = await resend.emails.send({
+      from: fromAddress,
       to: email,
       subject: "Welcome to AI Educademy! 🎓",
       html: htmlContent,
     });
 
-    console.log(`[Email] Welcome email sent successfully to ${email}`);
+    if (result.error) {
+      console.error(`[Email] Resend API error for ${email}:`, result.error);
+    } else {
+      console.log(`[Email] Welcome email sent successfully to ${email} (id: ${result.data?.id})`);
+    }
   } catch (error) {
     console.error(`[Email] Failed to send welcome email to ${email}:`, error);
-    // Graceful degradation - don't throw, just log
   }
 }
