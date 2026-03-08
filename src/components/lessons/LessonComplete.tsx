@@ -298,29 +298,6 @@ export function LessonComplete({
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5 }}
       >
-        {/* Completion celebration text */}
-        <AnimatePresence>
-          {(completed || justCompleted) && (
-            <motion.div
-              className="text-center py-4"
-              initial={noMotion ? undefined : { scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <motion.span
-                className="inline-block text-3xl mb-2"
-                animate={noMotion ? undefined : { rotate: [0, -10, 10, -5, 5, 0] }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                ✅
-              </motion.span>
-              <p className="text-sm font-semibold bg-gradient-to-r from-emerald-500 to-[var(--color-primary)] bg-clip-text text-transparent">
-                {tL("lessonComplete")}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Progress indicator */}
         <div className="flex items-center justify-between text-sm text-[var(--color-text-muted)]">
           <span>
