@@ -254,7 +254,7 @@ export default function AboutPage() {
             {
               href: "https://github.com/rameshreddy-adutla",
               label: "GitHub",
-              hoverColor: "hover:text-[#333] dark:hover:text-white",
+              hoverColor: "hover:text-[var(--color-text)] dark:hover:text-white",
               icon: <GitHubIcon size={26} />,
             },
             {
@@ -270,7 +270,7 @@ export default function AboutPage() {
             {
               href: "https://dev.to/rameshreddy-adutla",
               label: "Dev.to",
-              hoverColor: "hover:text-[#333] dark:hover:text-white",
+              hoverColor: "hover:text-[var(--color-text)] dark:hover:text-white",
               icon: (
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6v4.36h.58c.37 0 .65-.08.84-.23.2-.16.29-.45.29-.84v-2.22c0-.39-.1-.68-.29-.84zM0 0v24h24V0H0zm8.1 15.01c-.28.4-.74.6-1.38.6H4.5V8.4h2.22c.64 0 1.1.2 1.38.6.28.4.42.98.42 1.76v2.5c0 .77-.14 1.35-.42 1.75zm4.38-5.46c0 .4-.1.7-.29.89-.2.2-.5.3-.89.3h-.77v2.67h-1.5V8.4h2.27c.4 0 .7.1.89.3.2.19.29.49.29.89v.96zm6.02 5.46h-1.5l-.9-4.38h-.06l.06 1.6v2.78h-1.36V8.4h1.5l.92 4.64h.05l-.05-1.66V8.4h1.34v7.01z" />

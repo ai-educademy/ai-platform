@@ -40,7 +40,7 @@
     "badge": "Gratuit • Open Source • Multilingue",
     "title": "Apprenez l'IA.",
     "titleHighlight": "Construisez l'avenir.",
-    "subtitle": "Des leçons interactives et gratuites qui vous accompagnent de la curiosité à la maîtrise. Sans code, sans maths, sans obstacles.",
+    "subtitle": "Des leçons interactives et gratuites qui vous accompagnent de la curiosité à la maîtrise. Partez de zéro — allez aussi loin que vous le souhaitez.",
     "cta": "Commencez votre parcours IA",
     "ctaSecondary": "Explorer le Labo",
     "students": "Apprenants actifs",
@@ -56,7 +56,7 @@
   },
   "features": {
     "title": "Pourquoi AI Educademy ?",
-    "subtitle": "Ni code, ni maths, ni prérequis. On part de zéro.",
+    "subtitle": "Partez de zéro. Aucun prérequis — nous vous guidons à chaque étape.",
     "beginner": {
       "title": "Partez de zéro",
       "description": "Jamais touché à du code ? Parfait. Nous utilisons un langage courant et des exemples concrets : comment Netflix recommande des films, comment votre téléphone reconnaît votre visage."
@@ -258,7 +258,7 @@
     "ai-seeds": {
       "title": "AI Seeds",
       "subtitle": "Plantez vos premières graines d'IA",
-      "description": "Partez de zéro absolu. Pas de code, pas de maths — juste un langage simple et des exemples du quotidien. Idéal pour quiconque est curieux de l'IA mais ne l'a jamais explorée.",
+      "description": "Partez de zéro absolu. Nous utilisons un langage simple et des exemples du quotidien pour construire votre compréhension, étape par étape.",
       "audience": "Débutants complets sans aucune formation technique",
       "prerequisites": "Aucun — juste de la curiosité !",
       "topics": [
@@ -932,7 +932,7 @@
     },
     "hub": {
       "title": "Labo IA",
-      "subtitle": "Jeux et outils IA interactifs. Sans code, jouez et apprenez.",
+      "subtitle": "Jeux et outils IA interactifs — jouez, expérimentez et apprenez en pratiquant.",
       "badge": "Interactif • Ludique • Éducatif",
       "gamesAvailable": "{count} jeux disponibles",
       "searchPlaceholder": "Rechercher des jeux…",

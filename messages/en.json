@@ -40,7 +40,7 @@
     "badge": "Free • Open Source • Multilingual",
     "title": "Learn AI.",
     "titleHighlight": "Build the Future.",
-    "subtitle": "Free interactive lessons that take you from curious beginner to confident builder. No coding, no maths, no barriers.",
+    "subtitle": "Free interactive lessons that take you from curious beginner to confident builder. Start from zero — go as far as you want.",
     "cta": "Start Your AI Journey",
     "ctaSecondary": "Explore Lab",
     "students": "Students learning",
@@ -56,7 +56,7 @@
   },
   "features": {
     "title": "Why AI Educademy?",
-    "subtitle": "No coding, no maths, no prerequisites. We start from zero.",
+    "subtitle": "Start from zero. No prerequisites needed — we guide you every step.",
     "beginner": {
       "title": "Start from Zero",
       "description": "Never touched code? Good. We use everyday language and real-world examples, how Netflix recommends films, how your phone recognises your face."
@@ -258,7 +258,7 @@
     "ai-seeds": {
       "title": "AI Seeds",
       "subtitle": "Plant Your First AI Knowledge",
-      "description": "Start from absolute zero. No coding, no maths — just plain language and everyday examples. Perfect for anyone who's curious about AI but has never explored it.",
+      "description": "Start from absolute zero. We use plain language and everyday examples to build your understanding, step by step.",
       "audience": "Complete beginners with no technical background",
       "prerequisites": "None — just curiosity!",
       "topics": [
@@ -932,7 +932,7 @@
     },
     "hub": {
       "title": "AI Lab",
-      "subtitle": "Interactive AI games and tools. No coding needed, just play and learn.",
+      "subtitle": "Interactive AI games and tools — play, experiment, and learn by doing.",
       "badge": "Interactive • Fun • Educational",
       "gamesAvailable": "{count} games available",
       "searchPlaceholder": "Search games...",

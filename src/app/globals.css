@@ -26,6 +26,9 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  --color-code-bg: #0f172a;
+  --color-code-text: #e2e8f0;
+  --color-code-border: #1e293b;
 }
 
 .dark {
@@ -46,6 +49,9 @@
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 24px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.3), 0 20px 48px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
   --shadow-glow: 0 0 20px rgba(129, 140, 248, 0.25), 0 0 60px rgba(129, 140, 248, 0.08);
+  --color-code-bg: #1e293b;
+  --color-code-text: #e2e8f0;
+  --color-code-border: #334155;
 }
 
 html {
@@ -131,13 +137,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lesson-content pre {
-  background-color: #0f172a;
-  color: #e2e8f0;
+  background-color: var(--color-code-bg);
+  color: var(--color-code-text);
   padding: 1.5rem;
   border-radius: 0.75rem;
   overflow-x: auto;
   margin: 1.5rem 0;
-  border: 1px solid #1e293b;
+  border: 1px solid var(--color-code-border);
 }
 
 .lesson-content pre code {

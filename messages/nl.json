@@ -40,7 +40,7 @@
     "badge": "Gratis • Open source • Meertalig",
     "title": "Leer AI.",
     "titleHighlight": "Bouw de toekomst.",
-    "subtitle": "Gratis interactieve lessen die je van nieuwsgierige beginner naar zelfverzekerde bouwer brengen. Geen code, geen wiskunde, geen drempels.",
+    "subtitle": "Gratis interactieve lessen die je van nieuwsgierige beginner naar zelfverzekerde bouwer brengen. Begin bij nul — ga zo ver als je wilt.",
     "cta": "Begin jouw AI-reis",
     "ctaSecondary": "Ontdek het Lab",
     "students": "Studenten aan het leren",
@@ -56,7 +56,7 @@
   },
   "features": {
     "title": "Waarom AI Educademy?",
-    "subtitle": "Geen code, geen wiskunde, geen voorkennis. We beginnen bij nul.",
+    "subtitle": "Begin bij nul. Geen voorkennis nodig — wij begeleiden je bij elke stap.",
     "beginner": {
       "title": "Begin bij nul",
       "description": "Nog nooit geprogrammeerd? Mooi zo. We gebruiken alledaagse taal en voorbeelden uit de echte wereld — hoe Netflix films aanbeveelt, hoe je telefoon je gezicht herkent."
@@ -258,7 +258,7 @@
     "ai-seeds": {
       "title": "AI Seeds",
       "subtitle": "Plant je eerste AI-kennis",
-      "description": "Begin vanaf absoluut nul. Geen code, geen wiskunde — gewoon duidelijke taal en alledaagse voorbeelden. Perfect voor iedereen die nieuwsgierig is naar AI maar het nog nooit heeft verkend.",
+      "description": "Begin vanaf absoluut nul. We gebruiken duidelijke taal en alledaagse voorbeelden om je begrip stap voor stap op te bouwen.",
       "audience": "Absolute beginners zonder technische achtergrond",
       "prerequisites": "Geen — alleen nieuwsgierigheid!",
       "topics": [
@@ -932,7 +932,7 @@
     },
     "hub": {
       "title": "AI Lab",
-      "subtitle": "Interactieve AI-spellen en hulpmiddelen. Geen code nodig, gewoon spelen en leren.",
+      "subtitle": "Interactieve AI-spellen en hulpmiddelen — speel, experimenteer en leer al doende.",
       "badge": "Interactief • Leuk • Leerzaam",
       "gamesAvailable": "{count} spellen beschikbaar",
       "searchPlaceholder": "Zoek spellen...",

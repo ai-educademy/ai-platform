@@ -150,3 +150,6 @@ data/
 social-drafts.md
 .env*.local
 test-results/
+
+# Generated from content submodule via scripts/sync-assets.sh
+public/images/lessons/

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Mail, Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const STORAGE_KEY = "aieducademy-newsletter";
 
@@ -61,12 +62,25 @@ export function NewsletterSignup() {
 
   if (subscribed) {
     return (
-      <p className="text-center font-semibold text-lg">{t("success")}</p>
+      <motion.p
+        className="text-center font-semibold text-lg"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+      >
+        {t("success")}
+      </motion.p>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <motion.form
+      onSubmit={handleSubmit}
+      className="space-y-3"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className="flex gap-2">
         <div className="relative flex-1">
           <Mail
@@ -94,6 +108,6 @@ export function NewsletterSignup() {
       {error && (
         <p className="text-sm text-[var(--color-secondary)]">{error}</p>
       )}
-    </form>
+    </motion.form>
   );
 }

@@ -106,7 +106,7 @@ function BentoTrackCard({
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease }}
     >
-      <ClickableCard href={data.href} className="block h-full">
+      <ClickableCard href={data.href} className="block h-full" ariaLabel={data.trackTitle}>
         <motion.div
           className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 sm:p-8 h-full group"
           animate={tilt}
