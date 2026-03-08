@@ -208,32 +208,34 @@ export function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* Back to top */}
-        <AnimatePresence>
-          {showBackToTop && (
-            <motion.div
-              className="flex justify-center mt-10 pt-8 border-t border-[var(--color-border)]"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            >
-              <button
-                onClick={() =>
-                  window.scrollTo({
-                    top: 0,
-                    behavior: prefersReducedMotion ? "auto" : "smooth",
-                  })
-                }
-                className="group flex items-center gap-1.5 text-xs font-medium text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
-                aria-label="Scroll to top"
-              >
-                <ArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-1" />
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
+
+      {/* Floating back-to-top button — fixed to viewport */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion ? "auto" : "smooth",
+              })
+            }
+            className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full
+              bg-[var(--color-primary)] text-white
+              dark:bg-white dark:text-[var(--color-primary)]
+              shadow-lg shadow-[var(--color-primary)]/30 dark:shadow-black/20
+              hover:scale-110 active:scale-95 transition-transform cursor-pointer"
+            aria-label="Scroll to top"
+            initial={{ opacity: 0, y: 24, scale: 0.6 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 24, scale: 0.6 }}
+            transition={{ type: "spring", stiffness: 400, damping: 22 }}
+            whileHover={prefersReducedMotion ? undefined : { y: -3 }}
+          >
+            <ArrowUp className="w-7 h-7 stroke-[2.5]" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }
