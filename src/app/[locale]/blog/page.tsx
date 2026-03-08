@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/blog";
+import { AnimatedSection } from "@/components/ui/MotionWrappers";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -44,74 +45,77 @@ export default async function BlogPage({
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
       {/* Hero */}
-      <div className="text-center mb-20">
+      <AnimatedSection animation="fade-up" className="text-center mb-20">
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 text-gradient leading-tight tracking-tight">
           {t("title")}
         </h1>
         <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto leading-relaxed">
           {t("subtitle")}
         </p>
-      </div>
+      </AnimatedSection>
 
       {/* Blog Grid */}
       {posts.length === 0 ? (
-        <p className="text-center text-[var(--color-text-muted)]">
-          {t("noPosts")}
-        </p>
+        <AnimatedSection animation="fade-in" delay={200}>
+          <p className="text-center text-[var(--color-text-muted)]">
+            {t("noPosts")}
+          </p>
+        </AnimatedSection>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`${basePath}/blog/${post.slug}`}
-              className="block group"
-            >
-              <article className="h-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-primary)]">
-                <div className="p-6 h-full flex flex-col">
-                  {/* Date + Read time */}
-                  <div className="flex items-center gap-3 text-xs text-[var(--color-text-muted)] mb-3">
-                    <time dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString(locale, {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </time>
-                    <span>•</span>
-                    <span>
-                      {estimateReadTime(post.description)} {t("minuteRead")}
+          {posts.map((post, i) => (
+            <AnimatedSection key={post.slug} animation="fade-up" delay={i * 80}>
+              <Link
+                href={`${basePath}/blog/${post.slug}`}
+                className="block group h-full"
+              >
+                <article className="h-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary)]/5 hover:-translate-y-1 hover:border-[var(--color-primary)]/40">
+                  <div className="p-6 h-full flex flex-col">
+                    {/* Date + Read time */}
+                    <div className="flex items-center gap-3 text-xs text-[var(--color-text-muted)] mb-3">
+                      <time dateTime={post.date}>
+                        {new Date(post.date).toLocaleDateString(locale, {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </time>
+                      <span>•</span>
+                      <span>
+                        {estimateReadTime(post.description)} {t("minuteRead")}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h2 className="text-xl font-bold mb-2 leading-relaxed group-hover:text-[var(--color-primary)] transition-colors">
+                      {post.title}
+                    </h2>
+
+                    {/* Description */}
+                    <p className="text-sm text-[var(--color-text-muted)] mb-4 line-clamp-3 flex-1">
+                      {post.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs px-2.5 py-0.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Arrow indicator */}
+                    <span className="text-sm font-medium text-[var(--color-primary)] inline-flex items-center gap-1 transition-transform duration-200 group-hover:translate-x-1">
+                      <span aria-hidden="true">→</span>
                     </span>
                   </div>
-
-                  {/* Title */}
-                  <h2 className="text-xl font-bold mb-2 leading-relaxed group-hover:text-[var(--color-primary)] transition-colors">
-                    {post.title}
-                  </h2>
-
-                  {/* Description */}
-                  <p className="text-sm text-[var(--color-text-muted)] mb-4 line-clamp-3 flex-1">
-                    {post.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2.5 py-0.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Arrow indicator */}
-                  <span className="text-sm font-medium text-[var(--color-primary)] inline-flex items-center gap-1">
-                    <span aria-hidden="true">→</span>
-                  </span>
-                </div>
-              </article>
-            </Link>
+                </article>
+              </Link>
+            </AnimatedSection>
           ))}
         </div>
       )}

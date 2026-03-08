@@ -1,14 +1,50 @@
 "use client";
 
+import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { motion, useInView, useReducedMotion, AnimatePresence } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 import { locales } from "@/i18n/request";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
-
 import { BrandMark } from "./BrandMark";
 import { PageViewCounter } from "./PageViewCounter";
+
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+function FooterLink({
+  href,
+  external,
+  children,
+}: {
+  href: string;
+  external?: boolean;
+  children: React.ReactNode;
+}) {
+  const cls =
+    "group relative inline-block text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors";
+  const underline = (
+    <span className="absolute -bottom-px left-0 h-px w-0 bg-[var(--color-primary)] transition-all duration-300 ease-out group-hover:w-full" />
+  );
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+        {children}
+        {underline}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={cls}>
+      {children}
+      {underline}
+    </Link>
+  );
+}
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -16,95 +52,187 @@ export function Footer() {
   const { data: session } = useSession();
   const { profile } = useGuestProfile();
   const isSignedIn = !!session?.user || !!profile;
+  const prefersReducedMotion = useReducedMotion();
 
   const segments = pathname.split("/").filter(Boolean);
-  const locale = (locales as readonly string[]).includes(segments[0]) ? segments[0] : "en";
+  const locale = (locales as readonly string[]).includes(segments[0])
+    ? segments[0]
+    : "en";
   const basePath = locale === "en" ? "" : `/${locale}`;
 
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 500);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: prefersReducedMotion ? 0 : 0.1,
+        delayChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease },
+    },
+  };
+
   return (
-    <footer className="relative border-t border-[var(--color-border)] bg-[var(--color-bg-section)]">
+    <footer
+      ref={ref}
+      className="relative border-t border-[var(--color-border)] bg-[var(--color-bg-section)]"
+    >
+      {/* Gradient top border */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500" />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href={`${basePath}/`} className="flex items-center mb-3 hover:opacity-90 transition-opacity">
+          <motion.div variants={itemVariants} className="col-span-2 md:col-span-1">
+            <Link
+              href={`${basePath}/`}
+              className="inline-flex items-center mb-3 hover:opacity-90 transition-opacity"
+            >
               <BrandMark size="sm" />
             </Link>
-            <p className="text-xs text-[var(--color-text-muted)] mt-2">{t("license")}</p>
-            <div className="mt-2">
+            <p className="text-xs text-[var(--color-text-muted)] mt-2 leading-relaxed">
+              {t("license")}
+            </p>
+            <div className="mt-3">
               <PageViewCounter />
             </div>
-          </div>
+          </motion.div>
 
           {/* Learn */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">{t("learnHeader")}</h3>
-            <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
+          <motion.div variants={itemVariants}>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
+              {t("learnHeader")}
+            </h3>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <FooterLink href={`${basePath}/programs`}>
                   {t("programs")}
-                </Link>
+                </FooterLink>
               </li>
               <li>
-                <Link href={`${basePath}/programs/ai-seeds`} className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <FooterLink href={`${basePath}/programs/ai-seeds`}>
                   {t("lessons")}
-                </Link>
+                </FooterLink>
               </li>
               <li>
-                <Link href={`${basePath}/lab`} className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
-                  {t("lab")}
-                </Link>
+                <FooterLink href={`${basePath}/lab`}>{t("lab")}</FooterLink>
               </li>
               {isSignedIn && (
                 <li>
-                  <Link href={`${basePath}/dashboard`} className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                  <FooterLink href={`${basePath}/dashboard`}>
                     {t("dashboard")}
-                  </Link>
+                  </FooterLink>
                 </li>
               )}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Community */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">{t("communityHeader")}</h3>
-            <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
+          <motion.div variants={itemVariants}>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
+              {t("communityHeader")}
+            </h3>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="https://github.com/ai-educademy" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <FooterLink href="https://github.com/ai-educademy" external>
                   {t("github")}
-                </a>
+                </FooterLink>
               </li>
               <li>
-                <a href="https://github.com/ai-educademy/ai-platform/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <FooterLink
+                  href="https://github.com/ai-educademy/ai-platform/blob/main/CONTRIBUTING.md"
+                  external
+                >
                   {t("contributing")}
-                </a>
+                </FooterLink>
               </li>
               <li>
-                <a href="https://github.com/ai-educademy/ai-platform/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <FooterLink
+                  href="https://github.com/ai-educademy/ai-platform/blob/main/CODE_OF_CONDUCT.md"
+                  external
+                >
                   {t("coc")}
-                </a>
+                </FooterLink>
               </li>
               <li>
-                <Link href={`${basePath}/about`} className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block">
+                <FooterLink href={`${basePath}/about`}>
                   {t("about")}
-                </Link>
+                </FooterLink>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Support */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-3">{t("supportHeader")}</h3>
-            <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
+          <motion.div variants={itemVariants}>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
+              {t("supportHeader")}
+            </h3>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="https://buymeacoffee.com/rameshreddy" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] hover:translate-x-0.5 transition-all inline-block group">
-                  {t("buyMeACoffee")} <span className="inline-block group-hover:animate-bounce">☕</span>
+                <a
+                  href="https://buymeacoffee.com/rameshreddy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-block text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  {t("buyMeACoffee")}{" "}
+                  <span className="inline-block transition-transform duration-300 group-hover:animate-bounce">
+                    ☕
+                  </span>
+                  <span className="absolute -bottom-px left-0 h-px w-0 bg-[var(--color-primary)] transition-all duration-300 ease-out group-hover:w-full" />
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Back to top */}
+        <AnimatePresence>
+          {showBackToTop && (
+            <motion.div
+              className="flex justify-center mt-10 pt-8 border-t border-[var(--color-border)]"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            >
+              <button
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: prefersReducedMotion ? "auto" : "smooth",
+                  })
+                }
+                className="group flex items-center gap-1.5 text-xs font-medium text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+                aria-label="Scroll to top"
+              >
+                <ArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-1" />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </footer>
   );

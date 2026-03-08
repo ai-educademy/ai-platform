@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -9,7 +9,8 @@ import { useStreak } from "@/hooks/useStreak";
 import { useSession } from "next-auth/react";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { Certificate } from "@/components/dashboard/Certificate";
-import { ScrollReveal } from "@ai-educademy/ai-ui-library";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { AnimatedProgressBar } from "@/components/ui/MotionWrappers";
 import { locales } from "@/i18n/request";
 import { Flame, ArrowRight, Trophy } from "lucide-react";
 
@@ -136,6 +137,52 @@ const PROGRAMS = [
   },
 ];
 
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const scaleInVariants = {
+  hidden: { opacity: 0, scale: 0.92 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+function MotionReveal({
+  children,
+  animation = "fade-up",
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  animation?: "fade-up" | "scale-in";
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  const variants = animation === "scale-in" ? scaleInVariants : fadeUpVariants;
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={variants.hidden}
+      animate={isInView ? variants.visible : variants.hidden}
+      transition={{ duration: 0.6, delay: delay / 1000, ease }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export default function DashboardPage() {
   const t = useTranslations("dashboard");
   const ta = useTranslations("auth");
@@ -185,7 +232,7 @@ export default function DashboardPage() {
   if (!isSignedIn) {
     return (
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
-        <ScrollReveal animation="scale-in">
+        <MotionReveal animation="scale-in">
           <div className="text-7xl mb-6 animate-float-slow">🔒</div>
           <h1 className="text-4xl font-bold mb-4 text-gradient">{t("title")}</h1>
           <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto mb-10 leading-relaxed">
@@ -197,7 +244,7 @@ export default function DashboardPage() {
           >
             {ta("signIn")} →
           </Link>
-        </ScrollReveal>
+        </MotionReveal>
       </div>
     );
   }
@@ -206,7 +253,7 @@ export default function DashboardPage() {
   if (totalCompleted === 0) {
     return (
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
-        <ScrollReveal animation="scale-in">
+        <MotionReveal animation="scale-in">
           <div className="relative inline-block mb-8">
             <div className="absolute -inset-4 rounded-full bg-indigo-500/10 blur-xl animate-pulse" />
             <div className="relative text-8xl animate-float-slow">🚀</div>
@@ -233,7 +280,7 @@ export default function DashboardPage() {
           >
             {t("emptyStart")} →
           </Link>
-        </ScrollReveal>
+        </MotionReveal>
       </div>
     );
   }
@@ -252,7 +299,7 @@ export default function DashboardPage() {
       )}
 
       {/* Header */}
-      <ScrollReveal animation="fade-up">
+      <MotionReveal animation="fade-up">
         <div className="text-center mb-12">
           {isSignedIn && (
             <div className="text-5xl mb-4">{profile?.avatar}</div>
@@ -264,10 +311,10 @@ export default function DashboardPage() {
             {t("subtitle")}
           </p>
         </div>
-      </ScrollReveal>
+      </MotionReveal>
 
       {/* Continue Learning */}
-      <ScrollReveal animation="fade-up">
+      <MotionReveal animation="fade-up">
         <div className="mb-8 p-6 rounded-3xl bg-gradient-to-r from-indigo-500/10 to-violet-500/10 border border-indigo-500/20">
           <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
             <ArrowRight size={20} className="text-indigo-500" />
@@ -297,11 +344,11 @@ export default function DashboardPage() {
             <p className="text-center text-lg font-semibold py-4">{t("allComplete")}</p>
           )}
         </div>
-      </ScrollReveal>
+      </MotionReveal>
 
       {/* Streak */}
       {(currentStreak > 0 || longestStreak > 0) && (
-        <ScrollReveal animation="scale-in">
+        <MotionReveal animation="scale-in">
           <div className="mb-8 flex items-center justify-center gap-6 p-4 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]">
             <div className="flex items-center gap-2">
               <Flame size={22} className="text-orange-500" />
@@ -314,28 +361,23 @@ export default function DashboardPage() {
               <span className="text-xl font-bold text-gradient">{longestStreak} {t("days")}</span>
             </div>
           </div>
-        </ScrollReveal>
+        </MotionReveal>
       )}
 
       {/* Overall Progress */}
-      <ScrollReveal animation="scale-in">
+      <MotionReveal animation="scale-in">
         <div className="mb-12 p-8 rounded-3xl bg-[var(--color-bg-card)] border border-[var(--color-border)] gradient-border">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">{t("overallProgress")}</h2>
             <span className="text-3xl font-bold text-gradient">{percentage}%</span>
           </div>
-          <div className="h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden mb-4">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-1000 ease-out"
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
+          <AnimatedProgressBar percentage={percentage} className="h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden mb-4" />
           <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
             <span>{t("lessonsCompleted", { completed: totalCompleted, total: totalLessons })}</span>
             <span>{t("remaining", { count: totalLessons - totalCompleted })}</span>
           </div>
         </div>
-      </ScrollReveal>
+      </MotionReveal>
 
       {/* Per-program sections — grouped by track */}
       {["ai-learning", "craft-engineering"].map((track) => {
@@ -343,14 +385,14 @@ export default function DashboardPage() {
         if (trackPrograms.length === 0) return null;
         return (
           <div key={track} className="mb-8">
-            <ScrollReveal animation="fade-up">
+            <MotionReveal animation="fade-up">
               <div className="flex items-center gap-2 mb-6 mt-4">
                 <span className="text-2xl">{track === "ai-learning" ? "🌳" : "🔨"}</span>
                 <h2 className="text-lg font-bold text-[var(--color-text-muted)]">
                   {track === "ai-learning" ? t("trackAI") : t("trackCraft")}
                 </h2>
               </div>
-            </ScrollReveal>
+            </MotionReveal>
             {trackPrograms.map((program, pIdx) => {
         const progData = getProgram(program.slug);
         const progCompleted = progData.completed.length;
@@ -359,18 +401,16 @@ export default function DashboardPage() {
 
         return (
           <div key={program.slug} className="mb-12">
-            <ScrollReveal animation="fade-up" delay={pIdx * 100}>
+            <MotionReveal animation="fade-up" delay={pIdx * 100}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-4xl">{program.icon}</span>
                 <div className="flex-1 min-w-0">
                   <h2 className="text-xl font-bold">{tp(program.slug as any)}</h2>
                   <div className="flex items-center gap-3 mt-1">
-                    <div className="flex-1 h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-700"
-                        style={{ width: `${progPct}%` }}
-                      />
-                    </div>
+                    <AnimatedProgressBar
+                      percentage={progPct}
+                      className="flex-1 h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden"
+                    />
                     <span className="text-2xl font-bold text-[var(--color-primary)] shrink-0">
                       {progPct}%
                     </span>
@@ -386,13 +426,13 @@ export default function DashboardPage() {
                   )}
                 </div>
               </div>
-            </ScrollReveal>
+            </MotionReveal>
 
             <div className="space-y-3">
               {program.lessons.map((lesson, idx) => {
                 const done = isCompleted(`${program.slug}/${lesson.slug}`);
                 return (
-                  <ScrollReveal key={lesson.slug} animation="fade-up" delay={pIdx * 100 + idx * 60}>
+                  <MotionReveal key={lesson.slug} animation="fade-up" delay={pIdx * 100 + idx * 60}>
                     <Link
                       href={`${basePath}/programs/${program.slug}/lessons/${lesson.slug}`}
                       className="block group"
@@ -425,7 +465,7 @@ export default function DashboardPage() {
                         </div>
                       </div>
                     </Link>
-                  </ScrollReveal>
+                  </MotionReveal>
                 );
               })}
             </div>
@@ -437,9 +477,9 @@ export default function DashboardPage() {
       })}
 
       {/* Achievements */}
-      <ScrollReveal animation="fade-up">
+      <MotionReveal animation="fade-up">
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-gradient">🏅 {t("achievements")}</h2>
-      </ScrollReveal>
+      </MotionReveal>
       <div className="grid sm:grid-cols-3 gap-4 mb-12">
         {[
           { id: "first-lesson", icon: "🌱", titleKey: "firstStep", descKey: "firstStepDesc", threshold: 1 },
@@ -448,7 +488,7 @@ export default function DashboardPage() {
         ].map((achievement, idx) => {
           const unlocked = totalCompleted >= achievement.threshold;
           return (
-            <ScrollReveal key={achievement.id} animation="scale-in" delay={idx * 100}>
+            <MotionReveal key={achievement.id} animation="scale-in" delay={idx * 100}>
               <div className={`text-center p-6 rounded-2xl border transition-all ${
                 unlocked
                   ? "bg-[var(--color-bg-card)] border-[var(--color-border)] gradient-border glow-sm"
@@ -461,13 +501,13 @@ export default function DashboardPage() {
                   <span className="inline-block mt-3 text-xs font-semibold text-gradient">✨ {t("unlocked")}</span>
                 )}
               </div>
-            </ScrollReveal>
+            </MotionReveal>
           );
         })}
       </div>
 
       {/* Actions */}
-      <ScrollReveal animation="fade-up">
+      <MotionReveal animation="fade-up">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href={`${basePath}/programs`}
@@ -484,7 +524,7 @@ export default function DashboardPage() {
             </button>
           )}
         </div>
-      </ScrollReveal>
+      </MotionReveal>
     </div>
   );
 }

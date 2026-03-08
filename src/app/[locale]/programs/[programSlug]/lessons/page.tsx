@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { getProgram } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { LessonProgressBadge } from "@/components/lessons/LessonProgressBadge";
-import { ScrollReveal } from "@ai-educademy/ai-ui-library";
+import { AnimatedSection } from "@/components/ui/MotionWrappers";
 
 export default async function ProgramLessonsPage({
   params,
@@ -35,22 +35,24 @@ export default async function ProgramLessonsPage({
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
       {/* Breadcrumb */}
-      <div className="mb-8 text-sm text-[var(--color-text-muted)]">
-        <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">
-          {t("programs")}
-        </Link>
-        <span className="mx-2">›</span>
-        <Link href={`${basePath}/programs/${programSlug}`} className="hover:text-[var(--color-primary)] transition-colors">
-          {tPT(programSlug)}
-        </Link>
-        <span className="mx-2">›</span>
-        <span>{t("title")}</span>
-      </div>
+      <AnimatedSection animation="fade-in">
+        <div className="mb-10 text-sm text-[var(--color-text-muted)]">
+          <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">
+            {t("programs")}
+          </Link>
+          <span className="mx-2">›</span>
+          <Link href={`${basePath}/programs/${programSlug}`} className="hover:text-[var(--color-primary)] transition-colors">
+            {tPT(programSlug)}
+          </Link>
+          <span className="mx-2">›</span>
+          <span>{t("title")}</span>
+        </div>
+      </AnimatedSection>
 
-      <ScrollReveal animation="fade-up">
-        <div className="text-center mb-12">
+      <AnimatedSection animation="fade-up" delay={80}>
+        <div className="text-center mb-14">
           <div
             className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4"
             style={{ backgroundColor: `${program.color}20`, color: program.color }}
@@ -62,16 +64,16 @@ export default async function ProgramLessonsPage({
             {t("subtitle")}
           </p>
         </div>
-      </ScrollReveal>
+      </AnimatedSection>
 
       <div className="space-y-4">
         {lessons.map((lesson, idx) => (
-          <ScrollReveal key={lesson.slug} animation="fade-up" delay={idx * 80}>
+          <AnimatedSection key={lesson.slug} animation="fade-up" delay={idx * 80}>
             <Link
               href={`${basePath}/programs/${programSlug}/lessons/${lesson.slug}`}
-              className="block card-hover card-glow"
+              className="block group"
             >
-              <div className="flex items-start gap-5 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]">
+              <div className="flex items-start gap-5 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary)]/5 hover:-translate-y-0.5 hover:border-[var(--color-primary)]/40">
                 {lessonImages[lesson.slug] && (
                   <div className="hidden sm:block w-24 h-24 rounded-xl overflow-hidden shrink-0 border border-[var(--color-border)] bg-[var(--color-bg-card)]">
                     <Image
@@ -107,27 +109,29 @@ export default async function ProgramLessonsPage({
                   </div>
                 </div>
 
-                <div className="text-[var(--color-text-muted)] text-xl shrink-0 self-center">→</div>
+                <div className="text-[var(--color-text-muted)] text-xl shrink-0 self-center transition-transform duration-200 group-hover:translate-x-1">→</div>
               </div>
             </Link>
-          </ScrollReveal>
+          </AnimatedSection>
         ))}
 
         {lessons.length === 0 && (
-          <div className="text-center py-16 rounded-2xl bg-[var(--color-bg-card)] border border-dashed border-[var(--color-border)]">
-            <div className="text-4xl mb-3">🚧</div>
-            <p className="font-semibold mb-1">{t("lessonsComingSoon")}</p>
-            <p className="text-sm text-[var(--color-text-muted)]">{t("checkBackSoon")}</p>
-          </div>
+          <AnimatedSection animation="fade-in">
+            <div className="text-center py-16 rounded-2xl bg-[var(--color-bg-card)] border border-dashed border-[var(--color-border)]">
+              <div className="text-4xl mb-3">🚧</div>
+              <p className="font-semibold mb-1">{t("lessonsComingSoon")}</p>
+              <p className="text-sm text-[var(--color-text-muted)]">{t("checkBackSoon")}</p>
+            </div>
+          </AnimatedSection>
         )}
       </div>
 
-      <div className="mt-8 text-center">
+      <div className="mt-10 text-center">
         <Link
           href={`${basePath}/programs/${programSlug}`}
-          className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+          className="group text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
         >
-          ← {t("backToProgram")} {tPT(programSlug)}
+          <span className="transition-transform duration-200 inline-block group-hover:-translate-x-0.5">←</span> {t("backToProgram")} {tPT(programSlug)}
         </Link>
       </div>
     </div>

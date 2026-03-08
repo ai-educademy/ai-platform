@@ -2,7 +2,7 @@
 
 import { useState, useRef, useMemo } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
 import { Search, X, BookOpen, Clock, BarChart3, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 
 /* ─── types ─── */
@@ -93,6 +93,7 @@ const scaleIn = {
 export default function ProgramsShowcase({ tracks, programsByTrack, basePath, t }: Props) {
   const [activeTrack, setActiveTrack] = useState<string | null>(null); // null = all tracks
   const [searchQuery, setSearchQuery] = useState("");
+  const prefersReducedMotion = useReducedMotion();
 
   const allPrograms = useMemo(
     () => Object.values(programsByTrack).flat(),
@@ -173,8 +174,8 @@ export default function ProgramsShowcase({ tracks, programsByTrack, basePath, t 
             className="grid gap-6 md:gap-8 pb-24"
           >
             {filtered.map((program, idx) => (
-              <motion.div key={program.slug} variants={fadeUp}>
-                <ProgramCard program={program} basePath={basePath} t={t} index={idx} />
+              <motion.div key={program.slug} variants={prefersReducedMotion ? undefined : fadeUp}>
+                <ProgramCard program={program} basePath={basePath} t={t} index={idx} reducedMotion={!!prefersReducedMotion} />
               </motion.div>
             ))}
           </motion.div>
@@ -337,11 +338,12 @@ function TabButton({ isActive, onClick, icon, label }: {
 }
 
 /* ─────────────────────── Program Card ─────────────────────── */
-function ProgramCard({ program, basePath, t, index }: {
+function ProgramCard({ program, basePath, t, index, reducedMotion }: {
   program: ProgramData;
   basePath: string;
   t: ProgramsI18n;
   index: number;
+  reducedMotion: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -359,9 +361,9 @@ function ProgramCard({ program, basePath, t, index }: {
     <div ref={ref}>
       <motion.div
         className="group relative"
-        initial={{ opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-        transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+        initial={reducedMotion ? undefined : { opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : reducedMotion ? undefined : { opacity: 0, y: 40 }}
+        transition={reducedMotion ? undefined : { duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
       >
         {/* Animated glow border */}
         <div
@@ -454,9 +456,13 @@ function ProgramCard({ program, basePath, t, index }: {
                   </motion.span>
                 </Link>
               ) : (
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-text-muted)]">
+                <motion.span
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-text-muted)]"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
                   🔒 {t.comingSoon}
-                </span>
+                </motion.span>
               )}
             </div>
 
