@@ -91,7 +91,7 @@ export default async function HomePage({
             titleHighlight={t("hero.titleHighlight")}
             subtitle={t("hero.subtitle")}
             ctaText={t("hero.cta")}
-            ctaHref={`${basePath}/programs/ai-seeds/lessons/what-is-ai`}
+            ctaHref={`${basePath}/programs`}
             ctaSecondaryText={t("hero.ctaSecondary")}
             ctaSecondaryHref={`${basePath}/lab`}
             basePath={basePath}
