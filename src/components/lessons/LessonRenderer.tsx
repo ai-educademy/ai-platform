@@ -1,5 +1,4 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { YouTubeEmbed } from "./YouTubeEmbed";
 import { Quiz } from "./Quiz";
 import { LottieAnimation } from "./LottieAnimation";
 import {
@@ -20,7 +19,6 @@ import {
 } from "./LessonElements";
 
 const components = {
-  YouTube: YouTubeEmbed,
   Animation: LottieAnimation,
   Quiz,
   h1: AnimatedH1,

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect, type MouseEvent as RMouseEvent } from "react";
+import { useState, useCallback, useRef, useEffect, memo, type MouseEvent as RMouseEvent } from "react";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import type { DynamicTranslate } from "@/lib/i18n-utils";
 
 /* ── types ─────────────────────────────────────────────────────── */
 type ShapeKind = "server" | "database" | "decision" | "service" | "queue" | "client" | "cloud" | "text";
@@ -126,9 +127,10 @@ function ShapeSVG({ kind, color, w = W, h = H }: { kind: ShapeKind; color: strin
 const ZOOM_MIN = 0.25, ZOOM_MAX = 3, ZOOM_STEP = 0.15;
 
 /* ── main component ───────────────────────────────────────────── */
-export function SystemDesignCanvas() {
+export const SystemDesignCanvas = memo(function SystemDesignCanvas() {
   const { data: authSession } = useSession();
   const tp = useTranslations("lab.playground");
+  const tpd = tp as unknown as DynamicTranslate;
   const userKeyRef = useRef("");
 
   const [shapes, setShapes] = useState<Shape[]>([]);
@@ -326,7 +328,7 @@ export function SystemDesignCanvas() {
     const { x, y } = svgPt(e);
     pushHistory();
     const paletteItem = PALETTE.find(p => p.kind === activeTool);
-    const label = activeTool === "text" ? tp("defaultLabel") : paletteItem ? tp(paletteItem.labelKey as any) : activeTool!.charAt(0).toUpperCase() + activeTool!.slice(1);
+    const label = activeTool === "text" ? tp("defaultLabel") : paletteItem ? tpd(paletteItem.labelKey) : activeTool!.charAt(0).toUpperCase() + activeTool!.slice(1);
     const newShape: Shape = { id: uid(), kind: activeTool, x, y, label };
     setShapes((s) => [...s, newShape]);
     if (activeTool === "text") {
@@ -541,9 +543,9 @@ export function SystemDesignCanvas() {
               background: activeTool === p.kind ? `${COLORS[p.kind]}20` : "transparent",
               color: activeTool === p.kind ? COLORS[p.kind] : "var(--color-text)",
             }}
-            title={tp(p.labelKey as any)}
+            title={tpd(p.labelKey)}
           >
-            <span className="mr-0.5">{p.icon}</span><span className="hidden sm:inline">{tp(p.labelKey as any)}</span>
+            <span className="mr-0.5">{p.icon}</span><span className="hidden sm:inline">{tpd(p.labelKey)}</span>
           </button>
         ))}
         <div className="w-px h-5 mx-0.5" style={{ background: "var(--color-border)" }} />
@@ -683,4 +685,4 @@ export function SystemDesignCanvas() {
       </div>
     </div>
   );
-}
+});

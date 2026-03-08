@@ -118,7 +118,8 @@
     "programs": "Programmes",
     "dashboard": "Tableau de bord",
     "lab": "Labo",
-    "pageViews": "pages vues"
+    "pageViews": "pages vues",
+    "scrollToTop": "Retour en haut"
   },
   "about": {
     "title": "À propos d'AI Educademy",
@@ -211,8 +212,6 @@
     "tryAgain": "Réessayer",
     "quickCheck": "Vérification rapide",
     "animationError": "L'animation n'a pas pu se charger",
-    "videoFallback": "Vidéo",
-    "shortBadge": "COURT",
     "progressPercent": "{percent}% terminé"
   },
   "programs": {
@@ -509,7 +508,8 @@
     "certCertifies": "Ceci certifie que",
     "certCompleted": "a terminé avec succès",
     "certDate": "Terminé le",
-    "certOrg": "AI Educademy"
+    "certOrg": "AI Educademy",
+    "certShareText": "J'ai termine {program} sur AI Educademy ! 🎓"
   },
   "auth": {
     "startLearning": "Commencer",
@@ -549,7 +549,8 @@
     "guestLearner": "Apprenant invité",
     "userMenuLabel": "Menu utilisateur",
     "myProgress": "Ma progression",
-    "allPrograms": "Tous les programmes"
+    "allPrograms": "Tous les programmes",
+    "userAvatar": "Avatar utilisateur"
   },
   "lessonTitles": {
     "agentic-workflows": "Workflows agentiques",
@@ -686,7 +687,8 @@
     "placeholder": "Entrez votre e-mail",
     "subscribe": "S'abonner",
     "success": "Vous êtes abonné ! 🎉",
-    "invalidEmail": "Veuillez entrer une adresse e-mail valide"
+    "invalidEmail": "Veuillez entrer une adresse e-mail valide",
+    "subscriptionFailed": "Echec de l'abonnement"
   },
   "community": {
     "updates": "Restez à jour",
@@ -694,7 +696,8 @@
     "openSourceDesc": "Construit ouvertement : consultez le code, contribuez ou forkez",
     "shareText": "Éducation en IA gratuite pour tous",
     "headline": "Rejoignez le mouvement",
-    "subtitle": "Recevez les dernières leçons, astuces et mises à jour dans votre boîte mail. Mettez-nous une étoile sur GitHub pour soutenir l'éducation en IA gratuite pour tous."
+    "subtitle": "Recevez les dernières leçons, astuces et mises à jour dans votre boîte mail. Mettez-nous une étoile sur GitHub pour soutenir l'éducation en IA gratuite pour tous.",
+    "shareTitle": "AI Educademy"
   },
   "lab": {
     "title": "Labo IA",
@@ -1074,7 +1077,14 @@
     "experimentsLoaded": "expériences chargées",
     "allSystemsOp": "tous les systèmes opérationnels",
     "featuredExperiment": "Expérience en vedette",
-    "runButton": "LANCER"
+    "runButton": "LANCER",
+    "navNeural": "Terrain de jeu neuronal",
+    "navAiOrHuman": "IA ou humain ?",
+    "navPromptLab": "Labo de prompts",
+    "navImageGen": "Generateur d'images",
+    "navSentiment": "Analyseur de sentiment",
+    "navChatbot": "Constructeur de chatbot",
+    "navEthics": "Simulateur d'ethique"
   },
   "ui": {
     "light": "Clair",
@@ -1082,7 +1092,9 @@
     "comingSoon": "Bientôt",
     "lightMode": "Mode clair",
     "darkMode": "Mode sombre",
-    "comingSoonMessage": "{title} arrive bientôt ! Nous construisons ce module en ce moment."
+    "comingSoonMessage": "{title} arrive bientôt ! Nous construisons ce module en ce moment.",
+    "changeLanguage": "Langue: {language}. Cliquez pour changer.",
+    "selectLanguage": "Choisir la langue"
   },
   "admin": {
     "loginTitle": "🔐 Accès administration",

@@ -118,7 +118,8 @@
     "programs": "कार्यक्रम",
     "dashboard": "डैशबोर्ड",
     "lab": "लैब",
-    "pageViews": "पेज व्यूज़"
+    "pageViews": "पेज व्यूज़",
+    "scrollToTop": "ऊपर स्क्रॉल करें"
   },
   "about": {
     "title": "AI Educademy के बारे में",
@@ -211,8 +212,6 @@
     "tryAgain": "फिर से कोशिश करें",
     "quickCheck": "त्वरित जांच",
     "animationError": "एनिमेशन लोड नहीं हो सका",
-    "videoFallback": "वीडियो",
-    "shortBadge": "शॉर्ट",
     "progressPercent": "{percent}% पूर्ण"
   },
   "programs": {
@@ -509,7 +508,8 @@
     "certCertifies": "यह प्रमाणित करता है कि",
     "certCompleted": "ने सफलतापूर्वक पूरा किया",
     "certDate": "पूर्ण तिथि",
-    "certOrg": "AI Educademy"
+    "certOrg": "AI Educademy",
+    "certShareText": "मैंने AI Educademy पर {program} पूरा किया! 🎓"
   },
   "auth": {
     "startLearning": "सीखना शुरू करें",
@@ -549,7 +549,8 @@
     "guestLearner": "अतिथि शिक्षार्थी",
     "userMenuLabel": "उपयोगकर्ता मेनू",
     "myProgress": "मेरी प्रगति",
-    "allPrograms": "सभी कार्यक्रम"
+    "allPrograms": "सभी कार्यक्रम",
+    "userAvatar": "उपयोगकर्ता अवतार"
   },
   "lessonTitles": {
     "agentic-workflows": "Agentic Workflows",
@@ -686,7 +687,8 @@
     "placeholder": "अपना ईमेल दर्ज करें",
     "subscribe": "सदस्यता लें",
     "success": "आप सदस्य बन गए हैं! 🎉",
-    "invalidEmail": "कृपया एक वैध ईमेल दर्ज करें"
+    "invalidEmail": "कृपया एक वैध ईमेल दर्ज करें",
+    "subscriptionFailed": "सदस्यता विफल"
   },
   "community": {
     "updates": "अपडेट रहें",
@@ -694,7 +696,8 @@
     "openSourceDesc": "खुले तौर पर बनाया - कोड देखें, योगदान करें",
     "shareText": "सभी के लिए मुफ्त AI शिक्षा",
     "headline": "आंदोलन में शामिल हों",
-    "subtitle": "नवीनतम पाठ, टिप्स और अपडेट अपने इनबॉक्स में प्राप्त करें। सभी के लिए मुफ्त AI शिक्षा का समर्थन करने के लिए GitHub पर हमें स्टार दें।"
+    "subtitle": "नवीनतम पाठ, टिप्स और अपडेट अपने इनबॉक्स में प्राप्त करें। सभी के लिए मुफ्त AI शिक्षा का समर्थन करने के लिए GitHub पर हमें स्टार दें।",
+    "shareTitle": "AI Educademy"
   },
   "lab": {
     "title": "AI लैब",
@@ -1036,7 +1039,14 @@
       "gameTriviaDesc": "समयबद्ध प्रश्नों के साथ अपने AI ज्ञान का परीक्षण करें",
       "gameDesignName": "सिस्टम डिज़ाइन कैनवास",
       "gameDesignDesc": "खींचें, जोड़ें और डिज़ाइन करें - आर्किटेक्चर आरेखों का अभ्यास करें"
-    }
+    },
+    "navNeural": "न्यूरल नेटवर्क प्लेग्राउंड",
+    "navAiOrHuman": "AI या इंसान?",
+    "navPromptLab": "प्रॉम्प्ट लैब",
+    "navImageGen": "इमेज जनरेटर",
+    "navSentiment": "सेंटिमेंट एनालाइज़र",
+    "navChatbot": "चैटबॉट बिल्डर",
+    "navEthics": "एथिक्स सिमुलेटर"
   },
   "ui": {
     "light": "लाइट",
@@ -1044,7 +1054,9 @@
     "comingSoon": "जल्द",
     "lightMode": "लाइट मोड",
     "darkMode": "डार्क मोड",
-    "comingSoonMessage": "{title} जल्द आ रहा है! हम अभी इस मॉड्यूल पर काम कर रहे हैं।"
+    "comingSoonMessage": "{title} जल्द आ रहा है! हम अभी इस मॉड्यूल पर काम कर रहे हैं।",
+    "changeLanguage": "भाषा: {language}. बदलने के लिए क्लिक करें.",
+    "selectLanguage": "भाषा चुनें"
   },
   "admin": {
     "loginTitle": "🔐 एडमिन एक्सेस",

@@ -5,6 +5,7 @@ import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { ALL_GAMES, NeuralNetworkPlayground, type GameEntry } from "@/components/playground/MiniGames";
 import { type GameMeta, type GameCategory } from "@/components/playground/GameCard";
 import AIOrHumanGame from "@/components/playground/AIOrHumanGame";
+import type { DynamicTranslate } from "@/lib/i18n-utils";
 
 /* ─── Neon palette ─── */
 const NEON = {
@@ -124,21 +125,21 @@ const FEATURED_GAME_META = {
   category: "creative" as GameCategory,
 };
 
-function buildGameList(t: ReturnType<typeof useTranslations>): GameMeta[] {
+function buildGameList(t: DynamicTranslate): GameMeta[] {
   const featured: GameMeta = {
     ...FEATURED_GAME_META,
-    name: t(FEATURED_GAME_META.nameKey as any),
-    desc: t(FEATURED_GAME_META.descKey as any),
+    name: t(FEATURED_GAME_META.nameKey),
+    desc: t(FEATURED_GAME_META.descKey),
   };
   const aiOrHuman: GameMeta = {
     ...AI_OR_HUMAN_GAME_META,
-    name: t(AI_OR_HUMAN_GAME_META.nameKey as any),
-    desc: t(AI_OR_HUMAN_GAME_META.descKey as any, { count: 10 }),
+    name: t(AI_OR_HUMAN_GAME_META.nameKey),
+    desc: t(AI_OR_HUMAN_GAME_META.descKey, { count: 10 }),
   };
   const miniGames: GameMeta[] = ALL_GAMES.map((g) => ({
     id: g.id,
-    name: t(`playground.${g.name}` as any),
-    desc: t(`playground.${g.desc}` as any),
+    name: t(`playground.${g.name}`),
+    desc: t(`playground.${g.desc}`),
     icon: g.icon,
     component: g.component,
     difficulty: g.difficulty,
@@ -180,6 +181,7 @@ const ALL_CATEGORIES: Array<{ key: GameCategory | "all"; labelKey: string; color
 /* ─── Main Page ─── */
 export default function LabPage() {
   const t = useTranslations("lab");
+  const td = t as unknown as DynamicTranslate;
   const [activeGame, setActiveGame] = useState<GameMeta | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const [closing, setClosing] = useState(false);
@@ -187,7 +189,7 @@ export default function LabPage() {
 
   const { displayed: heroText, done: heroDone } = useTypingEffect(`> ${t("initializing")}`, 50);
 
-  const allGames = useMemo(() => buildGameList(t), [t]);
+  const allGames = useMemo(() => buildGameList(td), [td]);
 
   const featuredGame = useMemo(() => allGames.find((g) => g.id === FEATURED_GAME_META.id)!, [allGames]);
 
@@ -260,7 +262,7 @@ export default function LabPage() {
               <div className="flex items-center gap-3 pr-4">
                 {diff && (
                   <span className="font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded border" style={{ color: diff.color, borderColor: `${diff.color}33` }}>
-                    {t(diff.key as any)}
+                    {td(diff.key)}
                   </span>
                 )}
                 <span className="text-[10px] text-[var(--color-text-muted)] hidden sm:inline font-mono">ESC</span>
@@ -322,7 +324,7 @@ export default function LabPage() {
                 <div className="flex items-center gap-2 mb-1">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-primary)]">{t("featuredExperiment")}</span>
                   <span className="font-mono text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded border" style={{ color: DIFFICULTY_BADGE_KEYS[featuredGame.difficulty].color, borderColor: `${DIFFICULTY_BADGE_KEYS[featuredGame.difficulty].color}33` }}>
-                    {t(DIFFICULTY_BADGE_KEYS[featuredGame.difficulty].key as any)}
+                    {td(DIFFICULTY_BADGE_KEYS[featuredGame.difficulty].key)}
                   </span>
                 </div>
                 <h2 className="text-lg sm:text-xl font-mono font-bold text-[var(--color-text)] line-clamp-1">{featuredGame.name}</h2>
@@ -347,7 +349,7 @@ export default function LabPage() {
                   backgroundColor: filter === cat.key ? cat.color : "transparent",
                 }}
               >
-                {t(cat.labelKey as any)}
+                {td(cat.labelKey)}
               </button>
             ))}
           </div>
@@ -363,7 +365,7 @@ export default function LabPage() {
               {filteredGames.map((game, i) => {
                 const diff = DIFFICULTY_BADGE_KEYS[game.difficulty];
                 const tagDef = CATEGORY_TAG_KEYS[game.category];
-                const tag = tagDef ? { label: t(tagDef.key as any), color: tagDef.color } : undefined;
+                const tag = tagDef ? { label: td(tagDef.key), color: tagDef.color } : undefined;
                 return (
                   <button
                     key={game.id}
@@ -384,7 +386,7 @@ export default function LabPage() {
                           className="font-mono text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded border"
                           style={{ color: diff.color, borderColor: `${diff.color}33` }}
                         >
-                          {t(diff.key as any)}
+                          {td(diff.key)}
                         </span>
                       </div>
 

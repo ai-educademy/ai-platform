@@ -2,13 +2,14 @@
 
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { locales, localeNames, localeFlags } from "@/i18n/request";
 import type { Locale } from "@/i18n/request";
 
 export function LanguageSwitcher() {
   const pathname = usePathname();
   const currentLocale = useLocale();
+  const t = useTranslations("ui");
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -53,7 +54,7 @@ export function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label={`Language: ${localeNames[currentLocale as Locale]}. Click to change.`}
+        aria-label={t("changeLanguage", { language: localeNames[currentLocale as Locale] })}
         className="flex items-center justify-center w-8 h-8 rounded-lg bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.08] dark:hover:bg-white/[0.1] transition-all duration-200"
       >
         <span className="text-[15px] leading-none">{localeFlags[currentLocale as Locale]}</span>
@@ -62,7 +63,7 @@ export function LanguageSwitcher() {
       {open && (
         <ul
           role="listbox"
-          aria-label="Select language"
+          aria-label={t("selectLanguage")}
           className="absolute right-0 top-full mt-1 z-50 min-w-[160px] max-sm:left-0 max-sm:right-auto rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] shadow-lg py-1 animate-in fade-in slide-in-from-top-1 duration-150"
         >
           {locales.map((locale) => (

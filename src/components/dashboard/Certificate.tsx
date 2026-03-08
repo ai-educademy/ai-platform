@@ -137,7 +137,7 @@ export function Certificate({ programName, programIcon, userName, completionDate
   };
 
   const handleShare = async () => {
-    const text = `I completed ${programName} on AI Educademy! 🎓`;
+    const text = t("certShareText", { program: programName });
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);

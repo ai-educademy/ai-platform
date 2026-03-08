@@ -118,7 +118,8 @@
     "programs": "Opleidingen",
     "dashboard": "Dashboard",
     "lab": "Lab",
-    "pageViews": "paginaweergaven"
+    "pageViews": "paginaweergaven",
+    "scrollToTop": "Naar boven scrollen"
   },
   "about": {
     "title": "Over AI Educademy",
@@ -211,8 +212,6 @@
     "tryAgain": "Probeer opnieuw",
     "quickCheck": "Snelle check",
     "animationError": "Animatie kon niet worden geladen",
-    "videoFallback": "Video",
-    "shortBadge": "KORT",
     "progressPercent": "{percent}% voltooid"
   },
   "programs": {
@@ -509,7 +508,8 @@
     "certCertifies": "Hierbij wordt bevestigd dat",
     "certCompleted": "met succes heeft afgerond",
     "certDate": "Voltooid op",
-    "certOrg": "AI Educademy"
+    "certOrg": "AI Educademy",
+    "certShareText": "Ik heb {program} voltooid op AI Educademy! 🎓"
   },
   "auth": {
     "startLearning": "Begin met leren",
@@ -549,7 +549,8 @@
     "guestLearner": "Gastleerling",
     "userMenuLabel": "Gebruikersmenu",
     "myProgress": "Mijn voortgang",
-    "allPrograms": "Alle programma's"
+    "allPrograms": "Alle programma's",
+    "userAvatar": "Gebruikersavatar"
   },
   "lessonTitles": {
     "agentic-workflows": "Agentische workflows",
@@ -686,7 +687,8 @@
     "placeholder": "Vul je e-mailadres in",
     "subscribe": "Abonneren",
     "success": "Je bent geabonneerd! 🎉",
-    "invalidEmail": "Vul een geldig e-mailadres in"
+    "invalidEmail": "Vul een geldig e-mailadres in",
+    "subscriptionFailed": "Abonnement mislukt"
   },
   "community": {
     "updates": "Blijf op de hoogte",
@@ -694,7 +696,8 @@
     "openSourceDesc": "Open gebouwd - bekijk de code, draag bij of fork het",
     "shareText": "Gratis AI-onderwijs voor iedereen",
     "headline": "Doe mee met de beweging",
-    "subtitle": "Ontvang de nieuwste lessen, tips en updates in je inbox. Geef ons een ster op GitHub om gratis AI-onderwijs voor iedereen te ondersteunen."
+    "subtitle": "Ontvang de nieuwste lessen, tips en updates in je inbox. Geef ons een ster op GitHub om gratis AI-onderwijs voor iedereen te ondersteunen.",
+    "shareTitle": "AI Educademy"
   },
   "lab": {
     "title": "AI Lab",
@@ -1036,7 +1039,14 @@
     "experimentsLoaded": "experimenten geladen",
     "allSystemsOp": "alle systemen operationeel",
     "featuredExperiment": "Uitgelicht experiment",
-    "runButton": "START"
+    "runButton": "START",
+    "navNeural": "Neuraal netwerk speeltuin",
+    "navAiOrHuman": "AI of mens?",
+    "navPromptLab": "Prompt lab",
+    "navImageGen": "Beeldgenerator",
+    "navSentiment": "Sentimentanalyse",
+    "navChatbot": "Chatbot bouwer",
+    "navEthics": "Ethiek simulator"
   },
   "ui": {
     "light": "Licht",
@@ -1044,7 +1054,9 @@
     "comingSoon": "Binnenkort",
     "lightMode": "Lichte modus",
     "darkMode": "Donkere modus",
-    "comingSoonMessage": "{title} komt binnenkort! We bouwen deze module nu."
+    "comingSoonMessage": "{title} komt binnenkort! We bouwen deze module nu.",
+    "changeLanguage": "Taal: {language}. Klik om te wijzigen.",
+    "selectLanguage": "Taal selecteren"
   },
   "admin": {
     "loginTitle": "🔐 Beheerderstoegang",

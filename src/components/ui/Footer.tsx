@@ -225,7 +225,7 @@ export function Footer() {
               dark:bg-white dark:text-[var(--color-primary)]
               shadow-lg shadow-[var(--color-primary)]/30 dark:shadow-black/20
               hover:scale-110 active:scale-95 transition-transform cursor-pointer"
-            aria-label="Scroll to top"
+            aria-label={t("scrollToTop")}
             initial={{ opacity: 0, y: 24, scale: 0.6 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.6 }}

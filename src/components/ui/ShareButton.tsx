@@ -11,7 +11,7 @@ export function ShareButton() {
       onClick={() => {
         if (typeof navigator !== "undefined" && navigator.share) {
           navigator.share({
-            title: "AI Educademy",
+            title: tc("shareTitle"),
             text: tc("shareText"),
             url: "https://aieducademy.org",
           });

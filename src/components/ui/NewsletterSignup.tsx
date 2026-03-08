@@ -47,7 +47,7 @@ export function NewsletterSignup() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.message || "Subscription failed");
+        throw new Error(data.message || t("subscriptionFailed"));
       }
       saveToLocalStorage(email);
       setSubscribed(true);

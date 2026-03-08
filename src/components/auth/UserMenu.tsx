@@ -59,7 +59,7 @@ export function UserMenu() {
         aria-label={t("userMenuLabel")}
       >
         {avatar ? (
-          <img src={avatar} alt="" className="w-7 h-7 rounded-full" />
+          <img src={avatar} alt={t("userAvatar")} className="w-7 h-7 rounded-full" />
         ) : (
           <span className="text-xl">{displayAvatar}</span>
         )}
@@ -78,7 +78,7 @@ export function UserMenu() {
             <div className="px-4 py-3 border-b border-[var(--color-border)]">
               <div className="flex items-center gap-3">
                 {avatar ? (
-                  <img src={avatar} alt="" className="w-9 h-9 rounded-full" />
+                  <img src={avatar} alt={t("userAvatar")} className="w-9 h-9 rounded-full" />
                 ) : (
                   <span className="text-2xl">{displayAvatar}</span>
                 )}

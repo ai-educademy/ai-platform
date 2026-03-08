@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readJsonFile, writeJsonFile } from "@/lib/fileStore";
 
-// TODO: Add rate limiting for production
-
 const FILE = "lesson-feedback.json";
 
 interface FeedbackEntry {

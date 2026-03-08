@@ -37,13 +37,13 @@ const AI_PATH = buildNavPrograms(AI_PATH_SLUGS);
 const CRAFT_PATH = buildNavPrograms(CRAFT_PATH_SLUGS);
 
 const LAB_EXPERIMENTS = [
-  { slug: "neural-playground", icon: "🧠", title: "Neural Network Playground" },
-  { slug: "ai-or-human", icon: "🤖", title: "AI or Human?" },
-  { slug: "prompt-lab", icon: "💬", title: "Prompt Lab" },
-  { slug: "image-gen", icon: "🎨", title: "Image Generator" },
-  { slug: "sentiment", icon: "😊", title: "Sentiment Analyzer" },
-  { slug: "chatbot", icon: "💡", title: "Chatbot Builder" },
-  { slug: "ethics-sim", icon: "⚖️", title: "Ethics Simulator" },
+  { slug: "neural-playground", icon: "🧠" },
+  { slug: "ai-or-human", icon: "🤖" },
+  { slug: "prompt-lab", icon: "💬" },
+  { slug: "image-gen", icon: "🎨" },
+  { slug: "sentiment", icon: "😊" },
+  { slug: "chatbot", icon: "💡" },
+  { slug: "ethics-sim", icon: "⚖️" },
 ];
 
 /* ─── Animated hamburger icon ─── */
@@ -254,6 +254,16 @@ function ProgramsDropdownContent({ basePath, t }: { basePath: string; t: (key: s
 }
 
 function LabDropdownContent({ basePath, t }: { basePath: string; t: (key: string) => string }) {
+  const tl = useTranslations("lab");
+  const labTitles: Record<string, string> = {
+    "neural-playground": tl("navNeural"),
+    "ai-or-human": tl("navAiOrHuman"),
+    "prompt-lab": tl("navPromptLab"),
+    "image-gen": tl("navImageGen"),
+    "sentiment": tl("navSentiment"),
+    "chatbot": tl("navChatbot"),
+    "ethics-sim": tl("navEthics"),
+  };
   return (
     <div className="w-[320px] p-4">
       <div className="flex items-center justify-between px-3 mb-3">
@@ -274,7 +284,7 @@ function LabDropdownContent({ basePath, t }: { basePath: string; t: (key: string
           >
             <span className="text-base shrink-0">{exp.icon}</span>
             <span className="text-sm font-medium text-[var(--color-text)] group-hover/item:text-[var(--color-primary)] transition-colors">
-              {exp.title}
+              {labTitles[exp.slug]}
             </span>
           </Link>
         ))}
@@ -393,12 +403,23 @@ function AboutDropdownContent({ basePath, t }: { basePath: string; t: (key: stri
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const tl = useTranslations("lab");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { profile } = useGuestProfile();
   const { data: session } = useSession();
   const isSignedIn = !!profile || !!session?.user;
+
+  const labTitles: Record<string, string> = {
+    "neural-playground": tl("navNeural"),
+    "ai-or-human": tl("navAiOrHuman"),
+    "prompt-lab": tl("navPromptLab"),
+    "image-gen": tl("navImageGen"),
+    "sentiment": tl("navSentiment"),
+    "chatbot": tl("navChatbot"),
+    "ethics-sim": tl("navEthics"),
+  };
 
   const segments = pathname.split("/").filter(Boolean);
   const locale = (locales as readonly string[]).includes(segments[0]) ? segments[0] : "en";
@@ -606,7 +627,7 @@ export function Navbar() {
                       className="flex items-center gap-2.5 py-2 px-1 rounded-lg text-sm text-[var(--color-text)] hover:bg-[var(--color-text)]/[0.04]"
                     >
                       <span>{exp.icon}</span>
-                      <span className="font-medium">{exp.title}</span>
+                      <span className="font-medium">{labTitles[exp.slug]}</span>
                     </Link>
                   ))}
                 </MobileSection>

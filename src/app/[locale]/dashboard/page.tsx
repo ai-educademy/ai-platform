@@ -13,6 +13,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { AnimatedProgressBar } from "@/components/ui/MotionWrappers";
 import { locales } from "@/i18n/request";
 import { Flame, ArrowRight, Trophy } from "lucide-react";
+import type { DynamicTranslate } from "@/lib/i18n-utils";
 
 const PROGRAMS = [
   {
@@ -185,9 +186,12 @@ function MotionReveal({
 
 export default function DashboardPage() {
   const t = useTranslations("dashboard");
+  const td = t as unknown as DynamicTranslate;
   const ta = useTranslations("auth");
   const tl = useTranslations("lessonTitles");
+  const tld = tl as unknown as DynamicTranslate;
   const tp = useTranslations("programs");
+  const tpd = tp as unknown as DynamicTranslate;
   const { totalCompleted, getProgram, isCompleted, getCompletedAt, reset } = useProgress();
   const { currentStreak, longestStreak } = useStreak();
   const { data: session } = useSession();
@@ -290,7 +294,7 @@ export default function DashboardPage() {
       {/* Certificate Modal */}
       {certProgramData && (
         <Certificate
-          programName={tp(`${certProgramData.slug}.title` as any)}
+          programName={tpd(`${certProgramData.slug}.title`)}
           programIcon={certProgramData.icon}
           userName={profile?.name || t("defaultUser")}
           completionDate={certCompletionDate}
@@ -332,8 +336,8 @@ export default function DashboardPage() {
                 {nextLesson.lesson.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs text-[var(--color-text-muted)] mb-0.5">{nextLesson.program.icon} {tp(`${nextLesson.program.slug}.title` as any)}</p>
-                <h3 className="font-bold text-sm truncate">{tl(nextLesson.lesson.slug as any)}</h3>
+                <p className="text-xs text-[var(--color-text-muted)] mb-0.5">{nextLesson.program.icon} {tpd(`${nextLesson.program.slug}.title`)}</p>
+                <h3 className="font-bold text-sm truncate">{tld(nextLesson.lesson.slug)}</h3>
                 <span className="text-xs text-[var(--color-text-muted)]">⏱️ {nextLesson.lesson.duration} {t("min")}</span>
               </div>
               <span className="shrink-0 px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-semibold">
@@ -405,7 +409,7 @@ export default function DashboardPage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-4xl">{program.icon}</span>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-xl font-bold">{tp(`${program.slug}.title` as any)}</h2>
+                  <h2 className="text-xl font-bold">{tpd(`${program.slug}.title`)}</h2>
                   <div className="flex items-center gap-3 mt-1">
                     <AnimatedProgressBar
                       percentage={progPct}
@@ -449,7 +453,7 @@ export default function DashboardPage() {
                           {lesson.icon}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-sm truncate">{tl(lesson.slug as any)}</h3>
+                          <h3 className="font-bold text-sm truncate">{tld(lesson.slug)}</h3>
                           <span className="text-xs text-[var(--color-text-muted)]">⏱️ {lesson.duration} {t("min")}</span>
                         </div>
                         <div className="shrink-0">
@@ -495,8 +499,8 @@ export default function DashboardPage() {
                   : "bg-[var(--color-bg-section)] border-[var(--color-border)] opacity-40 grayscale"
               }`}>
                 <div className={`text-5xl mb-3 ${unlocked ? "animate-float-slow" : ""}`}>{achievement.icon}</div>
-                <h3 className="font-bold mb-1">{t(achievement.titleKey as any)}</h3>
-                <p className="text-xs text-[var(--color-text-muted)]">{t(achievement.descKey as any)}</p>
+                <h3 className="font-bold mb-1">{td(achievement.titleKey)}</h3>
+                <p className="text-xs text-[var(--color-text-muted)]">{td(achievement.descKey)}</p>
                 {unlocked && (
                   <span className="inline-block mt-3 text-xs font-semibold text-gradient">✨ {t("unlocked")}</span>
                 )}

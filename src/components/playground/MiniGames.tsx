@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, memo } from "react";
 import { useTranslations } from "next-intl";
+import type { DynamicTranslate } from "@/lib/i18n-utils";
 import { SystemDesignCanvas } from "./SystemDesignCanvas";
 
 /* ═══════════════════════════════════════════════════════════════
@@ -30,14 +31,14 @@ function StatusBar({ left, right }: { left: React.ReactNode; right?: React.React
   );
 }
 
-function GameOverScreen({ emoji, stat, label, onReplay, replayText }: { emoji: string; stat: string; label: string; onReplay: () => void; replayText?: string }) {
+function GameOverScreen({ emoji, stat, label, onReplay, replayText }: { emoji: string; stat: string; label: string; onReplay: () => void; replayText: string }) {
   return (
     <div className="text-center py-8 space-y-4">
       <div className="text-6xl animate-bounce">{emoji}</div>
       <p className="text-4xl font-bold font-mono">{stat}</p>
       <p className="text-sm text-[var(--color-text-muted)] font-mono">{label}</p>
       <button onClick={onReplay} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all shadow-lg shadow-indigo-500/20 font-mono">
-        ▶ {replayText || "Play Again"}
+        ▶ {replayText}
       </button>
     </div>
   );
@@ -105,7 +106,7 @@ function computeAccuracy(w: NNWeights, points: { x: number; y: number; cls: numb
   return Math.round((correct / points.length) * 100);
 }
 
-export function NeuralNetworkPlayground() {
+export const NeuralNetworkPlayground = memo(function NeuralNetworkPlayground() {
   const tp = useTranslations("lab.playground");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number; cls: number }[]>([]);
@@ -354,7 +355,7 @@ export function NeuralNetworkPlayground() {
       </div>
     </GameShell>
   );
-}
+});
 
 /* ═══════════════════════════════════════════════════════════════
    2. Prompt Engineering Dojo
@@ -473,8 +474,9 @@ function scorePrompt(prompt: string, challenge: PromptChallenge): { score: numbe
   return { score, feedbackKey, simulatedResponse };
 }
 
-export function PromptEngineeringDojo() {
+export const PromptEngineeringDojo = memo(function PromptEngineeringDojo() {
   const tp = useTranslations("lab.playground");
+  const tpd = tp as unknown as DynamicTranslate;
   const [currentIdx, setCurrentIdx] = useState(0);
   const [input, setInput] = useState("");
   const [result, setResult] = useState<{ score: number; feedbackKey: string; simulatedResponse: string } | null>(null);
@@ -621,7 +623,7 @@ export function PromptEngineeringDojo() {
                   />
                 </div>
               </div>
-              <p className="text-xs font-mono text-[var(--color-text-muted)]">{tp(result.feedbackKey as any)}</p>
+              <p className="text-xs font-mono text-[var(--color-text-muted)]">{tpd(result.feedbackKey)}</p>
             </div>
           </div>
 
@@ -642,7 +644,7 @@ export function PromptEngineeringDojo() {
       )}
     </GameShell>
   );
-}
+});
 
 /* ═══════════════════════════════════════════════════════════════
    3. Algorithm Visualizer
@@ -772,7 +774,7 @@ const ALGO_COLORS: Record<SortAlgo, string> = {
   merge: "#00FF88",
 };
 
-export function AlgorithmVisualizer() {
+export const AlgorithmVisualizer = memo(function AlgorithmVisualizer() {
   const tp = useTranslations("lab.playground");
   const ARRAY_SIZE = 24;
   const [baseArray, setBaseArray] = useState<number[]>(() => generateArray(ARRAY_SIZE));
@@ -1073,7 +1075,7 @@ export function AlgorithmVisualizer() {
       </div>
     </GameShell>
   );
-}
+});
 
 /* ─── Game Registry with metadata ─── */
 import type { GameCategory, GameDifficulty } from "./GameCard";

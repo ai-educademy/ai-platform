@@ -118,7 +118,8 @@
     "programs": "Academics",
     "dashboard": "Dashboard",
     "lab": "Lab",
-    "pageViews": "page views"
+    "pageViews": "page views",
+    "scrollToTop": "Scroll to top"
   },
   "about": {
     "title": "About AI Educademy",
@@ -211,8 +212,6 @@
     "tryAgain": "Try Again",
     "quickCheck": "Quick Check",
     "animationError": "Animation could not load",
-    "videoFallback": "Video",
-    "shortBadge": "SHORT",
     "progressPercent": "{percent}% complete"
   },
   "programs": {
@@ -509,7 +508,8 @@
     "certCertifies": "This certifies that",
     "certCompleted": "has successfully completed",
     "certDate": "Completed on",
-    "certOrg": "AI Educademy"
+    "certOrg": "AI Educademy",
+    "certShareText": "I completed {program} on AI Educademy! 🎓"
   },
   "auth": {
     "startLearning": "Start Learning",
@@ -549,7 +549,8 @@
     "guestLearner": "Guest learner",
     "userMenuLabel": "User menu",
     "myProgress": "My Progress",
-    "allPrograms": "All Programs"
+    "allPrograms": "All Programs",
+    "userAvatar": "User avatar"
   },
   "lessonTitles": {
     "agentic-workflows": "Agentic Workflows",
@@ -686,7 +687,8 @@
     "placeholder": "Enter your email",
     "subscribe": "Subscribe",
     "success": "You're subscribed! 🎉",
-    "invalidEmail": "Please enter a valid email"
+    "invalidEmail": "Please enter a valid email",
+    "subscriptionFailed": "Subscription failed"
   },
   "community": {
     "updates": "Stay Updated",
@@ -694,7 +696,8 @@
     "openSourceDesc": "Built openly, view code, contribute, or fork",
     "shareText": "Free AI education for everyone",
     "headline": "Join the Movement",
-    "subtitle": "Get the latest lessons, tips, and updates delivered to your inbox. Star us on GitHub to support free AI education for everyone."
+    "subtitle": "Get the latest lessons, tips, and updates delivered to your inbox. Star us on GitHub to support free AI education for everyone.",
+    "shareTitle": "AI Educademy"
   },
   "lab": {
     "title": "AI Lab",
@@ -1074,7 +1077,14 @@
     "experimentsLoaded": "experiments loaded",
     "allSystemsOp": "all systems operational",
     "featuredExperiment": "Featured Experiment",
-    "runButton": "RUN"
+    "runButton": "RUN",
+    "navNeural": "Neural Network Playground",
+    "navAiOrHuman": "AI or Human?",
+    "navPromptLab": "Prompt Lab",
+    "navImageGen": "Image Generator",
+    "navSentiment": "Sentiment Analyzer",
+    "navChatbot": "Chatbot Builder",
+    "navEthics": "Ethics Simulator"
   },
   "ui": {
     "light": "Light",
@@ -1082,7 +1092,9 @@
     "comingSoon": "Soon",
     "lightMode": "Light mode",
     "darkMode": "Dark mode",
-    "comingSoonMessage": "{title} is coming soon! We're building this module right now."
+    "comingSoonMessage": "{title} is coming soon! We're building this module right now.",
+    "changeLanguage": "Language: {language}. Click to change.",
+    "selectLanguage": "Select language"
   },
   "admin": {
     "loginTitle": "🔐 Admin Access",

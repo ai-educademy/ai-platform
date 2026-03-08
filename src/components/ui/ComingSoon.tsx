@@ -11,14 +11,13 @@ export function ComingSoonCard({
 }) {
   const t = useTranslations("ui");
   return (
-    <button
-      onClick={() => alert(`${label} - ${t("comingSoon")}!`)}
-      className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-60 hover:opacity-80 hover:border-indigo-400 transition-all cursor-pointer w-full"
+    <div
+      className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-60 hover:opacity-80 hover:border-indigo-400 transition-all w-full"
     >
       <div className="text-2xl mb-1">{icon}</div>
       <div className="text-[10px] font-bold truncate">{label}</div>
       <div className="text-[8px] text-[var(--color-text-muted)]">{t("comingSoon")}</div>
-    </button>
+    </div>
   );
 }
 
@@ -31,13 +30,10 @@ export function ComingSoonProgramCard({
 }) {
   const t = useTranslations("ui");
   return (
-    <button
-      onClick={() =>
-        alert(t("comingSoonMessage", { title }))
-      }
-      className="block h-full text-left w-full hover:opacity-80 transition-opacity cursor-pointer"
+    <div
+      className="block h-full text-left w-full hover:opacity-80 transition-opacity"
     >
       {children}
-    </button>
+    </div>
   );
 }
