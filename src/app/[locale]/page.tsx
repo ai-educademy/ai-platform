@@ -82,11 +82,11 @@ export default async function HomePage({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[60vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[70vh] flex items-center">
         <NeuralBackground variant="hero" />
         <FloatingParticles />
         <div className="absolute inset-0 bg-grid" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-24 md:py-32 relative">
           <HomeHero
             title={t("hero.title")}
             titleHighlight={t("hero.titleHighlight")}
@@ -108,7 +108,7 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Programs Section — Two Tracks */}
-      <section className="py-24 sm:py-32">
+      <section className="py-28 sm:py-36">
         <HomeProgramCards
           sectionTitle={t("programs.title")}
           sectionSubtitle={t("programs.subtitle")}
@@ -151,7 +151,7 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Brains Behind the Idea */}
-      <section className="py-24 sm:py-32 relative overflow-hidden bg-[var(--color-bg-section)]">
+      <section className="py-28 sm:py-36 relative overflow-hidden bg-[var(--color-bg-section)]">
         <HomeFounder
           brainsTitle={t("founder.brainsTitle")}
           name="Ramesh Reddy Adutla"

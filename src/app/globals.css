@@ -838,3 +838,75 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ═══════════════════════════════════════════
+   Premium Micro-Interactions (Whimsical-inspired)
+   ═══════════════════════════════════════════ */
+
+/* Animated gradient text */
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-flow 4s ease infinite;
+}
+
+/* Hover lift with glow */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gradient border on hover (top accent) */
+.gradient-border-hover {
+  position: relative;
+}
+.gradient-border-hover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gradient-border-hover:hover::before {
+  opacity: 1;
+}
+
+/* Pulse ring for avatars */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 var(--color-primary-glow); }
+  70% { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-animated {
+    animation: none;
+  }
+  .shimmer-sweep {
+    animation: none !important;
+  }
+  .pulse-ring {
+    animation: none;
+  }
+  .hover-lift:hover {
+    transform: none;
+  }
+}
