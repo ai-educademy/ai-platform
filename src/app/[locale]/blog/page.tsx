@@ -42,13 +42,13 @@ export default async function BlogPage({
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
       {/* Hero */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient leading-tight">
+      <div className="text-center mb-20">
+        <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 text-gradient leading-tight tracking-tight">
           {t("title")}
         </h1>
-        <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto">
+        <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto leading-relaxed">
           {t("subtitle")}
         </p>
       </div>
@@ -66,8 +66,8 @@ export default async function BlogPage({
               href={`${basePath}/blog/${post.slug}`}
               className="block group"
             >
-              <article className="gradient-border card-hover h-full">
-                <div className="bg-[var(--color-bg-card)] rounded-2xl p-6 h-full flex flex-col">
+              <article className="h-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-primary)]">
+                <div className="p-6 h-full flex flex-col">
                   {/* Date + Read time */}
                   <div className="flex items-center gap-3 text-xs text-[var(--color-text-muted)] mb-3">
                     <time dateTime={post.date}>

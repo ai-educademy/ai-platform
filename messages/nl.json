@@ -29,10 +29,14 @@
     "lessons": "Interactieve lessen",
     "cost": "Kosten",
     "openSource": "Open Source",
-    "freeValue": "Gratis"
+    "freeValue": "Gratis",
+    "statPrograms": "10 programma's",
+    "statLessons": "100+ lessen",
+    "statLanguages": "5 talen",
+    "statFree": "Voor altijd gratis"
   },
   "features": {
-    "title": "Ontworpen voor Absolute Beginners",
+    "title": "Waarom AI Educademy?",
     "subtitle": "Je hoeft niets te weten over programmeren, wiskunde of iets technisch. We beginnen bij de basis.",
     "beginner": {
       "title": "Begin vanaf Nul",
@@ -57,7 +61,19 @@
     "practical": {
       "title": "AI in het Echte Leven",
       "description": "Begrijp hoe AI werkt in dingen die je dagelijks gebruikt — zoekmachines, stemassistenten, sociale media, zelfrijdende auto's en medische diagnose."
-    }
+    },
+    "structuredTitle": "Gestructureerde programma's",
+    "structuredDesc": "Zorgvuldig opgebouwde tracks van beginner tot expert",
+    "lessonsTitle": "100+ deskundige lessen",
+    "lessonsDesc": "Diepgaande, goed onderzochte inhoud",
+    "languagesTitle": "5 talen",
+    "languagesDesc": "Leer in het Engels, Frans, Nederlands, Hindi of Telugu",
+    "labTitle": "Interactief lab",
+    "labDesc": "Praktijkexperimenten om je kennis te versterken",
+    "openSourceTitle": "Open source",
+    "openSourceDesc": "Volledig transparant — bekijk, fork of draag bij",
+    "freeTitle": "Altijd gratis",
+    "freeDesc": "Geen betaalmuur, geen premium, voor altijd gratis"
   },
   "founder": {
     "description": "Software engineer en engineering leader met meer dan een decennium ervaring in het bouwen van grootschalige systemen in meerdere landen in Azië en Europa. Na het leiden van digitale transformaties in retail, loyaliteit en financiële dienstverlening, heb ik AI Educademy opgericht om AI- en engineeringonderwijs van wereldklasse gratis toegankelijk te maken — in elke taal, voor elke achtergrond.",

@@ -6,14 +6,14 @@ export default function AboutPage() {
   const t = useTranslations("about");
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-32">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
       {/* Hero */}
       <ScrollReveal animation="fade-up">
         <div className="text-center mb-24">
-          <h1 className="text-4xl md:text-6xl font-bold text-gradient mb-4 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-gradient mb-6 tracking-tight">
             {t("title")}
           </h1>
-          <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-xl mx-auto">
+          <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto leading-relaxed">
             {t("pageSubtitle")}
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                 unoptimized
               />
             </div>
-            <div className="space-y-5 text-[var(--color-text-muted)] leading-relaxed">
+            <div className="space-y-6 text-[var(--color-text-muted)] leading-relaxed">
               <p>{t("storyText1")}</p>
               <p>{t("storyText2")}</p>
               <p>{t("storyText3")}</p>

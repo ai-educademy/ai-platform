@@ -277,7 +277,7 @@ export default function LabPage() {
     <>
       <style>{PLAYGROUND_STYLES}</style>
       <div className="min-h-screen pg-dot-bg bg-[var(--color-bg)] text-[var(--color-text)]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
           {/* ── Terminal Hero ── */}
           <div className="mb-10">
@@ -287,7 +287,7 @@ export default function LabPage() {
                 {!heroDone && <span className="pg-blink">▌</span>}
               </p>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold font-mono tracking-tight mb-2 leading-tight">
+            <h1 className="text-4xl sm:text-5xl font-extrabold font-mono tracking-tight mb-3 leading-tight">
               <span className="text-[var(--color-primary)]">AI</span>{" "}
               <span className="text-[var(--color-text)]">Experiment Lab</span>
             </h1>
@@ -347,7 +347,7 @@ export default function LabPage() {
               <p className="text-sm font-mono text-[var(--color-text-muted)]">{t("hub.noGamesFound")}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredGames.map((game, i) => {
                 const diff = DIFFICULTY_BADGE_KEYS[game.difficulty];
                 const tagDef = CATEGORY_TAG_KEYS[game.category];

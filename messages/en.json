@@ -29,10 +29,14 @@
     "lessons": "Interactive lessons",
     "cost": "Cost",
     "openSource": "Open Source",
-    "freeValue": "Free"
+    "freeValue": "Free",
+    "statPrograms": "10 Programs",
+    "statLessons": "100+ Lessons",
+    "statLanguages": "5 Languages",
+    "statFree": "Free Forever"
   },
   "features": {
-    "title": "Designed for Absolute Beginners",
+    "title": "Why AI Educademy?",
     "subtitle": "No coding, no maths, no prerequisites. We start from zero.",
     "beginner": {
       "title": "Start from Zero",
@@ -57,7 +61,19 @@
     "practical": {
       "title": "Real-World AI",
       "description": "How AI powers search engines, voice assistants, social feeds, self-driving cars, and medical diagnosis."
-    }
+    },
+    "structuredTitle": "Structured Programs",
+    "structuredDesc": "Carefully sequenced tracks from beginner to expert",
+    "lessonsTitle": "100+ Expert Lessons",
+    "lessonsDesc": "Deep, well-researched content across every topic",
+    "languagesTitle": "5 Languages",
+    "languagesDesc": "Learn in English, French, Dutch, Hindi, or Telugu",
+    "labTitle": "Interactive Lab",
+    "labDesc": "Hands-on experiments to solidify your understanding",
+    "openSourceTitle": "Open Source",
+    "openSourceDesc": "Fully transparent — view, fork, or contribute",
+    "freeTitle": "Always Free",
+    "freeDesc": "No paywalls, no premium tiers, free forever"
   },
   "founder": {
     "description": "Decade and a half across fintech, media, and retail — building large-scale systems at multinational giants like JP Morgan, Sky, and a major UK retailer. Worked across Asia and Europe, currently based in London, helping digitise a global retail tech estate. Working in countries where English isn't the first language made one thing clear — language should never be a barrier to learning. Speaks English, French, and Telugu.",

@@ -187,7 +187,7 @@ export default function ProgramsShowcase({ tracks, programsByTrack, basePath, t 
 /* ─────────────────────── Hero ─────────────────────── */
 function HeroSection({ t, stats }: { t: ProgramsI18n; stats: { tracks: number; programs: number; lessons: number } }) {
   return (
-    <div className="relative pt-20 pb-14 md:pt-28 md:pb-20 text-center overflow-hidden">
+    <div className="relative py-20 sm:py-28 text-center overflow-hidden">
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-[var(--color-primary)] opacity-[0.04] blur-[100px] animate-[float_8s_ease-in-out_infinite]" />
@@ -195,7 +195,7 @@ function HeroSection({ t, stats }: { t: ProgramsI18n; stats: { tracks: number; p
       </div>
 
       <motion.h1
-        className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-gradient relative leading-tight"
+        className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-gradient relative leading-tight tracking-tight"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -287,7 +287,7 @@ function TrackTabs({ tracks, active, onChange, allLabel }: {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.45 }}
     >
-      <div className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] shadow-sm max-w-full overflow-x-auto whitespace-nowrap">
+      <div className="inline-flex items-center gap-2 p-1.5 rounded-full bg-[var(--color-bg-card)] border border-[var(--color-border)] shadow-sm max-w-full overflow-x-auto whitespace-nowrap">
         {/* All tracks tab */}
         <TabButton
           isActive={active === null}
@@ -318,14 +318,14 @@ function TabButton({ isActive, onClick, icon, label }: {
   return (
     <button
       onClick={onClick}
-      className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${
+      className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${
         isActive ? "text-white" : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
       }`}
     >
       {isActive && (
         <motion.div
           layoutId="active-track-pill"
-          className="absolute inset-0 rounded-xl bg-[var(--color-primary)] shadow-lg"
+          className="absolute inset-0 rounded-full bg-[var(--color-primary)] shadow-lg"
           style={{ boxShadow: "0 4px 12px var(--color-primary-glow, rgba(99,102,241,0.25))" }}
           transition={{ type: "spring", stiffness: 350, damping: 30 }}
         />
@@ -404,7 +404,7 @@ function ProgramCard({ program, basePath, t, index }: {
                 </motion.div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2.5 flex-wrap mb-1">
-                    <h3 className="text-xl font-bold leading-tight">{program.title}</h3>
+                    <h3 className="text-xl font-bold leading-relaxed">{program.title}</h3>
                     <span
                       className="text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider"
                       style={{ backgroundColor: `${program.color}15`, color: program.color }}

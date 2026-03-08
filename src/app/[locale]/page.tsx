@@ -1,10 +1,9 @@
 import { getTranslations } from "next-intl/server";
-import { FloatingParticles, ScrollReveal } from "@ai-educademy/ai-ui-library";
+import { ScrollReveal } from "@ai-educademy/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { Mail, Github } from "lucide-react";
 import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 import HomeHero from "@/components/home/HomeHero";
 import HomeProgramCards from "@/components/home/HomeProgramCards";
 import HomeFounder from "@/components/home/HomeFounder";
@@ -18,6 +17,7 @@ export default async function HomePage({
   const t = await getTranslations();
   const tp = await getTranslations("homePrograms");
   const tc = await getTranslations("community");
+  const tf = await getTranslations("features");
   const tPT = await getTranslations("programTitles");
   const tLT = await getTranslations("lessonTitles");
   const basePath = locale === "en" ? "" : `/${locale}`;
@@ -81,11 +81,9 @@ export default async function HomePage({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[60vh] flex items-center">
-        <NeuralBackground variant="hero" />
-        <FloatingParticles />
+      <section className="relative overflow-hidden flex items-center">
         <div className="absolute inset-0 bg-grid" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-24 sm:py-32 relative">
           <HomeHero
             title={t("hero.title")}
             titleHighlight={t("hero.titleHighlight")}
@@ -96,6 +94,10 @@ export default async function HomePage({
             ctaSecondaryHref={`${basePath}/lab`}
             basePath={basePath}
             totalLessons={3}
+            statPrograms={t("hero.statPrograms")}
+            statLessons={t("hero.statLessons")}
+            statLanguages={t("hero.statLanguages")}
+            statFree={t("hero.statFree")}
           />
         </div>
       </section>
@@ -103,10 +105,19 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Programs Section — Two Tracks */}
-      <section className="py-12 md:py-16">
+      <section className="py-24 sm:py-32">
         <HomeProgramCards
           sectionTitle={t("programs.title")}
           sectionSubtitle={t("programs.subtitle")}
+          featuresTitle={tf("title")}
+          features={[
+            { icon: "🎓", title: tf("structuredTitle"), desc: tf("structuredDesc") },
+            { icon: "📚", title: tf("lessonsTitle"), desc: tf("lessonsDesc") },
+            { icon: "🌍", title: tf("languagesTitle"), desc: tf("languagesDesc") },
+            { icon: "🧪", title: tf("labTitle"), desc: tf("labDesc") },
+            { icon: "🔓", title: tf("openSourceTitle"), desc: tf("openSourceDesc") },
+            { icon: "💡", title: tf("freeTitle"), desc: tf("freeDesc") },
+          ]}
           trackAI={{
             trackIcon: "🌳",
             trackTitle: tp("trackAI"),
@@ -137,8 +148,7 @@ export default async function HomePage({
       <hr className="section-divider" />
 
       {/* Brains Behind the Idea */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-mesh" />
+      <section className="py-24 sm:py-32 relative overflow-hidden bg-[var(--color-bg-section)]">
         <HomeFounder
           brainsTitle={t("founder.brainsTitle")}
           name="Ramesh Reddy Adutla"

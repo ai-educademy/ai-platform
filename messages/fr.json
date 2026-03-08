@@ -29,10 +29,14 @@
     "lessons": "Leçons interactives",
     "cost": "Coût",
     "openSource": "Open Source",
-    "freeValue": "Gratuit"
+    "freeValue": "Gratuit",
+    "statPrograms": "10 programmes",
+    "statLessons": "100+ leçons",
+    "statLanguages": "5 langues",
+    "statFree": "Gratuit pour toujours"
   },
   "features": {
-    "title": "Conçu pour les Débutants Absolus",
+    "title": "Pourquoi AI Educademy ?",
     "subtitle": "Vous n'avez pas besoin de connaître la programmation, les maths ou quoi que ce soit de technique. Nous commençons par les bases.",
     "beginner": {
       "title": "Partez de Zéro",
@@ -57,7 +61,19 @@
     "practical": {
       "title": "L'IA dans la Vie Réelle",
       "description": "Comprenez comment l'IA fonctionne dans les choses que vous utilisez tous les jours — moteurs de recherche, assistants vocaux, réseaux sociaux, voitures autonomes et diagnostic médical."
-    }
+    },
+    "structuredTitle": "Programmes structurés",
+    "structuredDesc": "Des parcours soigneusement séquencés du débutant à l'expert",
+    "lessonsTitle": "100+ leçons expertes",
+    "lessonsDesc": "Un contenu approfondi et bien documenté",
+    "languagesTitle": "5 langues",
+    "languagesDesc": "Apprenez en anglais, français, néerlandais, hindi ou télougou",
+    "labTitle": "Labo interactif",
+    "labDesc": "Des expériences pratiques pour consolider vos connaissances",
+    "openSourceTitle": "Open source",
+    "openSourceDesc": "Entièrement transparent — consultez, forkez ou contribuez",
+    "freeTitle": "Toujours gratuit",
+    "freeDesc": "Pas de paywall, pas de premium, gratuit pour toujours"
   },
   "founder": {
     "description": "Ingénieur logiciel et leader en ingénierie avec plus d'une décennie d'expérience dans la construction de systèmes à grande échelle dans plusieurs pays d'Asie et d'Europe. Ayant dirigé des transformations numériques dans le commerce de détail, la fidélisation et les services financiers, j'ai fondé AI Educademy pour rendre l'éducation en IA et en ingénierie accessible gratuitement — dans chaque langue, pour chaque parcours.",

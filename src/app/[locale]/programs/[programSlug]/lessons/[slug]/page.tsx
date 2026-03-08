@@ -42,7 +42,7 @@ export default async function ProgramLessonPage({
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
       {/* Breadcrumb */}
       <div className="mb-8 text-sm text-[var(--color-text-muted)]">
         <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">
@@ -61,7 +61,7 @@ export default async function ProgramLessonPage({
       </div>
 
       {/* Header */}
-      <div className="mb-10">
+      <div className="mb-12">
         <div className="flex items-center gap-3 mb-4">
           <span className="text-3xl">{lesson.icon}</span>
           <div>
@@ -76,7 +76,7 @@ export default async function ProgramLessonPage({
             </span>
           </div>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold leading-tight">{tLT(slug)}</h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">{tLT(slug)}</h1>
       </div>
 
       {/* Content */}
