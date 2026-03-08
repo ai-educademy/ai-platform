@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { ThumbsUp, ThumbsDown, Loader2 } from "lucide-react";
 import { useProgress } from "@/hooks/useProgress";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const STORAGE_KEY = "aieducademy-feedback";
 
@@ -40,6 +41,8 @@ function saveToLocalStorage(lessonSlug: string, isHelpful: boolean, text: string
 export function LessonFeedback({ lessonSlug, programSlug, locale }: LessonFeedbackProps) {
   const t = useTranslations("feedback");
   const { isCompleted } = useProgress(programSlug);
+  const prefersReduced = useReducedMotion();
+  const noMotion = !!prefersReduced;
   const [step, setStep] = useState<"ask" | "comment" | "done">("ask");
   const [helpful, setHelpful] = useState<boolean | null>(null);
   const [comment, setComment] = useState("");
@@ -88,57 +91,89 @@ export function LessonFeedback({ lessonSlug, programSlug, locale }: LessonFeedba
   };
 
   return (
-    <div className="mt-10 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
-      {step === "ask" && (
-        <div className="text-center space-y-4">
-          <p className="text-lg font-semibold">{t("title")}</p>
-          <div className="flex items-center justify-center gap-4">
-            <button
-              onClick={() => handleVote(true)}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all cursor-pointer min-h-[48px]"
-            >
-              <ThumbsUp size={20} />
-              <span className="text-sm font-medium">{t("helpful")}</span>
-            </button>
-            <button
-              onClick={() => handleVote(false)}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-secondary)] hover:text-[var(--color-secondary)] transition-all cursor-pointer min-h-[48px]"
-            >
-              <ThumbsDown size={20} />
-              <span className="text-sm font-medium">{t("notHelpful")}</span>
-            </button>
-          </div>
-        </div>
-      )}
-
-      {step === "comment" && (
-        <div className="space-y-4">
-          <p className="text-sm text-[var(--color-text-muted)]">
-            {t("tellUsMore")}
-          </p>
-          <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            rows={3}
-            disabled={loading}
-            className="w-full p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-sm disabled:opacity-50"
-          />
-          <button
-            onClick={handleSubmit}
-            disabled={loading || helpful === null}
-            className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-sm hover:brightness-110 transition-all cursor-pointer min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+    <motion.div
+      className="mt-10 p-5 sm:p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)]"
+      initial={noMotion ? undefined : { opacity: 0, y: 16 }}
+      whileInView={noMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+    >
+      <AnimatePresence mode="wait">
+        {step === "ask" && (
+          <motion.div
+            key="ask"
+            className="text-center space-y-4"
+            initial={noMotion ? undefined : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={noMotion ? undefined : { opacity: 0, y: -8 }}
           >
-            {loading && <Loader2 size={16} className="animate-spin" />}
-            {t("submit")}
-          </button>
-        </div>
-      )}
+            <p className="text-lg font-semibold">{t("title")}</p>
+            <div className="flex items-center justify-center gap-4">
+              <motion.button
+                onClick={() => handleVote(true)}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] active:bg-[var(--color-accent)]/10 transition-all cursor-pointer min-h-[48px]"
+                whileHover={noMotion ? undefined : { scale: 1.04 }}
+                whileTap={noMotion ? undefined : { scale: 0.96 }}
+              >
+                <ThumbsUp size={20} />
+                <span className="text-sm font-medium">{t("helpful")}</span>
+              </motion.button>
+              <motion.button
+                onClick={() => handleVote(false)}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-secondary)] hover:text-[var(--color-secondary)] active:bg-[var(--color-secondary)]/10 transition-all cursor-pointer min-h-[48px]"
+                whileHover={noMotion ? undefined : { scale: 1.04 }}
+                whileTap={noMotion ? undefined : { scale: 0.96 }}
+              >
+                <ThumbsDown size={20} />
+                <span className="text-sm font-medium">{t("notHelpful")}</span>
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
 
-      {step === "done" && (
-        <p className="text-center text-[var(--color-accent)] font-semibold">
-          {t("thanks")}
-        </p>
-      )}
-    </div>
+        {step === "comment" && (
+          <motion.div
+            key="comment"
+            className="space-y-4"
+            initial={noMotion ? undefined : { opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={noMotion ? undefined : { opacity: 0 }}
+          >
+            <p className="text-sm text-[var(--color-text-muted)]">
+              {t("tellUsMore")}
+            </p>
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              rows={3}
+              disabled={loading}
+              className="w-full p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-base disabled:opacity-50"
+            />
+            <motion.button
+              onClick={handleSubmit}
+              disabled={loading || helpful === null}
+              className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-sm hover:brightness-110 active:brightness-90 transition-all cursor-pointer min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              whileHover={noMotion ? undefined : { scale: 1.03 }}
+              whileTap={noMotion ? undefined : { scale: 0.97 }}
+            >
+              {loading && <Loader2 size={16} className="animate-spin" />}
+              {t("submit")}
+            </motion.button>
+          </motion.div>
+        )}
+
+        {step === "done" && (
+          <motion.p
+            key="done"
+            className="text-center text-[var(--color-accent)] font-semibold py-2"
+            initial={noMotion ? undefined : { scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            ✅ {t("thanks")}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }

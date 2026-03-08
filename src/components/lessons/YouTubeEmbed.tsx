@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface YouTubeEmbedProps {
   id: string;
@@ -21,6 +22,8 @@ interface YouTubeEmbedProps {
  */
 export function YouTubeEmbed({ id, title, short = false, start }: YouTubeEmbedProps) {
   const t = useTranslations("lessons");
+  const prefersReduced = useReducedMotion();
+  const noMotion = !!prefersReduced;
   const [loaded, setLoaded] = useState(false);
 
   const handlePlay = useCallback(() => setLoaded(true), []);
@@ -36,7 +39,13 @@ export function YouTubeEmbed({ id, title, short = false, start }: YouTubeEmbedPr
   const thumbUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 
   return (
-    <figure className="my-8">
+    <motion.figure
+      className="my-8"
+      initial={noMotion ? undefined : { opacity: 0, scale: 0.95 }}
+      whileInView={noMotion ? undefined : { opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+    >
       <div
         className={`relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-black shadow-sm ${
           short ? "aspect-[9/16] max-w-xs mx-auto" : "aspect-video"
@@ -53,22 +62,22 @@ export function YouTubeEmbed({ id, title, short = false, start }: YouTubeEmbedPr
         ) : (
           <button
             onClick={handlePlay}
-            className="absolute inset-0 w-full h-full group cursor-pointer"
+            className="absolute inset-0 w-full h-full group cursor-pointer min-h-[44px]"
             aria-label={`Play ${title || "video"}`}
           >
             {/* Thumbnail */}
             <img
               src={thumbUrl}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
               loading="lazy"
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             {/* Play button */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-red-500">
-                <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-red-600 flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:scale-110 group-active:scale-110 group-hover:bg-red-500 group-active:bg-red-500">
+                <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
@@ -87,6 +96,6 @@ export function YouTubeEmbed({ id, title, short = false, start }: YouTubeEmbedPr
           🎬 {title}
         </figcaption>
       )}
-    </figure>
+    </motion.figure>
   );
 }

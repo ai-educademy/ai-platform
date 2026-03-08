@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { savePersonalBest } from "./GameCard";
 import ConfettiCelebration from "./ConfettiCelebration";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const TRIVIA_QUESTIONS = [
   { question: "Who is considered the 'father of artificial intelligence'?", options: ["Alan Turing", "John McCarthy", "Marvin Minsky", "Geoffrey Hinton"], answer: 1 },
@@ -54,6 +55,8 @@ function addToLeaderboard(entry: LeaderboardEntry) {
 
 export default function AITriviaChallenge() {
   const t = useTranslations("lab");
+  const prefersReduced = useReducedMotion();
+  const noMotion = !!prefersReduced;
   const [gameState, setGameState] = useState<"intro" | "playing" | "result">("intro");
   const [questions, setQuestions] = useState<typeof TRIVIA_QUESTIONS>([]);
   const [current, setCurrent] = useState(0);
@@ -161,8 +164,20 @@ export default function AITriviaChallenge() {
 
   if (gameState === "intro") {
     return (
-      <div className="text-center py-8 space-y-6">
-        <div className="text-6xl">🧠</div>
+      <motion.div
+        className="text-center py-8 space-y-6"
+        initial={noMotion ? undefined : { opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <motion.div
+          className="text-6xl"
+          initial={noMotion ? undefined : { scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.1 }}
+        >
+          🧠
+        </motion.div>
         <div>
           <h3 className="text-2xl sm:text-3xl font-bold mb-3">{t("games.aiTrivia.title")}</h3>
           <p className="text-[var(--color-text-muted)] max-w-lg mx-auto leading-relaxed">
@@ -180,18 +195,35 @@ export default function AITriviaChallenge() {
             ⚡ {t("games.aiTrivia.speedBonus")}
           </span>
         </div>
-        <button onClick={startGame} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg shadow-indigo-500/25">
+        <motion.button
+          onClick={startGame}
+          className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold rounded-xl hover:brightness-110 active:brightness-90 transition-all shadow-lg shadow-indigo-500/25"
+          whileHover={noMotion ? undefined : { scale: 1.05 }}
+          whileTap={noMotion ? undefined : { scale: 0.96 }}
+        >
           {t("aiOrHuman.startGame")}
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     );
   }
 
   if (gameState === "result") {
     return (
-      <div className="text-center py-6 space-y-6 relative">
+      <motion.div
+        className="text-center py-6 space-y-6 relative"
+        initial={noMotion ? undefined : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
         {isNewBest && <ConfettiCelebration />}
-        <div className="text-6xl animate-bounce">{score >= 2000 ? "🏆" : score >= 1000 ? "🎯" : "🧠"}</div>
+        <motion.div
+          className="text-6xl"
+          initial={noMotion ? undefined : { scale: 0, rotate: -30 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 12 }}
+        >
+          {score >= 2000 ? "🏆" : score >= 1000 ? "🎯" : "🧠"}
+        </motion.div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-1">{t("games.aiTrivia.finalScore")}</p>
           <p className="text-5xl font-bold tabular-nums">{score}</p>
@@ -221,10 +253,15 @@ export default function AITriviaChallenge() {
           </div>
         )}
 
-        <button onClick={startGame} className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg shadow-indigo-500/25">
+        <motion.button
+          onClick={startGame}
+          className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold rounded-xl hover:brightness-110 active:brightness-90 transition-all shadow-lg shadow-indigo-500/25"
+          whileHover={noMotion ? undefined : { scale: 1.05 }}
+          whileTap={noMotion ? undefined : { scale: 0.96 }}
+        >
           {t("common.playAgain")}
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     );
   }
 
@@ -275,47 +312,69 @@ export default function AITriviaChallenge() {
       </div>
 
       {/* Question */}
-      <div className="p-5 sm:p-6 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] text-center">
-        <p className="text-base sm:text-lg font-semibold leading-relaxed">{q.question}</p>
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          className="p-4 sm:p-6 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] text-center"
+          initial={noMotion ? undefined : { opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={noMotion ? undefined : { opacity: 0, x: -24 }}
+          transition={{ type: "spring", stiffness: 300, damping: 24 }}
+        >
+          <p className="text-base sm:text-lg font-semibold leading-relaxed">{q.question}</p>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Options */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {q.options.map((opt, i) => {
           const isCorrect = i === q.answer;
           const isSelected = selected === i;
-          let style = "border-[var(--color-border)] hover:border-indigo-400 active:scale-[0.98]";
+          let style = "border-[var(--color-border)] hover:border-indigo-400 active:border-indigo-400 active:scale-[0.98]";
           if (feedback) {
             if (isCorrect) style = "border-emerald-500 bg-emerald-500/10 text-emerald-400";
             else if (isSelected) style = "border-red-500 bg-red-500/10 text-red-400";
             else style = "border-[var(--color-border)] opacity-40";
           }
           return (
-            <button
+            <motion.button
               key={i}
               onClick={() => handleAnswer(i)}
               disabled={feedback !== null}
-              className={`min-h-[48px] p-4 rounded-xl border-2 font-medium text-left transition-all ${style}`}
+              className={`min-h-[48px] p-4 rounded-xl border-2 font-medium text-left transition-colors ${style}`}
+              initial={noMotion ? undefined : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={noMotion ? undefined : { delay: i * 0.05 }}
+              whileHover={noMotion || feedback !== null ? undefined : { scale: 1.02 }}
+              whileTap={noMotion || feedback !== null ? undefined : { scale: 0.97 }}
             >
               <span className="text-xs text-[var(--color-text-muted)] mr-2">{i + 1}.</span>
               {opt}
-            </button>
+            </motion.button>
           );
         })}
       </div>
 
       {/* Feedback */}
-      {feedback && (
-        <div className={`text-center text-sm font-semibold py-2 rounded-lg ${
-          feedback === "correct" ? "text-emerald-400 bg-emerald-500/10" :
-          feedback === "wrong" ? "text-red-400 bg-red-500/10" :
-          "text-amber-400 bg-amber-500/10"
-        }`}>
-          {feedback === "correct" && t("games.aiTrivia.correctAnswer", { points: 100 * multiplier })}
-          {feedback === "wrong" && t("games.aiTrivia.wrongAnswer", { answer: q.options[q.answer] })}
-          {feedback === "timeout" && t("games.aiTrivia.timesUp")}
-        </div>
-      )}
+      <AnimatePresence>
+        {feedback && (
+          <motion.div
+            className={`text-center text-sm font-semibold py-2 rounded-lg ${
+              feedback === "correct" ? "text-emerald-400 bg-emerald-500/10" :
+              feedback === "wrong" ? "text-red-400 bg-red-500/10" :
+              "text-amber-400 bg-amber-500/10"
+            }`}
+            initial={noMotion ? undefined : { opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={noMotion ? undefined : { opacity: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          >
+            {feedback === "correct" && t("games.aiTrivia.correctAnswer", { points: 100 * multiplier })}
+            {feedback === "wrong" && t("games.aiTrivia.wrongAnswer", { answer: q.options[q.answer] })}
+            {feedback === "timeout" && t("games.aiTrivia.timesUp")}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Lottie from "lottie-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface LottieAnimationProps {
   src: string;
@@ -33,6 +34,7 @@ export function LottieAnimation({
   speed = 1,
 }: LottieAnimationProps) {
   const t = useTranslations("lessons");
+  const prefersReduced = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<{ play: () => void; pause: () => void; setSpeed: (s: number) => void } | null>(null);
   const [animationData, setAnimationData] = useState<object | null>(null);
@@ -71,11 +73,20 @@ export function LottieAnimation({
       .catch(() => setError(true));
   }, [isVisible, src]);
 
+  const noMotion = !!prefersReduced;
+
   return (
-    <figure className="my-8" ref={containerRef}>
+    <motion.figure
+      className="my-8"
+      ref={containerRef}
+      initial={noMotion ? undefined : { opacity: 0, scale: 0.95 }}
+      whileInView={noMotion ? undefined : { opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+    >
       <div
         className="rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-bg-card)] flex items-center justify-center"
-        style={{ minHeight: height }}
+        style={{ minHeight: Math.min(height, 240) }}
         role="img"
         aria-label={alt || caption || "Animation"}
       >
@@ -88,9 +99,9 @@ export function LottieAnimation({
           <Lottie
             lottieRef={lottieRef as React.MutableRefObject<never>}
             animationData={animationData}
-            loop={loop}
-            autoplay={autoplay}
-            style={{ height, maxWidth: "100%" }}
+            loop={noMotion ? false : loop}
+            autoplay={noMotion ? false : autoplay}
+            style={{ height: Math.min(height, typeof window !== "undefined" && window.innerWidth < 640 ? 200 : height), maxWidth: "100%" }}
             onDOMLoaded={() => {
               if (lottieRef.current && speed !== 1) {
                 lottieRef.current.setSpeed(speed);
@@ -98,7 +109,7 @@ export function LottieAnimation({
             }}
           />
         ) : (
-          <div className="flex items-center justify-center" style={{ height }}>
+          <div className="flex items-center justify-center" style={{ height: Math.min(height, 200) }}>
             <div className="w-8 h-8 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin" />
           </div>
         )}
@@ -108,6 +119,6 @@ export function LottieAnimation({
           {caption || alt}
         </figcaption>
       )}
-    </figure>
+    </motion.figure>
   );
 }

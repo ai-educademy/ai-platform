@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState, useCallback, useEffect } from "react";
 import { savePersonalBest } from "./GameCard";
 import ConfettiCelebration from "./ConfettiCelebration";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const GAME_ROUNDS = [
   { text: "The sunset painted the sky in hues of amber and violet, a daily masterpiece that most people barely noticed as they rushed home from work.", author: "human" as const, source: "Personal blog post" },
@@ -24,6 +25,8 @@ const totalRounds = 8;
 
 export default function AIOrHumanGame() {
   const t = useTranslations("lab");
+  const prefersReduced = useReducedMotion();
+  const noMotion = !!prefersReduced;
   const [gameState, setGameState] = useState<"intro" | "playing" | "result">("intro");
   const [rounds, setRounds] = useState<typeof GAME_ROUNDS>([]);
   const [currentRound, setCurrentRound] = useState(0);
@@ -113,12 +116,22 @@ export default function AIOrHumanGame() {
 
   if (gameState === "intro") {
     return (
-      <div className="text-center py-8 space-y-6">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 border border-violet-500/30">
+      <motion.div
+        className="text-center py-8 space-y-6"
+        initial={noMotion ? undefined : { opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <motion.div
+          className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 border border-violet-500/30"
+          initial={noMotion ? undefined : { scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.1 }}
+        >
           <svg className="w-10 h-10 text-violet-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
           </svg>
-        </div>
+        </motion.div>
         <div>
           <h3 className="text-2xl sm:text-3xl font-bold mb-3">{t("aiOrHuman.title")}</h3>
           <p className="text-[var(--color-text-muted)] max-w-lg mx-auto leading-relaxed">
@@ -135,22 +148,36 @@ export default function AIOrHumanGame() {
             {t("aiOrHuman.rounds", { count: totalRounds })}
           </span>
         </div>
-        <button
+        <motion.button
           onClick={startGame}
-          className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg shadow-violet-600/25"
+          className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold rounded-xl hover:brightness-110 active:brightness-90 transition-all shadow-lg shadow-violet-600/25"
+          whileHover={noMotion ? undefined : { scale: 1.05 }}
+          whileTap={noMotion ? undefined : { scale: 0.96 }}
         >
           {t("aiOrHuman.startGame")}
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     );
   }
 
   if (gameState === "result") {
     const pct = Math.round((score / totalRounds) * 100);
     return (
-      <div className="text-center py-6 space-y-6 relative">
+      <motion.div
+        className="text-center py-6 space-y-6 relative"
+        initial={noMotion ? undefined : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
         {isNewBest && <ConfettiCelebration />}
-        <div className="text-6xl animate-bounce">{getScoreEmoji()}</div>
+        <motion.div
+          className="text-6xl"
+          initial={noMotion ? undefined : { scale: 0, rotate: -30 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 12 }}
+        >
+          {getScoreEmoji()}
+        </motion.div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-1">{getScoreTitle()}</p>
           <p className="text-5xl font-bold tabular-nums">{score}/{totalRounds}</p>
@@ -192,13 +219,15 @@ export default function AIOrHumanGame() {
           ))}
         </div>
 
-        <button
+        <motion.button
           onClick={startGame}
-          className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg shadow-violet-600/25"
+          className="min-h-[48px] px-8 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold rounded-xl hover:brightness-110 active:brightness-90 transition-all shadow-lg shadow-violet-600/25"
+          whileHover={noMotion ? undefined : { scale: 1.05 }}
+          whileTap={noMotion ? undefined : { scale: 0.96 }}
         >
           {t("aiOrHuman.playAgain")}
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     );
   }
 
@@ -222,13 +251,21 @@ export default function AIOrHumanGame() {
       </div>
 
       {/* Quote card */}
-      <div className={`relative rounded-2xl border-2 p-6 sm:p-8 transition-all duration-300 ${
-        feedback
-          ? feedback.correct
-            ? "border-emerald-500/50 bg-emerald-500/5"
-            : "border-red-500/50 bg-red-500/5"
-          : "border-[var(--color-border)] bg-[var(--color-bg-section)]"
-      }`}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentRound}
+          className={`relative rounded-2xl border-2 p-5 sm:p-8 transition-colors duration-300 ${
+            feedback
+              ? feedback.correct
+                ? "border-emerald-500/50 bg-emerald-500/5"
+                : "border-red-500/50 bg-red-500/5"
+              : "border-[var(--color-border)] bg-[var(--color-bg-section)]"
+          }`}
+          initial={noMotion ? undefined : { opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={noMotion ? undefined : { opacity: 0, x: -30 }}
+          transition={{ type: "spring", stiffness: 300, damping: 24 }}
+        >
         <svg className="absolute top-4 left-5 w-8 h-8 text-[var(--color-text-muted)] opacity-20" fill="currentColor" viewBox="0 0 24 24">
           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
         </svg>
@@ -241,44 +278,49 @@ export default function AIOrHumanGame() {
             <span className="text-[var(--color-text-muted)] font-normal"> ({round.source})</span>
           </div>
         )}
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Guess buttons */}
-      <div className="grid grid-cols-2 gap-4">
-        <button
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        <motion.button
           onClick={() => makeGuess("human")}
           disabled={!!feedback}
-          className={`group relative min-h-[64px] px-6 py-4 rounded-xl border-2 font-semibold transition-all ${
+          className={`group relative min-h-[64px] px-4 sm:px-6 py-4 rounded-xl border-2 font-semibold transition-colors ${
             feedback
               ? feedback.answer === "human"
                 ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
                 : "border-[var(--color-border)] opacity-40"
-              : "border-[var(--color-border)] hover:border-emerald-500/50 hover:bg-emerald-500/5 text-[var(--color-text)]"
+              : "border-[var(--color-border)] hover:border-emerald-500/50 hover:bg-emerald-500/5 active:border-emerald-500/50 active:bg-emerald-500/5 text-[var(--color-text)]"
           } disabled:cursor-default`}
+          whileHover={noMotion || feedback ? undefined : { scale: 1.03 }}
+          whileTap={noMotion || feedback ? undefined : { scale: 0.97 }}
         >
           <svg className="w-7 h-7 mx-auto mb-2 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
           </svg>
           {t("aiOrHuman.human")}
           <span className="text-[10px] text-[var(--color-text-muted)] block mt-1">{t("games.aiOrHuman.press1")}</span>
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={() => makeGuess("ai")}
           disabled={!!feedback}
-          className={`group relative min-h-[64px] px-6 py-4 rounded-xl border-2 font-semibold transition-all ${
+          className={`group relative min-h-[64px] px-4 sm:px-6 py-4 rounded-xl border-2 font-semibold transition-colors ${
             feedback
               ? feedback.answer === "ai"
                 ? "border-violet-500 bg-violet-500/10 text-violet-400"
                 : "border-[var(--color-border)] opacity-40"
-              : "border-[var(--color-border)] hover:border-violet-500/50 hover:bg-violet-500/5 text-[var(--color-text)]"
+              : "border-[var(--color-border)] hover:border-violet-500/50 hover:bg-violet-500/5 active:border-violet-500/50 active:bg-violet-500/5 text-[var(--color-text)]"
           } disabled:cursor-default`}
+          whileHover={noMotion || feedback ? undefined : { scale: 1.03 }}
+          whileTap={noMotion || feedback ? undefined : { scale: 0.97 }}
         >
           <svg className="w-7 h-7 mx-auto mb-2 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
           </svg>
           {t("aiOrHuman.ai")}
           <span className="text-[10px] text-[var(--color-text-muted)] block mt-1">{t("games.aiOrHuman.press2")}</span>
-        </button>
+        </motion.button>
       </div>
     </div>
   );
