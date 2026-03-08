@@ -34,11 +34,14 @@ function voiceScore(v: SpeechSynthesisVoice): number {
 
 /** Strip symbols that TTS reads literally but humans skip when reading aloud */
 function cleanForSpeech(text: string): string {
+  // eslint-disable-next-line no-misleading-character-class
+  const emojiRe = /[\p{Emoji_Presentation}\p{Extended_Pictographic}\u200d\uFE0F]/gu;
   return (
     text
-      .replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}\u200d\uFE0F]/gu, "")
+      .replace(emojiRe, "")
       .replace(/[→←↑↓↔↕⇒⇐⇑⇓➜➤►▶◀▸▾▴«»]/g, "")
       .replace(/[•◦◉○●★☆✦✧✶✴✸❖◆◇■□▪▫♦♠♣♥♡]/g, "")
+      // eslint-disable-next-line no-misleading-character-class
       .replace(/[✓✔✗✘✕✖❌❎⚠️℗©®™§¶†‡]/g, "")
       .replace(/[≈≠≤≥±∞∑∏∫∂√∆∇]/g, "")
       .replace(/[─━│┃═║╔╗╚╝┌┐└┘├┤┬┴┼…⋯|~`]/g, "")
