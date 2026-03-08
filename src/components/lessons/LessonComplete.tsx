@@ -304,7 +304,7 @@ export function LessonComplete({
             {tL("lessonOf", { current: currentIndex + 1, total: totalLessons })}
           </span>
           <span>
-            {tL("completedOf", { completed: progCompleted, total: totalLessons })}
+            {tL("progressPercent", { percent: totalLessons > 0 ? Math.round((progCompleted / totalLessons) * 100) : 0 })}
           </span>
         </div>
         <div className="progress-bar">

@@ -212,7 +212,8 @@
     "quickCheck": "Quick Check",
     "animationError": "Animation could not load",
     "videoFallback": "Video",
-    "shortBadge": "SHORT"
+    "shortBadge": "SHORT",
+    "progressPercent": "{percent}% complete"
   },
   "programs": {
     "badge": "",

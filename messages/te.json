@@ -214,7 +214,8 @@
     "quickCheck": "త్వరిత తనిఖీ",
     "animationError": "యానిమేషన్ లోడ్ కాలేదు",
     "videoFallback": "వీడియో",
-    "shortBadge": "షార్ట్"
+    "shortBadge": "షార్ట్",
+    "progressPercent": "{percent}% పూర్తి"
   },
   "programs": {
     "badge": "5 నేర్చుకునే స్థాయిలు",

@@ -212,7 +212,8 @@
     "quickCheck": "Vérification rapide",
     "animationError": "L'animation n'a pas pu se charger",
     "videoFallback": "Vidéo",
-    "shortBadge": "COURT"
+    "shortBadge": "COURT",
+    "progressPercent": "{percent}% terminé"
   },
   "programs": {
     "badge": "",

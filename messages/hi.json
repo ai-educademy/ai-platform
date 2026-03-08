@@ -212,7 +212,8 @@
     "quickCheck": "त्वरित जांच",
     "animationError": "एनिमेशन लोड नहीं हो सका",
     "videoFallback": "वीडियो",
-    "shortBadge": "शॉर्ट"
+    "shortBadge": "शॉर्ट",
+    "progressPercent": "{percent}% पूर्ण"
   },
   "programs": {
     "badge": "5 सीखने के स्तर",
