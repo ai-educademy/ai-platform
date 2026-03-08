@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
 import { Search, X, BookOpen, Clock, BarChart3, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
@@ -94,6 +94,14 @@ export default function ProgramsShowcase({ tracks, programsByTrack, basePath, t 
   const [activeTrack, setActiveTrack] = useState<string | null>(null); // null = all tracks
   const [searchQuery, setSearchQuery] = useState("");
   const prefersReducedMotion = useReducedMotion();
+
+  // Auto-select track from URL hash (e.g. /programs#ai-learning)
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash && tracks.some((tr) => tr.slug === hash)) {
+      setActiveTrack(hash);
+    }
+  }, [tracks]);
 
   const allPrograms = useMemo(
     () => Object.values(programsByTrack).flat(),

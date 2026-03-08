@@ -41,8 +41,6 @@ interface HomeProgramCardsProps {
   sectionSubtitle: string;
   trackAI: TrackCardProps;
   trackCraft: TrackCardProps;
-  viewAllText: string;
-  viewAllHref: string;
   highlights: HighlightCard[];
 }
 
@@ -399,8 +397,6 @@ export default function HomeProgramCards({
   sectionSubtitle,
   trackAI,
   trackCraft,
-  viewAllText,
-  viewAllHref,
   highlights,
 }: HomeProgramCardsProps) {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -461,29 +457,6 @@ export default function HomeProgramCards({
           <BentoAccentCard highlight={highlights[2]} reduced={reduced} />
         )}
       </div>
-
-      {/* View all link with animated arrow */}
-      <motion.div
-        className="text-center"
-        initial={reduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.4, delay: 0.1, ease }}
-      >
-        <Link
-          href={viewAllHref}
-          className="group inline-flex items-center gap-1 text-[var(--color-primary)] font-semibold hover:underline"
-        >
-          {viewAllText}
-          <motion.span
-            className="inline-block"
-            whileHover={reduced ? {} : { x: 4 }}
-            transition={spring}
-          >
-            →
-          </motion.span>
-        </Link>
-      </motion.div>
     </div>
   );
 }

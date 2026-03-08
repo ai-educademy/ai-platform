@@ -107,7 +107,7 @@ export default async function HomePage({
       </section>
 
       {/* Programs Section — Bento Grid */}
-      <section className="py-28 sm:py-36">
+      <section className="py-20 sm:py-28">
         <HomeProgramCards
           sectionTitle={t("programs.title")}
           sectionSubtitle={t("programs.subtitle")}
@@ -140,7 +140,7 @@ export default async function HomePage({
             firstLessonSlugs,
             lessonNames,
             basePath,
-            href: `${basePath}/programs`,
+            href: `${basePath}/programs#ai-learning`,
           }}
           trackCraft={{
             trackIcon: "🔨",
@@ -151,15 +151,13 @@ export default async function HomePage({
             firstLessonSlugs,
             lessonNames,
             basePath,
-            href: `${basePath}/programs`,
+            href: `${basePath}/programs#craft-engineering`,
           }}
-          viewAllText={tP("viewAll")}
-          viewAllHref={`${basePath}/programs`}
         />
       </section>
 
       {/* Brains Behind the Idea */}
-      <section className="py-28 sm:py-36 relative overflow-hidden bg-[var(--color-bg-section)]">
+      <section className="py-20 sm:py-28 relative overflow-hidden bg-[var(--color-bg-section)]">
         {/* Noise texture for section depth */}
         <div className="absolute inset-0 noise-texture pointer-events-none" />
         <HomeFounder
