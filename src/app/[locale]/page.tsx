@@ -1,9 +1,10 @@
 import { getTranslations } from "next-intl/server";
-import { ScrollReveal } from "@ai-educademy/ai-ui-library";
+import { FloatingParticles, ScrollReveal } from "@ai-educademy/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { Mail, Github } from "lucide-react";
 import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
+import NeuralBackground from "@/components/ui/NeuralBackground";
 import HomeHero from "@/components/home/HomeHero";
 import HomeProgramCards from "@/components/home/HomeProgramCards";
 import HomeFounder from "@/components/home/HomeFounder";
@@ -81,9 +82,11 @@ export default async function HomePage({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden flex items-center">
+      <section className="relative overflow-hidden min-h-[60vh] flex items-center">
+        <NeuralBackground variant="hero" />
+        <FloatingParticles />
         <div className="absolute inset-0 bg-grid" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-24 sm:py-32 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
           <HomeHero
             title={t("hero.title")}
             titleHighlight={t("hero.titleHighlight")}
