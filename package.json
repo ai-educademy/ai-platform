@@ -2,7 +2,7 @@
   "name": "@ai-educademy/ai-platform",
   "version": "0.1.0",
   "private": true,
-  "description": "Main Next.js app shell for AI Educademy \u2014 routing, auth, i18n, program registry",
+  "description": "Main Next.js app shell for AI Educademy — routing, auth, i18n, program registry",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -21,6 +21,7 @@
     "@tailwindcss/postcss": "^4.2.1",
     "@types/eslint": "^9.6.1",
     "@vercel/analytics": "^1.6.1",
+    "@vercel/kv": "^3.0.0",
     "@vercel/speed-insights": "^1.3.1",
     "framer-motion": "^12.15.0",
     "gray-matter": "^4.0.3",

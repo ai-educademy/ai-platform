@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { locales } from "@/i18n/request";
 
 import { BrandMark } from "./BrandMark";
+import { PageViewCounter } from "./PageViewCounter";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -100,6 +101,7 @@ export function Footer() {
         <div className="mt-10 pt-6 relative flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--color-text-muted)]">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
           <p>{t("mission")}</p>
+          <PageViewCounter />
           <p>{t("license")}</p>
         </div>
       </div>
