@@ -13,7 +13,9 @@
     "programs": "Academics",
     "blog": "Blog",
     "lab": "Lab",
-    "search": "search"
+    "search": "search",
+    "logIn": "Log in",
+    "signUp": "Sign up"
   },
   "hero": {
     "badge": "Free • Open Source • Multilingual",
@@ -68,14 +70,12 @@
     "buyCoffee": "Buy me a coffee"
   },
   "footer": {
-    "tagline": "Free AI education for everyone, in every language.",
     "lessons": "Lessons",
     "about": "About",
     "github": "GitHub",
     "contributing": "Contribute",
     "coc": "Code of Conduct",
     "buyMeACoffee": "Buy Me a Coffee",
-    "mission": "Free AI education for everyone",
     "license": "MIT Licence. Open Source",
     "learnHeader": "Learn",
     "communityHeader": "Community",

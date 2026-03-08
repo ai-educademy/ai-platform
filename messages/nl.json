@@ -13,7 +13,9 @@
     "programs": "Programma's",
     "blog": "Blog",
     "lab": "Lab",
-    "search": "Zoeken"
+    "search": "Zoeken",
+    "logIn": "Inloggen",
+    "signUp": "Registreren"
   },
   "hero": {
     "badge": "Gratis • Open Source • Meertalig",
@@ -69,14 +71,12 @@
   },
   "cta": {},
   "footer": {
-    "tagline": "Gratis AI-onderwijs voor iedereen, in elke taal.",
     "lessons": "Lessen",
     "about": "Over ons",
     "github": "GitHub",
     "contributing": "Bijdragen",
     "coc": "Gedragscode",
     "buyMeACoffee": "Koop een Koffie",
-    "mission": "Gratis AI-onderwijs voor iedereen",
     "license": "MIT Licentie — Open Source",
     "learnHeader": "Leren",
     "communityHeader": "Community",

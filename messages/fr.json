@@ -13,7 +13,9 @@
     "programs": "Programmes",
     "blog": "Blog",
     "lab": "Labo",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "logIn": "Se connecter",
+    "signUp": "S'inscrire"
   },
   "hero": {
     "badge": "Gratuit • Open Source • Multilingue",
@@ -68,14 +70,12 @@
     "buyCoffee": "Offrez-moi un café"
   },
   "footer": {
-    "tagline": "Éducation IA gratuite pour tous, dans toutes les langues.",
     "lessons": "Leçons",
     "about": "À propos",
     "github": "GitHub",
     "contributing": "Contribuer",
     "coc": "Code de Conduite",
     "buyMeACoffee": "Offrir un Café",
-    "mission": "Éducation IA gratuite pour tous",
     "license": "Licence MIT — Open Source",
     "learnHeader": "Apprendre",
     "communityHeader": "Communauté",

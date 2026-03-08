@@ -26,9 +26,6 @@ export function Footer() {
             <Link href={`${basePath}/`} className="flex items-center mb-3 hover:opacity-90 transition-opacity">
               <BrandMark size="sm" />
             </Link>
-            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              {t("tagline")}
-            </p>
           </div>
 
           {/* Learn */}
@@ -94,15 +91,14 @@ export function Footer() {
                   {t("buyMeACoffee")} <span className="inline-block group-hover:animate-bounce">☕</span>
                 </a>
               </li>
+              <li className="text-[var(--color-text-muted)]">
+                {t("license")}
+              </li>
+              <li>
+                <PageViewCounter />
+              </li>
             </ul>
           </div>
-        </div>
-
-        <div className="mt-10 pt-6 relative flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--color-text-muted)]">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
-          <p>{t("mission")}</p>
-          <PageViewCounter />
-          <p>{t("license")}</p>
         </div>
       </div>
     </footer>

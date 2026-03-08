@@ -13,7 +13,9 @@
     "programs": "कार्यक्रम",
     "blog": "ब्लॉग",
     "lab": "लैब",
-    "search": "खोजें"
+    "search": "खोजें",
+    "logIn": "लॉग इन",
+    "signUp": "साइन अप"
   },
   "hero": {
     "badge": "मुफ्त • ओपन सोर्स • बहुभाषी",
@@ -68,14 +70,12 @@
     "buyCoffee": "मुझे एक कॉफ़ी दिलाएं"
   },
   "footer": {
-    "tagline": "सभी के लिए, हर भाषा में मुफ्त AI शिक्षा।",
     "lessons": "पाठ",
     "about": "हमारे बारे में",
     "github": "GitHub",
     "contributing": "योगदान करें",
     "coc": "आचार संहिता",
     "buyMeACoffee": "कॉफ़ी खरीदें",
-    "mission": "सभी के लिए मुफ्त AI शिक्षा",
     "license": "MIT लाइसेंस — ओपन सोर्स",
     "learnHeader": "सीखें",
     "communityHeader": "समुदाय",

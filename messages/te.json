@@ -13,7 +13,9 @@
     "programs": "కార్యక్రమాలు",
     "blog": "బ్లాగ్",
     "lab": "ల్యాబ్",
-    "search": "శోధించు"
+    "search": "శోధించు",
+    "logIn": "లాగిన్",
+    "signUp": "సైన్ అప్"
   },
   "hero": {
     "badge": "ఉచితం • ఓపెన్ సోర్స్ • బహుభాషా",
@@ -70,14 +72,12 @@
   },
   "cta": {},
   "footer": {
-    "tagline": "అందరికీ, ప్రతి భాషలో ఉచిత AI విద్య.",
     "lessons": "పాఠాలు",
     "about": "మా గురించి",
     "github": "GitHub",
     "contributing": "సహకరించండి",
     "coc": "ప్రవర్తనా నియమావళి",
     "buyMeACoffee": "కాఫీ కొనండి",
-    "mission": "అందరికీ ఉచిత AI విద్య",
     "license": "MIT లైసెన్స్ — ఓపెన్ సోర్స్",
     "learnHeader": "నేర్చుకోండి",
     "communityHeader": "సంఘం",
