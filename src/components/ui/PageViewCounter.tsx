@@ -45,7 +45,7 @@ export function PageViewCounter() {
         setViews(data.views);
       }
     } catch {
-      // Silently fail — counter is optional
+      // Silently fail - counter is optional
     }
   }, []);
 

@@ -228,7 +228,7 @@ export default function DashboardPage() {
     return last ? new Date(last).toLocaleDateString() : new Date().toLocaleDateString();
   })();
 
-  // Auth gate — prompt to sign in
+  // Auth gate - prompt to sign in
   if (!isSignedIn) {
     return (
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
@@ -249,7 +249,7 @@ export default function DashboardPage() {
     );
   }
 
-  // Empty state — when user hasn't started any lessons
+  // Empty state - when user hasn't started any lessons
   if (totalCompleted === 0) {
     return (
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
@@ -379,7 +379,7 @@ export default function DashboardPage() {
         </div>
       </MotionReveal>
 
-      {/* Per-program sections — grouped by track */}
+      {/* Per-program sections - grouped by track */}
       {["ai-learning", "craft-engineering"].map((track) => {
         const trackPrograms = PROGRAMS.filter((p) => p.track === track);
         if (trackPrograms.length === 0) return null;

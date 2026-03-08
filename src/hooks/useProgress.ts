@@ -75,7 +75,7 @@ export function useProgress(programSlug?: string) {
   }, [session]);
 
   useEffect(() => {
-    // Don't run while NextAuth is still loading — prevents wiping progress
+    // Don't run while NextAuth is still loading - prevents wiping progress
     if (sessionStatus === "loading") return;
 
     const userId = resolveUserId();
@@ -85,7 +85,7 @@ export function useProgress(programSlug?: string) {
     setStorageKey(key);
     setIsGuest(!signedIn);
 
-    // Always load progress — guests use the "guest" key, signed-in users
+    // Always load progress - guests use the "guest" key, signed-in users
     // use their scoped key. Never wipe guest progress on load.
     const stored = localStorage.getItem(key);
     if (stored) {

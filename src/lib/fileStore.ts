@@ -7,7 +7,7 @@ async function ensureDataDir() {
   try {
     await fs.mkdir(DATA_DIR, { recursive: true });
   } catch {
-    // read-only filesystem (e.g. Vercel) — silently skip
+    // read-only filesystem (e.g. Vercel) - silently skip
   }
 }
 
@@ -28,7 +28,7 @@ export async function writeJsonFile<T>(filename: string, data: T): Promise<void>
   try {
     await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
   } catch {
-    // Vercel serverless has read-only filesystem — log and continue
+    // Vercel serverless has read-only filesystem - log and continue
     console.warn(`[fileStore] Cannot write ${filename} (read-only filesystem)`);
   }
 }

@@ -12,7 +12,7 @@ export function ComingSoonCard({
   const t = useTranslations("ui");
   return (
     <button
-      onClick={() => alert(`${label} — ${t("comingSoon")}!`)}
+      onClick={() => alert(`${label} - ${t("comingSoon")}!`)}
       className="text-center p-3 rounded-xl border border-dashed border-[var(--color-border)] opacity-60 hover:opacity-80 hover:border-indigo-400 transition-all cursor-pointer w-full"
     >
       <div className="text-2xl mb-1">{icon}</div>

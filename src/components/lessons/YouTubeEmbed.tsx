@@ -13,7 +13,7 @@ interface YouTubeEmbedProps {
 
 /**
  * Lazy-loaded YouTube embed with privacy-enhanced mode.
- * Shows a thumbnail + play button — only loads iframe on click.
+ * Shows a thumbnail + play button - only loads iframe on click.
  *
  * Usage in MDX:
  *   <YouTube id="dQw4w9WgXcQ" title="What is AI?" />

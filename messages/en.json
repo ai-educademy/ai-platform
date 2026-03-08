@@ -40,7 +40,7 @@
     "badge": "Free • Open Source • Multilingual",
     "title": "Learn AI.",
     "titleHighlight": "Build the Future.",
-    "subtitle": "Free interactive lessons that take you from curious beginner to confident builder. Start from zero — go as far as you want.",
+    "subtitle": "Free interactive lessons that take you from curious beginner to confident builder. Start from zero - go as far as you want.",
     "cta": "Start Your AI Journey",
     "ctaSecondary": "Explore Lab",
     "students": "Students learning",
@@ -56,7 +56,7 @@
   },
   "features": {
     "title": "Why AI Educademy?",
-    "subtitle": "Start from zero. No prerequisites needed — we guide you every step.",
+    "subtitle": "Start from zero. No prerequisites needed - we guide you every step.",
     "beginner": {
       "title": "Start from Zero",
       "description": "Never touched code? Good. We use everyday language and real-world examples, how Netflix recommends films, how your phone recognises your face."
@@ -90,12 +90,12 @@
     "labTitle": "Interactive Lab",
     "labDesc": "Hands-on experiments to solidify your understanding",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "Fully transparent — view, fork, or contribute",
+    "openSourceDesc": "Fully transparent - view, fork, or contribute",
     "freeTitle": "Always Free",
     "freeDesc": "No paywalls, no premium tiers, free forever"
   },
   "founder": {
-    "description": "Decade and a half across fintech, media, and retail — building large-scale systems at multinational giants like JP Morgan, Sky, and a major UK retailer. Worked across Asia and Europe, currently based in London, helping digitise a global retail tech estate. Working in countries where English isn't the first language made one thing clear — language should never be a barrier to learning. Speaks English, French, and Telugu.",
+    "description": "Decade and a half across fintech, media, and retail - building large-scale systems at multinational giants like JP Morgan, Sky, and a major UK retailer. Worked across Asia and Europe, currently based in London, helping digitise a global retail tech estate. Working in countries where English isn't the first language made one thing clear - language should never be a barrier to learning. Speaks English, French, and Telugu.",
     "cta": "More About Me",
     "role": "Engineering Leader · Open Source Builder · London",
     "statYears": "Years Engineering",
@@ -166,7 +166,7 @@
     "pageDescription": "AI Educademy is a free, open-source AI education platform built for everyone. Learn about our mission to make AI education accessible worldwide.",
     "pageSubtitle": "Free, open-source AI education for every student.",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "Every lesson, every line of code — free and open source. Fork it, translate it, make it yours.",
+    "openSourceDesc": "Every lesson, every line of code - free and open source. Fork it, translate it, make it yours.",
     "viewOnGithub": "View on GitHub"
   },
   "lessons": {
@@ -199,7 +199,7 @@
     "breadcrumbLessons": "Lessons",
     "trackComplete": "Track Complete!",
     "trackCompleteDesc": "You have finished every lesson in",
-    "trackCompleteDismiss": "Brilliant — carry on!",
+    "trackCompleteDismiss": "Brilliant - carry on!",
     "lessonOf": "Lesson {current} of {total}",
     "completedOf": "{completed} of {total} completed",
     "allPrograms": "All Programs",
@@ -207,7 +207,7 @@
     "trackCraft": "Code & Algorithms",
     "checkAnswer": "Check Answer",
     "quizCorrect": "Correct! Great job!",
-    "quizIncorrect": "Not quite — but that is how we learn!",
+    "quizIncorrect": "Not quite - but that is how we learn!",
     "tryAgain": "Try Again",
     "quickCheck": "Quick Check",
     "animationError": "Animation could not load",
@@ -238,7 +238,7 @@
         "title": "Understanding AI",
         "desc": "Grow from zero to AI expert, nature-inspired progression",
         "tagline": "Seeds → Sprouts → Branches → Canopy → Forest",
-        "brand": "Understand how machines think, learn, and create — from your first \"what is AI?\" to building production systems."
+        "brand": "Understand how machines think, learn, and create - from your first \"what is AI?\" to building production systems."
       },
       "craft-engineering": {
         "title": "Code & Algorithms",
@@ -261,7 +261,7 @@
       "subtitle": "Plant Your First AI Knowledge",
       "description": "Start from absolute zero. We use plain language and everyday examples to build your understanding, step by step.",
       "audience": "Complete beginners with no technical background",
-      "prerequisites": "None — just curiosity!",
+      "prerequisites": "None - just curiosity!",
       "topics": [
         "What is AI?",
         "How machines learn",
@@ -278,7 +278,7 @@
     "ai-sprouts": {
       "title": "AI Sprouts",
       "subtitle": "Build Your AI Foundations",
-      "description": "Ready to grow? Dive into the building blocks of AI — data, algorithms, and neural networks. Hands-on exercises help you build intuition before writing code.",
+      "description": "Ready to grow? Dive into the building blocks of AI - data, algorithms, and neural networks. Hands-on exercises help you build intuition before writing code.",
       "audience": "Learners who completed AI Seeds or have basic AI awareness",
       "prerequisites": "AI Seeds (recommended)",
       "topics": [
@@ -298,7 +298,7 @@
     "ai-branches": {
       "title": "AI Branches",
       "subtitle": "Explore Real-World Applications",
-      "description": "See AI in action across industries — healthcare, finance, creative arts, and more. Start building simple projects and understand the tools professionals use.",
+      "description": "See AI in action across industries - healthcare, finance, creative arts, and more. Start building simple projects and understand the tools professionals use.",
       "audience": "Learners ready to see AI applied in practice",
       "prerequisites": "AI Sprouts",
       "topics": [
@@ -338,7 +338,7 @@
     "ai-forest": {
       "title": "AI Forest",
       "subtitle": "Master the AI Ecosystem",
-      "description": "The complete picture — AI research, building production AI systems, contributing to open-source AI, and understanding where the field is heading. For those who want to shape the future.",
+      "description": "The complete picture - AI research, building production AI systems, contributing to open-source AI, and understanding where the field is heading. For those who want to shape the future.",
       "audience": "Advanced learners and aspiring AI practitioners",
       "prerequisites": "AI Canopy",
       "topics": [
@@ -357,8 +357,8 @@
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "Rough Outlines — DSA Fundamentals",
-      "description": "Master the fundamental data structures and algorithms that power AI systems. Arrays, hash maps, strings, and sorting — visualised with diagrams, explained with AI real-world applications.",
+      "subtitle": "Rough Outlines - DSA Fundamentals",
+      "description": "Master the fundamental data structures and algorithms that power AI systems. Arrays, hash maps, strings, and sorting - visualised with diagrams, explained with AI real-world applications.",
       "audience": "Engineers starting interview prep or refreshing fundamentals",
       "prerequisites": "Basic programming in any language",
       "topics": [
@@ -376,7 +376,7 @@
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "Carving Precision — Intermediate Patterns",
+      "subtitle": "Carving Precision - Intermediate Patterns",
       "description": "Level up with intermediate algorithmic patterns: two pointers, sliding window, BFS/DFS, and tree traversals. Each pattern tied to real AI/ML applications.",
       "audience": "Engineers with DSA basics ready for medium-level problems",
       "prerequisites": "AI Sketch or equivalent fundamentals",
@@ -395,7 +395,7 @@
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "Building Skill — System Design",
+      "subtitle": "Building Skill - System Design",
       "description": "Design large-scale systems that power AI: recommendation engines, search autocomplete, rate limiters. Learn to think in architectures, not just code.",
       "audience": "Mid-to-senior engineers preparing for system design rounds",
       "prerequisites": "Comfortable with coding interviews",
@@ -414,7 +414,7 @@
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "Refining Excellence — Behavioral Mastery",
+      "subtitle": "Refining Excellence - Behavioral Mastery",
       "description": "Master the behavioral interview with structured frameworks. STAR method, leadership principles, AI-era scenarios, and communication strategies.",
       "audience": "Engineers at any level preparing for behavioral rounds",
       "prerequisites": "Real project experience to draw from",
@@ -433,7 +433,7 @@
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "Portfolio-Ready — End-to-End Case Studies",
+      "subtitle": "Portfolio-Ready - End-to-End Case Studies",
       "description": "Capstone projects combining DSA, system design, and behavioral skills. Design real systems end-to-end and build your engineering portfolio.",
       "audience": "Engineers ready for senior+ roles",
       "prerequisites": "Completed AI Sketch through AI Polish",
@@ -933,7 +933,7 @@
     },
     "hub": {
       "title": "AI Lab",
-      "subtitle": "Interactive AI games and tools — play, experiment, and learn by doing.",
+      "subtitle": "Interactive AI games and tools - play, experiment, and learn by doing.",
       "badge": "Interactive • Fun • Educational",
       "gamesAvailable": "{count} games available",
       "searchPlaceholder": "Search games...",
@@ -1016,7 +1016,7 @@
       "seeResults": "SEE RESULTS",
       "nextChallenge": "NEXT CHALLENGE",
       "gameNeuralName": "Neural Network Playground",
-      "gameNeuralDesc": "Build & train a tiny neural network — place points, watch it learn",
+      "gameNeuralDesc": "Build & train a tiny neural network - place points, watch it learn",
       "gamePromptName": "Prompt Engineering Dojo",
       "gamePromptDesc": "Craft the perfect prompt to match target outputs",
       "gameAlgoName": "Algorithm Race",
@@ -1024,7 +1024,7 @@
       "gameTriviaName": "AI Trivia Challenge",
       "gameTriviaDesc": "Test your AI knowledge with timed questions",
       "gameDesignName": "System Design Canvas",
-      "gameDesignDesc": "Drag, connect, and design — practise architecture diagrams",
+      "gameDesignDesc": "Drag, connect, and design - practise architecture diagrams",
       "promptPlaceholder": "Type your prompt here... (Ctrl+Enter to submit)",
       "missionLabel": "// MISSION",
       "targetOutputLabel": "// TARGET OUTPUT",
@@ -1032,11 +1032,11 @@
       "promptFile": "prompt.txt",
       "feedbackExcellent": "🎯 Excellent prompt! Clear, specific, and well-structured.",
       "feedbackGood": "👍 Good attempt! Try being more specific about the format and constraints.",
-      "feedbackGettingThere": "📝 Getting there — include more relevant keywords and be explicit about what you want.",
+      "feedbackGettingThere": "📝 Getting there - include more relevant keywords and be explicit about what you want.",
       "feedbackVague": "🔄 Too vague. Try specifying the task, format, and any constraints explicitly.",
       "avgScoreLabel": "Average prompt score across {count} challenges",
       "vagueResponse": "I'm not sure what you're looking for. Could you be more specific about what you need?",
-      "placeBet": "// Place your bet — which algorithm wins?",
+      "placeBet": "// Place your bet - which algorithm wins?",
       "startRaceBtn": "🏁 START RACE",
       "newRace": "↻ NEW RACE",
       "yourBet": "YOUR BET",
@@ -1047,8 +1047,8 @@
       "betWon": "🎉 You called it!",
       "betLost": "😅 Not this time!",
       "mergeWins": "Merge Sort wins with O(n log n) guaranteed performance!",
-      "quickWins": "Quick Sort is the fastest on average — O(n log n) with low overhead!",
-      "bubbleWins": "Bubble Sort won?! That's extremely rare with random data — usually O(n²)!",
+      "quickWins": "Quick Sort is the fastest on average - O(n log n) with low overhead!",
+      "bubbleWins": "Bubble Sort won?! That's extremely rare with random data - usually O(n²)!",
       "comparingLegend": "Comparing",
       "swappingLegend": "Swapping",
       "sortedLegend": "Sorted",

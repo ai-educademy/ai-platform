@@ -21,7 +21,7 @@ interface QuizProps {
  *     question="What does AI learn from?"
  *     options="Magic|Data|The internet|Electricity"
  *     answer="1"
- *     explanation="AI systems learn patterns from data — millions of examples!"
+ *     explanation="AI systems learn patterns from data - millions of examples!"
  *   />
  */
 export function Quiz({ question, options: rawOptions, answer: rawAnswer, explanation }: QuizProps) {

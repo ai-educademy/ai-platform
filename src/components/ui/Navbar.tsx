@@ -490,7 +490,7 @@ export function Navbar() {
                 <AboutDropdownContent basePath={basePath} t={t} />
               </NavDropdown>
 
-              {/* Dashboard: simple link (no dropdown) — only when signed in */}
+              {/* Dashboard: simple link (no dropdown) - only when signed in */}
               {isSignedIn && (
                 <Link
                   href={`${basePath}/dashboard`}
@@ -611,7 +611,7 @@ export function Navbar() {
                   ))}
                 </MobileSection>
 
-                {/* Blog — simple link */}
+                {/* Blog - simple link */}
                 <Link
                   href={`${basePath}/blog`}
                   onClick={closeMobile}

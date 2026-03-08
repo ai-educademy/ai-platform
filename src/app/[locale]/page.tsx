@@ -102,7 +102,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Programs Section — Bento Grid */}
+      {/* Programs Section - Bento Grid */}
       <section className="py-12 sm:py-16">
         <HomeProgramCards
           sectionTitle={t("programs.title")}
@@ -176,7 +176,7 @@ export default async function HomePage({
         />
       </section>
 
-      {/* Community CTA — Full-width gradient section */}
+      {/* Community CTA - Full-width gradient section */}
       <section className="py-12 sm:py-16 relative overflow-hidden bg-gradient-mesh-cta">
         <div className="absolute inset-0 noise-texture pointer-events-none" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 text-center">
@@ -188,7 +188,7 @@ export default async function HomePage({
               {tc("subtitle")}
             </p>
 
-            {/* Newsletter signup — larger, centered */}
+            {/* Newsletter signup - larger, centered */}
             <div className="max-w-md mx-auto mb-8">
               <NewsletterSignup />
             </div>

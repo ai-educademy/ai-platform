@@ -110,7 +110,7 @@ export default function HomeHero({
 
   return (
     <div ref={ref} className="text-center max-w-4xl mx-auto">
-      {/* Logo — scale-in with spring + subtle float */}
+      {/* Logo - scale-in with spring + subtle float */}
       <motion.div
         initial={prefersReduced ? noMotion : { opacity: 0, scale: 0.8 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -131,7 +131,7 @@ export default function HomeHero({
         </motion.div>
       </motion.div>
 
-      {/* Title — each word fades up with stagger */}
+      {/* Title - each word fades up with stagger */}
       <motion.h1
         className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-6"
         initial={prefersReduced ? noMotion : { opacity: 0 }}
@@ -142,7 +142,7 @@ export default function HomeHero({
         <span className="block text-gradient-animated">{titleHighlight}</span>
       </motion.h1>
 
-      {/* Subtitle — fade up after title */}
+      {/* Subtitle - fade up after title */}
       <motion.p
         className="text-lg sm:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8 leading-relaxed"
         initial={prefersReduced ? noMotion : { opacity: 0, y: 16 }}
@@ -152,14 +152,14 @@ export default function HomeHero({
         {subtitle}
       </motion.p>
 
-      {/* CTAs — premium gradient buttons */}
+      {/* CTAs - premium gradient buttons */}
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
         initial={prefersReduced ? noMotion : { opacity: 0, y: 16 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        {/* Primary CTA — shimmer sweep */}
+        {/* Primary CTA - shimmer sweep */}
         <motion.div
           whileHover={prefersReduced ? {} : { scale: 1.04 }}
           whileTap={prefersReduced ? {} : { scale: 0.97 }}
@@ -174,7 +174,7 @@ export default function HomeHero({
           </Link>
         </motion.div>
 
-        {/* Secondary CTA — gradient border on hover */}
+        {/* Secondary CTA - gradient border on hover */}
         <motion.div
           whileHover={prefersReduced ? {} : { scale: 1.04 }}
           whileTap={prefersReduced ? {} : { scale: 0.97 }}
@@ -189,7 +189,7 @@ export default function HomeHero({
         </motion.div>
       </motion.div>
 
-      {/* Stats row — animated counters with subtle card treatment */}
+      {/* Stats row - animated counters with subtle card treatment */}
       <motion.div
         className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         initial={prefersReduced ? noMotion : { opacity: 0, y: 12 }}

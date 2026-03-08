@@ -12,7 +12,7 @@ const GAME_ROUNDS = [
   { text: "I tried to fix the kitchen tap myself. Three hours and two flooded towels later, I called a plumber. He fixed it in four minutes. I tipped him extra out of shame.", author: "human" as const, source: "Reddit comment" },
   { text: "Coffee is more than a beverage; it is a ritual, a moment of solitude in the chaos of modern life, a warm embrace that requires no words yet speaks volumes to the soul.", author: "ai" as const, source: "Claude" },
   { text: "My nan still prints out emails to read them. Last week she printed a spam email and rang me worried about a Nigerian prince who needed her help.", author: "human" as const, source: "Twitter/X post" },
-  { text: "The quantum computer hummed softly in the laboratory, its qubits dancing in superposition — simultaneously everything and nothing, much like the hopes of the researchers who had staked their careers on its success.", author: "ai" as const, source: "GPT-4" },
+  { text: "The quantum computer hummed softly in the laboratory, its qubits dancing in superposition - simultaneously everything and nothing, much like the hopes of the researchers who had staked their careers on its success.", author: "ai" as const, source: "GPT-4" },
   { text: "You know you're getting old when you get excited about a new sponge for the kitchen.", author: "human" as const, source: "Stand-up comedy" },
   { text: "Throughout history, the pen has proven mightier than the sword, for while armies conquer territories, it is the written word that conquers minds, shaping civilisations and bending the arc of progress toward enlightenment.", author: "ai" as const, source: "Claude" },
   { text: "The cat sat on my keyboard during a video call with the CEO. Sent 'ggggggggggg' to the entire leadership team. Got promoted the next week. Coincidence? Probably.", author: "human" as const, source: "LinkedIn post" },
@@ -274,7 +274,7 @@ export default function AIOrHumanGame() {
         </p>
         {feedback && (
           <div className={`mt-4 pl-6 text-sm font-medium ${feedback.correct ? "text-emerald-400" : "text-red-400"}`}>
-            {feedback.correct ? t("aiOrHuman.correct") : t("aiOrHuman.wrong")} — {t("aiOrHuman.writtenBy")} <strong>{feedback.answer === "ai" ? t("aiOrHuman.writtenByAI") : t("aiOrHuman.writtenByHuman")}</strong>
+            {feedback.correct ? t("aiOrHuman.correct") : t("aiOrHuman.wrong")} - {t("aiOrHuman.writtenBy")} <strong>{feedback.answer === "ai" ? t("aiOrHuman.writtenByAI") : t("aiOrHuman.writtenByHuman")}</strong>
             <span className="text-[var(--color-text-muted)] font-normal"> ({round.source})</span>
           </div>
         )}

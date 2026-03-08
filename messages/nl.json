@@ -40,7 +40,7 @@
     "badge": "Gratis • Open source • Meertalig",
     "title": "Leer AI.",
     "titleHighlight": "Bouw de toekomst.",
-    "subtitle": "Gratis interactieve lessen die je van nieuwsgierige beginner naar zelfverzekerde bouwer brengen. Begin bij nul — ga zo ver als je wilt.",
+    "subtitle": "Gratis interactieve lessen die je van nieuwsgierige beginner naar zelfverzekerde bouwer brengen. Begin bij nul - ga zo ver als je wilt.",
     "cta": "Begin jouw AI-reis",
     "ctaSecondary": "Ontdek het Lab",
     "students": "Studenten aan het leren",
@@ -56,10 +56,10 @@
   },
   "features": {
     "title": "Waarom AI Educademy?",
-    "subtitle": "Begin bij nul. Geen voorkennis nodig — wij begeleiden je bij elke stap.",
+    "subtitle": "Begin bij nul. Geen voorkennis nodig - wij begeleiden je bij elke stap.",
     "beginner": {
       "title": "Begin bij nul",
-      "description": "Nog nooit geprogrammeerd? Mooi zo. We gebruiken alledaagse taal en voorbeelden uit de echte wereld — hoe Netflix films aanbeveelt, hoe je telefoon je gezicht herkent."
+      "description": "Nog nooit geprogrammeerd? Mooi zo. We gebruiken alledaagse taal en voorbeelden uit de echte wereld - hoe Netflix films aanbeveelt, hoe je telefoon je gezicht herkent."
     },
     "interactive": {
       "title": "Leer door te doen",
@@ -67,7 +67,7 @@
     },
     "multilingual": {
       "title": "In jouw taal",
-      "description": "Leer in het Hindi, Telugu, Frans, Nederlands of Engels — welke taal ook als thuis voelt."
+      "description": "Leer in het Hindi, Telugu, Frans, Nederlands of Engels - welke taal ook als thuis voelt."
     },
     "free": {
       "title": "Voor altijd gratis",
@@ -90,12 +90,12 @@
     "labTitle": "Interactief Lab",
     "labDesc": "Praktische experimenten om je kennis te versterken",
     "openSourceTitle": "Open source",
-    "openSourceDesc": "Volledig transparant — bekijk, fork of draag bij",
+    "openSourceDesc": "Volledig transparant - bekijk, fork of draag bij",
     "freeTitle": "Altijd gratis",
     "freeDesc": "Geen betaalmuren, geen premium niveaus, voor altijd gratis"
   },
   "founder": {
-    "description": "Anderhalf decennium ervaring in fintech, media en retail — grootschalige systemen bouwen bij multinationals zoals JP Morgan, Sky en een grote Britse retailer. Gewerkt in Azië en Europa, momenteel gevestigd in Londen, waar hij helpt een wereldwijd retail-techlandschap te digitaliseren. Werken in landen waar Engels niet de eerste taal is maakte één ding duidelijk — taal mag nooit een barrière zijn om te leren. Spreekt Engels, Frans en Telugu.",
+    "description": "Anderhalf decennium ervaring in fintech, media en retail - grootschalige systemen bouwen bij multinationals zoals JP Morgan, Sky en een grote Britse retailer. Gewerkt in Azië en Europa, momenteel gevestigd in Londen, waar hij helpt een wereldwijd retail-techlandschap te digitaliseren. Werken in landen waar Engels niet de eerste taal is maakte één ding duidelijk - taal mag nooit een barrière zijn om te leren. Spreekt Engels, Frans en Telugu.",
     "cta": "Meer over mij",
     "role": "Engineering Leader · Open Source Bouwer · Londen",
     "statYears": "Jaar engineering",
@@ -125,7 +125,7 @@
     "mission": "Onze missie",
     "missionText": "AI-onderwijs voor elke student, ongeacht taal, achtergrond of ervaring.",
     "story": "Het brein achter het idee",
-    "storyText1": "Ik ben Ramesh Reddy Adutla, een engineering leader met 15 jaar ervaring in fintech, media en retail — grootschalige systemen bouwen bij wereldwijde bedrijven zoals JP Morgan, Sky en Marks & Spencer in Azië en Europa. Momenteel gevestigd in Londen, waar ik een van de grootste Britse retailers help hun technologielandschap te digitaliseren.",
+    "storyText1": "Ik ben Ramesh Reddy Adutla, een engineering leader met 15 jaar ervaring in fintech, media en retail - grootschalige systemen bouwen bij wereldwijde bedrijven zoals JP Morgan, Sky en Marks & Spencer in Azië en Europa. Momenteel gevestigd in Londen, waar ik een van de grootste Britse retailers help hun technologielandschap te digitaliseren.",
     "storyText2": "AI gaat elke sector veranderen. Toch blijft het beste AI-onderwijs opgesloten achter dure instellingen in een handvol landen. Die kloof is niet alleen oneerlijk, het is een enorme verspilling van potentieel.",
     "storyText3": "Een gesprek over miljoenen studenten die achterblijven was de aanleiding. AI Educademy begon als een zijproject en groeide uit tot iets echts.",
     "storyText4": "Werken in meerdere landen waar Engels niet de eerste taal is maakte één ding duidelijk: taal mag nooit een barrière zijn om te leren. Ik spreek Engels, Frans en Telugu, dus een meertalig platform bouwen voelde als de logische stap.",
@@ -166,7 +166,7 @@
     "pageDescription": "AI Educademy is een gratis, open source AI-onderwijsplatform voor iedereen. Lees meer over onze missie om AI-onderwijs wereldwijd toegankelijk te maken.",
     "pageSubtitle": "Gratis, open source AI-onderwijs voor elke student.",
     "openSourceTitle": "Open source",
-    "openSourceDesc": "Elke les, elke regel code — gratis en open source. Fork het, vertaal het, maak het je eigen.",
+    "openSourceDesc": "Elke les, elke regel code - gratis en open source. Fork het, vertaal het, maak het je eigen.",
     "viewOnGithub": "Bekijk op GitHub"
   },
   "lessons": {
@@ -199,7 +199,7 @@
     "breadcrumbLessons": "Lessen",
     "trackComplete": "Traject voltooid!",
     "trackCompleteDesc": "Je hebt elke les afgerond in",
-    "trackCompleteDismiss": "Geweldig — ga verder!",
+    "trackCompleteDismiss": "Geweldig - ga verder!",
     "lessonOf": "Les {current} van {total}",
     "completedOf": "{completed} van {total} voltooid",
     "allPrograms": "Alle programma's",
@@ -207,7 +207,7 @@
     "trackCraft": "Code & Algoritmen",
     "checkAnswer": "Controleer antwoord",
     "quizCorrect": "Correct! Goed gedaan!",
-    "quizIncorrect": "Niet helemaal — maar zo leer je!",
+    "quizIncorrect": "Niet helemaal - maar zo leer je!",
     "tryAgain": "Probeer opnieuw",
     "quickCheck": "Snelle check",
     "animationError": "Animatie kon niet worden geladen",
@@ -238,7 +238,7 @@
         "title": "AI begrijpen",
         "desc": "Groei van nul naar AI-expert, door de natuur geïnspireerde voortgang",
         "tagline": "Zaden → Spruiten → Takken → Kruin → Bos",
-        "brand": "Begrijp hoe machines denken, leren en creëren — van je eerste \"wat is AI?\" tot het bouwen van productiesystemen."
+        "brand": "Begrijp hoe machines denken, leren en creëren - van je eerste \"wat is AI?\" tot het bouwen van productiesystemen."
       },
       "craft-engineering": {
         "title": "Code & Algoritmen",
@@ -261,7 +261,7 @@
       "subtitle": "Plant je eerste AI-kennis",
       "description": "Begin vanaf absoluut nul. We gebruiken duidelijke taal en alledaagse voorbeelden om je begrip stap voor stap op te bouwen.",
       "audience": "Absolute beginners zonder technische achtergrond",
-      "prerequisites": "Geen — alleen nieuwsgierigheid!",
+      "prerequisites": "Geen - alleen nieuwsgierigheid!",
       "topics": [
         "Wat is AI?",
         "Hoe machines leren",
@@ -278,14 +278,14 @@
     "ai-sprouts": {
       "title": "AI Sprouts",
       "subtitle": "Bouw je AI-fundament",
-      "description": "Klaar om te groeien? Duik in de bouwstenen van AI — data, algoritmen en neurale netwerken. Praktische oefeningen helpen je intuïtie op te bouwen voordat je code schrijft.",
+      "description": "Klaar om te groeien? Duik in de bouwstenen van AI - data, algoritmen en neurale netwerken. Praktische oefeningen helpen je intuïtie op te bouwen voordat je code schrijft.",
       "audience": "Leerlingen die AI Seeds hebben afgerond of basiskennis van AI hebben",
       "prerequisites": "AI Seeds (aanbevolen)",
       "topics": [
         "Soorten AI",
         "Data begrijpen",
         "Hoe AI beslist",
-        "AI-ethiek — de basis"
+        "AI-ethiek - de basis"
       ],
       "outcomes": [
         "Onderscheid maken tussen begeleid, onbegeleid en versterkend leren",
@@ -298,7 +298,7 @@
     "ai-branches": {
       "title": "AI Branches",
       "subtitle": "Ontdek toepassingen in de echte wereld",
-      "description": "Zie AI in actie in verschillende sectoren — gezondheidszorg, financiën, creatieve kunsten en meer. Begin met het bouwen van eenvoudige projecten en begrijp de tools die professionals gebruiken.",
+      "description": "Zie AI in actie in verschillende sectoren - gezondheidszorg, financiën, creatieve kunsten en meer. Begin met het bouwen van eenvoudige projecten en begrijp de tools die professionals gebruiken.",
       "audience": "Leerlingen die klaar zijn om AI in de praktijk te zien",
       "prerequisites": "AI Sprouts",
       "topics": [
@@ -338,7 +338,7 @@
     "ai-forest": {
       "title": "AI Forest",
       "subtitle": "Beheers het AI-ecosysteem",
-      "description": "Het volledige plaatje — AI-onderzoek, productie-AI-systemen bouwen, bijdragen aan open source AI en begrijpen waar het vakgebied naartoe gaat. Voor wie de toekomst wil vormgeven.",
+      "description": "Het volledige plaatje - AI-onderzoek, productie-AI-systemen bouwen, bijdragen aan open source AI en begrijpen waar het vakgebied naartoe gaat. Voor wie de toekomst wil vormgeven.",
       "audience": "Gevorderde leerlingen en aspirant AI-professionals",
       "prerequisites": "AI Canopy",
       "topics": [
@@ -357,8 +357,8 @@
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "Eerste schetsen — Fundamenten van datastructuren en algoritmen",
-      "description": "Beheers de fundamentele datastructuren en algoritmen die AI-systemen aandrijven. Arrays, hash maps, strings en sorteren — gevisualiseerd met diagrammen, uitgelegd met praktische AI-toepassingen.",
+      "subtitle": "Eerste schetsen - Fundamenten van datastructuren en algoritmen",
+      "description": "Beheers de fundamentele datastructuren en algoritmen die AI-systemen aandrijven. Arrays, hash maps, strings en sorteren - gevisualiseerd met diagrammen, uitgelegd met praktische AI-toepassingen.",
       "audience": "Engineers die beginnen met sollicitatieprep of fundamenten opfrissen",
       "prerequisites": "Basisprogrammering in een willekeurige taal",
       "topics": [
@@ -376,7 +376,7 @@
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "Precisie slijpen — Gevorderde patronen",
+      "subtitle": "Precisie slijpen - Gevorderde patronen",
       "description": "Stap op naar gevorderde algoritmische patronen: twee pointers, sliding window, BFS/DFS en boom-traversals. Elk patroon gekoppeld aan echte AI/ML-toepassingen.",
       "audience": "Engineers met DSA-basis klaar voor problemen op gemiddeld niveau",
       "prerequisites": "AI Sketch of gelijkwaardige fundamenten",
@@ -395,7 +395,7 @@
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "Vaardigheden opbouwen — Systeemontwerp",
+      "subtitle": "Vaardigheden opbouwen - Systeemontwerp",
       "description": "Ontwerp grootschalige systemen die AI aandrijven: aanbevelingssystemen, automatisch aanvullen bij zoeken, rate limiters. Leer denken in architecturen, niet alleen in code.",
       "audience": "Mid- tot senior engineers die zich voorbereiden op systeemontwerp-rondes",
       "prerequisites": "Comfortabel met codering-interviews",
@@ -414,7 +414,7 @@
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "Excellentie verfijnen — Gedragsmatige meesterschap",
+      "subtitle": "Excellentie verfijnen - Gedragsmatige meesterschap",
       "description": "Beheers het gedragsgerichte sollicitatiegesprek met gestructureerde raamwerken. STAR-methode, leiderschapsprincipes, AI-tijdperkscenario's en communicatiestrategieën.",
       "audience": "Engineers op elk niveau die zich voorbereiden op gedragsgesprekken",
       "prerequisites": "Echte projectervaring om uit te putten",
@@ -433,7 +433,7 @@
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "Portfolioklaar — Complete casestudies",
+      "subtitle": "Portfolioklaar - Complete casestudies",
       "description": "Eindprojecten die datastructuren, systeemontwerp en gedragsvaardigheden combineren. Ontwerp echte systemen van begin tot eind en bouw je engineering portfolio.",
       "audience": "Engineers klaar voor senior+ rollen",
       "prerequisites": "AI Sketch tot en met AI Polish afgerond",
@@ -691,7 +691,7 @@
   "community": {
     "updates": "Blijf op de hoogte",
     "openSource": "Open source",
-    "openSourceDesc": "Open gebouwd — bekijk de code, draag bij of fork het",
+    "openSourceDesc": "Open gebouwd - bekijk de code, draag bij of fork het",
     "shareText": "Gratis AI-onderwijs voor iedereen",
     "headline": "Doe mee met de beweging",
     "subtitle": "Ontvang de nieuwste lessen, tips en updates in je inbox. Geef ons een ster op GitHub om gratis AI-onderwijs voor iedereen te ondersteunen."
@@ -702,7 +702,7 @@
     "badge": "Interactief • Leuk • Leerzaam",
     "pageTitle": "AI Lab",
     "pageDescription": "Experimenteer met AI-concepten. Analyseer sentiment, visualiseer neurale netwerken, verken sorteeralgoritmen en begrijp tokenisatie.",
-    "footer": "Alle demo's draaien volledig in je browser — er worden geen gegevens naar een server gestuurd.",
+    "footer": "Alle demo's draaien volledig in je browser - er worden geen gegevens naar een server gestuurd.",
     "tabs": {
       "games": {
         "label": "Minigames",
@@ -891,7 +891,7 @@
     },
     "sentimentSection": {
       "title": "Sentimentanalyse",
-      "description": "Analyseer de emotionele toon van elke tekst met op trefwoorden gebaseerde NLP — draait volledig in je browser.",
+      "description": "Analyseer de emotionele toon van elke tekst met op trefwoorden gebaseerde NLP - draait volledig in je browser.",
       "placeholder": "Typ of plak tekst om het sentiment te analyseren...",
       "analyse": "Analyseer sentiment",
       "analysing": "Analyseren...",
@@ -924,16 +924,16 @@
     },
     "tokenizerSection": {
       "title": "AI-tokenizer",
-      "description": "Bekijk hoe LLM's tekst opsplitsen in tokens — de basisbouwstenen die AI verwerkt.",
+      "description": "Bekijk hoe LLM's tekst opsplitsen in tokens - de basisbouwstenen die AI verwerkt.",
       "placeholder": "Typ tekst om te zien hoe AI het in tokens opsplitst...",
       "tokens": "tokens",
       "characters": "tekens",
       "wordsEquivalent": "~{count} woorden equivalent",
-      "explanation": "AI leest tekst niet zoals mensen. Het splitst tekst op in tokens — subwoordstukken die afzonderlijk verwerkt worden. Langere woorden worden in kleinere stukken opgedeeld."
+      "explanation": "AI leest tekst niet zoals mensen. Het splitst tekst op in tokens - subwoordstukken die afzonderlijk verwerkt worden. Langere woorden worden in kleinere stukken opgedeeld."
     },
     "hub": {
       "title": "AI Lab",
-      "subtitle": "Interactieve AI-spellen en hulpmiddelen — speel, experimenteer en leer al doende.",
+      "subtitle": "Interactieve AI-spellen en hulpmiddelen - speel, experimenteer en leer al doende.",
       "badge": "Interactief • Leuk • Leerzaam",
       "gamesAvailable": "{count} spellen beschikbaar",
       "searchPlaceholder": "Zoek spellen...",
@@ -1016,7 +1016,7 @@
       "seeResults": "RESULTATEN BEKIJKEN",
       "nextChallenge": "VOLGENDE UITDAGING",
       "gameNeuralName": "Neuraal Netwerk Speeltuin",
-      "gameNeuralDesc": "Bouw en train een klein neuraal netwerk — plaats punten en kijk hoe het leert",
+      "gameNeuralDesc": "Bouw en train een klein neuraal netwerk - plaats punten en kijk hoe het leert",
       "gamePromptName": "Prompt Engineering Dojo",
       "gamePromptDesc": "Schrijf de perfecte prompt om de gewenste uitvoer te genereren",
       "gameAlgoName": "Algoritme-race",
@@ -1024,7 +1024,7 @@
       "gameTriviaName": "AI-triviant",
       "gameTriviaDesc": "Test je AI-kennis met vragen op tijd",
       "gameDesignName": "Systeemontwerp Canvas",
-      "gameDesignDesc": "Sleep, verbind en ontwerp — oefen architectuurdiagrammen"
+      "gameDesignDesc": "Sleep, verbind en ontwerp - oefen architectuurdiagrammen"
     },
     "categoryNlp": "NLP",
     "categoryLogic": "Logica",

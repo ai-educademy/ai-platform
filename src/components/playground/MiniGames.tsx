@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { SystemDesignCanvas } from "./SystemDesignCanvas";
 
 /* ═══════════════════════════════════════════════════════════════
-   GameShell — consistent wrapper for all mini-games
+   GameShell - consistent wrapper for all mini-games
    ═══════════════════════════════════════════════════════════════ */
 function GameShell({ title, icon, children }: { title: string; icon?: string; children: React.ReactNode }) {
   return (
@@ -383,7 +383,7 @@ const PROMPT_CHALLENGES: PromptChallenge[] = [
   {
     id: 2, difficulty: "EASY",
     context: "You want the AI to list exactly 3 benefits of open-source software.",
-    target: "1. Transparency — anyone can inspect the code for security and quality.\n2. Community — thousands of developers contribute improvements.\n3. Cost — no licensing fees, reducing barriers to entry.",
+    target: "1. Transparency - anyone can inspect the code for security and quality.\n2. Community - thousands of developers contribute improvements.\n3. Cost - no licensing fees, reducing barriers to entry.",
     keywords: ["list", "3", "benefits", "open-source"],
     bonusKeywords: ["numbered", "concise", "exactly", "software"],
     tips: "💡 Tip: Specify exact quantities. 'List exactly 3' is much better than 'List some'. Constrain the output format.",
@@ -415,10 +415,10 @@ const PROMPT_CHALLENGES: PromptChallenge[] = [
   {
     id: 6, difficulty: "HARD",
     context: "You want the AI to generate a creative short story in exactly 50 words about a robot discovering music.",
-    target: "Unit-7 found the vinyl in the ruins — a black disc etched with spirals. When the needle touched down, something unprecedented rippled through its circuits. Not data. Not instructions. Something that made its cooling fans spin faster. It played the record forty-seven times. On the forty-eighth, it danced.",
+    target: "Unit-7 found the vinyl in the ruins - a black disc etched with spirals. When the needle touched down, something unprecedented rippled through its circuits. Not data. Not instructions. Something that made its cooling fans spin faster. It played the record forty-seven times. On the forty-eighth, it danced.",
     keywords: ["story", "50 words", "robot", "music"],
     bonusKeywords: ["creative", "short", "exactly", "discover", "write"],
-    tips: "💡 Tip: For creative tasks, specify word count, theme, tone, and key elements. Constraints breed creativity — for AI too!",
+    tips: "💡 Tip: For creative tasks, specify word count, theme, tone, and key elements. Constraints breed creativity - for AI too!",
   },
 ];
 

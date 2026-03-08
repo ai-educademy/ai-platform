@@ -230,7 +230,7 @@ export default function HomeFounder({
                   {description}
                 </motion.p>
 
-                {/* Stats row — animated counters with better cards */}
+                {/* Stats row - animated counters with better cards */}
                 <motion.div
                   className="grid grid-cols-3 gap-3 mb-8"
                   custom={3}
@@ -249,7 +249,7 @@ export default function HomeFounder({
                   ))}
                 </motion.div>
 
-                {/* CTAs — premium button treatment */}
+                {/* CTAs - premium button treatment */}
                 <motion.div
                   className="flex flex-wrap items-center gap-3"
                   custom={4}

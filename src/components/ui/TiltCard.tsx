@@ -13,7 +13,7 @@ const spring = { type: "spring" as const, stiffness: 300, damping: 20 };
 
 /**
  * 3D perspective tilt card that follows mouse position.
- * Subtle — max rotation controlled by tiltDeg (default 4°).
+ * Subtle - max rotation controlled by tiltDeg (default 4°).
  * Springs back to flat on mouse leave. Respects prefers-reduced-motion.
  */
 export function TiltCard({

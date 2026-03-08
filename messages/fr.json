@@ -40,7 +40,7 @@
     "badge": "Gratuit • Open Source • Multilingue",
     "title": "Apprenez l'IA.",
     "titleHighlight": "Construisez l'avenir.",
-    "subtitle": "Des leçons interactives et gratuites qui vous accompagnent de la curiosité à la maîtrise. Partez de zéro — allez aussi loin que vous le souhaitez.",
+    "subtitle": "Des leçons interactives et gratuites qui vous accompagnent de la curiosité à la maîtrise. Partez de zéro - allez aussi loin que vous le souhaitez.",
     "cta": "Commencez votre parcours IA",
     "ctaSecondary": "Explorer le Labo",
     "students": "Apprenants actifs",
@@ -56,7 +56,7 @@
   },
   "features": {
     "title": "Pourquoi AI Educademy ?",
-    "subtitle": "Partez de zéro. Aucun prérequis — nous vous guidons à chaque étape.",
+    "subtitle": "Partez de zéro. Aucun prérequis - nous vous guidons à chaque étape.",
     "beginner": {
       "title": "Partez de zéro",
       "description": "Jamais touché à du code ? Parfait. Nous utilisons un langage courant et des exemples concrets : comment Netflix recommande des films, comment votre téléphone reconnaît votre visage."
@@ -67,7 +67,7 @@
     },
     "multilingual": {
       "title": "Dans votre langue",
-      "description": "Apprenez en hindi, télougou, français, néerlandais ou anglais — celle qui vous parle le mieux."
+      "description": "Apprenez en hindi, télougou, français, néerlandais ou anglais - celle qui vous parle le mieux."
     },
     "free": {
       "title": "Gratuit pour toujours",
@@ -90,12 +90,12 @@
     "labTitle": "Labo interactif",
     "labDesc": "Des expériences pratiques pour consolider vos connaissances",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "Totalement transparent — consultez, forkez ou contribuez",
+    "openSourceDesc": "Totalement transparent - consultez, forkez ou contribuez",
     "freeTitle": "Toujours gratuit",
     "freeDesc": "Pas de paywall, pas d'offre premium, gratuit pour toujours"
   },
   "founder": {
-    "description": "Quinze ans d'expérience dans la fintech, les médias et le commerce de détail — à construire des systèmes à grande échelle pour des multinationales comme JP Morgan, Sky et un grand distributeur britannique. A travaillé en Asie et en Europe, actuellement basé à Londres, participant à la transformation numérique d'un géant mondial du retail. Travailler dans des pays où l'anglais n'est pas la langue maternelle a rendu une chose évidente : la langue ne devrait jamais être un obstacle à l'apprentissage. Parle anglais, français et télougou.",
+    "description": "Quinze ans d'expérience dans la fintech, les médias et le commerce de détail - à construire des systèmes à grande échelle pour des multinationales comme JP Morgan, Sky et un grand distributeur britannique. A travaillé en Asie et en Europe, actuellement basé à Londres, participant à la transformation numérique d'un géant mondial du retail. Travailler dans des pays où l'anglais n'est pas la langue maternelle a rendu une chose évidente : la langue ne devrait jamais être un obstacle à l'apprentissage. Parle anglais, français et télougou.",
     "cta": "En savoir plus",
     "role": "Leader technique · Créateur Open Source · Londres",
     "statYears": "Années d'ingénierie",
@@ -126,9 +126,9 @@
     "missionText": "Une éducation en IA pour chaque étudiant, quelle que soit sa langue, son parcours ou son expérience.",
     "story": "Le cerveau derrière l'idée",
     "storyText1": "Je suis Ramesh Reddy Adutla, un leader technique avec 15 ans d'expérience dans la fintech, les médias et le commerce de détail, construisant des systèmes à grande échelle pour des géants mondiaux comme JP Morgan, Sky et Marks & Spencer, entre l'Asie et l'Europe. Actuellement basé à Londres, j'accompagne l'un des plus grands distributeurs britanniques dans sa transformation numérique.",
-    "storyText2": "L'IA va transformer chaque secteur. Pourtant, les meilleures formations en IA restent enfermées derrière des institutions coûteuses dans une poignée de pays. Ce fossé n'est pas seulement injuste — c'est un immense gâchis de potentiel.",
+    "storyText2": "L'IA va transformer chaque secteur. Pourtant, les meilleures formations en IA restent enfermées derrière des institutions coûteuses dans une poignée de pays. Ce fossé n'est pas seulement injuste - c'est un immense gâchis de potentiel.",
     "storyText3": "Une conversation sur les millions d'étudiants laissés pour compte a fait germer cette idée. AI Educademy a commencé comme un projet personnel avant de devenir quelque chose de concret.",
-    "storyText4": "Travailler dans plusieurs pays où l'anglais n'est pas la langue maternelle m'a convaincu d'une chose : la langue ne devrait jamais être un obstacle à l'apprentissage. Je parle anglais, français et télougou — créer une plateforme multilingue s'est imposé comme une évidence.",
+    "storyText4": "Travailler dans plusieurs pays où l'anglais n'est pas la langue maternelle m'a convaincu d'une chose : la langue ne devrait jamais être un obstacle à l'apprentissage. Je parle anglais, français et télougou - créer une plateforme multilingue s'est imposé comme une évidence.",
     "values": "Nos valeurs",
     "value1": {
       "title": "Accessible",
@@ -166,7 +166,7 @@
     "pageDescription": "AI Educademy est une plateforme éducative en IA, gratuite et open source, conçue pour tous. Découvrez notre mission : rendre l'éducation en IA accessible dans le monde entier.",
     "pageSubtitle": "Une éducation en IA gratuite et open source pour chaque étudiant.",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "Chaque leçon, chaque ligne de code — gratuit et open source. Forkez, traduisez, faites-en le vôtre.",
+    "openSourceDesc": "Chaque leçon, chaque ligne de code - gratuit et open source. Forkez, traduisez, faites-en le vôtre.",
     "viewOnGithub": "Voir sur GitHub"
   },
   "lessons": {
@@ -199,7 +199,7 @@
     "breadcrumbLessons": "Leçons",
     "trackComplete": "Parcours terminé !",
     "trackCompleteDesc": "Vous avez terminé toutes les leçons de",
-    "trackCompleteDismiss": "Bravo — continuez !",
+    "trackCompleteDismiss": "Bravo - continuez !",
     "lessonOf": "Leçon {current} sur {total}",
     "completedOf": "{completed} sur {total} terminées",
     "allPrograms": "Tous les programmes",
@@ -207,7 +207,7 @@
     "trackCraft": "Code et Algorithmes",
     "checkAnswer": "Vérifier la réponse",
     "quizCorrect": "Correct ! Bravo !",
-    "quizIncorrect": "Pas tout à fait — mais c'est comme ça qu'on apprend !",
+    "quizIncorrect": "Pas tout à fait - mais c'est comme ça qu'on apprend !",
     "tryAgain": "Réessayer",
     "quickCheck": "Vérification rapide",
     "animationError": "L'animation n'a pas pu se charger",
@@ -238,7 +238,7 @@
         "title": "Comprendre l'IA",
         "desc": "De zéro à expert en IA, une progression inspirée de la nature",
         "tagline": "Graines → Pousses → Branches → Canopée → Forêt",
-        "brand": "Comprenez comment les machines pensent, apprennent et créent — de votre premier « c'est quoi l'IA ? » jusqu'à la conception de systèmes en production."
+        "brand": "Comprenez comment les machines pensent, apprennent et créent - de votre premier « c'est quoi l'IA ? » jusqu'à la conception de systèmes en production."
       },
       "craft-engineering": {
         "title": "Code et Algorithmes",
@@ -261,7 +261,7 @@
       "subtitle": "Plantez vos premières graines d'IA",
       "description": "Partez de zéro absolu. Nous utilisons un langage simple et des exemples du quotidien pour construire votre compréhension, étape par étape.",
       "audience": "Débutants complets sans aucune formation technique",
-      "prerequisites": "Aucun — juste de la curiosité !",
+      "prerequisites": "Aucun - juste de la curiosité !",
       "topics": [
         "Qu'est-ce que l'IA ?",
         "Comment les machines apprennent",
@@ -278,14 +278,14 @@
     "ai-sprouts": {
       "title": "AI Sprouts",
       "subtitle": "Construisez vos fondations en IA",
-      "description": "Prêt à grandir ? Plongez dans les briques de base de l'IA — données, algorithmes et réseaux de neurones. Des exercices pratiques pour développer votre intuition avant d'écrire du code.",
+      "description": "Prêt à grandir ? Plongez dans les briques de base de l'IA - données, algorithmes et réseaux de neurones. Des exercices pratiques pour développer votre intuition avant d'écrire du code.",
       "audience": "Apprenants ayant terminé AI Seeds ou ayant des notions de base en IA",
       "prerequisites": "AI Seeds (recommandé)",
       "topics": [
         "Types d'IA",
         "Comprendre les données",
         "Comment l'IA décide",
-        "Éthique de l'IA — les bases"
+        "Éthique de l'IA - les bases"
       ],
       "outcomes": [
         "Distinguer l'apprentissage supervisé, non supervisé et par renforcement",
@@ -298,7 +298,7 @@
     "ai-branches": {
       "title": "AI Branches",
       "subtitle": "Explorer les applications concrètes",
-      "description": "Découvrez l'IA en action dans tous les secteurs — santé, finance, arts créatifs et bien d'autres. Commencez à construire des projets simples et comprenez les outils utilisés par les professionnels.",
+      "description": "Découvrez l'IA en action dans tous les secteurs - santé, finance, arts créatifs et bien d'autres. Commencez à construire des projets simples et comprenez les outils utilisés par les professionnels.",
       "audience": "Apprenants prêts à voir l'IA appliquée en pratique",
       "prerequisites": "AI Sprouts",
       "topics": [
@@ -338,7 +338,7 @@
     "ai-forest": {
       "title": "AI Forest",
       "subtitle": "Maîtriser l'écosystème IA",
-      "description": "La vision d'ensemble — recherche en IA, systèmes IA en production, contributions à l'IA open source, et compréhension de l'évolution du domaine. Pour ceux qui veulent façonner l'avenir.",
+      "description": "La vision d'ensemble - recherche en IA, systèmes IA en production, contributions à l'IA open source, et compréhension de l'évolution du domaine. Pour ceux qui veulent façonner l'avenir.",
       "audience": "Apprenants avancés et futurs praticiens de l'IA",
       "prerequisites": "AI Canopy",
       "topics": [
@@ -357,8 +357,8 @@
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "Premiers contours — Fondamentaux des structures de données et algorithmes",
-      "description": "Maîtrisez les structures de données et algorithmes fondamentaux qui alimentent les systèmes IA. Tableaux, tables de hachage, chaînes de caractères et tri — visualisés avec des diagrammes, expliqués avec des applications IA concrètes.",
+      "subtitle": "Premiers contours - Fondamentaux des structures de données et algorithmes",
+      "description": "Maîtrisez les structures de données et algorithmes fondamentaux qui alimentent les systèmes IA. Tableaux, tables de hachage, chaînes de caractères et tri - visualisés avec des diagrammes, expliqués avec des applications IA concrètes.",
       "audience": "Ingénieurs débutant la préparation aux entretiens ou rafraîchissant les fondamentaux",
       "prerequisites": "Programmation de base dans n'importe quel langage",
       "topics": [
@@ -376,7 +376,7 @@
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "Précision ciselée — Patrons intermédiaires",
+      "subtitle": "Précision ciselée - Patrons intermédiaires",
       "description": "Passez au niveau supérieur avec les patrons algorithmiques intermédiaires : deux pointeurs, fenêtre glissante, BFS/DFS et parcours d'arbres. Chaque patron est relié à des applications concrètes en IA/ML.",
       "audience": "Ingénieurs avec des bases en DSA prêts pour des problèmes de niveau intermédiaire",
       "prerequisites": "AI Sketch ou fondamentaux équivalents",
@@ -395,7 +395,7 @@
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "Construire l'expertise — Conception de systèmes",
+      "subtitle": "Construire l'expertise - Conception de systèmes",
       "description": "Concevez des systèmes à grande échelle qui alimentent l'IA : moteurs de recommandation, autocomplétion de recherche, limiteurs de débit. Apprenez à penser en architectures, pas seulement en code.",
       "audience": "Ingénieurs de niveau intermédiaire à senior préparant les entretiens de conception système",
       "prerequisites": "À l'aise avec les entretiens de programmation",
@@ -414,7 +414,7 @@
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "Perfectionner l'excellence — Maîtrise comportementale",
+      "subtitle": "Perfectionner l'excellence - Maîtrise comportementale",
       "description": "Maîtrisez l'entretien comportemental grâce à des cadres structurés. La méthode STAR, les principes de leadership, les scénarios de l'ère IA et les stratégies de communication.",
       "audience": "Ingénieurs de tout niveau préparant les entretiens comportementaux",
       "prerequisites": "Expérience de projet réelle à partager",
@@ -433,7 +433,7 @@
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "Prêt pour le portfolio — Études de cas complètes",
+      "subtitle": "Prêt pour le portfolio - Études de cas complètes",
       "description": "Projets de synthèse combinant structures de données et algorithmes, conception de systèmes et compétences comportementales. Concevez des systèmes réels de bout en bout et construisez votre portfolio d'ingénierie.",
       "audience": "Ingénieurs prêts pour des postes senior+",
       "prerequisites": "Avoir terminé AI Sketch à AI Polish",
@@ -702,7 +702,7 @@
     "badge": "Interactif • Ludique • Éducatif",
     "pageTitle": "Labo IA",
     "pageDescription": "Expérimentez avec les concepts de l'IA. Analysez le sentiment, visualisez des réseaux de neurones, explorez les algorithmes de tri et comprenez la tokenisation.",
-    "footer": "Toutes les démos s'exécutent entièrement dans votre navigateur — aucune donnée n'est envoyée à un serveur.",
+    "footer": "Toutes les démos s'exécutent entièrement dans votre navigateur - aucune donnée n'est envoyée à un serveur.",
     "tabs": {
       "games": {
         "label": "Mini-jeux",
@@ -891,7 +891,7 @@
     },
     "sentimentSection": {
       "title": "Analyse de sentiment",
-      "description": "Analysez la tonalité émotionnelle de n'importe quel texte grâce au NLP par mots-clés — le tout dans votre navigateur.",
+      "description": "Analysez la tonalité émotionnelle de n'importe quel texte grâce au NLP par mots-clés - le tout dans votre navigateur.",
       "placeholder": "Tapez ou collez du texte pour analyser son sentiment…",
       "analyse": "Analyser le sentiment",
       "analysing": "Analyse en cours…",
@@ -924,7 +924,7 @@
     },
     "tokenizerSection": {
       "title": "Tokeniseur IA",
-      "description": "Découvrez comment les LLM découpent le texte en tokens — les unités fondamentales que l'IA traite.",
+      "description": "Découvrez comment les LLM découpent le texte en tokens - les unités fondamentales que l'IA traite.",
       "placeholder": "Tapez du texte pour voir comment l'IA le découpe en tokens…",
       "tokens": "tokens",
       "characters": "caractères",
@@ -933,7 +933,7 @@
     },
     "hub": {
       "title": "Labo IA",
-      "subtitle": "Jeux et outils IA interactifs — jouez, expérimentez et apprenez en pratiquant.",
+      "subtitle": "Jeux et outils IA interactifs - jouez, expérimentez et apprenez en pratiquant.",
       "badge": "Interactif • Ludique • Éducatif",
       "gamesAvailable": "{count} jeux disponibles",
       "searchPlaceholder": "Rechercher des jeux…",
@@ -1016,7 +1016,7 @@
       "seeResults": "VOIR LES RÉSULTATS",
       "nextChallenge": "DÉFI SUIVANT",
       "gameNeuralName": "Terrain de jeu neuronal",
-      "gameNeuralDesc": "Construisez et entraînez un mini réseau de neurones — placez des points, observez-le apprendre",
+      "gameNeuralDesc": "Construisez et entraînez un mini réseau de neurones - placez des points, observez-le apprendre",
       "gamePromptName": "Dojo d'ingénierie de prompts",
       "gamePromptDesc": "Rédigez le prompt parfait pour correspondre aux sorties cibles",
       "gameAlgoName": "Course d'algorithmes",
@@ -1024,7 +1024,7 @@
       "gameTriviaName": "Quiz IA",
       "gameTriviaDesc": "Testez vos connaissances IA avec des questions chronométrées",
       "gameDesignName": "Canevas de conception système",
-      "gameDesignDesc": "Glissez, connectez et concevez — entraînez-vous aux diagrammes d'architecture",
+      "gameDesignDesc": "Glissez, connectez et concevez - entraînez-vous aux diagrammes d'architecture",
       "promptPlaceholder": "Tapez votre prompt ici… (Ctrl+Entrée pour valider)",
       "missionLabel": "// MISSION",
       "targetOutputLabel": "// SORTIE CIBLE",
@@ -1032,11 +1032,11 @@
       "promptFile": "prompt.txt",
       "feedbackExcellent": "🎯 Excellent prompt ! Clair, précis et bien structuré.",
       "feedbackGood": "👍 Bonne tentative ! Essayez d'être plus précis sur le format et les contraintes.",
-      "feedbackGettingThere": "📝 Vous y êtes presque — ajoutez des mots-clés pertinents et soyez explicite sur ce que vous voulez.",
+      "feedbackGettingThere": "📝 Vous y êtes presque - ajoutez des mots-clés pertinents et soyez explicite sur ce que vous voulez.",
       "feedbackVague": "🔄 Trop vague. Essayez de préciser la tâche, le format et les contraintes.",
       "avgScoreLabel": "Score moyen des prompts sur {count} défis",
       "vagueResponse": "Je ne suis pas sûr de comprendre votre demande. Pourriez-vous être plus précis ?",
-      "placeBet": "// Placez votre pari — quel algorithme va gagner ?",
+      "placeBet": "// Placez votre pari - quel algorithme va gagner ?",
       "startRaceBtn": "🏁 LANCER LA COURSE",
       "newRace": "↻ NOUVELLE COURSE",
       "yourBet": "VOTRE PARI",
@@ -1047,8 +1047,8 @@
       "betWon": "🎉 Bien vu !",
       "betLost": "😅 Pas cette fois !",
       "mergeWins": "Le tri fusion l'emporte avec une performance garantie en O(n log n) !",
-      "quickWins": "Le tri rapide est le plus véloce en moyenne — O(n log n) avec peu de surcoût !",
-      "bubbleWins": "Le tri à bulles a gagné ?! C'est extrêmement rare avec des données aléatoires — normalement O(n²) !",
+      "quickWins": "Le tri rapide est le plus véloce en moyenne - O(n log n) avec peu de surcoût !",
+      "bubbleWins": "Le tri à bulles a gagné ?! C'est extrêmement rare avec des données aléatoires - normalement O(n²) !",
       "comparingLegend": "Comparaison",
       "swappingLegend": "Échange",
       "sortedLegend": "Trié",
@@ -1092,7 +1092,7 @@
     "noData": "Aucune donnée disponible",
     "loadError": "Impossible de charger les données analytiques",
     "invalidSecret": "Code secret invalide",
-    "title": "📊 Administration — Statistiques",
+    "title": "📊 Administration - Statistiques",
     "subscribers": "Abonnés à la newsletter",
     "totalFeedback": "Total des retours",
     "totalEvents": "Total des événements",

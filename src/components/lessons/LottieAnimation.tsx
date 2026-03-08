@@ -41,7 +41,7 @@ export function LottieAnimation({
   const [isVisible, setIsVisible] = useState(false);
   const [error, setError] = useState(false);
 
-  // Intersection observer — load when visible
+  // Intersection observer - load when visible
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;

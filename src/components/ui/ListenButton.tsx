@@ -21,7 +21,7 @@ const PREMIUM_KEYWORDS = [
   "thomas", "amelie", "audrey",
 ];
 
-/** Score a voice — higher = better quality */
+/** Score a voice - higher = better quality */
 function voiceScore(v: SpeechSynthesisVoice): number {
   const name = v.name.toLowerCase();
   let score = 0;
@@ -49,7 +49,7 @@ function cleanForSpeech(text: string): string {
   );
 }
 
-/** Split text into speakable chunks — paragraphs, then sentences if too long */
+/** Split text into speakable chunks - paragraphs, then sentences if too long */
 function chunkText(text: string, maxLen = 400): string[] {
   const cleaned = cleanForSpeech(text);
   const paragraphs = cleaned

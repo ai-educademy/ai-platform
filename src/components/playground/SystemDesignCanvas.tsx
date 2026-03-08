@@ -163,7 +163,7 @@ export function SystemDesignCanvas() {
     userKeyRef.current = key;
     const list = loadCanvases(key);
     setSavedList(list);
-    // If there are saved canvases, don't auto-load — show picker
+    // If there are saved canvases, don't auto-load - show picker
     if (list.length > 0) {
       setShowPicker(true);
     }
@@ -335,7 +335,7 @@ export function SystemDesignCanvas() {
     }
   };
 
-  /* shape pointer down — start drag or connect */
+  /* shape pointer down - start drag or connect */
   const onShapePointerDown = (id: string, e: RMouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
@@ -568,7 +568,7 @@ export function SystemDesignCanvas() {
           style={{ minHeight: 450 }}
           onMouseDown={onCanvasPointerDown}
         >
-          {/* dot grid (fixed, not zoomed — gives parallax depth feel) */}
+          {/* dot grid (fixed, not zoomed - gives parallax depth feel) */}
           <defs>
             <pattern id="sd-grid" width={20 * zoom} height={20 * zoom} patternUnits="userSpaceOnUse" patternTransform={`translate(${pan.x % (20 * zoom)},${pan.y % (20 * zoom)})`}>
               <circle cx={10 * zoom} cy={10 * zoom} r={0.8} fill="var(--color-border)" opacity={0.5} />

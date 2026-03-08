@@ -210,7 +210,7 @@ export function Footer() {
 
       </div>
 
-      {/* Floating back-to-top button — fixed to viewport */}
+      {/* Floating back-to-top button - fixed to viewport */}
       <AnimatePresence>
         {showBackToTop && (
           <motion.button

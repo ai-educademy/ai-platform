@@ -87,11 +87,11 @@ function seedParticles(w: number, h: number, count: number): Particle[] {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HeroBackground — 3D parallax layers with AI education identity
+   HeroBackground - 3D parallax layers with AI education identity
    ═══════════════════════════════════════════════════════════════
-   Layer 1 (deepest):  Neural SVG — perspective tilt + gradient-pulse connections
+   Layer 1 (deepest):  Neural SVG - perspective tilt + gradient-pulse connections
    Layer 2 (middle):   Canvas particles + floating knowledge symbols
-   Layer 3 (nearest):  Dot grid — subtle shift opposite to mouse
+   Layer 3 (nearest):  Dot grid - subtle shift opposite to mouse
    Layer 4:            Noise texture overlay
    ═══════════════════════════════════════════════════════════════ */
 export default function HeroBackground() {
@@ -174,18 +174,18 @@ export default function HeroBackground() {
       const mx = mouse.current.x;
       const my = mouse.current.y;
 
-      /* ── Layer 1: Neural SVG parallax — perspective tilt + translate ── */
+      /* ── Layer 1: Neural SVG parallax - perspective tilt + translate ── */
       if (neuralRef.current && !reduced.current) {
         neuralRef.current.style.transform =
           `perspective(600px) rotateX(${(my - 0.5) * 12}deg) rotateY(${(mx - 0.5) * -12}deg) translate(${(mx - 0.5) * -25}px, ${(my - 0.5) * -25}px)`;
       }
 
-      /* ── Layer 3: Grid parallax — slight opposite shift ── */
+      /* ── Layer 3: Grid parallax - slight opposite shift ── */
       if (gridRef.current && !reduced.current) {
         gridRef.current.style.transform = `translate(${(mx - 0.5) * 25}px, ${(my - 0.5) * 25}px)`;
       }
 
-      /* ── Layer 2: Canvas — depth particles + knowledge symbols ── */
+      /* ── Layer 2: Canvas - depth particles + knowledge symbols ── */
       if (canvas && ctx) {
         const { w, h } = bounds.current;
         ctx.clearRect(0, 0, w, h);
@@ -271,7 +271,7 @@ export default function HeroBackground() {
       ref={containerRef}
       className="absolute inset-0 overflow-hidden pointer-events-none"
     >
-      {/* Layer 1 — Neural SVG (deepest: perspective tilt + gradient-pulsing connections) */}
+      {/* Layer 1 - Neural SVG (deepest: perspective tilt + gradient-pulsing connections) */}
       <div
         ref={neuralRef}
         className="absolute -inset-4 will-change-transform"
@@ -348,16 +348,16 @@ export default function HeroBackground() {
         </svg>
       </div>
 
-      {/* Layer 2 — Canvas: depth-scaled particles + knowledge symbols (middle) */}
+      {/* Layer 2 - Canvas: depth-scaled particles + knowledge symbols (middle) */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Layer 3 — Dot grid (nearest: shifts with mouse) */}
+      {/* Layer 3 - Dot grid (nearest: shifts with mouse) */}
       <div
         ref={gridRef}
         className="absolute -inset-4 bg-grid will-change-transform"
       />
 
-      {/* Layer 4 — Noise texture */}
+      {/* Layer 4 - Noise texture */}
       <div className="absolute inset-0 noise-texture" />
     </div>
   );

@@ -203,7 +203,7 @@ export function LessonComplete({
 
     const allComplete = seq.every((prog) => {
       const total = trackLessonCounts[prog.slug] || 0;
-      if (total === 0) return false; // skip — no lessons means not trackable
+      if (total === 0) return false; // skip - no lessons means not trackable
       const progProgress = allData[prog.slug];
       if (!progProgress) return false;
       return progProgress.completed.length >= total;

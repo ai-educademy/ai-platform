@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const programs = getPrograms();
 
   const staticPages: MetadataRoute.Sitemap = [
-    // Homepage — highest priority
+    // Homepage - highest priority
     ...localizedEntries("", "weekly", 1.0, now),
     // Programs listing
     ...localizedEntries("/programs", "weekly", 0.9, now),

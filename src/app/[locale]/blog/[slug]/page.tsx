@@ -110,7 +110,7 @@ export default async function BlogPostPage({
         </div>
       </AnimatedSection>
 
-      {/* Content — uses the same MDX renderer as lessons */}
+      {/* Content - uses the same MDX renderer as lessons */}
       <AnimatedSection animation="fade-in" delay={200}>
         <div className="lesson-content">
           <LessonRenderer content={post.content} />

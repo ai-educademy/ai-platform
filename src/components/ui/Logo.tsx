@@ -19,7 +19,7 @@ export function Logo({ size = 32, className = "" }: { size?: number; className?:
       <circle cx="20" cy="20" r="19" className="fill-[var(--color-primary)]" opacity="0.1" />
       <circle cx="20" cy="20" r="19" className="stroke-[var(--color-primary)]" strokeWidth="1.5" opacity="0.3" />
 
-      {/* Seed body — rounded teardrop */}
+      {/* Seed body - rounded teardrop */}
       <path
         d="M20 32c-4.5 0-8-3.5-8-8 0-6 8-14 8-14s8 8 8 14c0 4.5-3.5 8-8 8z"
         className="fill-[var(--color-primary)]"
@@ -42,7 +42,7 @@ export function Logo({ size = 32, className = "" }: { size?: number; className?:
         opacity="0.6"
       />
 
-      {/* Neural network nodes — three connected dots above the seed */}
+      {/* Neural network nodes - three connected dots above the seed */}
       <circle cx="14" cy="11" r="2.5" className="fill-[var(--color-primary)]" />
       <circle cx="26" cy="11" r="2.5" className="fill-[var(--color-primary)]" />
       <circle cx="20" cy="6" r="2.5" className="fill-[var(--color-primary)]" />
