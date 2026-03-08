@@ -85,16 +85,13 @@ export function useProgress(programSlug?: string) {
     setStorageKey(key);
     setIsGuest(!signedIn);
 
-    if (!signedIn) {
-      localStorage.removeItem(`${STORAGE_PREFIX}-guest`);
-      setData({});
+    // Always load progress — guests use the "guest" key, signed-in users
+    // use their scoped key. Never wipe guest progress on load.
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      setData(migrateOldFormat(stored));
     } else {
-      const stored = localStorage.getItem(key);
-      if (stored) {
-        setData(migrateOldFormat(stored));
-      } else {
-        setData({});
-      }
+      setData({});
     }
   }, [resolveUserId, sessionStatus]);
 
@@ -119,10 +116,8 @@ export function useProgress(programSlug?: string) {
           timestamps: { ...prog.timestamps, [lSlug]: new Date().toISOString() },
         },
       };
-      // Only persist to localStorage for signed-in users
-      if (!isGuest) {
-        localStorage.setItem(storageKey, JSON.stringify(next));
-      }
+      // Always persist to localStorage (guest and signed-in users)
+      localStorage.setItem(storageKey, JSON.stringify(next));
       return next;
     });
   }, [programSlug, storageKey, isGuest]);
@@ -149,10 +144,8 @@ export function useProgress(programSlug?: string) {
 
   const reset = useCallback(() => {
     setData({});
-    if (!isGuest) {
-      localStorage.removeItem(storageKey);
-    }
-  }, [storageKey, isGuest]);
+    localStorage.removeItem(storageKey);
+  }, [storageKey]);
 
   // Per-program counts
   const prog = programSlug ? getProgram(programSlug) : null;
