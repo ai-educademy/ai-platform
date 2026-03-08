@@ -77,8 +77,8 @@ function seedParticles(w: number, h: number, count: number): Particle[] {
       z,
       vx: (Math.random() - 0.5) * (0.15 + z * 0.3),
       vy: (Math.random() - 0.5) * (0.15 + z * 0.3),
-      size: 1 + z * 3,
-      opacity: 0.06 + z * 0.22,
+      size: 1.5 + z * 3.5,
+      opacity: 0.1 + z * 0.3,
       isSymbol,
       symbol: isSymbol ? SYMBOLS[i % SYMBOLS.length] : undefined,
     });
@@ -177,12 +177,12 @@ export default function HeroBackground() {
       /* ── Layer 1: Neural SVG parallax — perspective tilt + translate ── */
       if (neuralRef.current && !reduced.current) {
         neuralRef.current.style.transform =
-          `perspective(800px) rotateX(${(my - 0.5) * 6}deg) rotateY(${(mx - 0.5) * -6}deg) translate(${(mx - 0.5) * -10}px, ${(my - 0.5) * -10}px)`;
+          `perspective(800px) rotateX(${(my - 0.5) * 8}deg) rotateY(${(mx - 0.5) * -8}deg) translate(${(mx - 0.5) * -15}px, ${(my - 0.5) * -15}px)`;
       }
 
       /* ── Layer 3: Grid parallax — slight opposite shift ── */
       if (gridRef.current && !reduced.current) {
-        gridRef.current.style.transform = `translate(${(mx - 0.5) * 12}px, ${(my - 0.5) * 12}px)`;
+        gridRef.current.style.transform = `translate(${(mx - 0.5) * 18}px, ${(my - 0.5) * 18}px)`;
       }
 
       /* ── Layer 2: Canvas — depth particles + knowledge symbols ── */
@@ -210,8 +210,8 @@ export default function HeroBackground() {
           const dy = p.y + py;
 
           if (p.isSymbol && p.symbol) {
-            ctx.font = `${10 + p.z * 8}px 'JetBrains Mono','Fira Code',monospace`;
-            ctx.fillStyle = `rgba(${rgb},${p.opacity * 0.55})`;
+            ctx.font = `${12 + p.z * 10}px 'JetBrains Mono','Fira Code',monospace`;
+            ctx.fillStyle = `rgba(${rgb},${p.opacity * 0.8})`;
             ctx.fillText(p.symbol, dx, dy);
           } else {
             ctx.beginPath();
@@ -275,7 +275,7 @@ export default function HeroBackground() {
       <div
         ref={neuralRef}
         className="absolute -inset-4 will-change-transform"
-        style={{ opacity: 0.15 }}
+        style={{ opacity: 0.2 }}
       >
         <svg
           className="w-full h-full"
