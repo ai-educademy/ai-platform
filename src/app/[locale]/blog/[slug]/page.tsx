@@ -6,6 +6,7 @@ import { getBlogPost } from "@/lib/blog";
 import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
 import { ListenButton } from "@/components/ui/ListenButton";
+import { ArticleJsonLd } from "@/components/seo/JsonLd";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -59,6 +60,15 @@ export default async function BlogPostPage({
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <ArticleJsonLd
+        headline={post.title}
+        description={post.description}
+        datePublished={post.date}
+        author={post.author}
+        image={post.image}
+        url={`${BASE_URL}${basePath}/blog/${slug}`}
+        tags={post.tags}
+      />
       {/* Back link */}
       <AnimatedSection animation="fade-in">
         <Link

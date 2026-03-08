@@ -1141,6 +1141,12 @@
   "notFound": {
     "title": "Page not found",
     "description": "The page you are looking for does not exist or has been moved.",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "popularPages": "Popular pages",
+    "searchSuggestion": "Try searching for what you need",
+    "programs": "Programs",
+    "blog": "Blog",
+    "lab": "AI Lab",
+    "about": "About"
   }
 }

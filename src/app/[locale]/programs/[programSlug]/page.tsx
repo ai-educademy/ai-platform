@@ -1,9 +1,48 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProgram } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
+import { CourseJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+
+const BASE_URL = "https://aieducademy.org";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; programSlug: string }>;
+}): Promise<Metadata> {
+  const { locale, programSlug } = await params;
+  const program = getProgram(programSlug);
+  if (!program) return {};
+
+  const tP = await getTranslations({ locale, namespace: "programs" });
+  const title = tP(`${programSlug}.title`);
+  const description = tP(`${programSlug}.description`);
+  const canonicalUrl = `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${programSlug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${title} | AI Educademy`,
+      description,
+      type: "website",
+      url: canonicalUrl,
+      siteName: "AI Educademy",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | AI Educademy`,
+      description,
+    },
+  };
+}
 
 export default async function ProgramPage({
   params,
@@ -22,6 +61,20 @@ export default async function ProgramPage({
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <CourseJsonLd
+        locale={locale}
+        name={tP(`${programSlug}.title`)}
+        description={tP(`${programSlug}.description`)}
+        slug={programSlug}
+        level={program.level}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: `${BASE_URL}${basePath}` },
+          { name: tP("pageTitle"), url: `${BASE_URL}${basePath}/programs` },
+          { name: tP(`${programSlug}.title`), url: `${BASE_URL}${basePath}/programs/${programSlug}` },
+        ]}
+      />
       {/* Program header */}
       <AnimatedSection animation="fade-up">
         <div className="text-center mb-14">

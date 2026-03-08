@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getLesson, getLessons } from "@/lib/lessons";
 import { getProgram, getProgramsByTrack } from "@/lib/programs";
@@ -7,6 +8,50 @@ import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 import { LessonComplete } from "@/components/lessons/LessonComplete";
 import { LessonFeedback } from "@/components/lessons/LessonFeedback";
 import { ListenButton } from "@/components/ui/ListenButton";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+
+const BASE_URL = "https://aieducademy.org";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; programSlug: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, programSlug, slug } = await params;
+  const program = getProgram(programSlug);
+  if (!program) return {};
+
+  const lesson = getLesson(programSlug, locale, slug);
+  if (!lesson) return {};
+
+  const tP = await getTranslations({ locale, namespace: "programs" });
+  const tLT = await getTranslations({ locale, namespace: "lessonTitles" });
+  const lessonTitle = tLT(slug);
+  const programTitle = tP(`${programSlug}.title`);
+  const title = `${lessonTitle} - ${programTitle}`;
+  const description = lesson.description;
+  const canonicalUrl = `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${programSlug}/lessons/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${title} | AI Educademy`,
+      description,
+      type: "article",
+      url: canonicalUrl,
+      siteName: "AI Educademy",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | AI Educademy`,
+      description,
+    },
+  };
+}
 
 export default async function ProgramLessonPage({
   params,
@@ -43,6 +88,14 @@ export default async function ProgramLessonPage({
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: `${BASE_URL}${basePath}` },
+          { name: tP("pageTitle"), url: `${BASE_URL}${basePath}/programs` },
+          { name: tP(`${programSlug}.title`), url: `${BASE_URL}${programPath}` },
+          { name: tLT(slug), url: `${BASE_URL}${programPath}/lessons/${slug}` },
+        ]}
+      />
       {/* Breadcrumb */}
       <div className="mb-8 text-sm text-[var(--color-text-muted)]">
         <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">

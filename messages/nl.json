@@ -1141,6 +1141,12 @@
   "notFound": {
     "title": "Pagina niet gevonden",
     "description": "De pagina die u zoekt bestaat niet of is verplaatst.",
-    "backHome": "Terug naar home"
+    "backHome": "Terug naar home",
+    "popularPages": "Populaire pagina's",
+    "searchSuggestion": "Probeer te zoeken naar wat u nodig heeft",
+    "programs": "Programma's",
+    "blog": "Blog",
+    "lab": "AI Lab",
+    "about": "Over ons"
   }
 }

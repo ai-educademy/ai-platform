@@ -1141,6 +1141,12 @@
   "notFound": {
     "title": "Page introuvable",
     "description": "La page que vous recherchez n'existe pas ou a ete deplacee.",
-    "backHome": "Retour a l'accueil"
+    "backHome": "Retour a l'accueil",
+    "popularPages": "Pages populaires",
+    "searchSuggestion": "Essayez de rechercher ce dont vous avez besoin",
+    "programs": "Programmes",
+    "blog": "Blog",
+    "lab": "Labo IA",
+    "about": "À propos"
   }
 }

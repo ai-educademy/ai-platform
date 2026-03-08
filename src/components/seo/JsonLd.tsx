@@ -114,6 +114,51 @@ export function BreadcrumbJsonLd({
   );
 }
 
+export function ArticleJsonLd({
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  author,
+  image,
+  url,
+  tags,
+}: {
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  author: string;
+  image?: string;
+  url: string;
+  tags?: string[];
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    datePublished,
+    dateModified: dateModified || datePublished,
+    author: { "@type": "Person", name: author },
+    publisher: {
+      "@type": "Organization",
+      name: "AI Educademy",
+      url: BASE_URL,
+    },
+    image,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    keywords: tags?.join(", "),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export function FAQJsonLd({
   questions,
 }: {
