@@ -29,10 +29,11 @@ export function ComingSoonProgramCard({
   title: string;
   children: React.ReactNode;
 }) {
+  const t = useTranslations("ui");
   return (
     <button
       onClick={() =>
-        alert(`${title} is coming soon! We're building this module right now.`)
+        alert(t("comingSoonMessage", { title }))
       }
       className="block h-full text-left w-full hover:opacity-80 transition-opacity cursor-pointer"
     >

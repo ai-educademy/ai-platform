@@ -19,7 +19,7 @@ export function ThemeToggle({ compact = false }: { compact?: boolean }) {
             ? "bg-white text-amber-600 shadow-sm"
             : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
         }`}
-        aria-label="Light mode"
+        aria-label={t("lightMode")}
         aria-pressed={!isDark}
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -36,7 +36,7 @@ export function ThemeToggle({ compact = false }: { compact?: boolean }) {
             ? "bg-indigo-500/15 text-indigo-400 shadow-sm"
             : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
         }`}
-        aria-label="Dark mode"
+        aria-label={t("darkMode")}
         aria-pressed={isDark}
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

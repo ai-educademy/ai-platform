@@ -128,7 +128,7 @@ export function Navbar() {
               <button
                 className="p-1.5 rounded-full text-[var(--color-text-muted)] hover:bg-[var(--color-text)]/[0.06] transition-colors"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                aria-label="Toggle menu"
+                aria-label={t("toggleMenu")}
                 aria-expanded={mobileOpen}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

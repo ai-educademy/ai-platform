@@ -138,7 +138,7 @@ export function NavSearch() {
         <button
           onClick={() => setOpen(true)}
           className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-card)] transition-all duration-200 group"
-          aria-label="Search programs"
+          aria-label={tNav("searchAriaLabel")}
           title="⌘K"
         >
           <Search className="w-4 h-4" />
@@ -184,7 +184,7 @@ export function NavSearch() {
             <div className="max-h-[300px] overflow-y-auto overscroll-contain">
               {allResults.length === 0 ? (
                 <div className="px-3 py-6 text-center text-sm text-[var(--color-text-muted)]">
-                  No results
+                  {tNav("noResults")}
                 </div>
               ) : (
                 <div className="py-1">

@@ -56,7 +56,7 @@ export function UserMenu() {
       <button
         onClick={() => setMenuOpen(!menuOpen)}
         className="flex items-center gap-2 cursor-pointer px-2 py-1 rounded-full hover:bg-[var(--color-bg-card)] transition-colors"
-        aria-label="User menu"
+        aria-label={t("userMenuLabel")}
       >
         {avatar ? (
           <img src={avatar} alt="" className="w-7 h-7 rounded-full" />
@@ -95,14 +95,14 @@ export function UserMenu() {
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-[var(--color-bg)] transition-colors"
             >
-              <span>📊</span> My Progress
+              <span>📊</span> {t("myProgress")}
             </Link>
             <Link
               href={`${basePath}/programs`}
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-[var(--color-bg)] transition-colors"
             >
-              <span>📚</span> All Programs
+              <span>📚</span> {t("allPrograms")}
             </Link>
             <div className="border-t border-[var(--color-border)] mt-1 pt-1">
               <button

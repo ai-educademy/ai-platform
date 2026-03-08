@@ -422,7 +422,7 @@ const PROMPT_CHALLENGES: PromptChallenge[] = [
   },
 ];
 
-function scorePrompt(prompt: string, challenge: PromptChallenge): { score: number; feedback: string; simulatedResponse: string } {
+function scorePrompt(prompt: string, challenge: PromptChallenge): { score: number; feedbackKey: string; simulatedResponse: string } {
   const lower = prompt.toLowerCase();
   const words = lower.split(/\s+/);
 
@@ -464,21 +464,20 @@ function scorePrompt(prompt: string, challenge: PromptChallenge): { score: numbe
     simulatedResponse = "I'm not sure what you're looking for. Could you be more specific about what you need?";
   }
 
-  // Feedback
-  let feedback: string;
-  if (score >= 80) feedback = "🎯 Excellent prompt! Clear, specific, and well-structured.";
-  else if (score >= 60) feedback = "👍 Good attempt! Try being more specific about the format and constraints.";
-  else if (score >= 40) feedback = "📝 Getting there — include more relevant keywords and be explicit about what you want.";
-  else feedback = "🔄 Too vague. Try specifying the task, format, and any constraints explicitly.";
+  let feedbackKey: string;
+  if (score >= 80) feedbackKey = "feedbackExcellent";
+  else if (score >= 60) feedbackKey = "feedbackGood";
+  else if (score >= 40) feedbackKey = "feedbackGettingThere";
+  else feedbackKey = "feedbackVague";
 
-  return { score, feedback, simulatedResponse };
+  return { score, feedbackKey, simulatedResponse };
 }
 
 export function PromptEngineeringDojo() {
   const tp = useTranslations("lab.playground");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [input, setInput] = useState("");
-  const [result, setResult] = useState<{ score: number; feedback: string; simulatedResponse: string } | null>(null);
+  const [result, setResult] = useState<{ score: number; feedbackKey: string; simulatedResponse: string } | null>(null);
   const [scores, setScores] = useState<number[]>([]);
   const [gameOver, setGameOver] = useState(false);
   const [typing, setTyping] = useState(false);
@@ -531,7 +530,7 @@ export function PromptEngineeringDojo() {
 
   if (gameOver) {
     const avg = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
-    return <GameOverScreen emoji={avg >= 70 ? "🥋" : avg >= 40 ? "📝" : "🔰"} stat={`${avg}%`} label={`Average prompt score across ${scores.length} challenges`} onReplay={reset} />;
+    return <GameOverScreen emoji={avg >= 70 ? "🥋" : avg >= 40 ? "📝" : "🔰"} stat={`${avg}%`} label={tp("avgScoreLabel", { count: scores.length })} onReplay={reset} replayText={tp("playAgain")} />;
   }
 
   return (
@@ -542,14 +541,14 @@ export function PromptEngineeringDojo() {
       `}</style>
 
       <StatusBar
-        left={<span className="font-mono">Challenge {currentIdx + 1}/{PROMPT_CHALLENGES.length} <span className="text-amber-400">[{challenge.difficulty}]</span></span>}
+        left={<span className="font-mono">{tp("challengeLabel", { current: currentIdx + 1, total: PROMPT_CHALLENGES.length })} <span className="text-amber-400">[{challenge.difficulty}]</span></span>}
         right={scores.length > 0 ? <span className="font-mono">AVG: {Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)}%</span> : undefined}
       />
 
       {/* Mission briefing */}
       <div className="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400">// MISSION</span>
+          <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400">{tp("missionLabel")}</span>
         </div>
         <p className="text-sm font-mono text-[var(--color-text)]">{challenge.context}</p>
       </div>
@@ -557,7 +556,7 @@ export function PromptEngineeringDojo() {
       {/* Target output */}
       <div className="p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">// TARGET OUTPUT</span>
+          <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">{tp("targetOutputLabel")}</span>
         </div>
         <pre className="text-xs font-mono text-[var(--color-text-muted)] whitespace-pre-wrap leading-relaxed">{challenge.target}</pre>
       </div>
@@ -565,7 +564,7 @@ export function PromptEngineeringDojo() {
       {/* Prompt input */}
       <div className="rounded-lg border border-[var(--color-border)] overflow-hidden bg-[var(--color-bg-section)]">
         <div className="flex items-center gap-2 px-3 py-1.5 border-b border-[var(--color-border)] bg-[var(--color-bg)]">
-          <span className="text-[10px] font-mono text-[var(--color-text-muted)]">prompt.txt</span>
+          <span className="text-[10px] font-mono text-[var(--color-text-muted)]">{tp("promptFile")}</span>
         </div>
         <div className="p-3">
           <textarea
@@ -574,7 +573,7 @@ export function PromptEngineeringDojo() {
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) handleSubmit(); }}
             disabled={!!result}
-            placeholder="Type your prompt here... (Ctrl+Enter to submit)"
+            placeholder={tp("promptPlaceholder")}
             rows={3}
             className="w-full bg-transparent font-mono text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 resize-none focus:outline-none"
           />
@@ -598,7 +597,7 @@ export function PromptEngineeringDojo() {
           {/* Simulated AI response */}
           <div className="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-purple-400">// AI RESPONSE</span>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-purple-400">{tp("aiResponseLabel")}</span>
             </div>
             <pre className={`text-xs font-mono text-[var(--color-text)] whitespace-pre-wrap leading-relaxed ${typing ? "dojo-cursor" : ""}`}>
               {displayedResponse}
@@ -622,7 +621,7 @@ export function PromptEngineeringDojo() {
                   />
                 </div>
               </div>
-              <p className="text-xs font-mono text-[var(--color-text-muted)]">{result.feedback}</p>
+              <p className="text-xs font-mono text-[var(--color-text-muted)]">{tp(result.feedbackKey as any)}</p>
             </div>
           </div>
 
@@ -955,7 +954,7 @@ export function AlgorithmVisualizer() {
       {/* Bet selection */}
       {!racing && !winner && (
         <div className="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-section)]">
-          <p className="text-xs font-mono text-[var(--color-text-muted)] mb-3 uppercase tracking-wider">// Place your bet — which algorithm wins?</p>
+          <p className="text-xs font-mono text-[var(--color-text-muted)] mb-3 uppercase tracking-wider">{tp("placeBet")}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {(["bubble", "quick", "merge"] as SortAlgo[]).map(algo => (
               <button
@@ -980,7 +979,7 @@ export function AlgorithmVisualizer() {
             onClick={startRace}
             className="w-full min-h-[40px] px-4 py-2 rounded-lg font-mono text-sm font-bold border border-green-500/50 text-green-400 bg-green-500/10 hover:bg-green-500/20 transition-all"
           >
-            🏁 START RACE
+            {tp("startRaceBtn")}
           </button>
         </div>
       )}
@@ -1006,7 +1005,7 @@ export function AlgorithmVisualizer() {
               onClick={resetRace}
               className="px-3 py-1 rounded-lg font-mono text-xs font-bold border border-[var(--color-primary)]/50 text-[var(--color-primary)] bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10 transition-all"
             >
-              ↻ NEW RACE
+              {tp("newRace")}
             </button>
           )}
         </div>
@@ -1029,15 +1028,15 @@ export function AlgorithmVisualizer() {
                   {state.name}
                   {isWinner && " 🏆"}
                 </span>
-                {bet === key && <span className="text-[9px] font-mono text-amber-400">YOUR BET</span>}
+                {bet === key && <span className="text-[9px] font-mono text-amber-400">{tp("yourBet")}</span>}
               </div>
               {renderBars(state, ALGO_COLORS[key])}
               <div className="flex items-center justify-between mt-2">
                 <span className="text-[10px] font-mono text-[var(--color-text-muted)]">
-                  OPS: <span style={{ color: ALGO_COLORS[key] }}>{state.ops}</span>
+                  {tp("opsLabel")} <span style={{ color: ALGO_COLORS[key] }}>{state.ops}</span>
                 </span>
                 <span className={`text-[10px] font-mono ${state.done ? "text-green-400" : "text-[var(--color-text-muted)]"}`}>
-                  {state.done ? "✓ DONE" : racing ? "sorting..." : "ready"}
+                  {state.done ? tp("doneStatus") : racing ? tp("sortingStatus") : tp("readyStatus")}
                 </span>
               </div>
             </div>
@@ -1051,12 +1050,12 @@ export function AlgorithmVisualizer() {
           betResult === "won" ? "border-green-500/40 bg-green-500/10" : "border-red-500/30 bg-red-500/5"
         }`}>
           <p className="text-lg font-bold mb-1">
-            {betResult === "won" ? "🎉 You called it!" : "😅 Not this time!"}
+            {betResult === "won" ? tp("betWon") : tp("betLost")}
           </p>
           <p className="text-xs text-[var(--color-text-muted)]">
-            {winner === "merge" && "Merge Sort wins with O(n log n) guaranteed performance!"}
-            {winner === "quick" && "Quick Sort is the fastest on average — O(n log n) with low overhead!"}
-            {winner === "bubble" && "Bubble Sort won?! That's extremely rare with random data — usually O(n²)!"}
+            {winner === "merge" && tp("mergeWins")}
+            {winner === "quick" && tp("quickWins")}
+            {winner === "bubble" && tp("bubbleWins")}
           </p>
           <div className="mt-3 flex justify-center gap-4 text-xs text-[var(--color-text-muted)]">
             <span>Bubble: <span className="text-blue-400">{algos.bubble.ops}</span> ops</span>
@@ -1068,9 +1067,9 @@ export function AlgorithmVisualizer() {
 
       {/* Legend */}
       <div className="flex flex-wrap gap-4 text-[10px] font-mono text-[var(--color-text-muted)]">
-        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#FF6B6B] mr-1" /> Comparing</span>
-        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#FBBF24] mr-1" /> Swapping</span>
-        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#00FF88] mr-1" /> Sorted</span>
+        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#FF6B6B] mr-1" /> {tp("comparingLegend")}</span>
+        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#FBBF24] mr-1" /> {tp("swappingLegend")}</span>
+        <span><span className="inline-block w-2 h-2 rounded-sm bg-[#00FF88] mr-1" /> {tp("sortedLegend")}</span>
       </div>
     </GameShell>
   );

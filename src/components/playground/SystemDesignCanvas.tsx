@@ -325,7 +325,8 @@ export function SystemDesignCanvas() {
     }
     const { x, y } = svgPt(e);
     pushHistory();
-    const label = activeTool === "text" ? "Label" : activeTool.charAt(0).toUpperCase() + activeTool.slice(1);
+    const paletteItem = PALETTE.find(p => p.kind === activeTool);
+    const label = activeTool === "text" ? tp("defaultLabel") : paletteItem ? tp(paletteItem.labelKey as any) : activeTool!.charAt(0).toUpperCase() + activeTool!.slice(1);
     const newShape: Shape = { id: uid(), kind: activeTool, x, y, label };
     setShapes((s) => [...s, newShape]);
     if (activeTool === "text") {
@@ -479,11 +480,11 @@ export function SystemDesignCanvas() {
                   onClick={(e) => { e.stopPropagation(); deleteCanvas(c.id); }}
                   className="text-xs px-1.5 py-0.5 rounded hover:bg-red-100 dark:hover:bg-red-900/30"
                   style={{ color: "#ef4444" }}
-                  title="Delete"
+                  title={tp("deleteTooltip")}
                 >✕</button>
               </div>
               <span className="text-[10px]" style={{ color: "var(--color-text-muted)" }}>
-                {c.data.shapes?.length || 0} shapes · {c.data.arrows?.length || 0} arrows
+                {tp("shapesArrows", { shapes: c.data.shapes?.length || 0, arrows: c.data.arrows?.length || 0 })}
               </span>
               <span className="text-[10px]" style={{ color: "var(--color-text-muted)" }}>
                 {new Date(c.updatedAt).toLocaleDateString()}
@@ -503,13 +504,13 @@ export function SystemDesignCanvas() {
       {/* toolbar */}
       <div className="flex flex-wrap items-center gap-1.5 px-3 py-2 border-b" style={{ borderColor: "var(--color-border)", background: "var(--color-bg-card)" }}>
         {/* file actions */}
-        <button onClick={() => setShowPicker(true)} className="px-2.5 py-1.5 rounded-lg text-xs font-medium border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title="My Designs">
+        <button onClick={() => setShowPicker(true)} className="px-2.5 py-1.5 rounded-lg text-xs font-medium border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title={tp("myDesignsTooltip")}>
           📁
         </button>
-        <button onClick={clearAll} className="px-2.5 py-1.5 rounded-lg text-xs font-medium" style={{ background: "#ef4444", color: "#fff" }} title="Clear">
+        <button onClick={clearAll} className="px-2.5 py-1.5 rounded-lg text-xs font-medium" style={{ background: "#ef4444", color: "#fff" }} title={tp("clearTooltip")}>
           🗑
         </button>
-        <button onClick={undo} className="px-2.5 py-1.5 rounded-lg text-xs font-medium border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title="Undo (⌘Z)">
+        <button onClick={undo} className="px-2.5 py-1.5 rounded-lg text-xs font-medium border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title={tp("undoTooltip")}>
           ↩
         </button>
         <div className="w-px h-5 mx-0.5" style={{ background: "var(--color-border)" }} />
@@ -523,7 +524,7 @@ export function SystemDesignCanvas() {
             background: connectMode ? "var(--color-primary)" : "transparent",
             color: connectMode ? "#fff" : "var(--color-text)",
           }}
-          title="Connect shapes"
+          title={tp("connectTooltip")}
         >
           →
         </button>
@@ -548,9 +549,9 @@ export function SystemDesignCanvas() {
         <div className="w-px h-5 mx-0.5" style={{ background: "var(--color-border)" }} />
 
         {/* zoom controls */}
-        <button onClick={zoomOut} className="px-2 py-1.5 rounded-lg text-xs font-bold border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title="Zoom out (⌘-)">−</button>
-        <button onClick={zoomReset} className="px-2 py-1.5 rounded-lg text-[10px] font-mono border min-w-[42px] text-center" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title="Reset zoom (⌘0)">{zoomPct}%</button>
-        <button onClick={zoomIn} className="px-2 py-1.5 rounded-lg text-xs font-bold border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title="Zoom in (⌘+)">+</button>
+        <button onClick={zoomOut} className="px-2 py-1.5 rounded-lg text-xs font-bold border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title={tp("zoomOutTooltip")}>−</button>
+        <button onClick={zoomReset} className="px-2 py-1.5 rounded-lg text-[10px] font-mono border min-w-[42px] text-center" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title={tp("resetZoomTooltip")}>{zoomPct}%</button>
+        <button onClick={zoomIn} className="px-2 py-1.5 rounded-lg text-xs font-bold border" style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }} title={tp("zoomInTooltip")}>+</button>
 
         {/* save indicator + status */}
         <span className="ml-auto flex items-center gap-2 text-[10px]" style={{ color: "var(--color-text-muted)" }}>
@@ -662,7 +663,7 @@ export function SystemDesignCanvas() {
                   <input
                     autoFocus
                     value={arrowEditText}
-                    placeholder="label…"
+                    placeholder={tp("arrowLabelPlaceholder")}
                     onChange={(e) => setArrowEditText(e.target.value)}
                     onBlur={commitArrowEdit}
                     onKeyDown={(e) => { if (e.key === "Enter") commitArrowEdit(); if (e.key === "Escape") setEditingArrowId(null); }}
@@ -677,7 +678,7 @@ export function SystemDesignCanvas() {
 
         {/* help text */}
         <div className="absolute bottom-2 left-3 text-[10px] font-mono" style={{ color: "var(--color-text-muted)" }}>
-          Dbl-click rename · Del remove · ⌘Z undo · ⌘+/- zoom · ⌘0 reset · Middle-click pan
+          {tp("helpText")}
         </div>
       </div>
     </div>

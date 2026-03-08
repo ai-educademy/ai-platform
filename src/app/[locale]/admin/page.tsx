@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 interface Summary {
   totalEvents: number;
@@ -13,6 +14,7 @@ interface Summary {
 }
 
 export default function AdminPage() {
+  const t = useTranslations("admin");
   const [secret, setSecret] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [data, setData] = useState<Summary | null>(null);
@@ -27,7 +29,7 @@ export default function AdminPage() {
       if (!res.ok) throw new Error("Failed to fetch");
       setData(await res.json());
     } catch {
-      setError("Failed to load analytics data");
+      setError(t("loadError"));
     } finally {
       setLoading(false);
     }
@@ -51,27 +53,27 @@ export default function AdminPage() {
     if (secret === process.env.NEXT_PUBLIC_ADMIN_SECRET) {
       setAuthenticated(true);
     } else {
-      setError("Invalid secret");
+      setError(t("invalidSecret"));
     }
   };
 
   if (!authenticated) {
     return (
       <div className="max-w-md mx-auto px-4 py-20">
-        <h1 className="text-2xl font-bold mb-6 text-center">🔐 Admin Access</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center">{t("loginTitle")}</h1>
         <form onSubmit={handleAuth} className="space-y-4">
           <input
             type="password"
             value={secret}
             onChange={(e) => setSecret(e.target.value)}
-            placeholder="Enter admin secret"
+            placeholder={t("passwordPlaceholder")}
             className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)]"
           />
           <button
             type="submit"
             className="w-full px-4 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold"
           >
-            Access Dashboard
+            {t("accessButton")}
           </button>
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
         </form>
@@ -83,7 +85,7 @@ export default function AdminPage() {
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
         <div className="animate-spin text-4xl mb-4">⏳</div>
-        <p className="text-[var(--color-text-muted)]">Loading analytics...</p>
+        <p className="text-[var(--color-text-muted)]">{t("loading")}</p>
       </div>
     );
   }
@@ -91,21 +93,21 @@ export default function AdminPage() {
   if (!data) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <p className="text-red-500">{error || "No data available"}</p>
+        <p className="text-red-500">{error || t("noData")}</p>
       </div>
     );
   }
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12 space-y-8">
-      <h1 className="text-3xl font-bold text-gradient">📊 Admin Analytics</h1>
+      <h1 className="text-3xl font-bold text-gradient">{t("title")}</h1>
 
       {/* Overview Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
-          { label: "Newsletter Subscribers", value: data.totalSubscribers, icon: "📧" },
-          { label: "Total Feedback", value: data.totalFeedback, icon: "💬" },
-          { label: "Total Events", value: data.totalEvents, icon: "📈" },
+          { label: t("subscribers"), value: data.totalSubscribers, icon: "📧" },
+          { label: t("totalFeedback"), value: data.totalFeedback, icon: "💬" },
+          { label: t("totalEvents"), value: data.totalEvents, icon: "📈" },
         ].map((card) => (
           <div
             key={card.label}
@@ -120,17 +122,17 @@ export default function AdminPage() {
 
       {/* Feedback by Program */}
       <div className="rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] p-6">
-        <h2 className="text-xl font-bold mb-4">💬 Feedback by Program</h2>
+        <h2 className="text-xl font-bold mb-4">{t("feedbackByProgram")}</h2>
         {Object.keys(data.feedbackByProgram).length === 0 ? (
-          <p className="text-[var(--color-text-muted)] text-sm">No feedback yet</p>
+          <p className="text-[var(--color-text-muted)] text-sm">{t("noFeedback")}</p>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-[var(--color-border)]">
-                <th className="text-left py-2 font-semibold">Program</th>
-                <th className="text-right py-2 font-semibold">👍 Up</th>
-                <th className="text-right py-2 font-semibold">👎 Down</th>
-                <th className="text-right py-2 font-semibold">Total</th>
+                <th className="text-left py-2 font-semibold">{t("program")}</th>
+                <th className="text-right py-2 font-semibold">{t("upVotes")}</th>
+                <th className="text-right py-2 font-semibold">{t("downVotes")}</th>
+                <th className="text-right py-2 font-semibold">{t("total")}</th>
               </tr>
             </thead>
             <tbody>
@@ -149,15 +151,15 @@ export default function AdminPage() {
 
       {/* Popular Lessons */}
       <div className="rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] p-6">
-        <h2 className="text-xl font-bold mb-4">🔥 Popular Lessons</h2>
+        <h2 className="text-xl font-bold mb-4">{t("popularLessons")}</h2>
         {data.popularLessons.length === 0 ? (
-          <p className="text-[var(--color-text-muted)] text-sm">No page views tracked yet</p>
+          <p className="text-[var(--color-text-muted)] text-sm">{t("noPageViews")}</p>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-[var(--color-border)]">
-                <th className="text-left py-2 font-semibold">Lesson</th>
-                <th className="text-right py-2 font-semibold">Views</th>
+                <th className="text-left py-2 font-semibold">{t("lesson")}</th>
+                <th className="text-right py-2 font-semibold">{t("views")}</th>
               </tr>
             </thead>
             <tbody>
@@ -174,9 +176,9 @@ export default function AdminPage() {
 
       {/* Event Counts */}
       <div className="rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] p-6">
-        <h2 className="text-xl font-bold mb-4">📈 Event Breakdown</h2>
+        <h2 className="text-xl font-bold mb-4">{t("eventBreakdown")}</h2>
         {Object.keys(data.eventCounts).length === 0 ? (
-          <p className="text-[var(--color-text-muted)] text-sm">No events tracked yet</p>
+          <p className="text-[var(--color-text-muted)] text-sm">{t("noEvents")}</p>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {Object.entries(data.eventCounts).map(([event, count]) => (
@@ -194,9 +196,9 @@ export default function AdminPage() {
 
       {/* Recent Subscribers */}
       <div className="rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] p-6">
-        <h2 className="text-xl font-bold mb-4">📧 Recent Subscribers</h2>
+        <h2 className="text-xl font-bold mb-4">{t("recentSubscribers")}</h2>
         {data.recentSubscribers.length === 0 ? (
-          <p className="text-[var(--color-text-muted)] text-sm">No subscribers yet</p>
+          <p className="text-[var(--color-text-muted)] text-sm">{t("noSubscribers")}</p>
         ) : (
           <ul className="space-y-2">
             {data.recentSubscribers.map((s) => (
@@ -218,7 +220,7 @@ export default function AdminPage() {
         onClick={fetchData}
         className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-sm hover:brightness-110 transition-all cursor-pointer"
       >
-        🔄 Refresh Data
+        {t("refreshData")}
       </button>
     </div>
   );
