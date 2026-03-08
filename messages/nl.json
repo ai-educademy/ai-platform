@@ -691,7 +691,9 @@
     "updates": "Blijf op de hoogte",
     "openSource": "Open source",
     "openSourceDesc": "Open gebouwd — bekijk de code, draag bij of fork het",
-    "shareText": "Gratis AI-onderwijs voor iedereen"
+    "shareText": "Gratis AI-onderwijs voor iedereen",
+    "headline": "Doe mee met de beweging",
+    "subtitle": "Ontvang de nieuwste lessen, tips en updates in je inbox. Geef ons een ster op GitHub om gratis AI-onderwijs voor iedereen te ondersteunen."
   },
   "lab": {
     "title": "AI Lab",

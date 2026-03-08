@@ -691,7 +691,9 @@
     "updates": "Stay Updated",
     "openSource": "Open Source",
     "openSourceDesc": "Built openly, view code, contribute, or fork",
-    "shareText": "Free AI education for everyone"
+    "shareText": "Free AI education for everyone",
+    "headline": "Join the Movement",
+    "subtitle": "Get the latest lessons, tips, and updates delivered to your inbox. Star us on GitHub to support free AI education for everyone."
   },
   "lab": {
     "title": "AI Lab",

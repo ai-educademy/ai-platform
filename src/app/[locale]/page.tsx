@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { FloatingParticles, ScrollReveal } from "@ai-educademy/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
-import { Mail, Github } from "lucide-react";
+import { Mail, Github, Star } from "lucide-react";
 import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 import HomeHero from "@/components/home/HomeHero";
@@ -85,7 +85,9 @@ export default async function HomePage({
         <NeuralBackground variant="hero" />
         <FloatingParticles />
         <div className="absolute inset-0 bg-grid" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-24 md:py-32 relative">
+        {/* Noise texture overlay for depth */}
+        <div className="absolute inset-0 noise-texture pointer-events-none z-[1]" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-24 md:py-32 relative z-[2]">
           <HomeHero
             title={t("hero.title")}
             titleHighlight={t("hero.titleHighlight")}
@@ -104,21 +106,30 @@ export default async function HomePage({
         </div>
       </section>
 
-      <hr className="section-divider" />
-
-      {/* Programs Section — Two Tracks */}
+      {/* Programs Section — Bento Grid */}
       <section className="py-28 sm:py-36">
         <HomeProgramCards
           sectionTitle={t("programs.title")}
           sectionSubtitle={t("programs.subtitle")}
-          featuresTitle={tf("title")}
-          features={[
-            { icon: "🎓", title: tf("structuredTitle"), desc: tf("structuredDesc") },
-            { icon: "📚", title: tf("lessonsTitle"), desc: tf("lessonsDesc") },
-            { icon: "🌍", title: tf("languagesTitle"), desc: tf("languagesDesc") },
-            { icon: "🧪", title: tf("labTitle"), desc: tf("labDesc") },
-            { icon: "🔓", title: tf("openSourceTitle"), desc: tf("openSourceDesc") },
-            { icon: "💡", title: tf("freeTitle"), desc: tf("freeDesc") },
+          highlights={[
+            {
+              icon: "📚",
+              value: "100+",
+              label: tf("lessonsTitle"),
+              desc: tf("lessonsDesc"),
+            },
+            {
+              icon: "🌍",
+              value: "5",
+              label: tf("languagesTitle"),
+              desc: tf("languagesDesc"),
+            },
+            {
+              icon: "💡",
+              value: "∞",
+              label: tf("freeTitle"),
+              desc: tf("freeDesc"),
+            },
           ]}
           trackAI={{
             trackIcon: "🌳",
@@ -147,10 +158,10 @@ export default async function HomePage({
         />
       </section>
 
-      <hr className="section-divider" />
-
       {/* Brains Behind the Idea */}
       <section className="py-28 sm:py-36 relative overflow-hidden bg-[var(--color-bg-section)]">
+        {/* Noise texture for section depth */}
+        <div className="absolute inset-0 noise-texture pointer-events-none" />
         <HomeFounder
           brainsTitle={t("founder.brainsTitle")}
           name="Ramesh Reddy Adutla"
@@ -171,30 +182,34 @@ export default async function HomePage({
         />
       </section>
 
-      <hr className="section-divider" />
-
-      {/* Community Strip */}
-      <section className="py-8 md:py-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      {/* Community CTA — Full-width gradient section */}
+      <section className="py-20 sm:py-28 relative overflow-hidden bg-gradient-mesh-cta">
+        <div className="absolute inset-0 noise-texture pointer-events-none" />
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 text-center">
           <ScrollReveal animation="fade-up">
-            <div className="flex flex-col sm:flex-row items-center gap-4 p-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
-              <div className="flex items-center gap-3 shrink-0">
-                <Mail size={20} className="text-[var(--color-primary)]" />
-                <span className="text-sm font-semibold">{tc("updates")}</span>
-              </div>
-              <div className="flex-1 w-full sm:w-auto">
-                <NewsletterSignup />
-              </div>
-              <a
-                href="https://github.com/ai-educademy/ai-platform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[var(--color-border)] text-sm font-semibold hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all shrink-0"
-              >
-                <Github size={16} />
-                ⭐ {tc("openSource")}
-              </a>
+            <h2 className="text-3xl sm:text-5xl font-black mb-4 text-gradient-animated">
+              {tc("headline")}
+            </h2>
+            <p className="text-lg text-[var(--color-text-muted)] max-w-xl mx-auto mb-10 leading-relaxed">
+              {tc("subtitle")}
+            </p>
+
+            {/* Newsletter signup — larger, centered */}
+            <div className="max-w-md mx-auto mb-8">
+              <NewsletterSignup />
             </div>
+
+            {/* GitHub star button with glow */}
+            <a
+              href="https://github.com/ai-educademy/ai-platform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm font-semibold hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:shadow-md hover:shadow-indigo-500/10 transition-all duration-300"
+            >
+              <Github size={18} />
+              <Star size={14} className="text-amber-400" />
+              {tc("openSource")}
+            </a>
           </ScrollReveal>
         </div>
       </section>

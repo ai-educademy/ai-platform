@@ -189,18 +189,22 @@ export default function HomeHero({
         </motion.div>
       </motion.div>
 
-      {/* Stats row — animated counters */}
+      {/* Stats row — animated counters with subtle card treatment */}
       <motion.div
-        className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-[var(--color-text-muted)] tracking-wide"
+        className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         initial={prefersReduced ? noMotion : { opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 1.1, ease: [0.25, 0.4, 0.25, 1] }}
       >
         {[statPrograms, statLessons, statLanguages, statFree].map((stat, i) => (
-          <span key={i} className="flex items-center gap-1">
-            {i > 0 && <span className="text-[var(--color-border)] mx-1">·</span>}
+          <motion.span
+            key={i}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)]/50 backdrop-blur-sm text-sm text-[var(--color-text-muted)] tracking-wide"
+            whileHover={prefersReduced ? {} : { scale: 1.05, borderColor: "var(--color-primary)" }}
+            transition={spring}
+          >
             <AnimatedStat text={stat} inView={isInView} />
-          </span>
+          </motion.span>
         ))}
       </motion.div>
     </div>

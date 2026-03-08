@@ -691,7 +691,9 @@
     "updates": "Restez à jour",
     "openSource": "Open Source",
     "openSourceDesc": "Construit ouvertement : consultez le code, contribuez ou forkez",
-    "shareText": "Éducation en IA gratuite pour tous"
+    "shareText": "Éducation en IA gratuite pour tous",
+    "headline": "Rejoignez le mouvement",
+    "subtitle": "Recevez les dernières leçons, astuces et mises à jour dans votre boîte mail. Mettez-nous une étoile sur GitHub pour soutenir l'éducation en IA gratuite pour tous."
   },
   "lab": {
     "title": "Labo IA",
