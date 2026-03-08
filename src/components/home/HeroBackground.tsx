@@ -67,7 +67,7 @@ interface Particle {
 
 function seedParticles(w: number, h: number, count: number): Particle[] {
   const out: Particle[] = [];
-  const nSymbols = Math.floor(count * 0.3);
+  const nSymbols = Math.floor(count * 0.35);
   for (let i = 0; i < count; i++) {
     const z = Math.random();
     const isSymbol = i < nSymbols;
@@ -75,10 +75,10 @@ function seedParticles(w: number, h: number, count: number): Particle[] {
       x: Math.random() * w,
       y: Math.random() * h,
       z,
-      vx: (Math.random() - 0.5) * (0.15 + z * 0.3),
-      vy: (Math.random() - 0.5) * (0.15 + z * 0.3),
-      size: 1.5 + z * 3.5,
-      opacity: 0.1 + z * 0.3,
+      vx: (Math.random() - 0.5) * (0.2 + z * 0.5),
+      vy: (Math.random() - 0.5) * (0.2 + z * 0.5),
+      size: 2 + z * 4,
+      opacity: 0.15 + z * 0.45,
       isSymbol,
       symbol: isSymbol ? SYMBOLS[i % SYMBOLS.length] : undefined,
     });
@@ -177,12 +177,12 @@ export default function HeroBackground() {
       /* ── Layer 1: Neural SVG parallax — perspective tilt + translate ── */
       if (neuralRef.current && !reduced.current) {
         neuralRef.current.style.transform =
-          `perspective(800px) rotateX(${(my - 0.5) * 8}deg) rotateY(${(mx - 0.5) * -8}deg) translate(${(mx - 0.5) * -15}px, ${(my - 0.5) * -15}px)`;
+          `perspective(600px) rotateX(${(my - 0.5) * 12}deg) rotateY(${(mx - 0.5) * -12}deg) translate(${(mx - 0.5) * -25}px, ${(my - 0.5) * -25}px)`;
       }
 
       /* ── Layer 3: Grid parallax — slight opposite shift ── */
       if (gridRef.current && !reduced.current) {
-        gridRef.current.style.transform = `translate(${(mx - 0.5) * 18}px, ${(my - 0.5) * 18}px)`;
+        gridRef.current.style.transform = `translate(${(mx - 0.5) * 25}px, ${(my - 0.5) * 25}px)`;
       }
 
       /* ── Layer 2: Canvas — depth particles + knowledge symbols ── */
@@ -204,14 +204,14 @@ export default function HeroBackground() {
             if (p.y > h + 30) p.y = -30;
           }
 
-          const px = reduced.current ? 0 : (mx - 0.5) * p.z * 25;
-          const py = reduced.current ? 0 : (my - 0.5) * p.z * 25;
+          const px = reduced.current ? 0 : (mx - 0.5) * p.z * 40;
+          const py = reduced.current ? 0 : (my - 0.5) * p.z * 40;
           const dx = p.x + px;
           const dy = p.y + py;
 
           if (p.isSymbol && p.symbol) {
-            ctx.font = `${12 + p.z * 10}px 'JetBrains Mono','Fira Code',monospace`;
-            ctx.fillStyle = `rgba(${rgb},${p.opacity * 0.8})`;
+            ctx.font = `bold ${14 + p.z * 12}px 'JetBrains Mono','Fira Code',monospace`;
+            ctx.fillStyle = `rgba(${rgb},${p.opacity * 0.9})`;
             ctx.fillText(p.symbol, dx, dy);
           } else {
             ctx.beginPath();
@@ -232,20 +232,20 @@ export default function HeroBackground() {
             const ddx = a.x - b.x;
             const ddy = a.y - b.y;
             const dist = Math.sqrt(ddx * ddx + ddy * ddy);
-            if (dist < 100) {
+            if (dist < 120) {
               const op =
-                (1 - dist / 100) *
+                (1 - dist / 120) *
                 Math.min(a.opacity, b.opacity) *
-                0.35;
-              const apx = reduced.current ? 0 : (mx - 0.5) * a.z * 25;
-              const apy = reduced.current ? 0 : (my - 0.5) * a.z * 25;
-              const bpx = reduced.current ? 0 : (mx - 0.5) * b.z * 25;
-              const bpy = reduced.current ? 0 : (my - 0.5) * b.z * 25;
+                0.5;
+              const apx = reduced.current ? 0 : (mx - 0.5) * a.z * 40;
+              const apy = reduced.current ? 0 : (my - 0.5) * a.z * 40;
+              const bpx = reduced.current ? 0 : (mx - 0.5) * b.z * 40;
+              const bpy = reduced.current ? 0 : (my - 0.5) * b.z * 40;
               ctx.beginPath();
               ctx.moveTo(a.x + apx, a.y + apy);
               ctx.lineTo(b.x + bpx, b.y + bpy);
               ctx.strokeStyle = `rgba(${rgb},${op})`;
-              ctx.lineWidth = 0.5;
+              ctx.lineWidth = 0.8;
               ctx.stroke();
             }
           }
@@ -275,7 +275,7 @@ export default function HeroBackground() {
       <div
         ref={neuralRef}
         className="absolute -inset-4 will-change-transform"
-        style={{ opacity: 0.2 }}
+        style={{ opacity: 0.3 }}
       >
         <svg
           className="w-full h-full"
@@ -326,7 +326,7 @@ export default function HeroBackground() {
               x2={DOTS[b].cx}
               y2={DOTS[b].cy}
               stroke={`url(#cg${i})`}
-              strokeWidth="0.2"
+              strokeWidth="0.35"
             />
           ))}
           {DOTS.map((d, i) => (
@@ -334,7 +334,7 @@ export default function HeroBackground() {
               key={i}
               cx={d.cx}
               cy={d.cy}
-              r="0.5"
+              r="0.7"
               fill="var(--color-primary)"
               style={
                 reduced.current
