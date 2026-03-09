@@ -16,7 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, programSlug } = await params;
   const program = getProgram(programSlug);
-  if (!program) return {};
+  if (!program) notFound();
 
   const tP = await getTranslations({ locale, namespace: "programs" });
   const title = tP(`${programSlug}.title`);
