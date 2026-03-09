@@ -5,8 +5,6 @@ interface BrandMarkProps {
   className?: string;
 }
 
-const ORG_AVATAR = "https://avatars.githubusercontent.com/u/265648179?v=4";
-
 export function BrandMark({ size = "sm", className = "" }: BrandMarkProps) {
   const isLarge = size === "lg";
   const iconSize = isLarge ? 40 : 28;
@@ -16,12 +14,11 @@ export function BrandMark({ size = "sm", className = "" }: BrandMarkProps) {
   return (
     <span className={`inline-flex items-center gap-2 transition-transform duration-300 hover:scale-[1.03] ${className}`}>
       <Image
-        src={ORG_AVATAR}
+        src="/images/logo.png"
         alt="AI Educademy"
         width={iconSize}
         height={iconSize}
         className="rounded-lg transition-shadow duration-300 hover:shadow-md hover:shadow-indigo-500/20"
-        unoptimized
       />
       <span className="flex items-baseline gap-0.5 leading-none">
         <span

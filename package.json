@@ -2,7 +2,7 @@
   "name": "@ai-educademy/ai-platform",
   "version": "0.1.0",
   "private": true,
-  "description": "Main Next.js app shell for AI Educademy — routing, auth, i18n, program registry",
+  "description": "Main Next.js app shell for AI Educademy \u2014 routing, auth, i18n, program registry",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -63,5 +63,11 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "vitest": "^4.0.18"
-  }
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "not dead",
+    "not ie 11",
+    "not op_mini all"
+  ]
 }

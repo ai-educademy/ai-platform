@@ -142,12 +142,12 @@ export default function HomeHero({
         <span className="block text-gradient-animated">{titleHighlight}</span>
       </motion.h1>
 
-      {/* Subtitle - fade up after title */}
+      {/* Subtitle - visible immediately for LCP, animate transform only */}
       <motion.p
         className="text-lg sm:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8 leading-relaxed"
-        initial={prefersReduced ? noMotion : { opacity: 0, y: 16 }}
+        initial={prefersReduced ? noMotion : { opacity: 1, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+        transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
       >
         {subtitle}
       </motion.p>
