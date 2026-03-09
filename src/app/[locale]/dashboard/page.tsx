@@ -25,7 +25,7 @@ const PROGRAMS = [
     lessons: [
       { slug: "what-is-ai", icon: "🤖", duration: 10 },
       { slug: "how-machines-learn", icon: "🧠", duration: 12 },
-      { slug: "your-first-ai-model", icon: "🎨", duration: 15 },
+      { slug: "your-first-ai-experiment", icon: "🎨", duration: 15 },
     ],
   },
   {
@@ -48,8 +48,8 @@ const PROGRAMS = [
     track: "ai-learning",
     lessons: [
       { slug: "ai-in-healthcare", icon: "🏥", duration: 30 },
-      { slug: "chatbots-and-nlp", icon: "💬", duration: 35 },
-      { slug: "computer-vision-basics", icon: "👁️", duration: 35 },
+      { slug: "natural-language-processing", icon: "💬", duration: 35 },
+      { slug: "computer-vision", icon: "👁️", duration: 35 },
     ],
   },
   {
@@ -61,7 +61,7 @@ const PROGRAMS = [
     lessons: [
       { slug: "deep-neural-networks", icon: "🔬", duration: 40 },
       { slug: "large-language-models", icon: "📝", duration: 45 },
-      { slug: "prompt-engineering-mastery", icon: "✨", duration: 40 },
+      { slug: "prompt-engineering", icon: "✨", duration: 40 },
     ],
   },
   {
@@ -83,8 +83,8 @@ const PROGRAMS = [
     color: "#F97316",
     track: "craft-engineering",
     lessons: [
-      { slug: "arrays-and-hashing", icon: "📊", duration: 15 },
-      { slug: "strings-and-patterns", icon: "🔤", duration: 15 },
+      { slug: "arrays-and-hashmaps", icon: "📊", duration: 15 },
+      { slug: "strings-and-text", icon: "🔤", duration: 15 },
       { slug: "sorting-and-searching", icon: "🔍", duration: 15 },
     ],
   },
@@ -96,8 +96,8 @@ const PROGRAMS = [
     track: "craft-engineering",
     lessons: [
       { slug: "two-pointers-and-sliding-window", icon: "👆", duration: 20 },
-      { slug: "trees-and-graph-traversal", icon: "🌲", duration: 25 },
-      { slug: "stacks-queues-monotonic", icon: "📚", duration: 20 },
+      { slug: "trees-and-binary-search", icon: "🌲", duration: 25 },
+      { slug: "monotonic-stack-and-queue", icon: "📚", duration: 20 },
     ],
   },
   {
@@ -120,7 +120,7 @@ const PROGRAMS = [
     track: "craft-engineering",
     lessons: [
       { slug: "star-framework", icon: "⭐", duration: 15 },
-      { slug: "system-design-communication", icon: "💬", duration: 20 },
+      { slug: "communicating-technical-ideas", icon: "💬", duration: 20 },
       { slug: "ai-era-leadership", icon: "🧭", duration: 20 },
     ],
   },
