@@ -152,9 +152,9 @@ export default function HomeFounder({
                 <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-purple-500/5 to-transparent" />
 
                 <div className="relative z-10 flex flex-col items-center">
-                  {/* Larger avatar with animated ring */}
+                  {/* Founder avatar */}
                   <motion.div
-                    className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden ring-2 ring-[var(--color-primary-glow)] pulse-ring mb-5 shadow-lg"
+                    className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden ring-2 ring-[var(--color-primary-glow)] mb-5 shadow-lg"
                     initial={reduced ? {} : { scale: 0.85, opacity: 0 }}
                     animate={isInView ? { scale: 1, opacity: 1 } : {}}
                     transition={
