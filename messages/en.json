@@ -29,7 +29,7 @@
     "mission": "Mission",
     "missionDesc": "Making AI education accessible to everyone, everywhere",
     "values": "Values",
-    "valuesDesc": "Open source, multilingual, and forever free",
+    "valuesDesc": "Open source, multilingual, and community-driven",
     "openSource": "Open Source",
     "openSourceDesc": "Built in public on GitHub",
     "meetCreator": "Meet the Creator",
@@ -48,11 +48,9 @@
     "lessons": "Interactive lessons",
     "cost": "Cost",
     "openSource": "Open Source",
-    "freeValue": "Free",
     "statPrograms": "10 Programs",
     "statLessons": "100+ Lessons",
-    "statLanguages": "5 Languages",
-    "statFree": "Free Forever"
+    "statLanguages": "5 Languages"
   },
   "features": {
     "title": "Why AI Educademy?",
@@ -69,9 +67,9 @@
       "title": "In Your Language",
       "description": "Learn in Hindi, Telugu, French, Dutch, or English, whichever feels like home."
     },
-    "free": {
-      "title": "Free Forever",
-      "description": "No subscriptions, no paywalls. Open-source, community-built, free forever."
+    "openAccess": {
+      "title": "Open Access",
+      "description": "No subscriptions, no paywalls. Open-source, community-built education for everyone."
     },
     "community": {
       "title": "Learn Together",
@@ -91,8 +89,8 @@
     "labDesc": "Hands-on experiments to solidify your understanding",
     "openSourceTitle": "Open Source",
     "openSourceDesc": "Fully transparent - view, fork, or contribute",
-    "freeTitle": "Always Free",
-    "freeDesc": "No paywalls, no premium tiers, free forever"
+    "openAccessTitle": "Open Access",
+    "openAccessDesc": "No barriers — open-source, community-driven education"
   },
   "founder": {
     "description": "Founded AI Educademy to make world-class AI education free, multilingual, and accessible to everyone. Over fifteen years building large-scale systems across fintech, media, and retail at companies like JP Morgan and Sky — working across Asia and Europe. That global experience made one thing clear: language should never be a barrier to learning. Speaks English, French, and Telugu.",

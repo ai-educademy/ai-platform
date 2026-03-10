@@ -51,7 +51,6 @@ export async function generateMetadata({
       "free AI course",
       "learn AI",
       "machine learning",
-      "free learning",
       "open source education",
       "multilingual AI",
       "beginner AI",

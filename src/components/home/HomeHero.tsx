@@ -19,7 +19,6 @@ interface HomeHeroProps {
   statPrograms: string;
   statLessons: string;
   statLanguages: string;
-  statFree: string;
 }
 
 /* ── Spring config ── */
@@ -100,7 +99,6 @@ export default function HomeHero({
   statPrograms,
   statLessons,
   statLanguages,
-  statFree,
 }: HomeHeroProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
@@ -196,7 +194,7 @@ export default function HomeHero({
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 1.1, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        {[statPrograms, statLessons, statLanguages, statFree].map((stat, i) => (
+        {[statPrograms, statLessons, statLanguages].map((stat, i) => (
           <motion.span
             key={i}
             className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)]/50 backdrop-blur-sm text-sm text-[var(--color-text-muted)] tracking-wide"

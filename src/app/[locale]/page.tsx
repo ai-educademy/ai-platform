@@ -97,7 +97,6 @@ export default async function HomePage({
             statPrograms={t("hero.statPrograms")}
             statLessons={t("hero.statLessons")}
             statLanguages={t("hero.statLanguages")}
-            statFree={t("hero.statFree")}
           />
         </div>
       </section>
@@ -123,8 +122,8 @@ export default async function HomePage({
             {
               icon: "💡",
               value: "∞",
-              label: tf("freeTitle"),
-              desc: tf("freeDesc"),
+              label: tf("openAccessTitle"),
+              desc: tf("openAccessDesc"),
             },
           ]}
           trackAI={{

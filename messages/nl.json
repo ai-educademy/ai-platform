@@ -29,7 +29,7 @@
     "mission": "Missie",
     "missionDesc": "AI-onderwijs toegankelijk maken voor iedereen, overal",
     "values": "Waarden",
-    "valuesDesc": "Open source, meertalig en altijd gratis",
+    "valuesDesc": "Open source, meertalig en community-gedreven",
     "openSource": "Open Source",
     "openSourceDesc": "Openbaar gebouwd op GitHub",
     "meetCreator": "Ontmoet de maker",
@@ -48,11 +48,9 @@
     "lessons": "Interactieve lessen",
     "cost": "Kosten",
     "openSource": "Open source",
-    "freeValue": "Gratis",
     "statPrograms": "10 programma's",
     "statLessons": "100+ lessen",
-    "statLanguages": "5 talen",
-    "statFree": "Voor altijd gratis"
+    "statLanguages": "5 talen"
   },
   "features": {
     "title": "Waarom AI Educademy?",
@@ -69,9 +67,9 @@
       "title": "In jouw taal",
       "description": "Leer in het Hindi, Telugu, Frans, Nederlands of Engels - welke taal ook als thuis voelt."
     },
-    "free": {
-      "title": "Voor altijd gratis",
-      "description": "Geen abonnementen, geen betaalmuren. Open source, door de gemeenschap gebouwd, voor altijd gratis."
+    "openAccess": {
+      "title": "Open toegang",
+      "description": "Geen abonnementen, geen betaalmuren. Open source, door de gemeenschap gebouwd, voor iedereen."
     },
     "community": {
       "title": "Samen leren",
@@ -91,8 +89,8 @@
     "labDesc": "Praktische experimenten om je kennis te versterken",
     "openSourceTitle": "Open source",
     "openSourceDesc": "Volledig transparant - bekijk, fork of draag bij",
-    "freeTitle": "Altijd gratis",
-    "freeDesc": "Geen betaalmuren, geen premium niveaus, voor altijd gratis"
+    "openAccessTitle": "Open toegang",
+    "openAccessDesc": "Geen drempels — open source, community-gedreven onderwijs"
   },
   "founder": {
     "description": "Richtte AI Educademy op om AI-onderwijs van wereldklasse gratis, meertalig en toegankelijk voor iedereen te maken. Meer dan vijftien jaar ervaring met het bouwen van grootschalige systemen in fintech, media en retail bij bedrijven als JP Morgan en Sky — werkend in Azië en Europa. Die wereldwijde ervaring maakte één ding duidelijk: taal mag nooit een barrière zijn om te leren. Spreekt Engels, Frans en Telugu.",
