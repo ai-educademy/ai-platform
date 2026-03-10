@@ -48,10 +48,14 @@ interface HomeProgramCardsProps {
 const spring = { type: "spring" as const, stiffness: 300, damping: 25 };
 const ease = [0.25, 0.4, 0.25, 1] as const;
 
-/* ── Inline spotlight hook ── */
+/* ── Inline spotlight hook (throttled to avoid per-pixel reflows) ── */
 function useCardSpotlight() {
   const [pos, setPos] = useState({ x: 0, y: 0, hovering: false });
+  const lastMoveTime = useRef(0);
   const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const now = Date.now();
+    if (now - lastMoveTime.current < 32) return;
+    lastMoveTime.current = now;
     const rect = e.currentTarget.getBoundingClientRect();
     setPos({
       x: e.clientX - rect.left,
@@ -80,10 +84,14 @@ function BentoTrackCard({
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   const { pos, onMouseMove, onMouseLeave } = useCardSpotlight();
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const lastTiltTime = useRef(0);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (reduced) return;
+      const now = Date.now();
+      if (now - lastTiltTime.current < 32) return;
+      lastTiltTime.current = now;
       const rect = e.currentTarget.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;

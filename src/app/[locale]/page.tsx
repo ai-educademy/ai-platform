@@ -1,13 +1,13 @@
 import { getTranslations } from "next-intl/server";
-import { ScrollReveal } from "@ai-educademy/ai-ui-library";
 import { getProgramsByTrack } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
-import { Github, Star } from "lucide-react";
-import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 import HeroBackground from "@/components/home/HeroBackgroundLazy";
 import HomeHero from "@/components/home/HomeHero";
-import HomeProgramCards from "@/components/home/HomeProgramCards";
-import HomeFounder from "@/components/home/HomeFounder";
+import {
+  HomeProgramCardsLazy as HomeProgramCards,
+  HomeFounderLazy as HomeFounder,
+  HomeCommunitySectionLazy as HomeCommunitySection,
+} from "@/components/home/HomeDynamic";
 
 export default async function HomePage({
   params,
@@ -179,33 +179,11 @@ export default async function HomePage({
       {/* Community CTA - Full-width gradient section */}
       <section className="py-12 sm:py-16 relative overflow-hidden bg-gradient-mesh-cta">
         <div className="absolute inset-0 noise-texture pointer-events-none" />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          <ScrollReveal animation="fade-up">
-            <h2 className="text-3xl sm:text-5xl font-black mb-4 text-gradient-animated">
-              {tc("headline")}
-            </h2>
-            <p className="text-lg text-[var(--color-text-muted)] max-w-xl mx-auto mb-6 leading-relaxed">
-              {tc("subtitle")}
-            </p>
-
-            {/* Newsletter signup - larger, centered */}
-            <div className="max-w-md mx-auto mb-8">
-              <NewsletterSignup />
-            </div>
-
-            {/* GitHub star button with glow */}
-            <a
-              href="https://github.com/ai-educademy/ai-platform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm font-semibold hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:shadow-md hover:shadow-indigo-500/10 transition-all duration-300"
-            >
-              <Github size={18} />
-              <Star size={14} className="text-amber-400" />
-              {tc("openSource")}
-            </a>
-          </ScrollReveal>
-        </div>
+        <HomeCommunitySection
+          headline={tc("headline")}
+          subtitle={tc("subtitle")}
+          openSourceText={tc("openSource")}
+        />
       </section>
     </>
   );

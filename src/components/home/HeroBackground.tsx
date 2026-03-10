@@ -149,7 +149,9 @@ export default function HeroBackground() {
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles.current = seedParticles(rect.width, rect.height, 45);
+      const isMobile = window.innerWidth < 768;
+      const particleCount = isMobile ? 20 : 35;
+      particles.current = seedParticles(rect.width, rect.height, particleCount);
     };
 
     resize();
