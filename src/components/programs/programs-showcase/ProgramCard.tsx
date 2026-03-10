@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useInView } from "framer-motion";
 import { BookOpen, Clock, BarChart3, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import type { ProgramData, ProgramsI18n } from "./types";
 import { Chip } from "./Chip";
@@ -16,9 +15,20 @@ export function ProgramCard({ program, basePath, t, index, reducedMotion }: {
   reducedMotion: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [isInView, setIsInView] = useState(false);
   const isActive = program.hasLessons;
   const [lessonsExpanded, setLessonsExpanded] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setIsInView(true); observer.disconnect(); } },
+      { rootMargin: "-80px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const href = program.firstLessonSlug
     ? `${basePath}/programs/${program.slug}/lessons/${program.firstLessonSlug}`
@@ -29,11 +39,9 @@ export function ProgramCard({ program, basePath, t, index, reducedMotion }: {
 
   return (
     <div ref={ref}>
-      <motion.div
-        className="group relative"
-        initial={reducedMotion ? undefined : { opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : reducedMotion ? undefined : { opacity: 0, y: 40 }}
-        transition={reducedMotion ? undefined : { duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+      <div
+        className={`group relative transition-all duration-600 ${isInView && !reducedMotion ? "opacity-100 translate-y-0" : reducedMotion ? "" : "opacity-0 translate-y-10"}`}
+        style={reducedMotion ? undefined : { transitionDelay: `${index * 80}ms`, transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
       >
         {/* Animated glow border */}
         <div
@@ -50,12 +58,9 @@ export function ProgramCard({ program, basePath, t, index, reducedMotion }: {
             : "bg-[var(--color-bg-card)]/50 border border-dashed border-[var(--color-border)] opacity-50"
         }`}>
           {/* Top accent line */}
-          <motion.div
-            className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full"
-            style={{ background: `linear-gradient(90deg, transparent, ${program.color}, transparent)` }}
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={isInView ? { scaleX: 1, opacity: 0.6 } : {}}
-            transition={{ duration: 0.8, delay: index * 0.08 + 0.3 }}
+          <div
+            className={`absolute top-0 left-6 right-6 h-[2px] rounded-b-full transition-all duration-800 ${isInView ? "scale-x-100 opacity-60" : "scale-x-0 opacity-0"}`}
+            style={{ background: `linear-gradient(90deg, transparent, ${program.color}, transparent)`, transitionDelay: `${index * 80 + 300}ms` }}
           />
 
           <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10">
@@ -63,17 +68,15 @@ export function ProgramCard({ program, basePath, t, index, reducedMotion }: {
             <div className={`${isActive && program.lessons.length > 0 ? "lg:w-[42%] lg:min-w-[42%]" : "w-full"}`}>
               {/* Icon + Title */}
               <div className="flex items-start gap-4 mb-4">
-                <motion.div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0"
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0 hover:scale-[1.12] hover:rotate-[8deg] transition-transform duration-200"
                   style={{
                     background: `linear-gradient(135deg, ${program.color}22, ${program.color}08)`,
                     boxShadow: `0 4px 16px ${program.color}12`,
                   }}
-                  whileHover={{ scale: 1.12, rotate: 8 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
                 >
                   {program.icon}
-                </motion.div>
+                </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2.5 flex-wrap mb-1">
                     <h3 className="text-xl font-bold leading-relaxed">{program.title}</h3>
@@ -112,27 +115,21 @@ export function ProgramCard({ program, basePath, t, index, reducedMotion }: {
               {/* CTA */}
               {isActive ? (
                 <Link href={href} className="inline-block group/cta">
-                  <motion.span
-                    className="inline-flex items-center gap-2.5 rounded-2xl px-7 py-3 text-sm font-bold text-white shadow-lg transition-shadow hover:shadow-xl"
+                  <span
+                    className="inline-flex items-center gap-2.5 rounded-2xl px-7 py-3 text-sm font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97]"
                     style={{
                       background: `linear-gradient(135deg, ${program.color}, ${program.color}bb)`,
                       boxShadow: `0 8px 24px ${program.color}30`,
                     }}
-                    whileHover={{ scale: 1.04, y: -2 }}
-                    whileTap={{ scale: 0.97 }}
                   >
                     {t.startLearning}
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/cta:translate-x-1" />
-                  </motion.span>
+                  </span>
                 </Link>
               ) : (
-                <motion.span
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-text-muted)]"
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                >
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-text-muted)] opacity-60">
                   🔒 {t.comingSoon}
-                </motion.span>
+                </span>
               )}
             </div>
 
@@ -140,64 +137,51 @@ export function ProgramCard({ program, basePath, t, index, reducedMotion }: {
             {isActive && program.lessons.length > 0 && (
               <div className="lg:w-[58%]">
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  <AnimatePresence>
-                    {visibleLessons.map((lesson, i) => (
-                      <motion.div
-                        key={lesson.slug}
-                        initial={{ opacity: 0, y: 12, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                        transition={{ delay: i * 0.04, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <Link href={`${basePath}/programs/${program.slug}/lessons/${lesson.slug}`}>
-                          <motion.div
-                            className="group/tile relative rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2.5 min-h-[60px] cursor-pointer overflow-hidden"
-                            whileHover={{ y: -3, scale: 1.02, borderColor: program.color + "60" }}
-                            transition={{ duration: 0.2 }}
+                  {visibleLessons.map((lesson, i) => (
+                    <div key={lesson.slug} className="transition-all duration-350" style={{ transitionDelay: `${i * 40}ms` }}>
+                      <Link href={`${basePath}/programs/${program.slug}/lessons/${lesson.slug}`}>
+                        <div className="group/tile relative rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2.5 min-h-[60px] cursor-pointer overflow-hidden hover:-translate-y-0.5 hover:scale-[1.02] hover:border-[var(--color-primary)]/40 transition-all duration-200">
+                          {/* Hover shimmer */}
+                          <div
+                            className="absolute inset-0 opacity-0 group-hover/tile:opacity-100 transition-opacity duration-500 rounded-xl"
+                            style={{ background: `linear-gradient(135deg, ${program.color}10, transparent 60%, ${program.color}05)` }}
+                          />
+                          <div className="relative flex items-center gap-2.5">
+                            <span className="text-sm shrink-0">{lesson.icon || "📄"}</span>
+                            <div className="min-w-0 flex-1">
+                              <p className="text-xs font-semibold line-clamp-2 leading-tight">{lesson.title}</p>
+                              <p className="text-[10px] text-[var(--color-text-muted)] mt-0.5">{lesson.duration}m</p>
+                            </div>
+                          </div>
+                          {/* Number watermark */}
+                          <div
+                            className="absolute top-0.5 right-1.5 text-[9px] font-black opacity-10 group-hover/tile:opacity-25 transition-opacity"
+                            style={{ color: program.color }}
                           >
-                            {/* Hover shimmer */}
-                            <div
-                              className="absolute inset-0 opacity-0 group-hover/tile:opacity-100 transition-opacity duration-500 rounded-xl"
-                              style={{ background: `linear-gradient(135deg, ${program.color}10, transparent 60%, ${program.color}05)` }}
-                            />
-                            <div className="relative flex items-center gap-2.5">
-                              <span className="text-sm shrink-0">{lesson.icon || "📄"}</span>
-                              <div className="min-w-0 flex-1">
-                                <p className="text-xs font-semibold line-clamp-2 leading-tight">{lesson.title}</p>
-                                <p className="text-[10px] text-[var(--color-text-muted)] mt-0.5">{lesson.duration}m</p>
-                              </div>
-                            </div>
-                            {/* Number watermark */}
-                            <div
-                              className="absolute top-0.5 right-1.5 text-[9px] font-black opacity-10 group-hover/tile:opacity-25 transition-opacity"
-                              style={{ color: program.color }}
-                            >
-                              {String(i + 1).padStart(2, "0")}
-                            </div>
-                          </motion.div>
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </AnimatePresence>
+                            {String(i + 1).padStart(2, "0")}
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
                 </div>
                 {hasMore && (
-                  <motion.button
+                  <button
                     onClick={() => setLessonsExpanded(!lessonsExpanded)}
-                    className="mt-3 flex items-center gap-1 text-xs font-semibold text-[var(--color-primary)] hover:underline cursor-pointer"
-                    whileTap={{ scale: 0.97 }}
+                    className="mt-3 flex items-center gap-1 text-xs font-semibold text-[var(--color-primary)] hover:underline cursor-pointer active:scale-[0.97] transition-transform"
                   >
                     {lessonsExpanded ? (
                       <>{t.showLess} <ChevronUp className="w-3 h-3" /></>
                     ) : (
                       <>{t.moreLessons.replace("{count}", String(program.lessons.length - 6))} <ChevronDown className="w-3 h-3" /></>
                     )}
-                  </motion.button>
+                  </button>
                 )}
               </div>
             )}
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

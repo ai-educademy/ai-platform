@@ -106,21 +106,21 @@ export default function HeroBackground() {
   const bounds = useRef({ w: 0, h: 0 });
   const raf = useRef(0);
   const reduced = useRef(false);
+  const visible = useRef(true);
 
   const [ready, setReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     reduced.current = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+    setIsMobile(window.matchMedia("(pointer: coarse)").matches);
     setReady(true);
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
-
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    let drift = 0;
+    if (!ready || isMobile || reduced.current) return;
 
     /* ── Mouse tracking (window-level so pointer-events-none doesn't block) ── */
     const onMove = (e: MouseEvent) => {
@@ -149,28 +149,31 @@ export default function HeroBackground() {
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const isMobile = window.innerWidth < 768;
-      const particleCount = isMobile ? 20 : 35;
+      const smallScreen = window.innerWidth < 768;
+      const particleCount = smallScreen ? 20 : 35;
       particles.current = seedParticles(rect.width, rect.height, particleCount);
     };
 
     resize();
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: true });
+
+    /* ── IntersectionObserver to pause RAF when off-screen ── */
+    const observer = new IntersectionObserver(
+      ([entry]) => { visible.current = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
 
     /* ── Animation loop ── */
     const startAnimation = () => {
       const tick = () => {
-        // Mobile: gentle auto-drift
-        if (isTouch && !reduced.current) {
-          drift += 0.003;
-          target.current = {
-            x: 0.5 + Math.sin(drift) * 0.12,
-            y: 0.5 + Math.cos(drift * 0.7) * 0.08,
-          };
+        if (!visible.current) {
+          raf.current = requestAnimationFrame(tick);
+          return;
         }
 
         // Smooth lerp toward target
-        const lerp = reduced.current ? 1 : 0.04;
+        const lerp = 0.04;
         mouse.current.x += (target.current.x - mouse.current.x) * lerp;
         mouse.current.y += (target.current.y - mouse.current.y) * lerp;
 
@@ -178,13 +181,13 @@ export default function HeroBackground() {
         const my = mouse.current.y;
 
         /* ── Layer 1: Neural SVG parallax - perspective tilt + translate ── */
-        if (neuralRef.current && !reduced.current) {
+        if (neuralRef.current) {
           neuralRef.current.style.transform =
             `perspective(600px) rotateX(${(my - 0.5) * 12}deg) rotateY(${(mx - 0.5) * -12}deg) translate(${(mx - 0.5) * -25}px, ${(my - 0.5) * -25}px)`;
         }
 
         /* ── Layer 3: Grid parallax - slight opposite shift ── */
-        if (gridRef.current && !reduced.current) {
+        if (gridRef.current) {
           gridRef.current.style.transform = `translate(${(mx - 0.5) * 25}px, ${(my - 0.5) * 25}px)`;
         }
 
@@ -198,17 +201,15 @@ export default function HeroBackground() {
 
           // Draw particles
           for (const p of particles.current) {
-            if (!reduced.current) {
               p.x += p.vx;
               p.y += p.vy;
               if (p.x < -30) p.x = w + 30;
               if (p.x > w + 30) p.x = -30;
               if (p.y < -30) p.y = h + 30;
               if (p.y > h + 30) p.y = -30;
-            }
 
-            const px = reduced.current ? 0 : (mx - 0.5) * p.z * 40;
-            const py = reduced.current ? 0 : (my - 0.5) * p.z * 40;
+            const px = (mx - 0.5) * p.z * 40;
+            const py = (my - 0.5) * p.z * 40;
             const dx = p.x + px;
             const dy = p.y + py;
 
@@ -240,10 +241,10 @@ export default function HeroBackground() {
                   (1 - dist / 120) *
                   Math.min(a.opacity, b.opacity) *
                   0.5;
-                const apx = reduced.current ? 0 : (mx - 0.5) * a.z * 40;
-                const apy = reduced.current ? 0 : (my - 0.5) * a.z * 40;
-                const bpx = reduced.current ? 0 : (mx - 0.5) * b.z * 40;
-                const bpy = reduced.current ? 0 : (my - 0.5) * b.z * 40;
+                const apx = (mx - 0.5) * a.z * 40;
+                const apy = (my - 0.5) * a.z * 40;
+                const bpx = (mx - 0.5) * b.z * 40;
+                const bpy = (my - 0.5) * b.z * 40;
                 ctx.beginPath();
                 ctx.moveTo(a.x + apx, a.y + apy);
                 ctx.lineTo(b.x + bpx, b.y + bpy);
@@ -272,10 +273,32 @@ export default function HeroBackground() {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(raf.current);
+      observer.disconnect();
     };
-  }, [ready]);
+  }, [ready, isMobile]);
 
   if (!ready) return null;
+
+  /* ── Mobile / reduced-motion: static version — zero JS animation overhead ── */
+  if (isMobile || reduced.current) {
+    return (
+      <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -inset-4" style={{ opacity: 0.2 }}>
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            {CONNECTIONS.map(([a, b], i) => (
+              <line key={i} x1={DOTS[a].cx} y1={DOTS[a].cy} x2={DOTS[b].cx} y2={DOTS[b].cy}
+                stroke="var(--color-primary)" strokeWidth="0.35" opacity="0.4" />
+            ))}
+            {DOTS.map((d, i) => (
+              <circle key={i} cx={d.cx} cy={d.cy} r="0.7" fill="var(--color-primary)" opacity="0.5" />
+            ))}
+          </svg>
+        </div>
+        <div className="absolute -inset-4 bg-grid" />
+        <div className="absolute inset-0 noise-texture" />
+      </div>
+    );
+  }
 
   return (
     <div
@@ -304,28 +327,8 @@ export default function HeroBackground() {
                 y2={DOTS[b].cy}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0%" stopColor="var(--color-primary)">
-                  {!reduced.current && (
-                    <animate
-                      attributeName="stop-opacity"
-                      values="0.2;0.95;0.2"
-                      dur={`${2 + (i % 3)}s`}
-                      repeatCount="indefinite"
-                      begin={`${i * 0.2}s`}
-                    />
-                  )}
-                </stop>
-                <stop offset="100%" stopColor="#818cf8">
-                  {!reduced.current && (
-                    <animate
-                      attributeName="stop-opacity"
-                      values="0.1;0.7;0.1"
-                      dur={`${2 + (i % 3)}s`}
-                      repeatCount="indefinite"
-                      begin={`${i * 0.2}s`}
-                    />
-                  )}
-                </stop>
+                <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#818cf8" stopOpacity="0.3" />
               </linearGradient>
             ))}
           </defs>
@@ -347,13 +350,6 @@ export default function HeroBackground() {
               cy={d.cy}
               r="0.7"
               fill="var(--color-primary)"
-              style={
-                reduced.current
-                  ? undefined
-                  : {
-                      animation: `float ${3 + (i % 3)}s ease-in-out infinite ${i * 0.5}s`,
-                    }
-              }
             />
           ))}
         </svg>

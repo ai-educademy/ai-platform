@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Props } from "./types";
-import { stagger, fadeUp } from "./animations";
 import { ProgramHeroSection } from "./ProgramHeroSection";
 import { ProgramSearch } from "./ProgramSearch";
 import { TrackTabs } from "./TrackTabs";
@@ -13,7 +11,15 @@ import { ProgramCard } from "./ProgramCard";
 export default function ProgramsShowcase({ tracks, programsByTrack, basePath, t }: Props) {
   const [activeTrack, setActiveTrack] = useState<string | null>(null); // null = all tracks
   const [searchQuery, setSearchQuery] = useState("");
-  const prefersReducedMotion = useReducedMotion();
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   // Auto-select track from URL hash (e.g. /programs#ai-learning)
   useEffect(() => {
@@ -59,55 +65,31 @@ export default function ProgramsShowcase({ tracks, programsByTrack, basePath, t 
       <TrackTabs tracks={tracks} active={activeTrack} onChange={setActiveTrack} allLabel={t.allTracks} />
 
       {/* ── Active Track Brand ── */}
-      <AnimatePresence mode="wait">
-        {activeTrack && (
-          <motion.div
-            key={activeTrack}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-center mb-10 overflow-hidden"
-          >
-            <p className="text-sm tracking-widest uppercase font-medium text-[var(--color-primary)] mb-1">
-              {tracks.find((tr) => tr.slug === activeTrack)?.tagline}
+      {activeTrack && (
+        <div className="text-center mb-10 overflow-hidden motion-section motion-fade-in motion-visible">
+          <p className="text-sm tracking-widest uppercase font-medium text-[var(--color-primary)] mb-1">
+            {tracks.find((tr) => tr.slug === activeTrack)?.tagline}
+          </p>
+          {tracks.find((tr) => tr.slug === activeTrack)?.brand && (
+            <p className="text-xs text-[var(--color-text-muted)] max-w-xl mx-auto mt-1 leading-relaxed">
+              {tracks.find((tr) => tr.slug === activeTrack)?.brand}
             </p>
-            {tracks.find((tr) => tr.slug === activeTrack)?.brand && (
-              <p className="text-xs text-[var(--color-text-muted)] max-w-xl mx-auto mt-1 leading-relaxed">
-                {tracks.find((tr) => tr.slug === activeTrack)?.brand}
-              </p>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </div>
+      )}
 
       {/* ── Programs ── */}
       {filtered.length === 0 ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center py-20"
-        >
+        <div className="text-center py-20 motion-section motion-fade-in motion-visible">
           <div className="text-5xl mb-4">🔍</div>
           <p className="text-lg text-[var(--color-text-muted)]">{t.noResults}</p>
-        </motion.div>
+        </div>
       ) : (
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${activeTrack}-${searchQuery}`}
-            variants={stagger}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="grid gap-6 md:gap-8 pb-24"
-          >
-            {filtered.map((program, idx) => (
-              <motion.div key={program.slug} variants={prefersReducedMotion ? undefined : fadeUp}>
-                <ProgramCard program={program} basePath={basePath} t={t} index={idx} reducedMotion={!!prefersReducedMotion} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+        <div key={`${activeTrack}-${searchQuery}`} className="grid gap-6 md:gap-8 pb-24">
+          {filtered.map((program, idx) => (
+            <ProgramCard key={program.slug} program={program} basePath={basePath} t={t} index={idx} reducedMotion={prefersReducedMotion} />
+          ))}
+        </div>
       )}
     </div>
   );

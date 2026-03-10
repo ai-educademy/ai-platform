@@ -1,17 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Search, X } from "lucide-react";
 
 /* ─────────────────────── Search ─────────────────────── */
 export function ProgramSearch({ query, onChange, placeholder }: { query: string; onChange: (v: string) => void; placeholder: string }) {
   return (
-    <motion.div
-      className="max-w-xl mx-auto mb-8"
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.4 }}
-    >
+    <div className="max-w-xl mx-auto mb-8 motion-section motion-fade-up motion-visible" style={{ transitionDelay: "400ms" }}>
       <div className="relative group">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-text-muted)] transition-colors group-focus-within:text-[var(--color-primary)]" />
         <input
@@ -30,6 +24,6 @@ export function ProgramSearch({ query, onChange, placeholder }: { query: string;
           </button>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
