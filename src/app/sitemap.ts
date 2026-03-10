@@ -41,6 +41,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localizedEntries("/lessons", "weekly", 0.8, now),
     // Blog listing
     ...localizedEntries("/blog", "weekly", 0.8, now),
+    // FAQ
+    ...localizedEntries("/faq", "monthly", 0.7, now),
   ];
 
   // Individual program pages

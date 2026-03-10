@@ -58,6 +58,15 @@ const components = {
   ThinkAboutIt: AnimatedThinkAboutIt,
 };
 
-export function LessonRenderer({ content }: { content: string }) {
-  return <MDXRemote source={content} components={components} />;
+export function LessonRenderer({
+  content,
+  extraComponents,
+}: {
+  content: string;
+  extraComponents?: Partial<typeof components>;
+}) {
+  const merged = extraComponents
+    ? { ...components, ...extraComponents }
+    : components;
+  return <MDXRemote source={content} components={merged} />;
 }

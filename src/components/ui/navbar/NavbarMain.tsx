@@ -129,6 +129,21 @@ export function Navbar() {
                 <BlogDropdownContent basePath={basePath} t={t} />
               </NavDropdown>
 
+              {/* FAQ – simple direct link */}
+              <Link
+                href={`${basePath}/faq`}
+                className={`relative px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  isActive("/faq")
+                    ? "text-[var(--color-primary)] bg-[var(--color-primary)]/10 font-semibold"
+                    : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-text)]/[0.06]"
+                }`}
+              >
+                {t("faq")}
+                {isActive("/faq") && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[var(--color-primary)]" />
+                )}
+              </Link>
+
               <NavDropdown
                 trigger={t("about")}
                 isActive={isActive("/about")}
@@ -257,6 +272,16 @@ export function Navbar() {
               >
                 <span className="text-base">📝</span>
                 {t("blog")}
+              </Link>
+
+              {/* FAQ - simple link */}
+              <Link
+                href={`${basePath}/faq`}
+                onClick={closeMobile}
+                className="flex items-center gap-2.5 py-3.5 px-4 text-sm font-semibold text-[var(--color-text)] hover:bg-[var(--color-text)]/[0.03] border-b border-[var(--color-border)]/50 transition-colors"
+              >
+                <span className="text-base">❓</span>
+                {t("faq")}
               </Link>
 
               {/* About */}
