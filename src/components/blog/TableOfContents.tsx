@@ -59,7 +59,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
     });
 
     return () => observer.disconnect();
-  }, [headings.length]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [headings]); // headings is memoised — stable reference across re-renders
 
   if (headings.length < 2) return null;
 
