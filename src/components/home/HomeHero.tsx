@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useInView } from "@/hooks/useInView";
 
 /* ── Types ── */
 interface HomeHeroProps {
@@ -21,28 +22,32 @@ interface HomeHeroProps {
   statLanguages: string;
 }
 
-/* ── Spring config ── */
-const spring = { type: "spring" as const, stiffness: 300, damping: 25 };
-
 /* ── Staggered word animation ── */
 function AnimatedWords({ text, className }: { text: string; className?: string }) {
   const prefersReduced = useReducedMotion();
   const words = text.split(" ");
 
   return (
-    <span className={className}>
-      {words.map((word, i) => (
-        <motion.span
-          key={`${word}-${i}`}
-          className="inline-block mr-[0.3em]"
-          initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 + i * 0.08, ease: [0.25, 0.4, 0.25, 1] }}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </span>
+    <>
+      <style>{`@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}`}</style>
+      <span className={className}>
+        {words.map((word, i) => (
+          <span
+            key={`${word}-${i}`}
+            className="inline-block mr-[0.3em]"
+            style={
+              prefersReduced
+                ? {}
+                : {
+                    animation: `fadeInUp 0.4s cubic-bezier(0.25,0.4,0.25,1) ${0.3 + i * 0.08}s both`,
+                  }
+            }
+          >
+            {word}
+          </span>
+        ))}
+      </span>
+    </>
   );
 }
 
@@ -100,23 +105,27 @@ export default function HomeHero({
   statLessons,
   statLanguages,
 }: HomeHeroProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const prefersReduced = useReducedMotion();
+  const [ref, isInView] = useInView({ margin: "-40px" });
+  const noMotion = useReducedMotion();
 
-  const noMotion = { opacity: 1, y: 0, scale: 1 };
+  const ease = "cubic-bezier(0.22,1,0.36,1)";
 
   return (
     <div ref={ref} className="text-center max-w-4xl mx-auto">
-      {/* Logo - scale-in with spring + subtle float */}
-      <motion.div
-        initial={prefersReduced ? noMotion : { opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={prefersReduced ? { duration: 0 } : { ...spring, delay: 0.1 }}
+      {/* Logo - scale-in + subtle float */}
+      <div
+        style={{
+          opacity: noMotion || isInView ? 1 : 0,
+          transform: noMotion || isInView ? "none" : "scale(0.8)",
+          transition: noMotion
+            ? "none"
+            : `opacity 0.5s ${ease} 0.1s, transform 0.5s ${ease} 0.1s`,
+        }}
       >
-        <motion.div
-          animate={prefersReduced ? {} : { y: [0, -6, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          style={{
+            animation: noMotion ? "none" : "float 3s ease-in-out infinite",
+          }}
         >
           <Image
             src="/images/logo.png"
@@ -126,42 +135,52 @@ export default function HomeHero({
             className="mx-auto mb-8 rounded-2xl shadow-lg ring-1 ring-[var(--color-border)]"
             priority
           />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Title - each word fades up with stagger */}
-      <motion.h1
+      <h1
         className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-6"
-        initial={prefersReduced ? noMotion : { opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.3, delay: 0.2 }}
+        style={{
+          opacity: noMotion || isInView ? 1 : 0,
+          transition: noMotion ? "none" : `opacity 0.3s ${ease} 0.2s`,
+        }}
       >
         <AnimatedWords text={title} className="block" />
         <span className="block text-gradient-animated">{titleHighlight}</span>
-      </motion.h1>
+      </h1>
 
       {/* Subtitle - visible immediately for LCP, animate transform only */}
-      <motion.p
+      <p
         className="text-lg sm:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8 leading-relaxed"
-        initial={prefersReduced ? noMotion : { opacity: 1, y: 10 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+        style={{
+          transform: noMotion || isInView ? "none" : "translateY(10px)",
+          transition: noMotion
+            ? "none"
+            : "transform 0.4s cubic-bezier(0.25,0.4,0.25,1) 0.3s",
+        }}
       >
         {subtitle}
-      </motion.p>
+      </p>
 
       {/* CTAs - premium gradient buttons */}
-      <motion.div
+      <div
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-        initial={prefersReduced ? noMotion : { opacity: 0, y: 16 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
+        style={{
+          opacity: noMotion || isInView ? 1 : 0,
+          transform: noMotion || isInView ? "none" : "translateY(16px)",
+          transition: noMotion
+            ? "none"
+            : `opacity 0.5s cubic-bezier(0.25,0.4,0.25,1) 0.9s, transform 0.5s cubic-bezier(0.25,0.4,0.25,1) 0.9s`,
+        }}
       >
         {/* Primary CTA - shimmer sweep */}
-        <motion.div
-          whileHover={prefersReduced ? {} : { scale: 1.04 }}
-          whileTap={prefersReduced ? {} : { scale: 0.97 }}
-          transition={spring}
+        <div
+          className={
+            noMotion
+              ? ""
+              : "hover:scale-[1.04] active:scale-[0.97] transition-transform"
+          }
         >
           <Link
             href={ctaHref}
@@ -170,13 +189,15 @@ export default function HomeHero({
             <span className="relative z-10">{ctaText} →</span>
             <span className="absolute inset-0 shimmer-sweep pointer-events-none" />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Secondary CTA - gradient border on hover */}
-        <motion.div
-          whileHover={prefersReduced ? {} : { scale: 1.04 }}
-          whileTap={prefersReduced ? {} : { scale: 0.97 }}
-          transition={spring}
+        <div
+          className={
+            noMotion
+              ? ""
+              : "hover:scale-[1.04] active:scale-[0.97] transition-transform"
+          }
         >
           <Link
             href={ctaSecondaryHref}
@@ -184,27 +205,33 @@ export default function HomeHero({
           >
             {ctaSecondaryText}
           </Link>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Stats row - animated counters with subtle card treatment */}
-      <motion.div
+      <div
         className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
-        initial={prefersReduced ? noMotion : { opacity: 0, y: 12 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 1.1, ease: [0.25, 0.4, 0.25, 1] }}
+        style={{
+          opacity: noMotion || isInView ? 1 : 0,
+          transform: noMotion || isInView ? "none" : "translateY(12px)",
+          transition: noMotion
+            ? "none"
+            : `opacity 0.5s cubic-bezier(0.25,0.4,0.25,1) 1.1s, transform 0.5s cubic-bezier(0.25,0.4,0.25,1) 1.1s`,
+        }}
       >
         {[statPrograms, statLessons, statLanguages].map((stat, i) => (
-          <motion.span
+          <span
             key={i}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)]/50 backdrop-blur-sm text-sm text-[var(--color-text-muted)] tracking-wide"
-            whileHover={prefersReduced ? {} : { scale: 1.05, borderColor: "var(--color-primary)" }}
-            transition={spring}
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-card)]/50 backdrop-blur-sm text-sm text-[var(--color-text-muted)] tracking-wide ${
+              noMotion
+                ? ""
+                : "hover:scale-[1.05] hover:border-[var(--color-primary)] transition-[transform,border-color]"
+            }`}
           >
             <AnimatedStat text={stat} inView={isInView} />
-          </motion.span>
+          </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

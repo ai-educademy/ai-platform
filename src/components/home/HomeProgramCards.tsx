@@ -2,7 +2,8 @@
 
 import { useRef, useState, useCallback } from "react";
 import Link from "next/link";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ClickableCard } from "@/components/ui/ClickableCard";
 import { ComingSoonCard } from "@/components/ui/ComingSoon";
 
@@ -45,8 +46,7 @@ interface HomeProgramCardsProps {
 }
 
 /* ── Animation config ── */
-const spring = { type: "spring" as const, stiffness: 300, damping: 25 };
-const ease = [0.25, 0.4, 0.25, 1] as const;
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 /* ── Inline spotlight hook (throttled to avoid per-pixel reflows) ── */
 function useCardSpotlight() {
@@ -80,8 +80,7 @@ function BentoTrackCard({
   reduced: boolean;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const [ref, isInView] = useInView<HTMLDivElement>({ margin: "-60px" });
   const { pos, onMouseMove, onMouseLeave } = useCardSpotlight();
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
   const lastTiltTime = useRef(0);
@@ -107,33 +106,31 @@ function BentoTrackCard({
   }, [onMouseLeave]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={className}
-      initial={reduced ? { opacity: 1 } : { opacity: 0, y: 32 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease }}
+      className={`${className ?? ""} transition-all duration-[600ms] ${
+        isInView || reduced
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+      }`}
+      style={{ transitionTimingFunction: EASE }}
     >
       <ClickableCard href={data.href} className="block h-full" ariaLabel={data.trackTitle}>
-        <motion.div
-          className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 sm:p-8 h-full group"
-          animate={tilt}
-          transition={spring}
+        <div
+          className={`relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 sm:p-8 h-full group ${
+            !reduced
+              ? "hover:[box-shadow:var(--shadow-lg)] hover:border-[var(--color-primary)]"
+              : ""
+          }`}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleLeave}
           style={{
+            transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
+            transition: `transform 0.3s ${EASE}, box-shadow 0.3s ${EASE}, border-color 0.3s ${EASE}`,
             transformStyle: "preserve-3d",
             perspective: 1000,
             willChange: "transform",
           }}
-          whileHover={
-            reduced
-              ? {}
-              : {
-                  boxShadow: "var(--shadow-lg)",
-                  borderColor: "var(--color-primary)",
-                }
-          }
         >
           {/* Spotlight gradient overlay */}
           <div
@@ -160,23 +157,16 @@ function BentoTrackCard({
           <div className="relative z-10">
             {/* Track header */}
             <div className="flex items-center gap-3 mb-2">
-              <motion.span
-                className="text-3xl"
-                whileHover={
-                  reduced
-                    ? {}
-                    : {
-                        scale: 1.2,
-                        transition: {
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 12,
-                        },
-                      }
-                }
+              <span
+                className={`text-3xl inline-block ${
+                  !reduced
+                    ? "hover:scale-[1.2] transition-transform duration-300"
+                    : ""
+                }`}
+                style={{ transitionTimingFunction: EASE }}
               >
                 {data.trackIcon}
-              </motion.span>
+              </span>
               <div>
                 <h3 className="text-xl font-bold">{data.trackTitle}</h3>
                 <p className="text-sm text-[var(--color-text-muted)]">
@@ -203,15 +193,17 @@ function BentoTrackCard({
                     : `${data.basePath}/programs/${program.slug}`;
 
                   return (
-                    <motion.div
+                    <div
                       key={program.slug}
-                      className="relative z-10"
-                      initial={reduced ? {} : { opacity: 0, y: 12 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{
-                        delay: 0.3 + idx * 0.1,
-                        duration: 0.4,
-                        ease,
+                      className={`relative z-10 transition-all ${
+                        isInView || reduced
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-3"
+                      }`}
+                      style={{
+                        transitionDuration: "0.4s",
+                        transitionDelay: `${0.3 + idx * 0.1}s`,
+                        transitionTimingFunction: EASE,
                       }}
                     >
                       {program.active ? (
@@ -220,18 +212,18 @@ function BentoTrackCard({
                           className="group/node flex flex-col items-center text-center p-1.5 sm:p-2 rounded-xl hover:bg-[var(--color-bg-section)] transition-all duration-200"
                         >
                           {/* Program node */}
-                          <motion.div
-                            className="w-10 h-10 rounded-full flex items-center justify-center text-lg mb-1.5 border-2 transition-all duration-300 group-hover/node:shadow-md"
+                          <div
+                            className={`w-10 h-10 rounded-full flex items-center justify-center text-lg mb-1.5 border-2 transition-all duration-300 group-hover/node:shadow-md ${
+                              !reduced ? "hover:scale-[1.15]" : ""
+                            }`}
                             style={{
                               borderColor: program.color,
                               backgroundColor: `${program.color}12`,
+                              transitionTimingFunction: EASE,
                             }}
-                            whileHover={
-                              reduced ? {} : { scale: 1.15, transition: spring }
-                            }
                           >
                             {program.icon}
-                          </motion.div>
+                          </div>
                           <span className="text-[9px] sm:text-xs font-semibold leading-tight group-hover/node:text-[var(--color-primary)] transition-colors line-clamp-2">
                             {title}
                           </span>
@@ -257,15 +249,15 @@ function BentoTrackCard({
                           label={title}
                         />
                       )}
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </ClickableCard>
-    </motion.div>
+    </div>
   );
 }
 
@@ -280,22 +272,27 @@ function BentoHighlightCard({
   reduced: boolean;
 }) {
   const { pos, onMouseMove, onMouseLeave } = useCardSpotlight();
+  const [cardRef, cardInView] = useInView<HTMLDivElement>({ margin: "-40px" });
 
   return (
-    <motion.div
-      className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 group flex flex-col items-center justify-center text-center min-h-[180px]"
-      initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease }}
-      whileHover={
-        reduced
-          ? {}
-          : { y: -4, borderColor: "var(--color-primary)", transition: spring }
-      }
+    <div
+      ref={cardRef}
+      className={`relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 group flex flex-col items-center justify-center text-center min-h-[180px] transition-all duration-500 ${
+        cardInView || reduced
+          ? "opacity-100 scale-100"
+          : "opacity-0 scale-95"
+      } ${
+        !reduced
+          ? "hover:-translate-y-1 hover:border-[var(--color-primary)]"
+          : ""
+      }`}
+      style={{
+        transitionDelay: `${index * 0.1}s`,
+        transitionTimingFunction: EASE,
+        willChange: "transform",
+      }}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      style={{ willChange: "transform" }}
     >
       {/* Spotlight */}
       <div
@@ -306,24 +303,16 @@ function BentoHighlightCard({
         }}
       />
       <div className="relative z-10">
-        <motion.span
-          className="text-3xl mb-2 block"
-          whileHover={
-            reduced
-              ? {}
-              : {
-                  scale: 1.2,
-                  rotate: 8,
-                  transition: {
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 12,
-                  },
-                }
-          }
+        <span
+          className={`text-3xl mb-2 block ${
+            !reduced
+              ? "hover:scale-[1.2] hover:rotate-[8deg] transition-transform duration-300"
+              : ""
+          }`}
+          style={{ transitionTimingFunction: EASE }}
         >
           {highlight.icon}
-        </motion.span>
+        </span>
         <div className="text-2xl font-black text-gradient mb-1">
           {highlight.value}
         </div>
@@ -332,7 +321,7 @@ function BentoHighlightCard({
           {highlight.desc}
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -345,15 +334,20 @@ function BentoAccentCard({
   reduced: boolean;
 }) {
   const { pos, onMouseMove, onMouseLeave } = useCardSpotlight();
+  const [cardRef, cardInView] = useInView<HTMLDivElement>({ margin: "-40px" });
 
   return (
-    <motion.div
-      className="md:col-span-3 relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-gradient-to-r from-indigo-500/5 via-violet-500/5 to-purple-500/5 p-6 group"
-      initial={reduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: 0.2, ease }}
-      whileHover={reduced ? {} : { y: -2, transition: spring }}
+    <div
+      ref={cardRef}
+      className={`md:col-span-3 relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-gradient-to-r from-indigo-500/5 via-violet-500/5 to-purple-500/5 p-6 group transition-all duration-500 ${
+        cardInView || reduced
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-4"
+      } ${!reduced ? "hover:-translate-y-0.5" : ""}`}
+      style={{
+        transitionDelay: "0.2s",
+        transitionTimingFunction: EASE,
+      }}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
@@ -366,23 +360,16 @@ function BentoAccentCard({
         }}
       />
       <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3 text-center sm:text-left">
-        <motion.span
-          className="text-3xl"
-          whileHover={
-            reduced
-              ? {}
-              : {
-                  scale: 1.2,
-                  transition: {
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 12,
-                  },
-                }
-          }
+        <span
+          className={`text-3xl inline-block ${
+            !reduced
+              ? "hover:scale-[1.2] transition-transform duration-300"
+              : ""
+          }`}
+          style={{ transitionTimingFunction: EASE }}
         >
           {highlight.icon}
-        </motion.span>
+        </span>
         <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
           <span className="text-xl font-black text-gradient">
             {highlight.value}
@@ -395,7 +382,7 @@ function BentoAccentCard({
           </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -407,20 +394,20 @@ export default function HomeProgramCards({
   trackCraft,
   highlights,
 }: HomeProgramCardsProps) {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-40px" });
-  const prefersReduced = useReducedMotion();
-  const reduced = !!prefersReduced;
+  const [headerRef, headerInView] = useInView<HTMLDivElement>({ margin: "-40px" });
+  const reduced = useReducedMotion();
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section header with animated gradient text */}
-      <motion.div
+      <div
         ref={headerRef}
-        className="text-center mb-10"
-        initial={reduced ? { opacity: 1 } : { opacity: 0, y: 24 }}
-        animate={headerInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, ease }}
+        className={`text-center mb-10 transition-all duration-500 ${
+          headerInView || reduced
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-6"
+        }`}
+        style={{ transitionTimingFunction: EASE }}
       >
         <h2 className="text-3xl sm:text-5xl font-black mb-4 text-gradient-animated">
           {sectionTitle}
@@ -428,7 +415,7 @@ export default function HomeProgramCards({
         <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto leading-relaxed">
           {sectionSubtitle}
         </p>
-      </motion.div>
+      </div>
 
       {/* Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">

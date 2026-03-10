@@ -253,8 +253,16 @@
       "description": "Starte bei absolut null. Wir verwenden einfache Sprache und alltägliche Beispiele, um dein Verständnis Schritt für Schritt aufzubauen.",
       "audience": "Komplette Anfänger ohne technischen Hintergrund",
       "prerequisites": "Keine – nur Neugier!",
-      "topics": ["Was ist KI?", "Wie Maschinen lernen", "Dein erstes KI-Modell"],
-      "outcomes": ["Verstehen, was KI ist und was nicht", "Wissen, wie Maschinen aus Daten lernen", "Ein einfaches KI-Modell im Browser trainieren"],
+      "topics": [
+        "Was ist KI?",
+        "Wie Maschinen lernen",
+        "Dein erstes KI-Modell"
+      ],
+      "outcomes": [
+        "Verstehen, was KI ist und was nicht",
+        "Wissen, wie Maschinen aus Daten lernen",
+        "Ein einfaches KI-Modell im Browser trainieren"
+      ],
       "tileLabel": "Grundlagen",
       "homeDesc": "Starte bei null"
     },
@@ -264,8 +272,17 @@
       "description": "Bereit zu wachsen? Tauche ein in die Bausteine der KI – Daten, Algorithmen und neuronale Netze. Praktische Übungen helfen dir, Intuition aufzubauen, bevor du Code schreibst.",
       "audience": "Lernende, die AI Seeds abgeschlossen haben oder grundlegendes KI-Wissen mitbringen",
       "prerequisites": "AI Seeds (empfohlen)",
-      "topics": ["Arten von KI", "Daten verstehen", "Wie KI entscheidet", "KI-Ethik Grundlagen"],
-      "outcomes": ["Überwachtes, unüberwachtes und bestärkendes Lernen unterscheiden", "Verstehen, was Trainingsdaten sind und warum sie wichtig sind", "Kritisch über KI-Voreingenommenheit und Fairness nachdenken"],
+      "topics": [
+        "Arten von KI",
+        "Daten verstehen",
+        "Wie KI entscheidet",
+        "KI-Ethik Grundlagen"
+      ],
+      "outcomes": [
+        "Überwachtes, unüberwachtes und bestärkendes Lernen unterscheiden",
+        "Verstehen, was Trainingsdaten sind und warum sie wichtig sind",
+        "Kritisch über KI-Voreingenommenheit und Fairness nachdenken"
+      ],
       "tileLabel": "Kernkonzepte",
       "homeDesc": "Fundament aufbauen"
     },
@@ -275,8 +292,17 @@
       "description": "Erlebe KI in Aktion quer durch verschiedene Branchen – Gesundheitswesen, Finanzen, Kreativkunst und mehr. Baue erste Projekte und verstehe die Werkzeuge, die Profis nutzen.",
       "audience": "Lernende, die bereit sind, KI in der Praxis zu erleben",
       "prerequisites": "AI Sprouts",
-      "topics": ["KI im Gesundheitswesen", "KI in der Kreativkunst", "Chatbots & NLP", "Computer Vision Grundlagen"],
-      "outcomes": ["Einen einfachen Chatbot bauen", "Verstehen, wie Bilderkennung funktioniert", "Ein KI-gestütztes Miniprojekt erstellen"],
+      "topics": [
+        "KI im Gesundheitswesen",
+        "KI in der Kreativkunst",
+        "Chatbots & NLP",
+        "Computer Vision Grundlagen"
+      ],
+      "outcomes": [
+        "Einen einfachen Chatbot bauen",
+        "Verstehen, wie Bilderkennung funktioniert",
+        "Ein KI-gestütztes Miniprojekt erstellen"
+      ],
       "tileLabel": "Anwendungen",
       "homeDesc": "In der Praxis anwenden"
     },
@@ -286,8 +312,17 @@
       "description": "Tauche tiefer in neuronale Netze, Large Language Models und KI-Systemdesign ein. Lerne, KI-Tools kritisch zu bewerten und verstehe die Technik hinter moderner KI.",
       "audience": "Fortgeschrittene Lernende, bereit für technische Tiefe",
       "prerequisites": "AI Branches",
-      "topics": ["Neuronale Netze", "Large Language Models", "Prompt Engineering", "KI-Systemdesign"],
-      "outcomes": ["Verstehen, wie neuronale Netze funktionieren", "Prompt Engineering Techniken beherrschen", "KI-Tools und -Dienste kritisch bewerten"],
+      "topics": [
+        "Neuronale Netze",
+        "Large Language Models",
+        "Prompt Engineering",
+        "KI-Systemdesign"
+      ],
+      "outcomes": [
+        "Verstehen, wie neuronale Netze funktionieren",
+        "Prompt Engineering Techniken beherrschen",
+        "KI-Tools und -Dienste kritisch bewerten"
+      ],
       "tileLabel": "Fortgeschritten",
       "homeDesc": "In die Tiefe gehen"
     },
@@ -297,8 +332,17 @@
       "description": "Das große Ganze – KI-Forschung, produktionsreife KI-Systeme bauen, zu Open-Source-KI beitragen und verstehen, wohin sich das Feld entwickelt. Für alle, die die Zukunft mitgestalten wollen.",
       "audience": "Fortgeschrittene Lernende und angehende KI-Praktiker",
       "prerequisites": "AI Canopy",
-      "topics": ["KI-Produkte bauen", "Open-Source-KI", "KI-Forschungsarbeiten", "Zukunft der KI"],
-      "outcomes": ["Eine KI-gestützte Anwendung bauen und bereitstellen", "KI-Forschungsarbeiten lesen und verstehen", "Zu Open-Source-KI-Projekten beitragen"],
+      "topics": [
+        "KI-Produkte bauen",
+        "Open-Source-KI",
+        "KI-Forschungsarbeiten",
+        "Zukunft der KI"
+      ],
+      "outcomes": [
+        "Eine KI-gestützte Anwendung bauen und bereitstellen",
+        "KI-Forschungsarbeiten lesen und verstehen",
+        "Zu Open-Source-KI-Projekten beitragen"
+      ],
       "tileLabel": "Meisterschaft",
       "homeDesc": "KI meistern"
     },
@@ -308,8 +352,16 @@
       "description": "Meistere die grundlegenden Datenstrukturen und Algorithmen, die KI-Systeme antreiben. Arrays, Hash Maps, Strings und Sortierung – visualisiert mit Diagrammen, erklärt anhand realer KI-Anwendungen.",
       "audience": "Ingenieure, die sich auf Interviews vorbereiten oder Grundlagen auffrischen",
       "prerequisites": "Grundlegende Programmierkenntnisse in einer beliebigen Sprache",
-      "topics": ["Arrays & Hashing", "Strings & Pattern Matching", "Sortieren & Suchen"],
-      "outcomes": ["Array- und Hash-Map-Probleme sicher lösen", "Verstehen, wie diese Muster KI-Systeme antreiben", "Gängige Interview-Muster erkennen"],
+      "topics": [
+        "Arrays & Hashing",
+        "Strings & Pattern Matching",
+        "Sortieren & Suchen"
+      ],
+      "outcomes": [
+        "Array- und Hash-Map-Probleme sicher lösen",
+        "Verstehen, wie diese Muster KI-Systeme antreiben",
+        "Gängige Interview-Muster erkennen"
+      ],
       "tileLabel": "Grundlagen",
       "homeDesc": "Starte bei null"
     },
@@ -319,8 +371,16 @@
       "description": "Steigere dich mit fortgeschrittenen algorithmischen Mustern: Two Pointers, Sliding Window, BFS/DFS und Baum-Traversierung. Jedes Muster mit Bezug zu realen KI/ML-Anwendungen.",
       "audience": "Ingenieure mit DSA-Grundlagen, bereit für mittelschwere Aufgaben",
       "prerequisites": "AI Sketch oder gleichwertige Grundlagen",
-      "topics": ["Two Pointers & Sliding Window", "Bäume & Graph-Traversierung", "Stacks, Queues & Monotone Muster"],
-      "outcomes": ["Two Pointers und Sliding Window anwenden, um Lösungen zu optimieren", "Bäume und Graphen mit BFS/DFS traversieren", "Diese Muster mit KI-Suche und Inferenz verknüpfen"],
+      "topics": [
+        "Two Pointers & Sliding Window",
+        "Bäume & Graph-Traversierung",
+        "Stacks, Queues & Monotone Muster"
+      ],
+      "outcomes": [
+        "Two Pointers und Sliding Window anwenden, um Lösungen zu optimieren",
+        "Bäume und Graphen mit BFS/DFS traversieren",
+        "Diese Muster mit KI-Suche und Inferenz verknüpfen"
+      ],
       "tileLabel": "Datenstrukturen",
       "homeDesc": "Fundament aufbauen"
     },
@@ -330,8 +390,16 @@
       "description": "Entwirf große Systeme, die KI antreiben: Empfehlungssysteme, Suchautovervollständigung, Rate Limiter. Lerne in Architekturen zu denken, nicht nur in Code.",
       "audience": "Mid-bis-Senior-Ingenieure, die sich auf Systemdesign-Runden vorbereiten",
       "prerequisites": "Sicher in Coding-Interviews",
-      "topics": ["Einen URL-Shortener entwerfen", "Einen Rate Limiter entwerfen", "Eine Empfehlungsmaschine entwerfen"],
-      "outcomes": ["Systemdesign-Antworten klar strukturieren", "Skalierbare verteilte Systeme entwerfen", "KI-spezifische Infrastrukturmuster verstehen"],
+      "topics": [
+        "Einen URL-Shortener entwerfen",
+        "Einen Rate Limiter entwerfen",
+        "Eine Empfehlungsmaschine entwerfen"
+      ],
+      "outcomes": [
+        "Systemdesign-Antworten klar strukturieren",
+        "Skalierbare verteilte Systeme entwerfen",
+        "KI-spezifische Infrastrukturmuster verstehen"
+      ],
       "tileLabel": "Systeme",
       "homeDesc": "In der Praxis anwenden"
     },
@@ -341,8 +409,16 @@
       "description": "Meistere das Behavioral Interview mit strukturierten Frameworks. STAR-Methode, Führungsprinzipien, KI-Zeitalter-Szenarien und Kommunikationsstrategien.",
       "audience": "Ingenieure jeder Erfahrungsstufe, die sich auf Behavioral Rounds vorbereiten",
       "prerequisites": "Echte Projekterfahrung als Grundlage",
-      "topics": ["STAR-Framework für Ingenieure", "Kommunikation im Systemdesign", "Führungsszenarien im KI-Zeitalter"],
-      "outcomes": ["Überzeugende Geschichten mit STAR strukturieren", "Technische Entscheidungen klar kommunizieren", "KI-Ethik- und Führungsfragen souverän meistern"],
+      "topics": [
+        "STAR-Framework für Ingenieure",
+        "Kommunikation im Systemdesign",
+        "Führungsszenarien im KI-Zeitalter"
+      ],
+      "outcomes": [
+        "Überzeugende Geschichten mit STAR strukturieren",
+        "Technische Entscheidungen klar kommunizieren",
+        "KI-Ethik- und Führungsfragen souverän meistern"
+      ],
       "tileLabel": "Produktion",
       "homeDesc": "In die Tiefe gehen"
     },
@@ -352,8 +428,16 @@
       "description": "Abschlussprojekte, die DSA, Systemdesign und Behavioral Skills kombinieren. Entwirf echte Systeme von A bis Z und baue dein Engineering-Portfolio auf.",
       "audience": "Ingenieure, die für Senior+ Rollen bereit sind",
       "prerequisites": "AI Sketch bis AI Polish abgeschlossen",
-      "topics": ["Twitters KI-Feed entwerfen", "Vollständiges Mock Interview", "Engineering-Portfolio"],
-      "outcomes": ["Vollständige End-to-End-Systementwürfe abschließen", "Souverän in Mock Interviews bestehen", "Ein herausragendes Engineering-Portfolio aufbauen"],
+      "topics": [
+        "Twitters KI-Feed entwerfen",
+        "Vollständiges Mock Interview",
+        "Engineering-Portfolio"
+      ],
+      "outcomes": [
+        "Vollständige End-to-End-Systementwürfe abschließen",
+        "Souverän in Mock Interviews bestehen",
+        "Ein herausragendes Engineering-Portfolio aufbauen"
+      ],
       "tileLabel": "Architektur",
       "homeDesc": "KI meistern"
     }
@@ -531,10 +615,12 @@
     "multimodal-ai": "Multimodale KI",
     "natural-language-processing": "Natural Language Processing",
     "negotiating-your-offer": "Dein Tech-Angebot verhandeln",
+    "neural-networks-explained": "Neuronale Netze: Wie Maschinen wirklich denken",
     "neural-networks-intro": "Einführung in neuronale Netze",
     "open-source-ai": "Das Open-Source-KI-Ökosystem",
     "open-source-ai-project": "Ein Open-Source-KI-Projekt veröffentlichen",
     "prompt-engineering": "Prompt Engineering",
+    "prompt-engineering-mastery": "Prompt Engineering: Die Kunst, mit KI zu sprechen",
     "recommendation-systems": "Empfehlungssysteme",
     "recursion-and-backtracking": "Rekursion und Backtracking",
     "reinforcement-learning": "Reinforcement Learning",
@@ -557,6 +643,7 @@
     "tries-and-prefix-trees": "Tries und Präfixbäume",
     "two-pointers-and-sliding-window": "Two Pointers und Sliding Window",
     "types-of-ai": "Arten von KI",
+    "understanding-llms": "Große Sprachmodelle verstehen",
     "union-find-and-disjoint-sets": "Union-Find",
     "voice-ai-and-speech": "Sprach-KI und Spracherkennung",
     "what-is-ai": "Was ist KI? Eine freundliche Einführung",
@@ -615,11 +702,26 @@
     "pageDescription": "Experimentiere mit KI-Konzepten. Analysiere Stimmungen, visualisiere neuronale Netze, erkunde Sortieralgorithmen und verstehe Tokenisierung.",
     "footer": "Alle Demos laufen vollständig in deinem Browser – es werden keine Daten an einen Server gesendet.",
     "tabs": {
-      "games": { "label": "Minispiele", "desc": "Zufälliges KI-Spiel bei jedem Besuch" },
-      "sentiment": { "label": "Stimmungsanalyse", "desc": "Emotionen in Texten erkennen" },
-      "neural": { "label": "Neuronales Netz", "desc": "Visualisiere, wie Neuronen lernen" },
-      "sorting": { "label": "Sortieralgorithmen", "desc": "Algorithmen in Echtzeit beim Sortieren beobachten" },
-      "tokenizer": { "label": "Tokeniser", "desc": "Sieh, wie KI deinen Text liest" }
+      "games": {
+        "label": "Minispiele",
+        "desc": "Zufälliges KI-Spiel bei jedem Besuch"
+      },
+      "sentiment": {
+        "label": "Stimmungsanalyse",
+        "desc": "Emotionen in Texten erkennen"
+      },
+      "neural": {
+        "label": "Neuronales Netz",
+        "desc": "Visualisiere, wie Neuronen lernen"
+      },
+      "sorting": {
+        "label": "Sortieralgorithmen",
+        "desc": "Algorithmen in Echtzeit beim Sortieren beobachten"
+      },
+      "tokenizer": {
+        "label": "Tokeniser",
+        "desc": "Sieh, wie KI deinen Text liest"
+      }
     },
     "aiOrHuman": {
       "title": "Kannst du den Unterschied erkennen?",

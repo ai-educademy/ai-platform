@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 /* ── Types ── */
 interface SocialLink {
@@ -33,17 +34,7 @@ interface HomeFounderProps {
 }
 
 /* ── Animation config ── */
-const ease = [0.25, 0.4, 0.25, 1] as const;
-const spring = { type: "spring" as const, stiffness: 300, damping: 25 };
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease },
-  }),
-};
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 /* ── Animated counter for founder stats ── */
 function FounderStatCounter({
@@ -85,9 +76,9 @@ function FounderStatCounter({
   }, [inView, animate]);
 
   return (
-    <motion.div
-      className="text-center p-4 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors duration-300"
-      whileHover={reduced ? {} : { y: -2, transition: spring }}
+    <div
+      className="text-center p-4 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:-translate-y-0.5 transition-all"
+      style={{ transitionDuration: "300ms", transitionTimingFunction: EASE }}
     >
       <div className="text-2xl font-black text-gradient">
         {isNumeric ? `${count}${suffix}` : value}
@@ -95,8 +86,22 @@ function FounderStatCounter({
       <div className="text-xs text-[var(--color-text-muted)] mt-1 font-medium">
         {label}
       </div>
-    </motion.div>
+    </div>
   );
+}
+
+/* ── Fade-up style helper ── */
+function fadeUpStyle(
+  isInView: boolean,
+  reduced: boolean,
+  delayIndex: number,
+): React.CSSProperties {
+  if (reduced) return {};
+  return {
+    opacity: isInView ? 1 : 0,
+    transform: isInView ? "translateY(0)" : "translateY(24px)",
+    transition: `opacity 0.5s ${EASE} ${delayIndex * 0.1}s, transform 0.5s ${EASE} ${delayIndex * 0.1}s`,
+  };
 }
 
 /* ── Main Component ── */
@@ -113,37 +118,22 @@ export default function HomeFounder({
   socialLinks,
   avatarSrc,
 }: HomeFounderProps) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-  const prefersReduced = useReducedMotion();
-  const reduced = !!prefersReduced;
+  const [sectionRef, isInView] = useInView<HTMLDivElement>({ margin: "-80px" });
+  const reduced = useReducedMotion();
 
   return (
     <div ref={sectionRef} className="max-w-4xl mx-auto px-4 sm:px-6 relative">
       {/* Section header */}
-      <motion.div
-        className="text-center mb-12"
-        custom={0}
-        variants={fadeUp}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
+      <div className="text-center mb-12" style={fadeUpStyle(isInView, reduced, 0)}>
         <h2 className="text-3xl sm:text-5xl font-black text-gradient-animated">
           {brainsTitle}
         </h2>
-      </motion.div>
+      </div>
 
       {/* Glass morphism card with animated gradient border */}
-      <motion.div
-        custom={1}
-        variants={fadeUp}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
+      <div style={fadeUpStyle(isInView, reduced, 1)}>
         {/* Animated gradient border wrapper */}
-        <div
-          className="rounded-2xl p-px animated-border-shimmer"
-        >
+        <div className="rounded-2xl p-px animated-border-shimmer">
           <div className="rounded-2xl glass-premium overflow-hidden bg-[var(--color-bg-card)]">
             <div className="grid md:grid-cols-[260px_1fr] items-stretch">
               {/* Avatar column */}
@@ -153,14 +143,16 @@ export default function HomeFounder({
 
                 <div className="relative z-10 flex flex-col items-center">
                   {/* Founder avatar */}
-                  <motion.div
+                  <div
                     className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden ring-2 ring-[var(--color-primary-glow)] mb-5 shadow-lg"
-                    initial={reduced ? {} : { scale: 0.85, opacity: 0 }}
-                    animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                    transition={
+                    style={
                       reduced
-                        ? { duration: 0 }
-                        : { ...spring, delay: 0.2 }
+                        ? {}
+                        : {
+                            opacity: isInView ? 1 : 0,
+                            transform: isInView ? "scale(1)" : "scale(0.85)",
+                            transition: `opacity 0.5s ${EASE} 0.2s, transform 0.5s ${EASE} 0.2s`,
+                          }
                     }
                   >
                     <Image
@@ -171,39 +163,48 @@ export default function HomeFounder({
                       className="w-full h-full object-cover"
                       priority
                     />
-                  </motion.div>
+                  </div>
 
-                  <motion.h3
+                  <h3
                     className="text-lg font-bold text-center"
-                    initial={reduced ? {} : { opacity: 0, y: 8 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.4, ease }}
+                    style={
+                      reduced
+                        ? {}
+                        : {
+                            opacity: isInView ? 1 : 0,
+                            transform: isInView ? "translateY(0)" : "translateY(8px)",
+                            transition: `opacity 0.4s ${EASE} 0.4s, transform 0.4s ${EASE} 0.4s`,
+                          }
+                    }
                   >
                     {name}
-                  </motion.h3>
+                  </h3>
 
-                  <motion.p
+                  <p
                     className="text-sm text-[var(--color-text-muted)] text-center mb-5"
-                    initial={reduced ? {} : { opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 0.5, ease }}
+                    style={
+                      reduced
+                        ? {}
+                        : {
+                            opacity: isInView ? 1 : 0,
+                            transition: `opacity 0.4s ${EASE} 0.5s`,
+                          }
+                    }
                   >
                     {role}
-                  </motion.p>
+                  </p>
 
-                  {/* Social links with spring hover */}
+                  {/* Social links with CSS hover */}
                   <div className="flex items-center gap-3">
                     {socialLinks.map((link) => (
-                      <motion.a
+                      <a
                         key={link.label}
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] hover:shadow-md transition-all duration-200"
+                        className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] hover:shadow-md hover:scale-115 hover:-translate-y-0.5 active:scale-95 transition-all"
+                        style={{ transitionDuration: "200ms", transitionTimingFunction: EASE }}
                         aria-label={link.label}
-                        whileHover={reduced ? {} : { scale: 1.15, y: -2 }}
-                        whileTap={reduced ? {} : { scale: 0.95 }}
-                        transition={spring}
                       >
                         <svg
                           className="w-4 h-4"
@@ -212,7 +213,7 @@ export default function HomeFounder({
                         >
                           <path d={link.iconPath} />
                         </svg>
-                      </motion.a>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -220,23 +221,17 @@ export default function HomeFounder({
 
               {/* Content column */}
               <div className="p-8 md:p-10 flex flex-col justify-center">
-                <motion.p
+                <p
                   className="text-[var(--color-text-muted)] leading-relaxed mb-8 text-base"
-                  custom={2}
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
+                  style={fadeUpStyle(isInView, reduced, 2)}
                 >
                   {description}
-                </motion.p>
+                </p>
 
                 {/* Stats row - animated counters with better cards */}
-                <motion.div
+                <div
                   className="grid grid-cols-3 gap-3 mb-8"
-                  custom={3}
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
+                  style={fadeUpStyle(isInView, reduced, 3)}
                 >
                   {stats.map((stat) => (
                     <FounderStatCounter
@@ -247,21 +242,14 @@ export default function HomeFounder({
                       reduced={reduced}
                     />
                   ))}
-                </motion.div>
+                </div>
 
                 {/* CTAs - premium button treatment */}
-                <motion.div
+                <div
                   className="flex flex-wrap items-center gap-3"
-                  custom={4}
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
+                  style={fadeUpStyle(isInView, reduced, 4)}
                 >
-                  <motion.div
-                    whileHover={reduced ? {} : { scale: 1.04 }}
-                    whileTap={reduced ? {} : { scale: 0.97 }}
-                    transition={spring}
-                  >
+                  <div className="hover:scale-115 hover:-translate-y-0.5 active:scale-95 transition-all" style={{ transitionTimingFunction: EASE }}>
                     <Link
                       href={ctaHref}
                       className="relative overflow-hidden inline-flex items-center gap-2 px-7 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-semibold shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-shadow duration-300"
@@ -269,12 +257,8 @@ export default function HomeFounder({
                       <span className="relative z-10">{ctaText} →</span>
                       <span className="absolute inset-0 shimmer-sweep pointer-events-none" />
                     </Link>
-                  </motion.div>
-                  <motion.div
-                    whileHover={reduced ? {} : { scale: 1.04 }}
-                    whileTap={reduced ? {} : { scale: 0.97 }}
-                    transition={spring}
-                  >
+                  </div>
+                  <div className="hover:scale-115 hover:-translate-y-0.5 active:scale-95 transition-all" style={{ transitionTimingFunction: EASE }}>
                     <a
                       href={coffeeHref}
                       target="_blank"
@@ -283,13 +267,13 @@ export default function HomeFounder({
                     >
                       ☕ {coffeeText}
                     </a>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
