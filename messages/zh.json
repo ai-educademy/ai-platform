@@ -647,7 +647,15 @@
     "union-find-and-disjoint-sets": "并查集",
     "voice-ai-and-speech": "语音AI与语音识别",
     "what-is-ai": "什么是AI？一个友好的介绍",
-    "your-first-ai-experiment": "你的第一个AI实验"
+    "your-first-ai-experiment": "你的第一个AI实验",
+    "ai-and-creativity": "AI与人类创造力：伙伴关系，而非竞争对手",
+    "ai-in-science-and-research": "AI如何变革科学与研究",
+    "feature-engineering": "特征工程：教会机器什么最重要",
+    "future-of-work-and-ai": "AI与工作的未来：哪些职业将发生改变",
+    "overfitting-and-underfitting": "过拟合与欠拟合：机器学习模型为何失效",
+    "reinforcement-learning-intro": "强化学习：通过试错教导AI",
+    "supervised-vs-unsupervised": "监督学习与无监督学习：关键区别详解",
+    "transformers-explained": "Transformer架构详解：ChatGPT背后的技术"
   },
   "pwa": {
     "install": "安装应用",
