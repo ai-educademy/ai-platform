@@ -67,10 +67,6 @@
       "title": "Dans votre langue",
       "description": "Apprenez en hindi, télougou, français, néerlandais ou anglais - celle qui vous parle le mieux."
     },
-    "openAccess": {
-      "title": "Accès libre",
-      "description": "Pas d'abonnement, pas de paywall. Open source, créé par la communauté, pour tous."
-    },
     "community": {
       "title": "Apprenez ensemble",
       "description": "Posez vos questions, partagez vos expériences, aidez à traduire les leçons."
@@ -88,9 +84,7 @@
     "labTitle": "Labo interactif",
     "labDesc": "Des expériences pratiques pour consolider vos connaissances",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "Totalement transparent - consultez, forkez ou contribuez",
-    "openAccessTitle": "Accès libre",
-    "openAccessDesc": "Sans barrières — éducation open source, portée par la communauté"
+    "openSourceDesc": "Totalement transparent - consultez, forkez ou contribuez"
   },
   "founder": {
     "description": "A fondé AI Educademy pour rendre l'éducation en IA de classe mondiale gratuite, multilingue et accessible à tous. Plus de quinze ans à construire des systèmes à grande échelle dans la fintech, les médias et le retail chez des entreprises comme JP Morgan et Sky — en travaillant à travers l'Asie et l'Europe. Cette expérience internationale a rendu une chose évidente : la langue ne devrait jamais être un obstacle à l'apprentissage. Parle anglais, français et télougou.",

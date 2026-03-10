@@ -67,10 +67,6 @@
       "title": "In jouw taal",
       "description": "Leer in het Hindi, Telugu, Frans, Nederlands of Engels - welke taal ook als thuis voelt."
     },
-    "openAccess": {
-      "title": "Open toegang",
-      "description": "Geen abonnementen, geen betaalmuren. Open source, door de gemeenschap gebouwd, voor iedereen."
-    },
     "community": {
       "title": "Samen leren",
       "description": "Stel vragen, deel experimenten, help met het vertalen van lessen."
@@ -88,9 +84,7 @@
     "labTitle": "Interactief Lab",
     "labDesc": "Praktische experimenten om je kennis te versterken",
     "openSourceTitle": "Open source",
-    "openSourceDesc": "Volledig transparant - bekijk, fork of draag bij",
-    "openAccessTitle": "Open toegang",
-    "openAccessDesc": "Geen drempels — open source, community-gedreven onderwijs"
+    "openSourceDesc": "Volledig transparant - bekijk, fork of draag bij"
   },
   "founder": {
     "description": "Richtte AI Educademy op om AI-onderwijs van wereldklasse gratis, meertalig en toegankelijk voor iedereen te maken. Meer dan vijftien jaar ervaring met het bouwen van grootschalige systemen in fintech, media en retail bij bedrijven als JP Morgan en Sky — werkend in Azië en Europa. Die wereldwijde ervaring maakte één ding duidelijk: taal mag nooit een barrière zijn om te leren. Spreekt Engels, Frans en Telugu.",

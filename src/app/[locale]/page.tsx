@@ -119,12 +119,6 @@ export default async function HomePage({
               label: tf("languagesTitle"),
               desc: tf("languagesDesc"),
             },
-            {
-              icon: "💡",
-              value: "∞",
-              label: tf("openAccessTitle"),
-              desc: tf("openAccessDesc"),
-            },
           ]}
           trackAI={{
             trackIcon: "🌳",

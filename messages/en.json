@@ -67,10 +67,6 @@
       "title": "In Your Language",
       "description": "Learn in Hindi, Telugu, French, Dutch, or English, whichever feels like home."
     },
-    "openAccess": {
-      "title": "Open Access",
-      "description": "No subscriptions, no paywalls. Open-source, community-built education for everyone."
-    },
     "community": {
       "title": "Learn Together",
       "description": "Ask questions, share experiments, help translate lessons."
@@ -88,9 +84,7 @@
     "labTitle": "Interactive Lab",
     "labDesc": "Hands-on experiments to solidify your understanding",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "Fully transparent - view, fork, or contribute",
-    "openAccessTitle": "Open Access",
-    "openAccessDesc": "No barriers — open-source, community-driven education"
+    "openSourceDesc": "Fully transparent - view, fork, or contribute"
   },
   "founder": {
     "description": "Founded AI Educademy to make world-class AI education free, multilingual, and accessible to everyone. Over fifteen years building large-scale systems across fintech, media, and retail at companies like JP Morgan and Sky — working across Asia and Europe. That global experience made one thing clear: language should never be a barrier to learning. Speaks English, French, and Telugu.",
