@@ -657,7 +657,12 @@
     "future-of-work-and-ai": "AIと仕事の未来",
     "overfitting-and-underfitting": "過学習と未学習",
     "ai-in-science-and-research": "科学と研究におけるAI",
-    "ai-and-creativity": "AIと創造性"
+    "ai-and-creativity": "AIと創造性",
+    "ai-safety-basics": "AIの安全性：なぜ誰にとっても重要なのか",
+    "ai-and-climate": "AIと気候変動：解決策か問題か？",
+    "decision-trees-explained": "決定木：紙に描けるアルゴリズム",
+    "clustering-algorithms": "クラスタリング：ラベルなしでAIがパターンを見つける方法",
+    "fine-tuning-llms": "LLMのファインチューニング：ユースケースに合わせたAIのカスタマイズ"
   },
   "pwa": {
     "install": "アプリをインストール",

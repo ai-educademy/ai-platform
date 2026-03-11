@@ -657,7 +657,12 @@
     "feature-engineering": "Feature Engineering: Maschinen beibringen, was wichtig ist",
     "supervised-vs-unsupervised": "Überwachtes vs unüberwachtes Lernen: Hauptunterschiede erklärt",
     "transformers-explained": "Transformers erklärt: Die Architektur hinter ChatGPT",
-    "reinforcement-learning-intro": "Reinforcement Learning: KI durch Versuch und Irrtum trainieren"
+    "reinforcement-learning-intro": "Reinforcement Learning: KI durch Versuch und Irrtum trainieren",
+    "ai-safety-basics": "KI-Sicherheit: Warum sie für alle wichtig ist",
+    "ai-and-climate": "KI und Klimawandel: Lösung oder Problem?",
+    "decision-trees-explained": "Entscheidungsbäume: der Algorithmus, den man auf Papier zeichnen kann",
+    "clustering-algorithms": "Clustering: Wie KI Muster ohne Etiketten findet",
+    "fine-tuning-llms": "LLMs feinabstimmen: KI für Ihren Anwendungsfall anpassen"
   },
   "pwa": {
     "install": "App installieren",

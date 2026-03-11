@@ -658,7 +658,12 @@
     "feature-engineering": "Feature Engineering: Teaching Machines What Matters",
     "supervised-vs-unsupervised": "Supervised vs Unsupervised Learning: Key Differences Explained",
     "transformers-explained": "Transformers Explained: The Architecture Behind ChatGPT",
-    "reinforcement-learning-intro": "Reinforcement Learning: Teaching AI Through Trial and Error"
+    "reinforcement-learning-intro": "Reinforcement Learning: Teaching AI Through Trial and Error",
+    "ai-safety-basics": "AI Safety: Why It Matters for Everyone",
+    "ai-and-climate": "AI and Climate Change: Solution or Problem?",
+    "decision-trees-explained": "Decision Trees: The Algorithm You Can Draw on Paper",
+    "clustering-algorithms": "Clustering: How AI Finds Patterns Without Labels",
+    "fine-tuning-llms": "Fine-Tuning LLMs: Customising AI for Your Use Case"
   },
   "pwa": {
     "install": "Install App",

@@ -657,7 +657,12 @@
     "feature-engineering": "Ingeniería de características: enseñar a las máquinas qué importa",
     "supervised-vs-unsupervised": "Aprendizaje supervisado vs no supervisado: diferencias clave explicadas",
     "transformers-explained": "Transformers explicados: la arquitectura detrás de ChatGPT",
-    "reinforcement-learning-intro": "Aprendizaje por refuerzo: enseñar a la IA mediante ensayo y error"
+    "reinforcement-learning-intro": "Aprendizaje por refuerzo: enseñar a la IA mediante ensayo y error",
+    "ai-safety-basics": "Seguridad en IA: Por qué importa para todos",
+    "ai-and-climate": "IA y cambio climático: ¿solución o problema?",
+    "decision-trees-explained": "Árboles de decisión: el algoritmo que puedes dibujar en papel",
+    "clustering-algorithms": "Clustering: cómo la IA encuentra patrones sin etiquetas",
+    "fine-tuning-llms": "Ajuste fino de LLMs: personalizar la IA para tu caso de uso"
   },
   "pwa": {
     "install": "Instalar App",

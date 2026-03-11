@@ -657,7 +657,12 @@
     "feature-engineering": "Feature Engineering: मशीनों को महत्वपूर्ण बातें सिखाना",
     "supervised-vs-unsupervised": "Supervised बनाम Unsupervised Learning: मुख्य अंतर समझाए गए",
     "transformers-explained": "Transformers समझाए गए: ChatGPT के पीछे की आर्किटेक्चर",
-    "reinforcement-learning-intro": "Reinforcement Learning: परीक्षण और त्रुटि से AI को सिखाना"
+    "reinforcement-learning-intro": "Reinforcement Learning: परीक्षण और त्रुटि से AI को सिखाना",
+    "ai-safety-basics": "AI सुरक्षा: यह सबके लिए क्यों मायने रखती है",
+    "ai-and-climate": "AI और जलवायु परिवर्तन: समाधान या समस्या?",
+    "decision-trees-explained": "निर्णय वृक्ष: वह एल्गोरिदम जिसे आप कागज पर बना सकते हैं",
+    "clustering-algorithms": "क्लस्टरिंग: AI बिना लेबल के पैटर्न कैसे ढूंढती है",
+    "fine-tuning-llms": "LLM को फाइन-ट्यून करना: अपने उपयोग के लिए AI को अनुकूलित करें"
   },
   "pwa": {
     "install": "ऐप इंस्टॉल करें",

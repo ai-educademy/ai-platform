@@ -657,7 +657,12 @@
     "overfitting-and-underfitting": "过拟合与欠拟合：机器学习模型为何失效",
     "reinforcement-learning-intro": "强化学习：通过试错教导AI",
     "supervised-vs-unsupervised": "监督学习与无监督学习：关键区别详解",
-    "transformers-explained": "Transformer架构详解：ChatGPT背后的技术"
+    "transformers-explained": "Transformer架构详解：ChatGPT背后的技术",
+    "ai-safety-basics": "AI安全：为什么对每个人都重要",
+    "ai-and-climate": "AI与气候变化：解决方案还是问题？",
+    "decision-trees-explained": "决策树：可以在纸上画出的算法",
+    "clustering-algorithms": "聚类：AI如何在没有标签的情况下发现规律",
+    "fine-tuning-llms": "微调大语言模型：为您的使用场景定制AI"
   },
   "pwa": {
     "install": "安装应用",

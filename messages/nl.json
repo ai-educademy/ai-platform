@@ -657,7 +657,12 @@
     "feature-engineering": "Feature Engineering: machines leren wat belangrijk is",
     "supervised-vs-unsupervised": "Supervised vs unsupervised learning: belangrijkste verschillen uitgelegd",
     "transformers-explained": "Transformers uitgelegd: de architectuur achter ChatGPT",
-    "reinforcement-learning-intro": "Reinforcement Learning: AI leren door trial and error"
+    "reinforcement-learning-intro": "Reinforcement Learning: AI leren door trial and error",
+    "ai-safety-basics": "AI-veiligheid: Waarom het voor iedereen belangrijk is",
+    "ai-and-climate": "AI en klimaatverandering: oplossing of probleem?",
+    "decision-trees-explained": "Beslisbomen: het algoritme dat je op papier kunt tekenen",
+    "clustering-algorithms": "Clustering: hoe AI patronen vindt zonder labels",
+    "fine-tuning-llms": "LLM's verfijnen: AI aanpassen voor jouw gebruik"
   },
   "pwa": {
     "install": "App installeren",

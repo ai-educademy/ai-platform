@@ -657,7 +657,12 @@
     "feature-engineering": "Feature Engineering: మెషీన్లకు ముఖ్యమైన విషయాలు నేర్పించడం",
     "supervised-vs-unsupervised": "Supervised vs Unsupervised Learning: ముఖ్య తేడాలు వివరించబడ్డాయి",
     "transformers-explained": "Transformers వివరించబడ్డాయి: ChatGPT వెనుక ఉన్న Architecture",
-    "reinforcement-learning-intro": "Reinforcement Learning: ప్రయోగం మరియు తప్పిదం ద్వారా AI కి నేర్పించడం"
+    "reinforcement-learning-intro": "Reinforcement Learning: ప్రయోగం మరియు తప్పిదం ద్వారా AI కి నేర్పించడం",
+    "ai-safety-basics": "AI భద్రత: అది అందరికీ ఎందుకు ముఖ్యమో",
+    "ai-and-climate": "AI మరియు వాతావరణ మార్పు: పరిష్కారమా లేదా సమస్యా?",
+    "decision-trees-explained": "నిర్ణయ చెట్లు: కాగితంపై గీయగలిగే అల్గారిథమ్",
+    "clustering-algorithms": "క్లస్టరింగ్: లేబుల్స్ లేకుండా AI నమూనాలను ఎలా కనుగొంటుంది",
+    "fine-tuning-llms": "LLMలను ఫైన్-ట్యూన్ చేయడం: మీ వినియోగానికి AI ని అనుకూలీకరించడం"
   },
   "pwa": {
     "install": "యాప్ ఇన్‌స్టాల్ చేయండి",
