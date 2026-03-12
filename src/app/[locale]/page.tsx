@@ -8,7 +8,6 @@ import {
   HomeFounderLazy as HomeFounder,
   HomeCommunitySectionLazy as HomeCommunitySection,
 } from "@/components/home/HomeDynamic";
-import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export default async function HomePage({
   params,
@@ -81,7 +80,6 @@ export default async function HomePage({
 
   return (
     <>
-      <OrganizationJsonLd />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[60vh] flex items-center">

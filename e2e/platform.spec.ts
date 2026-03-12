@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const LOCALES = ["en", "fr", "nl", "hi", "te"];
+const LOCALES = ["en", "fr", "nl", "hi", "te", "es", "pt", "de", "zh", "ja", "ar"];
 
 test.describe("Navigation & Pages", () => {
   test("homepage loads and shows hero", async ({ page }) => {

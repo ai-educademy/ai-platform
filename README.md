@@ -10,16 +10,17 @@
 ![License](https://img.shields.io/github/license/aieducademy/ai-platform)
 ![Stars](https://img.shields.io/github/stars/aieducademy/ai-platform?style=social)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-![Languages](https://img.shields.io/badge/Languages-5-orange)
+![Languages](https://img.shields.io/badge/Languages-11-orange)
 ![Programs](https://img.shields.io/badge/Programs-10-blueviolet)
+![Tracks](https://img.shields.io/badge/Tracks-3-teal)
 
 <br />
 
-A **free, open-source AI education platform** with 10 structured programs across 2 learning tracks, available in 5 languages. From absolute beginners to advanced practitioners — learn AI interactively with MDX lessons, a built-in playground, progress tracking, and certificates.
+A **free, open-source AI education platform** with 10 structured programs across 3 learning tracks, available in 11 languages. From absolute beginners to advanced practitioners — learn AI interactively with MDX lessons, an interactive lab, AI chatbot, mock interviews, progress tracking, and certificates.
 
 <br />
 
-[**🚀 Start Learning**](https://aieducademy.org) &nbsp;·&nbsp; [**🎨 Storybook**](https://aieducademy.github.io/ai-ui-library/) &nbsp;·&nbsp; [**📦 UI Library**](https://www.npmjs.com/package/@aieducademy/ai-ui-library) &nbsp;·&nbsp; [**🤝 Contributing**](CONTRIBUTING.md)
+[**🚀 Start Learning**](https://aieducademy.org) &nbsp;·&nbsp; [**📝 Blog**](https://aieducademy.org/en/blog) &nbsp;·&nbsp; [**🎨 Storybook**](https://aieducademy.github.io/ai-ui-library/) &nbsp;·&nbsp; [**📦 UI Library**](https://www.npmjs.com/package/@aieducademy/ai-ui-library) &nbsp;·&nbsp; [**🤝 Contributing**](CONTRIBUTING.md)
 
 <br />
 
@@ -37,15 +38,19 @@ A **free, open-source AI education platform** with 10 structured programs across
 
 | | Feature | Description |
 |---|---------|-------------|
-| 🌍 | **Multilingual** | English, French, Dutch, Hindi, Telugu — add your language! |
-| 📚 | **10 Programs** | Structured curriculum across 2 tracks (AI Learning + Craft Engineering) |
-| 🎮 | **Interactive Playground** | AI drawing recogniser — experiment hands-on in the browser |
-| 📱 | **PWA Ready** | Install as an app on any device with offline support |
-| 🏆 | **Progress Tracking** | Per-program dashboard with completion tracking |
-| 🔐 | **Auth + Guest Mode** | GitHub OAuth sign-in or learn as a guest |
+| 🌍 | **11 Languages** | EN, FR, NL, HI, TE, ES, PT, DE, ZH, JA, AR — [add yours!](CONTRIBUTING.md) |
+| 📚 | **10 Programs, 3 Tracks** | AI Learning + Craft Engineering + Career Ready |
+| 🧪 | **Interactive Lab** | 7 experiments — Neural Network Playground, Prompt Lab, Sentiment Analyzer, and more |
+| 🤖 | **AI Chatbot (Edu)** | Ask questions about any program — powered by Gemini |
+| 🎯 | **Mock Interviews** | STAR-method behavioural, technical, and ML interview simulator with AI feedback |
+| 🏆 | **Certificates** | Download personalised PDF certificates on program completion |
+| 📊 | **Progress Tracking** | Per-program dashboard with lesson-level completion |
+| 🔐 | **Auth + Guest Mode** | GitHub & Google OAuth or learn as a guest |
 | 🌙 | **Dark / Light Mode** | System preference detection + manual toggle |
+| 📱 | **PWA Ready** | Install as an app on any device with offline support |
 | 📝 | **MDX Lessons** | Rich content with syntax highlighting, illustrations, and interactivity |
 | 🎨 | **Design System** | Shared UI library with [Storybook](https://aieducademy.github.io/ai-ui-library/) |
+| 🔒 | **Security Hardened** | CSP, HSTS, rate limiting, Zod validation, admin auth |
 | ⚡ | **Auto-deploy** | Content changes in any course repo trigger instant platform rebuild |
 
 ---
@@ -82,12 +87,31 @@ Open [http://localhost:3000](http://localhost:3000) 🎉
 graph TB
     subgraph "GitHub Org: ai-educademy"
         UI["🎨 ai-ui-library<br/><small>Design System → npm</small>"]
-        PLAT["🌐 ai-platform<br/><small>Next.js App Shell → Vercel</small>"]
-        SEEDS["🌱 ai-seeds<br/><small>Level 1: Beginners</small>"]
-        SPROUTS["🌿 ai-sprouts<br/><small>Level 2: Foundations</small>"]
-        BRANCHES["🌳 ai-branches<br/><small>Level 3: Specialisations</small>"]
-        CANOPY["🏕️ ai-canopy<br/><small>Level 4: Production AI</small>"]
-        FOREST["🌲 ai-forest<br/><small>Level 5: Mastery</small>"]
+        PLAT["🌐 ai-platform<br/><small>Next.js 16 App Shell → Vercel</small>"]
+
+        subgraph "🧠 AI Learning Track"
+            SEEDS["🌱 ai-seeds<br/><small>Level 1</small>"]
+            SPROUTS["🌿 ai-sprouts<br/><small>Level 2</small>"]
+            BRANCHES["🌳 ai-branches<br/><small>Level 3</small>"]
+            CANOPY["🏕️ ai-canopy<br/><small>Level 4</small>"]
+            FOREST["🌲 ai-forest<br/><small>Level 5</small>"]
+        end
+
+        subgraph "🛠️ Craft Engineering Track"
+            SKETCH["✏️ ai-sketch"]
+            CHISEL["🪨 ai-chisel"]
+            CRAFT["⚒️ ai-craft"]
+            POLISH["💎 ai-polish"]
+            MASTER["🏆 ai-masterpiece"]
+        end
+
+        subgraph "🎯 Career Ready Track"
+            BEHAV["🗣️ ai-behavioral"]
+            TECH["💻 ai-technical"]
+            ML["🧠 ai-ml-interview"]
+            OFFER["📋 ai-offer"]
+            LAUNCH["🚀 ai-launchpad"]
+        end
     end
 
     UI -->|npm install| PLAT
@@ -96,10 +120,21 @@ graph TB
     BRANCHES -.->|git submodule| PLAT
     CANOPY -.->|git submodule| PLAT
     FOREST -.->|git submodule| PLAT
+    SKETCH -.->|git submodule| PLAT
+    BEHAV -.->|git submodule| PLAT
     SEEDS -->|repository_dispatch| PLAT
     SPROUTS -->|repository_dispatch| PLAT
 
+    subgraph "External Services"
+        GEMINI["🤖 Gemini API<br/><small>Chatbot + Interviews</small>"]
+        NEON["🐘 Neon Postgres<br/><small>Users, Progress, Subs</small>"]
+        RESEND["📧 Resend<br/><small>Transactional Email</small>"]
+    end
+
     PLAT -->|deploy| VERCEL["▲ Vercel<br/><small>aieducademy.org</small>"]
+    PLAT --> GEMINI
+    PLAT --> NEON
+    PLAT --> RESEND
     UI -->|publish| NPM["📦 npm<br/><small>@aieducademy/ai-ui-library</small>"]
     UI -->|deploy| GHP["📖 GitHub Pages<br/><small>Storybook</small>"]
 ```
@@ -108,7 +143,7 @@ graph TB
 
 ## 🌱 Learning Tracks
 
-AI Educademy offers **2 learning tracks** with a nature growth metaphor — a seed grows into a forest:
+AI Educademy offers **3 learning tracks** with a nature growth metaphor — a seed grows into a forest:
 
 ### 🧠 Track 1: AI Learning
 
@@ -130,6 +165,16 @@ AI Educademy offers **2 learning tracks** with a nature growth metaphor — a se
 | 4 | 💎 AI Polish | Refining AI solutions | ✅ Live |
 | 5 | 🏆 AI Masterpiece | Creating production-grade AI | ✅ Live |
 
+### 🎯 Track 3: Career Ready
+
+| Program | Description | Status |
+|---------|-------------|--------|
+| 🗣️ AI Behavioral | Behavioural interview prep with STAR method | ✅ Live |
+| 💻 AI Technical | Technical interview practice | ✅ Live |
+| 🧠 AI ML Interview | Machine learning interview deep-dive | ✅ Live |
+| 📋 AI Offer | Offer negotiation and evaluation | ✅ Live |
+| 🚀 AI Launchpad | Career launch strategy and networking | ✅ Live |
+
 ---
 
 ## 🛠️ Tech Stack
@@ -140,10 +185,15 @@ AI Educademy offers **2 learning tracks** with a nature growth metaphor — a se
 | [TypeScript](https://www.typescriptlang.org/) | 5.9 | Type safety (strict mode) |
 | [React](https://react.dev/) | 19 | UI library |
 | [Tailwind CSS](https://tailwindcss.com/) | 4 | Utility-first styling |
-| [next-intl](https://next-intl.dev/) | 4 | Internationalization (5 languages) |
-| [NextAuth.js](https://next-auth.js.org/) | 5 | Authentication (GitHub OAuth) |
+| [next-intl](https://next-intl.dev/) | 4 | Internationalization (11 languages) |
+| [NextAuth.js](https://next-auth.js.org/) | 5 | Authentication (GitHub + Google OAuth) |
 | [MDX](https://mdxjs.com/) | 3 | Rich lesson content |
-| [Framer Motion](https://www.framer.com/motion/) | 12 | Animations & transitions |
+| [Drizzle ORM](https://orm.drizzle.team/) | — | Type-safe database queries |
+| [Neon Postgres](https://neon.tech/) | 17 | Serverless database |
+| [Gemini API](https://ai.google.dev/) | 2.0 | AI chatbot + mock interviews |
+| [Resend](https://resend.com/) | — | Transactional email |
+| [pdf-lib](https://pdf-lib.js.org/) | — | Certificate PDF generation |
+| [Zod](https://zod.dev/) | 3 | Runtime input validation |
 | [Serwist](https://serwist.pages.dev/) | 9 | PWA / Service Worker |
 | [Playwright](https://playwright.dev/) | 1.58 | End-to-end testing |
 | [Vercel](https://vercel.com/) | — | Deployment & analytics |
@@ -159,25 +209,36 @@ ai-platform/
 │   │   ├── page.tsx               # Homepage with program picker
 │   │   ├── programs/[programSlug]/lessons/[slug]/
 │   │   ├── dashboard/             # Progress dashboard
-│   │   ├── playground/            # AI playground
+│   │   ├── lab/                   # Interactive AI experiments
+│   │   ├── mock-interview/        # AI mock interviews
+│   │   ├── blog/                  # Blog with MDX posts
 │   │   └── about/                 # About page
+│   ├── app/api/
+│   │   ├── chat/                  # AI chatbot (Gemini)
+│   │   ├── mock-interview/        # Interview API
+│   │   ├── certificates/          # PDF generation
+│   │   ├── feedback/              # Feedback + email
+│   │   └── admin/                 # Protected admin APIs
 │   ├── components/
 │   │   ├── auth/                  # SignIn, UserMenu
+│   │   ├── certificates/          # CertificateButton
 │   │   ├── lessons/               # LessonRenderer, LessonComplete
-│   │   ├── playground/            # DrawingRecogniser
+│   │   ├── seo/                   # JsonLd (7 schema types)
 │   │   └── ui/                    # Navbar, Footer, LanguageSwitcher
 │   ├── hooks/                     # useProgress, useGuestProfile
 │   ├── i18n/                      # Locale config + routing
-│   ├── lib/                       # Data layer (programs, lessons)
+│   ├── lib/                       # Data layer, rate-limit, admin-auth
 │   └── middleware.ts              # i18n routing middleware
 ├── content/
 │   ├── programs.json              # Program registry (10 programs)
+│   ├── blog/                      # Blog posts (MDX)
 │   └── programs/
 │       ├── ai-seeds/              # ← git submodule
 │       ├── ai-sprouts/            # ← git submodule
 │       └── ...                    # 10 program submodules
-├── messages/                      # Translation files (en, fr, nl, hi, te)
+├── messages/                      # Translation files (11 locales)
 ├── e2e/                           # Playwright E2E tests
+├── scripts/                       # Build + deploy scripts
 └── public/                        # Static assets
 ```
 
@@ -193,10 +254,16 @@ content/programs/ai-seeds/
 │   ├── en/                        # English lessons
 │   │   ├── 01-what-is-ai.mdx
 │   │   └── 02-ai-in-daily-life.mdx
-│   ├── fr/                        # French lessons
-│   ├── nl/                        # Dutch lessons
-│   ├── hi/                        # Hindi lessons
-│   └── te/                        # Telugu lessons
+│   ├── fr/                        # French
+│   ├── nl/                        # Dutch
+│   ├── hi/                        # Hindi
+│   ├── te/                        # Telugu
+│   ├── es/                        # Spanish
+│   ├── pt/                        # Portuguese
+│   ├── de/                        # German
+│   ├── zh/                        # Chinese
+│   ├── ja/                        # Japanese
+│   └── ar/                        # Arabic
 └── program.json                   # Program metadata
 ```
 
@@ -234,9 +301,14 @@ We'd love your help! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full gui
 
 ## 🗺️ Roadmap
 
-- [ ] 🏆 Certificate generation on program completion
-- [ ] 🤖 AI tutor chatbot (RAG-based, per-lesson context)
+- [x] 🏆 Certificate generation on program completion
+- [x] 🤖 AI chatbot (Gemini-powered, context-aware)
+- [x] 🎯 Mock interview simulator (behavioural, technical, ML)
+- [x] 🔒 Security hardening (CSP, rate limiting, Zod, admin auth)
+- [x] 📧 Transactional email (Resend + custom domain)
+- [x] 🌍 11 languages (EN, FR, NL, HI, TE, ES, PT, DE, ZH, JA, AR)
 - [ ] 📊 Analytics dashboard for educators
+- [ ] 💳 Stripe subscription (premium content)
 - [ ] 🔌 LMS integration (LTI support)
 - [ ] 🌍 Community-driven translation portal
 - [ ] 📱 Native mobile app (React Native)
