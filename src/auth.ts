@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-// Resend email provider requires a database adapter for verification tokens.
-// Disabled until a DB adapter (e.g. Prisma, Drizzle) is configured.
-// import Resend from "next-auth/providers/resend";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { db } from "@/lib/db";
+import { users, accounts, sessions, verificationTokens } from "@/lib/db/schema";
 
 if (!process.env.AUTH_SECRET) {
   console.warn(
@@ -16,17 +16,33 @@ if (process.env.AUTH_GITHUB_ID) providers.push(GitHub);
 if (process.env.AUTH_GOOGLE_ID) providers.push(Google);
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  adapter: DrizzleAdapter(db, {
+    usersTable: users,
+    accountsTable: accounts,
+    sessionsTable: sessions,
+    verificationTokensTable: verificationTokens,
+  }),
   providers,
   secret: process.env.AUTH_SECRET,
   trustHost: true,
+  session: { strategy: "jwt" },
   pages: {
     signIn: "/signin",
     verifyRequest: "/signin?verify=1",
   },
   callbacks: {
-    session({ session, token }) {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = (user as { role?: string }).role ?? "free";
+      }
+      return token;
+    },
+    async session({ session, token }) {
       if (token?.sub) {
         session.user.id = token.sub;
+      }
+      if (token?.role) {
+        (session.user as { role?: string }).role = token.role as string;
       }
       return session;
     },
