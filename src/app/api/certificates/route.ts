@@ -5,9 +5,10 @@ import { lessonProgress, users } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { getProgram } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
-import { isFreeProgram } from "@/lib/content-access";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import crypto from "crypto";
+import fs from "fs";
+import path from "path";
 
 export async function GET(req: NextRequest) {
   const session = await auth();
@@ -68,8 +69,8 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // Premium gate: free users can only get certificates for free programs
-  if (!isFreeProgram(programSlug)) {
+  // Premium gate: only premium users can download certificates
+  {
     const userRecord = await db
       .select({ role: users.role })
       .from(users)
@@ -78,7 +79,7 @@ export async function GET(req: NextRequest) {
     const role = userRecord?.role ?? "free";
     if (role !== "pro" && role !== "admin") {
       return new Response(
-        JSON.stringify({ error: "Upgrade to Pro to download certificates for premium programs" }),
+        JSON.stringify({ error: "Upgrade to Pro to download certificates" }),
         { status: 403, headers: { "Content-Type": "application/json" } }
       );
     }
@@ -190,6 +191,23 @@ async function generateCertificatePdf(
     thickness: 1.5,
     color: gold,
   });
+
+  // --- Logo ---
+  try {
+    const logoPath = path.join(process.cwd(), "public", "logo.png");
+    const logoBytes = fs.readFileSync(logoPath);
+    const logoImage = await pdfDoc.embedPng(logoBytes);
+    const logoH = 50;
+    const logoW = (logoImage.width / logoImage.height) * logoH;
+    page.drawImage(logoImage, {
+      x: (pageWidth - logoW) / 2,
+      y: pageHeight - 100,
+      width: logoW,
+      height: logoH,
+    });
+  } catch {
+    // Logo not found — continue without it
+  }
 
   // --- Title: "Certificate of Completion" ---
   const title = "Certificate of Completion";

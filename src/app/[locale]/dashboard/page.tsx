@@ -15,7 +15,6 @@ import { AnimatedProgressBar } from "@/components/ui/MotionWrappers";
 import { locales } from "@/i18n/request";
 import { Flame, ArrowRight, Trophy } from "lucide-react";
 import type { DynamicTranslate } from "@/lib/i18n-utils";
-import { isFreeProgram } from "@/lib/content-access";
 
 const PROGRAMS = [
   {
@@ -439,23 +438,17 @@ export default function DashboardPage() {
                     </span>
                   </div>
                   {progCompleted >= progTotal && (
-                    isPremiumUser || isFreeProgram(program.slug) ? (
-                      <button
-                        onClick={() => setCertProgram(program.slug)}
-                        className="mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-yellow-400 to-amber-500 text-white shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer"
-                      >
-                        <Trophy size={14} />
-                        {t("viewCertificate")}
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => router.push(`${basePath}/pricing`)}
-                        className="mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer"
-                      >
-                        <Trophy size={14} />
-                        {t("upgradeCertificate")}
-                      </button>
-                    )
+                    <button
+                      onClick={() => isPremiumUser ? setCertProgram(program.slug) : router.push(`${basePath}/pricing`)}
+                      className={`mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-lg text-white shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer ${
+                        isPremiumUser
+                          ? "bg-gradient-to-r from-yellow-400 to-amber-500"
+                          : "bg-gradient-to-r from-indigo-500 to-violet-600"
+                      }`}
+                    >
+                      <Trophy size={14} />
+                      {isPremiumUser ? t("viewCertificate") : t("upgradeCertificate")}
+                    </button>
                   )}
                 </div>
               </div>

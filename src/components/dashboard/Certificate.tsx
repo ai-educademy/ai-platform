@@ -28,79 +28,91 @@ function drawCertificate(
   canvas.width = W;
   canvas.height = H;
 
-  // Background
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0, 0, W, H);
+  const drawContent = () => {
+    // Background
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, W, H);
 
-  // Outer decorative border
-  const grd = ctx.createLinearGradient(0, 0, W, H);
-  grd.addColorStop(0, "#6366f1");
-  grd.addColorStop(0.5, "#8b5cf6");
-  grd.addColorStop(1, "#ec4899");
-  ctx.strokeStyle = grd;
-  ctx.lineWidth = 8;
-  ctx.strokeRect(12, 12, W - 24, H - 24);
+    // Outer decorative border
+    const grd = ctx.createLinearGradient(0, 0, W, H);
+    grd.addColorStop(0, "#6366f1");
+    grd.addColorStop(0.5, "#8b5cf6");
+    grd.addColorStop(1, "#ec4899");
+    ctx.strokeStyle = grd;
+    ctx.lineWidth = 8;
+    ctx.strokeRect(12, 12, W - 24, H - 24);
 
-  // Inner border
-  ctx.strokeStyle = "#e5e7eb";
-  ctx.lineWidth = 1;
-  ctx.strokeRect(28, 28, W - 56, H - 56);
+    // Inner border
+    ctx.strokeStyle = "#e5e7eb";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(28, 28, W - 56, H - 56);
 
-  // Trophy icon
-  ctx.font = "48px serif";
-  ctx.textAlign = "center";
-  ctx.fillText("🏆", W / 2, 90);
+    // Logo
+    if (logoImg.complete && logoImg.naturalWidth > 0) {
+      const logoH = 60;
+      const logoW = (logoImg.naturalWidth / logoImg.naturalHeight) * logoH;
+      ctx.drawImage(logoImg, (W - logoW) / 2, 50, logoW, logoH);
+    }
 
-  // Title
-  ctx.font = "bold 32px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#1e1b4b";
-  ctx.fillText(labels.title, W / 2, 145);
+    // Title
+    ctx.font = "bold 32px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#1e1b4b";
+    ctx.textAlign = "center";
+    ctx.fillText(labels.title, W / 2, 145);
 
-  // Decorative line
-  const lineGrd = ctx.createLinearGradient(200, 0, 600, 0);
-  lineGrd.addColorStop(0, "#6366f1");
-  lineGrd.addColorStop(1, "#ec4899");
-  ctx.strokeStyle = lineGrd;
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(250, 165);
-  ctx.lineTo(550, 165);
-  ctx.stroke();
+    // Decorative line
+    const lineGrd = ctx.createLinearGradient(200, 0, 600, 0);
+    lineGrd.addColorStop(0, "#6366f1");
+    lineGrd.addColorStop(1, "#ec4899");
+    ctx.strokeStyle = lineGrd;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(250, 165);
+    ctx.lineTo(550, 165);
+    ctx.stroke();
 
-  // "This certifies that"
-  ctx.font = "16px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#6b7280";
-  ctx.fillText(labels.certifies, W / 2, 210);
+    // "This certifies that"
+    ctx.font = "16px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#6b7280";
+    ctx.fillText(labels.certifies, W / 2, 210);
 
-  // User name
-  ctx.font = "bold 28px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#1e1b4b";
-  ctx.fillText(userName, W / 2, 255);
+    // User name
+    ctx.font = "bold 28px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#1e1b4b";
+    ctx.fillText(userName, W / 2, 255);
 
-  // "has successfully completed"
-  ctx.font = "16px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#6b7280";
-  ctx.fillText(labels.completed, W / 2, 300);
+    // "has successfully completed"
+    ctx.font = "16px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#6b7280";
+    ctx.fillText(labels.completed, W / 2, 300);
 
-  // Program icon + name
-  ctx.font = "36px serif";
-  ctx.fillText(programIcon, W / 2, 350);
-  ctx.font = "bold 26px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#4f46e5";
-  ctx.fillText(programName, W / 2, 390);
+    // Program icon + name
+    ctx.font = "36px serif";
+    ctx.fillText(programIcon, W / 2, 350);
+    ctx.font = "bold 26px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#4f46e5";
+    ctx.fillText(programName, W / 2, 390);
 
-  // Date
-  ctx.font = "14px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#9ca3af";
-  ctx.fillText(`${labels.datePrefix} ${completionDate}`, W / 2, 440);
+    // Date
+    ctx.font = "14px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#9ca3af";
+    ctx.fillText(`${labels.datePrefix} ${completionDate}`, W / 2, 440);
 
-  // Branding
-  ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#1e1b4b";
-  ctx.fillText(labels.org, W / 2, 520);
-  ctx.font = "12px system-ui, -apple-system, sans-serif";
-  ctx.fillStyle = "#9ca3af";
-  ctx.fillText("aieducademy.org", W / 2, 545);
+    // Branding
+    ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#1e1b4b";
+    ctx.fillText(labels.org, W / 2, 520);
+    ctx.font = "12px system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#9ca3af";
+    ctx.fillText("aieducademy.org", W / 2, 545);
+  };
+
+  // Load logo and draw
+  const logoImg = new Image();
+  logoImg.crossOrigin = "anonymous";
+  logoImg.onload = drawContent;
+  logoImg.onerror = drawContent; // fallback: draw without logo
+  logoImg.src = "/logo.png";
 }
 
 export function Certificate({ programName, programIcon, userName, completionDate, onClose }: CertificateProps) {
