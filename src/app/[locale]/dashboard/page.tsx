@@ -218,7 +218,12 @@ export default function DashboardPage() {
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   const totalLessons = PROGRAMS.reduce((sum, p) => sum + p.lessons.length, 0);
-  const percentage = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+  const validTotalCompleted = PROGRAMS.reduce((sum, p) => {
+    const progData = getProgram(p.slug);
+    const validSlugs = new Set(p.lessons.map((l) => l.slug));
+    return sum + progData.completed.filter((s) => validSlugs.has(s)).length;
+  }, 0);
+  const percentage = totalLessons > 0 ? Math.min(Math.round((validTotalCompleted / totalLessons) * 100), 100) : 0;
 
   // Find first incomplete lesson for "Continue Learning"
   const nextLesson = (() => {
@@ -390,8 +395,8 @@ export default function DashboardPage() {
           </div>
           <AnimatedProgressBar percentage={percentage} className="h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden mb-4" />
           <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-            <span>{t("lessonsCompleted", { completed: totalCompleted, total: totalLessons })}</span>
-            <span>{t("remaining", { count: totalLessons - totalCompleted })}</span>
+            <span>{t("lessonsCompleted", { completed: validTotalCompleted, total: totalLessons })}</span>
+            <span>{t("remaining", { count: totalLessons - validTotalCompleted })}</span>
           </div>
         </div>
       </MotionReveal>
@@ -412,9 +417,10 @@ export default function DashboardPage() {
             </MotionReveal>
             {trackPrograms.map((program, pIdx) => {
         const progData = getProgram(program.slug);
-        const progCompleted = progData.completed.length;
+        const validSlugs = new Set(program.lessons.map((l) => l.slug));
+        const progCompleted = progData.completed.filter((s) => validSlugs.has(s)).length;
         const progTotal = program.lessons.length;
-        const progPct = progTotal > 0 ? Math.round((progCompleted / progTotal) * 100) : 0;
+        const progPct = progTotal > 0 ? Math.min(Math.round((progCompleted / progTotal) * 100), 100) : 0;
 
         return (
           <div key={program.slug} className="mb-12">
@@ -432,7 +438,7 @@ export default function DashboardPage() {
                       {progPct}%
                     </span>
                   </div>
-                  {progPct === 100 && (
+                  {progCompleted >= progTotal && (
                     isPremiumUser || isFreeProgram(program.slug) ? (
                       <button
                         onClick={() => setCertProgram(program.slug)}
