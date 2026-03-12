@@ -391,7 +391,7 @@ export default function MockInterviewPage() {
             </button>
             {!isPremium && (
               <p className="mt-3 text-sm text-amber-400/80">
-                ✦ Premium — you&apos;ll be redirected to pricing
+                ✦ Premium: you&apos;ll be redirected to pricing
               </p>
             )}
           </div>

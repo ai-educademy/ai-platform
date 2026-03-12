@@ -273,8 +273,9 @@ export function subscriptionEmailHtml(
   `.trim();
 }
 
-export function welcomeEmailHtml(email: string, locale: string = "en"): string {
+export function welcomeEmailHtml(email: string, locale: string = "en", name?: string): string {
   const s = emailStrings[locale] || emailStrings.en;
+  const displayName = name || email;
   return `
 <!DOCTYPE html>
 <html lang="${locale}">
@@ -299,7 +300,7 @@ export function welcomeEmailHtml(email: string, locale: string = "en"): string {
           <!-- Main Content -->
           <tr>
             <td style="padding: 40px 30px;">
-              <h2 style="margin: 0 0 16px 0; color: #1f2937; font-size: 24px;">${s.greeting}, ${email}! 👋</h2>
+              <h2 style="margin: 0 0 16px 0; color: #1f2937; font-size: 24px;">${s.greeting}, ${displayName}! 👋</h2>
               
               <p style="margin: 0 0 24px 0; color: #4b5563; font-size: 16px; line-height: 1.6;">
                 ${s.body}

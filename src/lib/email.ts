@@ -48,9 +48,9 @@ async function sendEmail(to: string, subject: string, html: string): Promise<voi
   }
 }
 
-export async function sendWelcomeEmail(email: string, locale: string = "en"): Promise<void> {
+export async function sendWelcomeEmail(email: string, locale: string = "en", name?: string): Promise<void> {
   const subject = subjectByLocale[locale] || subjectByLocale.en;
-  const html = welcomeEmailHtml(email, locale);
+  const html = welcomeEmailHtml(email, locale, name);
   await sendEmail(email, subject, html);
 }
 

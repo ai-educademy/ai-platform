@@ -126,7 +126,7 @@ export async function POST(req: NextRequest) {
         await resend.emails.send({
           from: fromAddress,
           to: parsed.data.email,
-          subject: "We received your message — AI Educademy",
+          subject: "We received your message | AI Educademy",
           html: buildConfirmationEmailHtml(parsed.data.name),
         });
       }

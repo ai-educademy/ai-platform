@@ -38,7 +38,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   events: {
     async createUser({ user }) {
       if (user.email) {
-        sendWelcomeEmail(user.email).catch((err) =>
+        sendWelcomeEmail(user.email, "en", user.name || undefined).catch((err) =>
           console.error("[Auth] Welcome email failed:", err)
         );
         sendAdminNotification(

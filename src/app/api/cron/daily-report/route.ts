@@ -152,7 +152,7 @@ export async function GET(req: NextRequest) {
       : '<tr><td style="padding:6px 12px;color:#999;" colspan="2">No page views tracked</td></tr>';
 
     const recentUserRows = recentUsers
-      .map((u) => `<tr><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;">${u.name || "—"}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;">${u.email || "—"}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#999;">${u.createdAt ? new Date(u.createdAt).toLocaleDateString("en-GB") : "—"}</td></tr>`)
+      .map((u) => `<tr><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;">${u.name || "-"}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;">${u.email || "-"}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#999;">${u.createdAt ? new Date(u.createdAt).toLocaleDateString("en-GB") : "-"}</td></tr>`)
       .join("");
 
     const html = `
@@ -246,7 +246,7 @@ export async function GET(req: NextRequest) {
   </div>
 </div>`;
 
-    await sendAdminNotification(`Daily Report — ${dateStr}`, html);
+    await sendAdminNotification(`Daily Report: ${dateStr}`, html);
 
     return NextResponse.json({
       success: true,

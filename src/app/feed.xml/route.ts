@@ -36,7 +36,7 @@ export async function GET() {
   <channel>
     <title>AI Educademy Blog</title>
     <link>${BASE_URL}/blog</link>
-    <description>Free AI Education for Everyone — latest articles, tutorials, and announcements from AI Educademy.</description>
+    <description>Free AI Education for Everyone. Latest articles, tutorials, and announcements from AI Educademy.</description>
     <language>en</language>
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
 ${items}

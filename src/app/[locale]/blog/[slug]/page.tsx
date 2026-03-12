@@ -211,14 +211,14 @@ export default async function BlogPostPage({
                 <div className="text-3xl mb-3">🌱</div>
                 <h3 className="text-xl font-bold mb-2">Ready to learn AI properly?</h3>
                 <p className="text-[var(--color-text-muted)] text-sm mb-6 max-w-md mx-auto">
-                  Start with AI Seeds — a structured, beginner-friendly program. Free, in your language, no account required.
+                  Start with AI Seeds, a structured, beginner-friendly program. Free, in your language, no account required.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link
                     href={`${basePath}/programs/ai-seeds`}
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-semibold shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-shadow duration-300"
                   >
-                    Start AI Seeds — Free →
+                    Start AI Seeds: Free →
                   </Link>
                   <Link
                     href={`${basePath}/programs`}

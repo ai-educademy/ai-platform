@@ -13,7 +13,7 @@ const WELCOME_MESSAGE: Message = {
   id: "welcome",
   role: "model",
   content:
-    "Hi! I'm Edu 👋 — your AI Educademy assistant. Ask me anything about AI, our courses, or how to get started!",
+    "Hi! I'm Edu 👋, your AI Educademy assistant. Ask me anything about AI, our courses, or how to get started!",
 };
 
 function TypingIndicator() {

@@ -225,7 +225,7 @@ export default async function Image({
                 gap: 6,
               }}
             >
-              Level {level} — {levelLabel}
+              Level {level}: {levelLabel}
             </div>
           )}
           {hours > 0 && (
