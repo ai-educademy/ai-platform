@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 interface Summary {
   totalEvents: number;
@@ -25,8 +27,8 @@ interface UserSummary {
 
 export default function AdminPage() {
   const t = useTranslations("admin");
-  const [secret, setSecret] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
+  const { data: session, status } = useSession();
+  const isAdmin = session?.user?.role === "admin";
   const [data, setData] = useState<Summary | null>(null);
   const [userData, setUserData] = useState<UserSummary | null>(null);
   const [error, setError] = useState("");
@@ -54,47 +56,42 @@ export default function AdminPage() {
   }, []);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const s = params.get("secret");
-    if (s && s === process.env.NEXT_PUBLIC_ADMIN_SECRET) {
-      setAuthenticated(true);
-      setSecret(s);
-    }
-  }, []);
+    if (isAdmin) fetchData();
+  }, [isAdmin, fetchData]);
 
-  useEffect(() => {
-    if (authenticated) fetchData();
-  }, [authenticated, fetchData]);
-
-  const handleAuth = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (secret === process.env.NEXT_PUBLIC_ADMIN_SECRET) {
-      setAuthenticated(true);
-    } else {
-      setError(t("invalidSecret"));
-    }
-  };
-
-  if (!authenticated) {
+  if (status === "loading") {
     return (
-      <div className="max-w-md mx-auto px-4 py-20">
-        <h1 className="text-2xl font-bold mb-6 text-center">{t("loginTitle")}</h1>
-        <form onSubmit={handleAuth} className="space-y-4">
-          <input
-            type="password"
-            value={secret}
-            onChange={(e) => setSecret(e.target.value)}
-            placeholder={t("passwordPlaceholder")}
-            className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)]"
-          />
-          <button
-            type="submit"
-            className="w-full px-4 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold"
-          >
-            {t("accessButton")}
-          </button>
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-        </form>
+      <div className="max-w-4xl mx-auto px-4 py-20 text-center">
+        <div className="animate-spin text-4xl mb-4">⏳</div>
+        <p className="text-[var(--color-text-muted)]">{t("loading")}</p>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return (
+      <div className="max-w-md mx-auto px-4 py-20 text-center">
+        <h1 className="text-2xl font-bold mb-4">{t("loginTitle")}</h1>
+        <p className="text-[var(--color-text-muted)] mb-6">
+          Please sign in to access the admin dashboard.
+        </p>
+        <Link
+          href="/api/auth/signin"
+          className="inline-block px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold hover:brightness-110 transition-all"
+        >
+          Sign In
+        </Link>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="max-w-md mx-auto px-4 py-20 text-center">
+        <h1 className="text-2xl font-bold mb-4">🚫 Admin Access Required</h1>
+        <p className="text-[var(--color-text-muted)]">
+          You are signed in as <strong>{session.user.email}</strong> with role &apos;{session.user.role}&apos;.
+        </p>
       </div>
     );
   }

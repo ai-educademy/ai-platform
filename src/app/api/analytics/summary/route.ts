@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { readJsonFile } from "@/lib/fileStore";
+import { requireAdmin } from "@/lib/admin-auth";
 
 interface AnalyticsEvent {
   event: string;
@@ -20,6 +21,9 @@ interface Subscriber {
 }
 
 export async function GET() {
+  const check = await requireAdmin();
+  if (!check.authorized) return check.response;
+
   try {
     const [events, feedback, subscribers] = await Promise.all([
       readJsonFile<AnalyticsEvent[]>("analytics-events.json", []),

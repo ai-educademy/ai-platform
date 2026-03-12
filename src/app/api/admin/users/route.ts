@@ -2,8 +2,12 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { users, subscriptions } from "@/lib/db/schema";
 import { eq, sql, count } from "drizzle-orm";
+import { requireAdmin } from "@/lib/admin-auth";
 
 export async function GET() {
+  const check = await requireAdmin();
+  if (!check.authorized) return check.response;
+
   try {
     const [userCount] = await db
       .select({ total: count() })
