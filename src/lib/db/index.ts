@@ -1,10 +1,14 @@
 import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
+import { drizzle, NeonHttpDatabase } from "drizzle-orm/neon-http";
 import * as schema from "./schema";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL environment variable is not set");
+function createDb(): NeonHttpDatabase<typeof schema> | null {
+  if (!process.env.DATABASE_URL) {
+    return null;
+  }
+  const sql = neon(process.env.DATABASE_URL);
+  return drizzle(sql, { schema });
 }
 
-const sql = neon(process.env.DATABASE_URL);
-export const db = drizzle(sql, { schema });
+// db is null when DATABASE_URL is not set (e.g., CI build)
+export const db = createDb()!;
