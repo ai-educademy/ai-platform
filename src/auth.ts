@@ -15,13 +15,17 @@ const providers = [];
 if (process.env.AUTH_GITHUB_ID) providers.push(GitHub);
 if (process.env.AUTH_GOOGLE_ID) providers.push(Google);
 
+const adapter = process.env.DATABASE_URL
+  ? DrizzleAdapter(db, {
+      usersTable: users,
+      accountsTable: accounts,
+      sessionsTable: sessions,
+      verificationTokensTable: verificationTokens,
+    })
+  : undefined;
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: DrizzleAdapter(db, {
-    usersTable: users,
-    accountsTable: accounts,
-    sessionsTable: sessions,
-    verificationTokensTable: verificationTokens,
-  }),
+  adapter,
   providers,
   secret: process.env.AUTH_SECRET,
   trustHost: true,
