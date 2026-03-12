@@ -20,8 +20,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          submodules: recursive
+      - name: Init submodules
+        run: |
+          git submodule update --init --force content
+          git submodule update --init --force content-pro || echo "⚠️ content-pro not accessible (private) — building with free content only"
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: 20
@@ -38,8 +40,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          submodules: recursive
+      - name: Init submodules
+        run: |
+          git submodule update --init --force content
+          git submodule update --init --force content-pro || echo "⚠️ content-pro not accessible — building with free content only"
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: 20
@@ -109,8 +113,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          submodules: recursive
+      - name: Init submodules
+        run: |
+          git submodule update --init --force content
+          git submodule update --init --force content-pro || echo "⚠️ content-pro not accessible — building with free content only"
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: 20

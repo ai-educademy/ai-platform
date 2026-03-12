@@ -1,5 +1,6 @@
 {
   "git": {
-    "submodules": true
-  }
+    "submodules": false
+  },
+  "installCommand": "git submodule update --init --force content && (git submodule update --init --force content-pro || true) && npm ci --legacy-peer-deps"
 }
