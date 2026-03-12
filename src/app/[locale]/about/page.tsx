@@ -125,6 +125,15 @@ export default function AboutPage() {
             </a>
           ))}
         </div>
+        <a
+          href="https://buymeacoffee.com/rameshreddyadutla"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl bg-[#FFDD00] text-[#000] text-sm font-semibold hover:scale-[1.04] hover:-translate-y-px active:scale-[0.98] transition-all duration-200 shadow-sm"
+          style={fadeUp(connect.isInView, 350, 12)}
+        >
+          ☕ {t("buyCoffee")}
+        </a>
       </section>
     </div>
   );

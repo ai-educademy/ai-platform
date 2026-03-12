@@ -112,7 +112,7 @@ function drawCertificate(
   logoImg.crossOrigin = "anonymous";
   logoImg.onload = drawContent;
   logoImg.onerror = drawContent; // fallback: draw without logo
-  logoImg.src = "/logo.png";
+  logoImg.src = "/logo-transparent.png";
 }
 
 export function Certificate({ programName, programIcon, userName, completionDate, onClose }: CertificateProps) {

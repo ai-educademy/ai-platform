@@ -194,7 +194,7 @@ async function generateCertificatePdf(
 
   // --- Logo ---
   try {
-    const logoPath = path.join(process.cwd(), "public", "logo.png");
+    const logoPath = path.join(process.cwd(), "public", "logo-transparent.png");
     const logoBytes = fs.readFileSync(logoPath);
     const logoImage = await pdfDoc.embedPng(logoBytes);
     const logoH = 50;
