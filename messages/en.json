@@ -1353,5 +1353,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "Certificate of Completion",
+    "download": "Download Certificate",
+    "generating": "Generating...",
+    "progress": "Complete {remaining} more lessons to earn your certificate",
+    "completed": "You've earned your certificate!",
+    "notSignedIn": "Sign in to track progress and earn certificates"
   }
 }

@@ -1352,5 +1352,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "修了証書",
+    "download": "証明書をダウンロード",
+    "generating": "生成中...",
+    "progress": "証明書を取得するにはあと {remaining} レッスンを完了してください",
+    "completed": "証明書を獲得しました！",
+    "notSignedIn": "進捗を追跡し証明書を取得するにはサインインしてください"
   }
 }

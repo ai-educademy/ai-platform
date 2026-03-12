@@ -1352,5 +1352,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "结业证书",
+    "download": "下载证书",
+    "generating": "生成中...",
+    "progress": "再完成 {remaining} 节课程即可获得证书",
+    "completed": "您已获得证书！",
+    "notSignedIn": "登录以跟踪进度并获取证书"
   }
 }

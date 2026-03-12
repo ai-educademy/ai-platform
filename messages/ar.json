@@ -1475,5 +1475,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "شهادة إتمام",
+    "download": "تحميل الشهادة",
+    "generating": "جارٍ الإنشاء...",
+    "progress": "أكمل {remaining} دروس إضافية للحصول على شهادتك",
+    "completed": "لقد حصلت على شهادتك!",
+    "notSignedIn": "سجّل الدخول لتتبع تقدمك والحصول على الشهادات"
   }
 }

@@ -1,6 +1,16 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { z } from "zod";
+
+const ChatMessageSchema = z.object({
+  role: z.enum(["user", "model"]),
+  content: z.string().min(1).max(4000),
+});
+
+const ChatRequestSchema = z.object({
+  messages: z.array(ChatMessageSchema).min(1).max(50),
+});
 
 const SYSTEM_PROMPT = `You are Edu, the helpful AI assistant for AI Educademy (aieducademy.org) — a free, open-source platform for learning Artificial Intelligence.
 
@@ -54,23 +64,12 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { messages } = body as {
-      messages: Array<{ role: "user" | "model"; content: string }>;
-    };
-
-    if (!messages || !Array.isArray(messages) || messages.length === 0) {
-      return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    const parsed = ChatRequestSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid request" }, { status: 400 });
     }
 
-    // Input bounds: limit message count and individual message length
-    if (messages.length > 50) {
-      return NextResponse.json({ error: "Too many messages in history" }, { status: 400 });
-    }
-    for (const m of messages) {
-      if (typeof m.content !== "string" || m.content.length > 4000) {
-        return NextResponse.json({ error: "Message too long (max 4000 chars)" }, { status: 400 });
-      }
-    }
+    const { messages } = parsed.data;
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({

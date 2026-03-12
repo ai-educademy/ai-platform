@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendWelcomeEmail } from "@/lib/email";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { z } from "zod";
+
+const NewsletterSchema = z.object({
+  email: z.string().email("Invalid email format"),
+  locale: z.string().max(10).default("en"),
+});
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,24 +20,15 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { email, locale } = body;
-
-    if (!email || typeof email !== "string") {
+    const parsed = NewsletterSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, message: "Email is required" },
+        { success: false, message: parsed.error.issues[0]?.message ?? "Invalid input" },
         { status: 400 }
       );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { success: false, message: "Invalid email format" },
-        { status: 400 }
-      );
-    }
-
-    await sendWelcomeEmail(email.toLowerCase(), locale || "en");
+    await sendWelcomeEmail(parsed.data.email.toLowerCase(), parsed.data.locale);
 
     return NextResponse.json(
       { success: true, message: "Subscribed!" },

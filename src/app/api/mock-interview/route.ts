@@ -1,21 +1,20 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { z } from "zod";
+
+const InterviewRequestSchema = z.object({
+  type: z.enum(["behavioral", "technical", "system-design"]),
+  message: z.string().min(1).max(4000),
+  history: z.array(z.object({
+    role: z.enum(["user", "model"]),
+    content: z.string().max(4000),
+  })).max(50).default([]),
+  stage: z.enum(["question", "feedback"]),
+});
 
 type InterviewType = "behavioral" | "technical" | "system-design";
 type InterviewStage = "question" | "feedback";
-
-interface HistoryEntry {
-  role: "user" | "model";
-  content: string;
-}
-
-interface MockInterviewRequest {
-  type: InterviewType;
-  message: string;
-  history: HistoryEntry[];
-  stage: InterviewStage;
-}
 
 function getSystemPrompt(type: InterviewType, stage: InterviewStage): string {
   if (stage === "question") {
@@ -75,25 +74,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = (await req.json()) as MockInterviewRequest;
-    const { type, message, history, stage } = body;
-
-    if (!type || !message || !stage) {
+    const body = await req.json();
+    const parsed = InterviewRequestSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: "Invalid request. Required: type, message, stage." },
+        { error: parsed.error.issues[0]?.message ?? "Invalid request" },
         { status: 400 }
       );
     }
 
-    const validTypes: InterviewType[] = ["behavioral", "technical", "system-design"];
-    const validStages: InterviewStage[] = ["question", "feedback"];
-
-    if (!validTypes.includes(type) || !validStages.includes(stage)) {
-      return NextResponse.json(
-        { error: "Invalid type or stage." },
-        { status: 400 }
-      );
-    }
+    const { type, message, history, stage } = parsed.data;
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({

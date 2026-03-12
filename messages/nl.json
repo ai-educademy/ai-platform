@@ -1352,5 +1352,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "Certificaat van voltooiing",
+    "download": "Certificaat downloaden",
+    "generating": "Genereren...",
+    "progress": "Voltooi nog {remaining} lessen om je certificaat te verdienen",
+    "completed": "Je hebt je certificaat verdiend!",
+    "notSignedIn": "Log in om je voortgang bij te houden en certificaten te verdienen"
   }
 }

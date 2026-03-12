@@ -1352,5 +1352,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "Abschlusszertifikat",
+    "download": "Zertifikat herunterladen",
+    "generating": "Wird erstellt...",
+    "progress": "Schließe noch {remaining} Lektionen ab, um dein Zertifikat zu erhalten",
+    "completed": "Du hast dein Zertifikat verdient!",
+    "notSignedIn": "Melde dich an, um deinen Fortschritt zu verfolgen und Zertifikate zu erhalten"
   }
 }

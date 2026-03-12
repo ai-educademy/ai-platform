@@ -3,6 +3,11 @@ import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { users, referrals } from "@/lib/db/schema";
 import { eq, count } from "drizzle-orm";
+import { z } from "zod";
+
+const ReferralCodeSchema = z.object({
+  referralCode: z.string().min(3).max(30).regex(/^[A-Z]{1,3}_[a-z0-9]{6}$/, "Invalid referral code format"),
+});
 
 function generateReferralCode(name: string | null | undefined): string {
   const prefix = (name ?? "USR")
@@ -80,14 +85,15 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { referralCode } = body as { referralCode: string };
-
-    if (!referralCode || typeof referralCode !== "string") {
+    const parsed = ReferralCodeSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: "referralCode is required" },
+        { error: parsed.error.issues[0]?.message ?? "Invalid referral code" },
         { status: 400 }
       );
     }
+
+    const { referralCode } = parsed.data;
 
     // Find the referrer by their referral code
     const [referrer] = await db

@@ -1,8 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readJsonFile, writeJsonFile } from "@/lib/fileStore";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { z } from "zod";
 
 const FILE = "lesson-feedback.json";
+
+const FeedbackSchema = z.object({
+  lessonSlug: z.string().min(1).max(100),
+  programSlug: z.string().min(1).max(100),
+  rating: z.enum(["up", "down"]),
+  comment: z.string().max(1000).optional(),
+  locale: z.string().max(10).default("en"),
+});
 
 interface FeedbackEntry {
   lessonSlug: string;
@@ -66,33 +75,22 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { lessonSlug, programSlug, rating, comment, locale } = body;
+    const parsed = FeedbackSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { success: false, message: parsed.error.issues[0]?.message ?? "Invalid input" },
+        { status: 400 }
+      );
+    }
 
-    if (!lessonSlug || typeof lessonSlug !== "string") {
-      return NextResponse.json(
-        { success: false, message: "lessonSlug is required" },
-        { status: 400 }
-      );
-    }
-    if (!programSlug || typeof programSlug !== "string") {
-      return NextResponse.json(
-        { success: false, message: "programSlug is required" },
-        { status: 400 }
-      );
-    }
-    if (rating !== "up" && rating !== "down") {
-      return NextResponse.json(
-        { success: false, message: "rating must be 'up' or 'down'" },
-        { status: 400 }
-      );
-    }
+    const { lessonSlug, programSlug, rating, comment, locale } = parsed.data;
 
     const entry: FeedbackEntry = {
       lessonSlug,
       programSlug,
       rating,
-      comment: comment && typeof comment === "string" ? comment.slice(0, 1000) : undefined,
-      locale: typeof locale === "string" ? locale : "en",
+      comment: comment?.slice(0, 1000),
+      locale,
       timestamp: new Date().toISOString(),
     };
 

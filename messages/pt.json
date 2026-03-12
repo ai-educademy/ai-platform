@@ -1352,5 +1352,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "Certificado de conclusão",
+    "download": "Baixar certificado",
+    "generating": "Gerando...",
+    "progress": "Complete mais {remaining} lições para ganhar seu certificado",
+    "completed": "Você conquistou seu certificado!",
+    "notSignedIn": "Faça login para acompanhar seu progresso e ganhar certificados"
   }
 }

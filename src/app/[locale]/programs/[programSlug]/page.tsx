@@ -8,6 +8,11 @@ import { AnimatedSection } from "@/components/ui/MotionWrappers";
 import { CourseJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/seo";
+import { auth } from "@/auth";
+import { db } from "@/lib/db";
+import { lessonProgress } from "@/lib/db/schema";
+import { eq, and } from "drizzle-orm";
+import { CertificateButton } from "@/components/certificates/CertificateButton";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -70,6 +75,23 @@ export default async function ProgramPage({
   const tLT = await getTranslations("lessonTitles");
   const lessons = getLessons(programSlug, locale);
   const basePath = locale === "en" ? "" : `/${locale}`;
+
+  // Fetch certificate progress
+  const session = await auth();
+  let completedLessons = 0;
+  if (session?.user?.id && db) {
+    const completed = await db
+      .select({ lessonSlug: lessonProgress.lessonSlug })
+      .from(lessonProgress)
+      .where(
+        and(
+          eq(lessonProgress.userId, session.user.id),
+          eq(lessonProgress.programSlug, programSlug)
+        )
+      );
+    const completedSlugs = new Set(completed.map((c) => c.lessonSlug));
+    completedLessons = lessons.filter((l) => completedSlugs.has(l.slug)).length;
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
@@ -202,6 +224,20 @@ export default async function ProgramPage({
             >
               {t("startFirst")} →
             </Link>
+          </div>
+        </AnimatedSection>
+      )}
+
+      {/* Certificate */}
+      {lessons.length > 0 && (
+        <AnimatedSection animation="fade-up" delay={500}>
+          <div className="mt-10">
+            <CertificateButton
+              programSlug={programSlug}
+              totalLessons={lessons.length}
+              completedLessons={completedLessons}
+              isSignedIn={!!session?.user}
+            />
           </div>
         </AnimatedSection>
       )}

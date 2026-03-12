@@ -3,6 +3,13 @@ import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { lessonProgress } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
+import { z } from "zod";
+
+const ProgressSchema = z.object({
+  lessonSlug: z.string().min(1).max(100),
+  programSlug: z.string().min(1).max(100),
+  locale: z.string().max(10).default("en"),
+});
 
 export async function GET(req: NextRequest) {
   const session = await auth();
@@ -40,18 +47,15 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { lessonSlug, programSlug, locale = "en" } = body as {
-    lessonSlug: string;
-    programSlug: string;
-    locale?: string;
-  };
-
-  if (!lessonSlug || !programSlug) {
+  const parsed = ProgressSchema.safeParse(body);
+  if (!parsed.success) {
     return NextResponse.json(
-      { error: "lessonSlug and programSlug are required" },
+      { error: parsed.error.issues[0]?.message ?? "Invalid input" },
       { status: 400 }
     );
   }
+
+  const { lessonSlug, programSlug, locale } = parsed.data;
 
   await db
     .insert(lessonProgress)
@@ -73,17 +77,15 @@ export async function DELETE(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { lessonSlug, programSlug } = body as {
-    lessonSlug: string;
-    programSlug: string;
-  };
-
-  if (!lessonSlug || !programSlug) {
+  const parsed = ProgressSchema.pick({ lessonSlug: true, programSlug: true }).safeParse(body);
+  if (!parsed.success) {
     return NextResponse.json(
-      { error: "lessonSlug and programSlug are required" },
+      { error: parsed.error.issues[0]?.message ?? "Invalid input" },
       { status: 400 }
     );
   }
+
+  const { lessonSlug, programSlug } = parsed.data;
 
   await db
     .delete(lessonProgress)

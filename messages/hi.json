@@ -1352,5 +1352,13 @@
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp"
+  },
+  "certificates": {
+    "title": "पूर्णता प्रमाणपत्र",
+    "download": "प्रमाणपत्र डाउनलोड करें",
+    "generating": "बना रहा है...",
+    "progress": "अपना प्रमाणपत्र प्राप्त करने के लिए {remaining} और पाठ पूरे करें",
+    "completed": "आपने अपना प्रमाणपत्र अर्जित कर लिया है!",
+    "notSignedIn": "प्रगति ट्रैक करने और प्रमाणपत्र प्राप्त करने के लिए साइन इन करें"
   }
 }
