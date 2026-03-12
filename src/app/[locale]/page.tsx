@@ -41,8 +41,18 @@ export default async function HomePage({
     desc: tP(`${p.slug}.subtitle`),
   }));
 
+  const careerPrograms = getProgramsByTrack("career-ready").map((p) => ({
+    slug: p.slug,
+    icon: p.icon,
+    title: tP(`${p.slug}.title`),
+    color: p.color,
+    active: true,
+    level: p.level,
+    desc: tP(`${p.slug}.subtitle`),
+  }));
+
   // Resolve first lesson slugs for direct navigation
-  const allHomePrograms = [...aiLearningPrograms, ...craftPrograms];
+  const allHomePrograms = [...aiLearningPrograms, ...craftPrograms, ...careerPrograms];
   const firstLessonSlugs: Record<string, string | undefined> = {};
   const lessonNames: Record<string, string[]> = {};
   for (const p of allHomePrograms) {
@@ -120,6 +130,12 @@ export default async function HomePage({
               label: tf("languagesTitle"),
               desc: tf("languagesDesc"),
             },
+            {
+              icon: "🎯",
+              value: "15",
+              label: tf("programsTitle"),
+              desc: tf("programsDesc"),
+            },
           ]}
           trackAI={{
             trackIcon: "🌳",
@@ -142,6 +158,17 @@ export default async function HomePage({
             lessonNames,
             basePath,
             href: `${basePath}/programs#craft-engineering`,
+          }}
+          trackCareer={{
+            trackIcon: "🚀",
+            trackTitle: tP("track.career-ready.title"),
+            trackDesc: tP("track.career-ready.desc"),
+            programs: careerPrograms,
+            programTitles,
+            firstLessonSlugs,
+            lessonNames,
+            basePath,
+            href: `${basePath}/programs#career-ready`,
           }}
         />
       </section>

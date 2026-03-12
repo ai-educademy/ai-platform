@@ -42,6 +42,7 @@ interface HomeProgramCardsProps {
   sectionSubtitle: string;
   trackAI: TrackCardProps;
   trackCraft: TrackCardProps;
+  trackCareer?: TrackCardProps;
   highlights: HighlightCard[];
 }
 
@@ -392,6 +393,7 @@ export default function HomeProgramCards({
   sectionSubtitle,
   trackAI,
   trackCraft,
+  trackCareer,
   highlights,
 }: HomeProgramCardsProps) {
   const [headerRef, headerInView] = useInView<HTMLDivElement>({ margin: "-40px" });
@@ -447,9 +449,25 @@ export default function HomeProgramCards({
           className="md:col-span-2"
         />
 
-        {/* Row 3: Full-width accent banner */}
+        {/* Row 3: Career Track (span 2) + Highlight */}
+        {trackCareer && (
+          <BentoTrackCard
+            data={trackCareer}
+            reduced={reduced}
+            className="md:col-span-2"
+          />
+        )}
         {highlights[2] && (
-          <BentoAccentCard highlight={highlights[2]} reduced={reduced} />
+          <BentoHighlightCard
+            highlight={highlights[2]}
+            index={2}
+            reduced={reduced}
+          />
+        )}
+
+        {/* Row 4: Full-width accent banner */}
+        {highlights[3] && (
+          <BentoAccentCard highlight={highlights[3]} reduced={reduced} />
         )}
       </div>
     </div>
