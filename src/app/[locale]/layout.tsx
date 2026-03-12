@@ -12,7 +12,6 @@ import { Providers } from "@/components/ui/Providers";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { ChatWidget } from "@/components/ui/chat/ChatWidget";
 
-import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/seo";
 
 const BASE_URL = "https://aieducademy.org";

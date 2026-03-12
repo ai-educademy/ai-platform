@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
-import { Check, Sparkles, Crown, Infinity } from "lucide-react";
+import { Check } from "lucide-react";
 
 function PricingCard({
   title,
