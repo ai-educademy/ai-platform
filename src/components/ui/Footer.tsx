@@ -224,7 +224,7 @@ export function Footer() {
             behavior: prefersReducedMotion ? "auto" : "smooth",
           })
         }
-        className={`fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full
+        className={`fixed bottom-24 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full
           bg-[var(--color-primary)] text-white
           dark:bg-white dark:text-[var(--color-primary)]
           shadow-lg shadow-[var(--color-primary)]/30 dark:shadow-black/20
