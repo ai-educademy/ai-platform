@@ -35,7 +35,8 @@
     "meetCreator": "تعرّف على المنشئ",
     "viewOnGithub": "عرض على GitHub",
     "comingSoon": "قريباً",
-    "faq": "الأسئلة الشائعة"
+    "faq": "الأسئلة الشائعة",
+    "mockInterview": "مقابلة تجريبية"
   },
   "hero": {
     "badge": "مجاني • مفتوح المصدر • متعدد اللغات",
@@ -1433,5 +1434,46 @@
     "upgradeCta": "الترقية إلى Pro",
     "signInCta": "سجّل الدخول أولاً",
     "guarantee": "ضمان استرداد الأموال خلال 7 أيام. يمكنك الإلغاء في أي وقت."
+  },
+  "mockInterview": {
+    "title": "مختبر المقابلة التجريبية بالذكاء الاصطناعي",
+    "description": "تدرّب على المقابلات مع تغذية راجعة مدعومة بالذكاء الاصطناعي",
+    "behavioral": "سلوكية",
+    "behavioralDesc": "أسئلة بأسلوب STAR حول خبراتك",
+    "technical": "تقنية",
+    "technicalDesc": "تحديات البرمجة والخوارزميات",
+    "systemDesign": "تصميم الأنظمة",
+    "systemDesignDesc": "أسئلة الهندسة المعمارية وقابلية التوسع",
+    "startInterview": "بدء المقابلة",
+    "submitAnswer": "إرسال الإجابة",
+    "getFeedback": "الحصول على التغذية الراجعة",
+    "nextQuestion": "السؤال التالي",
+    "questionOf": "السؤال {current} من {total}",
+    "typeYourAnswer": "اكتب إجابتك هنا...",
+    "interviewComplete": "اكتملت المقابلة!",
+    "overallScore": "الدرجة الإجمالية",
+    "strengths": "نقاط القوة",
+    "improvements": "مجالات التحسين",
+    "tryAgain": "حاول مرة أخرى",
+    "shareResults": "مشاركة النتائج",
+    "clarity": "الوضوح",
+    "depth": "العمق",
+    "relevance": "الصلة",
+    "thinking": "جارٍ تحضير السؤال...",
+    "analyzing": "جارٍ تحليل إجابتك..."
+  },
+  "referral": {
+    "title": "ادعُ أصدقاءك",
+    "description": "شارك AI Educademy واحصل على مكافآت",
+    "yourLink": "رابط الإحالة الخاص بك",
+    "copied": "تم النسخ!",
+    "copy": "نسخ الرابط",
+    "shareOn": "مشاركة على {platform}",
+    "joinedCount": "انضم {count} شخص عبر رابطك",
+    "noReferrals": "لا إحالات بعد — شارك رابطك!",
+    "reward": "أنت وصديقك تحصلان على مزايا",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

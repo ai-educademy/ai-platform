@@ -34,7 +34,8 @@
     "openSourceDesc": "GitHub पर सार्वजनिक रूप से निर्मित",
     "meetCreator": "निर्माता से मिलें",
     "viewOnGithub": "GitHub पर देखें",
-    "comingSoon": "जल्द आ रहा है"
+    "comingSoon": "जल्द आ रहा है",
+    "mockInterview": "मॉक इंटरव्यू"
   },
   "hero": {
     "badge": "मुफ्त • ओपन सोर्स • बहुभाषी",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "Pro में अपग्रेड करें",
     "signInCta": "पहले साइन इन करें",
     "guarantee": "7 दिन की मनी-बैक गारंटी। कभी भी रद्द करें।"
+  },
+  "mockInterview": {
+    "title": "AI मॉक इंटरव्यू लैब",
+    "description": "AI-संचालित फ़ीडबैक के साथ इंटरव्यू का अभ्यास करें",
+    "behavioral": "व्यवहार संबंधी",
+    "behavioralDesc": "आपके अनुभव पर STAR विधि के प्रश्न",
+    "technical": "तकनीकी",
+    "technicalDesc": "कोडिंग और एल्गोरिथम चुनौतियाँ",
+    "systemDesign": "सिस्टम डिज़ाइन",
+    "systemDesignDesc": "आर्किटेक्चर और स्केलेबिलिटी के प्रश्न",
+    "startInterview": "इंटरव्यू शुरू करें",
+    "submitAnswer": "उत्तर सबमिट करें",
+    "getFeedback": "फ़ीडबैक प्राप्त करें",
+    "nextQuestion": "अगला प्रश्न",
+    "questionOf": "प्रश्न {current} / {total}",
+    "typeYourAnswer": "अपना उत्तर यहाँ लिखें...",
+    "interviewComplete": "इंटरव्यू पूरा हुआ!",
+    "overallScore": "कुल स्कोर",
+    "strengths": "मजबूत पक्ष",
+    "improvements": "सुधार के क्षेत्र",
+    "tryAgain": "फिर से प्रयास करें",
+    "shareResults": "परिणाम साझा करें",
+    "clarity": "स्पष्टता",
+    "depth": "गहराई",
+    "relevance": "प्रासंगिकता",
+    "thinking": "प्रश्न तैयार हो रहा है...",
+    "analyzing": "आपके उत्तर का विश्लेषण हो रहा है..."
+  },
+  "referral": {
+    "title": "दोस्तों को आमंत्रित करें",
+    "description": "AI Educademy शेयर करें और पुरस्कार पाएं",
+    "yourLink": "आपका रेफ़रल लिंक",
+    "copied": "कॉपी हो गया!",
+    "copy": "लिंक कॉपी करें",
+    "shareOn": "{platform} पर शेयर करें",
+    "joinedCount": "{count} लोग आपके लिंक से जुड़े",
+    "noReferrals": "अभी तक कोई रेफ़रल नहीं — अपना लिंक शेयर करें!",
+    "reward": "आप और आपके दोस्त दोनों को लाभ मिलेगा",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

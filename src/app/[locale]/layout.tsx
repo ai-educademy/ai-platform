@@ -11,6 +11,7 @@ import { Providers } from "@/components/ui/Providers";
 
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { ChatWidget } from "@/components/ui/chat/ChatWidget";
+import { ReferralTracker } from "@/components/ReferralTracker";
 
 import { buildAlternates } from "@/lib/seo";
 
@@ -134,6 +135,7 @@ export default async function LocaleLayout({
               <Footer />
             </div>
             <ChatWidget />
+            <ReferralTracker />
           </NextIntlClientProvider>
         </Providers>
         <Analytics />

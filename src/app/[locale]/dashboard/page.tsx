@@ -9,6 +9,7 @@ import { useStreak } from "@/hooks/useStreak";
 import { useSession } from "next-auth/react";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { Certificate } from "@/components/dashboard/Certificate";
+import { ReferralWidget } from "@/components/dashboard/ReferralWidget";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { AnimatedProgressBar } from "@/components/ui/MotionWrappers";
 import { locales } from "@/i18n/request";
@@ -517,6 +518,13 @@ export default function DashboardPage() {
           );
         })}
       </div>
+
+      {/* Referral */}
+      {session?.user?.id && (
+        <div className="mb-12">
+          <ReferralWidget />
+        </div>
+      )}
 
       {/* Actions */}
       <MotionReveal animation="fade-up">

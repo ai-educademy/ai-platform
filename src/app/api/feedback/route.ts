@@ -12,6 +12,38 @@ interface FeedbackEntry {
   timestamp: string;
 }
 
+async function notifyFeedback(entry: FeedbackEntry): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const adminEmail = process.env.ADMIN_EMAIL || "ramesh.reddy01@gmail.com";
+  if (!apiKey) return;
+
+  try {
+    const { Resend } = await import("resend");
+    const resend = new Resend(apiKey);
+    const emoji = entry.rating === "up" ? "👍" : "👎";
+    const fromAddress =
+      process.env.RESEND_FROM_EMAIL ||
+      "AI Educademy <onboarding@resend.dev>";
+
+    await resend.emails.send({
+      from: fromAddress,
+      to: adminEmail,
+      subject: `${emoji} Feedback: ${entry.programSlug}/${entry.lessonSlug}`,
+      html: `
+        <h2>${emoji} Lesson Feedback</h2>
+        <p><strong>Program:</strong> ${entry.programSlug}</p>
+        <p><strong>Lesson:</strong> ${entry.lessonSlug}</p>
+        <p><strong>Rating:</strong> ${entry.rating}</p>
+        ${entry.comment ? `<p><strong>Comment:</strong> ${entry.comment}</p>` : ""}
+        <p><strong>Locale:</strong> ${entry.locale}</p>
+        <p><strong>Time:</strong> ${entry.timestamp}</p>
+      `,
+    });
+  } catch (err) {
+    console.error("[Email] Feedback notification failed:", err);
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -48,6 +80,8 @@ export async function POST(req: NextRequest) {
     const feedback = await readJsonFile<FeedbackEntry[]>(FILE, []);
     feedback.push(entry);
     await writeJsonFile(FILE, feedback);
+
+    notifyFeedback(entry).catch(() => {});
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {

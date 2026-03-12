@@ -23,6 +23,7 @@ export const users = pgTable("users", {
     .notNull()
     .default("free"),
   stripeCustomerId: text("stripe_customer_id").unique(),
+  referralCode: text("referral_code").unique(),
   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "date" }).notNull().defaultNow(),
 });
@@ -115,3 +116,26 @@ export const lessonProgress = pgTable(
     ),
   ]
 );
+
+/* ─────────────── Referral System ─────────────── */
+
+export const referrals = pgTable("referrals", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  referrerUserId: text("referrer_user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  refereeUserId: text("referee_user_id").references(() => users.id, {
+    onDelete: "set null",
+  }),
+  referralCode: text("referral_code").notNull().unique(),
+  refereeEmail: text("referee_email"),
+  status: text("status", {
+    enum: ["pending", "signed_up", "completed_lesson", "rewarded"],
+  })
+    .notNull()
+    .default("pending"),
+  createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+  completedAt: timestamp("completed_at", { mode: "date" }),
+});

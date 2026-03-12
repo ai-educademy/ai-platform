@@ -128,7 +128,7 @@ export function PricingCards({ locale }: { locale: string }) {
     },
     {
       title: t("monthly.title"),
-      price: "£9",
+      price: "£3.99",
       period: t("monthly.period"),
       plan: "monthly" as const,
       features: [
@@ -144,7 +144,7 @@ export function PricingCards({ locale }: { locale: string }) {
     },
     {
       title: t("annual.title"),
-      price: "£79",
+      price: "£29.99",
       period: t("annual.period"),
       plan: "annual" as const,
       features: [
@@ -160,7 +160,7 @@ export function PricingCards({ locale }: { locale: string }) {
     },
     {
       title: t("lifetime.title"),
-      price: "£149",
+      price: "£49.99",
       period: "",
       plan: "lifetime" as const,
       features: [

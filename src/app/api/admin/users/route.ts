@@ -25,8 +25,8 @@ export async function GET() {
       .where(eq(subscriptions.status, "active"))
       .groupBy(subscriptions.plan);
 
-    // MRR: monthly=£9, annual=£79/12≈£6.58, lifetime=£0 recurring
-    const mrrMap: Record<string, number> = { monthly: 9, annual: 79 / 12, lifetime: 0 };
+    // MRR: monthly=£3.99, annual=£29.99/12≈£2.50, lifetime=£0 recurring
+    const mrrMap: Record<string, number> = { monthly: 3.99, annual: 29.99 / 12, lifetime: 0 };
     let mrr = 0;
     for (const p of planBreakdown) {
       mrr += (mrrMap[p.plan] ?? 0) * p.total;

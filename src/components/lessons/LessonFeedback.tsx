@@ -145,7 +145,7 @@ export function LessonFeedback({ lessonSlug, programSlug, locale }: LessonFeedba
           className="text-center text-[var(--color-accent)] font-semibold py-2"
           style={noMotion ? undefined : { animation: `scale-in 0.4s ${EASE} both` }}
         >
-          \u2705 {t("thanks")}
+          ✅ {t("thanks")}
         </p>
       )}
     </div>

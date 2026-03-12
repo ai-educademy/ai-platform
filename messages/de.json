@@ -34,7 +34,8 @@
     "openSourceDesc": "Öffentlich auf GitHub entwickelt",
     "meetCreator": "Lerne den Gründer kennen",
     "viewOnGithub": "Auf GitHub ansehen",
-    "comingSoon": "Demnächst verfügbar"
+    "comingSoon": "Demnächst verfügbar",
+    "mockInterview": "Probeinterview"
   },
   "hero": {
     "badge": "Kostenlos • Open Source • Mehrsprachig",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "Auf Pro upgraden",
     "signInCta": "Zuerst anmelden",
     "guarantee": "7-Tage-Geld-zurück-Garantie. Jederzeit kündbar."
+  },
+  "mockInterview": {
+    "title": "KI-Probeinterview-Labor",
+    "description": "Üben Sie Vorstellungsgespräche mit KI-gestütztem Feedback",
+    "behavioral": "Verhaltensbasiert",
+    "behavioralDesc": "STAR-Methode-Fragen zu Ihren Erfahrungen",
+    "technical": "Technisch",
+    "technicalDesc": "Programmier- und Algorithmus-Herausforderungen",
+    "systemDesign": "Systemdesign",
+    "systemDesignDesc": "Architektur- und Skalierbarkeitsfragen",
+    "startInterview": "Interview starten",
+    "submitAnswer": "Antwort absenden",
+    "getFeedback": "Feedback erhalten",
+    "nextQuestion": "Nächste Frage",
+    "questionOf": "Frage {current} von {total}",
+    "typeYourAnswer": "Geben Sie hier Ihre Antwort ein...",
+    "interviewComplete": "Interview abgeschlossen!",
+    "overallScore": "Gesamtbewertung",
+    "strengths": "Stärken",
+    "improvements": "Verbesserungsbereiche",
+    "tryAgain": "Erneut versuchen",
+    "shareResults": "Ergebnisse teilen",
+    "clarity": "Klarheit",
+    "depth": "Tiefe",
+    "relevance": "Relevanz",
+    "thinking": "Frage wird vorbereitet...",
+    "analyzing": "Ihre Antwort wird analysiert..."
+  },
+  "referral": {
+    "title": "Freunde einladen",
+    "description": "Teile AI Educademy und erhalte Belohnungen",
+    "yourLink": "Dein Empfehlungslink",
+    "copied": "Kopiert!",
+    "copy": "Link kopieren",
+    "shareOn": "Teilen auf {platform}",
+    "joinedCount": "{count} Personen sind über deinen Link beigetreten",
+    "noReferrals": "Noch keine Empfehlungen — teile deinen Link!",
+    "reward": "Du und dein Freund erhalten beide Vorteile",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

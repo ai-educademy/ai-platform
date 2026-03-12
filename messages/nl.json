@@ -34,7 +34,8 @@
     "openSourceDesc": "Openbaar gebouwd op GitHub",
     "meetCreator": "Ontmoet de maker",
     "viewOnGithub": "Bekijk op GitHub",
-    "comingSoon": "Binnenkort beschikbaar"
+    "comingSoon": "Binnenkort beschikbaar",
+    "mockInterview": "Proef-sollicitatie"
   },
   "hero": {
     "badge": "Gratis • Open source • Meertalig",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "Upgraden naar Pro",
     "signInCta": "Meld je eerst aan",
     "guarantee": "7 dagen geld-terug-garantie. Op elk moment opzegbaar."
+  },
+  "mockInterview": {
+    "title": "AI Proef-sollicitatielab",
+    "description": "Oefen sollicitatiegesprekken met AI-feedback",
+    "behavioral": "Gedrag",
+    "behavioralDesc": "STAR-methodevragen over uw ervaring",
+    "technical": "Technisch",
+    "technicalDesc": "Programmeer- en algoritme-uitdagingen",
+    "systemDesign": "Systeemontwerp",
+    "systemDesignDesc": "Architectuur- en schaalbaarheidsvragen",
+    "startInterview": "Sollicitatiegesprek starten",
+    "submitAnswer": "Antwoord indienen",
+    "getFeedback": "Feedback ontvangen",
+    "nextQuestion": "Volgende vraag",
+    "questionOf": "Vraag {current} van {total}",
+    "typeYourAnswer": "Typ hier uw antwoord...",
+    "interviewComplete": "Gesprek voltooid!",
+    "overallScore": "Totaalscore",
+    "strengths": "Sterke punten",
+    "improvements": "Verbeterpunten",
+    "tryAgain": "Opnieuw proberen",
+    "shareResults": "Resultaten delen",
+    "clarity": "Duidelijkheid",
+    "depth": "Diepgang",
+    "relevance": "Relevantie",
+    "thinking": "Vraag wordt voorbereid...",
+    "analyzing": "Uw antwoord wordt geanalyseerd..."
+  },
+  "referral": {
+    "title": "Vrienden uitnodigen",
+    "description": "Deel AI Educademy en verdien beloningen",
+    "yourLink": "Jouw verwijzingslink",
+    "copied": "Gekopieerd!",
+    "copy": "Link kopiëren",
+    "shareOn": "Delen op {platform}",
+    "joinedCount": "{count} mensen zijn via jouw link lid geworden",
+    "noReferrals": "Nog geen verwijzingen — deel je link!",
+    "reward": "Jij en je vriend krijgen beide voordelen",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

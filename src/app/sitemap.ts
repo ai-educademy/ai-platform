@@ -43,6 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localizedEntries("/blog", "weekly", 0.8, now),
     // FAQ
     ...localizedEntries("/faq", "monthly", 0.7, now),
+    // Mock Interview
+    ...localizedEntries("/mock-interview", "monthly", 0.8, now),
     // Pricing
     ...localizedEntries("/pricing", "monthly", 0.8, now),
   ];

@@ -35,7 +35,8 @@
     "meetCreator": "Meet the Creator",
     "viewOnGithub": "View on GitHub",
     "comingSoon": "Coming Soon",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "mockInterview": "Mock Interview"
   },
   "hero": {
     "badge": "Free • Open Source • Multilingual",
@@ -1311,5 +1312,46 @@
     "upgradeCta": "Upgrade to Pro",
     "signInCta": "Sign in first",
     "guarantee": "7-day money-back guarantee. Cancel anytime."
+  },
+  "mockInterview": {
+    "title": "AI Mock Interview Lab",
+    "description": "Practice interviews with AI-powered feedback",
+    "behavioral": "Behavioral",
+    "behavioralDesc": "STAR method questions about your experience",
+    "technical": "Technical",
+    "technicalDesc": "Coding and algorithm challenges",
+    "systemDesign": "System Design",
+    "systemDesignDesc": "Architecture and scalability questions",
+    "startInterview": "Start Interview",
+    "submitAnswer": "Submit Answer",
+    "getFeedback": "Get Feedback",
+    "nextQuestion": "Next Question",
+    "questionOf": "Question {current} of {total}",
+    "typeYourAnswer": "Type your answer here...",
+    "interviewComplete": "Interview Complete!",
+    "overallScore": "Overall Score",
+    "strengths": "Strengths",
+    "improvements": "Areas for Improvement",
+    "tryAgain": "Try Again",
+    "shareResults": "Share Results",
+    "clarity": "Clarity",
+    "depth": "Depth",
+    "relevance": "Relevance",
+    "thinking": "Preparing question...",
+    "analyzing": "Analyzing your answer..."
+  },
+  "referral": {
+    "title": "Invite Friends",
+    "description": "Share AI Educademy and earn rewards",
+    "yourLink": "Your Referral Link",
+    "copied": "Copied!",
+    "copy": "Copy Link",
+    "shareOn": "Share on {platform}",
+    "joinedCount": "{count} people joined through your link",
+    "noReferrals": "No referrals yet — share your link!",
+    "reward": "Both you and your friend get benefits",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

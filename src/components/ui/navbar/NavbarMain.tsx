@@ -262,6 +262,14 @@ export function Navbar() {
                     <span className="font-medium">{labTitles[exp.slug]}</span>
                   </Link>
                 ))}
+                <Link
+                  href={`${basePath}/mock-interview`}
+                  onClick={closeMobile}
+                  className="flex items-center gap-2.5 py-2 px-1 rounded-lg text-sm text-[var(--color-text)] hover:bg-[var(--color-text)]/[0.04]"
+                >
+                  <span>🎯</span>
+                  <span className="font-medium">{t("mockInterview")}</span>
+                </Link>
               </MobileSection>
 
               {/* Blog - simple link */}

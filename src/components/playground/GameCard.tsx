@@ -132,7 +132,7 @@ export default function GameCard({
           </span>
           {bestScore !== null && (
             <span className="flex items-center gap-1 text-amber-400 font-semibold">
-              \u2b50 {t("personalBest", { score: bestScore })}
+              ⭐ {t("personalBest", { score: bestScore })}
             </span>
           )}
         </div>

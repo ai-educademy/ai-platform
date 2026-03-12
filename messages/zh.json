@@ -34,7 +34,8 @@
     "openSourceDesc": "在 GitHub 上公开构建",
     "meetCreator": "认识创始人",
     "viewOnGithub": "在 GitHub 上查看",
-    "comingSoon": "即将推出"
+    "comingSoon": "即将推出",
+    "mockInterview": "模拟面试"
   },
   "hero": {
     "badge": "免费 • 开源 • 多语言",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "升级到 Pro",
     "signInCta": "请先登录",
     "guarantee": "7 天退款保证。随时可取消。"
+  },
+  "mockInterview": {
+    "title": "AI 模拟面试实验室",
+    "description": "通过AI驱动的反馈练习面试",
+    "behavioral": "行为面试",
+    "behavioralDesc": "关于您经验的STAR方法问题",
+    "technical": "技术面试",
+    "technicalDesc": "编程和算法挑战",
+    "systemDesign": "系统设计",
+    "systemDesignDesc": "架构和可扩展性问题",
+    "startInterview": "开始面试",
+    "submitAnswer": "提交答案",
+    "getFeedback": "获取反馈",
+    "nextQuestion": "下一题",
+    "questionOf": "第 {current} 题，共 {total} 题",
+    "typeYourAnswer": "在此输入您的答案...",
+    "interviewComplete": "面试完成！",
+    "overallScore": "总体评分",
+    "strengths": "优势",
+    "improvements": "改进方向",
+    "tryAgain": "再试一次",
+    "shareResults": "分享结果",
+    "clarity": "清晰度",
+    "depth": "深度",
+    "relevance": "相关性",
+    "thinking": "正在准备问题...",
+    "analyzing": "正在分析您的答案..."
+  },
+  "referral": {
+    "title": "邀请朋友",
+    "description": "分享 AI Educademy 并获得奖励",
+    "yourLink": "您的推荐链接",
+    "copied": "已复制！",
+    "copy": "复制链接",
+    "shareOn": "分享到 {platform}",
+    "joinedCount": "{count} 人通过您的链接加入",
+    "noReferrals": "还没有推荐 — 分享您的链接吧！",
+    "reward": "您和您的朋友都将获得奖励",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

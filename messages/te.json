@@ -34,7 +34,8 @@
     "openSourceDesc": "GitHub లో బహిరంగంగా నిర్మించబడింది",
     "meetCreator": "సృష్టికర్తను కలవండి",
     "viewOnGithub": "GitHub లో చూడండి",
-    "comingSoon": "త్వరలో వస్తుంది"
+    "comingSoon": "త్వరలో వస్తుంది",
+    "mockInterview": "మాక్ ఇంటర్వ్యూ"
   },
   "hero": {
     "badge": "ఉచితం • ఓపెన్ సోర్స్ • బహుభాషా",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "Proకి అప్‌గ్రేడ్ చేయండి",
     "signInCta": "ముందుగా సైన్ ఇన్ చేయండి",
     "guarantee": "7 రోజుల మనీ-బ్యాక్ గ్యారంటీ. ఎప్పుడైనా రద్దు చేయండి."
+  },
+  "mockInterview": {
+    "title": "AI మాక్ ఇంటర్వ్యూ ల్యాబ్",
+    "description": "AI-ఆధారిత ఫీడ్‌బ్యాక్‌తో ఇంటర్వ్యూలు సాధన చేయండి",
+    "behavioral": "ప్రవర్తనాత్మక",
+    "behavioralDesc": "మీ అనుభవంపై STAR పద్ధతి ప్రశ్నలు",
+    "technical": "సాంకేతిక",
+    "technicalDesc": "కోడింగ్ మరియు అల్గారిథమ్ సవాళ్లు",
+    "systemDesign": "సిస్టమ్ డిజైన్",
+    "systemDesignDesc": "ఆర్కిటెక్చర్ మరియు స్కేలబిలిటీ ప్రశ్నలు",
+    "startInterview": "ఇంటర్వ్యూ ప్రారంభించండి",
+    "submitAnswer": "సమాధానం సబ్మిట్ చేయండి",
+    "getFeedback": "ఫీడ్‌బ్యాక్ పొందండి",
+    "nextQuestion": "తదుపరి ప్రశ్న",
+    "questionOf": "ప్రశ్న {current} / {total}",
+    "typeYourAnswer": "మీ సమాధానం ఇక్కడ టైప్ చేయండి...",
+    "interviewComplete": "ఇంటర్వ్యూ పూర్తయింది!",
+    "overallScore": "మొత్తం స్కోరు",
+    "strengths": "బలాలు",
+    "improvements": "మెరుగుదల అవసరమైన అంశాలు",
+    "tryAgain": "మళ్ళీ ప్రయత్నించండి",
+    "shareResults": "ఫలితాలు పంచుకోండి",
+    "clarity": "స్పష్టత",
+    "depth": "లోతు",
+    "relevance": "సంబంధితత",
+    "thinking": "ప్రశ్న సిద్ధమవుతోంది...",
+    "analyzing": "మీ సమాధానం విశ్లేషించబడుతోంది..."
+  },
+  "referral": {
+    "title": "స్నేహితులను ఆహ్వానించండి",
+    "description": "AI Educademy షేర్ చేసి రివార్డ్‌లు పొందండి",
+    "yourLink": "మీ రెఫరల్ లింక్",
+    "copied": "కాపీ అయింది!",
+    "copy": "లింక్ కాపీ చేయండి",
+    "shareOn": "{platform}లో షేర్ చేయండి",
+    "joinedCount": "{count} మంది మీ లింక్ ద్వారా చేరారు",
+    "noReferrals": "ఇంకా రెఫరల్స్ లేవు — మీ లింక్ షేర్ చేయండి!",
+    "reward": "మీరు మరియు మీ స్నేహితుడు ఇద్దరూ ప్రయోజనాలు పొందుతారు",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

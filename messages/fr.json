@@ -34,7 +34,8 @@
     "openSourceDesc": "Construit publiquement sur GitHub",
     "meetCreator": "Rencontrer le créateur",
     "viewOnGithub": "Voir sur GitHub",
-    "comingSoon": "Bientôt disponible"
+    "comingSoon": "Bientôt disponible",
+    "mockInterview": "Entretien simulé"
   },
   "hero": {
     "badge": "Gratuit • Open Source • Multilingue",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "Passer à Pro",
     "signInCta": "Connectez-vous d'abord",
     "guarantee": "Garantie de remboursement de 7 jours. Annulation possible à tout moment."
+  },
+  "mockInterview": {
+    "title": "Labo d'entretien simulé par IA",
+    "description": "Entraînez-vous aux entretiens avec des retours alimentés par l'IA",
+    "behavioral": "Comportemental",
+    "behavioralDesc": "Questions méthode STAR sur votre expérience",
+    "technical": "Technique",
+    "technicalDesc": "Défis de programmation et d'algorithmes",
+    "systemDesign": "Conception système",
+    "systemDesignDesc": "Questions d'architecture et de scalabilité",
+    "startInterview": "Démarrer l'entretien",
+    "submitAnswer": "Soumettre la réponse",
+    "getFeedback": "Obtenir un retour",
+    "nextQuestion": "Question suivante",
+    "questionOf": "Question {current} sur {total}",
+    "typeYourAnswer": "Tapez votre réponse ici...",
+    "interviewComplete": "Entretien terminé !",
+    "overallScore": "Score global",
+    "strengths": "Points forts",
+    "improvements": "Axes d'amélioration",
+    "tryAgain": "Réessayer",
+    "shareResults": "Partager les résultats",
+    "clarity": "Clarté",
+    "depth": "Profondeur",
+    "relevance": "Pertinence",
+    "thinking": "Préparation de la question...",
+    "analyzing": "Analyse de votre réponse..."
+  },
+  "referral": {
+    "title": "Inviter des amis",
+    "description": "Partagez AI Educademy et gagnez des récompenses",
+    "yourLink": "Votre lien de parrainage",
+    "copied": "Copié !",
+    "copy": "Copier le lien",
+    "shareOn": "Partager sur {platform}",
+    "joinedCount": "{count} personnes ont rejoint via votre lien",
+    "noReferrals": "Aucun parrainage pour le moment — partagez votre lien !",
+    "reward": "Vous et votre ami obtenez des avantages",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

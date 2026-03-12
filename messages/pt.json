@@ -34,7 +34,8 @@
     "openSourceDesc": "Construído de forma aberta no GitHub",
     "meetCreator": "Conheça o Criador",
     "viewOnGithub": "Ver no GitHub",
-    "comingSoon": "Em Breve"
+    "comingSoon": "Em Breve",
+    "mockInterview": "Entrevista simulada"
   },
   "hero": {
     "badge": "Grátis • Open Source • Multilíngue",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "Atualizar para Pro",
     "signInCta": "Faça login primeiro",
     "guarantee": "Garantia de reembolso de 7 dias. Cancele a qualquer momento."
+  },
+  "mockInterview": {
+    "title": "Laboratório de Entrevista Simulada com IA",
+    "description": "Pratique entrevistas com feedback alimentado por IA",
+    "behavioral": "Comportamental",
+    "behavioralDesc": "Perguntas do método STAR sobre sua experiência",
+    "technical": "Técnica",
+    "technicalDesc": "Desafios de programação e algoritmos",
+    "systemDesign": "Design de Sistemas",
+    "systemDesignDesc": "Perguntas de arquitetura e escalabilidade",
+    "startInterview": "Iniciar entrevista",
+    "submitAnswer": "Enviar resposta",
+    "getFeedback": "Obter feedback",
+    "nextQuestion": "Próxima pergunta",
+    "questionOf": "Pergunta {current} de {total}",
+    "typeYourAnswer": "Digite sua resposta aqui...",
+    "interviewComplete": "Entrevista concluída!",
+    "overallScore": "Pontuação geral",
+    "strengths": "Pontos fortes",
+    "improvements": "Áreas de melhoria",
+    "tryAgain": "Tentar novamente",
+    "shareResults": "Compartilhar resultados",
+    "clarity": "Clareza",
+    "depth": "Profundidade",
+    "relevance": "Relevância",
+    "thinking": "Preparando pergunta...",
+    "analyzing": "Analisando sua resposta..."
+  },
+  "referral": {
+    "title": "Convide amigos",
+    "description": "Compartilhe o AI Educademy e ganhe recompensas",
+    "yourLink": "Seu link de indicação",
+    "copied": "Copiado!",
+    "copy": "Copiar link",
+    "shareOn": "Compartilhar no {platform}",
+    "joinedCount": "{count} pessoas entraram pelo seu link",
+    "noReferrals": "Nenhuma indicação ainda — compartilhe seu link!",
+    "reward": "Você e seu amigo ganham benefícios",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }

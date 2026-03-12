@@ -34,7 +34,8 @@
     "openSourceDesc": "GitHubで公開開発",
     "meetCreator": "クリエイターに会う",
     "viewOnGithub": "GitHubで見る",
-    "comingSoon": "近日公開"
+    "comingSoon": "近日公開",
+    "mockInterview": "模擬面接"
   },
   "hero": {
     "badge": "無料 • オープンソース • 多言語対応",
@@ -1310,5 +1311,46 @@
     "upgradeCta": "Proにアップグレード",
     "signInCta": "まずサインイン",
     "guarantee": "7日間の返金保証。いつでもキャンセル可能。"
+  },
+  "mockInterview": {
+    "title": "AI模擬面接ラボ",
+    "description": "AIによるフィードバックで面接を練習しましょう",
+    "behavioral": "行動面接",
+    "behavioralDesc": "経験に関するSTARメソッドの質問",
+    "technical": "技術面接",
+    "technicalDesc": "コーディングとアルゴリズムの課題",
+    "systemDesign": "システム設計",
+    "systemDesignDesc": "アーキテクチャとスケーラビリティの質問",
+    "startInterview": "面接を開始",
+    "submitAnswer": "回答を送信",
+    "getFeedback": "フィードバックを取得",
+    "nextQuestion": "次の質問",
+    "questionOf": "質問 {current} / {total}",
+    "typeYourAnswer": "ここに回答を入力してください...",
+    "interviewComplete": "面接完了！",
+    "overallScore": "総合スコア",
+    "strengths": "強み",
+    "improvements": "改善点",
+    "tryAgain": "もう一度",
+    "shareResults": "結果を共有",
+    "clarity": "明確さ",
+    "depth": "深さ",
+    "relevance": "関連性",
+    "thinking": "質問を準備中...",
+    "analyzing": "回答を分析中..."
+  },
+  "referral": {
+    "title": "友達を招待",
+    "description": "AI Educademyを共有して報酬を獲得",
+    "yourLink": "あなたの紹介リンク",
+    "copied": "コピーしました！",
+    "copy": "リンクをコピー",
+    "shareOn": "{platform}で共有",
+    "joinedCount": "{count}人があなたのリンクから参加しました",
+    "noReferrals": "まだ紹介はありません — リンクを共有しましょう！",
+    "reward": "あなたとお友達の両方に特典があります",
+    "twitter": "Twitter/X",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
   }
 }
