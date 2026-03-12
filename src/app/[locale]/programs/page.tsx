@@ -7,6 +7,7 @@ import ProgramsShowcase from "@/components/programs/ProgramsShowcase";
 import type { TrackData, ProgramData } from "@/components/programs/ProgramsShowcase";
 import { CourseListJsonLd } from "@/components/seo/JsonLd";
 import { buildAlternates } from "@/lib/seo";
+import { isFreeProgram } from "@/lib/content-access";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -69,6 +70,7 @@ export default async function ProgramsPage({
         topics: (t.raw(`${p.slug}.topics`) as string[]) || [],
         lessonCount: lessons.length,
         firstLessonSlug: lessons[0]?.slug,
+        isPremium: !isFreeProgram(p.slug),
         lessons: lessons.map((l) => ({
           slug: l.slug,
           title: tLT(l.slug),
@@ -121,6 +123,8 @@ export default async function ProgramsPage({
         searchPlaceholder: t("searchPlaceholder"),
         noResults: t("noResults"),
         allTracks: t("allTracks"),
+        free: t("free"),
+        pro: t("pro"),
       }}
     />
     </>

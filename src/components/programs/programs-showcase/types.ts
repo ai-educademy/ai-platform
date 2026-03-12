@@ -29,6 +29,7 @@ export interface ProgramData {
   lessonCount: number;
   firstLessonSlug?: string;
   lessons: LessonData[];
+  isPremium: boolean;
 }
 
 export interface ProgramsI18n {
@@ -49,6 +50,8 @@ export interface ProgramsI18n {
   searchPlaceholder: string;
   noResults: string;
   allTracks: string;
+  free?: string;
+  pro?: string;
 }
 
 export interface Props {

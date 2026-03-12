@@ -86,6 +86,15 @@ export function ProgramCard({ program, basePath, t, index, reducedMotion }: {
                     >
                       {t.level} {program.level}
                     </span>
+                    {program.isPremium ? (
+                      <span className="text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                        ✦ {t.pro ?? "Pro"}
+                      </span>
+                    ) : (
+                      <span className="text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                        {t.free ?? "Free"}
+                      </span>
+                    )}
                   </div>
                   <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">{program.subtitle}</p>
                 </div>

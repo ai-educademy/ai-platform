@@ -13,11 +13,22 @@ interface Summary {
   recentSubscribers: { email: string; subscribedAt: string }[];
 }
 
+interface UserSummary {
+  totalUsers: number;
+  activeSubscriptions: number;
+  cancelledSubscriptions: number;
+  mrr: number;
+  roleBreakdown: Record<string, number>;
+  planBreakdown: Record<string, number>;
+  recentUsers: { id: string; name: string | null; email: string; role: string; createdAt: string }[];
+}
+
 export default function AdminPage() {
   const t = useTranslations("admin");
   const [secret, setSecret] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [data, setData] = useState<Summary | null>(null);
+  const [userData, setUserData] = useState<UserSummary | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -25,9 +36,15 @@ export default function AdminPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/analytics/summary");
-      if (!res.ok) throw new Error("Failed to fetch");
-      setData(await res.json());
+      const [analyticsRes, usersRes] = await Promise.all([
+        fetch("/api/analytics/summary"),
+        fetch("/api/admin/users"),
+      ]);
+      if (!analyticsRes.ok) throw new Error("Failed to fetch analytics");
+      setData(await analyticsRes.json());
+      if (usersRes.ok) {
+        setUserData(await usersRes.json());
+      }
     } catch (error) {
       console.error("[Admin]", error);
       setError(t("loadError"));
@@ -104,11 +121,14 @@ export default function AdminPage() {
       <h1 className="text-3xl font-bold text-gradient">{t("title")}</h1>
 
       {/* Overview Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
         {[
           { label: t("subscribers"), value: data.totalSubscribers, icon: "📧" },
           { label: t("totalFeedback"), value: data.totalFeedback, icon: "💬" },
           { label: t("totalEvents"), value: data.totalEvents, icon: "📈" },
+          { label: "Users", value: userData?.totalUsers ?? 0, icon: "👥" },
+          { label: "Active Subs", value: userData?.activeSubscriptions ?? 0, icon: "⭐" },
+          { label: "MRR", value: `£${userData?.mrr?.toFixed(0) ?? 0}`, icon: "💰" },
         ].map((card) => (
           <div
             key={card.label}
@@ -216,6 +236,71 @@ export default function AdminPage() {
           </ul>
         )}
       </div>
+
+      {/* User & Subscription Management */}
+      {userData && (
+        <>
+          <div className="rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] p-6">
+            <h2 className="text-xl font-bold mb-4">📊 Subscription Breakdown</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {Object.entries(userData.roleBreakdown).map(([role, count]) => (
+                <div key={role} className="p-3 rounded-xl bg-[var(--color-bg-section)] text-center">
+                  <p className="text-lg font-bold">{count}</p>
+                  <p className="text-xs text-[var(--color-text-muted)] capitalize">{role} users</p>
+                </div>
+              ))}
+              {Object.entries(userData.planBreakdown).map(([plan, count]) => (
+                <div key={plan} className="p-3 rounded-xl bg-[var(--color-bg-section)] text-center">
+                  <p className="text-lg font-bold">{count}</p>
+                  <p className="text-xs text-[var(--color-text-muted)] capitalize">{plan} plan</p>
+                </div>
+              ))}
+              <div className="p-3 rounded-xl bg-[var(--color-bg-section)] text-center">
+                <p className="text-lg font-bold text-red-500">{userData.cancelledSubscriptions}</p>
+                <p className="text-xs text-[var(--color-text-muted)]">Cancelled</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] p-6">
+            <h2 className="text-xl font-bold mb-4">👥 Recent Users</h2>
+            {userData.recentUsers.length === 0 ? (
+              <p className="text-[var(--color-text-muted)] text-sm">No users yet</p>
+            ) : (
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--color-border)]">
+                    <th className="text-left py-2 font-semibold">Name</th>
+                    <th className="text-left py-2 font-semibold">Email</th>
+                    <th className="text-right py-2 font-semibold">Role</th>
+                    <th className="text-right py-2 font-semibold">Joined</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {userData.recentUsers.map((u) => (
+                    <tr key={u.id} className="border-b border-[var(--color-border)]/50">
+                      <td className="py-2 font-medium">{u.name ?? "—"}</td>
+                      <td className="py-2 text-[var(--color-text-muted)]">{u.email}</td>
+                      <td className="text-right py-2">
+                        <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
+                          u.role === "admin" ? "bg-purple-500/15 text-purple-600" :
+                          u.role === "pro" ? "bg-amber-500/15 text-amber-600" :
+                          "bg-gray-500/15 text-gray-600"
+                        }`}>
+                          {u.role}
+                        </span>
+                      </td>
+                      <td className="text-right py-2 text-[var(--color-text-muted)]">
+                        {new Date(u.createdAt).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </>
+      )}
 
       <button
         onClick={fetchData}
