@@ -26,9 +26,11 @@ function PricingCard({
 }) {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleClick = async () => {
     if (plan === "free") return;
+    setError("");
 
     if (!session?.user) {
       const basePath = locale === "en" ? "" : `/${locale}`;
@@ -46,9 +48,11 @@ function PricingCard({
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
+      } else {
+        setError(data.error || "Could not create checkout session. Please try again.");
       }
     } catch {
-      // silent
+      setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -104,6 +108,9 @@ function PricingCard({
       >
         {loading ? "Redirecting…" : cta}
       </button>
+      {error && (
+        <p className="mt-2 text-xs text-red-500 text-center">{error}</p>
+      )}
     </div>
   );
 }
