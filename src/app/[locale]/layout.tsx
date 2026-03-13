@@ -51,7 +51,7 @@ export async function generateMetadata({
       "multilingual AI",
       "beginner AI",
       "AI for beginners",
-      "AI school",
+      "AI educademy",
       "ai educademy",
       "educación IA",
       "aprender inteligencia artificial",

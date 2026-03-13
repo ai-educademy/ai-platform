@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "AI Educademy",
-    short_name: "AI School",
+    short_name: "AI Educademy",
     description:
       "Free, multilingual AI education platform. Learn Artificial Intelligence from scratch through interactive lessons, hands-on experiments, and real-world projects.",
     start_url: "/",

@@ -18,7 +18,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           SITE_URL: https://aieducademy.org
         run: |
-          echo "📊 Open AI School — Daily Report"
+          echo "📊 AI Educademy. Daily Report"
           echo "================================="
           echo "Date: $(date -u '+%Y-%m-%d %H:%M UTC')"
           echo ""
