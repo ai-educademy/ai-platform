@@ -37,7 +37,10 @@
     "aiFoundationsPath": "AI基础",
     "aiMasteryPath": "AI精通",
     "careerReadyPath": "职业准备",
-    "title": "AI Educademy. 按你的方式学AI"
+    "title": "AI Educademy. 按你的方式学AI",
+    "faq": "常见问题",
+    "journey": "学习旅程",
+    "bookmarks": "收藏夹"
   },
   "hero": {
     "badge": "开源 • 多语言",
@@ -118,7 +121,10 @@
     "lab": "实验室",
     "pageViews": "页面浏览量",
     "scrollToTop": "回到顶部",
-    "faq": "常见问题"
+    "faq": "常见问题",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "contact": "联系我们"
   },
   "about": {
     "title": "关于 AI Educademy",
@@ -167,7 +173,8 @@
     "pageSubtitle": "免费、开源的AI教育，面向每一位学生。",
     "openSourceTitle": "Open Source",
     "openSourceDesc": "每一节课、每一行代码——免费且开源。Fork 它、翻译它、让它成为你的。",
-    "viewOnGithub": "在 GitHub 上查看"
+    "viewOnGithub": "在 GitHub 上查看",
+    "buyCoffee": "请我喝杯咖啡"
   },
   "lessons": {
     "title": "课程",
@@ -211,7 +218,8 @@
     "tryAgain": "再试一次",
     "quickCheck": "小测验",
     "animationError": "动画加载失败",
-    "progressPercent": "已完成 {percent}%"
+    "progressPercent": "已完成 {percent}%",
+    "suggestEdit": "建议修改本课内容"
   },
   "programs": {
     "badge": "",
@@ -573,7 +581,407 @@
     "comingSoon": "课程即将推出",
     "comingSoonDesc": "我们正在精心打磨这些课程。请稍后再来查看！",
     "startFirst": "开始第一课",
-    "backToAll": "返回所有学习计划"
+    "backToAll": "返回所有学习计划",
+    "whoIsThisFor": "适合谁学习？",
+    "topicsCovered": "涵盖主题",
+    "faqTitle": "常见问题",
+    "relatedArticles": "相关文章",
+    "tryExperiments": "试试我们的互动实验",
+    "tryExperimentsDesc": "通过可以直接在浏览器中运行的 AI 实验，将理论付诸实践。",
+    "tryPromptLab": "探索 Prompt Lab",
+    "tryPromptLabDesc": "在我们的互动 Prompt Lab 中练习提示词工程技巧，实时查看效果。",
+    "faq": {
+      "ai-seeds": [
+        {
+          "q": "AI Seeds 适合零基础的初学者吗？",
+          "a": "当然适合！AI Seeds 专为没有任何技术背景的学习者设计。我们使用通俗易懂的语言、贴近生活的类比和可视化讲解，让你无需编程或数学基础就能理解 AI 的核心概念。"
+        },
+        {
+          "q": "完成 AI Seeds 大概需要多长时间？",
+          "a": "大多数学习者大约需要 2–3 小时即可完成。你可以一次性学完，也可以分几天学习——没有截止日期，进度会自动保存。"
+        },
+        {
+          "q": "学习 AI Seeds 需要会编程吗？",
+          "a": "完全不需要。AI Seeds 侧重于帮助你建立对人工智能的概念性理解，不会涉及任何代码。目标是让你用最通俗的语言了解 AI 是什么、如何运作以及为什么重要。"
+        },
+        {
+          "q": "完成 AI Seeds 后会获得证书吗？",
+          "a": "会的！完成 AI Seeds 的所有课程后，你可以生成一份个人专属的结业证书，展示你在人工智能学习上的投入。"
+        },
+        {
+          "q": "AI Seeds 真的是免费的吗？",
+          "a": "是的，AI Seeds 完全免费。AI Educademy 是一个致力于让 AI 教育人人可及的开源项目，没有任何隐藏费用、付费墙或高级版追加销售。"
+        },
+        {
+          "q": "AI Seeds 涵盖哪些内容？",
+          "a": "AI Seeds 涵盖基础知识：什么是人工智能、机器如何从数据中学习、AI 与传统软件的区别，你甚至可以直接在浏览器中训练一个简单的 AI 模型。这是你 AI 学习之旅的最佳起点。"
+        }
+      ],
+      "ai-sprouts": [
+        {
+          "q": "AI Sprouts 适合初学者吗？",
+          "a": "AI Sprouts 面向已具备基本 AI 认知的学习者——建议先完成 AI Seeds。如果你已经大致了解什么是 AI，就可以开始探索数据类型、算法和 AI 伦理等进阶内容了。"
+        },
+        {
+          "q": "完成 AI Sprouts 需要多长时间？",
+          "a": "AI Sprouts 通常需要 3–4 小时完成。课程是循序渐进的，建议按顺序学习，但你随时可以休息。"
+        },
+        {
+          "q": "学 AI Sprouts 需要编程技能吗？",
+          "a": "不需要。AI Sprouts 通过互动可视化和动手练习帮助你建立对 AI 工作原理的直觉，全程无需编写代码。"
+        },
+        {
+          "q": "完成 AI Sprouts 后能获得证书吗？",
+          "a": "可以！完成所有课程后，你将获得个人专属的结业证书，可以分享到 LinkedIn 或展示给雇主。"
+        },
+        {
+          "q": "AI Sprouts 是免费的吗？",
+          "a": "是的，完全免费。AI Educademy 相信优质的 AI 教育应该让每个人都能获得。"
+        },
+        {
+          "q": "AI Sprouts 能学到什么？",
+          "a": "你将学会区分监督学习、无监督学习和强化学习，理解训练数据的作用，了解 AI 如何做出决策，并批判性地思考 AI 偏见和公平性问题。"
+        }
+      ],
+      "ai-branches": [
+        {
+          "q": "AI Branches 和前面的课程有什么不同？",
+          "a": "AI Branches 聚焦于真实场景中的应用。AI Seeds 和 AI Sprouts 帮你建立基础知识，而 AI Branches 则展示 AI 在医疗、金融、创意艺术等领域的实际应用——并且你将开始动手做项目。"
+        },
+        {
+          "q": "完成 AI Branches 需要多长时间？",
+          "a": "大约 4–5 小时。项目部分比纯阅读课程耗时更多，但也是整个课程中最有收获的部分。"
+        },
+        {
+          "q": "学 AI Branches 需要编程经验吗？",
+          "a": "有一些基础概念会有帮助，但并非必须。项目使用引导式的无代码工具，让你专注于理解 AI 应用本身而非语法。"
+        },
+        {
+          "q": "AI Branches 会做真实项目吗？",
+          "a": "会的！你将构建一个简单的聊天机器人、探索图像识别的工作原理，并创建一个 AI 驱动的迷你项目。这些动手体验旨在巩固你的理解。"
+        },
+        {
+          "q": "AI Branches 是免费的吗？",
+          "a": "是的，AI Branches 完全免费。AI Educademy 上的所有课程都是开源且免费的。"
+        },
+        {
+          "q": "AI Branches 涉及哪些行业？",
+          "a": "你将了解 AI 在医疗（诊断、药物研发）、创意艺术（图像生成、音乐）、金融（欺诈检测）以及聊天机器人和虚拟助手等日常工具中的应用。"
+        }
+      ],
+      "ai-canopy": [
+        {
+          "q": "AI Canopy 适合初学者吗？",
+          "a": "AI Canopy 是中级课程，建议先完成 AI Branches，因为 AI Canopy 会深入探讨神经网络、大语言模型和 AI 系统设计等内容。"
+        },
+        {
+          "q": "完成 AI Canopy 需要多长时间？",
+          "a": "预计需要 5–6 小时。技术深度较高，需要更多时间理解，但每个概念都配有清晰的图解和示例。"
+        },
+        {
+          "q": "会学到 ChatGPT 和大语言模型吗？",
+          "a": "会的！AI Canopy 深入讲解大语言模型的工作原理，包括驱动 ChatGPT、GPT-4 等模型的 Transformer 架构。你还将掌握提示词工程技巧。"
+        },
+        {
+          "q": "学 AI Canopy 需要会编程吗？",
+          "a": "不需要，但有一定的技术素养会更好。我们通过概念图和互动可视化来讲解神经网络和 LLM。"
+        },
+        {
+          "q": "完成 AI Canopy 后会获得证书吗？",
+          "a": "会的！完成所有课程后即可获得个人专属证书，证明你对高级 AI 概念的理解。"
+        },
+        {
+          "q": "什么是提示词工程？AI Canopy 为什么要教它？",
+          "a": "提示词工程是为 ChatGPT 等 AI 模型编写有效指令的技能，是 AI 时代最热门的技能之一。AI Canopy 用多节课程专门帮助你掌握这项能力。"
+        }
+      ],
+      "ai-forest": [
+        {
+          "q": "AI Forest 适合什么水平的学习者？",
+          "a": "AI Forest 是 AI 基础系列中最高级的课程，适合完成 AI Canopy 后希望全面了解 AI 生态系统的学习者。"
+        },
+        {
+          "q": "完成 AI Forest 需要多长时间？",
+          "a": "AI Forest 大约需要 6–8 小时，涵盖阅读研究论文、参与开源 AI 项目和构建生产级 AI 系统等高级主题。"
+        },
+        {
+          "q": "AI Forest 会教构建 AI 应用吗？",
+          "a": "会的！核心成果之一就是构建并部署一个 AI 应用程序。你还将学习阅读 AI 研究论文以及为开源 AI 项目做贡献。"
+        },
+        {
+          "q": "学 AI Forest 需要编程经验吗？",
+          "a": "有基本的编程基础对部分高级主题会有帮助，但课程设计力求通俗易懂。我们提供引导式示例并逐步讲解代码。"
+        },
+        {
+          "q": "AI Forest 是免费的吗？",
+          "a": "是的，AI Forest 与 AI Educademy 的所有课程一样完全免费。我们的使命是让高级 AI 教育人人可及。"
+        },
+        {
+          "q": "AI Forest 能为哪些职业方向做准备？",
+          "a": "AI Forest 帮助你为 AI 产品管理、AI 研究助理、AI 工程师以及开源 AI 贡献者等岗位做好准备，为你提供雇主看重的全局视野。"
+        }
+      ],
+      "ai-sketch": [
+        {
+          "q": "AI Sketch 适合零基础的初学者吗？",
+          "a": "AI Sketch 要求具备任意语言的基本编程知识——如果你会写循环、函数并理解变量，就可以开始了。课程聚焦于数据结构与算法基础。"
+        },
+        {
+          "q": "完成 AI Sketch 需要多长时间？",
+          "a": "大多数学习者在 4–5 小时内完成。建议在进入下一课之前，先用配套练习巩固每个知识点。"
+        },
+        {
+          "q": "AI Sketch 使用什么编程语言？",
+          "a": "AI Sketch 以伪代码和可视化图解进行语言无关的教学。示例用 Python 展示以便于阅读，但所学的算法模式适用于任何编程语言。"
+        },
+        {
+          "q": "AI Sketch 对面试准备有帮助吗？",
+          "a": "非常有帮助！AI Sketch 涵盖了 70% 编程面试中会出现的基础数据结构和算法模式：数组、哈希表、字符串、排序和搜索。"
+        },
+        {
+          "q": "完成 AI Sketch 会获得证书吗？",
+          "a": "会的！完成所有课程即可获得证书，证明你掌握了 DSA 基础概念。"
+        },
+        {
+          "q": "AI Sketch 和 AI 有什么关系？",
+          "a": "每种数据结构和算法都结合了 AI 的实际应用来讲解。你将了解哈希表如何驱动推荐引擎、排序如何提升数据管道效率，以及这些基础知识如何支撑所有 AI 系统。"
+        }
+      ],
+      "ai-chisel": [
+        {
+          "q": "学 AI Chisel 有什么前置要求？",
+          "a": "你应该完成 AI Sketch 或具备同等的基础数据结构知识（数组、哈希表、字符串）。AI Chisel 在此基础上讲授中级算法模式。"
+        },
+        {
+          "q": "完成 AI Chisel 需要多长时间？",
+          "a": "大约 5–6 小时。双指针、滑动窗口和图遍历等中级模式比基础内容需要更多的练习时间。"
+        },
+        {
+          "q": "AI Chisel 涵盖哪些算法模式？",
+          "a": "AI Chisel 涵盖双指针、滑动窗口、BFS/DFS 图遍历、树遍历、栈、队列和单调栈等模式——每种模式都关联实际的 AI 和 ML 应用。"
+        },
+        {
+          "q": "AI Chisel 是免费的吗？",
+          "a": "是的，完全免费。AI Educademy 上的所有课程都是开源且免费的。"
+        },
+        {
+          "q": "AI Chisel 对编程面试有帮助吗？",
+          "a": "当然有帮助。AI Chisel 涵盖的算法模式在大型科技公司的中等难度面试题中频繁出现，每节课都包含面试风格的练习题。"
+        },
+        {
+          "q": "AI Chisel 和机器学习有什么关系？",
+          "a": "图遍历支撑着知识图谱和社交网络分析，树结构是决策树和随机森林的基础，双指针优化了 ML 数据管道中的处理效率。每种模式都与真实的 AI 应用紧密相连。"
+        }
+      ],
+      "ai-craft": [
+        {
+          "q": "AI Craft 讲什么内容？",
+          "a": "AI Craft 教授系统设计——如何架构大规模分布式系统。你将设计推荐引擎、搜索自动补全、限流器等驱动现代 AI 产品的核心系统。"
+        },
+        {
+          "q": "学 AI Craft 需要编程经验吗？",
+          "a": "需要。AI Craft 假设你已熟悉编程面试和基本的分布式系统概念，面向准备系统设计面试的中高级工程师。"
+        },
+        {
+          "q": "完成 AI Craft 需要多长时间？",
+          "a": "AI Craft 大约需要 6–8 小时。系统设计需要深入思考，每个案例都建立在前面概念的基础之上。"
+        },
+        {
+          "q": "AI Craft 对 FAANG 面试有帮助吗？",
+          "a": "非常有帮助！系统设计是大型科技公司高级职位面试的关键环节。AI Craft 教你清晰地组织答案并设计可扩展的系统。"
+        },
+        {
+          "q": "AI Craft 是免费的吗？",
+          "a": "是的，AI Craft 完全免费。我们的目标是让优质的面试准备资源人人可及。"
+        },
+        {
+          "q": "我将学习设计哪些系统？",
+          "a": "你将设计短链接服务、限流器、推荐引擎等系统。每个系统都配有权衡分析、可扩展性考量和 AI 基础设施模式的详解。"
+        }
+      ],
+      "ai-polish": [
+        {
+          "q": "AI Polish 包含哪些内容？",
+          "a": "AI Polish 专注于行为面试的精通。你将学习 STAR 框架、结构化叙事、领导力法则以及适用于技术和 AI 时代场景的沟通策略。"
+        },
+        {
+          "q": "学 AI Polish 需要技术经验吗？",
+          "a": "你需要有真实的项目经历来作为故事素材。AI Polish 教你如何有效地组织和展示这些经历，不限资历深浅。"
+        },
+        {
+          "q": "完成 AI Polish 需要多长时间？",
+          "a": "AI Polish 大约需要 4–5 小时。建议在课程之间花时间打磨自己的故事，效果更佳。"
+        },
+        {
+          "q": "AI Polish 只适合高级工程师吗？",
+          "a": "完全不是！任何级别的工程师都能从行为面试技巧中受益。AI Polish 提供的框架无论你是面试第一份工作还是 Staff 工程师职位都适用。"
+        },
+        {
+          "q": "能获得证书吗？",
+          "a": "可以！完成所有课程即可获得证书，证明你掌握了行为面试技巧。"
+        },
+        {
+          "q": "为什么行为面试对 AI 岗位很重要？",
+          "a": "AI 岗位越来越看重沟通能力——向利益相关者解释模型决策、处理伦理困境、带领跨职能团队。AI Polish 专为这些场景做好准备。"
+        }
+      ],
+      "ai-masterpiece": [
+        {
+          "q": "AI Masterpiece 是什么？",
+          "a": "AI Masterpiece 是 AI 精通系列的终极综合课程，将 DSA、系统设计和行为面试技能融合在端到端的案例研究和作品集项目中。"
+        },
+        {
+          "q": "AI Masterpiece 有什么前置要求？",
+          "a": "建议完成从 AI Sketch 到 AI Polish 的全部课程，或具备同等水平的 DSA、系统设计和行为面试知识。"
+        },
+        {
+          "q": "完成 AI Masterpiece 需要多长时间？",
+          "a": "预计 8–10 小时。综合项目内容丰富，旨在成为有展示价值的作品集作品。"
+        },
+        {
+          "q": "AI Masterpiece 能帮我拿到高级职位吗？",
+          "a": "可以！该课程专为目标是高级及以上职位的工程师设计。你将构建作品集项目并进行完整的模拟面试练习。"
+        },
+        {
+          "q": "AI Masterpiece 是免费的吗？",
+          "a": "是的，完全免费。AI Educademy 致力于让世界级的面试准备资源人人可及。"
+        },
+        {
+          "q": "我会做什么类型的项目？",
+          "a": "你将端到端地设计 Twitter 的 AI 推送系统，完成带详细反馈的完整模拟面试，并构建一个展示技术广度和深度的工程作品集。"
+        }
+      ],
+      "ai-launchpad": [
+        {
+          "q": "Interview Launchpad 适合完全没有面试经验的人吗？",
+          "a": "适合！Interview Launchpad 是所有人开启技术面试之旅的起点，无需任何面试经验。"
+        },
+        {
+          "q": "完成 Interview Launchpad 需要多长时间？",
+          "a": "大多数学习者在 3–4 小时内完成。课程涵盖调研技巧、备战时间线和信心建立。"
+        },
+        {
+          "q": "学 Interview Launchpad 需要会编程吗？",
+          "a": "不需要。Interview Launchpad 侧重于备战策略、公司调研和心态建设——这些技能不论你的技术水平如何都适用。"
+        },
+        {
+          "q": "会教如何调研公司吗？",
+          "a": "会的！你将学到系统化的公司调研方法、解读职位描述的技巧，以及针对特定岗位和公司制定备战计划的方法。"
+        },
+        {
+          "q": "Interview Launchpad 是免费的吗？",
+          "a": "是的，完全免费。AI Educademy 的 Career Ready 系列旨在帮助每个人获得优质的面试准备资源。"
+        },
+        {
+          "q": "Interview Launchpad 和其他面试准备课程有什么不同？",
+          "a": "与直接跳到编程题的课程不同，Interview Launchpad 先帮你建立策略基础：如何调研、如何规划，以及如何将紧张转化为出色表现的信心。"
+        }
+      ],
+      "ai-behavioral": [
+        {
+          "q": "Behavioral Mastery 只适合工程师吗？",
+          "a": "虽然示例以工程场景为主，但 STAR 框架和叙事技巧适用于任何准备技术行业行为面试的专业人士。"
+        },
+        {
+          "q": "完成 Behavioral Mastery 需要多长时间？",
+          "a": "大约 4–5 小时。建议将课程分散在几天内学习，以便在课间练习编写自己的故事。"
+        },
+        {
+          "q": "什么是 STAR 方法？",
+          "a": "STAR 代表情境（Situation）、任务（Task）、行动（Action）和结果（Result），是一种经过验证的面试回答结构化框架。Behavioral Mastery 教你自然而有效地运用它。"
+        },
+        {
+          "q": "Behavioral Mastery 对领导力相关问题有帮助吗？",
+          "a": "当然有帮助！课程涵盖领导力叙事、冲突解决、团队协作故事和文化契合度评估——都是行为面试中的常见主题。"
+        },
+        {
+          "q": "Behavioral Mastery 是免费的吗？",
+          "a": "是的，完全免费，而且永远免费。"
+        },
+        {
+          "q": "需要有真实的项目经历吗？",
+          "a": "是的，你需要有真实的经历作为素材。课程教你如何识别、组织和有感染力地呈现你的经历——但原始素材需要来自你的职业经历。"
+        }
+      ],
+      "ai-technical": [
+        {
+          "q": "Technical Interviews 使用什么编程语言？",
+          "a": "概念以语言无关的方式教授，示例用 Python 展示。解题模式和系统设计原则适用于任何你熟悉的编程语言。"
+        },
+        {
+          "q": "完成 Technical Interviews 需要多长时间？",
+          "a": "预计 6–8 小时。编程模式和系统设计概念在阅读课程之外还需要额外的练习时间。"
+        },
+        {
+          "q": "Technical Interviews 适合初级开发者吗？",
+          "a": "你需要至少掌握一门语言的扎实编程基础。如果你能写函数、循环并使用基本数据结构，就可以开始了。"
+        },
+        {
+          "q": "会学到哪些编程模式？",
+          "a": "你将掌握最常见的编程面试模式：数组、哈希表、双指针、滑动窗口、树、图、动态规划等——每种都配有清晰的讲解和练习题。"
+        },
+        {
+          "q": "Technical Interviews 是免费的吗？",
+          "a": "是的，完全免费。我们相信每个人都应该获得优质的面试准备资源。"
+        },
+        {
+          "q": "Technical Interviews 包含系统设计吗？",
+          "a": "包含！课程同时覆盖编程面试和系统设计基础。你将学习如何设计可扩展的系统，并在白板上清晰地表达技术决策。"
+        }
+      ],
+      "ai-ml-interview": [
+        {
+          "q": "学 AI & ML Interviews 需要 ML 经验吗？",
+          "a": "你需要具备基本的 ML 知识——了解监督学习与无监督学习的区别、什么是模型以及基础统计学。课程在此基础上培养面试技能。"
+        },
+        {
+          "q": "完成 AI & ML Interviews 需要多长时间？",
+          "a": "大约 6–8 小时。ML 系统设计和案例分析需要深入思考和练习。"
+        },
+        {
+          "q": "ML 面试和普通技术面试有什么不同？",
+          "a": "ML 面试包含特有的环节，如 ML 系统设计、模型评估讨论和 ML 案例分析。本课程涵盖所有这些通用面试准备未涉及的专业领域。"
+        },
+        {
+          "q": "会学到 ML 系统设计吗？",
+          "a": "会的！ML 系统设计是核心内容。你将学习设计端到端的 ML 系统，包括数据管道、模型训练、评估、部署和监控。"
+        },
+        {
+          "q": "AI & ML Interviews 是免费的吗？",
+          "a": "是的，完全免费。专业的 ML 面试准备通常价格不菲——我们让它人人可及。"
+        },
+        {
+          "q": "这个课程覆盖哪些公司的面试风格？",
+          "a": "课程帮你准备 Google、Meta、Amazon、Apple 以及 AI 初创公司等公司的 ML 面试形式。每家公司的侧重点不同，我们都会逐一拆解和练习。"
+        }
+      ],
+      "ai-offer": [
+        {
+          "q": "什么时候开始学 Offer & Beyond 比较好？",
+          "a": "最好在拿到 Offer 或进入面试后期阶段时开始。谈判和评估框架在有具体数字可以参考时最为实用。"
+        },
+        {
+          "q": "完成 Offer & Beyond 需要多长时间？",
+          "a": "大约 3–4 小时。课程内容务实，可以立即应用到你的实际情况中。"
+        },
+        {
+          "q": "会教薪资谈判吗？",
+          "a": "会的！你将学到有研究支撑的谈判策略、如何做薪酬基准调研、处理竞争 Offer，以及如何自信地谈判而不会让 Offer 泡汤。"
+        },
+        {
+          "q": "Offer & Beyond 涵盖股权和福利吗？",
+          "a": "当然涵盖。你将学会评估股票期权、RSU、签约奖金、福利待遇和整体薪酬——而不仅仅是基本工资。"
+        },
+        {
+          "q": "Offer & Beyond 是免费的吗？",
+          "a": "是的，完全免费。我们相信每个人都应该掌握能显著影响职业收入的谈判知识。"
+        },
+        {
+          "q": "Offer & Beyond 能帮我比较多个 Offer 吗？",
+          "a": "可以！课程包含 Offer 对比框架，帮你从薪酬、成长潜力、工作生活平衡和职业发展轨迹等维度客观评估多个 Offer。"
+        }
+      ]
+    }
   },
   "dashboard": {
     "title": "我的学习面板",
@@ -630,7 +1038,8 @@
     "linkCopied": "Copied!",
     "shareModalTitle": "Share Achievement",
     "shareTweet": "I just completed {program} on AI Educademy! 🎓🤖 #AILearning #AIEducademy",
-    "shareDescription": "I completed the {program} program on AI Educademy"
+    "shareDescription": "I completed the {program} program on AI Educademy",
+    "upgradeCertificate": "升级以获取证书"
   },
   "auth": {
     "startLearning": "开始学习",
@@ -908,7 +1317,9 @@
     "shareText": "免费AI教育，面向每个人",
     "headline": "加入我们",
     "subtitle": "最新课程、技巧和更新直达你的收件箱。在 GitHub 上给我们加星，支持免费AI教育惠及每个人。",
-    "shareTitle": "AI Educademy"
+    "shareTitle": "AI Educademy",
+    "newsletterTitle": "加入 11 种语言的学习者社区",
+    "githubTitle": "开源且透明"
   },
   "lab": {
     "title": "AI 实验室",
@@ -1458,7 +1869,12 @@
       "f4": "AI Mock Interview lab",
       "f5": "Completion certificates",
       "f6": "Server-side progress sync across devices"
-    }
+    },
+    "promoCode": "有优惠码？",
+    "promoCodePlaceholder": "输入优惠码",
+    "promoCodeApply": "使用",
+    "promoCodeApplied": "优惠码已生效！",
+    "promoCodeInvalid": "无效的优惠码"
   },
   "paywall": {
     "title": "高级内容",
@@ -1520,7 +1936,9 @@
     "generating": "生成中...",
     "progress": "再完成 {remaining} 节课程即可获得证书",
     "completed": "您已获得证书！",
-    "notSignedIn": "登录以跟踪进度并获取证书"
+    "notSignedIn": "登录以跟踪进度并获取证书",
+    "upgradeToCertificate": "升级到 Pro 版获取证书",
+    "premiumOnly": "高级课程的证书需要 Pro 订阅"
   },
   "continueLearning": {
     "title": "继续上次的学习",
@@ -1668,5 +2086,223 @@
     "verifiedCompletion": "Verified Completion",
     "defaultTitle": "Achievement | AI Educademy",
     "defaultDescription": "An achievement earned on AI Educademy - Free AI education for everyone."
+  },
+  "trustBar": {
+    "lessons": "课程",
+    "programs": "项目",
+    "languages": "语言",
+    "openSource": "开源"
+  },
+  "onboarding": {
+    "metaTitle": "开始使用",
+    "metaDescription": "个性化你的 AI Educademy 学习体验",
+    "skip": "跳过",
+    "back": "返回",
+    "next": "下一步",
+    "getStarted": "开始吧",
+    "welcome": {
+      "title": "欢迎来到 AI Educademy，{name}！🎉",
+      "defaultName": "同学",
+      "subtitle": "只需几步，即可定制你的专属学习体验。",
+      "tagLearn": "学习",
+      "tagBuild": "构建",
+      "tagGrow": "成长"
+    },
+    "experience": {
+      "title": "你目前的 AI 水平如何？",
+      "subtitle": "这有助于我们为你推荐合适的起点",
+      "beginner": {
+        "title": "初学者",
+        "description": "我是 AI 新手，想从零开始学习"
+      },
+      "intermediate": {
+        "title": "有一定基础",
+        "description": "我了解一些基础知识，想深入学习"
+      },
+      "advanced": {
+        "title": "进阶学习者",
+        "description": "我有丰富经验，想学习专业技能"
+      }
+    },
+    "goals": {
+      "title": "你想达成什么目标？",
+      "subtitle": "可以多选",
+      "understand": {
+        "title": "理解 AI 概念",
+        "description": "学习 AI 背后的基础理论和原理"
+      },
+      "build": {
+        "title": "构建 AI 应用",
+        "description": "通过实际 AI 项目动手编程"
+      },
+      "interviews": {
+        "title": "搞定 AI 面试",
+        "description": "准备 AI/ML 技术岗位面试"
+      },
+      "work": {
+        "title": "在工作中使用 AI",
+        "description": "在日常工作中应用 AI 工具和技术"
+      },
+      "creative": {
+        "title": "创意探索 AI",
+        "description": "发现 AI 在创意和艺术领域的应用"
+      }
+    },
+    "recommendation": {
+      "title": "为你推荐的学习路径 ✨",
+      "subtitle": "根据你的选择，我们认为你会喜欢这个",
+      "cta": "开始学习 →",
+      "exploreAll": "或浏览所有课程",
+      "programs": {
+        "ai-seeds": {
+          "name": "AI Seeds",
+          "description": "从零开始你的 AI 之旅，学习核心概念、基本术语以及 AI 如何改变世界。课程内容对初学者非常友好。"
+        },
+        "ai-sketch": {
+          "name": "AI Sketch",
+          "description": "通过动手项目开始构建 AI 应用。学习使用 AI API、提示词工程和实用编程模式。"
+        },
+        "ai-launchpad": {
+          "name": "AI Launchpad",
+          "description": "开启你的 AI 职业准备之旅，学习面试基础、常见题型和信心建立技巧。"
+        }
+      }
+    }
+  },
+  "journey": {
+    "title": "你的 AI 学习旅程",
+    "subtitle": "沿着个性化路径掌握 AI——从基础到职业就绪。",
+    "trackAI": "AI 学习",
+    "trackCraft": "工程精通",
+    "trackCareer": "职业准备",
+    "level": "等级",
+    "completed": "已完成",
+    "locked": "未解锁",
+    "current": "进行中",
+    "signInPrompt": "登录以跟踪学习进度并解锁个性化学习旅程。",
+    "overallProgress": "总体进度",
+    "startJourney": "开启你的旅程"
+  },
+  "howItWorks": {
+    "title": "如何开始",
+    "subtitle": "三步轻松从好奇的初学者成长为自信的 AI 构建者",
+    "step1Title": "选择你的方向",
+    "step1Desc": "从三大方向中选择——AI 学习、工程精通或职业准备。每个方向都有精心设计的课程，带你从零到精通。",
+    "step2Title": "在实践中学习",
+    "step2Desc": "互动式课程、动手实验和真实代码——告别被动看视频，通过实践来理解知识。",
+    "step3Title": "构建真实项目",
+    "step3Desc": "在我们的 AI 实验室中通过 7 个实验应用你的技能。构建聊天机器人、分类器和能解决真实问题的 AI 智能体。"
+  },
+  "labPreview": {
+    "title": "互动 AI 实验室",
+    "subtitle": "在浏览器中体验真实的 AI 概念，无需任何安装配置。",
+    "ctaText": "探索实验室",
+    "neuralPlayground": "Neural Playground",
+    "neuralPlaygroundDesc": "可视化训练神经网络",
+    "aiOrHuman": "AI or Human?",
+    "aiOrHumanDesc": "测试你的 AI 识别能力",
+    "promptEngineering": "Prompt Engineering",
+    "promptEngineeringDesc": "掌握 AI 提示词的艺术",
+    "imageGeneration": "Image Generation",
+    "imageGenerationDesc": "使用 AI 模型生成图像",
+    "sentimentAnalysis": "Sentiment Analysis",
+    "sentimentAnalysisDesc": "实时分析文本情感",
+    "aiChat": "AI Chat",
+    "aiChatDesc": "构建对话式 AI 系统",
+    "ethicsScenarios": "Ethics Scenarios",
+    "ethicsScenariosDesc": "探索真实的 AI 伦理困境"
+  },
+  "projects": {
+    "title": "你将构建什么",
+    "subtitle": "从学习到实战。这些项目展示了你将具备的能力。",
+    "chatbot": "AI 聊天机器人",
+    "chatbotDesc": "构建一个理解上下文、支持多轮对话并能智能回复的会话式 AI。",
+    "chatbotTags": "NLP,Transformers,Python",
+    "chatbotDifficulty": "中级",
+    "classifier": "图像分类器",
+    "classifierDesc": "训练一个能高精度识别和分类图像的计算机视觉模型。",
+    "classifierTags": "CNN,TensorFlow,Computer Vision",
+    "classifierDifficulty": "中级",
+    "recommender": "推荐引擎",
+    "recommenderDesc": "设计一个预测用户偏好并提供个性化推荐的 ML 系统。",
+    "recommenderTags": "Collaborative Filtering,ML,Data Science",
+    "recommenderDifficulty": "高级",
+    "agent": "AI 智能体",
+    "agentDesc": "创建一个能自主推理、规划并使用工具和 API 执行任务的 AI 智能体。",
+    "agentTags": "LLMs,Tool Use,Agents",
+    "agentDifficulty": "高级"
+  },
+  "testimonials": {
+    "title": "平台亮点",
+    "programs": "15 个课程",
+    "programsSub": "从入门到生产级 AI",
+    "languages": "11 种语言",
+    "languagesSub": "用你的母语学习",
+    "openSource": "开源",
+    "openSourceSub": "每一行代码都公开透明",
+    "quote": "由一位拥有 15 年以上经验、曾就职于 JP Morgan、Sky 等全球科技公司的工程师打造——旨在让 AI 教育真正惠及每个人。"
+  },
+  "finalCta": {
+    "headline": "今天就开始学习 AI",
+    "subtitle": "免费、开源、支持多语言",
+    "primaryText": "开始学习",
+    "secondaryText": "查看学习路线图"
+  },
+  "leadMagnet": {
+    "metaTitle": "免费下载：2026 AI 入门套件 | AI Educademy",
+    "metaDescription": "获取免费的 2026 AI 入门套件——你的 AI 学习、职业路径、工具和面试准备完整指南。立即下载！",
+    "title": "免费下载：2026 AI 入门套件",
+    "subtitle": "开启你的 AI 之旅所需的一切——学习路线图、职业路径、必备工具和面试准备——尽在一本精心设计的指南中。",
+    "description": "加入数千名通过这份免费资源开启 AI 职业之路的学习者。没有废话，只有可落地的知识。",
+    "whatInsideTitle": "内容概览",
+    "whatInside": {
+      "roadmap": "AI 学习路线图——从入门到求职就绪",
+      "concepts": "10 大 AI 核心概念的通俗讲解",
+      "careers": "2026 AI 职业路径与薪酬指南",
+      "tools": "专家精选的 AI 必备工具与资源",
+      "interview": "AI 面试准备速查手册"
+    },
+    "socialProof": "已有 {count}+ 位学习者下载了本指南",
+    "namePlaceholder": "你的名字",
+    "emailPlaceholder": "你的邮箱地址",
+    "submitButton": "免费下载 PDF",
+    "submitting": "发送中…",
+    "successTitle": "请查看你的收件箱！🎉",
+    "successMessage": "我们已将 AI 入门套件发送到你的邮箱。请检查收件箱（以及垃圾邮件文件夹）获取下载链接。",
+    "successDownload": "立即下载",
+    "privacyNote": "我们尊重你的隐私，可随时取消订阅。",
+    "errorGeneric": "出了点问题，请重试。",
+    "errorRateLimit": "操作过于频繁，请几分钟后再试。",
+    "errorInvalidEmail": "请输入有效的邮箱地址。",
+    "errorNameRequired": "请输入你的名字。",
+    "pageCount": "10 页 PDF 指南",
+    "freeForever": "100% 免费",
+    "instantDownload": "即时下载"
+  },
+  "launch": {
+    "countdownPrefix": "即将在 Product Hunt 上线，倒计时",
+    "days": "天",
+    "hours": "小时",
+    "minutes": "分钟",
+    "seconds": "秒",
+    "liveMessage": "我们已在 Product Hunt 上线！快来看看",
+    "dismiss": "关闭",
+    "badge": "在 Product Hunt 上关注我们"
+  },
+  "emails": {
+    "abandonedCartSubject": "你落下了一些东西！",
+    "abandonedCartPreview": "你的 AI 学习之旅正在等你"
+  },
+  "bookmarks": {
+    "title": "我的收藏",
+    "description": "你保存以备后续学习的课程",
+    "empty": "暂无收藏",
+    "emptyDescription": "浏览我们的课程，发现你喜欢的内容吧！",
+    "browsePrograms": "浏览课程",
+    "bookmark": "收藏此课程",
+    "removeBookmark": "取消收藏",
+    "bookmarked": "已收藏！",
+    "removed": "已取消收藏",
+    "addedOn": "收藏于"
   }
 }
