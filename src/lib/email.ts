@@ -1,4 +1,4 @@
-import { welcomeEmailHtml, subscriptionEmailHtml, verificationCodeEmailHtml, passwordResetEmailHtml, leadMagnetEmailHtml } from "./emailTemplates";
+import { welcomeEmailHtml, subscriptionEmailHtml, verificationCodeEmailHtml, passwordResetEmailHtml, leadMagnetEmailHtml, abandonedCartEmailHtml } from "./emailTemplates";
 
 const subjectByLocale: Record<string, string> = {
   en: "Welcome to AI Educademy! 🎓",
@@ -85,6 +85,14 @@ export async function sendVerificationEmail(email: string, code: string): Promis
 export async function sendPasswordResetEmail(email: string, resetUrl: string): Promise<void> {
   const subject = "Reset your AI Educademy password";
   const html = passwordResetEmailHtml(resetUrl);
+  await sendEmail(email, subject, html);
+}
+
+export async function sendAbandonedCartEmail(email: string, name?: string, locale: string = "en"): Promise<void> {
+  const basePath = locale === "en" ? "" : `/${locale}`;
+  const pricingUrl = `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/pricing`;
+  const subject = "You left something behind! 🛒";
+  const html = abandonedCartEmailHtml(name, pricingUrl);
   await sendEmail(email, subject, html);
 }
 

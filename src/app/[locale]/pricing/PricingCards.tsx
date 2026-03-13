@@ -3,7 +3,59 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
-import { Check } from "lucide-react";
+import { Check, Tag, ChevronDown, ChevronUp } from "lucide-react";
+
+function PromoCodeInput({
+  promoCode,
+  setPromoCode,
+  promoStatus,
+}: {
+  promoCode: string;
+  setPromoCode: (v: string) => void;
+  promoStatus: "idle" | "applied" | "invalid";
+}) {
+  const t = useTranslations("pricing");
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="mt-6">
+      <button
+        type="button"
+        onClick={() => setExpanded(!expanded)}
+        className="flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-violet-600 transition-colors mx-auto"
+      >
+        <Tag className="w-3.5 h-3.5" />
+        {t("promoCode")}
+        {expanded ? (
+          <ChevronUp className="w-3.5 h-3.5" />
+        ) : (
+          <ChevronDown className="w-3.5 h-3.5" />
+        )}
+      </button>
+      {expanded && (
+        <div className="mt-3 flex items-center gap-2 max-w-xs mx-auto">
+          <input
+            type="text"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
+            placeholder={t("promoCodePlaceholder")}
+            className="flex-1 px-3 py-2 text-sm rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+          />
+        </div>
+      )}
+      {promoStatus === "applied" && (
+        <p className="mt-2 text-xs text-emerald-600 text-center font-medium">
+          ✓ {t("promoCodeApplied")}
+        </p>
+      )}
+      {promoStatus === "invalid" && (
+        <p className="mt-2 text-xs text-red-500 text-center">
+          {t("promoCodeInvalid")}
+        </p>
+      )}
+    </div>
+  );
+}
 
 function PricingCard({
   title,
@@ -14,6 +66,9 @@ function PricingCard({
   popular,
   plan,
   locale,
+  promoCode,
+  onPromoInvalid,
+  onPromoApplied,
 }: {
   title: string;
   price: string;
@@ -23,6 +78,9 @@ function PricingCard({
   popular?: boolean;
   plan: "free" | "monthly" | "annual" | "lifetime";
   locale: string;
+  promoCode: string;
+  onPromoInvalid: () => void;
+  onPromoApplied: () => void;
 }) {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
@@ -43,10 +101,11 @@ function PricingCard({
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan, locale }),
+        body: JSON.stringify({ plan, locale, ...(promoCode ? { promoCode } : {}) }),
       });
       const data = await res.json();
       if (data.url) {
+        if (promoCode) onPromoApplied();
         window.location.href = data.url;
       } else {
         setError(data.error || "Could not create checkout session. Please try again.");
@@ -117,6 +176,8 @@ function PricingCard({
 
 export function PricingCards({ locale }: { locale: string }) {
   const t = useTranslations("pricing");
+  const [promoCode, setPromoCode] = useState("");
+  const [promoStatus, setPromoStatus] = useState<"idle" | "applied" | "invalid">("idle");
 
   const plans = [
     {
@@ -184,10 +245,27 @@ export function PricingCards({ locale }: { locale: string }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {plans.map((p) => (
-        <PricingCard key={p.plan} {...p} locale={locale} />
-      ))}
+    <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {plans.map((p) => (
+          <PricingCard
+            key={p.plan}
+            {...p}
+            locale={locale}
+            promoCode={promoCode}
+            onPromoInvalid={() => setPromoStatus("invalid")}
+            onPromoApplied={() => setPromoStatus("applied")}
+          />
+        ))}
+      </div>
+      <PromoCodeInput
+        promoCode={promoCode}
+        setPromoCode={(v) => {
+          setPromoCode(v);
+          setPromoStatus("idle");
+        }}
+        promoStatus={promoStatus}
+      />
     </div>
   );
 }

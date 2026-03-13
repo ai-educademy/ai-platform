@@ -3,7 +3,7 @@ import { getStripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
 import { subscriptions, users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
-import { sendSubscriptionEmail, sendAdminNotification } from "@/lib/email";
+import { sendSubscriptionEmail, sendAdminNotification, sendAbandonedCartEmail } from "@/lib/email";
 import type Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -175,6 +175,33 @@ export async function POST(req: NextRequest) {
            <p><strong>Plan:</strong> ${existing[0].plan}</p>
            <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
         ).catch((err) => console.error("[Webhook] Admin notification failed:", err));
+      }
+      break;
+    }
+
+    case "checkout.session.expired": {
+      const expiredSession = event.data.object as Stripe.Checkout.Session;
+      const customerEmail =
+        expiredSession.customer_details?.email ??
+        expiredSession.customer_email;
+      const customerName =
+        expiredSession.customer_details?.name ?? undefined;
+
+      if (customerEmail) {
+        const locale = expiredSession.metadata?.locale ?? "en";
+        sendAbandonedCartEmail(customerEmail, customerName, locale).catch(
+          (err) =>
+            console.error("[Webhook] Abandoned cart email failed:", err)
+        );
+
+        sendAdminNotification(
+          "Abandoned checkout 🛒",
+          `<p><strong>Email:</strong> ${customerEmail}</p>
+           <p><strong>Name:</strong> ${customerName || "Unknown"}</p>
+           <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
+        ).catch((err) =>
+          console.error("[Webhook] Admin notification failed:", err)
+        );
       }
       break;
     }

@@ -4,6 +4,7 @@ import { getStripe, PLANS } from "@/lib/stripe";
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
+import type Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,9 +14,10 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { plan, locale = "en" } = body as {
+    const { plan, locale = "en", promoCode } = body as {
       plan: "monthly" | "annual" | "lifetime";
       locale?: string;
+      promoCode?: string;
     };
 
     const planConfig = PLANS[plan];
@@ -48,11 +50,29 @@ export async function POST(req: NextRequest) {
 
     const basePath = locale === "en" ? "" : `/${locale}`;
 
+    // Resolve promo code to a Stripe promotion code ID
+    let discounts: Stripe.Checkout.SessionCreateParams["discounts"] | undefined;
+    if (promoCode) {
+      try {
+        const promoCodes = await getStripe().promotionCodes.list({
+          code: promoCode,
+          active: true,
+          limit: 1,
+        });
+        if (promoCodes.data.length > 0) {
+          discounts = [{ promotion_code: promoCodes.data[0].id }];
+        }
+      } catch (err) {
+        console.warn("[stripe/checkout] promo code lookup failed:", err);
+      }
+    }
+
     // Create checkout session
     const checkoutSession = await getStripe().checkout.sessions.create({
       customer: customerId,
       mode: plan === "lifetime" ? "payment" : "subscription",
       line_items: [{ price: planConfig.priceId, quantity: 1 }],
+      ...(discounts ? { discounts } : {}),
       success_url: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/dashboard?payment=success`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/pricing?payment=cancelled`,
       metadata: {
