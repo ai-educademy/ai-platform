@@ -37,7 +37,10 @@
     "aiFoundationsPath": "KI-Grundlagen",
     "aiMasteryPath": "KI-Meisterschaft",
     "careerReadyPath": "Karrierebereit",
-    "title": "AI Educademy. Lerne KI auf deine Art"
+    "title": "AI Educademy. Lerne KI auf deine Art",
+    "bookmarks": "Lesezeichen",
+    "faq": "FAQ",
+    "journey": "Lernreise"
   },
   "hero": {
     "badge": "Open Source • Mehrsprachig",
@@ -118,7 +121,10 @@
     "lab": "Labor",
     "pageViews": "Seitenaufrufe",
     "scrollToTop": "Nach oben scrollen",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen"
   },
   "about": {
     "title": "Über AI Educademy",
@@ -167,7 +173,8 @@
     "pageSubtitle": "Quelloffene KI-Bildung für jeden Lernenden.",
     "openSourceTitle": "Open Source",
     "openSourceDesc": "Jede Lektion, jede Zeile Code – kostenlos und Open Source. Forke es, übersetze es, mach es zu deinem.",
-    "viewOnGithub": "Auf GitHub ansehen"
+    "viewOnGithub": "Auf GitHub ansehen",
+    "buyCoffee": "Kauf mir einen Kaffee"
   },
   "lessons": {
     "title": "Lektionen",
@@ -211,7 +218,8 @@
     "tryAgain": "Nochmal versuchen",
     "quickCheck": "Kurzer Check",
     "animationError": "Animation konnte nicht geladen werden",
-    "progressPercent": "{percent}% abgeschlossen"
+    "progressPercent": "{percent}% abgeschlossen",
+    "suggestEdit": "Bearbeitung vorschlagen"
   },
   "programs": {
     "badge": "",
@@ -573,7 +581,407 @@
     "comingSoon": "Lektionen demnächst verfügbar",
     "comingSoonDesc": "Wir erstellen diese Lektionen mit Sorgfalt. Schau bald wieder vorbei!",
     "startFirst": "Erste Lektion starten",
-    "backToAll": "Zurück zu allen Programmen"
+    "backToAll": "Zurück zu allen Programmen",
+    "faqTitle": "Häufig gestellte Fragen",
+    "relatedArticles": "Verwandte Artikel",
+    "topicsCovered": "Behandelte Themen",
+    "tryExperiments": "Probiere unsere interaktiven Experimente",
+    "tryExperimentsDesc": "Setze Theorie in die Praxis um mit praktischen KI-Experimenten, die du direkt in deinem Browser ausführen kannst.",
+    "tryPromptLab": "Entdecke das Prompt-Labor",
+    "tryPromptLabDesc": "Übe Prompt-Engineering-Techniken mit unserem interaktiven Prompt-Labor und sieh Ergebnisse in Echtzeit.",
+    "whoIsThisFor": "Für wen ist das?",
+    "faq": {
+      "ai-behavioral": [
+        {
+          "q": "Ist Behavioral Mastery nur für Ingenieure?",
+          "a": "Die Beispiele konzentrieren sich zwar auf Ingenieur-Szenarien, aber das STAR-Framework und die Storytelling-Techniken gelten für alle Fachleute, die sich auf Verhaltensinterviews in der Technikbranche vorbereiten."
+        },
+        {
+          "q": "Wie lange dauert Behavioral Mastery?",
+          "a": "Etwa 4–5 Stunden. Wir empfehlen, die Lektionen über einige Tage zu verteilen, damit du zwischen den Sitzungen deine eigenen Geschichten üben kannst."
+        },
+        {
+          "q": "Was ist die STAR-Methode?",
+          "a": "STAR steht für Situation, Task (Aufgabe), Action (Handlung), Result (Ergebnis). Es ist ein bewährtes Framework zur Strukturierung von Interview-Antworten. Behavioral Mastery lehrt dich, es natürlich und effektiv einzusetzen."
+        },
+        {
+          "q": "Hilft Behavioral Mastery bei Führungsfragen?",
+          "a": "Auf jeden Fall! Das Programm behandelt Führungsgeschichten, Konfliktlösung, Teamwork-Erzählungen und kulturelle Passung – alles häufige Themen in Verhaltensrunden."
+        },
+        {
+          "q": "Ist Behavioral Mastery kostenlos?",
+          "a": "Ja, komplett kostenlos und wird es immer bleiben."
+        },
+        {
+          "q": "Brauche ich echte Projekterfahrung?",
+          "a": "Ja, du brauchst echte Erfahrungen, aus denen du schöpfen kannst. Das Programm lehrt dich, wie du deine Erfahrungen identifizierst, strukturierst und überzeugend präsentierst – aber das Rohmaterial muss aus deiner Karriere stammen."
+        }
+      ],
+      "ai-branches": [
+        {
+          "q": "Was unterscheidet AI Branches von früheren Programmen?",
+          "a": "AI Branches konzentriert sich auf reale Anwendungen. Während Seeds und Sprouts Grundlagenwissen aufbauen, zeigt dir Branches KI in Aktion in den Bereichen Gesundheitswesen, Finanzen, kreative Künste und mehr – und du beginnst, einfache Projekte zu bauen."
+        },
+        {
+          "q": "Wie lange dauert es, AI Branches abzuschließen?",
+          "a": "Plane etwa 4–5 Stunden ein. Die Projekte dauern etwas länger als reine Leselektionen, aber sie sind der lohnendste Teil des Programms."
+        },
+        {
+          "q": "Brauche ich Programmiererfahrung für AI Branches?",
+          "a": "Grundlegende Vertrautheit mit Konzepten hilft, ist aber nicht erforderlich. Die Projekte verwenden geführte No-Code-Tools, damit du dich auf das Verständnis von KI-Anwendungen konzentrieren kannst."
+        },
+        {
+          "q": "Werde ich in AI Branches echte Projekte bauen?",
+          "a": "Ja! Du baust einen einfachen Chatbot, erkundest, wie Bilderkennung funktioniert, und erstellst ein KI-gestütztes Mini-Projekt. Diese praktischen Erfahrungen festigen dein Verständnis."
+        },
+        {
+          "q": "Ist AI Branches kostenlos?",
+          "a": "Ja, AI Branches ist komplett kostenlos. Alle Programme auf AI Educademy sind Open Source und ohne Kosten zugänglich."
+        },
+        {
+          "q": "Welche Branchen deckt AI Branches ab?",
+          "a": "Du erkundest KI-Anwendungen im Gesundheitswesen (Diagnose, Medikamentenentwicklung), in den kreativen Künsten (Bilderzeugung, Musik), im Finanzwesen (Betrugserkennung) und in Alltagstools wie Chatbots und virtuellen Assistenten."
+        }
+      ],
+      "ai-canopy": [
+        {
+          "q": "Ist AI Canopy für Anfänger geeignet?",
+          "a": "AI Canopy ist ein Programm für Fortgeschrittene. Wir empfehlen, zuerst AI Branches abzuschließen, da Canopy tiefer in neuronale Netze, große Sprachmodelle und KI-Systemdesign eintaucht."
+        },
+        {
+          "q": "Wie lange dauert es, AI Canopy abzuschließen?",
+          "a": "Rechne mit 5–6 Stunden für AI Canopy. Die technische Tiefe erfordert mehr Zeit zum Verstehen, aber jedes Konzept wird mit klaren Visualisierungen und Beispielen erklärt."
+        },
+        {
+          "q": "Werde ich über ChatGPT und große Sprachmodelle lernen?",
+          "a": "Ja! AI Canopy behandelt, wie große Sprachmodelle funktionieren, einschließlich der Transformer-Architektur, die ChatGPT, GPT-4 und ähnliche Modelle antreibt. Du wirst außerdem Prompt-Engineering-Techniken meistern."
+        },
+        {
+          "q": "Muss ich für AI Canopy programmieren können?",
+          "a": "Programmieren ist nicht erforderlich, aber grundlegendes technisches Verständnis hilft. Wir erklären neuronale Netze und LLMs konzeptuell mit Diagrammen und interaktiven Visualisierungen."
+        },
+        {
+          "q": "Bekomme ich nach Abschluss von AI Canopy ein Zertifikat?",
+          "a": "Ja! Ein personalisiertes Zertifikat ist nach Abschluss aller Lektionen verfügbar. Es zeigt dein Verständnis fortgeschrittener KI-Konzepte."
+        },
+        {
+          "q": "Was ist Prompt Engineering und warum lehrt AI Canopy es?",
+          "a": "Prompt Engineering ist die Fähigkeit, effektive Anweisungen für KI-Modelle wie ChatGPT zu schreiben. Es ist eine der gefragtesten Fähigkeiten im KI-Zeitalter, und AI Canopy widmet mehrere Lektionen der Meisterung dieser Kunst."
+        }
+      ],
+      "ai-chisel": [
+        {
+          "q": "Welche Voraussetzungen hat AI Chisel?",
+          "a": "Du solltest AI Sketch abgeschlossen haben oder gleichwertiges Wissen über grundlegende Datenstrukturen (Arrays, Hash Maps, Strings) mitbringen. AI Chisel baut auf diesen Grundlagen mit mittleren Mustern auf."
+        },
+        {
+          "q": "Wie lange dauert AI Chisel?",
+          "a": "Plane 5–6 Stunden ein. Die mittleren Muster wie Two Pointers, Sliding Window und Graphentraversierung erfordern mehr Übungszeit als die Grundlagen."
+        },
+        {
+          "q": "Welche Muster behandelt AI Chisel?",
+          "a": "AI Chisel behandelt Two Pointers, Sliding Window, BFS/DFS-Graphentraversierung, Baumtraversierungen, Stacks, Queues und monotone Muster – alle verknüpft mit realen KI- und ML-Anwendungen."
+        },
+        {
+          "q": "Ist AI Chisel kostenlos?",
+          "a": "Ja, komplett kostenlos. Alle Programme auf AI Educademy sind Open Source und kostenfrei verfügbar."
+        },
+        {
+          "q": "Hilft AI Chisel mir bei Coding-Interviews?",
+          "a": "Auf jeden Fall. Die in AI Chisel behandelten Muster kommen häufig in mittelschwereren Interviewfragen bei großen Technologieunternehmen vor. Jede Lektion enthält Übungsaufgaben im Interview-Stil."
+        },
+        {
+          "q": "Wie hängt AI Chisel mit maschinellem Lernen zusammen?",
+          "a": "Graphentraversierung treibt Wissensgraphen und die Analyse sozialer Netzwerke an. Baumstrukturen bilden die Grundlage für Entscheidungsbäume und Random Forests. Two Pointers optimieren die Datenverarbeitung in ML-Pipelines. Jedes Muster hat eine Verbindung zu realen KI-Anwendungen."
+        }
+      ],
+      "ai-craft": [
+        {
+          "q": "Worum geht es bei AI Craft?",
+          "a": "AI Craft lehrt Systemdesign – wie man große verteilte Systeme architektiert. Du entwirfst Empfehlungssysteme, Suchautovervollständigung, Rate Limiter und andere Systeme, die moderne KI-Produkte antreiben."
+        },
+        {
+          "q": "Brauche ich Programmiererfahrung für AI Craft?",
+          "a": "Ja, AI Craft setzt voraus, dass du mit Coding-Interviews und grundlegenden Konzepten verteilter Systeme vertraut bist. Es richtet sich an Mid- bis Senior-Ingenieure, die sich auf Systemdesign-Runden vorbereiten."
+        },
+        {
+          "q": "Wie lange dauert AI Craft?",
+          "a": "AI Craft dauert etwa 6–8 Stunden. Systemdesign erfordert tiefes Nachdenken und jede Fallstudie baut auf vorherigen Konzepten auf."
+        },
+        {
+          "q": "Hilft AI Craft bei FAANG-Interviews?",
+          "a": "Ja! Systemdesign-Runden sind ein entscheidender Teil von Senior-Level-Interviews bei großen Technologieunternehmen. AI Craft lehrt dich, Antworten klar zu strukturieren und skalierbare Systeme zu entwerfen."
+        },
+        {
+          "q": "Ist AI Craft kostenlos?",
+          "a": "Ja, AI Craft ist komplett kostenlos. Unser Ziel ist es, den Zugang zu hochwertigen Ressourcen zur Interviewvorbereitung zu demokratisieren."
+        },
+        {
+          "q": "Welche Systeme werde ich entwerfen lernen?",
+          "a": "Du entwirfst einen URL-Shortener, Rate Limiter, eine Empfehlungsmaschine und mehr. Jedes System wird mit Abwägungsanalyse, Skalierbarkeitsüberlegungen und KI-spezifischen Infrastrukturmustern erklärt."
+        }
+      ],
+      "ai-forest": [
+        {
+          "q": "Für welches Niveau ist AI Forest konzipiert?",
+          "a": "AI Forest ist unser fortgeschrittenstes Programm im KI-Grundlagen-Track. Es richtet sich an Lernende, die AI Canopy abgeschlossen haben und das vollständige Bild des KI-Ökosystems wollen."
+        },
+        {
+          "q": "Wie lange dauert es, AI Forest abzuschließen?",
+          "a": "AI Forest dauert etwa 6–8 Stunden. Es behandelt fortgeschrittene Themen wie das Lesen von Forschungsarbeiten, das Beitragen zu Open-Source-KI und den Aufbau produktionsreifer KI-Systeme."
+        },
+        {
+          "q": "Werde ich in AI Forest lernen, KI-Anwendungen zu bauen?",
+          "a": "Ja! Eines der zentralen Ergebnisse ist der Aufbau und die Bereitstellung einer KI-gestützten Anwendung. Du lernst außerdem, KI-Forschungsarbeiten zu lesen und zu Open-Source-KI-Projekten beizutragen."
+        },
+        {
+          "q": "Brauche ich Programmiererfahrung für AI Forest?",
+          "a": "Grundlegende Programmiervertrautheit ist für einige fortgeschrittene Themen hilfreich, aber die Lektionen sind zugänglich gestaltet. Wir bieten geführte Beispiele und erklären Code Schritt für Schritt."
+        },
+        {
+          "q": "Ist AI Forest kostenlos?",
+          "a": "Ja, AI Forest ist kostenlos wie alle AI Educademy Programme. Unsere Mission ist es, fortgeschrittene KI-Bildung für alle zugänglich zu machen."
+        },
+        {
+          "q": "Auf welche Karrierewege bereitet AI Forest vor?",
+          "a": "AI Forest bereitet dich auf Rollen im KI-Produktmanagement, KI-Forschungsassistenz, KI-Engineering und Open-Source-KI-Beiträge vor. Es gibt dir das Gesamtverständnis, das Arbeitgeber schätzen."
+        }
+      ],
+      "ai-launchpad": [
+        {
+          "q": "Ist Interview Launchpad für absolute Anfänger geeignet?",
+          "a": "Ja! Interview Launchpad ist als Einstiegspunkt für jeden konzipiert, der seine Tech-Interview-Reise beginnt. Keine vorherige Interviewerfahrung nötig."
+        },
+        {
+          "q": "Wie lange dauert Interview Launchpad?",
+          "a": "Die meisten Lernenden schließen es in 3–4 Stunden ab. Die Lektionen behandeln Recherche-Techniken, Vorbereitungszeitpläne und den Aufbau von Selbstvertrauen."
+        },
+        {
+          "q": "Muss ich für Interview Launchpad programmieren können?",
+          "a": "Programmierkenntnisse sind nicht erforderlich. Interview Launchpad konzentriert sich auf Vorbereitungsstrategie, Unternehmensrecherche und Einstellung – Fähigkeiten, die unabhängig von deinem technischen Niveau gelten."
+        },
+        {
+          "q": "Werde ich lernen, wie man Unternehmen recherchiert?",
+          "a": "Ja! Du lernst systematische Techniken zur Unternehmensrecherche, zum Entschlüsseln von Stellenbeschreibungen und zum Erstellen von Vorbereitungszeitplänen, die auf bestimmte Rollen und Unternehmen zugeschnitten sind."
+        },
+        {
+          "q": "Ist Interview Launchpad kostenlos?",
+          "a": "Ja, komplett kostenlos. Der Karrierebereit-Track von AI Educademy soll jedem Zugang zu hochwertiger Interviewvorbereitung ermöglichen."
+        },
+        {
+          "q": "Was macht Interview Launchpad anders als andere Interviewvorbereitungen?",
+          "a": "Anders als Programme, die direkt in Coding-Aufgaben einsteigen, baut Interview Launchpad zuerst die strategische Grundlage auf: wie man recherchiert, plant und das Selbstvertrauen entwickelt, das Nervosität in Leistung verwandelt."
+        }
+      ],
+      "ai-masterpiece": [
+        {
+          "q": "Was ist AI Masterpiece?",
+          "a": "AI Masterpiece ist das Abschlussprojekt des KI-Meisterschaft-Tracks. Es kombiniert DSA, Systemdesign und Verhaltenskompetenzen in umfassenden Fallstudien und Portfolio-Projekten."
+        },
+        {
+          "q": "Welche Voraussetzungen hat AI Masterpiece?",
+          "a": "Du solltest AI Sketch bis AI Polish abgeschlossen haben oder gleichwertiges Wissen in DSA, Systemdesign und Verhaltensinterviews mitbringen."
+        },
+        {
+          "q": "Wie lange dauert AI Masterpiece?",
+          "a": "Plane 8–10 Stunden ein. Die Abschlussprojekte sind umfassend und darauf ausgelegt, portfoliotaugliche Arbeiten zu sein."
+        },
+        {
+          "q": "Hilft AI Masterpiece mir, Senior-Positionen zu bekommen?",
+          "a": "Ja! Das Programm ist speziell für Ingenieure konzipiert, die Senior+-Positionen anstreben. Du erstellst Portfolio-Stücke und übst vollständige Mock-Interviews."
+        },
+        {
+          "q": "Ist AI Masterpiece kostenlos?",
+          "a": "Ja, komplett kostenlos. AI Educademy ist bestrebt, erstklassige Interviewvorbereitung für alle zugänglich zu machen."
+        },
+        {
+          "q": "Welche Art von Projekten werde ich bauen?",
+          "a": "Du entwirfst Twitters KI-Feed von Anfang bis Ende, absolvierst vollständige Mock-Interviews mit detailliertem Feedback und erstellst ein Engineering-Portfolio, das deine technische Breite und Tiefe zeigt."
+        }
+      ],
+      "ai-ml-interview": [
+        {
+          "q": "Brauche ich ML-Erfahrung für KI- & ML-Interviews?",
+          "a": "Du solltest grundlegendes ML-Wissen mitbringen – Verständnis von überwachtem vs. unüberwachtem Lernen, was ein Modell ist und grundlegende Statistik. Das Programm baut Interview-Fähigkeiten auf dieser Grundlage auf."
+        },
+        {
+          "q": "Wie lange dauert KI- & ML-Interviews?",
+          "a": "Etwa 6–8 Stunden. ML-Systemdesign und Fallstudien erfordern durchdachte Analyse und Übung."
+        },
+        {
+          "q": "Was macht ML-Interviews anders als normale Tech-Interviews?",
+          "a": "ML-Interviews umfassen einzigartige Formate wie ML-Systemdesign, Modellevaluierungsdiskussionen und ML-Fallstudien. Dieses Programm deckt all diese spezialisierten Formate ab, die allgemeine Interviewvorbereitung nicht behandelt."
+        },
+        {
+          "q": "Werde ich ML-Systemdesign lernen?",
+          "a": "Ja! ML-Systemdesign ist ein Kernfokus. Du lernst, End-to-End-ML-Systeme zu entwerfen, einschließlich Datenpipelines, Modelltraining, Evaluierung, Bereitstellung und Monitoring."
+        },
+        {
+          "q": "Ist KI- & ML-Interviews kostenlos?",
+          "a": "Ja, komplett kostenlos. Spezialisierte ML-Interviewvorbereitung ist normalerweise teuer – wir machen sie für alle zugänglich."
+        },
+        {
+          "q": "Welche Unternehmen und Interview-Stile deckt dieses Programm ab?",
+          "a": "Das Programm bereitet dich auf ML-Interview-Formate vor, die bei Unternehmen wie Google, Meta, Amazon, Apple und KI-Startups verwendet werden. Jedes hat einzigartige Schwerpunkte, die wir aufschlüsseln und üben."
+        }
+      ],
+      "ai-offer": [
+        {
+          "q": "Wann sollte ich mit Offer & Beyond beginnen?",
+          "a": "Idealerweise, wenn du ein aktives Angebot hast oder dich in der Endphase von Interviews befindest. Die Verhandlungs- und Bewertungsrahmen sind am nützlichsten, wenn du echte Zahlen hast."
+        },
+        {
+          "q": "Wie lange dauert Offer & Beyond?",
+          "a": "Etwa 3–4 Stunden. Die Lektionen sind praxisorientiert und darauf ausgelegt, sofort auf deine Situation anwendbar zu sein."
+        },
+        {
+          "q": "Werde ich Gehaltsverhandlung lernen?",
+          "a": "Ja! Du lernst forschungsbasierte Verhandlungstaktiken, wie du dein Gehalt benchmarkst, Gegenangebote handhabst und selbstbewusst verhandelst, ohne das Angebot zu riskieren."
+        },
+        {
+          "q": "Behandelt Offer & Beyond Aktienoptionen und Benefits?",
+          "a": "Auf jeden Fall. Du lernst, Aktienoptionen, RSUs, Signing-Boni, Leistungspakete und die Gesamtvergütung zu bewerten – nicht nur das Grundgehalt."
+        },
+        {
+          "q": "Ist Offer & Beyond kostenlos?",
+          "a": "Ja, komplett kostenlos. Wir glauben, dass jeder Zugang zu Verhandlungswissen haben sollte, das die Karriereeinnahmen erheblich beeinflussen kann."
+        },
+        {
+          "q": "Kann Offer & Beyond mir helfen, mehrere Angebote zu vergleichen?",
+          "a": "Ja! Das Programm enthält ein Angebotsvergleichs-Framework, das dir hilft, mehrere Angebote objektiv zu bewerten – nach Vergütung, Wachstumspotenzial, Work-Life-Balance und Karriereentwicklung."
+        }
+      ],
+      "ai-polish": [
+        {
+          "q": "Was behandelt AI Polish?",
+          "a": "AI Polish konzentriert sich auf die Meisterung von Verhaltensinterviews. Du lernst das STAR-Framework, strukturiertes Storytelling, Führungsprinzipien und Kommunikationsstrategien für technische und KI-Szenarien."
+        },
+        {
+          "q": "Brauche ich technische Erfahrung für AI Polish?",
+          "a": "Du brauchst echte Projekterfahrung, aus der du für deine Geschichten schöpfen kannst. AI Polish lehrt dich, wie du diese Erfahrungen effektiv strukturierst und präsentierst, unabhängig von deinem Erfahrungslevel."
+        },
+        {
+          "q": "Wie lange dauert AI Polish?",
+          "a": "AI Polish dauert etwa 4–5 Stunden. Wir empfehlen, dir zwischen den Lektionen Zeit zu nehmen, um deine eigenen Geschichten zu formulieren, für maximalen Nutzen."
+        },
+        {
+          "q": "Ist AI Polish nur für Senior-Ingenieure?",
+          "a": "Keineswegs! Ingenieure auf jedem Level profitieren von Verhaltensinterview-Fähigkeiten. AI Polish bietet Frameworks, die funktionieren, ob du dich für deine erste Stelle oder eine Staff-Engineer-Position bewirbst."
+        },
+        {
+          "q": "Bekomme ich ein Zertifikat?",
+          "a": "Ja! Schließe alle Lektionen ab, um ein Zertifikat zu erhalten, das deine Beherrschung von Verhaltensinterview-Techniken nachweist."
+        },
+        {
+          "q": "Warum sind Verhaltensinterviews für KI-Rollen wichtig?",
+          "a": "KI-Rollen erfordern zunehmend starke Kommunikationsfähigkeiten – Modellergebnisse Stakeholdern erklären, ethische Dilemmas navigieren und funktionsübergreifende Teams führen. AI Polish bereitet dich genau auf diese Szenarien vor."
+        }
+      ],
+      "ai-seeds": [
+        {
+          "q": "Ist AI Seeds für absolute Anfänger geeignet?",
+          "a": "Auf jeden Fall! AI Seeds ist speziell für Menschen ohne technischen Hintergrund konzipiert. Wir verwenden Alltagssprache, Beispiele aus dem echten Leben und visuelle Erklärungen, damit du KI-Konzepte ohne Vorkenntnisse in Programmierung oder Mathematik verstehen kannst."
+        },
+        {
+          "q": "Wie lange dauert es, AI Seeds abzuschließen?",
+          "a": "Die meisten Lernenden schließen AI Seeds in etwa 2–3 Stunden in gemütlichem Tempo ab. Du kannst die Lektionen in einer Sitzung durcharbeiten oder über einige Tage verteilen – es gibt keine Fristen, und dein Fortschritt wird automatisch gespeichert."
+        },
+        {
+          "q": "Muss ich für AI Seeds programmieren können?",
+          "a": "Überhaupt nicht. AI Seeds konzentriert sich auf den Aufbau eines konzeptionellen Verständnisses von Künstlicher Intelligenz. Du wirst keine einzige Zeile Code schreiben. Das Ziel ist, dir zu helfen zu verstehen, was KI ist, wie sie funktioniert und warum sie wichtig ist – alles in einfacher Sprache."
+        },
+        {
+          "q": "Bekomme ich nach Abschluss von AI Seeds ein Zertifikat?",
+          "a": "Ja! Sobald du alle Lektionen in AI Seeds abgeschlossen hast, kannst du ein personalisiertes Abschlusszertifikat erstellen. Es ist eine tolle Möglichkeit, dein Engagement für das Lernen über Künstliche Intelligenz zu zeigen."
+        },
+        {
+          "q": "Ist AI Seeds wirklich kostenlos?",
+          "a": "Ja, AI Seeds ist komplett kostenlos. AI Educademy ist ein Open-Source-Projekt, das sich der Zugänglichkeit von KI-Bildung für alle verschrieben hat. Es gibt keine versteckten Kosten, Paywalls oder Premium-Upgrades für dieses Programm."
+        },
+        {
+          "q": "Welche Themen behandelt AI Seeds?",
+          "a": "AI Seeds behandelt die Grundlagen: Was Künstliche Intelligenz wirklich ist, wie Maschinen aus Daten lernen, den Unterschied zwischen KI und traditioneller Software – und du trainierst sogar ein einfaches KI-Modell direkt in deinem Browser. Es ist der perfekte Startpunkt für deine KI-Lernreise."
+        }
+      ],
+      "ai-sketch": [
+        {
+          "q": "Ist AI Sketch für absolute Anfänger geeignet?",
+          "a": "AI Sketch setzt grundlegende Programmierkenntnisse in einer beliebigen Sprache voraus. Wenn du Schleifen, Funktionen schreiben und Variablen verstehen kannst, bist du bereit. Das Programm konzentriert sich auf Grundlagen von Datenstrukturen und Algorithmen."
+        },
+        {
+          "q": "Wie lange dauert es, AI Sketch abzuschließen?",
+          "a": "Die meisten Lernenden schließen AI Sketch in 4–5 Stunden ab. Wir empfehlen, jedes Muster mit den bereitgestellten Übungen zu üben, bevor du zur nächsten Lektion übergehst."
+        },
+        {
+          "q": "Welche Programmiersprache verwendet AI Sketch?",
+          "a": "AI Sketch vermittelt Konzepte sprachunabhängig mit Pseudocode und visuellen Diagrammen. Beispiele werden in Python gezeigt, da es gut lesbar ist, aber die Muster gelten für jede Programmiersprache."
+        },
+        {
+          "q": "Ist AI Sketch gut für die Interviewvorbereitung?",
+          "a": "Auf jeden Fall! AI Sketch behandelt die grundlegenden Datenstruktur- und Algorithmen-Muster, die in 70 % der Coding-Interviews vorkommen: Arrays, Hash Maps, Strings, Sortieren und Suchen."
+        },
+        {
+          "q": "Bekomme ich ein Zertifikat für AI Sketch?",
+          "a": "Ja! Schließe alle Lektionen ab, um dein Zertifikat zu erhalten. Es zeigt deine Beherrschung grundlegender DSA-Konzepte."
+        },
+        {
+          "q": "Wie verbindet sich AI Sketch mit KI?",
+          "a": "Jede Datenstruktur und jeder Algorithmus wird mit KI-Anwendungen aus der realen Welt erklärt. Du siehst, wie Hash Maps Empfehlungssysteme antreiben, wie Sortieren effiziente Datenpipelines ermöglicht und wie diese Grundlagen allen KI-Systemen zugrunde liegen."
+        }
+      ],
+      "ai-sprouts": [
+        {
+          "q": "Ist AI Sprouts für Anfänger geeignet?",
+          "a": "AI Sprouts richtet sich an Lernende mit grundlegendem KI-Bewusstsein – idealerweise nach Abschluss von AI Seeds. Wenn du bereits weißt, was KI auf hoher Ebene ist, bist du bereit, die Bausteine wie Datentypen, Algorithmen und Ethik zu erkunden."
+        },
+        {
+          "q": "Wie lange dauert es, AI Sprouts abzuschließen?",
+          "a": "AI Sprouts dauert in der Regel 3–4 Stunden. Die Lektionen bauen aufeinander auf, daher empfehlen wir, sie der Reihe nach durchzuarbeiten, aber du kannst jederzeit Pausen machen."
+        },
+        {
+          "q": "Brauche ich Programmierkenntnisse für AI Sprouts?",
+          "a": "Programmieren ist nicht erforderlich. AI Sprouts verwendet interaktive Visualisierungen und praktische Übungen, um dein Verständnis dafür zu entwickeln, wie KI funktioniert, ohne Code zu schreiben."
+        },
+        {
+          "q": "Bekomme ich nach Abschluss von AI Sprouts ein Zertifikat?",
+          "a": "Ja! Schließe alle Lektionen ab und du erhältst ein personalisiertes Abschlusszertifikat, das du auf LinkedIn oder bei Arbeitgebern teilen kannst."
+        },
+        {
+          "q": "Ist AI Sprouts kostenlos?",
+          "a": "Ja, komplett kostenlos. AI Educademy glaubt, dass hochwertige KI-Bildung für jeden, überall, zugänglich sein sollte."
+        },
+        {
+          "q": "Was werde ich in AI Sprouts lernen?",
+          "a": "Du lernst, zwischen überwachtem, unüberwachtem und bestärkendem Lernen zu unterscheiden. Du verstehst Trainingsdaten, erkundest, wie KI Entscheidungen trifft, und denkst kritisch über KI-Bias und Fairness nach."
+        }
+      ],
+      "ai-technical": [
+        {
+          "q": "Welche Programmiersprachen behandelt Technical Interviews?",
+          "a": "Die Konzepte werden sprachunabhängig gelehrt, mit Beispielen in Python. Die Problemlösungsmuster und Systemdesign-Prinzipien gelten unabhängig von deiner bevorzugten Sprache."
+        },
+        {
+          "q": "Wie lange dauert Technical Interviews?",
+          "a": "Plane 6–8 Stunden ein. Coding-Muster und Systemdesign-Konzepte erfordern Übungszeit über das reine Lesen der Lektionen hinaus."
+        },
+        {
+          "q": "Ist Technical Interviews für Junior-Entwickler geeignet?",
+          "a": "Du brauchst solide Programmiergrundlagen in mindestens einer Sprache. Wenn du Funktionen, Schleifen schreiben und grundlegende Datenstrukturen nutzen kannst, bist du bereit."
+        },
+        {
+          "q": "Welche Coding-Muster werde ich lernen?",
+          "a": "Du meisterst die häufigsten Coding-Interview-Muster: Arrays, Hash Maps, Two Pointers, Sliding Window, Bäume, Graphen, dynamische Programmierung und mehr – alles mit klaren Erklärungen und Übungsaufgaben."
+        },
+        {
+          "q": "Ist Technical Interviews kostenlos?",
+          "a": "Ja, komplett kostenlos. Wir glauben, dass jeder Zugang zu hochwertiger Interviewvorbereitung verdient."
+        },
+        {
+          "q": "Umfasst Technical Interviews auch Systemdesign?",
+          "a": "Ja! Das Programm behandelt sowohl Coding-Interviews als auch Systemdesign-Grundlagen. Du lernst, skalierbare Systeme zu entwerfen und technische Entscheidungen klar am Whiteboard zu kommunizieren."
+        }
+      ]
+    }
   },
   "dashboard": {
     "title": "Mein Lern-Dashboard",
@@ -630,7 +1038,8 @@
     "linkCopied": "Copied!",
     "shareModalTitle": "Share Achievement",
     "shareTweet": "I just completed {program} on AI Educademy! 🎓🤖 #AILearning #AIEducademy",
-    "shareDescription": "I completed the {program} program on AI Educademy"
+    "shareDescription": "I completed the {program} program on AI Educademy",
+    "upgradeCertificate": "Upgraden für Zertifikat"
   },
   "auth": {
     "startLearning": "Jetzt lernen",
@@ -908,7 +1317,9 @@
     "shareText": "Kostenlose KI-Bildung für alle",
     "headline": "Werde Teil der Bewegung",
     "subtitle": "Erhalte die neuesten Lektionen, Tipps und Updates direkt in dein Postfach. Gib uns einen Stern auf GitHub, um kostenlose KI-Bildung für alle zu unterstützen.",
-    "shareTitle": "AI Educademy"
+    "shareTitle": "AI Educademy",
+    "githubTitle": "Open Source & Transparent",
+    "newsletterTitle": "Schließ dich Lernenden in 11 Sprachen an"
   },
   "lab": {
     "title": "KI-Labor",
@@ -1458,7 +1869,12 @@
       "f4": "AI Mock Interview lab",
       "f5": "Completion certificates",
       "f6": "Server-side progress sync across devices"
-    }
+    },
+    "promoCode": "Hast du einen Promo-Code?",
+    "promoCodeApplied": "Code angewendet!",
+    "promoCodeApply": "Anwenden",
+    "promoCodeInvalid": "Ungültiger Code",
+    "promoCodePlaceholder": "Code eingeben"
   },
   "paywall": {
     "title": "Premium-Inhalte",
@@ -1520,7 +1936,9 @@
     "generating": "Wird erstellt...",
     "progress": "Schließe noch {remaining} Lektionen ab, um dein Zertifikat zu erhalten",
     "completed": "Du hast dein Zertifikat verdient!",
-    "notSignedIn": "Melde dich an, um deinen Fortschritt zu verfolgen und Zertifikate zu erhalten"
+    "notSignedIn": "Melde dich an, um deinen Fortschritt zu verfolgen und Zertifikate zu erhalten",
+    "premiumOnly": "Zertifikate für Premium-Programme sind mit einem Pro-Abonnement verfügbar",
+    "upgradeToCertificate": "Auf Pro upgraden für Zertifikat"
   },
   "continueLearning": {
     "title": "Machen Sie dort weiter, wo Sie aufgehört haben",
@@ -1668,5 +2086,223 @@
     "verifiedCompletion": "Verified Completion",
     "defaultTitle": "Achievement | AI Educademy",
     "defaultDescription": "An achievement earned on AI Educademy - Free AI education for everyone."
+  },
+  "bookmarks": {
+    "addedOn": "Gespeichert am",
+    "bookmark": "Lektion merken",
+    "bookmarked": "Gemerkt!",
+    "browsePrograms": "Programme durchsuchen",
+    "description": "Lektionen, die du für später gespeichert hast",
+    "empty": "Noch keine Lesezeichen",
+    "emptyDescription": "Durchsuche unsere Programme und finde Lektionen, die dir gefallen!",
+    "removeBookmark": "Lesezeichen entfernen",
+    "removed": "Lesezeichen entfernt",
+    "title": "Meine Lesezeichen"
+  },
+  "emails": {
+    "abandonedCartPreview": "Deine KI-Lernreise wartet auf dich",
+    "abandonedCartSubject": "Du hast etwas vergessen!"
+  },
+  "finalCta": {
+    "headline": "Beginne noch heute mit dem KI-Lernen",
+    "primaryText": "Jetzt loslegen",
+    "secondaryText": "Lernpfad ansehen",
+    "subtitle": "Kostenlos, Open Source, in deiner Sprache"
+  },
+  "howItWorks": {
+    "step1Desc": "Wähle aus 3 Tracks – KI-Lernen, Handwerkskunst oder Karrierebereit. Jeder Track bietet kuratierte Programme, die dich vom Anfänger zum Experten führen.",
+    "step1Title": "Wähle deinen Weg",
+    "step2Desc": "Interaktive Lektionen, praktische Experimente und echter Code. Kein passives Video-Schauen – du baust Verständnis durch Übung auf.",
+    "step2Title": "Lernen durch Handeln",
+    "step3Desc": "Wende deine Fähigkeiten in unserem KI-Labor mit 7 Experimenten an. Baue Chatbots, Klassifikatoren und KI-Agenten, die echte Probleme lösen.",
+    "step3Title": "Echte Projekte bauen",
+    "subtitle": "Drei einfache Schritte vom neugierigen Anfänger zum selbstbewussten KI-Entwickler",
+    "title": "So funktioniert es"
+  },
+  "journey": {
+    "completed": "abgeschlossen",
+    "current": "In Bearbeitung",
+    "level": "Level",
+    "locked": "Gesperrt",
+    "overallProgress": "Gesamtfortschritt",
+    "signInPrompt": "Melde dich an, um deinen Fortschritt zu verfolgen und deinen persönlichen Lernpfad freizuschalten.",
+    "startJourney": "Starte deine Reise",
+    "subtitle": "Navigiere deinen persönlichen Weg zur KI-Meisterschaft – von den Grundlagen bis zur Karrierebereitschaft.",
+    "title": "Deine KI-Lernreise",
+    "trackAI": "KI-Lernen",
+    "trackCareer": "Karrierebereit",
+    "trackCraft": "Handwerkskunst"
+  },
+  "labPreview": {
+    "aiChat": "KI-Chat",
+    "aiChatDesc": "Baue konversationelle KI-Systeme",
+    "aiOrHuman": "KI oder Mensch?",
+    "aiOrHumanDesc": "Teste deine KI-Erkennungsfähigkeiten",
+    "ctaText": "Labor entdecken",
+    "ethicsScenarios": "Ethik-Szenarien",
+    "ethicsScenariosDesc": "Navigiere reale KI-Dilemmas",
+    "imageGeneration": "Bilderzeugung",
+    "imageGenerationDesc": "Erstelle Bilder mit KI-Modellen",
+    "neuralPlayground": "Neuronaler Spielplatz",
+    "neuralPlaygroundDesc": "Trainiere neuronale Netze visuell",
+    "promptEngineering": "Prompt Engineering",
+    "promptEngineeringDesc": "Meistere die Kunst der KI-Prompts",
+    "sentimentAnalysis": "Stimmungsanalyse",
+    "sentimentAnalysisDesc": "Analysiere Textemotionen in Echtzeit",
+    "subtitle": "Experimentiere mit echten KI-Konzepten in deinem Browser. Keine Installation nötig.",
+    "title": "Interaktives KI-Labor"
+  },
+  "launch": {
+    "badge": "Schau uns auf Product Hunt an",
+    "countdownPrefix": "Launch auf Product Hunt in",
+    "days": "Tage",
+    "dismiss": "Schließen",
+    "hours": "Stunden",
+    "liveMessage": "Wir sind LIVE auf Product Hunt! Schau vorbei",
+    "minutes": "Minuten",
+    "seconds": "Sekunden"
+  },
+  "leadMagnet": {
+    "description": "Schließe dich Tausenden von Lernenden an, die ihre KI-Karriere mit dieser kostenlosen Ressource gestartet haben. Kein Füllmaterial, nur umsetzbares Wissen.",
+    "emailPlaceholder": "Deine E-Mail-Adresse",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "errorInvalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
+    "errorNameRequired": "Bitte gib deinen Namen ein.",
+    "errorRateLimit": "Zu viele Versuche. Bitte versuche es in ein paar Minuten erneut.",
+    "freeForever": "100 % Kostenlos",
+    "instantDownload": "Sofortiger Download",
+    "metaDescription": "Hol dir das kostenlose 2026 KI-Starterpaket – dein vollständiger Leitfaden zum KI-Lernen, Karrierewege, Tools und Interviewvorbereitung. Sofort herunterladen.",
+    "metaTitle": "Kostenloser Download: Das 2026 KI-Starterpaket | AI Educademy",
+    "namePlaceholder": "Dein Vorname",
+    "pageCount": "10-seitiger PDF-Leitfaden",
+    "privacyNote": "Wir respektieren deine Privatsphäre. Jederzeit abbestellbar.",
+    "socialProof": "Schließe dich {count}+ Lernenden an, die diesen Leitfaden heruntergeladen haben",
+    "submitButton": "Kostenloses PDF herunterladen",
+    "submitting": "Wird gesendet...",
+    "subtitle": "Alles, was du für den Start deiner KI-Reise brauchst – Lernplan, Karrierewege, wichtige Tools und Interviewvorbereitung – in einem kostenlosen PDF.",
+    "successDownload": "Jetzt herunterladen",
+    "successMessage": "Wir haben das KI-Starterpaket an deine E-Mail gesendet. Überprüfe deinen Posteingang (und den Spam-Ordner) für den Download-Link.",
+    "successTitle": "Überprüfe deinen Posteingang! 🎉",
+    "title": "Kostenloser Download: Das 2026 KI-Starterpaket",
+    "whatInside": {
+      "careers": "KI-Karrierewege & Gehaltsguide für 2026",
+      "concepts": "Die 10 wichtigsten KI-Konzepte einfach erklärt",
+      "interview": "KI-Interviewvorbereitung – Kurzreferenz-Spickzettel",
+      "roadmap": "KI-Lernplan – vom Anfänger bis zum Berufseinstieg",
+      "tools": "Wichtige KI-Tools & Ressourcen, von Experten kuratiert"
+    },
+    "whatInsideTitle": "Was enthalten ist"
+  },
+  "onboarding": {
+    "back": "Zurück",
+    "experience": {
+      "advanced": {
+        "description": "Ich bin erfahren und möchte spezialisierte Fähigkeiten erlernen",
+        "title": "Fortgeschritten"
+      },
+      "beginner": {
+        "description": "Ich bin neu im Bereich KI und möchte von Grund auf lernen",
+        "title": "Anfänger"
+      },
+      "intermediate": {
+        "description": "Ich kenne einige Grundlagen und möchte tiefer einsteigen",
+        "title": "Mittelstufig"
+      },
+      "subtitle": "Das hilft uns, den richtigen Startpunkt zu empfehlen",
+      "title": "Wie ist deine Erfahrung mit KI?"
+    },
+    "getStarted": "Los geht's",
+    "goals": {
+      "build": {
+        "description": "Praktisches Programmieren mit echten KI-Projekten",
+        "title": "KI-Anwendungen bauen"
+      },
+      "creative": {
+        "description": "Entdecke kreative und künstlerische Anwendungen von KI",
+        "title": "KI kreativ erkunden"
+      },
+      "interviews": {
+        "description": "Bereite dich auf technische KI/ML-Vorstellungsgespräche vor",
+        "title": "KI-Interviews meistern"
+      },
+      "subtitle": "Wähle alle zutreffenden aus",
+      "title": "Was möchtest du erreichen?",
+      "understand": {
+        "description": "Lerne die Grundlagen und Theorie hinter KI",
+        "title": "KI-Konzepte verstehen"
+      },
+      "work": {
+        "description": "Wende KI-Tools und Techniken in deinem Job an",
+        "title": "KI bei der Arbeit nutzen"
+      }
+    },
+    "metaDescription": "Personalisiere dein AI Educademy Lernerlebnis",
+    "metaTitle": "Loslegen",
+    "next": "Weiter",
+    "recommendation": {
+      "cta": "Jetzt lernen →",
+      "exploreAll": "Oder alle Programme erkunden",
+      "programs": {
+        "ai-launchpad": {
+          "description": "Starte deine KI-Karrierevorbereitung mit Interview-Grundlagen, häufigen Fragemustern und Übungen zum Aufbau von Selbstvertrauen.",
+          "name": "AI Launchpad"
+        },
+        "ai-seeds": {
+          "description": "Beginne deine KI-Reise mit anfängerfreundlichen Lektionen zu Kernkonzepten, Terminologie und wie KI die Welt verändert.",
+          "name": "AI Seeds"
+        },
+        "ai-sketch": {
+          "description": "Beginne mit dem Bau von KI-Anwendungen durch praktische Projekte. Lerne KI-APIs, Prompt Engineering und praktische Programmiermuster.",
+          "name": "AI Sketch"
+        }
+      },
+      "subtitle": "Basierend auf deiner Auswahl glauben wir, dass dir das gefallen wird",
+      "title": "Dein empfohlener Pfad ✨"
+    },
+    "skip": "Überspringen",
+    "welcome": {
+      "defaultName": "du",
+      "subtitle": "Lass uns dein Lernerlebnis in nur wenigen Schritten personalisieren.",
+      "tagBuild": "Bauen",
+      "tagGrow": "Wachsen",
+      "tagLearn": "Lernen",
+      "title": "Willkommen bei AI Educademy, {name}! 🎉"
+    }
+  },
+  "projects": {
+    "agent": "KI-Agent",
+    "agentDesc": "Erstelle eine autonome KI, die denkt, plant und Aufgaben mit Tools und APIs ausführt.",
+    "agentDifficulty": "Fortgeschritten",
+    "agentTags": "LLMs,Tool-Nutzung,Agenten",
+    "chatbot": "KI-Chatbot",
+    "chatbotDesc": "Baue eine konversationelle KI, die Kontext versteht, Mehrrunden-Dialoge führt und intelligent antwortet.",
+    "chatbotDifficulty": "Mittelstufig",
+    "chatbotTags": "NLP,Transformers,Python",
+    "classifier": "Bildklassifikator",
+    "classifierDesc": "Trainiere ein Computer-Vision-Modell, das Bilder mit hoher Genauigkeit erkennt und kategorisiert.",
+    "classifierDifficulty": "Mittelstufig",
+    "classifierTags": "CNN,TensorFlow,Computer Vision",
+    "recommender": "Empfehlungssystem",
+    "recommenderDesc": "Entwirf ein ML-System, das Nutzerpräferenzen vorhersagt und personalisierte Vorschläge liefert.",
+    "recommenderDifficulty": "Fortgeschritten",
+    "recommenderTags": "Collaborative Filtering,ML,Data Science",
+    "subtitle": "Vom Lernen zum Bauen. Diese Projekte zeigen, wozu du fähig sein wirst.",
+    "title": "Was du bauen wirst"
+  },
+  "testimonials": {
+    "languages": "11 Sprachen",
+    "languagesSub": "Lerne in deiner Muttersprache",
+    "openSource": "Open Source",
+    "openSourceSub": "Jede Zeile Code, transparent",
+    "programs": "15 Programme",
+    "programsSub": "Vom Anfänger bis zur Produktions-KI",
+    "quote": "Entwickelt von einem Ingenieur mit über 15 Jahren Erfahrung bei JP Morgan, Sky und globalen Technologieunternehmen – konzipiert, um KI-Bildung wirklich zugänglich zu machen.",
+    "title": "Plattform-Highlights"
+  },
+  "trustBar": {
+    "languages": "Sprachen",
+    "lessons": "Lektionen",
+    "openSource": "Open Source",
+    "programs": "Programme"
   }
 }
