@@ -7,6 +7,7 @@ import {
   boolean,
   primaryKey,
   uniqueIndex,
+  unique,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 
@@ -190,3 +191,21 @@ export const contactSubmissions = pgTable("contact_submissions", {
   status: text("status", { enum: ["new", "read", "replied", "archived"] }).default("new"),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
 });
+
+/* ─────────────── Lesson Bookmarks / Favorites ─────────────── */
+
+export const lessonBookmarks = pgTable(
+  "lesson_bookmarks",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    programSlug: text("program_slug").notNull(),
+    lessonSlug: text("lesson_slug").notNull(),
+    createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+  },
+  (table) => [unique().on(table.userId, table.programSlug, table.lessonSlug)]
+);

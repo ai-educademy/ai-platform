@@ -16,6 +16,10 @@ import { auth } from "@/auth";
 import { getUserPlan, canAccessPremium } from "@/lib/subscription";
 import { Paywall } from "@/components/lessons/Paywall";
 import { LessonComments } from "@/components/lessons/LessonComments";
+import { BookmarkButton } from "@/components/lessons/BookmarkButton";
+import { db } from "@/lib/db";
+import { lessonBookmarks } from "@/lib/db/schema";
+import { eq, and } from "drizzle-orm";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -97,11 +101,29 @@ export default async function ProgramLessonPage({
   const isPremium = requiresPremium(programSlug, lesson.order);
   let hasAccess = !isPremium;
 
-  if (isPremium) {
-    const session = await auth();
-    if (session?.user?.id) {
+  // Always fetch session for bookmark status
+  const session = await auth();
+  let isBookmarked = false;
+
+  if (session?.user?.id) {
+    if (isPremium) {
       const plan = await getUserPlan(session.user.id);
       hasAccess = canAccessPremium(plan);
+    }
+
+    // Check bookmark status
+    if (db) {
+      const [bookmark] = await db
+        .select({ id: lessonBookmarks.id })
+        .from(lessonBookmarks)
+        .where(
+          and(
+            eq(lessonBookmarks.userId, session.user.id),
+            eq(lessonBookmarks.programSlug, programSlug),
+            eq(lessonBookmarks.lessonSlug, slug)
+          )
+        );
+      isBookmarked = !!bookmark;
     }
   }
 
@@ -171,7 +193,16 @@ export default async function ProgramLessonPage({
             </span>
           </div>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">{tLT(slug)}</h1>
+        <div className="flex items-start gap-3">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight flex-1">{tLT(slug)}</h1>
+          {session?.user?.id && (
+            <BookmarkButton
+              programSlug={programSlug}
+              lessonSlug={slug}
+              initialBookmarked={isBookmarked}
+            />
+          )}
+        </div>
         <div className="mt-4">
           <ListenButton locale={locale} />
         </div>

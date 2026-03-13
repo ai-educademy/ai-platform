@@ -38,7 +38,8 @@
     "aiFoundationsPath": "AI Foundations",
     "aiMasteryPath": "AI Mastery",
     "careerReadyPath": "Career Ready",
-    "journey": "Journey"
+    "journey": "Journey",
+    "bookmarks": "Bookmarks"
   },
   "hero": {
     "badge": "Open Source · 11 Languages · Community Driven",
@@ -2290,5 +2291,17 @@
   "emails": {
     "abandonedCartSubject": "You left something behind!",
     "abandonedCartPreview": "Your AI learning journey is waiting"
+  },
+  "bookmarks": {
+    "title": "My Bookmarks",
+    "description": "Lessons you've saved for later",
+    "empty": "No bookmarks yet",
+    "emptyDescription": "Browse our programs to find lessons you love!",
+    "browsePrograms": "Browse Programs",
+    "bookmark": "Bookmark this lesson",
+    "removeBookmark": "Remove bookmark",
+    "bookmarked": "Bookmarked!",
+    "removed": "Bookmark removed",
+    "addedOn": "Saved on"
   }
 }
