@@ -593,7 +593,137 @@
     "comingSoon": "Lessons Coming Soon",
     "comingSoonDesc": "We're crafting these lessons with care. Check back soon!",
     "startFirst": "Start First Lesson",
-    "backToAll": "Back to All Academics"
+    "backToAll": "Back to All Academics",
+    "whoIsThisFor": "Who Is This For?",
+    "topicsCovered": "Topics Covered",
+    "faqTitle": "Frequently Asked Questions",
+    "relatedArticles": "Related Articles",
+    "tryExperiments": "Try Our Interactive Experiments",
+    "tryExperimentsDesc": "Put theory into practice with hands-on AI experiments you can run right in your browser.",
+    "tryPromptLab": "Explore the Prompt Lab",
+    "tryPromptLabDesc": "Practice prompt engineering techniques with our interactive Prompt Lab and see results in real time.",
+    "faq": {
+      "ai-seeds": [
+        { "q": "Is AI Seeds suitable for complete beginners?", "a": "Absolutely! AI Seeds is designed specifically for people with zero technical background. We use everyday language, real-world analogies, and visual explanations so you can understand AI concepts without any prior knowledge of programming or mathematics." },
+        { "q": "How long does it take to complete AI Seeds?", "a": "Most learners complete AI Seeds in about 2–3 hours at a comfortable pace. You can go through the lessons in one sitting or spread them over a few days — there are no deadlines, and your progress is saved automatically." },
+        { "q": "Do I need to know programming for AI Seeds?", "a": "Not at all. AI Seeds focuses on building conceptual understanding of artificial intelligence. You won't write a single line of code. The goal is to help you understand what AI is, how it works, and why it matters — all in plain language." },
+        { "q": "Will I get a certificate after completing AI Seeds?", "a": "Yes! Once you complete all lessons in AI Seeds, you can generate a personalised certificate of completion. It's a great way to show your commitment to learning about artificial intelligence." },
+        { "q": "Is AI Seeds really free?", "a": "Yes, AI Seeds is completely free. AI Educademy is an open-source project committed to making AI education accessible to everyone. There are no hidden costs, paywalls, or premium upsells for this program." },
+        { "q": "What topics does AI Seeds cover?", "a": "AI Seeds covers the fundamentals: what artificial intelligence actually is, how machines learn from data, the difference between AI and traditional software, and you'll even train a simple AI model right in your browser. It's the perfect starting point for your AI learning journey." }
+      ],
+      "ai-sprouts": [
+        { "q": "Is AI Sprouts suitable for beginners?", "a": "AI Sprouts is designed for learners who have basic AI awareness — ideally after completing AI Seeds. If you already know what AI is at a high level, you're ready to explore the building blocks like data types, algorithms, and ethics." },
+        { "q": "How long does it take to complete AI Sprouts?", "a": "AI Sprouts typically takes 3–4 hours to complete. The lessons build on each other, so we recommend going through them in order, but you can take breaks anytime." },
+        { "q": "Do I need programming skills for AI Sprouts?", "a": "No programming is required. AI Sprouts uses interactive visuals and hands-on exercises to build your intuition about how AI works, without writing code." },
+        { "q": "Will I get a certificate after completing AI Sprouts?", "a": "Yes! Complete all lessons and you'll earn a personalised certificate of completion that you can share on LinkedIn or with employers." },
+        { "q": "Is AI Sprouts free?", "a": "Yes, completely free. AI Educademy believes quality AI education should be accessible to everyone, everywhere." },
+        { "q": "What will I learn in AI Sprouts?", "a": "You'll learn to distinguish between supervised, unsupervised, and reinforcement learning. You'll understand training data, explore how AI makes decisions, and think critically about AI bias and fairness." }
+      ],
+      "ai-branches": [
+        { "q": "What makes AI Branches different from earlier programs?", "a": "AI Branches focuses on real-world applications. While Seeds and Sprouts build foundational knowledge, Branches shows you AI in action across healthcare, finance, creative arts, and more — and you'll start building simple projects." },
+        { "q": "How long does AI Branches take to complete?", "a": "Plan for about 4–5 hours. The projects take a bit longer than reading-only lessons, but they're the most rewarding part of the program." },
+        { "q": "Do I need coding experience for AI Branches?", "a": "Basic familiarity with concepts helps but isn't required. The projects use guided, no-code tools so you can focus on understanding AI applications rather than syntax." },
+        { "q": "Will I build real projects in AI Branches?", "a": "Yes! You'll build a simple chatbot, explore how image recognition works, and create an AI-powered mini project. These hands-on experiences are designed to solidify your understanding." },
+        { "q": "Is AI Branches free?", "a": "Yes, AI Branches is completely free. All programs on AI Educademy are open-source and accessible without cost." },
+        { "q": "What industries does AI Branches cover?", "a": "You'll explore AI applications in healthcare (diagnosis, drug discovery), creative arts (image generation, music), finance (fraud detection), and everyday tools like chatbots and virtual assistants." }
+      ],
+      "ai-canopy": [
+        { "q": "Is AI Canopy suitable for beginners?", "a": "AI Canopy is an intermediate-level program. We recommend completing AI Branches first, as Canopy dives deeper into neural networks, large language models, and AI system design." },
+        { "q": "How long does AI Canopy take to complete?", "a": "Expect to spend 5–6 hours on AI Canopy. The technical depth requires more time for comprehension, but every concept is explained with clear visuals and examples." },
+        { "q": "Will I learn about ChatGPT and large language models?", "a": "Yes! AI Canopy covers how large language models work, including the transformer architecture that powers ChatGPT, GPT-4, and similar models. You'll also master prompt engineering techniques." },
+        { "q": "Do I need to know programming for AI Canopy?", "a": "No programming is required, though having basic technical literacy helps. We explain neural networks and LLMs conceptually with diagrams and interactive visualisations." },
+        { "q": "Will I get a certificate after completing AI Canopy?", "a": "Yes! A personalised certificate is available upon completion of all lessons. It demonstrates your understanding of advanced AI concepts." },
+        { "q": "What is prompt engineering and why does AI Canopy teach it?", "a": "Prompt engineering is the skill of writing effective instructions for AI models like ChatGPT. It's one of the most in-demand skills in the AI era, and AI Canopy dedicates multiple lessons to mastering it." }
+      ],
+      "ai-forest": [
+        { "q": "What level is AI Forest designed for?", "a": "AI Forest is our most advanced program in the AI Foundations track. It's designed for learners who've completed AI Canopy and want the complete picture of the AI ecosystem." },
+        { "q": "How long does AI Forest take to complete?", "a": "AI Forest takes approximately 6–8 hours. It covers advanced topics like reading research papers, contributing to open-source AI, and building production AI systems." },
+        { "q": "Will I learn to build AI applications in AI Forest?", "a": "Yes! One of the key outcomes is building and deploying an AI-powered application. You'll also learn to read AI research papers and contribute to open-source AI projects." },
+        { "q": "Do I need programming experience for AI Forest?", "a": "Basic programming familiarity is helpful for some advanced topics, but the lessons are designed to be accessible. We provide guided examples and explain code step by step." },
+        { "q": "Is AI Forest free?", "a": "Yes, AI Forest is free like all AI Educademy programs. Our mission is to make advanced AI education accessible to everyone." },
+        { "q": "What career paths does AI Forest prepare me for?", "a": "AI Forest prepares you for roles in AI product management, AI research assistance, AI engineering, and open-source AI contribution. It gives you the big-picture understanding employers value." }
+      ],
+      "ai-sketch": [
+        { "q": "Is AI Sketch suitable for complete beginners?", "a": "AI Sketch requires basic programming knowledge in any language. If you can write loops, functions, and understand variables, you're ready. The program focuses on data structures and algorithms fundamentals." },
+        { "q": "How long does AI Sketch take to complete?", "a": "Most learners complete AI Sketch in 4–5 hours. We recommend practising each pattern with the provided exercises before moving to the next lesson." },
+        { "q": "What programming language does AI Sketch use?", "a": "AI Sketch teaches concepts language-agnostically with pseudocode and visual diagrams. Examples are shown in Python for readability, but the patterns apply to any programming language." },
+        { "q": "Is AI Sketch good for interview preparation?", "a": "Absolutely! AI Sketch covers the foundational data structures and algorithms patterns that appear in 70% of coding interviews: arrays, hash maps, strings, sorting, and searching." },
+        { "q": "Will I get a certificate for AI Sketch?", "a": "Yes! Complete all lessons to earn your certificate. It demonstrates your mastery of fundamental DSA concepts." },
+        { "q": "How does AI Sketch connect to AI?", "a": "Every data structure and algorithm is explained with AI real-world applications. You'll see how hash maps power recommendation engines, how sorting enables efficient data pipelines, and how these fundamentals underpin all AI systems." }
+      ],
+      "ai-chisel": [
+        { "q": "What prerequisites does AI Chisel require?", "a": "You should have completed AI Sketch or have equivalent knowledge of basic data structures (arrays, hash maps, strings). AI Chisel builds on those foundations with intermediate patterns." },
+        { "q": "How long does AI Chisel take?", "a": "Plan for 5–6 hours. The intermediate patterns like two pointers, sliding window, and graph traversal require more practice time than the basics." },
+        { "q": "What patterns does AI Chisel cover?", "a": "AI Chisel covers two pointers, sliding window, BFS/DFS graph traversal, tree traversals, stacks, queues, and monotonic patterns — all tied to real AI and ML applications." },
+        { "q": "Is AI Chisel free?", "a": "Yes, completely free. All programs on AI Educademy are open-source and available at no cost." },
+        { "q": "Will AI Chisel help me in coding interviews?", "a": "Absolutely. The patterns covered in AI Chisel appear frequently in medium-difficulty interview questions at major tech companies. Each lesson includes interview-style practice problems." },
+        { "q": "How does AI Chisel relate to machine learning?", "a": "Graph traversal powers knowledge graphs and social network analysis. Tree structures underpin decision trees and random forests. Two pointers optimise data processing in ML pipelines. Every pattern connects to real AI applications." }
+      ],
+      "ai-craft": [
+        { "q": "What is AI Craft about?", "a": "AI Craft teaches system design — how to architect large-scale distributed systems. You'll design recommendation engines, search autocomplete, rate limiters, and other systems that power modern AI products." },
+        { "q": "Do I need coding experience for AI Craft?", "a": "Yes, AI Craft assumes you're comfortable with coding interviews and basic distributed systems concepts. It's designed for mid-to-senior engineers preparing for system design rounds." },
+        { "q": "How long does AI Craft take?", "a": "AI Craft takes approximately 6–8 hours. System design requires deep thinking and each case study builds on previous concepts." },
+        { "q": "Will AI Craft help with FAANG interviews?", "a": "Yes! System design rounds are a critical part of senior-level interviews at major tech companies. AI Craft teaches you to structure answers clearly and design scalable systems." },
+        { "q": "Is AI Craft free?", "a": "Yes, AI Craft is completely free. Our goal is to democratise access to high-quality interview preparation resources." },
+        { "q": "What systems will I learn to design?", "a": "You'll design a URL shortener, rate limiter, recommendation engine, and more. Each system is explained with trade-off analysis, scalability considerations, and AI-specific infrastructure patterns." }
+      ],
+      "ai-polish": [
+        { "q": "What does AI Polish cover?", "a": "AI Polish focuses on mastering behavioral interviews. You'll learn the STAR framework, structured storytelling, leadership principles, and communication strategies for technical and AI-era scenarios." },
+        { "q": "Do I need technical experience for AI Polish?", "a": "You need real project experience to draw from for your stories. AI Polish teaches you how to structure and present those experiences effectively, regardless of your seniority level." },
+        { "q": "How long does AI Polish take?", "a": "AI Polish takes about 4–5 hours. We recommend taking time to craft your own stories between lessons for maximum benefit." },
+        { "q": "Is AI Polish only for senior engineers?", "a": "Not at all! Engineers at any level benefit from behavioral interview skills. AI Polish provides frameworks that work whether you're interviewing for your first role or a staff engineer position." },
+        { "q": "Will I get a certificate?", "a": "Yes! Complete all lessons to earn a certificate demonstrating your mastery of behavioral interview techniques." },
+        { "q": "Why are behavioral interviews important for AI roles?", "a": "AI roles increasingly require strong communication skills — explaining model decisions to stakeholders, navigating ethical dilemmas, and leading cross-functional teams. AI Polish prepares you for these exact scenarios." }
+      ],
+      "ai-masterpiece": [
+        { "q": "What is AI Masterpiece?", "a": "AI Masterpiece is the capstone of the AI Mastery track. It combines DSA, system design, and behavioral skills into end-to-end case studies and portfolio projects." },
+        { "q": "What prerequisites does AI Masterpiece require?", "a": "You should have completed AI Sketch through AI Polish, or have equivalent knowledge in DSA, system design, and behavioral interviews." },
+        { "q": "How long does AI Masterpiece take?", "a": "Plan for 8–10 hours. The capstone projects are comprehensive and designed to be portfolio-worthy pieces." },
+        { "q": "Will AI Masterpiece help me land senior roles?", "a": "Yes! The program is specifically designed for engineers targeting senior+ roles. You'll build portfolio pieces and practice full mock interviews." },
+        { "q": "Is AI Masterpiece free?", "a": "Yes, completely free. AI Educademy is committed to making world-class interview prep accessible to all." },
+        { "q": "What kind of projects will I build?", "a": "You'll design Twitter's AI feed end-to-end, complete full mock interviews with detailed feedback, and build an engineering portfolio that showcases your technical breadth and depth." }
+      ],
+      "ai-launchpad": [
+        { "q": "Is Interview Launchpad suitable for complete beginners?", "a": "Yes! Interview Launchpad is designed as the starting point for anyone beginning their tech interview journey. No prior interview experience is needed." },
+        { "q": "How long does Interview Launchpad take?", "a": "Most learners complete it in 3–4 hours. The lessons cover research techniques, preparation timelines, and confidence building." },
+        { "q": "Do I need to know programming for Interview Launchpad?", "a": "No programming knowledge is required. Interview Launchpad focuses on preparation strategy, company research, and mindset — skills that apply regardless of your technical level." },
+        { "q": "Will I learn how to research companies?", "a": "Yes! You'll learn systematic techniques for researching companies, decoding job descriptions, and building preparation timelines tailored to specific roles and companies." },
+        { "q": "Is Interview Launchpad free?", "a": "Yes, completely free. AI Educademy's Career Ready track is designed to help everyone access quality interview preparation." },
+        { "q": "What makes Interview Launchpad different from other interview prep?", "a": "Unlike programs that jump straight into coding problems, Interview Launchpad builds the strategic foundation first: how to research, plan, and develop the confidence that turns nervousness into performance." }
+      ],
+      "ai-behavioral": [
+        { "q": "Is Behavioral Mastery only for engineers?", "a": "While examples focus on engineering scenarios, the STAR framework and storytelling techniques apply to any professional preparing for behavioral interviews in tech." },
+        { "q": "How long does Behavioral Mastery take?", "a": "About 4–5 hours. We recommend spacing lessons over a few days so you can practice crafting your own stories between sessions." },
+        { "q": "What is the STAR method?", "a": "STAR stands for Situation, Task, Action, Result. It's a proven framework for structuring interview answers. Behavioral Mastery teaches you to use it naturally and effectively." },
+        { "q": "Will Behavioral Mastery help with leadership questions?", "a": "Absolutely! The program covers leadership narratives, conflict resolution, teamwork stories, and cultural fit assessment — all common in behavioral rounds." },
+        { "q": "Is Behavioral Mastery free?", "a": "Yes, completely free and always will be." },
+        { "q": "Do I need real project experience?", "a": "Yes, you'll need real experiences to draw from. The program teaches you how to identify, structure, and present your experiences compellingly — but the raw material needs to come from your career." }
+      ],
+      "ai-technical": [
+        { "q": "What programming languages does Technical Interviews cover?", "a": "Concepts are taught language-agnostically, with examples in Python. The problem-solving patterns and system design principles apply regardless of your preferred language." },
+        { "q": "How long does Technical Interviews take?", "a": "Plan for 6–8 hours. Coding patterns and system design concepts require practice time beyond just reading the lessons." },
+        { "q": "Is Technical Interviews suitable for junior developers?", "a": "You need solid programming fundamentals in at least one language. If you can write functions, loops, and use basic data structures, you're ready." },
+        { "q": "What coding patterns will I learn?", "a": "You'll master the most common coding interview patterns: arrays, hash maps, two pointers, sliding window, trees, graphs, dynamic programming, and more — all with clear explanations and practice problems." },
+        { "q": "Is Technical Interviews free?", "a": "Yes, completely free. We believe everyone deserves access to quality interview preparation." },
+        { "q": "Does Technical Interviews include system design?", "a": "Yes! The program covers both coding interviews and system design fundamentals. You'll learn to design scalable systems and communicate technical decisions clearly on a whiteboard." }
+      ],
+      "ai-ml-interview": [
+        { "q": "Do I need ML experience for AI & ML Interviews?", "a": "You should have basic ML knowledge — understanding supervised vs unsupervised learning, what a model is, and basic statistics. The program builds interview skills on top of this foundation." },
+        { "q": "How long does AI & ML Interviews take?", "a": "Approximately 6–8 hours. ML system design and case studies require thoughtful analysis and practice." },
+        { "q": "What makes ML interviews different from regular tech interviews?", "a": "ML interviews include unique formats like ML system design, model evaluation discussions, and ML case studies. This program covers all these specialised formats that general interview prep doesn't address." },
+        { "q": "Will I learn ML system design?", "a": "Yes! ML system design is a core focus. You'll learn to design end-to-end ML systems including data pipelines, model training, evaluation, deployment, and monitoring." },
+        { "q": "Is AI & ML Interviews free?", "a": "Yes, completely free. Specialised ML interview prep is usually expensive — we're making it accessible to everyone." },
+        { "q": "Which companies' interview styles does this program cover?", "a": "The program prepares you for ML interview formats used at companies like Google, Meta, Amazon, Apple, and AI startups. Each has unique emphases that we break down and practise." }
+      ],
+      "ai-offer": [
+        { "q": "When should I start Offer & Beyond?", "a": "Ideally when you have an active offer or are in late-stage interviews. The negotiation and evaluation frameworks are most useful when you have real numbers to work with." },
+        { "q": "How long does Offer & Beyond take?", "a": "About 3–4 hours. The lessons are practical and designed to be immediately applicable to your situation." },
+        { "q": "Will I learn salary negotiation?", "a": "Yes! You'll learn research-backed negotiation tactics, how to benchmark your compensation, handle counter-offers, and negotiate confidently without risking the offer." },
+        { "q": "Does Offer & Beyond cover equity and benefits?", "a": "Absolutely. You'll learn to evaluate stock options, RSUs, signing bonuses, benefits packages, and total compensation — not just base salary." },
+        { "q": "Is Offer & Beyond free?", "a": "Yes, completely free. We believe everyone should have access to negotiation knowledge that can impact their career earnings significantly." },
+        { "q": "Can Offer & Beyond help me compare multiple offers?", "a": "Yes! The program includes an offer comparison framework that helps you objectively evaluate multiple offers across compensation, growth potential, work-life balance, and career trajectory." }
+      ]
+    }
   },
   "dashboard": {
     "title": "My Learning Dashboard",

@@ -5,7 +5,10 @@ import { notFound } from "next/navigation";
 import { getProgram, getPrograms } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
-import { CourseJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { CourseJsonLd, BreadcrumbJsonLd, FAQJsonLd } from "@/components/seo/JsonLd";
+import { FaqAccordion } from "@/components/programs/FaqAccordion";
+import { RelatedArticles } from "@/components/programs/RelatedArticles";
+import { ExperimentCta } from "@/components/programs/ExperimentCta";
 import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/seo";
 import { auth } from "@/auth";
@@ -77,6 +80,15 @@ export default async function ProgramPage({
   const tLT = await getTranslations("lessonTitles");
   const lessons = getLessons(programSlug, locale);
   const basePath = locale === "en" ? "" : `/${locale}`;
+
+  // Extract FAQ items for this program
+  const faqItems = (() => {
+    try {
+      return t.raw(`faq.${programSlug}`) as { q: string; a: string }[];
+    } catch {
+      return [];
+    }
+  })();
 
   // Fetch certificate progress and user role
   const session = await auth();
@@ -177,8 +189,48 @@ export default async function ProgramPage({
         </div>
       </AnimatedSection>
 
-      {/* Lessons */}
+      {/* Who Is This For? */}
+      <AnimatedSection animation="fade-up" delay={220}>
+        <div className="mb-14 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]" style={{ background: "var(--color-glass)", backdropFilter: "saturate(200%) blur(24px)", WebkitBackdropFilter: "saturate(200%) blur(24px)" }}>
+          <h2 className="text-lg font-bold mb-3">👤 {t("whoIsThisFor")}</h2>
+          <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+            {tP(`${programSlug}.audience`)}
+          </p>
+        </div>
+      </AnimatedSection>
+
+      {/* Topics Covered */}
+      <AnimatedSection animation="fade-up" delay={240}>
+        <div className="mb-14 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]">
+          <h2 className="text-lg font-bold mb-4">🏷️ {t("topicsCovered")}</h2>
+          <div className="flex flex-wrap gap-2">
+            {((tP.raw(`${programSlug}.topics`) as string[]) || []).map((topic) => (
+              <span
+                key={topic}
+                className="inline-block px-3 py-1.5 rounded-full text-xs font-medium"
+                style={{ backgroundColor: `${program.color}15`, color: program.color, border: `1px solid ${program.color}30` }}
+              >
+                {topic}
+              </span>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Experiment CTA */}
       <AnimatedSection animation="fade-up" delay={250}>
+        <ExperimentCta
+          programSlug={programSlug}
+          basePath={basePath}
+          label={t("tryExperiments")}
+          description={t("tryExperimentsDesc")}
+          promptLabel={t("tryPromptLab")}
+          promptDescription={t("tryPromptLabDesc")}
+        />
+      </AnimatedSection>
+
+      {/* Lessons */}
+      <AnimatedSection animation="fade-up" delay={260}>
         <h2 className="text-2xl font-bold mb-6">📚 {t("lessonsHeader")}</h2>
       </AnimatedSection>
 
@@ -224,6 +276,27 @@ export default async function ProgramPage({
           </div>
         </AnimatedSection>
       )}
+
+      {/* Related Articles */}
+      <AnimatedSection animation="fade-up" delay={350}>
+        <RelatedArticles
+          programSlug={programSlug}
+          basePath={basePath}
+          label={t("relatedArticles")}
+        />
+      </AnimatedSection>
+
+      {/* FAQ */}
+      <AnimatedSection animation="fade-up" delay={380}>
+        {faqItems.length > 0 && (
+          <div className="mb-14">
+            <h2 className="text-2xl font-bold mb-6">❓ {t("faqTitle")}</h2>
+            <FaqAccordion items={faqItems} programColor={program.color} />
+          </div>
+        )}
+      </AnimatedSection>
+
+      <FAQJsonLd questions={faqItems.map((f) => ({ question: f.q, answer: f.a }))} />
 
       {/* CTA */}
       {lessons.length > 0 && (
