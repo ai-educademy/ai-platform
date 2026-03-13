@@ -120,6 +120,21 @@ export function Navbar() {
                 <LabDropdownContent basePath={basePath} t={t} />
               </NavDropdown>
 
+              {/* Journey – direct link */}
+              <Link
+                href={`${basePath}/journey`}
+                className={`relative px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  isActive("/journey")
+                    ? "text-[var(--color-primary)] bg-[var(--color-primary)]/10 font-semibold"
+                    : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-text)]/[0.06]"
+                }`}
+              >
+                {t("journey")}
+                {isActive("/journey") && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[var(--color-primary)]" />
+                )}
+              </Link>
+
               {/* Blog – simple direct link */}
               <Link
                 href={`${basePath}/blog`}
@@ -134,8 +149,6 @@ export function Navbar() {
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[var(--color-primary)]" />
                 )}
               </Link>
-
-
 
               <NavDropdown
                 trigger={t("about")}
@@ -265,6 +278,16 @@ export function Navbar() {
                   <span className="font-medium">{t("mockInterview")}</span>
                 </Link>
               </MobileSection>
+
+              {/* Journey - simple link */}
+              <Link
+                href={`${basePath}/journey`}
+                onClick={closeMobile}
+                className="flex items-center gap-2.5 py-3.5 px-4 text-sm font-semibold text-[var(--color-text)] hover:bg-[var(--color-text)]/[0.03] border-b border-[var(--color-border)]/50 transition-colors"
+              >
+                <span className="text-base">🗺️</span>
+                {t("journey")}
+              </Link>
 
               {/* Blog - simple link */}
               <Link

@@ -37,7 +37,8 @@
     "mockInterview": "Mock Interview",
     "aiFoundationsPath": "AI Foundations",
     "aiMasteryPath": "AI Mastery",
-    "careerReadyPath": "Career Ready"
+    "careerReadyPath": "Career Ready",
+    "journey": "Journey"
   },
   "hero": {
     "badge": "Open Source · 11 Languages · Community Driven",
@@ -1617,5 +1618,95 @@
     "emailAddress": "hello@aieducademy.org",
     "socials": "Find us on",
     "responseTime": "We typically respond within 24 hours"
+  },
+  "onboarding": {
+    "metaTitle": "Get Started",
+    "metaDescription": "Personalise your AI Educademy learning experience",
+    "skip": "Skip",
+    "back": "Back",
+    "next": "Next",
+    "getStarted": "Let's Go",
+    "welcome": {
+      "title": "Welcome to AI Educademy, {name}! 🎉",
+      "defaultName": "there",
+      "subtitle": "Let's personalise your learning experience in just a few steps.",
+      "tagLearn": "Learn",
+      "tagBuild": "Build",
+      "tagGrow": "Grow"
+    },
+    "experience": {
+      "title": "What's your experience with AI?",
+      "subtitle": "This helps us recommend the right starting point",
+      "beginner": {
+        "title": "Beginner",
+        "description": "I'm new to AI and want to learn from scratch"
+      },
+      "intermediate": {
+        "title": "Intermediate",
+        "description": "I know some basics and want to go deeper"
+      },
+      "advanced": {
+        "title": "Advanced",
+        "description": "I'm experienced and want specialised skills"
+      }
+    },
+    "goals": {
+      "title": "What do you want to achieve?",
+      "subtitle": "Select all that apply",
+      "understand": {
+        "title": "Understand AI concepts",
+        "description": "Learn the fundamentals and theory behind AI"
+      },
+      "build": {
+        "title": "Build AI applications",
+        "description": "Hands-on coding with real AI projects"
+      },
+      "interviews": {
+        "title": "Ace AI interviews",
+        "description": "Prepare for technical AI/ML job interviews"
+      },
+      "work": {
+        "title": "Use AI at work",
+        "description": "Apply AI tools and techniques in your job"
+      },
+      "creative": {
+        "title": "Explore AI creatively",
+        "description": "Discover creative and artistic applications of AI"
+      }
+    },
+    "recommendation": {
+      "title": "Your Recommended Path ✨",
+      "subtitle": "Based on your selections, we think you'll love this",
+      "cta": "Start Learning →",
+      "exploreAll": "Or explore all programs",
+      "programs": {
+        "ai-seeds": {
+          "name": "AI Seeds",
+          "description": "Begin your AI journey with beginner-friendly lessons covering core concepts, terminology, and how AI is shaping the world."
+        },
+        "ai-sketch": {
+          "name": "AI Sketch",
+          "description": "Start building AI applications with hands-on projects. Learn to use AI APIs, prompt engineering, and practical coding patterns."
+        },
+        "ai-launchpad": {
+          "name": "AI Launchpad",
+          "description": "Kickstart your AI career preparation with interview fundamentals, common question patterns, and confidence-building exercises."
+        }
+      }
+    }
+  },
+  "journey": {
+    "title": "Your AI Learning Journey",
+    "subtitle": "Navigate your personalized path through AI mastery — from foundations to career readiness.",
+    "trackAI": "AI Learning",
+    "trackCraft": "Craft Engineering",
+    "trackCareer": "Career Ready",
+    "level": "Level",
+    "completed": "completed",
+    "locked": "Locked",
+    "current": "In Progress",
+    "signInPrompt": "Sign in to track your progress and unlock your personalized learning journey.",
+    "overallProgress": "Overall Progress",
+    "startJourney": "Start Your Journey"
   }
 }

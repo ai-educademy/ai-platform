@@ -34,6 +34,8 @@ import {
   Shield,
   Scale,
   CornerDownLeft,
+  Sparkles,
+  MapIcon,
 } from "lucide-react";
 import { useSession } from "next-auth/react";
 import programsData from "@data/programs.json";
@@ -89,11 +91,13 @@ const PAGES = [
   { slug: "about", label: "About", icon: <Info className="w-4 h-4" /> },
   { slug: "contact", label: "Contact", icon: <Mail className="w-4 h-4" /> },
   { slug: "blog", label: "Blog", icon: <FileText className="w-4 h-4" /> },
+  { slug: "journey", label: "Journey", icon: <MapIcon className="w-4 h-4" /> },
   { slug: "faq", label: "FAQ", icon: <HelpCircle className="w-4 h-4" /> },
   { slug: "pricing", label: "Pricing", icon: <CreditCard className="w-4 h-4" /> },
   { slug: "dashboard", label: "Dashboard", icon: <LayoutDashboard className="w-4 h-4" /> },
   { slug: "lab", label: "Lab", icon: <FlaskConical className="w-4 h-4" /> },
   { slug: "mock-interview", label: "Mock Interview", icon: <Mic className="w-4 h-4" /> },
+  { slug: "onboarding", label: "Onboarding", icon: <Sparkles className="w-4 h-4" /> },
   { slug: "privacy", label: "Privacy Policy", icon: <Shield className="w-4 h-4" /> },
   { slug: "terms", label: "Terms of Service", icon: <Scale className="w-4 h-4" /> },
 ];

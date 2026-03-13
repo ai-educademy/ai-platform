@@ -1151,3 +1151,15 @@ h1, h2, h3, h4, h5, h6 {
 .cmd-palette-modal-in {
   animation: cmd-palette-modal 0.2s cubic-bezier(0.32, 0.72, 0, 1) both;
 }
+
+/* ─── Onboarding Wizard Animations ─── */
+
+@keyframes onboarding-slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes onboarding-slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
