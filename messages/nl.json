@@ -37,7 +37,7 @@
     "aiFoundationsPath": "AI-Fundamenten",
     "aiMasteryPath": "AI-Meesterschap",
     "careerReadyPath": "Carrière Klaar",
-    "title": "AI Educademy — Leer AI op jouw manier"
+    "title": "AI Educademy. Leer AI op jouw manier"
   },
   "hero": {
     "badge": "Open source • Meertalig",
@@ -92,7 +92,7 @@
     "openSourceDesc": "Volledig transparant - bekijk, fork of draag bij"
   },
   "founder": {
-    "description": "Heeft elk onderdeel van AI Educademy van nul af aan ontworpen en gebouwd — de architectuur, het curriculum, de meertalige infrastructuur en de open-source tools. Meer dan vijftien jaar grote systemen gebouwd bij JP Morgan, Sky en Marks & Spencer in Azië en Europa. Die wereldwijde ervaring maakte één ding duidelijk: taal mag nooit een barrière zijn voor leren.",
+    "description": "Heeft elk onderdeel van AI Educademy van nul af aan ontworpen en gebouwd. de architectuur, het curriculum, de meertalige infrastructuur en de open-source tools. Meer dan vijftien jaar grote systemen gebouwd bij JP Morgan, Sky en Marks & Spencer in Azië en Europa. Die wereldwijde ervaring maakte één ding duidelijk: taal mag nooit een barrière zijn voor leren.",
     "cta": "Meer over mij",
     "role": "Oprichter & Maker · Engineering Leader · Londen",
     "statYears": "Jaar Engineering",
@@ -125,9 +125,9 @@
     "mission": "Onze missie",
     "missionText": "AI-onderwijs voor elke student, ongeacht taal, achtergrond of ervaring.",
     "story": "Het brein achter het idee",
-    "storyText1": "Ik ben Ramesh Reddy Adutla — de oprichter, ontwerper en enige ingenieur achter AI Educademy. Met 15 jaar aan het bouwen van grootschalige gedistribueerde systemen bij JP Morgan, Sky en Marks & Spencer in Azië en Europa, heb ik mijn carrière besteed aan het snijvlak van technologie en echte impact.",
+    "storyText1": "Ik ben Ramesh Reddy Adutla. de oprichter, ontwerper en enige ingenieur achter AI Educademy. Met 15 jaar aan het bouwen van grootschalige gedistribueerde systemen bij JP Morgan, Sky en Marks & Spencer in Azië en Europa, heb ik mijn carrière besteed aan het snijvlak van technologie en echte impact.",
     "storyText2": "AI gaat elke sector veranderen. Toch blijft het beste AI-onderwijs opgesloten achter dure instellingen in een handvol landen. Die kloof is niet alleen oneerlijk, het is een enorme verspilling van potentieel.",
-    "storyText3": "Ik heb AI Educademy bedacht en het volledig van nul af aan gebouwd — de architectuur, het curriculum, de meertalige infrastructuur, de open-source tools, elke regel code. Wat begon als avonden en weekenden is uitgegroeid tot een volledig gratis platform voor leerlingen in 11 talen op 6 continenten.",
+    "storyText3": "Ik heb AI Educademy bedacht en het volledig van nul af aan gebouwd. de architectuur, het curriculum, de meertalige infrastructuur, de open-source tools, elke regel code. Wat begon als avonden en weekenden is uitgegroeid tot een volledig gratis platform voor leerlingen in 11 talen op 6 continenten.",
     "storyText4": "Werken in meerdere landen waar Engels niet de eerste taal is maakte één ding duidelijk: taal mag nooit een barrière zijn om te leren. Ik spreek Engels, Frans en Telugu, dus een meertalig platform bouwen voelde als de logische stap.",
     "values": "Onze waarden",
     "value1": {
@@ -250,8 +250,8 @@
         "title": "Klaar voor je carrière",
         "desc": "Van zenuwen naar een ondertekend aanbod",
         "tagline": "Start → Gedrag → Technisch → ML-interview → Aanbod",
-        "brand": "Beheers elke fase van het technische sollicitatieproces — van voorbereiding en gedragsvragen tot systeemontwerp en onderhandeling.",
-        "description": "Van blanco-pagina-zenuwen tot een getekend aanbod — je complete voorbereiding op sollicitatiegesprekken"
+        "brand": "Beheers elke fase van het technische sollicitatieproces. van voorbereiding en gedragsvragen tot systeemontwerp en onderhandeling.",
+        "description": "Van blanco-pagina-zenuwen tot een getekend aanbod. je complete voorbereiding op sollicitatiegesprekken"
       }
     },
     "statsTracksLabel": "Trajecten",
@@ -462,7 +462,7 @@
       "subtitle": "Je interview-reis begint",
       "description": "Beheers de basisprincipes van technische interviewvoorbereiding. Leer hoe je bedrijven onderzoekt, vacatureteksten ontcijfert, je voorbereidingsplanning opbouwt en de mindset ontwikkelt die zenuwen omzet in zelfvertrouwen.",
       "audience": "Iedereen die begint met de voorbereiding op technische interviews",
-      "prerequisites": "Geen — dit is je startpunt",
+      "prerequisites": "Geen. dit is je startpunt",
       "topics": [
         "Bedrijfsonderzoek Technieken",
         "Vacaturetekst Analyse",
@@ -502,7 +502,7 @@
     "ai-technical": {
       "title": "Technische Interviews",
       "subtitle": "Coderen onder druk",
-      "description": "Verover programmeerinterviews, systeemontwerp-rondes en technische verdiepingen. Van datastructuren tot gedistribueerde systemen — bouw de vaardigheden en het zelfvertrouwen om onder druk te presteren.",
+      "description": "Verover programmeerinterviews, systeemontwerp-rondes en technische verdiepingen. Van datastructuren tot gedistribueerde systemen. bouw de vaardigheden en het zelfvertrouwen om onder druk te presteren.",
       "audience": "Software-engineers die zich voorbereiden op technische interviewrondes",
       "prerequisites": "Stevige programmeervaardigheden in minstens één taal",
       "topics": [
@@ -544,7 +544,7 @@
     "ai-offer": {
       "title": "Aanbod & verder",
       "subtitle": "Van aanbod naar carrièregroei",
-      "description": "Navigeer de laatste etappe — salarisonderhandeling, aanbodbeoordeling en carrièregroeistrategieën. Leer compensatie te benchmarken, effectief te onderhandelen en je carrièrepad op lange termijn te plannen.",
+      "description": "Navigeer de laatste etappe. salarisonderhandeling, aanbodbeoordeling en carrièregroeistrategieën. Leer compensatie te benchmarken, effectief te onderhandelen en je carrièrepad op lange termijn te plannen.",
       "audience": "Engineers die een jobaanbod hebben ontvangen of verwachten",
       "prerequisites": "Actief sollicitatieproces of recent aanbod",
       "topics": [
@@ -1282,27 +1282,27 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about AI Educademy — from getting started to going deep.",
+    "subtitle": "Everything you need to know about AI Educademy. from getting started to going deep.",
     "cta": "Start Learning Now",
     "ctaHref": "/programs",
     "q1": "What is AI Educademy?",
-    "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone — regardless of background — understand and apply AI concepts.",
+    "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
     "q2": "Is AI Educademy really free?",
-    "a2": "Yes,  free. , , . Every lesson, program, and lab experiment is fully accessible at no cost — and will stay that way.",
+    "a2": "Yes,  free. , , . Every lesson, program, and lab experiment is fully accessible at no cost. and will stay that way.",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
     "q4": "What programs are available?",
     "a4": "We offer two learning paths: the AI Learning Path (including AI Seeds for absolute beginners, AI Foundations, and more advanced programs) and the Craft Engineering Path for those interested in building AI-powered software. Each path has multiple programs with dozens of structured lessons.",
     "q5": "How long does it take to complete a program?",
-    "a5": "It depends on the program and your pace. Beginner programs like AI Seeds can be completed in a few hours of focused study. More advanced programs may take several weeks. There are no deadlines — you learn entirely at your own pace.",
+    "a5": "It depends on the program and your pace. Beginner programs like AI Seeds can be completed in a few hours of focused study. More advanced programs may take several weeks. There are no deadlines. you learn entirely at your own pace.",
     "q6": "What skill level do I need to start?",
-    "a6": "No prior experience is needed for beginner programs. AI Seeds and other introductory programs start from absolute zero — no math, no coding, no technical background required. Just curiosity.",
+    "a6": "No prior experience is needed for beginner programs. AI Seeds and other introductory programs start from absolute zero. no math, no coding, no technical background required. Just curiosity.",
     "q7": "Do I need to know how to code?",
-    "a7": "Not to start! Our introductory programs require zero coding knowledge. As you progress through the paths, you'll be gently introduced to relevant concepts and tools — but the emphasis is always on understanding AI deeply, not memorising syntax.",
+    "a7": "Not to start! Our introductory programs require zero coding knowledge. As you progress through the paths, you'll be gently introduced to relevant concepts and tools. but the emphasis is always on understanding AI deeply, not memorising syntax.",
     "q8": "Are there any prerequisites?",
     "a8": "For beginner programs: none at all. For intermediate and advanced programs, it helps to have completed earlier programs in the path, but it's not strictly required. Jump in wherever feels right for you.",
     "q9": "What languages is the content available in?",
-    "a9": "AI Educademy is available in 9 languages: English, French, Dutch, Hindi, Telugu, Spanish, Portuguese, German, and Chinese. All content is thoughtfully translated — not machine-generated — so the experience feels natural in your language.",
+    "a9": "AI Educademy is available in 9 languages: English, French, Dutch, Hindi, Telugu, Spanish, Portuguese, German, and Chinese. All content is thoughtfully translated. not machine-generated. so the experience feels natural in your language.",
     "q10": "Can I switch between languages?",
     "a10": "Yes! Use the language switcher in the navigation bar to change the platform language at any time. Your learning progress is stored per language, so you can study in multiple languages simultaneously if you want.",
     "q11": "Is AI Educademy open source?",
@@ -1314,7 +1314,7 @@
     "q14": "How long will it take to learn AI?",
     "a14": "You can grasp the fundamentals of AI in a few weeks of consistent, focused study. Becoming truly proficient takes longer, but the journey is rewarding at every stage. Our programs are designed to give you practical, applicable knowledge from day one.",
     "q15": "What is the Lab section?",
-    "a15": "The Lab is a collection of interactive AI experiments you can run live in your browser — no installation or setup required. Explore a neural network playground, test AI vs human text detection, experiment with prompts, generate images, analyse sentiment, chat with an AI, and explore ethics scenarios.",
+    "a15": "The Lab is a collection of interactive AI experiments you can run live in your browser. no installation or setup required. Explore a neural network playground, test AI vs human text detection, experiment with prompts, generate images, analyse sentiment, chat with an AI, and explore ethics scenarios.",
     "q16": "Do I need an account to start learning?",
     "a16": "No account needed. You can start any lesson or program immediately without signing up. Creating a free account (or signing in with Google) lets you track your progress across devices and pick up exactly where you left off.",
     "q17": "Are there certificates or credentials?",
@@ -1324,17 +1324,17 @@
     "q19": "What AI topics do the programs cover?",
     "a19": "Topics include: what AI and machine learning really are, how neural networks work, natural language processing, computer vision, AI ethics and bias, prompt engineering, large language models, and how to apply AI tools effectively in real-world projects.",
     "q20": "What is the Craft Engineering path?",
-    "a20": "The Craft Engineering path focuses on the software engineering skills needed to build AI-powered applications — covering software design principles, clean architecture, reliability engineering, and how to integrate AI models into production-grade systems.",
+    "a20": "The Craft Engineering path focuses on the software engineering skills needed to build AI-powered applications. covering software design principles, clean architecture, reliability engineering, and how to integrate AI models into production-grade systems.",
     "q21": "Can I learn on my phone or tablet?",
-    "a21": "Absolutely! AI Educademy is fully responsive and works beautifully on mobile devices and tablets. It's also a Progressive Web App (PWA), so you can install it on your home screen for a fast, app-like experience — even with limited connectivity.",
+    "a21": "Absolutely! AI Educademy is fully responsive and works beautifully on mobile devices and tablets. It's also a Progressive Web App (PWA), so you can install it on your home screen for a fast, app-like experience. even with limited connectivity.",
     "q22": "Is there a community or forum?",
-    "a22": "Yes! We have a community section where learners connect, share progress, ask questions, and support each other. You're not learning alone — there are fellow learners at every stage of the journey.",
+    "a22": "Yes! We have a community section where learners connect, share progress, ask questions, and support each other. You're not learning alone. there are fellow learners at every stage of the journey.",
     "q23": "How do I track my learning progress?",
     "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
     "q24": "What makes AI Educademy different from other platforms?",
-    "a24": "Four things set us apart: it's completely free with no premium tiers, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners — no jargon, no intimidating prerequisites, no gatekeeping.",
+    "a24": "Four things set us apart: it's completely free with no premium tiers, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners. no jargon, no intimidating prerequisites, no gatekeeping.",
     "q25": "How do I get started?",
-    "a25": "Just click 'Start Learning for Free' below (or the 'Get Started' button in the navigation) and choose a program. We recommend starting with AI Seeds if you're new to AI. No registration required — you can begin learning right now, in your language."
+    "a25": "Just click 'Start Learning for Free' below (or the 'Get Started' button in the navigation) and choose a program. We recommend starting with AI Seeds if you're new to AI. No registration required. you can begin learning right now, in your language."
   },
   "pricing": {
     "pageTitle": "Pricing",
@@ -1426,7 +1426,7 @@
     "copy": "Link kopiëren",
     "shareOn": "Delen op {platform}",
     "joinedCount": "{count} mensen zijn via jouw link lid geworden",
-    "noReferrals": "Nog geen verwijzingen — deel je link!",
+    "noReferrals": "Nog geen verwijzingen. deel je link!",
     "reward": "Jij en je vriend krijgen beide voordelen",
     "twitter": "Twitter/X",
     "linkedin": "LinkedIn",
