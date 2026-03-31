@@ -13,8 +13,7 @@ import { Providers } from "@/components/ui/Providers";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { ChatWidget } from "@/components/ui/chat/ChatWidget";
 import { ReferralTracker } from "@/components/ReferralTracker";
-import { LaunchBanner } from "@/components/ui/LaunchBanner";
-import { ProductHuntBadge } from "@/components/ui/ProductHuntBadge";
+
 
 import { buildAlternates } from "@/lib/seo";
 
@@ -132,7 +131,6 @@ export default async function LocaleLayout({
         <OrganizationJsonLd />
         <Providers>
           <NextIntlClientProvider messages={messages}>
-            <LaunchBanner />
             <div className="min-h-screen flex flex-col">
               <Navbar />
               <main className="flex-1">{children}</main>
@@ -140,7 +138,6 @@ export default async function LocaleLayout({
             </div>
             <ChatWidget />
             <ReferralTracker />
-            <ProductHuntBadge />
           </NextIntlClientProvider>
         </Providers>
         <Analytics />
