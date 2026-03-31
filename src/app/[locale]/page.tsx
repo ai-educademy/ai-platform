@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
-import { getProgramsByTrack } from "@/lib/programs";
+import { getPrograms, getProgramsByTrack } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
+import { routing } from "@/i18n/routing";
 import HeroBackground from "@/components/home/HeroBackgroundLazy";
 import HomeHero from "@/components/home/HomeHero";
 import HomeTrustBar from "@/components/home/HomeTrustBar";
@@ -89,10 +90,19 @@ export default async function HomePage({
     }
   }
 
+  // Compute platform-wide stats from actual data
+  const allPrograms = getPrograms();
+  const totalPrograms = allPrograms.length;
+  const totalLessons = allPrograms.reduce(
+    (sum, p) => sum + getLessons(p.slug, locale).length,
+    0
+  );
+  const totalLanguages = routing.locales.length;
+
   const trustBarItems = [
-    { icon: "📚", value: "500+", label: tTB("lessons") },
-    { icon: "🎯", value: "15", label: tTB("programs") },
-    { icon: "🌍", value: "11", label: tTB("languages") },
+    { icon: "📚", value: String(totalLessons), label: tTB("lessons") },
+    { icon: "🎯", value: String(totalPrograms), label: tTB("programs") },
+    { icon: "🌍", value: String(totalLanguages), label: tTB("languages") },
     { icon: "💎", value: "100%", label: tTB("openSource") },
   ];
 
@@ -112,9 +122,9 @@ export default async function HomePage({
             ctaSecondaryText={t("hero.ctaSecondary")}
             ctaSecondaryHref={`${basePath}/lab`}
             basePath={basePath}
-            totalLessons={3}
+            totalLessons={totalLessons}
             statPrograms={t("hero.statPrograms")}
-            statLessons={t("hero.statLessons")}
+            statLessons={t("hero.statLessons", { count: totalLessons })}
             statLanguages={t("hero.statLanguages")}
           />
         </div>
@@ -149,19 +159,19 @@ export default async function HomePage({
           highlights={[
             {
               icon: "📚",
-              value: "500+",
+              value: String(totalLessons),
               label: tf("lessonsTitle"),
               desc: tf("lessonsDesc"),
             },
             {
               icon: "🌍",
-              value: "11",
+              value: String(totalLanguages),
               label: tf("languagesTitle"),
               desc: tf("languagesDesc"),
             },
             {
               icon: "🎯",
-              value: "15",
+              value: String(totalPrograms),
               label: tf("programsTitle"),
               desc: tf("programsDesc"),
             },

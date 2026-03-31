@@ -11,6 +11,8 @@ export interface BlogPostMeta {
   tags: string[];
   published: boolean;
   image?: string;
+  readTime: number;
+  updatedAt?: string;
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -46,7 +48,8 @@ export function getBlogPosts(locale: string): BlogPostMeta[] {
       if (!fs.existsSync(filePath)) return null;
 
       const raw = fs.readFileSync(filePath, "utf-8");
-      const { data } = matter(raw);
+      const { data, content } = matter(raw);
+      const wordCount = content.split(/\s+/).filter(Boolean).length;
       return {
         slug: file.replace(/\.mdx$/, ""),
         title: data.title || "",
@@ -56,6 +59,8 @@ export function getBlogPosts(locale: string): BlogPostMeta[] {
         tags: data.tags || [],
         published: data.published !== false,
         image: data.image || undefined,
+        readTime: Math.max(1, Math.ceil(wordCount / 200)),
+        updatedAt: data.updatedAt || undefined,
       } as BlogPostMeta;
     })
     .filter((p): p is BlogPostMeta => p !== null && p.published)
@@ -76,6 +81,7 @@ export function getBlogPost(slug: string, locale: string): BlogPost | null {
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
+  const wordCount = content.split(/\s+/).filter(Boolean).length;
 
   return {
     slug,
@@ -86,6 +92,8 @@ export function getBlogPost(slug: string, locale: string): BlogPost | null {
     tags: data.tags || [],
     published: data.published !== false,
     image: data.image || undefined,
+    readTime: Math.max(1, Math.ceil(wordCount / 200)),
+    updatedAt: data.updatedAt || undefined,
     content,
   };
 }

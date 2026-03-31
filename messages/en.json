@@ -54,7 +54,7 @@
     "cost": "Cost",
     "openSource": "Open Source",
     "statPrograms": "15 Programs",
-    "statLessons": "500+ Lessons",
+    "statLessons": "{count} Lessons",
     "statLanguages": "11 Languages"
   },
   "trustBar": {
@@ -96,9 +96,9 @@
     },
     "structuredTitle": "Structured Programs",
     "structuredDesc": "Carefully sequenced tracks from beginner to expert",
-    "lessonsTitle": "100+ Expert Lessons",
+    "lessonsTitle": "Expert Lessons",
     "lessonsDesc": "Deep, well-researched content across every topic",
-    "languagesTitle": "10 Languages",
+    "languagesTitle": "11 Languages",
     "languagesDesc": "Learn in English, French, Dutch, Hindi, or Telugu",
     "programsTitle": "15 Programs",
     "programsDesc": "Three tracks covering learning, building, and career prep",
@@ -108,7 +108,7 @@
     "openSourceDesc": "Fully transparent - view, fork, or contribute"
   },
   "founder": {
-    "description": "Conceived, designed, and built every part of AI Educademy from scratch: the architecture, curriculum, multilingual infrastructure, and open-source tooling. Over fifteen years engineering large-scale systems at JP Morgan, Sky, and Marks & Spencer across Asia and Europe. That global experience made one thing clear: language should never be a barrier to learning.",
+    "description": "Conceived, designed, and built every part of AI Educademy from scratch: the architecture, curriculum, multilingual infrastructure, and open-source tooling. Over fifteen years engineering large-scale systems at JP Morgan, Sky, and leading UK retailers across Asia and Europe. That global experience made one thing clear: language should never be a barrier to learning.",
     "cta": "More About Me",
     "role": "Founder & Creator · Engineering Leader · London",
     "statYears": "Years Engineering",
@@ -144,7 +144,7 @@
     "mission": "Our Mission",
     "missionText": "AI education for every student, regardless of language, background, or experience.",
     "story": "The Mind Behind the Idea",
-    "storyText1": "I'm Ramesh Reddy Adutla, the founder, designer, and sole engineer behind AI Educademy. With 15 years building large-scale distributed systems at JP Morgan, Sky, and Marks & Spencer across Asia and Europe, I've spent my career at the intersection of technology and real-world impact.",
+    "storyText1": "I'm Ramesh Reddy Adutla, the founder, designer, and sole engineer behind AI Educademy. With 15 years building large-scale distributed systems at JP Morgan, Sky, and leading UK retailers across Asia and Europe, I've spent my career at the intersection of technology and real-world impact.",
     "storyText2": "AI will reshape every industry. Yet the best AI education remains locked behind expensive institutions in a handful of countries. That gap isn't just unfair, it's a massive waste of potential.",
     "storyText3": "I conceived AI Educademy and built it entirely from scratch: the architecture, curriculum, multilingual infrastructure, open-source tooling, every line of code. What started as evenings and weekends became a fully-fledged platform serving learners in 11 languages across 6 continents.",
     "storyText4": "Working across multiple countries where English isn't the first language made one thing clear: language should never be a barrier to learning. I speak English, French, and Telugu, so building a multilingual platform felt like the obvious move.",

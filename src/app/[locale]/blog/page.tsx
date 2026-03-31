@@ -28,12 +28,6 @@ export async function generateMetadata({
   };
 }
 
-function estimateReadTime(description: string): number {
-  // Rough estimate: average blog post ~1000 words = 5 min
-  const words = description.split(/\s+/).length;
-  return Math.max(1, Math.ceil(words / 200));
-}
-
 export default async function BlogPage({
   params,
 }: {
@@ -84,7 +78,7 @@ export default async function BlogPage({
                       </time>
                       <span>•</span>
                       <span>
-                        {estimateReadTime(post.description)} {t("minuteRead")}
+                        {post.readTime} {t("minuteRead")}
                       </span>
                     </div>
 
