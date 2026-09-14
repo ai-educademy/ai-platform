@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { contactSubmissions } from "@/lib/db/schema";
 import { eq, count, desc as descOrder } from "drizzle-orm";
 import { requireAdmin } from "@/lib/admin-auth";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 // ---------- GET: Paginated contact submissions ----------
 
@@ -56,6 +57,7 @@ export async function GET(req: NextRequest) {
       totalPages: Math.ceil(total / limit),
     });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Admin contacts GET error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },
@@ -109,6 +111,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ success: true, contact: updated });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Admin contacts PATCH error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },

@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { users, referrals } from "@/lib/db/schema";
 import { eq, count } from "drizzle-orm";
 import { z } from "zod";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 const ReferralCodeSchema = z.object({
   referralCode: z.string().min(3).max(30).regex(/^[A-Z]{1,3}_[a-z0-9]{6}$/, "Invalid referral code format"),
@@ -69,6 +70,7 @@ export async function GET() {
       successfulReferrals: successfulCount,
     });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Referral GET error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -140,6 +142,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Referral POST error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

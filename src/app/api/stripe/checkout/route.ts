@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import type Stripe from "stripe";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 export async function POST(req: NextRequest) {
   try {
@@ -63,6 +64,7 @@ export async function POST(req: NextRequest) {
           discounts = [{ promotion_code: promoCodes.data[0].id }];
         }
       } catch (err) {
+        if (isDatabaseNotConfigured(err)) return databaseUnavailable();
         console.warn("[stripe/checkout] promo code lookup failed:", err);
       }
     }
@@ -83,6 +85,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: checkoutSession.url });
   } catch (err) {
+    if (isDatabaseNotConfigured(err)) return databaseUnavailable();
     console.error("[stripe/checkout] error:", err);
     return NextResponse.json(
       { error: "Failed to create checkout session" },

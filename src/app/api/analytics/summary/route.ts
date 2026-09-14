@@ -4,6 +4,7 @@ import { requireAdmin } from "@/lib/admin-auth";
 import { db } from "@/lib/db";
 import { newsletterSubscribers, lessonFeedback } from "@/lib/db/schema";
 import { count, sql } from "drizzle-orm";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 interface AnalyticsEvent {
   event: string;
@@ -87,6 +88,7 @@ export async function GET() {
       })),
     });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Analytics summary error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },

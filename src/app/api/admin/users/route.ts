@@ -9,6 +9,7 @@ import {
 } from "@/lib/db/schema";
 import { eq, sql, count, or, ilike, and } from "drizzle-orm";
 import { requireAdmin } from "@/lib/admin-auth";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 // ---------- GET: summary (no params) OR paginated user list (with ?list=true) ----------
 
@@ -25,6 +26,7 @@ export async function GET(req: NextRequest) {
     }
     return await handleSummary();
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Admin users API error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },
@@ -237,6 +239,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ success: true, user: updated });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Admin PATCH user error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },

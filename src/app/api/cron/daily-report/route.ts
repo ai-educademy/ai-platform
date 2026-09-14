@@ -4,6 +4,7 @@ import { users, subscriptions, newsletterSubscribers, lessonFeedback } from "@/l
 import { sql, gte, count, eq } from "drizzle-orm";
 import { sendAdminNotification } from "@/lib/email";
 import Redis from "ioredis";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 let redis: Redis | null = null;
 
@@ -247,6 +248,7 @@ export async function GET(req: NextRequest) {
       },
     });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("[Cron] Daily report failed:", error);
     return NextResponse.json(
       { success: false, error: "Failed to generate report" },

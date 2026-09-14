@@ -4,6 +4,7 @@ import { getStripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 export async function POST() {
   try {
@@ -32,6 +33,7 @@ export async function POST() {
 
     return NextResponse.json({ url: portalSession.url });
   } catch (err) {
+    if (isDatabaseNotConfigured(err)) return databaseUnavailable();
     console.error("[stripe/portal] error:", err);
     return NextResponse.json(
       { error: "Failed to create portal session" },
