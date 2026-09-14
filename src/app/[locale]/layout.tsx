@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { notFound } from "next/navigation";
+import { locales } from "@/i18n/locales";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/next";
@@ -118,6 +120,15 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
+  // The proxy matcher skips any path containing a dot, so requests like
+  // `/unknown.txt` reach this catch-all with a bogus locale. Without this check
+  // the request config falls back to English and the homepage is served at 200,
+  // which hands search engines unlimited duplicate URLs for the same content.
+  if (!locales.includes(locale as (typeof locales)[number])) {
+    notFound();
+  }
+
   const messages = await getMessages();
 
   return (
