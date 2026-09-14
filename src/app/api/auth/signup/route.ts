@@ -6,6 +6,7 @@ import { users, verificationTokens } from "@/lib/db/schema";
 import { sendVerificationEmail } from "@/lib/email";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+import { safeLocale } from "@/lib/safe-locale";
 
 function generateCode(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -29,6 +30,9 @@ export async function POST(req: NextRequest) {
     const name = typeof body.name === "string" ? body.name.trim() : "";
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
     const password = typeof body.password === "string" ? body.password : "";
+    // Remembering the sign-up language lets every later email reach the user in
+    // the language they actually chose to browse in.
+    const locale = safeLocale(body.locale);
 
     // Validate name
     if (name.length < 2 || name.length > 50) {
@@ -77,6 +81,7 @@ export async function POST(req: NextRequest) {
       email,
       password: hashedPassword,
       emailVerified: null,
+      locale,
     });
 
     // Generate verification code and store it

@@ -201,7 +201,8 @@
       "ja": "日文",
       "zh": "中文",
       "ar": "阿拉伯文"
-    }
+    },
+    "machineTranslatedNotice": "本课程由机器自动翻译成{language}，尚未经过人工校对。如果读起来有些奇怪，请以英文原文为准。"
   },
   "programs": {
     "badge": "",
@@ -2260,7 +2261,17 @@
     "abandonedCartUnlock4": "结业证书",
     "abandonedCartUnlock5": "跨设备的服务端进度同步",
     "abandonedCartFooter": "你收到这封邮件是因为你在 AI Educademy 开始了结账。",
-    "abandonedCartUnsubscribe": "取消订阅"
+    "abandonedCartUnsubscribe": "取消订阅",
+    "proUpgradeSubject": "来自 AI Educademy 的一个小请求",
+    "proUpgradeFallbackName": "你好",
+    "proUpgradeGreeting": "你好 {name}，",
+    "proUpgradeBody1": "感谢你在 AI Educademy 学习。看到大家真正把课程学完，是运营这个网站最开心的事。",
+    "proUpgradeBody2": "免费课程会一直免费。但服务器、AI 实验室和撰写新内容都需要真金白银，也占用了很多个周末。",
+    "proUpgradeBody3": "如果这个网站对你有帮助，Pro 每月 £3.99。它可以解锁全部课程、模拟面试实验室和证书，也正是它让新课程得以持续更新。",
+    "proUpgradeCta": "看看 Pro 有什么",
+    "proUpgradeSignoff": "谢谢你一直在。Ramesh",
+    "proUpgradeFooter": "你收到这封邮件是因为你拥有 AI Educademy 账户。",
+    "proUpgradeUnsubscribe": "退订此类邮件"
   },
   "bookmarks": {
     "title": "我的收藏",
@@ -2314,5 +2325,15 @@
     "opening": "正在打开…",
     "noSubscription": "未在您的账户中找到有效订阅。",
     "error": "打开账单门户时出现问题，请重试。"
+  },
+  "unsubscribe": {
+    "title": "退订",
+    "body": "点击下方即可停止接收产品更新和优惠信息。收据、密码重置等必要的账户邮件仍会发送给你。",
+    "confirm": "为我退订",
+    "working": "正在退订…",
+    "done": "已完成，你已成功退订。",
+    "doneDetail": "你将不会再收到 AI Educademy 的营销邮件。收据等账户邮件仍会照常发送。",
+    "error": "出了点问题，请重试。",
+    "missingToken": "此退订链接不完整，请使用邮件中的链接。"
   }
 }

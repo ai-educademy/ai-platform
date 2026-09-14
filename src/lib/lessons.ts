@@ -24,6 +24,12 @@ export interface Lesson extends LessonMeta {
   contentLocale: string;
   /** True when the requested locale had no translation and English was served. */
   isFallback: boolean;
+  /**
+   * True when the body was produced by machine translation rather than written
+   * or reviewed by a human. Readers are told, because silently presenting
+   * machine output as authored material on a paid product is not honest.
+   */
+  machineTranslated: boolean;
 }
 
 function contentDir(programSlug: string): string {
@@ -102,5 +108,6 @@ export function getLesson(programSlug: string, locale: string, slug: string): Le
     content,
     contentLocale: isFallback ? "en" : locale,
     isFallback,
+    machineTranslated: !isFallback && data.machineTranslated === true,
   };
 }

@@ -201,7 +201,8 @@
       "ja": "日本語",
       "zh": "中国語",
       "ar": "アラビア語"
-    }
+    },
+    "machineTranslatedNotice": "このレッスンは{language}に自動翻訳されたもので、まだ人によるチェックを受けていません。表現に違和感がある場合は、英語の原文が正となります。"
   },
   "programs": {
     "badge": "",
@@ -2114,7 +2115,17 @@
     "abandonedCartUnlock4": "修了証",
     "abandonedCartUnlock5": "デバイス間でのサーバー側進捗同期",
     "abandonedCartFooter": "AI Educademy でお支払い手続きを開始されたため、このメールをお送りしています。",
-    "abandonedCartUnsubscribe": "配信停止"
+    "abandonedCartUnsubscribe": "配信停止",
+    "proUpgradeSubject": "AI Educademy からの小さなお願い",
+    "proUpgradeFallbackName": "こんにちは",
+    "proUpgradeGreeting": "{name} さん、こんにちは。",
+    "proUpgradeBody1": "AI Educademy で学んでいただきありがとうございます。実際にレッスンを進めてくださる方を見ることが、このサイトを運営していて一番うれしい瞬間です。",
+    "proUpgradeBody2": "無料のレッスンはこれからも無料のままです。ただ、サーバー費用や AI ラボ、新しい教材の執筆には実際の費用と多くの週末がかかっています。",
+    "proUpgradeBody3": "もしこのサイトがお役に立てたなら、Pro は月額 £3.99 です。すべてのプログラム、模擬面接ラボ、修了証が利用でき、新しいレッスンを作り続ける支えにもなります。",
+    "proUpgradeCta": "Pro の内容を見る",
+    "proUpgradeSignoff": "いつもありがとうございます。Ramesh",
+    "proUpgradeFooter": "AI Educademy のアカウントをお持ちのため、このメールをお送りしています。",
+    "proUpgradeUnsubscribe": "この種のメールの配信を停止する"
   },
   "bookmarks": {
     "title": "マイブックマーク",
@@ -2314,5 +2325,15 @@
     "opening": "開いています…",
     "noSubscription": "お客様のアカウントで有効なサブスクリプションが見つかりませんでした。",
     "error": "お支払いポータルを開く際に問題が発生しました。もう一度お試しください。"
+  },
+  "unsubscribe": {
+    "title": "配信停止",
+    "body": "製品のお知らせやキャンペーンの受信を停止するには、下のボタンを押してください。領収書やパスワード再設定など、アカウントに必要なメールは引き続きお送りします。",
+    "confirm": "配信を停止する",
+    "working": "停止処理中…",
+    "done": "完了しました。配信を停止しました。",
+    "doneDetail": "今後 AI Educademy からのマーケティングメールは届きません。領収書などのアカウントメールは引き続き送信されます。",
+    "error": "問題が発生しました。もう一度お試しください。",
+    "missingToken": "この配信停止リンクは不完全です。メール内のリンクをご利用ください。"
   }
 }

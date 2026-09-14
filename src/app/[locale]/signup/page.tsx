@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { BrandMark } from "@/components/ui/BrandMark";
@@ -13,6 +13,7 @@ const PASSWORD_RE = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
 
 export default function SignUpPage() {
   const t = useTranslations("auth");
+  const locale = useLocale();
   const router = useRouter();
   const noMotion = useReducedMotion();
 
@@ -52,6 +53,7 @@ export default function SignUpPage() {
           name: name.trim(),
           email: email.trim().toLowerCase(),
           password,
+          locale,
         }),
       });
 

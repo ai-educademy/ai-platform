@@ -27,6 +27,20 @@ export const users = pgTable("users", {
   stripeCustomerId: text("stripe_customer_id").unique(),
   password: text("password"),
   referralCode: text("referral_code").unique(),
+  /** Preferred language, used to pick the language of outbound email. */
+  locale: text("locale").notNull().default("en"),
+  /**
+   * Set when the user opts out of product marketing. Transactional mail
+   * (receipts, password resets, verification) is unaffected and must still
+   * send: opting out of marketing is not the same as closing the account.
+   */
+  marketingOptOutAt: timestamp("marketing_opt_out_at", { mode: "date" }),
+  /**
+   * Unguessable token for one-click unsubscribe links. Kept separate from the
+   * user id so an unsubscribe URL cannot be used to enumerate or act on
+   * accounts.
+   */
+  unsubscribeToken: text("unsubscribe_token").unique(),
   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "date" }).notNull().defaultNow(),
 });
@@ -242,4 +256,27 @@ export const lessonBookmarks = pgTable(
     createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
   },
   (table) => [unique().on(table.userId, table.programSlug, table.lessonSlug)]
+);
+
+/* ─────────────── Marketing Campaigns ─────────────── */
+
+/**
+ * One row per (campaign, recipient) actually sent.
+ *
+ * The unique constraint is the idempotency guarantee: a campaign run can be
+ * retried, resumed after a crash, or accidentally triggered twice without
+ * emailing anybody a second time. Without it a partial failure halfway through
+ * a send leaves no safe way to finish the job.
+ */
+export const campaignSends = pgTable(
+  "campaign_sends",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    campaign: text("campaign").notNull(),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    email: text("email").notNull(),
+    locale: text("locale").notNull().default("en"),
+    sentAt: timestamp("sent_at", { mode: "date" }).notNull().defaultNow(),
+  },
+  (table) => [unique().on(table.campaign, table.email)]
 );

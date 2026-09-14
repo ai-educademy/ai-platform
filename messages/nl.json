@@ -201,7 +201,8 @@
       "ja": "Japans",
       "zh": "Chinees",
       "ar": "Arabisch"
-    }
+    },
+    "machineTranslatedNotice": "Deze les is automatisch vertaald naar het {language} en is nog niet door een mens nagekeken. Klinkt iets vreemd, dan is de Engelse versie leidend."
   },
   "programs": {
     "badge": "",
@@ -2114,7 +2115,17 @@
     "abandonedCartUnlock4": "Certificaten bij afronding",
     "abandonedCartUnlock5": "Voortgang synchroniseren op al je apparaten",
     "abandonedCartFooter": "Je ontvangt deze e-mail omdat je een bestelling bent gestart op AI Educademy.",
-    "abandonedCartUnsubscribe": "Afmelden"
+    "abandonedCartUnsubscribe": "Afmelden",
+    "proUpgradeSubject": "Een klein verzoek van AI Educademy",
+    "proUpgradeFallbackName": "daar",
+    "proUpgradeGreeting": "Hoi {name},",
+    "proUpgradeBody1": "Bedankt dat je leert met AI Educademy. Mensen de lessen echt zien doorlopen is veruit het leukste aan het runnen van deze site.",
+    "proUpgradeBody2": "De gratis lessen blijven gratis. Maar hosting, het AI-lab en het schrijven van nieuw materiaal kosten echt geld en heel wat weekenden.",
+    "proUpgradeBody3": "Als de site nuttig voor je was: Pro kost £3,99 per maand. Het ontgrendelt alle programma's, het oefengesprekkenlab en certificaten, en het zorgt ervoor dat er nieuwe lessen blijven komen.",
+    "proUpgradeCta": "Bekijk wat Pro biedt",
+    "proUpgradeSignoff": "Fijn dat je er bent. Ramesh",
+    "proUpgradeFooter": "Je ontvangt dit omdat je een AI Educademy-account hebt.",
+    "proUpgradeUnsubscribe": "Afmelden voor dit soort e-mails"
   },
   "bookmarks": {
     "title": "Mijn bladwijzers",
@@ -2314,5 +2325,15 @@
     "opening": "Bezig met openen…",
     "noSubscription": "We konden geen actief abonnement op je account vinden.",
     "error": "Er is iets misgegaan bij het openen van het factureringsportaal. Probeer het opnieuw."
+  },
+  "unsubscribe": {
+    "title": "Afmelden",
+    "body": "Klik hieronder om geen productupdates en aanbiedingen meer te ontvangen. Essentiële accountmails zoals bonnen en wachtwoordherstel blijf je ontvangen.",
+    "confirm": "Meld mij af",
+    "working": "Bezig met afmelden…",
+    "done": "Klaar. Je bent afgemeld.",
+    "doneDetail": "Je ontvangt geen marketingmails meer van AI Educademy. Accountmails zoals bonnen worden nog wel verstuurd.",
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "missingToken": "Deze afmeldlink is onvolledig. Gebruik de link uit je e-mail."
   }
 }

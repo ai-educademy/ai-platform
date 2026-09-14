@@ -201,7 +201,8 @@
       "ja": "japonês",
       "zh": "chinês",
       "ar": "árabe"
-    }
+    },
+    "machineTranslatedNotice": "Esta lição foi traduzida automaticamente para {language} e ainda não foi revisada por uma pessoa. Se algo parecer estranho, a versão em inglês é a definitiva."
   },
   "programs": {
     "badge": "",
@@ -2078,7 +2079,17 @@
     "abandonedCartUnlock4": "Certificados de conclusão",
     "abandonedCartUnlock5": "Sincronização do progresso em todos os dispositivos",
     "abandonedCartFooter": "Você recebeu este e-mail porque iniciou uma compra no AI Educademy.",
-    "abandonedCartUnsubscribe": "Cancelar inscrição"
+    "abandonedCartUnsubscribe": "Cancelar inscrição",
+    "proUpgradeSubject": "Um pequeno pedido da AI Educademy",
+    "proUpgradeFallbackName": "olá",
+    "proUpgradeGreeting": "Olá {name},",
+    "proUpgradeBody1": "Obrigado por aprender com a AI Educademy. Ver pessoas realmente concluindo as lições é de longe a melhor parte de manter este site.",
+    "proUpgradeBody2": "As lições gratuitas continuarão gratuitas. Mas hospedagem, o laboratório de IA e escrever material novo custam dinheiro de verdade e muitos fins de semana.",
+    "proUpgradeBody3": "Se o site foi útil para você, o Pro custa £3,99 por mês. Ele libera todos os programas, o laboratório de entrevistas simuladas e os certificados, e é o que mantém as novas lições chegando.",
+    "proUpgradeCta": "Veja o que tem no Pro",
+    "proUpgradeSignoff": "Obrigado por estar aqui. Ramesh",
+    "proUpgradeFooter": "Você está recebendo isto porque tem uma conta na AI Educademy.",
+    "proUpgradeUnsubscribe": "Cancelar inscrição destes e-mails"
   },
   "finalCta": {
     "headline": "Comece a Aprender IA Hoje",
@@ -2314,5 +2325,15 @@
     "opening": "A abrir…",
     "noSubscription": "Não encontrámos uma subscrição ativa na sua conta.",
     "error": "Ocorreu um erro ao abrir o portal de faturação. Tente novamente."
+  },
+  "unsubscribe": {
+    "title": "Cancelar inscrição",
+    "body": "Clique abaixo para parar de receber novidades e ofertas. Você continuará recebendo e-mails essenciais da conta, como recibos e redefinições de senha.",
+    "confirm": "Cancelar minha inscrição",
+    "working": "Cancelando…",
+    "done": "Pronto. Sua inscrição foi cancelada.",
+    "doneDetail": "Você não receberá mais e-mails de marketing da AI Educademy. E-mails da conta, como recibos, continuarão sendo enviados.",
+    "error": "Algo deu errado. Tente novamente.",
+    "missingToken": "Este link de cancelamento está incompleto. Use o link do seu e-mail."
   }
 }
