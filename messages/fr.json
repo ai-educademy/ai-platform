@@ -187,7 +187,21 @@
     "quizRequired": "Réponds correctement à tous les quiz pour terminer cette leçon",
     "quizProgress": "{passed} quiz sur {total} réussis",
     "allQuizzesPassed": "Tous les quiz réussis !",
-    "lessonCompleted": "Leçon terminée !"
+    "lessonCompleted": "Leçon terminée !",
+    "fallbackNotice": "Cette leçon n'a pas encore été traduite en {language}, vous lisez donc la version anglaise. Le reste du site reste en {language}.",
+    "languages": {
+      "en": "anglais",
+      "fr": "français",
+      "de": "allemand",
+      "es": "espagnol",
+      "pt": "portugais",
+      "nl": "néerlandais",
+      "hi": "hindi",
+      "te": "télougou",
+      "ja": "japonais",
+      "zh": "chinois",
+      "ar": "arabe"
+    }
   },
   "programs": {
     "badge": "",
@@ -2076,7 +2090,8 @@
     "title": "Votre parcours d'apprentissage IA",
     "trackAI": "Apprentissage IA",
     "trackCareer": "Prêt pour la Carrière",
-    "trackCraft": "Ingénierie Pratique"
+    "trackCraft": "Ingénierie Pratique",
+    "loadingProgress": "Chargement de votre progression…"
   },
   "labPreview": {
     "aiChat": "Chat IA",
@@ -2273,5 +2288,13 @@
     "close": "Fermer la discussion",
     "inputLabel": "Champ de message",
     "send": "Envoyer le message"
+  },
+  "billing": {
+    "title": "Facturation et abonnement",
+    "description": "Modifiez votre moyen de paiement, consultez vos factures ou résiliez votre abonnement à tout moment.",
+    "manage": "Gérer la facturation",
+    "opening": "Ouverture…",
+    "noSubscription": "Nous n'avons trouvé aucun abonnement actif sur votre compte.",
+    "error": "Une erreur s'est produite lors de l'ouverture du portail de facturation. Veuillez réessayer."
   }
 }

@@ -6,6 +6,7 @@ import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import type Stripe from "stripe";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+import { safeLocale, localeBasePath } from "@/lib/safe-locale";
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,11 +16,14 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { plan, locale = "en", promoCode } = body as {
+    const { plan, locale: rawLocale, promoCode } = body as {
       plan: "monthly" | "annual" | "lifetime";
       locale?: string;
       promoCode?: string;
     };
+
+    // Reaches Stripe metadata and later an outbound email URL, so it is laundered.
+    const locale = safeLocale(rawLocale);
 
     const planConfig = PLANS[plan];
     if (!planConfig || !planConfig.priceId) {
@@ -49,7 +53,7 @@ export async function POST(req: NextRequest) {
         .where(eq(users.id, session.user.id));
     }
 
-    const basePath = locale === "en" ? "" : `/${locale}`;
+    const basePath = localeBasePath(locale);
 
     // Resolve promo code to a Stripe promotion code ID
     let discounts: Stripe.Checkout.SessionCreateParams["discounts"] | undefined;
@@ -64,7 +68,8 @@ export async function POST(req: NextRequest) {
           discounts = [{ promotion_code: promoCodes.data[0].id }];
         }
       } catch (err) {
-        if (isDatabaseNotConfigured(err)) return databaseUnavailable();
+        // Only Stripe is called here, so a db guard would be misleading. A bad
+        // promo code must not block checkout, so this stays non-fatal.
         console.warn("[stripe/checkout] promo code lookup failed:", err);
       }
     }
@@ -80,6 +85,10 @@ export async function POST(req: NextRequest) {
       metadata: {
         userId: session.user.id,
         plan,
+        // The checkout.session.expired webhook reads metadata.locale to pick the
+        // language for the abandoned-cart email. Without it every one of those
+        // emails went out in English regardless of the user's locale.
+        locale,
       },
     });
 

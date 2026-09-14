@@ -187,7 +187,21 @@
     "quizRequired": "Beantworte alle Quizfragen richtig, um diese Lektion abzuschließen",
     "quizProgress": "{passed} von {total} Quizfragen bestanden",
     "allQuizzesPassed": "Alle Quizfragen bestanden!",
-    "lessonCompleted": "Lektion abgeschlossen!"
+    "lessonCompleted": "Lektion abgeschlossen!",
+    "fallbackNotice": "Diese Lektion wurde noch nicht ins {language} übersetzt, daher lesen Sie die englische Fassung. Der Rest der Website bleibt auf {language}.",
+    "languages": {
+      "en": "Englische",
+      "fr": "Französische",
+      "de": "Deutsche",
+      "es": "Spanische",
+      "pt": "Portugiesische",
+      "nl": "Niederländische",
+      "hi": "Hindi",
+      "te": "Telugu",
+      "ja": "Japanische",
+      "zh": "Chinesische",
+      "ar": "Arabische"
+    }
   },
   "programs": {
     "badge": "",
@@ -2076,7 +2090,8 @@
     "title": "Deine KI-Lernreise",
     "trackAI": "KI-Lernen",
     "trackCareer": "Karrierebereit",
-    "trackCraft": "Handwerkskunst"
+    "trackCraft": "Handwerkskunst",
+    "loadingProgress": "Fortschritt wird geladen…"
   },
   "labPreview": {
     "aiChat": "KI-Chat",
@@ -2273,5 +2288,13 @@
     "close": "Chat schließen",
     "inputLabel": "Chat-Nachrichteneingabe",
     "send": "Nachricht senden"
+  },
+  "billing": {
+    "title": "Abrechnung und Abonnement",
+    "description": "Aktualisieren Sie Ihre Zahlungsmethode, sehen Sie Rechnungen ein oder kündigen Sie Ihr Abonnement jederzeit.",
+    "manage": "Abrechnung verwalten",
+    "opening": "Wird geöffnet…",
+    "noSubscription": "Wir konnten kein aktives Abonnement für Ihr Konto finden.",
+    "error": "Beim Öffnen des Abrechnungsportals ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
   }
 }

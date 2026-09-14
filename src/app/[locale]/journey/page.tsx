@@ -604,12 +604,27 @@ export default function JourneyPage() {
         {/* ─── Overall Progress ─── */}
         <div ref={progressView.ref} className="mb-14" style={fadeUp(progressView.isInView, 0)}>
           {isSignedIn ? (
-            <OverallProgress
-              completed={completedCount}
-              total={15}
-              t={t}
-              noMotion={noMotion}
-            />
+            loading ? (
+              // Progress is fetched per program, so without this the tracks render
+              // at 0% first and a returning user watches their progress appear.
+              <div
+                aria-busy="true"
+                aria-live="polite"
+                className="glass-card rounded-2xl p-5 max-w-md mx-auto text-center"
+              >
+                <div className="h-2 w-full rounded-full bg-[var(--color-border)] animate-pulse mb-3" />
+                <p className="text-sm text-[var(--color-text-muted)]">
+                  {t("loadingProgress")}
+                </p>
+              </div>
+            ) : (
+              <OverallProgress
+                completed={completedCount}
+                total={15}
+                t={t}
+                noMotion={noMotion}
+              />
+            )
           ) : (
             <div className="glass-card rounded-2xl p-5 max-w-md mx-auto text-center">
               <LogIn className="w-5 h-5 mx-auto mb-2 text-[var(--color-primary)]" />

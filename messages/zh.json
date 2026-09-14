@@ -187,7 +187,21 @@
     "quizRequired": "答对所有测验题才能完成本课",
     "quizProgress": "已通过 {total} 个测验中的 {passed} 个",
     "allQuizzesPassed": "所有测验均已通过！",
-    "lessonCompleted": "本课已完成！"
+    "lessonCompleted": "本课已完成！",
+    "fallbackNotice": "本课程尚未翻译成{language}，因此您看到的是英文版本。网站其余部分仍为{language}。",
+    "languages": {
+      "en": "英文",
+      "fr": "法文",
+      "de": "德文",
+      "es": "西班牙文",
+      "pt": "葡萄牙文",
+      "nl": "荷兰文",
+      "hi": "印地文",
+      "te": "泰卢固文",
+      "ja": "日文",
+      "zh": "中文",
+      "ar": "阿拉伯文"
+    }
   },
   "programs": {
     "badge": "",
@@ -2127,7 +2141,8 @@
     "current": "进行中",
     "signInPrompt": "登录以跟踪学习进度并解锁个性化学习旅程。",
     "overallProgress": "总体进度",
-    "startJourney": "开启你的旅程"
+    "startJourney": "开启你的旅程",
+    "loadingProgress": "正在加载您的进度…"
   },
   "howItWorks": {
     "title": "如何开始",
@@ -2273,5 +2288,13 @@
     "close": "关闭聊天",
     "inputLabel": "聊天消息输入框",
     "send": "发送消息"
+  },
+  "billing": {
+    "title": "账单与订阅",
+    "description": "随时更新付款方式、查看发票或取消订阅。",
+    "manage": "管理账单",
+    "opening": "正在打开…",
+    "noSubscription": "未在您的账户中找到有效订阅。",
+    "error": "打开账单门户时出现问题，请重试。"
   }
 }

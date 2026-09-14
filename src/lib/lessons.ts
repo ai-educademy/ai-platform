@@ -15,6 +15,15 @@ export interface LessonMeta {
 
 export interface Lesson extends LessonMeta {
   content: string;
+  /**
+   * The locale the body text is actually written in. This differs from the
+   * requested locale whenever we fall back to English, and callers must surface
+   * that difference: rendering English prose inside translated page furniture
+   * with no explanation reads as broken rather than as a known gap.
+   */
+  contentLocale: string;
+  /** True when the requested locale had no translation and English was served. */
+  isFallback: boolean;
 }
 
 function contentDir(programSlug: string): string {
@@ -67,9 +76,11 @@ export function getLesson(programSlug: string, locale: string, slug: string): Le
   const baseDir = contentDir(programSlug);
   const localeDir = path.join(baseDir, locale);
   let filePath = path.join(localeDir, `${slug}.mdx`);
+  let isFallback = false;
 
   if (!fs.existsSync(filePath)) {
     filePath = path.join(baseDir, "en", `${slug}.mdx`);
+    isFallback = locale !== "en";
   }
 
   if (!fs.existsSync(filePath)) {
@@ -89,5 +100,7 @@ export function getLesson(programSlug: string, locale: string, slug: string): Le
     icon: data.icon || "📚",
     published: data.published !== false,
     content,
+    contentLocale: isFallback ? "en" : locale,
+    isFallback,
   };
 }

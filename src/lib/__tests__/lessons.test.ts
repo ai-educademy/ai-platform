@@ -192,4 +192,55 @@ describe('getLesson', () => {
     expect(lesson).not.toBeNull();
     expect(lesson!.title).toBe('Fallback EN');
   });
+
+  it('given a fallback to English, when read, then it is flagged so the page can say so', () => {
+    const cwd = process.cwd();
+    const enDir = `${cwd}/content/programs/ai-seeds/lessons/en`;
+
+    setupFiles(
+      {
+        [`${enDir}/flagged.mdx`]:
+          '---\ntitle: Flagged EN\ndescription: d\norder: 1\ndifficulty: beginner\nduration: 5\nicon: 📚\npublished: true\n---\nEN content',
+      },
+      { [enDir]: ['flagged.mdx'] },
+    );
+
+    const lesson = getLesson('ai-seeds', 'ja', 'flagged');
+    expect(lesson!.isFallback).toBe(true);
+    expect(lesson!.contentLocale).toBe('en');
+  });
+
+  it('given a genuine translation, when read, then it is not flagged as a fallback', () => {
+    const cwd = process.cwd();
+    const frDir = `${cwd}/content/programs/ai-seeds/lessons/fr`;
+
+    setupFiles(
+      {
+        [`${frDir}/translated.mdx`]:
+          '---\ntitle: Traduit\ndescription: d\norder: 1\ndifficulty: beginner\nduration: 5\nicon: 📚\npublished: true\n---\nContenu FR',
+      },
+      { [frDir]: ['translated.mdx'] },
+    );
+
+    const lesson = getLesson('ai-seeds', 'fr', 'translated');
+    expect(lesson!.isFallback).toBe(false);
+    expect(lesson!.contentLocale).toBe('fr');
+  });
+
+  it('given English itself, when read, then it is never flagged as a fallback', () => {
+    const cwd = process.cwd();
+    const enDir = `${cwd}/content/programs/ai-seeds/lessons/en`;
+
+    setupFiles(
+      {
+        [`${enDir}/plain.mdx`]:
+          '---\ntitle: Plain\ndescription: d\norder: 1\ndifficulty: beginner\nduration: 5\nicon: 📚\npublished: true\n---\nEN content',
+      },
+      { [enDir]: ['plain.mdx'] },
+    );
+
+    const lesson = getLesson('ai-seeds', 'en', 'plain');
+    expect(lesson!.isFallback).toBe(false);
+    expect(lesson!.contentLocale).toBe('en');
+  });
 });

@@ -187,7 +187,21 @@
     "quizRequired": "Responde corretamente a todos os questionários para concluir esta lição",
     "quizProgress": "{passed} de {total} questionários aprovados",
     "allQuizzesPassed": "Todos os questionários aprovados!",
-    "lessonCompleted": "Lição concluída!"
+    "lessonCompleted": "Lição concluída!",
+    "fallbackNotice": "Esta lição ainda não foi traduzida para {language}, por isso está a ler a versão em inglês. O resto do site permanece em {language}.",
+    "languages": {
+      "en": "inglês",
+      "fr": "francês",
+      "de": "alemão",
+      "es": "espanhol",
+      "pt": "português",
+      "nl": "neerlandês",
+      "hi": "hindi",
+      "te": "telugu",
+      "ja": "japonês",
+      "zh": "chinês",
+      "ar": "árabe"
+    }
   },
   "programs": {
     "badge": "",
@@ -2076,7 +2090,8 @@
     "title": "Sua Jornada de Aprendizado em IA",
     "trackAI": "Aprendizado de IA",
     "trackCareer": "Preparação Profissional",
-    "trackCraft": "Engenharia Prática"
+    "trackCraft": "Engenharia Prática",
+    "loadingProgress": "A carregar o seu progresso…"
   },
   "labPreview": {
     "aiChat": "Chat com IA",
@@ -2273,5 +2288,13 @@
     "close": "Fechar chat",
     "inputLabel": "Campo de mensagem do chat",
     "send": "Enviar mensagem"
+  },
+  "billing": {
+    "title": "Faturação e subscrição",
+    "description": "Atualize o seu método de pagamento, veja as faturas ou cancele a sua subscrição a qualquer momento.",
+    "manage": "Gerir faturação",
+    "opening": "A abrir…",
+    "noSubscription": "Não encontrámos uma subscrição ativa na sua conta.",
+    "error": "Ocorreu um erro ao abrir o portal de faturação. Tente novamente."
   }
 }

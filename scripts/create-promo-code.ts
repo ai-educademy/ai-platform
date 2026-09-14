@@ -45,7 +45,7 @@ if (!secretKey) {
   process.exit(1);
 }
 
-const stripe = new Stripe(secretKey, { apiVersion: "2026-02-25.clover" });
+const stripe = new Stripe(secretKey, { apiVersion: "2026-08-26.dahlia" });
 
 async function main() {
   // Create the 50% off coupon
