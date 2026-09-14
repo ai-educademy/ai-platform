@@ -660,7 +660,7 @@
         },
         {
           "q": "Is AI Seeds really free?",
-          "a": "Yes, AI Seeds is free to start, with Pro available for premium programmes. AI Educademy is an open-source project committed to making AI education accessible to everyone. There are no hidden costs, paywalls, or premium upsells for this program."
+          "a": "The first lesson of AI Seeds is free to try, no account needed. The rest of the programme is available with a Pro plan, alongside every other academy, track, and certificate."
         },
         {
           "q": "What topics does AI Seeds cover?",
@@ -686,7 +686,7 @@
         },
         {
           "q": "Is AI Sprouts free?",
-          "a": "Yes, free to start, with Pro available for premium programmes. AI Educademy believes quality AI education should be accessible to everyone, everywhere."
+          "a": "The first lesson of AI Sprouts is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "What will I learn in AI Sprouts?",
@@ -920,7 +920,7 @@
         },
         {
           "q": "Is Interview Launchpad free?",
-          "a": "Yes, free to start, with Pro available for premium programmes. AI Educademy's Career Ready track is designed to help everyone access quality interview preparation."
+          "a": "The first lesson of Interview Launchpad is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "What makes Interview Launchpad different from other interview prep?",
@@ -1834,7 +1834,7 @@
     "q1": "What is AI Educademy?",
     "a1": "AI Educademy is an open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone, regardless of background, understand and apply AI concepts.",
     "q2": "How does AI Educademy pricing work?",
-    "a2": "AI Educademy offers four free starter programmes and a first-lesson preview in every other programme. Pro unlocks every academy, track, certificate, and premium feature through monthly, annual, or lifetime access.",
+    "a2": "Every academy on AI Educademy opens with a free first lesson, so you can try it before you commit. Pro unlocks every remaining lesson, academy, track, certificate, and premium feature through monthly, annual, or lifetime access.",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
     "q4": "What programs are available?",
@@ -1862,7 +1862,7 @@
     "q15": "What is the Lab section?",
     "a15": "The Lab is a collection of interactive AI experiments you can run live in your browser. No installation or setup required. Explore a neural network playground, test AI vs human text detection, experiment with prompts, generate images, analyse sentiment, chat with an AI, and explore ethics scenarios.",
     "q16": "Do I need an account to start learning?",
-    "a16": "No account is needed to browse programmes, articles, and the Lab. Start the four starter programmes for free, or create an account to purchase Pro, track progress across devices, and earn completion certificates.",
+    "a16": "No account is needed to browse programmes, articles, and the Lab. Try the first lesson of any academy for free, or create an account to purchase Pro, track progress across devices, and earn completion certificates.",
     "q17": "Are there certificates or credentials?",
     "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available for Pro subscribers who complete programs.",
     "q18": "How often is new content added?",
@@ -1878,16 +1878,16 @@
     "q23": "How do I track my learning progress?",
     "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
     "q24": "What makes AI Educademy different from other platforms?",
-    "a24": "AI Educademy combines a generous starter tier, structured learning, practical projects, interactive experiments, and genuinely multilingual content. Pro takes you from foundations to production-minded AI skills.",
+    "a24": "AI Educademy combines a genuine free-lesson taste in every academy, structured learning, practical projects, interactive experiments, and genuinely multilingual content. Pro takes you from foundations to production-minded AI skills.",
     "q25": "How do I get started?",
-    "a25": "Browse the academies and start with AI Seeds, AI Sprouts, AI Sketch, or Interview Launchpad for free. Choose a monthly, annual, or lifetime Pro plan when you are ready for the deeper programmes."
+    "a25": "Browse the academies and try the free first lesson of any programme, whether that's AI Seeds, AI Canopy, or Interview Launchpad. Choose a monthly, annual, or lifetime Pro plan when you are ready to unlock the rest."
   },
   "pricing": {
     "pageTitle": "Pricing",
     "pageDescription": "Choose monthly, annual, or lifetime access to practical AI academies, projects, labs, and certificates.",
     "badge": "Invest in your edge",
     "heading": "One plan. Every academy.",
-    "subheading": "Start with four free starter programmes, then unlock every academy, lesson, project, and certificate with Pro.",
+    "subheading": "Try the first lesson of any academy for free, then unlock every remaining lesson, project, and certificate with Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
     "monthly": {
@@ -1921,8 +1921,8 @@
     "promoCodeInvalid": "Invalid code",
     "free": {
       "title": "Explorer",
-      "f1": "Start with four free starter programmes, then unlock every academy, lesson, project, and certificate with Pro.",
-      "f2": "AI Educademy offers four free starter programmes and a first-lesson preview in every other programme. Pro unlocks every academy, track, certificate, and premium feature through monthly, annual, or lifetime access.",
+      "f1": "Try the first lesson of every academy for free, then unlock the rest with Pro.",
+      "f2": "AI Educademy gives you a free first-lesson preview in every academy. Pro unlocks every remaining lesson, track, certificate, and premium feature through monthly, annual, or lifetime access.",
       "f3": "Articles and programme previews",
       "f4": "Interactive AI Lab experiments",
       "f5": "Progress saved locally",

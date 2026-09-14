@@ -798,7 +798,7 @@
         },
         {
           "q": "O Interview Launchpad é gratuito?",
-          "a": "Sim, completamente gratuito. O track Career Ready do AI Educademy foi projetado para ajudar todos a acessar uma preparação de entrevistas de qualidade."
+          "a": "A primeira aula do Interview Launchpad é gratuita para experimentar. O Pro desbloqueia o restante do programa, junto com todas as demais academias, trilhas e certificados."
         },
         {
           "q": "O que diferencia o Interview Launchpad de outras preparações para entrevistas?",
@@ -928,7 +928,7 @@
         },
         {
           "q": "O AI Seeds é realmente gratuito?",
-          "a": "Sim, o AI Seeds é completamente gratuito. O AI Educademy é um projeto open-source comprometido em tornar a educação em IA acessível para todos. Não há custos ocultos, muros de pagamento ou vendas premium neste programa."
+          "a": "A primeira aula do AI Seeds é gratuita para experimentar, sem necessidade de conta. O restante do programa está disponível com um plano Pro, junto com todas as demais academias, trilhas e certificados."
         },
         {
           "q": "Quais tópicos o AI Seeds cobre?",
@@ -980,7 +980,7 @@
         },
         {
           "q": "O AI Sprouts é gratuito?",
-          "a": "Sim, completamente gratuito. O AI Educademy acredita que educação de qualidade em IA deve ser acessível para todos, em todos os lugares."
+          "a": "A primeira aula do AI Sprouts é gratuita para experimentar. O Pro desbloqueia o restante do programa, junto com todas as demais academias, trilhas e certificados."
         },
         {
           "q": "O que vou aprender no AI Sprouts?",
@@ -1816,7 +1816,7 @@
     "q1": "What is AI Educademy?",
     "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
     "q2": "Is AI Educademy really free?",
-    "a2": "Yes,  free. , , . Every lesson, program, and lab experiment is fully accessible at no cost. and will stay that way.",
+    "a2": "Cada academia da AI Educademy começa com uma primeira aula gratuita, para que você possa experimentar antes de se comprometer. O Pro desbloqueia todas as demais aulas, academias, trilhas, certificados e recursos premium com acesso mensal, anual ou vitalício.",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
     "q4": "What programs are available?",
@@ -1844,7 +1844,7 @@
     "q15": "What is the Lab section?",
     "a15": "The Lab is a collection of interactive AI experiments you can run live in your browser. no installation or setup required. Explore a neural network playground, test AI vs human text detection, experiment with prompts, generate images, analyse sentiment, chat with an AI, and explore ethics scenarios.",
     "q16": "Do I need an account to start learning?",
-    "a16": "No account needed. You can start any lesson or program immediately without signing up. Creating a free account (or signing in with Google) lets you track your progress across devices and pick up exactly where you left off.",
+    "a16": "Não é necessária uma conta para navegar pelos programas, artigos e o Lab. Experimente a primeira aula de qualquer academia gratuitamente, ou crie uma conta para adquirir o Pro, acompanhar o progresso em vários dispositivos e obter certificados de conclusão.",
     "q17": "Are there certificates or credentials?",
     "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available free of charge for all completed programs.",
     "q18": "How often is new content added?",
@@ -1860,26 +1860,26 @@
     "q23": "How do I track my learning progress?",
     "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
     "q24": "What makes AI Educademy different from other platforms?",
-    "a24": "Four things set us apart: it's includes four free starter programmes and a free first lesson in every other programme, with Pro for the full path, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners. no jargon, no intimidating prerequisites, no gatekeeping.",
+    "a24": "A AI Educademy combina uma verdadeira amostra gratuita em cada academia, aprendizado estruturado, projetos práticos, experimentos interativos e conteúdo genuinamente multilíngue. O Pro leva você dos fundamentos a habilidades de IA voltadas para produção.",
     "q25": "How do I get started?",
-    "a25": "Just click 'Start Learning for Free' below (or the 'Get Started' button in the navigation) and choose a program. We recommend starting with AI Seeds if you're new to AI. No registration required. you can begin learning right now, in your language."
+    "a25": "Explore as academias e experimente gratuitamente a primeira aula de qualquer programa, seja AI Seeds, AI Canopy ou Interview Launchpad. Escolha um plano Pro mensal, anual ou vitalício quando estiver pronto para desbloquear o restante."
   },
   "pricing": {
     "pageTitle": "Pricing",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
     "badge": "Simple Pricing",
     "heading": "Learn AI at your own pace",
-    "subheading": "Start with our beginner programs. Upgrade to Pro to unlock every program, track, certificate, and premium feature.",
+    "subheading": "Experimente a primeira aula de qualquer academia gratuitamente e depois desbloqueie todas as demais aulas, projetos e certificados com o Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
     "free": {
-      "title": "Explorer",
-      "f1": "Beginner programs (AI Seeds & AI Sprouts)",
-      "f2": "First lesson of every program",
-      "f3": "All blog posts & articles",
-      "f4": "Lab playground experiments",
-      "f5": "Edu AI chatbot assistant",
-      "cta": "Current Plan"
+      "title": "Explorador",
+      "f1": "Experimente a primeira aula de cada academia gratuitamente e depois desbloqueie o restante com o Pro.",
+      "f2": "A AI Educademy oferece uma prévia gratuita da primeira aula em cada academia. O Pro desbloqueia todas as demais aulas, trilhas, certificados e recursos premium com acesso mensal, anual ou vitalício.",
+      "f3": "Artigos e prévias de programas",
+      "f4": "Experimentos interativos do AI Lab",
+      "f5": "Progresso salvo localmente",
+      "cta": "Começar grátis"
     },
     "monthly": {
       "title": "Pro Monthly",

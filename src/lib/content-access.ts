@@ -1,23 +1,16 @@
 /**
- * Starter programmes are free. Premium programmes expose their first lesson
- * as a preview; the remaining lessons require an active Pro plan or admin role.
+ * Every programme exposes its first lesson as a free preview; the remaining
+ * lessons require an active Pro plan or admin role. No programme is fully free.
  */
-const FREE_PROGRAMS = new Set([
-  "ai-seeds",
-  "ai-sprouts",
-  "ai-sketch",
-  "ai-launchpad",
-]);
-
 export function isFreeLessonAccess(
-  programSlug: string,
+  _programSlug: string,
   lessonOrder: number
 ): boolean {
-  return FREE_PROGRAMS.has(programSlug) || lessonOrder === 1;
+  return lessonOrder === 1;
 }
 
-export function isFreeProgram(programSlug: string): boolean {
-  return FREE_PROGRAMS.has(programSlug);
+export function isFreeProgram(_programSlug: string): boolean {
+  return false;
 }
 
 export function requiresPremium(
