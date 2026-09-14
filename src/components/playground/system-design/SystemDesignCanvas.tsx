@@ -82,7 +82,7 @@ export const SystemDesignCanvas = memo(() => {
     }, 800);
 
     return () => { if (saveTimerRef.current) clearTimeout(saveTimerRef.current); };
-  }, [shapes, arrows, activeCanvasId]);
+  }, [shapes, arrows, activeCanvasId, tp]);
 
   /* start a new blank canvas */
   const newCanvas = useCallback(() => {

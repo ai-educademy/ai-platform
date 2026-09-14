@@ -135,7 +135,7 @@ export function Certificate({ programName, programIcon, userName, completionDate
         setDrawn(true);
       }
     },
-    [programName, programIcon, userName, completionDate, drawn],
+    [programName, programIcon, userName, completionDate, drawn, t],
   );
 
   const handleDownload = () => {

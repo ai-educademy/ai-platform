@@ -71,16 +71,6 @@ export function UserGrowthChart({ data }: { data: GrowthPoint[] }) {
     return () => cancelAnimationFrame(id);
   }, []);
 
-  if (data.length === 0) {
-    return (
-      <ChartCard title="User Growth" subtitle="Last 30 days">
-        <div className="h-48 flex items-center justify-center text-sm text-[var(--color-text-muted)]">
-          No signup data for the last 30 days
-        </div>
-      </ChartCard>
-    );
-  }
-
   // Chart dimensions
   const W = 800;
   const H = 300;
@@ -143,8 +133,24 @@ export function UserGrowthChart({ data }: { data: GrowthPoint[] }) {
       }
       setTooltip({ x: xScale(closestIdx), y: yScale(data[closestIdx].users), point: data[closestIdx] });
     },
+    // xScale/yScale are pure functions of `data` (via chartW/yMax), so `data`
+    // already covers them. Listing them would rebuild this callback on every
+    // render, since they are plain consts rather than memoised values.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [data],
   );
+
+  // Must sit below every hook call, including the useCallback above, or the
+  // hook count changes once signup data loads and React throws.
+  if (data.length === 0) {
+    return (
+      <ChartCard title="User Growth" subtitle="Last 30 days">
+        <div className="h-48 flex items-center justify-center text-sm text-[var(--color-text-muted)]">
+          No signup data for the last 30 days
+        </div>
+      </ChartCard>
+    );
+  }
 
   const animStyle = !reducedMotion && mounted
     ? { strokeDasharray: approxLen, strokeDashoffset: 0, transition: "stroke-dashoffset 1.2s ease-out" }

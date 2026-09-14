@@ -126,7 +126,7 @@ export default function AITriviaChallenge() {
       }
     }, 1500);
     return () => clearTimeout(timer);
-  }, [feedback, current, questions.length, score, correctCount]);
+  }, [feedback, current, questions.length, score, correctCount, isGuest]);
 
   // Keyboard shortcuts
   useEffect(() => {
