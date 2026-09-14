@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { CampaignPanel } from "./CampaignPanel";
 import {
   Users,
   CreditCard,
@@ -800,6 +801,8 @@ export default function AdminPage() {
       {/* ═══════ Tab 4: Subscribers ═══════ */}
       {activeTab === "subscribers" && (
         <div className="space-y-4 fade-up">
+          <CampaignPanel />
+
           <GlassCard className="p-5">
             <div className="flex items-center gap-3">
               <Mail size={20} className="text-pink-500" />
