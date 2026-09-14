@@ -8,6 +8,7 @@ import { useInView } from "@/hooks/useInView";
 
 /* ── Types ── */
 interface HomeHeroProps {
+  badge: string;
   title: string;
   titleHighlight: string;
   subtitle: string;
@@ -173,6 +174,7 @@ function LabButton({ href, label, noMotion }: { href: string; label: string; noM
 
 /* ── Main Component ── */
 export default function HomeHero({
+  badge,
   title,
   titleHighlight,
   subtitle,
@@ -191,6 +193,11 @@ export default function HomeHero({
 
   return (
     <div ref={ref} className="text-center max-w-4xl mx-auto">
+      <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-violet-600 dark:text-violet-300">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+        {badge}
+      </div>
+
       {/* Logo - scale-in + subtle float */}
       <div
         style={{

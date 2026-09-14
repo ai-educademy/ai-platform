@@ -265,303 +265,335 @@
     "allTracks": "सभी ट्रैक",
     "ai-seeds": {
       "title": "AI Seeds",
-      "subtitle": "अपना पहला AI ज्ञान बोएं",
-      "description": "बिल्कुल शून्य से शुरू करें। हम सरल भाषा और रोज़मर्रा के उदाहरणों का उपयोग करके आपकी समझ को कदम-दर-कदम बनाते हैं।",
-      "audience": "बिना किसी तकनीकी पृष्ठभूमि के पूर्ण शुरुआती",
-      "prerequisites": "कुछ नहीं - बस जिज्ञासा!",
+      "subtitle": "AI literacy for the real world",
+      "description": "Build a clear mental model of modern AI, from training data and neural networks to generative tools, limitations, safety, and the choices people make around them.",
+      "audience": "Curious beginners, leaders, students, and career changers",
+      "prerequisites": "None. Just curiosity and a willingness to question the hype.",
       "topics": [
-        "AI क्या है?",
-        "मशीनें कैसे सीखती हैं",
-        "आपका पहला AI मॉडल"
+        "AI in everyday products",
+        "Data, models, and predictions",
+        "Generative AI and multimodal tools",
+        "Reliability, bias, and safety",
+        "Human judgement in an AI world"
       ],
       "outcomes": [
-        "समझें कि AI क्या है और क्या नहीं",
-        "जानें कि मशीनें डेटा से कैसे सीखती हैं",
-        "अपने ब्राउज़र में एक सरल AI मॉडल प्रशिक्षित करें"
+        "Explain how modern AI systems learn and generate outputs",
+        "Choose AI tools with clear expectations and boundaries",
+        "Spot common reliability, bias, privacy, and safety risks",
+        "Complete a guided AI experiment and reflect on its limits"
       ],
       "tileLabel": "Basics",
-      "homeDesc": "शून्य से शुरू करें"
+      "homeDesc": "AI literacy for the real world"
     },
     "ai-sprouts": {
       "title": "AI Sprouts",
-      "subtitle": "अपनी AI नींव बनाएं",
-      "description": "आगे बढ़ने के लिए तैयार हैं? AI के निर्माण खंडों में गोता लगाएं - डेटा, एल्गोरिदम, और न्यूरल नेटवर्क। हैंड्स-ऑन अभ्यास कोड लिखने से पहले अंतर्ज्ञान बनाने में मदद करते हैं।",
-      "audience": "AI Seeds पूरा करने वाले या बुनियादी AI जागरूकता रखने वाले शिक्षार्थी",
-      "prerequisites": "AI Seeds (अनुशंसित)",
+      "subtitle": "The foundations behind intelligent systems",
+      "description": "Understand the building blocks behind modern AI: datasets, features, embeddings, neural networks, transformers, evaluation, and the practical trade-offs that shape model behaviour.",
+      "audience": "Learners ready to move from AI literacy into technical understanding",
+      "prerequisites": "AI Seeds or equivalent practical AI awareness",
       "topics": [
-        "AI के प्रकार",
-        "डेटा को समझना",
-        "AI कैसे निर्णय लेता है",
-        "AI नैतिकता - मूल बातें"
+        "Datasets and data quality",
+        "Training, loss, and optimisation",
+        "Embeddings and vector search",
+        "Neural networks and transformers",
+        "Evaluation and responsible use"
       ],
       "outcomes": [
-        "सुपरवाइज़्ड, अनसुपरवाइज़्ड और रीइन्फोर्समेंट लर्निंग में अंतर करें",
-        "प्रशिक्षण डेटा क्या है और यह क्यों महत्वपूर्ण है समझें",
-        "AI पूर्वाग्रह और निष्पक्षता के बारे में गंभीर रूप से सोचें"
+        "Trace the path from data to model output",
+        "Explain embeddings, tokenisation, and transformer intuition",
+        "Select useful evaluation metrics for an AI task",
+        "Diagnose overfitting, bias, and data-quality failures"
       ],
       "tileLabel": "Algorithms",
-      "homeDesc": "नींव बनाएं"
+      "homeDesc": "The foundations behind intelligent systems"
     },
     "ai-branches": {
       "title": "AI Branches",
-      "subtitle": "वास्तविक दुनिया के अनुप्रयोगों का अन्वेषण करें",
-      "description": "विभिन्न उद्योगों में AI को कार्यरत देखें - स्वास्थ्य सेवा, वित्त, रचनात्मक कला, और बहुत कुछ। सरल प्रोजेक्ट बनाना शुरू करें और पेशेवरों द्वारा उपयोग किए जाने वाले टूल को समझें।",
-      "audience": "AI को व्यवहार में देखने के लिए तैयार शिक्षार्थी",
-      "prerequisites": "AI Sprouts",
+      "subtitle": "Build with today’s AI capabilities",
+      "description": "Move from concepts to applications. Work across text, vision, speech, and multimodal systems while learning where APIs, open models, structured outputs, and human review fit.",
+      "audience": "Learners who want to build useful AI features",
+      "prerequisites": "AI Sprouts or equivalent foundations",
       "topics": [
-        "स्वास्थ्य सेवा में AI",
-        "रचनात्मक कलाओं में AI",
-        "चैटबॉट और NLP",
-        "कंप्यूटर विज़न मूल बातें"
+        "Model APIs and structured output",
+        "Prompt and context design",
+        "Vision, speech, and multimodal AI",
+        "Fine-tuning versus retrieval",
+        "Human-in-the-loop product design"
       ],
       "outcomes": [
-        "एक सरल चैटबॉट बनाएं",
-        "समझें कि इमेज रिकग्निशन कैसे काम करता है",
-        "एक AI-संचालित मिनी प्रोजेक्ट बनाएं"
+        "Build a small multimodal AI feature",
+        "Choose between prompting, retrieval, and fine-tuning",
+        "Design clear input and output contracts for model calls",
+        "Explain failure modes to non-technical stakeholders"
       ],
       "tileLabel": "Applications",
-      "homeDesc": "व्यवहार में लागू करें"
+      "homeDesc": "Build with today’s AI capabilities"
     },
     "ai-canopy": {
       "title": "AI Canopy",
-      "subtitle": "AI सिस्टम की गहन खोज",
-      "description": "न्यूरल नेटवर्क, बड़े भाषा मॉडल, और AI सिस्टम डिज़ाइन में गहराई से जाएं। AI टूल का आलोचनात्मक मूल्यांकन करना और आधुनिक AI के पीछे की इंजीनियरिंग को समझना सीखें।",
-      "audience": "तकनीकी गहराई के लिए तैयार मध्यवर्ती शिक्षार्थी",
-      "prerequisites": "AI Branches",
+      "subtitle": "Engineer reliable GenAI systems",
+      "description": "Design production-minded LLM applications with retrieval, tool use, agent workflows, MCP, evaluation, guardrails, and observability. Learn to optimise for quality, latency, safety, and cost.",
+      "audience": "Developers and technical practitioners building AI applications",
+      "prerequisites": "AI Branches plus basic Python or TypeScript",
       "topics": [
-        "न्यूरल नेटवर्क",
-        "बड़े भाषा मॉडल",
-        "प्रॉम्प्ट इंजीनियरिंग",
-        "AI सिस्टम डिज़ाइन"
+        "LLM application architecture",
+        "RAG, hybrid retrieval, and reranking",
+        "Tool calling, MCP, and agent workflows",
+        "Golden datasets and agent evaluation",
+        "Guardrails, tracing, latency, and cost"
       ],
       "outcomes": [
-        "न्यूरल नेटवर्क कैसे काम करते हैं समझें",
-        "प्रॉम्प्ट इंजीनियरिंग तकनीकों में महारत हासिल करें",
-        "AI टूल और सेवाओं का आलोचनात्मक मूल्यांकन करें"
+        "Build a grounded RAG assistant with citations",
+        "Design a safe tool-using agent with explicit boundaries",
+        "Create regression evaluations for quality and tool behaviour",
+        "Instrument an AI feature for latency, cost, and failure analysis"
       ],
       "tileLabel": "Deep Learning",
-      "homeDesc": "गहराई में जाएं"
+      "homeDesc": "Engineer reliable GenAI systems"
     },
     "ai-forest": {
       "title": "AI Forest",
-      "subtitle": "AI इकोसिस्टम में महारत हासिल करें",
-      "description": "पूरी तस्वीर - AI रिसर्च, प्रोडक्शन AI सिस्टम बनाना, ओपन-सोर्स AI में योगदान, और यह समझना कि यह क्षेत्र कहाँ जा रहा है। उनके लिए जो भविष्य को आकार देना चाहते हैं।",
-      "audience": "उन्नत शिक्षार्थी और होनहार AI प्रैक्टिशनर",
-      "prerequisites": "AI Canopy",
+      "subtitle": "Ship AI products responsibly",
+      "description": "Bring the full lifecycle together: product discovery, architecture, data governance, model and vendor choices, deployment, monitoring, incident response, regulation, and continuous improvement.",
+      "audience": "Senior builders, product engineers, technical leaders, and founders",
+      "prerequisites": "AI Canopy or equivalent production AI experience",
       "topics": [
-        "AI उत्पाद बनाना",
-        "ओपन-सोर्स AI",
-        "AI शोध पत्र",
-        "AI का भविष्य"
+        "AI product discovery and measurement",
+        "LLMOps and deployment strategy",
+        "Security, privacy, and threat modelling",
+        "Governance, regulation, and auditability",
+        "Reliability, economics, and incident response"
       ],
       "outcomes": [
-        "एक AI-संचालित एप्लिकेशन बनाएं और डिप्लॉय करें",
-        "AI शोध पत्र पढ़ें और समझें",
-        "ओपन-सोर्स AI प्रोजेक्ट में योगदान करें"
+        "Create a production AI delivery plan with measurable outcomes",
+        "Threat-model an AI system and define control points",
+        "Build a release and monitoring strategy for model change",
+        "Make defensible trade-offs across quality, cost, speed, and risk"
       ],
       "tileLabel": "Research",
-      "homeDesc": "AI में महारत हासिल करें"
+      "homeDesc": "Ship AI products responsibly"
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "मोटी रूपरेखा - DSA के मूल सिद्धांत",
-      "description": "AI सिस्टम को शक्ति देने वाली मूलभूत डेटा संरचनाओं और एल्गोरिदम में महारत हासिल करें। ऐरे, हैश मैप, स्ट्रिंग, और सॉर्टिंग - आरेखों के साथ विज़ुअलाइज़ किया गया, AI वास्तविक दुनिया के अनुप्रयोगों के साथ समझाया गया।",
-      "audience": "इंटरव्यू की तैयारी शुरू करने या बुनियादी बातें ताज़ा करने वाले इंजीनियर",
-      "prerequisites": "किसी भी भाषा में बेसिक प्रोग्रामिंग",
+      "subtitle": "Engineering foundations for AI builders",
+      "description": "Strengthen the programming, data structures, testing, and complexity fundamentals that make AI systems understandable, efficient, and maintainable.",
+      "audience": "Developers beginning AI engineering or interview preparation",
+      "prerequisites": "Basic programming in Python, JavaScript, Java, or another language",
       "topics": [
-        "ऐरे और हैशिंग",
-        "स्ट्रिंग्स और पैटर्न मैचिंग",
-        "सॉर्टिंग और सर्चिंग"
+        "Complexity and trade-offs",
+        "Core data structures",
+        "Searching, sorting, and graphs",
+        "Testing and debugging",
+        "Data pipelines and API boundaries"
       ],
       "outcomes": [
-        "आत्मविश्वास से ऐरे और हैश मैप समस्याओं को हल करें",
-        "समझें कि ये पैटर्न AI सिस्टम को कैसे शक्ति देते हैं",
-        "सामान्य इंटरव्यू पैटर्न पहचानें"
+        "Choose data structures deliberately",
+        "Explain time and space trade-offs",
+        "Write testable solutions under constraints",
+        "Connect algorithms to real AI application workloads"
       ],
       "tileLabel": "DSA",
-      "homeDesc": "शून्य से शुरू करें"
+      "homeDesc": "Engineering foundations for AI builders"
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "सटीकता को तराशना - मध्यवर्ती पैटर्न",
-      "description": "मध्यवर्ती एल्गोरिदमिक पैटर्न के साथ आगे बढ़ें: टू पॉइंटर्स, स्लाइडिंग विंडो, BFS/DFS, और ट्री ट्रैवर्सल। प्रत्येक पैटर्न वास्तविक AI/ML अनुप्रयोगों से जुड़ा है।",
-      "audience": "DSA की बुनियादी बातें जानने वाले इंजीनियर मध्यम-स्तर की समस्याओं के लिए तैयार",
-      "prerequisites": "AI Sketch या समकक्ष बुनियादी ज्ञान",
+      "subtitle": "Patterns for solving harder problems",
+      "description": "Practise the algorithmic patterns that recur in production services, search, recommendation, data processing, and technical interviews.",
+      "audience": "Engineers with programming fundamentals",
+      "prerequisites": "AI Sketch or equivalent data-structure knowledge",
       "topics": [
-        "टू पॉइंटर्स और स्लाइडिंग विंडो",
-        "ट्री और ग्राफ ट्रैवर्सल",
-        "स्टैक, क्यू और मोनोटोनिक पैटर्न"
+        "Sliding windows and intervals",
+        "Trees, graphs, and union-find",
+        "Heaps, tries, and monotonic structures",
+        "Dynamic programming",
+        "Performance and correctness"
       ],
       "outcomes": [
-        "समाधान अनुकूलित करने के लिए टू पॉइंटर्स और स्लाइडिंग विंडो लागू करें",
-        "BFS/DFS के साथ ट्री और ग्राफ ट्रैवर्स करें",
-        "इन पैटर्न को AI सर्च और इन्फरेंस से जोड़ें"
+        "Recognise and apply reusable problem-solving patterns",
+        "Prove correctness and analyse complexity",
+        "Choose practical optimisations without premature complexity",
+        "Communicate a solution clearly under pressure"
       ],
       "tileLabel": "Patterns",
-      "homeDesc": "नींव बनाएं"
+      "homeDesc": "Patterns for solving harder problems"
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "कौशल निर्माण - सिस्टम डिज़ाइन",
-      "description": "AI को शक्ति देने वाले बड़े पैमाने के सिस्टम डिज़ाइन करें: रिकमेंडेशन इंजन, सर्च ऑटोकम्प्लीट, रेट लिमिटर। आर्किटेक्चर में सोचना सीखें, सिर्फ कोड में नहीं।",
-      "audience": "सिस्टम डिज़ाइन राउंड की तैयारी कर रहे मध्य से वरिष्ठ इंजीनियर",
-      "prerequisites": "कोडिंग इंटरव्यू में सहज",
+      "subtitle": "Design systems that scale AI",
+      "description": "Learn system design for modern AI products: model gateways, retrieval services, async workloads, streaming, caches, rate limits, tenancy, and resilient APIs.",
+      "audience": "Mid-to-senior engineers designing distributed AI systems",
+      "prerequisites": "Comfort with APIs, databases, and distributed-system basics",
       "topics": [
-        "URL शॉर्टनर डिज़ाइन करें",
-        "रेट लिमिटर डिज़ाइन करें",
-        "रिकमेंडेशन इंजन डिज़ाइन करें"
+        "AI platform and model gateways",
+        "RAG and vector retrieval services",
+        "Queues, streaming, and async inference",
+        "Caching, rate limits, and tenancy",
+        "Resilience, security, and observability"
       ],
       "outcomes": [
-        "सिस्टम डिज़ाइन उत्तर स्पष्ट रूप से संरचित करें",
-        "स्केलेबल वितरित सिस्टम डिज़ाइन करें",
-        "AI-विशिष्ट इन्फ्रास्ट्रक्चर पैटर्न समझें"
+        "Produce a clear architecture with justified trade-offs",
+        "Design for failure, scale, and operational visibility",
+        "Estimate AI cost and capacity before implementation",
+        "Defend an AI system design in a technical review"
       ],
       "tileLabel": "System Design",
-      "homeDesc": "व्यवहार में लागू करें"
+      "homeDesc": "Design systems that scale AI"
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "उत्कृष्टता को निखारना - व्यवहारिक महारत",
-      "description": "संरचित फ्रेमवर्क के साथ व्यवहारिक इंटरव्यू में महारत हासिल करें। STAR विधि, नेतृत्व सिद्धांत, AI-युग के परिदृश्य, और संचार रणनीतियाँ।",
-      "audience": "किसी भी स्तर के इंजीनियर व्यवहारिक राउंड की तैयारी कर रहे हैं",
-      "prerequisites": "साझा करने के लिए वास्तविक प्रोजेक्ट अनुभव",
+      "subtitle": "Communicate and lead in the AI era",
+      "description": "Turn strong engineering into visible impact through technical communication, decision records, stakeholder alignment, responsible leadership, and AI-aware career storytelling.",
+      "audience": "Engineers moving into senior, lead, or AI-focused roles",
+      "prerequisites": "Professional project experience",
       "topics": [
-        "इंजीनियरों के लिए STAR फ्रेमवर्क",
-        "सिस्टम डिज़ाइन संचार",
-        "AI-युग नेतृत्व परिदृश्य"
+        "Technical storytelling",
+        "Architecture decision records",
+        "Influence and stakeholder alignment",
+        "Responsible AI leadership",
+        "Interview and promotion narratives"
       ],
       "outcomes": [
-        "STAR का उपयोग करके प्रभावशाली कहानियां संरचित करें",
-        "तकनीकी निर्णयों को स्पष्ट रूप से संवाद करें",
-        "AI नैतिकता और नेतृत्व प्रश्नों को नेविगेट करें"
+        "Explain complex AI trade-offs to different audiences",
+        "Build evidence-based leadership stories",
+        "Lead decisions without hiding uncertainty",
+        "Position engineering impact clearly and credibly"
       ],
       "tileLabel": "Interviews",
-      "homeDesc": "गहराई में जाएं"
+      "homeDesc": "Communicate and lead in the AI era"
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "पोर्टफोलियो-तैयार - संपूर्ण केस स्टडी",
-      "description": "DSA, सिस्टम डिज़ाइन, और व्यवहारिक कौशल को मिलाकर कैपस्टोन प्रोजेक्ट। वास्तविक सिस्टम को शुरू से अंत तक डिज़ाइन करें और अपना इंजीनियरिंग पोर्टफोलियो बनाएं।",
-      "audience": "सीनियर+ भूमिकाओं के लिए तैयार इंजीनियर",
-      "prerequisites": "AI Sketch से AI Polish तक पूरा किया",
+      "subtitle": "Your production AI capstone",
+      "description": "Design, build, evaluate, and present an end-to-end AI product. Combine retrieval or tool use with security, tests, observability, a runbook, and a credible product case.",
+      "audience": "Engineers ready to demonstrate production AI capability",
+      "prerequisites": "AI Canopy plus AI Craft, or equivalent experience",
       "topics": [
-        "Twitter का AI फीड डिज़ाइन करें",
-        "पूर्ण मॉक इंटरव्यू",
-        "इंजीनियरिंग पोर्टफोलियो"
+        "Product brief and success metrics",
+        "Architecture and threat model",
+        "RAG or agent implementation",
+        "Evaluation and observability",
+        "Launch review and portfolio case study"
       ],
       "outcomes": [
-        "एंड-टू-एंड सिस्टम डिज़ाइन पूरा करें",
-        "मॉक इंटरव्यू में आत्मविश्वास से प्रदर्शन करें",
-        "एक उत्कृष्ट इंजीनियरिंग पोर्टफोलियो बनाएं"
+        "Ship a portfolio-ready AI system design and prototype",
+        "Demonstrate evaluation beyond a happy-path demo",
+        "Document risk, operations, and rollback decisions",
+        "Present technical work with clear business and user value"
       ],
       "tileLabel": "Architecture",
-      "homeDesc": "AI में महारत हासिल करें"
+      "homeDesc": "Your production AI capstone"
     },
     "ai-launchpad": {
       "title": "इंटरव्यू लॉन्चपैड",
-      "subtitle": "आपकी इंटरव्यू यात्रा की शुरुआत",
-      "description": "तकनीकी इंटरव्यू की तैयारी के मूल सिद्धांतों में महारत हासिल करें। कंपनियों की रिसर्च करना, जॉब डिस्क्रिप्शन समझना, तैयारी की टाइमलाइन बनाना और घबराहट को आत्मविश्वास में बदलने वाली मानसिकता विकसित करना सीखें।",
-      "audience": "तकनीकी इंटरव्यू की तैयारी शुरू करने वाला कोई भी व्यक्ति",
-      "prerequisites": "कुछ नहीं. यही आपका शुरुआती बिंदु है",
+      "subtitle": "Navigate the AI engineering job market",
+      "description": "Build a focused search strategy for AI-era roles: understand role families, read job descriptions, map your evidence, and prepare a realistic learning and application plan.",
+      "audience": "People starting or redirecting an AI-focused career",
+      "prerequisites": "None",
       "topics": [
-        "कंपनी रिसर्च तकनीकें",
-        "जॉब डिस्क्रिप्शन विश्लेषण",
-        "इंटरव्यू तैयारी टाइमलाइन",
-        "मानसिकता और आत्मविश्वास निर्माण"
+        "AI role families and expectations",
+        "Job-description signal extraction",
+        "Skills-gap mapping",
+        "Evidence-led applications",
+        "A sustainable preparation plan"
       ],
       "outcomes": [
-        "एक संरचित इंटरव्यू तैयारी योजना बनाएं",
-        "किसी भी जॉब डिस्क्रिप्शन को प्रभावी ढंग से समझें",
-        "प्रोफेशनल की तरह कंपनियों की रिसर्च करें",
-        "इंटरव्यू में आत्मविश्वास विकसित करें"
+        "Choose target roles based on evidence and strengths",
+        "Turn job descriptions into a practical study plan",
+        "Build a credible project and application portfolio",
+        "Track progress without chasing every new tool"
       ],
       "tileLabel": "तैयारी",
-      "homeDesc": "अपनी यात्रा शुरू करें"
+      "homeDesc": "Navigate the AI engineering job market"
     },
     "ai-behavioral": {
       "title": "व्यवहारिक इंटरव्यू में महारत",
-      "subtitle": "कहानियाँ जो ऑफर दिलाती हैं",
-      "description": "STAR फ्रेमवर्क, लीडरशिप कथाओं और संरचित कहानी कहने के साथ व्यवहारिक इंटरव्यू में महारत हासिल करें। अपने अनुभव को प्रभावशाली जवाबों में बदलना सीखें जो आपकी क्षमता साबित करें।",
-      "audience": "व्यवहारिक राउंड की तैयारी करने वाले किसी भी स्तर के इंजीनियर",
-      "prerequisites": "वास्तविक प्रोजेक्ट अनुभव जिससे उदाहरण लिए जा सकें",
+      "subtitle": "Tell the story of how you create impact",
+      "description": "Prepare concise, honest stories about ambiguity, delivery, failure, influence, conflict, and responsible AI decisions using evidence rather than rehearsed slogans.",
+      "audience": "Engineers preparing for behavioural and leadership interviews",
+      "prerequisites": "Real project or collaboration experience",
       "topics": [
-        "STAR मेथड में महारत",
-        "लीडरशिप और टीमवर्क कहानियाँ",
-        "संघर्ष समाधान कथाएँ",
-        "सांस्कृतिक फिट मूल्यांकन"
+        "Evidence-led STAR stories",
+        "Ambiguity and prioritisation",
+        "Failure, learning, and recovery",
+        "Conflict and influence",
+        "Responsible AI judgement"
       ],
       "outcomes": [
-        "STAR रिस्पॉन्स फ्रेमवर्क में महारत हासिल करें",
-        "प्रभावशाली करियर कथाएँ तैयार करें",
-        "किसी भी व्यवहारिक प्रश्न का आत्मविश्वास से जवाब दें",
-        "लीडरशिप और सहयोग प्रदर्शित करें"
+        "Build a reusable story bank",
+        "Answer with context, action, and measurable outcome",
+        "Show judgement when technology and people trade-offs collide",
+        "Adapt one experience to different question styles"
       ],
       "tileLabel": "व्यवहारिक",
-      "homeDesc": "सॉफ्ट स्किल्स में महारत"
+      "homeDesc": "Tell the story of how you create impact"
     },
     "ai-technical": {
       "title": "तकनीकी इंटरव्यू",
-      "subtitle": "दबाव में कोडिंग",
-      "description": "कोडिंग इंटरव्यू, सिस्टम डिज़ाइन राउंड और तकनीकी गहन चर्चाओं को जीतें। डेटा स्ट्रक्चर से लेकर डिस्ट्रीब्यूटेड सिस्टम तक, दबाव में उत्कृष्ट प्रदर्शन के लिए कौशल और आत्मविश्वास बनाएं।",
-      "audience": "तकनीकी इंटरव्यू राउंड की तैयारी करने वाले सॉफ्टवेयर इंजीनियर",
-      "prerequisites": "कम से कम एक भाषा में मजबूत प्रोग्रामिंग की बुनियाद",
+      "subtitle": "Solve, design, and communicate under pressure",
+      "description": "Practise coding, API, debugging, system design, and AI application questions with a repeatable method for clarifying requirements and defending trade-offs.",
+      "audience": "Software engineers preparing for technical interviews",
+      "prerequisites": "Solid programming fundamentals",
       "topics": [
-        "डेटा स्ट्रक्चर और एल्गोरिदम",
-        "सिस्टम डिज़ाइन के मूल सिद्धांत",
-        "कोडिंग इंटरव्यू पैटर्न",
-        "समस्या-समाधान रणनीतियाँ"
+        "Coding patterns and complexity",
+        "API and data-contract design",
+        "AI system design",
+        "Debugging and code review",
+        "Communication under pressure"
       ],
       "outcomes": [
-        "सामान्य कोडिंग इंटरव्यू पैटर्न हल करें",
-        "व्हाइटबोर्ड पर स्केलेबल सिस्टम डिज़ाइन करें",
-        "तकनीकी निर्णयों को स्पष्ट रूप से संप्रेषित करें",
-        "दबाव में समस्या-समाधान संभालें"
+        "Solve problems with a repeatable framework",
+        "Design reliable AI-enabled services",
+        "Debug systematically instead of guessing",
+        "Communicate assumptions and trade-offs clearly"
       ],
       "tileLabel": "तकनीकी",
-      "homeDesc": "कोडिंग राउंड में सफल हों"
+      "homeDesc": "Solve, design, and communicate under pressure"
     },
     "ai-ml-interview": {
       "title": "AI और ML इंटरव्यू",
-      "subtitle": "मशीन लर्निंग इंटरव्यू",
-      "description": "AI और मशीन लर्निंग भूमिकाओं के लिए विशेष तैयारी। ML सिस्टम डिज़ाइन, मॉडल मूल्यांकन, MLOps और AI-केंद्रित कंपनियों द्वारा उपयोग किए जाने वाले अनूठे इंटरव्यू प्रारूपों को कवर करें।",
-      "audience": "टेक कंपनियों में AI/ML भूमिकाओं को लक्षित करने वाले इंजीनियर",
-      "prerequisites": "बुनियादी ML ज्ञान (सुपरवाइज्ड/अनसुपरवाइज्ड लर्निंग)",
+      "subtitle": "Prepare for modern ML and GenAI interviews",
+      "description": "Cover model selection, experimentation, ML system design, RAG and agent evaluation, data quality, MLOps, safety, and the trade-offs interviewers expect you to articulate.",
+      "audience": "Engineers targeting ML, applied AI, or AI platform roles",
+      "prerequisites": "AI foundations plus basic statistics and Python",
       "topics": [
-        "ML सिस्टम डिज़ाइन",
-        "सांख्यिकीय आधार",
-        "मॉडल चयन और मूल्यांकन",
-        "ML केस स्टडीज़"
+        "ML and GenAI system design",
+        "Experimentation and evaluation",
+        "Data and feature quality",
+        "RAG, agents, and LLMOps",
+        "Safety, fairness, and governance"
       ],
       "outcomes": [
-        "एंड-टू-एंड ML सिस्टम डिज़ाइन करें",
-        "मॉडल ट्रेडऑफ़ स्पष्ट रूप से समझाएं",
-        "ML-विशिष्ट केस स्टडीज़ संभालें",
-        "व्यावहारिक ML ज्ञान प्रदर्शित करें"
+        "Design an ML or GenAI system end to end",
+        "Choose metrics that match user and business outcomes",
+        "Explain deployment and monitoring trade-offs",
+        "Handle safety and failure-mode questions with confidence"
       ],
       "tileLabel": "ML",
-      "homeDesc": "ML इंटरव्यू में महारत"
+      "homeDesc": "Prepare for modern ML and GenAI interviews"
     },
     "ai-offer": {
       "title": "ऑफर और उससे आगे",
-      "subtitle": "ऑफर से करियर विकास तक",
-      "description": "अंतिम चरण को नेविगेट करें. वेतन बातचीत, ऑफर मूल्यांकन और करियर विकास रणनीतियाँ। मुआवज़े की तुलना करना, प्रभावी ढंग से बातचीत करना और दीर्घकालिक करियर प्रक्षेपवक्र की योजना बनाना सीखें।",
-      "audience": "जिन इंजीनियरों को जॉब ऑफर मिले हैं या मिलने की उम्मीद है",
-      "prerequisites": "सक्रिय इंटरव्यू प्रक्रिया या हालिया ऑफर",
+      "subtitle": "Make a confident, informed next move",
+      "description": "Evaluate AI-era roles and offers with a practical framework covering scope, learning, leadership, compensation, risk, working patterns, and your first 90 days.",
+      "audience": "Candidates comparing offers or planning their next career step",
+      "prerequisites": "An active search, interview process, or offer",
       "topics": [
-        "वेतन बातचीत की रणनीतियाँ",
-        "ऑफर तुलना फ्रेमवर्क",
-        "लाभ और इक्विटी विश्लेषण",
-        "करियर निर्णय लेना"
+        "Role and scope evaluation",
+        "Compensation and equity",
+        "AI maturity and delivery risk",
+        "Negotiation with evidence",
+        "First 90 days and long-term growth"
       ],
       "outcomes": [
-        "आत्मविश्वास से मुआवज़े की बातचीत करें",
-        "कई ऑफर की निष्पक्ष तुलना करें",
-        "इक्विटी और लाभ पैकेज समझें",
-        "रणनीतिक करियर निर्णय लें"
+        "Compare offers beyond headline salary",
+        "Ask sharper questions about AI strategy and engineering quality",
+        "Negotiate from evidence without burning trust",
+        "Plan a strong first 90 days"
       ],
       "tileLabel": "ऑफर",
-      "homeDesc": "सबसे अच्छा ऑफर पाएं"
-    }
+      "homeDesc": "Make a confident, informed next move"
+    },
+    "curriculumVersion": "2026 production AI syllabus"
   },
   "programDetail": {
     "level": "स्तर",
@@ -863,7 +895,10 @@
     "ai-ethics-in-interviews": "AI Ethics in Interviews",
     "evaluating-multiple-offers": "Evaluating Multiple Offers",
     "first-90-days-strategy": "Your First 90 Days Strategy",
-    "long-term-career-architecture": "Long-Term Career Architecture"
+    "long-term-career-architecture": "Long-Term Career Architecture",
+    "rag-systems-in-practice": "व्यवहार में RAG सिस्टम",
+    "agent-tools-and-mcp": "टूल-उपयोग करने वाले एजेंट और MCP",
+    "evaluate-and-operate-ai": "AI का मूल्यांकन और संचालन"
   },
   "pwa": {
     "install": "ऐप इंस्टॉल करें",
@@ -1414,7 +1449,7 @@
     "q23": "How do I track my learning progress?",
     "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
     "q24": "What makes AI Educademy different from other platforms?",
-    "a24": "Four things set us apart: it's completely free with no premium tiers, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners. no jargon, no intimidating prerequisites, no gatekeeping.",
+    "a24": "Four things set us apart: it's includes four free starter programmes and a free first lesson in every other programme, with Pro for the full path, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners. no jargon, no intimidating prerequisites, no gatekeeping.",
     "q25": "How do I get started?",
     "a25": "Just click 'Start Learning for Free' below (or the 'Get Started' button in the navigation) and choose a program. We recommend starting with AI Seeds if you're new to AI. No registration required. you can begin learning right now, in your language."
   },

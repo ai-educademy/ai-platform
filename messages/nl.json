@@ -265,303 +265,335 @@
     "allTracks": "Alle trajecten",
     "ai-seeds": {
       "title": "AI Seeds",
-      "subtitle": "Plant je eerste AI-kennis",
-      "description": "Begin vanaf absoluut nul. We gebruiken duidelijke taal en alledaagse voorbeelden om je begrip stap voor stap op te bouwen.",
-      "audience": "Absolute beginners zonder technische achtergrond",
-      "prerequisites": "Geen - alleen nieuwsgierigheid!",
+      "subtitle": "AI literacy for the real world",
+      "description": "Build a clear mental model of modern AI, from training data and neural networks to generative tools, limitations, safety, and the choices people make around them.",
+      "audience": "Curious beginners, leaders, students, and career changers",
+      "prerequisites": "None. Just curiosity and a willingness to question the hype.",
       "topics": [
-        "Wat is AI?",
-        "Hoe machines leren",
-        "Je eerste AI-model"
+        "AI in everyday products",
+        "Data, models, and predictions",
+        "Generative AI and multimodal tools",
+        "Reliability, bias, and safety",
+        "Human judgement in an AI world"
       ],
       "outcomes": [
-        "Begrijpen wat AI wel en niet is",
-        "Weten hoe machines leren van data",
-        "Een eenvoudig AI-model trainen in je browser"
+        "Explain how modern AI systems learn and generate outputs",
+        "Choose AI tools with clear expectations and boundaries",
+        "Spot common reliability, bias, privacy, and safety risks",
+        "Complete a guided AI experiment and reflect on its limits"
       ],
       "tileLabel": "Basis",
-      "homeDesc": "Begin bij nul"
+      "homeDesc": "AI literacy for the real world"
     },
     "ai-sprouts": {
       "title": "AI Sprouts",
-      "subtitle": "Bouw je AI-fundament",
-      "description": "Klaar om te groeien? Duik in de bouwstenen van AI - data, algoritmen en neurale netwerken. Praktische oefeningen helpen je intuïtie op te bouwen voordat je code schrijft.",
-      "audience": "Leerlingen die AI Seeds hebben afgerond of basiskennis van AI hebben",
-      "prerequisites": "AI Seeds (aanbevolen)",
+      "subtitle": "The foundations behind intelligent systems",
+      "description": "Understand the building blocks behind modern AI: datasets, features, embeddings, neural networks, transformers, evaluation, and the practical trade-offs that shape model behaviour.",
+      "audience": "Learners ready to move from AI literacy into technical understanding",
+      "prerequisites": "AI Seeds or equivalent practical AI awareness",
       "topics": [
-        "Soorten AI",
-        "Data begrijpen",
-        "Hoe AI beslist",
-        "AI-ethiek - de basis"
+        "Datasets and data quality",
+        "Training, loss, and optimisation",
+        "Embeddings and vector search",
+        "Neural networks and transformers",
+        "Evaluation and responsible use"
       ],
       "outcomes": [
-        "Onderscheid maken tussen begeleid, onbegeleid en versterkend leren",
-        "Begrijpen wat trainingsdata is en waarom het belangrijk is",
-        "Kritisch nadenken over AI-vooroordelen en eerlijkheid"
+        "Trace the path from data to model output",
+        "Explain embeddings, tokenisation, and transformer intuition",
+        "Select useful evaluation metrics for an AI task",
+        "Diagnose overfitting, bias, and data-quality failures"
       ],
       "tileLabel": "Kernconcepten",
-      "homeDesc": "Bouw een fundament"
+      "homeDesc": "The foundations behind intelligent systems"
     },
     "ai-branches": {
       "title": "AI Branches",
-      "subtitle": "Ontdek toepassingen in de echte wereld",
-      "description": "Zie AI in actie in verschillende sectoren - gezondheidszorg, financiën, creatieve kunsten en meer. Begin met het bouwen van eenvoudige projecten en begrijp de tools die professionals gebruiken.",
-      "audience": "Leerlingen die klaar zijn om AI in de praktijk te zien",
-      "prerequisites": "AI Sprouts",
+      "subtitle": "Build with today’s AI capabilities",
+      "description": "Move from concepts to applications. Work across text, vision, speech, and multimodal systems while learning where APIs, open models, structured outputs, and human review fit.",
+      "audience": "Learners who want to build useful AI features",
+      "prerequisites": "AI Sprouts or equivalent foundations",
       "topics": [
-        "AI in de gezondheidszorg",
-        "AI in creatieve kunsten",
-        "Chatbots en NLP",
-        "Basis computer vision"
+        "Model APIs and structured output",
+        "Prompt and context design",
+        "Vision, speech, and multimodal AI",
+        "Fine-tuning versus retrieval",
+        "Human-in-the-loop product design"
       ],
       "outcomes": [
-        "Een eenvoudige chatbot bouwen",
-        "Begrijpen hoe beeldherkenning werkt",
-        "Een AI-aangedreven miniproject maken"
+        "Build a small multimodal AI feature",
+        "Choose between prompting, retrieval, and fine-tuning",
+        "Design clear input and output contracts for model calls",
+        "Explain failure modes to non-technical stakeholders"
       ],
       "tileLabel": "Toepassingen",
-      "homeDesc": "Pas toe in de praktijk"
+      "homeDesc": "Build with today’s AI capabilities"
     },
     "ai-canopy": {
       "title": "AI Canopy",
-      "subtitle": "Diep duiken in AI-systemen",
-      "description": "Ga dieper in op neurale netwerken, grote taalmodellen en het ontwerp van AI-systemen. Leer AI-tools kritisch te beoordelen en begrijp de techniek achter moderne AI.",
-      "audience": "Gevorderde leerlingen klaar voor technische diepgang",
-      "prerequisites": "AI Branches",
+      "subtitle": "Engineer reliable GenAI systems",
+      "description": "Design production-minded LLM applications with retrieval, tool use, agent workflows, MCP, evaluation, guardrails, and observability. Learn to optimise for quality, latency, safety, and cost.",
+      "audience": "Developers and technical practitioners building AI applications",
+      "prerequisites": "AI Branches plus basic Python or TypeScript",
       "topics": [
-        "Neurale netwerken",
-        "Grote taalmodellen",
-        "Prompt engineering",
-        "AI-systeemontwerp"
+        "LLM application architecture",
+        "RAG, hybrid retrieval, and reranking",
+        "Tool calling, MCP, and agent workflows",
+        "Golden datasets and agent evaluation",
+        "Guardrails, tracing, latency, and cost"
       ],
       "outcomes": [
-        "Begrijpen hoe neurale netwerken werken",
-        "Prompt engineering-technieken beheersen",
-        "AI-tools en -diensten kritisch beoordelen"
+        "Build a grounded RAG assistant with citations",
+        "Design a safe tool-using agent with explicit boundaries",
+        "Create regression evaluations for quality and tool behaviour",
+        "Instrument an AI feature for latency, cost, and failure analysis"
       ],
       "tileLabel": "Gevorderd",
-      "homeDesc": "Ga de diepte in"
+      "homeDesc": "Engineer reliable GenAI systems"
     },
     "ai-forest": {
       "title": "AI Forest",
-      "subtitle": "Beheers het AI-ecosysteem",
-      "description": "Het volledige plaatje - AI-onderzoek, productie-AI-systemen bouwen, bijdragen aan open source AI en begrijpen waar het vakgebied naartoe gaat. Voor wie de toekomst wil vormgeven.",
-      "audience": "Gevorderde leerlingen en aspirant AI-professionals",
-      "prerequisites": "AI Canopy",
+      "subtitle": "Ship AI products responsibly",
+      "description": "Bring the full lifecycle together: product discovery, architecture, data governance, model and vendor choices, deployment, monitoring, incident response, regulation, and continuous improvement.",
+      "audience": "Senior builders, product engineers, technical leaders, and founders",
+      "prerequisites": "AI Canopy or equivalent production AI experience",
       "topics": [
-        "AI-producten bouwen",
-        "Open-source AI",
-        "AI-onderzoeksartikelen",
-        "De toekomst van AI"
+        "AI product discovery and measurement",
+        "LLMOps and deployment strategy",
+        "Security, privacy, and threat modelling",
+        "Governance, regulation, and auditability",
+        "Reliability, economics, and incident response"
       ],
       "outcomes": [
-        "Een AI-aangedreven applicatie bouwen en deployen",
-        "AI-onderzoeksartikelen lezen en begrijpen",
-        "Bijdragen aan open-source AI-projecten"
+        "Create a production AI delivery plan with measurable outcomes",
+        "Threat-model an AI system and define control points",
+        "Build a release and monitoring strategy for model change",
+        "Make defensible trade-offs across quality, cost, speed, and risk"
       ],
       "tileLabel": "Meesterschap",
-      "homeDesc": "Beheers AI"
+      "homeDesc": "Ship AI products responsibly"
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "Eerste schetsen - Fundamenten van datastructuren en algoritmen",
-      "description": "Beheers de fundamentele datastructuren en algoritmen die AI-systemen aandrijven. Arrays, hash maps, strings en sorteren - gevisualiseerd met diagrammen, uitgelegd met praktische AI-toepassingen.",
-      "audience": "Engineers die beginnen met sollicitatieprep of fundamenten opfrissen",
-      "prerequisites": "Basisprogrammering in een willekeurige taal",
+      "subtitle": "Engineering foundations for AI builders",
+      "description": "Strengthen the programming, data structures, testing, and complexity fundamentals that make AI systems understandable, efficient, and maintainable.",
+      "audience": "Developers beginning AI engineering or interview preparation",
+      "prerequisites": "Basic programming in Python, JavaScript, Java, or another language",
       "topics": [
-        "Arrays en hashing",
-        "Strings en patroonherkenning",
-        "Sorteren en zoeken"
+        "Complexity and trade-offs",
+        "Core data structures",
+        "Searching, sorting, and graphs",
+        "Testing and debugging",
+        "Data pipelines and API boundaries"
       ],
       "outcomes": [
-        "Zelfverzekerd array- en hash map-problemen oplossen",
-        "Begrijpen hoe deze patronen AI-systemen aandrijven",
-        "Veelvoorkomende sollicitatiepatronen herkennen"
+        "Choose data structures deliberately",
+        "Explain time and space trade-offs",
+        "Write testable solutions under constraints",
+        "Connect algorithms to real AI application workloads"
       ],
       "tileLabel": "Fundamenten",
-      "homeDesc": "Begin bij nul"
+      "homeDesc": "Engineering foundations for AI builders"
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "Precisie slijpen - Gevorderde patronen",
-      "description": "Stap op naar gevorderde algoritmische patronen: twee pointers, sliding window, BFS/DFS en boom-traversals. Elk patroon gekoppeld aan echte AI/ML-toepassingen.",
-      "audience": "Engineers met DSA-basis klaar voor problemen op gemiddeld niveau",
-      "prerequisites": "AI Sketch of gelijkwaardige fundamenten",
+      "subtitle": "Patterns for solving harder problems",
+      "description": "Practise the algorithmic patterns that recur in production services, search, recommendation, data processing, and technical interviews.",
+      "audience": "Engineers with programming fundamentals",
+      "prerequisites": "AI Sketch or equivalent data-structure knowledge",
       "topics": [
-        "Twee pointers en sliding window",
-        "Bomen en grafentraversal",
-        "Stacks, queues en monotone patronen"
+        "Sliding windows and intervals",
+        "Trees, graphs, and union-find",
+        "Heaps, tries, and monotonic structures",
+        "Dynamic programming",
+        "Performance and correctness"
       ],
       "outcomes": [
-        "Twee pointers en sliding window toepassen om oplossingen te optimaliseren",
-        "Bomen en grafen doorkruisen met BFS/DFS",
-        "Deze patronen verbinden met AI-zoeken en inferentie"
+        "Recognise and apply reusable problem-solving patterns",
+        "Prove correctness and analyse complexity",
+        "Choose practical optimisations without premature complexity",
+        "Communicate a solution clearly under pressure"
       ],
       "tileLabel": "Datastructuren",
-      "homeDesc": "Bouw een fundament"
+      "homeDesc": "Patterns for solving harder problems"
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "Vaardigheden opbouwen - Systeemontwerp",
-      "description": "Ontwerp grootschalige systemen die AI aandrijven: aanbevelingssystemen, automatisch aanvullen bij zoeken, rate limiters. Leer denken in architecturen, niet alleen in code.",
-      "audience": "Mid- tot senior engineers die zich voorbereiden op systeemontwerp-rondes",
-      "prerequisites": "Comfortabel met codering-interviews",
+      "subtitle": "Design systems that scale AI",
+      "description": "Learn system design for modern AI products: model gateways, retrieval services, async workloads, streaming, caches, rate limits, tenancy, and resilient APIs.",
+      "audience": "Mid-to-senior engineers designing distributed AI systems",
+      "prerequisites": "Comfort with APIs, databases, and distributed-system basics",
       "topics": [
-        "Een URL-verkorter ontwerpen",
-        "Een rate limiter ontwerpen",
-        "Een aanbevelingssysteem ontwerpen"
+        "AI platform and model gateways",
+        "RAG and vector retrieval services",
+        "Queues, streaming, and async inference",
+        "Caching, rate limits, and tenancy",
+        "Resilience, security, and observability"
       ],
       "outcomes": [
-        "Systeemontwerp-antwoorden duidelijk structureren",
-        "Schaalbare gedistribueerde systemen ontwerpen",
-        "AI-specifieke infrastructuurpatronen begrijpen"
+        "Produce a clear architecture with justified trade-offs",
+        "Design for failure, scale, and operational visibility",
+        "Estimate AI cost and capacity before implementation",
+        "Defend an AI system design in a technical review"
       ],
       "tileLabel": "Systemen",
-      "homeDesc": "Pas toe in de praktijk"
+      "homeDesc": "Design systems that scale AI"
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "Excellentie verfijnen - Gedragsmatige meesterschap",
-      "description": "Beheers het gedragsgerichte sollicitatiegesprek met gestructureerde raamwerken. STAR-methode, leiderschapsprincipes, AI-tijdperkscenario's en communicatiestrategieën.",
-      "audience": "Engineers op elk niveau die zich voorbereiden op gedragsgesprekken",
-      "prerequisites": "Echte projectervaring om uit te putten",
+      "subtitle": "Communicate and lead in the AI era",
+      "description": "Turn strong engineering into visible impact through technical communication, decision records, stakeholder alignment, responsible leadership, and AI-aware career storytelling.",
+      "audience": "Engineers moving into senior, lead, or AI-focused roles",
+      "prerequisites": "Professional project experience",
       "topics": [
-        "STAR-methode voor engineers",
-        "Systeemontwerp-communicatie",
-        "Leiderschapsscenario's in het AI-tijdperk"
+        "Technical storytelling",
+        "Architecture decision records",
+        "Influence and stakeholder alignment",
+        "Responsible AI leadership",
+        "Interview and promotion narratives"
       ],
       "outcomes": [
-        "Overtuigende verhalen structureren met STAR",
-        "Technische beslissingen helder communiceren",
-        "AI-ethiek- en leiderschapsvragen navigeren"
+        "Explain complex AI trade-offs to different audiences",
+        "Build evidence-based leadership stories",
+        "Lead decisions without hiding uncertainty",
+        "Position engineering impact clearly and credibly"
       ],
       "tileLabel": "Productie",
-      "homeDesc": "Ga de diepte in"
+      "homeDesc": "Communicate and lead in the AI era"
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "Portfolioklaar - Complete casestudies",
-      "description": "Eindprojecten die datastructuren, systeemontwerp en gedragsvaardigheden combineren. Ontwerp echte systemen van begin tot eind en bouw je engineering portfolio.",
-      "audience": "Engineers klaar voor senior+ rollen",
-      "prerequisites": "AI Sketch tot en met AI Polish afgerond",
+      "subtitle": "Your production AI capstone",
+      "description": "Design, build, evaluate, and present an end-to-end AI product. Combine retrieval or tool use with security, tests, observability, a runbook, and a credible product case.",
+      "audience": "Engineers ready to demonstrate production AI capability",
+      "prerequisites": "AI Canopy plus AI Craft, or equivalent experience",
       "topics": [
-        "Twitter's AI-feed ontwerpen",
-        "Volledig proef-interview",
-        "Engineering portfolio"
+        "Product brief and success metrics",
+        "Architecture and threat model",
+        "RAG or agent implementation",
+        "Evaluation and observability",
+        "Launch review and portfolio case study"
       ],
       "outcomes": [
-        "Complete end-to-end systeemontwerpen uitvoeren",
-        "Zelfverzekerd presteren in proefinterviews",
-        "Een opvallend engineering portfolio bouwen"
+        "Ship a portfolio-ready AI system design and prototype",
+        "Demonstrate evaluation beyond a happy-path demo",
+        "Document risk, operations, and rollback decisions",
+        "Present technical work with clear business and user value"
       ],
       "tileLabel": "Architectuur",
-      "homeDesc": "Beheers AI"
+      "homeDesc": "Your production AI capstone"
     },
     "ai-launchpad": {
       "title": "Interview Startplatform",
-      "subtitle": "Je interview-reis begint",
-      "description": "Beheers de basisprincipes van technische interviewvoorbereiding. Leer hoe je bedrijven onderzoekt, vacatureteksten ontcijfert, je voorbereidingsplanning opbouwt en de mindset ontwikkelt die zenuwen omzet in zelfvertrouwen.",
-      "audience": "Iedereen die begint met de voorbereiding op technische interviews",
-      "prerequisites": "Geen. dit is je startpunt",
+      "subtitle": "Navigate the AI engineering job market",
+      "description": "Build a focused search strategy for AI-era roles: understand role families, read job descriptions, map your evidence, and prepare a realistic learning and application plan.",
+      "audience": "People starting or redirecting an AI-focused career",
+      "prerequisites": "None",
       "topics": [
-        "Bedrijfsonderzoek Technieken",
-        "Vacaturetekst Analyse",
-        "Interview Voorbereidingstijdlijn",
-        "Mindset & Zelfvertrouwen Opbouwen"
+        "AI role families and expectations",
+        "Job-description signal extraction",
+        "Skills-gap mapping",
+        "Evidence-led applications",
+        "A sustainable preparation plan"
       ],
       "outcomes": [
-        "Stel een gestructureerd interviewvoorbereidingsplan op",
-        "Ontcijfer elke vacaturetekst effectief",
-        "Onderzoek bedrijven als een professional",
-        "Ontwikkel zelfvertrouwen voor interviews"
+        "Choose target roles based on evidence and strengths",
+        "Turn job descriptions into a practical study plan",
+        "Build a credible project and application portfolio",
+        "Track progress without chasing every new tool"
       ],
       "tileLabel": "Voorbereiding",
-      "homeDesc": "Start je reis"
+      "homeDesc": "Navigate the AI engineering job market"
     },
     "ai-behavioral": {
       "title": "Gedragsinterview Meesterschap",
-      "subtitle": "Verhalen die aanbiedingen opleveren",
-      "description": "Beheers gedragsinterviews met het STAR-framework, leiderschapsverhalen en gestructureerd storytelling. Leer je ervaring om te zetten in overtuigende antwoorden die je waarde bewijzen.",
-      "audience": "Engineers op elk niveau die zich voorbereiden op gedragsrondes",
-      "prerequisites": "Echte projectervaring om uit te putten",
+      "subtitle": "Tell the story of how you create impact",
+      "description": "Prepare concise, honest stories about ambiguity, delivery, failure, influence, conflict, and responsible AI decisions using evidence rather than rehearsed slogans.",
+      "audience": "Engineers preparing for behavioural and leadership interviews",
+      "prerequisites": "Real project or collaboration experience",
       "topics": [
-        "STAR-methode Meesterschap",
-        "Leiderschap & Teamwerk Verhalen",
-        "Conflictoplossing Verhalen",
-        "Culturele Fit Beoordeling"
+        "Evidence-led STAR stories",
+        "Ambiguity and prioritisation",
+        "Failure, learning, and recovery",
+        "Conflict and influence",
+        "Responsible AI judgement"
       ],
       "outcomes": [
-        "Beheers het STAR-antwoordframework",
-        "Creëer overtuigende carrièreverhalen",
-        "Beantwoord elke gedragsvraag met zelfvertrouwen",
-        "Toon leiderschap en samenwerking"
+        "Build a reusable story bank",
+        "Answer with context, action, and measurable outcome",
+        "Show judgement when technology and people trade-offs collide",
+        "Adapt one experience to different question styles"
       ],
       "tileLabel": "Gedrag",
-      "homeDesc": "Beheers soft skills"
+      "homeDesc": "Tell the story of how you create impact"
     },
     "ai-technical": {
       "title": "Technische Interviews",
-      "subtitle": "Coderen onder druk",
-      "description": "Verover programmeerinterviews, systeemontwerp-rondes en technische verdiepingen. Van datastructuren tot gedistribueerde systemen. bouw de vaardigheden en het zelfvertrouwen om onder druk te presteren.",
-      "audience": "Software-engineers die zich voorbereiden op technische interviewrondes",
-      "prerequisites": "Stevige programmeervaardigheden in minstens één taal",
+      "subtitle": "Solve, design, and communicate under pressure",
+      "description": "Practise coding, API, debugging, system design, and AI application questions with a repeatable method for clarifying requirements and defending trade-offs.",
+      "audience": "Software engineers preparing for technical interviews",
+      "prerequisites": "Solid programming fundamentals",
       "topics": [
-        "Datastructuren & Algoritmen",
-        "Systeemontwerp Basisprincipes",
-        "Programmeerinterview Patronen",
-        "Probleemoplossing Strategieën"
+        "Coding patterns and complexity",
+        "API and data-contract design",
+        "AI system design",
+        "Debugging and code review",
+        "Communication under pressure"
       ],
       "outcomes": [
-        "Los veelvoorkomende programmeerinterview patronen op",
-        "Ontwerp schaalbare systemen op een whiteboard",
-        "Communiceer technische beslissingen helder",
-        "Handel probleemoplossing onder tijdsdruk af"
+        "Solve problems with a repeatable framework",
+        "Design reliable AI-enabled services",
+        "Debug systematically instead of guessing",
+        "Communicate assumptions and trade-offs clearly"
       ],
       "tileLabel": "Technisch",
-      "homeDesc": "Slaag voor de codeerronde"
+      "homeDesc": "Solve, design, and communicate under pressure"
     },
     "ai-ml-interview": {
       "title": "AI- & ML-interviews",
-      "subtitle": "Het Machine Learning-interview",
-      "description": "Gespecialiseerde voorbereiding voor AI- en machine learning-rollen. Behandelt ML-systeemontwerp, modelevaluatie, MLOps en de unieke interviewformaten van AI-gerichte bedrijven.",
-      "audience": "Engineers die AI/ML-rollen bij techbedrijven nastreven",
-      "prerequisites": "Basiskennis van ML (supervised/unsupervised learning)",
+      "subtitle": "Prepare for modern ML and GenAI interviews",
+      "description": "Cover model selection, experimentation, ML system design, RAG and agent evaluation, data quality, MLOps, safety, and the trade-offs interviewers expect you to articulate.",
+      "audience": "Engineers targeting ML, applied AI, or AI platform roles",
+      "prerequisites": "AI foundations plus basic statistics and Python",
       "topics": [
-        "ML Systeemontwerp",
-        "Statistische Grondslagen",
-        "Modelselectie & Evaluatie",
-        "ML Casestudies"
+        "ML and GenAI system design",
+        "Experimentation and evaluation",
+        "Data and feature quality",
+        "RAG, agents, and LLMOps",
+        "Safety, fairness, and governance"
       ],
       "outcomes": [
-        "Ontwerp end-to-end ML-systemen",
-        "Leg modelafwegingen helder uit",
-        "Behandel ML-specifieke casestudies",
-        "Toon praktische ML-kennis"
+        "Design an ML or GenAI system end to end",
+        "Choose metrics that match user and business outcomes",
+        "Explain deployment and monitoring trade-offs",
+        "Handle safety and failure-mode questions with confidence"
       ],
       "tileLabel": "ML",
-      "homeDesc": "ML-interview meesterschap"
+      "homeDesc": "Prepare for modern ML and GenAI interviews"
     },
     "ai-offer": {
       "title": "Aanbod & verder",
-      "subtitle": "Van aanbod naar carrièregroei",
-      "description": "Navigeer de laatste etappe. salarisonderhandeling, aanbodbeoordeling en carrièregroeistrategieën. Leer compensatie te benchmarken, effectief te onderhandelen en je carrièrepad op lange termijn te plannen.",
-      "audience": "Engineers die een jobaanbod hebben ontvangen of verwachten",
-      "prerequisites": "Actief sollicitatieproces of recent aanbod",
+      "subtitle": "Make a confident, informed next move",
+      "description": "Evaluate AI-era roles and offers with a practical framework covering scope, learning, leadership, compensation, risk, working patterns, and your first 90 days.",
+      "audience": "Candidates comparing offers or planning their next career step",
+      "prerequisites": "An active search, interview process, or offer",
       "topics": [
-        "Salarisonderhandeling Tactieken",
-        "Aanbodvergelijking Framework",
-        "Secundaire Arbeidsvoorwaarden & Aandelen Analyse",
-        "Carrière Besluitvorming"
+        "Role and scope evaluation",
+        "Compensation and equity",
+        "AI maturity and delivery risk",
+        "Negotiation with evidence",
+        "First 90 days and long-term growth"
       ],
       "outcomes": [
-        "Onderhandel met zelfvertrouwen over compensatie",
-        "Vergelijk meerdere aanbiedingen objectief",
-        "Begrijp aandelen- en arbeidsvoorwaardenpakketten",
-        "Neem strategische carrièrebeslissingen"
+        "Compare offers beyond headline salary",
+        "Ask sharper questions about AI strategy and engineering quality",
+        "Negotiate from evidence without burning trust",
+        "Plan a strong first 90 days"
       ],
       "tileLabel": "Aanbod",
-      "homeDesc": "Bemachtig het beste aanbod"
-    }
+      "homeDesc": "Make a confident, informed next move"
+    },
+    "curriculumVersion": "2026 production AI syllabus"
   },
   "programDetail": {
     "level": "Niveau",
@@ -863,7 +895,10 @@
     "ai-ethics-in-interviews": "AI Ethics in Interviews",
     "evaluating-multiple-offers": "Evaluating Multiple Offers",
     "first-90-days-strategy": "Your First 90 Days Strategy",
-    "long-term-career-architecture": "Long-Term Career Architecture"
+    "long-term-career-architecture": "Long-Term Career Architecture",
+    "rag-systems-in-practice": "RAG-systemen in de praktijk",
+    "agent-tools-and-mcp": "Agents met tools en MCP",
+    "evaluate-and-operate-ai": "AI evalueren en beheren"
   },
   "pwa": {
     "install": "App installeren",
@@ -1414,7 +1449,7 @@
     "q23": "How do I track my learning progress?",
     "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
     "q24": "What makes AI Educademy different from other platforms?",
-    "a24": "Four things set us apart: it's completely free with no premium tiers, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners. no jargon, no intimidating prerequisites, no gatekeeping.",
+    "a24": "Four things set us apart: it's includes four free starter programmes and a free first lesson in every other programme, with Pro for the full path, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners. no jargon, no intimidating prerequisites, no gatekeeping.",
     "q25": "How do I get started?",
     "a25": "Just click 'Start Learning for Free' below (or the 'Get Started' button in the navigation) and choose a program. We recommend starting with AI Seeds if you're new to AI. No registration required. you can begin learning right now, in your language."
   },

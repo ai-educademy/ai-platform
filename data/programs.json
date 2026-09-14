@@ -17,20 +17,20 @@
     }
   ],
   "programs": {
-    "ai-seeds": { "level": 1, "color": "#34D399", "icon": "🌱", "track": "ai-learning", "estimatedHours": 2 },
-    "ai-sprouts": { "level": 2, "color": "#60A5FA", "icon": "🌿", "track": "ai-learning", "estimatedHours": 4 },
-    "ai-branches": { "level": 3, "color": "#F59E0B", "icon": "🌳", "track": "ai-learning", "estimatedHours": 6 },
-    "ai-canopy": { "level": 4, "color": "#8B5CF6", "icon": "🏕️", "track": "ai-learning", "estimatedHours": 10 },
-    "ai-forest": { "level": 5, "color": "#EF4444", "icon": "🌲", "track": "ai-learning", "estimatedHours": 15 },
-    "ai-sketch": { "level": 1, "color": "#F97316", "icon": "✏️", "track": "craft-engineering", "estimatedHours": 4 },
-    "ai-chisel": { "level": 2, "color": "#06B6D4", "icon": "🪨", "track": "craft-engineering", "estimatedHours": 6 },
-    "ai-craft": { "level": 3, "color": "#8B5CF6", "icon": "⚒️", "track": "craft-engineering", "estimatedHours": 8 },
-    "ai-polish": { "level": 4, "color": "#EC4899", "icon": "💎", "track": "craft-engineering", "estimatedHours": 4 },
-    "ai-masterpiece": { "level": 5, "color": "#EAB308", "icon": "🏆", "track": "craft-engineering", "estimatedHours": 10 },
-    "ai-launchpad": { "level": 1, "color": "#8B5CF6", "icon": "🚀", "track": "career-ready", "estimatedHours": 3 },
-    "ai-behavioral": { "level": 2, "color": "#F59E0B", "icon": "🌟", "track": "career-ready", "estimatedHours": 5 },
-    "ai-technical": { "level": 3, "color": "#3B82F6", "icon": "💻", "track": "career-ready", "estimatedHours": 8 },
-    "ai-ml-interview": { "level": 4, "color": "#10B981", "icon": "🤖", "track": "career-ready", "estimatedHours": 6 },
-    "ai-offer": { "level": 5, "color": "#EF4444", "icon": "🏆", "track": "career-ready", "estimatedHours": 4 }
+    "ai-seeds": { "level": 1, "color": "#34D399", "icon": "🌱", "track": "ai-learning", "estimatedHours": 4 },
+    "ai-sprouts": { "level": 2, "color": "#60A5FA", "icon": "🌿", "track": "ai-learning", "estimatedHours": 8 },
+    "ai-branches": { "level": 3, "color": "#F59E0B", "icon": "🌳", "track": "ai-learning", "estimatedHours": 10 },
+    "ai-canopy": { "level": 4, "color": "#8B5CF6", "icon": "🏕️", "track": "ai-learning", "estimatedHours": 18 },
+    "ai-forest": { "level": 5, "color": "#EF4444", "icon": "🌲", "track": "ai-learning", "estimatedHours": 24 },
+    "ai-sketch": { "level": 1, "color": "#F97316", "icon": "✏️", "track": "craft-engineering", "estimatedHours": 10 },
+    "ai-chisel": { "level": 2, "color": "#06B6D4", "icon": "🪨", "track": "craft-engineering", "estimatedHours": 14 },
+    "ai-craft": { "level": 3, "color": "#8B5CF6", "icon": "⚒️", "track": "craft-engineering", "estimatedHours": 18 },
+    "ai-polish": { "level": 4, "color": "#EC4899", "icon": "💎", "track": "craft-engineering", "estimatedHours": 10 },
+    "ai-masterpiece": { "level": 5, "color": "#EAB308", "icon": "🏆", "track": "craft-engineering", "estimatedHours": 30 },
+    "ai-launchpad": { "level": 1, "color": "#8B5CF6", "icon": "🚀", "track": "career-ready", "estimatedHours": 6 },
+    "ai-behavioral": { "level": 2, "color": "#F59E0B", "icon": "🌟", "track": "career-ready", "estimatedHours": 8 },
+    "ai-technical": { "level": 3, "color": "#3B82F6", "icon": "💻", "track": "career-ready", "estimatedHours": 16 },
+    "ai-ml-interview": { "level": 4, "color": "#10B981", "icon": "🤖", "track": "career-ready", "estimatedHours": 14 },
+    "ai-offer": { "level": 5, "color": "#EF4444", "icon": "🏆", "track": "career-ready", "estimatedHours": 8 }
   }
 }

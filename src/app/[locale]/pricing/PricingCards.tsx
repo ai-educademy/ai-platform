@@ -67,7 +67,6 @@ function PricingCard({
   plan,
   locale,
   promoCode,
-  onPromoInvalid,
   onPromoApplied,
 }: {
   title: string;
@@ -79,7 +78,6 @@ function PricingCard({
   plan: "free" | "monthly" | "annual" | "lifetime";
   locale: string;
   promoCode: string;
-  onPromoInvalid: () => void;
   onPromoApplied: () => void;
 }) {
   const { data: session } = useSession();
@@ -253,7 +251,6 @@ export function PricingCards({ locale }: { locale: string }) {
             {...p}
             locale={locale}
             promoCode={promoCode}
-            onPromoInvalid={() => setPromoStatus("invalid")}
             onPromoApplied={() => setPromoStatus("applied")}
           />
         ))}
