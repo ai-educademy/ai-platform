@@ -59,51 +59,12 @@
     "statLanguages": "10 种语言"
   },
   "features": {
-    "title": "为什么选择 AI Educademy？",
-    "subtitle": "从零开始。不需要任何基础——我们会一步步引导你。",
-    "beginner": {
-      "title": "从零开始",
-      "description": "从没接触过编程？没关系。我们用日常语言和真实案例来讲解——Netflix 怎么推荐电影、手机怎么识别你的脸。"
-    },
-    "interactive": {
-      "title": "边做边学",
-      "description": "在浏览器中进行动手实验。训练AI识别涂鸦、教聊天机器人对话，即时看到结果。"
-    },
-    "multilingual": {
-      "title": "用你的语言",
-      "description": "用印地语、泰卢固语、法语、荷兰语或英语学习——选一个你最熟悉的。"
-    },
-    "community": {
-      "title": "一起学习",
-      "description": "提出问题、分享实验、帮助翻译课程。"
-    },
-    "practical": {
-      "title": "真实世界的AI",
-      "description": "了解AI如何驱动搜索引擎、语音助手、社交动态、自动驾驶和医学诊断。"
-    },
-    "structuredTitle": "系统化课程",
-    "structuredDesc": "精心编排的学习路线，从入门到专家",
     "lessonsTitle": "100+ 精品课程",
     "lessonsDesc": "深度、扎实的内容覆盖每个主题",
     "languagesTitle": "10 种语言",
     "languagesDesc": "支持英语、法语、荷兰语、印地语和泰卢固语",
     "programsTitle": "15个课程",
-    "programsDesc": "涵盖学习、构建和职业准备的三个方向",
-    "labTitle": "互动实验室",
-    "labDesc": "动手实验，巩固你的理解",
-    "openSourceTitle": "Open Source",
-    "openSourceDesc": "完全透明——查看、fork 或贡献代码"
-  },
-  "founder": {
-    "description": "从零开始构思、设计并构建了 AI Educademy 的每一个部分——架构、课程、多语言基础设施和开源工具。在摩根大通、Sky 和 Marks & Spencer 跨亚洲和欧洲从事大规模系统工程超过十五年。这段全球经历让一件事变得清晰：语言不应该成为学习的障碍。",
-    "cta": "了解更多",
-    "role": "创始人 & 创造者 · 工程领导者 · 伦敦",
-    "statYears": "年工程经验",
-    "statRepos": "开源仓库",
-    "statContinents": "所在大洲",
-    "brainsTitle": "理念的缔造者",
-    "buyCoffee": "请我喝杯咖啡",
-    "statLanguages": "语言"
+    "programsDesc": "涵盖学习、构建和职业准备的三个方向"
   },
   "footer": {
     "lessons": "课程",
@@ -629,10 +590,6 @@
           "a": "当然适合！AI Seeds 专为没有任何技术背景的学习者设计。我们使用通俗易懂的语言、贴近生活的类比和可视化讲解，让你无需编程或数学基础就能理解 AI 的核心概念。"
         },
         {
-          "q": "完成 AI Seeds 大概需要多长时间？",
-          "a": "大多数学习者大约需要 2–3 小时即可完成。你可以一次性学完，也可以分几天学习——没有截止日期，进度会自动保存。"
-        },
-        {
           "q": "学习 AI Seeds 需要会编程吗？",
           "a": "完全不需要。AI Seeds 侧重于帮助你建立对人工智能的概念性理解，不会涉及任何代码。目标是让你用最通俗的语言了解 AI 是什么、如何运作以及为什么重要。"
         },
@@ -653,10 +610,6 @@
         {
           "q": "AI Sprouts 适合初学者吗？",
           "a": "AI Sprouts 面向已具备基本 AI 认知的学习者——建议先完成 AI Seeds。如果你已经大致了解什么是 AI，就可以开始探索数据类型、算法和 AI 伦理等进阶内容了。"
-        },
-        {
-          "q": "完成 AI Sprouts 需要多长时间？",
-          "a": "AI Sprouts 通常需要 3–4 小时完成。课程是循序渐进的，建议按顺序学习，但你随时可以休息。"
         },
         {
           "q": "学 AI Sprouts 需要编程技能吗？",
@@ -681,10 +634,6 @@
           "a": "AI Branches 聚焦于真实场景中的应用。AI Seeds 和 AI Sprouts 帮你建立基础知识，而 AI Branches 则展示 AI 在医疗、金融、创意艺术等领域的实际应用——并且你将开始动手做项目。"
         },
         {
-          "q": "完成 AI Branches 需要多长时间？",
-          "a": "大约 4–5 小时。项目部分比纯阅读课程耗时更多，但也是整个课程中最有收获的部分。"
-        },
-        {
           "q": "学 AI Branches 需要编程经验吗？",
           "a": "有一些基础概念会有帮助，但并非必须。项目使用引导式的无代码工具，让你专注于理解 AI 应用本身而非语法。"
         },
@@ -694,7 +643,7 @@
         },
         {
           "q": "AI Branches 是免费的吗？",
-          "a": "是的，AI Branches 完全免费。AI Educademy 上的所有课程都是开源且免费的。"
+          "a": "AI Branches 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "AI Branches 涉及哪些行业？",
@@ -705,10 +654,6 @@
         {
           "q": "AI Canopy 适合初学者吗？",
           "a": "AI Canopy 是中级课程，建议先完成 AI Branches，因为 AI Canopy 会深入探讨神经网络、大语言模型和 AI 系统设计等内容。"
-        },
-        {
-          "q": "完成 AI Canopy 需要多长时间？",
-          "a": "预计需要 5–6 小时。技术深度较高，需要更多时间理解，但每个概念都配有清晰的图解和示例。"
         },
         {
           "q": "会学到 ChatGPT 和大语言模型吗？",
@@ -733,10 +678,6 @@
           "a": "AI Forest 是 AI 基础系列中最高级的课程，适合完成 AI Canopy 后希望全面了解 AI 生态系统的学习者。"
         },
         {
-          "q": "完成 AI Forest 需要多长时间？",
-          "a": "AI Forest 大约需要 6–8 小时，涵盖阅读研究论文、参与开源 AI 项目和构建生产级 AI 系统等高级主题。"
-        },
-        {
           "q": "AI Forest 会教构建 AI 应用吗？",
           "a": "会的！核心成果之一就是构建并部署一个 AI 应用程序。你还将学习阅读 AI 研究论文以及为开源 AI 项目做贡献。"
         },
@@ -746,7 +687,7 @@
         },
         {
           "q": "AI Forest 是免费的吗？",
-          "a": "是的，AI Forest 与 AI Educademy 的所有课程一样完全免费。我们的使命是让高级 AI 教育人人可及。"
+          "a": "AI Forest 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "AI Forest 能为哪些职业方向做准备？",
@@ -757,10 +698,6 @@
         {
           "q": "AI Sketch 适合零基础的初学者吗？",
           "a": "AI Sketch 要求具备任意语言的基本编程知识——如果你会写循环、函数并理解变量，就可以开始了。课程聚焦于数据结构与算法基础。"
-        },
-        {
-          "q": "完成 AI Sketch 需要多长时间？",
-          "a": "大多数学习者在 4–5 小时内完成。建议在进入下一课之前，先用配套练习巩固每个知识点。"
         },
         {
           "q": "AI Sketch 使用什么编程语言？",
@@ -785,16 +722,12 @@
           "a": "你应该完成 AI Sketch 或具备同等的基础数据结构知识（数组、哈希表、字符串）。AI Chisel 在此基础上讲授中级算法模式。"
         },
         {
-          "q": "完成 AI Chisel 需要多长时间？",
-          "a": "大约 5–6 小时。双指针、滑动窗口和图遍历等中级模式比基础内容需要更多的练习时间。"
-        },
-        {
           "q": "AI Chisel 涵盖哪些算法模式？",
           "a": "AI Chisel 涵盖双指针、滑动窗口、BFS/DFS 图遍历、树遍历、栈、队列和单调栈等模式——每种模式都关联实际的 AI 和 ML 应用。"
         },
         {
           "q": "AI Chisel 是免费的吗？",
-          "a": "是的，完全免费。AI Educademy 上的所有课程都是开源且免费的。"
+          "a": "AI Chisel 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "AI Chisel 对编程面试有帮助吗？",
@@ -815,16 +748,12 @@
           "a": "需要。AI Craft 假设你已熟悉编程面试和基本的分布式系统概念，面向准备系统设计面试的中高级工程师。"
         },
         {
-          "q": "完成 AI Craft 需要多长时间？",
-          "a": "AI Craft 大约需要 6–8 小时。系统设计需要深入思考，每个案例都建立在前面概念的基础之上。"
-        },
-        {
           "q": "AI Craft 对 FAANG 面试有帮助吗？",
           "a": "非常有帮助！系统设计是大型科技公司高级职位面试的关键环节。AI Craft 教你清晰地组织答案并设计可扩展的系统。"
         },
         {
           "q": "AI Craft 是免费的吗？",
-          "a": "是的，AI Craft 完全免费。我们的目标是让优质的面试准备资源人人可及。"
+          "a": "AI Craft 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "我将学习设计哪些系统？",
@@ -839,10 +768,6 @@
         {
           "q": "学 AI Polish 需要技术经验吗？",
           "a": "你需要有真实的项目经历来作为故事素材。AI Polish 教你如何有效地组织和展示这些经历，不限资历深浅。"
-        },
-        {
-          "q": "完成 AI Polish 需要多长时间？",
-          "a": "AI Polish 大约需要 4–5 小时。建议在课程之间花时间打磨自己的故事，效果更佳。"
         },
         {
           "q": "AI Polish 只适合高级工程师吗？",
@@ -867,16 +792,12 @@
           "a": "建议完成从 AI Sketch 到 AI Polish 的全部课程，或具备同等水平的 DSA、系统设计和行为面试知识。"
         },
         {
-          "q": "完成 AI Masterpiece 需要多长时间？",
-          "a": "预计 8–10 小时。综合项目内容丰富，旨在成为有展示价值的作品集作品。"
-        },
-        {
           "q": "AI Masterpiece 能帮我拿到高级职位吗？",
           "a": "可以！该课程专为目标是高级及以上职位的工程师设计。你将构建作品集项目并进行完整的模拟面试练习。"
         },
         {
           "q": "AI Masterpiece 是免费的吗？",
-          "a": "是的，完全免费。AI Educademy 致力于让世界级的面试准备资源人人可及。"
+          "a": "AI Masterpiece 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "我会做什么类型的项目？",
@@ -887,10 +808,6 @@
         {
           "q": "Interview Launchpad 适合完全没有面试经验的人吗？",
           "a": "适合！Interview Launchpad 是所有人开启技术面试之旅的起点，无需任何面试经验。"
-        },
-        {
-          "q": "完成 Interview Launchpad 需要多长时间？",
-          "a": "大多数学习者在 3–4 小时内完成。课程涵盖调研技巧、备战时间线和信心建立。"
         },
         {
           "q": "学 Interview Launchpad 需要会编程吗？",
@@ -915,10 +832,6 @@
           "a": "虽然示例以工程场景为主，但 STAR 框架和叙事技巧适用于任何准备技术行业行为面试的专业人士。"
         },
         {
-          "q": "完成 Behavioral Mastery 需要多长时间？",
-          "a": "大约 4–5 小时。建议将课程分散在几天内学习，以便在课间练习编写自己的故事。"
-        },
-        {
           "q": "什么是 STAR 方法？",
           "a": "STAR 代表情境（Situation）、任务（Task）、行动（Action）和结果（Result），是一种经过验证的面试回答结构化框架。Behavioral Mastery 教你自然而有效地运用它。"
         },
@@ -928,7 +841,7 @@
         },
         {
           "q": "Behavioral Mastery 是免费的吗？",
-          "a": "是的，完全免费，而且永远免费。"
+          "a": "Behavioral Mastery 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "需要有真实的项目经历吗？",
@@ -941,10 +854,6 @@
           "a": "概念以语言无关的方式教授，示例用 Python 展示。解题模式和系统设计原则适用于任何你熟悉的编程语言。"
         },
         {
-          "q": "完成 Technical Interviews 需要多长时间？",
-          "a": "预计 6–8 小时。编程模式和系统设计概念在阅读课程之外还需要额外的练习时间。"
-        },
-        {
           "q": "Technical Interviews 适合初级开发者吗？",
           "a": "你需要至少掌握一门语言的扎实编程基础。如果你能写函数、循环并使用基本数据结构，就可以开始了。"
         },
@@ -954,7 +863,7 @@
         },
         {
           "q": "Technical Interviews 是免费的吗？",
-          "a": "是的，完全免费。我们相信每个人都应该获得优质的面试准备资源。"
+          "a": "Technical Interviews 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "Technical Interviews 包含系统设计吗？",
@@ -967,10 +876,6 @@
           "a": "你需要具备基本的 ML 知识——了解监督学习与无监督学习的区别、什么是模型以及基础统计学。课程在此基础上培养面试技能。"
         },
         {
-          "q": "完成 AI & ML Interviews 需要多长时间？",
-          "a": "大约 6–8 小时。ML 系统设计和案例分析需要深入思考和练习。"
-        },
-        {
           "q": "ML 面试和普通技术面试有什么不同？",
           "a": "ML 面试包含特有的环节，如 ML 系统设计、模型评估讨论和 ML 案例分析。本课程涵盖所有这些通用面试准备未涉及的专业领域。"
         },
@@ -980,7 +885,7 @@
         },
         {
           "q": "AI & ML Interviews 是免费的吗？",
-          "a": "是的，完全免费。专业的 ML 面试准备通常价格不菲——我们让它人人可及。"
+          "a": "AI & ML Interviews 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "这个课程覆盖哪些公司的面试风格？",
@@ -993,10 +898,6 @@
           "a": "最好在拿到 Offer 或进入面试后期阶段时开始。谈判和评估框架在有具体数字可以参考时最为实用。"
         },
         {
-          "q": "完成 Offer & Beyond 需要多长时间？",
-          "a": "大约 3–4 小时。课程内容务实，可以立即应用到你的实际情况中。"
-        },
-        {
           "q": "会教薪资谈判吗？",
           "a": "会的！你将学到有研究支撑的谈判策略、如何做薪酬基准调研、处理竞争 Offer，以及如何自信地谈判而不会让 Offer 泡汤。"
         },
@@ -1006,7 +907,7 @@
         },
         {
           "q": "Offer & Beyond 是免费的吗？",
-          "a": "是的，完全免费。我们相信每个人都应该掌握能显著影响职业收入的谈判知识。"
+          "a": "Offer & Beyond 的第一课可免费试学。Pro 会解锁该课程的其余部分，以及所有其他学院、路径和证书。"
         },
         {
           "q": "Offer & Beyond 能帮我比较多个 Offer 吗？",
@@ -1862,7 +1763,9 @@
     "q24": "What makes AI Educademy different from other platforms?",
     "a24": "AI Educademy 将每个学院真正的免费试听、结构化学习、实践项目、互动实验和真正的多语言内容结合在一起。Pro 带你从基础知识走向面向生产环境的 AI 能力。",
     "q25": "How do I get started?",
-    "a25": "浏览各个学院，免费试听任意课程的第一课，无论是 AI Seeds、AI Canopy 还是 Interview Launchpad。准备好解锁其余内容时，可选择按月、按年或终身的 Pro 计划。"
+    "a25": "浏览各个学院，免费试听任意课程的第一课，无论是 AI Seeds、AI Canopy 还是 Interview Launchpad。准备好解锁其余内容时，可选择按月、按年或终身的 Pro 计划。",
+    "ctaTitle": "准备好开启你的 AI 学习之旅了吗？",
+    "ctaSubtitle": "免费试学任意学院的第一课，无需注册账号。"
   },
   "pricing": {
     "pageTitle": "Pricing",
@@ -2117,16 +2020,17 @@
     "completedBy": "Completed by",
     "badge": "🎓",
     "cta": "Start Learning at AI Educademy",
-    "ctaSubtitle": "Free AI education for everyone",
+    "ctaSubtitle": "结构化的 AI 教育，一课接一课",
     "verifiedCompletion": "Verified Completion",
     "defaultTitle": "Achievement | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - Free AI education for everyone."
+    "defaultDescription": "An achievement earned on AI Educademy - 结构化的 AI 教育，一课接一课."
   },
   "trustBar": {
     "lessons": "课程",
     "programs": "项目",
     "languages": "语言",
-    "openSource": "开源"
+    "freeValue": "第1课",
+    "freePreview": "每个课程均免费"
   },
   "onboarding": {
     "metaTitle": "开始使用",
@@ -2266,16 +2170,6 @@
     "agentDesc": "创建一个能自主推理、规划并使用工具和 API 执行任务的 AI 智能体。",
     "agentTags": "LLMs,Tool Use,Agents",
     "agentDifficulty": "高级"
-  },
-  "testimonials": {
-    "title": "平台亮点",
-    "programs": "15 个课程",
-    "programsSub": "从入门到生产级 AI",
-    "languages": "11 种语言",
-    "languagesSub": "用你的母语学习",
-    "openSource": "开源",
-    "openSourceSub": "每一行代码都公开透明",
-    "quote": "由一位拥有 15 年以上经验、曾就职于 JP Morgan、Sky 等全球科技公司的工程师打造——旨在让 AI 教育真正惠及每个人。"
   },
   "finalCta": {
     "headline": "今天就开始学习 AI",

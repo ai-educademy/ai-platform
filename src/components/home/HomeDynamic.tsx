@@ -37,11 +37,6 @@ export const HomeProjectsLazy = dynamic(
   { ssr: false },
 );
 
-export const HomeTestimonialsLazy = dynamic(
-  () => import("@/components/home/HomeTestimonials"),
-  { ssr: false },
-);
-
 export const HomeFinalCTALazy = dynamic(
   () => import("@/components/home/HomeFinalCTA"),
   { ssr: false },

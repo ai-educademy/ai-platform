@@ -61,7 +61,8 @@
     "lessons": "Lessons",
     "programs": "Programs",
     "languages": "Languages",
-    "openSource": "Open curriculum"
+    "freeValue": "Lesson 1",
+    "freePreview": "Free in every programme"
   },
   "continueLearning": {
     "title": "Continue Where You Left Off",
@@ -72,51 +73,12 @@
     "progress": "{completed} of {total} lessons"
   },
   "features": {
-    "title": "Why AI Educademy?",
-    "subtitle": "Start from zero. No prerequisites needed - we guide you every step.",
-    "beginner": {
-      "title": "Start from Zero",
-      "description": "Never touched code? Good. We use everyday language and real-world examples, how Netflix recommends films, how your phone recognises your face."
-    },
-    "interactive": {
-      "title": "Learn by Doing",
-      "description": "Hands-on experiments in your browser. Train an AI to recognise drawings, teach a chatbot, see results instantly."
-    },
-    "multilingual": {
-      "title": "In Your Language",
-      "description": "Learn in Hindi, Telugu, French, Dutch, or English, whichever feels like home."
-    },
-    "community": {
-      "title": "Learn Together",
-      "description": "Ask questions, share experiments, help translate lessons."
-    },
-    "practical": {
-      "title": "Real-World AI",
-      "description": "How AI powers search engines, voice assistants, social feeds, self-driving cars, and medical diagnosis."
-    },
-    "structuredTitle": "Structured Programs",
-    "structuredDesc": "Carefully sequenced tracks from beginner to expert",
     "lessonsTitle": "Expert Lessons",
     "lessonsDesc": "Deep, well-researched content across every topic",
     "languagesTitle": "11 Languages",
     "languagesDesc": "Learn in English, French, Dutch, Hindi, or Telugu",
     "programsTitle": "15 Programs",
-    "programsDesc": "Three tracks covering learning, building, and career prep",
-    "labTitle": "Interactive Lab",
-    "labDesc": "Hands-on experiments to solidify your understanding",
-    "openSourceTitle": "Open Source",
-    "openSourceDesc": "Fully transparent - view, fork, or contribute"
-  },
-  "founder": {
-    "description": "Conceived, designed, and built every part of AI Educademy from scratch: the architecture, curriculum, multilingual infrastructure, and open-source tooling. Over fifteen years engineering large-scale systems at JP Morgan, Sky, and leading UK retailers across Asia and Europe. That global experience made one thing clear: language should never be a barrier to learning.",
-    "cta": "More About Me",
-    "role": "Founder & Creator · Engineering Leader · London",
-    "statYears": "Years Engineering",
-    "statRepos": "Open Source Repos",
-    "statContinents": "Continents Worked",
-    "brainsTitle": "Brains Behind the Idea",
-    "buyCoffee": "Buy me a coffee",
-    "statLanguages": "Languages"
+    "programsDesc": "Three tracks covering learning, building, and career prep"
   },
   "footer": {
     "lessons": "Lessons",
@@ -129,7 +91,7 @@
     "learnHeader": "Learn",
     "communityHeader": "Community",
     "supportHeader": "Support",
-    "programs": "Academics",
+    "programs": "Academies",
     "dashboard": "Dashboard",
     "lab": "Lab",
     "pageViews": "page views",
@@ -176,7 +138,7 @@
     "subtitle": "Founder & Creator · Engineering Leader · Open Source Contributor",
     "timeline2011": "Started career in software engineering in India 🇮🇳",
     "timeline2014": "Moved to Belgium, built fintech systems, learned French 🇧🇪",
-    "timeline2017": "JP Morgan, trading platforms and high-performance systems ��",
+    "timeline2017": "JP Morgan, trading platforms and high-performance systems 📈",
     "timeline2019": "Sky, streaming platform serving millions of users 📺",
     "timeline2020": "Moved to London 🇬🇧",
     "timeline2021": "Cloud-native microservices and data pipelines at scale 🛒",
@@ -212,7 +174,7 @@
     "comingSoon3": {
       "title": "How Chatbots Work"
     },
-    "programs": "Academics",
+    "programs": "Academies",
     "lessonsComingSoon": "Lessons Coming Soon",
     "checkBackSoon": "Check back soon!",
     "backToProgram": "Back to program",
@@ -258,7 +220,7 @@
     },
     "viewAll": "View All Academics",
     "pageTitle": "AI & Engineering Academics",
-    "pageDescription": "Explore our AI learning tracks and software engineering academics. From absolute beginner to advanced, learn at your own pace in 5 languages.",
+    "pageDescription": "Explore our AI learning tracks and software engineering academies. From absolute beginner to advanced, learn at your own pace in 5 languages.",
     "track": {
       "ai-learning": {
         "title": "AI Foundations",
@@ -647,10 +609,6 @@
           "a": "Absolutely! AI Seeds is designed specifically for people with zero technical background. We use everyday language, real-world analogies, and visual explanations so you can understand AI concepts without any prior knowledge of programming or mathematics."
         },
         {
-          "q": "How long does it take to complete AI Seeds?",
-          "a": "Most learners complete AI Seeds in about 2–3 hours at a comfortable pace. You can go through the lessons in one sitting or spread them over a few days — there are no deadlines, and your progress is saved automatically."
-        },
-        {
           "q": "Do I need to know programming for AI Seeds?",
           "a": "Not at all. AI Seeds focuses on building conceptual understanding of artificial intelligence. You won't write a single line of code. The goal is to help you understand what AI is, how it works, and why it matters — all in plain language."
         },
@@ -671,10 +629,6 @@
         {
           "q": "Is AI Sprouts suitable for beginners?",
           "a": "AI Sprouts is designed for learners who have basic AI awareness — ideally after completing AI Seeds. If you already know what AI is at a high level, you're ready to explore the building blocks like data types, algorithms, and ethics."
-        },
-        {
-          "q": "How long does it take to complete AI Sprouts?",
-          "a": "AI Sprouts typically takes 3–4 hours to complete. The lessons build on each other, so we recommend going through them in order, but you can take breaks anytime."
         },
         {
           "q": "Do I need programming skills for AI Sprouts?",
@@ -699,10 +653,6 @@
           "a": "AI Branches focuses on real-world applications. While Seeds and Sprouts build foundational knowledge, Branches shows you AI in action across healthcare, finance, creative arts, and more — and you'll start building simple projects."
         },
         {
-          "q": "How long does AI Branches take to complete?",
-          "a": "Plan for about 4–5 hours. The projects take a bit longer than reading-only lessons, but they're the most rewarding part of the program."
-        },
-        {
           "q": "Do I need coding experience for AI Branches?",
           "a": "Basic familiarity with concepts helps but isn't required. The projects use guided, no-code tools so you can focus on understanding AI applications rather than syntax."
         },
@@ -712,7 +662,7 @@
         },
         {
           "q": "Is AI Branches free?",
-          "a": "Yes, AI Branches is free to start, with Pro available for premium programmes. All programs on AI Educademy are open-source and accessible without cost."
+          "a": "The first lesson of AI Branches is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "What industries does AI Branches cover?",
@@ -723,10 +673,6 @@
         {
           "q": "Is AI Canopy suitable for beginners?",
           "a": "AI Canopy is an intermediate-level program. We recommend completing AI Branches first, as Canopy dives deeper into neural networks, large language models, and AI system design."
-        },
-        {
-          "q": "How long does AI Canopy take to complete?",
-          "a": "Expect to spend 5–6 hours on AI Canopy. The technical depth requires more time for comprehension, but every concept is explained with clear visuals and examples."
         },
         {
           "q": "Will I learn about ChatGPT and large language models?",
@@ -751,10 +697,6 @@
           "a": "AI Forest is our most advanced program in the AI Foundations track. It's designed for learners who've completed AI Canopy and want the complete picture of the AI ecosystem."
         },
         {
-          "q": "How long does AI Forest take to complete?",
-          "a": "AI Forest takes approximately 6–8 hours. It covers advanced topics like reading research papers, contributing to open-source AI, and building production AI systems."
-        },
-        {
           "q": "Will I learn to build AI applications in AI Forest?",
           "a": "Yes! One of the key outcomes is building and deploying an AI-powered application. You'll also learn to read AI research papers and contribute to open-source AI projects."
         },
@@ -764,7 +706,7 @@
         },
         {
           "q": "Is AI Forest free?",
-          "a": "Yes, AI Forest is free like all AI Educademy programs. Our mission is to make advanced AI education accessible to everyone."
+          "a": "The first lesson of AI Forest is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "What career paths does AI Forest prepare me for?",
@@ -775,10 +717,6 @@
         {
           "q": "Is AI Sketch suitable for complete beginners?",
           "a": "AI Sketch requires basic programming knowledge in any language. If you can write loops, functions, and understand variables, you're ready. The program focuses on data structures and algorithms fundamentals."
-        },
-        {
-          "q": "How long does AI Sketch take to complete?",
-          "a": "Most learners complete AI Sketch in 4–5 hours. We recommend practising each pattern with the provided exercises before moving to the next lesson."
         },
         {
           "q": "What programming language does AI Sketch use?",
@@ -803,16 +741,12 @@
           "a": "You should have completed AI Sketch or have equivalent knowledge of basic data structures (arrays, hash maps, strings). AI Chisel builds on those foundations with intermediate patterns."
         },
         {
-          "q": "How long does AI Chisel take?",
-          "a": "Plan for 5–6 hours. The intermediate patterns like two pointers, sliding window, and graph traversal require more practice time than the basics."
-        },
-        {
           "q": "What patterns does AI Chisel cover?",
           "a": "AI Chisel covers two pointers, sliding window, BFS/DFS graph traversal, tree traversals, stacks, queues, and monotonic patterns — all tied to real AI and ML applications."
         },
         {
           "q": "Is AI Chisel free?",
-          "a": "Yes, free to start, with Pro available for premium programmes. All programs on AI Educademy are open-source and available at no cost."
+          "a": "The first lesson of AI Chisel is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "Will AI Chisel help me in coding interviews?",
@@ -833,16 +767,12 @@
           "a": "Yes, AI Craft assumes you're comfortable with coding interviews and basic distributed systems concepts. It's designed for mid-to-senior engineers preparing for system design rounds."
         },
         {
-          "q": "How long does AI Craft take?",
-          "a": "AI Craft takes approximately 6–8 hours. System design requires deep thinking and each case study builds on previous concepts."
-        },
-        {
           "q": "Will AI Craft help with FAANG interviews?",
           "a": "Yes! System design rounds are a critical part of senior-level interviews at major tech companies. AI Craft teaches you to structure answers clearly and design scalable systems."
         },
         {
           "q": "Is AI Craft free?",
-          "a": "Yes, AI Craft is free to start, with Pro available for premium programmes. Our goal is to democratise access to high-quality interview preparation resources."
+          "a": "The first lesson of AI Craft is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "What systems will I learn to design?",
@@ -857,10 +787,6 @@
         {
           "q": "Do I need technical experience for AI Polish?",
           "a": "You need real project experience to draw from for your stories. AI Polish teaches you how to structure and present those experiences effectively, regardless of your seniority level."
-        },
-        {
-          "q": "How long does AI Polish take?",
-          "a": "AI Polish takes about 4–5 hours. We recommend taking time to craft your own stories between lessons for maximum benefit."
         },
         {
           "q": "Is AI Polish only for senior engineers?",
@@ -885,16 +811,12 @@
           "a": "You should have completed AI Sketch through AI Polish, or have equivalent knowledge in DSA, system design, and behavioral interviews."
         },
         {
-          "q": "How long does AI Masterpiece take?",
-          "a": "Plan for 8–10 hours. The capstone projects are comprehensive and designed to be portfolio-worthy pieces."
-        },
-        {
           "q": "Will AI Masterpiece help me land senior roles?",
           "a": "Yes! The program is specifically designed for engineers targeting senior+ roles. You'll build portfolio pieces and practice full mock interviews."
         },
         {
           "q": "Is AI Masterpiece free?",
-          "a": "Yes, free to start, with Pro available for premium programmes. AI Educademy is committed to making world-class interview prep accessible to all."
+          "a": "The first lesson of AI Masterpiece is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "What kind of projects will I build?",
@@ -905,10 +827,6 @@
         {
           "q": "Is Interview Launchpad suitable for complete beginners?",
           "a": "Yes! Interview Launchpad is designed as the starting point for anyone beginning their tech interview journey. No prior interview experience is needed."
-        },
-        {
-          "q": "How long does Interview Launchpad take?",
-          "a": "Most learners complete it in 3–4 hours. The lessons cover research techniques, preparation timelines, and confidence building."
         },
         {
           "q": "Do I need to know programming for Interview Launchpad?",
@@ -933,10 +851,6 @@
           "a": "While examples focus on engineering scenarios, the STAR framework and storytelling techniques apply to any professional preparing for behavioral interviews in tech."
         },
         {
-          "q": "How long does Behavioral Mastery take?",
-          "a": "About 4–5 hours. We recommend spacing lessons over a few days so you can practice crafting your own stories between sessions."
-        },
-        {
           "q": "What is the STAR method?",
           "a": "STAR stands for Situation, Task, Action, Result. It's a proven framework for structuring interview answers. Behavioral Mastery teaches you to use it naturally and effectively."
         },
@@ -946,7 +860,7 @@
         },
         {
           "q": "Is Behavioral Mastery free?",
-          "a": "Yes, free to start, with Pro available for the full learning path."
+          "a": "The first lesson of Behavioral Mastery is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "Do I need real project experience?",
@@ -959,10 +873,6 @@
           "a": "Concepts are taught language-agnostically, with examples in Python. The problem-solving patterns and system design principles apply regardless of your preferred language."
         },
         {
-          "q": "How long does Technical Interviews take?",
-          "a": "Plan for 6–8 hours. Coding patterns and system design concepts require practice time beyond just reading the lessons."
-        },
-        {
           "q": "Is Technical Interviews suitable for junior developers?",
           "a": "You need solid programming fundamentals in at least one language. If you can write functions, loops, and use basic data structures, you're ready."
         },
@@ -972,7 +882,7 @@
         },
         {
           "q": "Is Technical Interviews free?",
-          "a": "Yes, free to start, with Pro available for premium programmes. We believe everyone deserves access to quality interview preparation."
+          "a": "The first lesson of Technical Interviews is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "Does Technical Interviews include system design?",
@@ -985,10 +895,6 @@
           "a": "You should have basic ML knowledge — understanding supervised vs unsupervised learning, what a model is, and basic statistics. The program builds interview skills on top of this foundation."
         },
         {
-          "q": "How long does AI & ML Interviews take?",
-          "a": "Approximately 6–8 hours. ML system design and case studies require thoughtful analysis and practice."
-        },
-        {
           "q": "What makes ML interviews different from regular tech interviews?",
           "a": "ML interviews include unique formats like ML system design, model evaluation discussions, and ML case studies. This program covers all these specialised formats that general interview prep doesn't address."
         },
@@ -998,7 +904,7 @@
         },
         {
           "q": "Is AI & ML Interviews free?",
-          "a": "Yes, free to start, with Pro available for premium programmes. Specialised ML interview prep is usually expensive — we're making it accessible to everyone."
+          "a": "The first lesson of AI & ML Interviews is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "Which companies' interview styles does this program cover?",
@@ -1011,10 +917,6 @@
           "a": "Ideally when you have an active offer or are in late-stage interviews. The negotiation and evaluation frameworks are most useful when you have real numbers to work with."
         },
         {
-          "q": "How long does Offer & Beyond take?",
-          "a": "About 3–4 hours. The lessons are practical and designed to be immediately applicable to your situation."
-        },
-        {
           "q": "Will I learn salary negotiation?",
           "a": "Yes! You'll learn research-backed negotiation tactics, how to benchmark your compensation, handle counter-offers, and negotiate confidently without risking the offer."
         },
@@ -1024,7 +926,7 @@
         },
         {
           "q": "Is Offer & Beyond free?",
-          "a": "Yes, free to start, with Pro available for premium programmes. We believe everyone should have access to negotiation knowledge that can impact their career earnings significantly."
+          "a": "The first lesson of Offer & Beyond is free to try. Pro unlocks the rest of the programme, along with every other academy, track, and certificate."
         },
         {
           "q": "Can Offer & Beyond help me compare multiple offers?",
@@ -1036,14 +938,14 @@
   "dashboard": {
     "title": "My Learning Dashboard",
     "titleUser": "{name}'s Dashboard",
-    "subtitle": "Your progress across all academics",
+    "subtitle": "Your progress across all academies",
     "overallProgress": "Overall Progress",
     "lessonsCompleted": "{completed} of {total} lessons completed",
     "remaining": "{count} remaining",
     "min": "min",
     "achievements": "Achievements",
     "unlocked": "Unlocked!",
-    "browsePrograms": "Academics",
+    "browsePrograms": "Academies",
     "resetProgress": "Reset Progress",
     "firstStep": "First Step",
     "firstStepDesc": "Completed your first lesson",
@@ -1831,6 +1733,8 @@
     "subtitle": "Everything you need to know about AI Educademy, from getting started to going deep.",
     "cta": "Start Learning Now",
     "ctaHref": "/programs",
+    "ctaTitle": "Ready to start your AI journey?",
+    "ctaSubtitle": "Try the first lesson of any academy free, no account needed.",
     "q1": "What is AI Educademy?",
     "a1": "AI Educademy is an open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone, regardless of background, understand and apply AI concepts.",
     "q2": "How does AI Educademy pricing work?",
@@ -2259,16 +2163,6 @@
     "agentTags": "LLMs,Tool Use,Agents",
     "agentDifficulty": "Advanced"
   },
-  "testimonials": {
-    "title": "Platform Highlights",
-    "programs": "15 Programs",
-    "programsSub": "From beginner to production AI",
-    "languages": "11 Languages",
-    "languagesSub": "Learn in your native language",
-    "openSource": "Open Source",
-    "openSourceSub": "Every line of code, transparent",
-    "quote": "Built by an engineer with 15+ years at JP Morgan, Sky, and global tech companies — designed to make AI education truly accessible to everyone."
-  },
   "finalCta": {
     "headline": "Your AI advantage starts here",
     "subtitle": "Structured academies, practical projects, and a learning path that keeps moving with the technology.",
@@ -2282,10 +2176,10 @@
     "completedBy": "Completed by",
     "badge": "🎓",
     "cta": "Start Learning at AI Educademy",
-    "ctaSubtitle": "Free AI education for everyone",
+    "ctaSubtitle": "Structured AI education, one lesson at a time",
     "verifiedCompletion": "Verified Completion",
     "defaultTitle": "Achievement | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - Free AI education for everyone."
+    "defaultDescription": "An achievement earned on AI Educademy - structured AI education, one lesson at a time."
   },
   "leadMagnet": {
     "metaTitle": "Free Download: The 2026 AI Starter Kit | AI Educademy",

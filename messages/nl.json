@@ -56,51 +56,12 @@
     "statLanguages": "10 Talen"
   },
   "features": {
-    "title": "Waarom AI Educademy?",
-    "subtitle": "Begin bij nul. Geen voorkennis nodig - wij begeleiden je bij elke stap.",
-    "beginner": {
-      "title": "Begin bij nul",
-      "description": "Nog nooit geprogrammeerd? Mooi zo. We gebruiken alledaagse taal en voorbeelden uit de echte wereld - hoe Netflix films aanbeveelt, hoe je telefoon je gezicht herkent."
-    },
-    "interactive": {
-      "title": "Leer door te doen",
-      "description": "Praktische experimenten in je browser. Train een AI om tekeningen te herkennen, leer een chatbot, en zie direct resultaat."
-    },
-    "multilingual": {
-      "title": "In jouw taal",
-      "description": "Leer in het Hindi, Telugu, Frans, Nederlands of Engels - welke taal ook als thuis voelt."
-    },
-    "community": {
-      "title": "Samen leren",
-      "description": "Stel vragen, deel experimenten, help met het vertalen van lessen."
-    },
-    "practical": {
-      "title": "AI in de echte wereld",
-      "description": "Hoe AI zoekmachines, spraakassistenten, sociale feeds, zelfrijdende auto's en medische diagnoses aandrijft."
-    },
-    "structuredTitle": "Gestructureerde programma's",
-    "structuredDesc": "Zorgvuldig opgebouwde trajecten van beginner tot expert",
     "lessonsTitle": "100+ deskundige lessen",
     "lessonsDesc": "Diepgaande, goed onderzochte inhoud over elk onderwerp",
     "languagesTitle": "10 Talen",
     "languagesDesc": "Leer in het Engels, Frans, Nederlands, Hindi of Telugu",
     "programsTitle": "15 Programma's",
-    "programsDesc": "Drie trajecten voor leren, bouwen en carrière",
-    "labTitle": "Interactief Lab",
-    "labDesc": "Praktische experimenten om je kennis te versterken",
-    "openSourceTitle": "Open source",
-    "openSourceDesc": "Volledig transparant - bekijk, fork of draag bij"
-  },
-  "founder": {
-    "description": "Heeft elk onderdeel van AI Educademy van nul af aan ontworpen en gebouwd. de architectuur, het curriculum, de meertalige infrastructuur en de open-source tools. Meer dan vijftien jaar grote systemen gebouwd bij JP Morgan, Sky en Marks & Spencer in Azië en Europa. Die wereldwijde ervaring maakte één ding duidelijk: taal mag nooit een barrière zijn voor leren.",
-    "cta": "Meer over mij",
-    "role": "Oprichter & Maker · Engineering Leader · Londen",
-    "statYears": "Jaar Engineering",
-    "statRepos": "Open Source Repos",
-    "statContinents": "Continenten",
-    "brainsTitle": "Het brein achter het idee",
-    "buyCoffee": "Koop een koffie voor me",
-    "statLanguages": "Talen"
+    "programsDesc": "Drie trajecten voor leren, bouwen en carrière"
   },
   "footer": {
     "lessons": "Lessen",
@@ -1451,7 +1412,9 @@
     "q24": "What makes AI Educademy different from other platforms?",
     "a24": "AI Educademy combineert een echte gratis proefles in elke academie met gestructureerd leren, praktische projecten, interactieve experimenten en écht meertalige content. Pro brengt je van de basis naar productiegerichte AI-vaardigheden.",
     "q25": "How do I get started?",
-    "a25": "Bekijk de academies en probeer de gratis eerste les van elk programma, of dat nu AI Seeds, AI Canopy of Interview Launchpad is. Kies een maandelijks, jaarlijks of levenslang Pro-abonnement wanneer je klaar bent om de rest te ontgrendelen."
+    "a25": "Bekijk de academies en probeer de gratis eerste les van elk programma, of dat nu AI Seeds, AI Canopy of Interview Launchpad is. Kies een maandelijks, jaarlijks of levenslang Pro-abonnement wanneer je klaar bent om de rest te ontgrendelen.",
+    "ctaTitle": "Klaar om aan je AI-reis te beginnen?",
+    "ctaSubtitle": "Probeer de eerste les van elke academie gratis, geen account nodig."
   },
   "pricing": {
     "pageTitle": "Pricing",
@@ -1699,9 +1662,16 @@
     "completedBy": "Completed by",
     "badge": "🎓",
     "cta": "Start Learning at AI Educademy",
-    "ctaSubtitle": "Free AI education for everyone",
+    "ctaSubtitle": "Gestructureerd AI-onderwijs, les voor les",
     "verifiedCompletion": "Verified Completion",
     "defaultTitle": "Achievement | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - Free AI education for everyone."
+    "defaultDescription": "An achievement earned on AI Educademy - gestructureerd AI-onderwijs, les voor les."
+  },
+  "trustBar": {
+    "lessons": "Lessen",
+    "programs": "Opleidingen",
+    "languages": "Talen",
+    "freeValue": "Les 1",
+    "freePreview": "Gratis in elk programma"
   }
 }
