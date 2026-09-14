@@ -37,7 +37,6 @@
     "aiFoundationsPath": "KI-Grundlagen",
     "aiMasteryPath": "KI-Meisterschaft",
     "careerReadyPath": "Karrierebereit",
-    "title": "AI Educademy. Lerne KI auf deine Art",
     "bookmarks": "Lesezeichen",
     "faq": "FAQ",
     "journey": "Lernreise"
@@ -180,7 +179,12 @@
     "quickCheck": "Kurzer Check",
     "animationError": "Animation konnte nicht geladen werden",
     "progressPercent": "{percent}% abgeschlossen",
-    "suggestEdit": "Bearbeitung vorschlagen"
+    "suggestEdit": "Bearbeitung vorschlagen",
+    "completeLesson": "Lektion abschließen",
+    "quizRequired": "Beantworte alle Quizfragen richtig, um diese Lektion abzuschließen",
+    "quizProgress": "{passed} von {total} Quizfragen bestanden",
+    "allQuizzesPassed": "Alle Quizfragen bestanden!",
+    "lessonCompleted": "Lektion abgeschlossen!"
   },
   "programs": {
     "badge": "",
