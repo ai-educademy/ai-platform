@@ -8,13 +8,33 @@ import { useQuizContext } from "./QuizContext";
 interface QuizProps {
   question: string;
   options: string[] | string;
-  answer: number | string;
+  answer?: number | string;
+  /**
+   * Alias for `answer`. Part of the content corpus was authored as
+   * `correct={1}` rather than `answer="1"`. Only `answer` was ever read, so
+   * those quizzes silently fell back to index 0 and marked the wrong option as
+   * correct. Accepting both keeps the existing content working.
+   */
+  correct?: number | string;
   explanation?: string;
 }
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-export function Quiz({ question, options: rawOptions, answer: rawAnswer, explanation }: QuizProps) {
+/** Parses an answer index, tolerating both the string and numeric spellings. */
+export function parseAnswerIndex(value: number | string | undefined): number {
+  if (typeof value === "number") return Number.isInteger(value) && value >= 0 ? value : 0;
+  const parsed = Number.parseInt(String(value ?? ""), 10);
+  return Number.isInteger(parsed) && parsed >= 0 ? parsed : 0;
+}
+
+export function Quiz({
+  question,
+  options: rawOptions,
+  answer: rawAnswer,
+  correct: rawCorrect,
+  explanation,
+}: QuizProps) {
   const t = useTranslations("lessons");
   const noMotion = useReducedMotion();
   const { registerQuiz, markQuizPassed } = useQuizContext();
@@ -23,7 +43,7 @@ export function Quiz({ question, options: rawOptions, answer: rawAnswer, explana
     : typeof rawOptions === "string"
       ? rawOptions.split("|")
       : [];
-  const answer = typeof rawAnswer === "number" ? rawAnswer : parseInt(String(rawAnswer), 10) || 0;
+  const answer = parseAnswerIndex(rawAnswer ?? rawCorrect);
 
   // Stable quiz ID derived from question text
   const quizId = useMemo(() => {

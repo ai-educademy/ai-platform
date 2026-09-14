@@ -216,7 +216,8 @@
       "ja": "Japanese",
       "zh": "Chinese",
       "ar": "Arabic"
-    }
+    },
+    "machineTranslatedNotice": "This lesson was translated into {language} automatically and has not been reviewed by a person yet. If something reads oddly, the English original is the definitive version."
   },
   "programs": {
     "badge": "",
@@ -2260,7 +2261,17 @@
     "abandonedCartUnlock4": "Completion certificates",
     "abandonedCartUnlock5": "Server-side progress sync across devices",
     "abandonedCartFooter": "You received this email because you started a checkout on AI Educademy.",
-    "abandonedCartUnsubscribe": "Unsubscribe"
+    "abandonedCartUnsubscribe": "Unsubscribe",
+    "proUpgradeSubject": "A small ask from AI Educademy",
+    "proUpgradeFallbackName": "there",
+    "proUpgradeGreeting": "Hi {name},",
+    "proUpgradeBody1": "Thanks for learning with AI Educademy. Watching people actually work through the lessons is easily the best part of running this site.",
+    "proUpgradeBody2": "The free lessons are staying free. But hosting, the AI lab and writing new material all cost real money and a lot of weekends.",
+    "proUpgradeBody3": "If the site has been useful to you, Pro is £3.99 a month. It unlocks every program, the mock interview lab and certificates, and it is what keeps new lessons coming.",
+    "proUpgradeCta": "See what's in Pro",
+    "proUpgradeSignoff": "Thanks for being here. Ramesh",
+    "proUpgradeFooter": "You're receiving this because you have an AI Educademy account.",
+    "proUpgradeUnsubscribe": "Unsubscribe from emails like this"
   },
   "bookmarks": {
     "title": "My Bookmarks",
@@ -2314,5 +2325,15 @@
     "opening": "Opening…",
     "noSubscription": "We couldn't find an active subscription on your account.",
     "error": "Something went wrong opening the billing portal. Please try again."
+  },
+  "unsubscribe": {
+    "title": "Unsubscribe",
+    "body": "Click below to stop receiving product updates and offers. You'll still get essential account emails like receipts and password resets.",
+    "confirm": "Unsubscribe me",
+    "working": "Unsubscribing…",
+    "done": "Done. You've been unsubscribed.",
+    "doneDetail": "You won't receive marketing emails from AI Educademy again. Account emails such as receipts will still be sent.",
+    "error": "Something went wrong. Please try again.",
+    "missingToken": "This unsubscribe link is incomplete. Please use the link from your email."
   }
 }

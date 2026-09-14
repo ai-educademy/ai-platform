@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
       .limit(1);
 
     if (user) {
-      sendWelcomeEmail(email, "en", user.name || undefined).catch((err) =>
+      sendWelcomeEmail(email, user.locale || "en", user.name || undefined).catch((err) =>
         console.error("[VerifyEmail] Welcome email failed:", err)
       );
       sendAdminNotification(

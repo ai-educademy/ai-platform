@@ -1,5 +1,6 @@
 import { welcomeEmailHtml, subscriptionEmailHtml, verificationCodeEmailHtml, passwordResetEmailHtml, leadMagnetEmailHtml, abandonedCartEmailHtml } from "./emailTemplates";
 import { getEmailTranslator } from "./email-i18n";
+import { getOrCreateUnsubscribeToken, unsubscribeLinkFor } from "./unsubscribe";
 import { localeBasePath } from "./safe-locale";
 
 const subjectByLocale: Record<string, string> = {
@@ -8,6 +9,12 @@ const subjectByLocale: Record<string, string> = {
   nl: "Welkom bij AI Educademy! 🎓",
   hi: "AI Educademy में आपका स्वागत है! 🎓",
   te: "AI Educademy కి స్వాగతం! 🎓",
+  de: "Willkommen bei AI Educademy! 🎓",
+  es: "¡Bienvenido a AI Educademy! 🎓",
+  ja: "AI Educademyへようこそ！ 🎓",
+  zh: "欢迎来到AI Educademy！ 🎓",
+  pt: "Bem-vindo ao AI Educademy! 🎓",
+  ar: "مرحبًا بك في AI Educademy! 🎓",
 };
 
 const proSubjectByLocale: Record<string, string> = {
@@ -16,6 +23,12 @@ const proSubjectByLocale: Record<string, string> = {
   nl: "Welkom bij Pro! 🚀",
   hi: "Pro में आपका स्वागत है! 🚀",
   te: "Pro కి స్వాగతం! 🚀",
+  de: "Willkommen bei Pro! 🚀",
+  es: "¡Bienvenido a Pro! 🚀",
+  ja: "Proへようこそ! 🚀",
+  zh: "欢迎来到Pro！ 🚀",
+  pt: "Bem-vindo ao Pro! 🚀",
+  ar: "مرحبًا بك في Pro! 🚀",
 };
 
 const cancelSubjectByLocale: Record<string, string> = {
@@ -24,6 +37,12 @@ const cancelSubjectByLocale: Record<string, string> = {
   nl: "Je abonnement is beëindigd",
   hi: "आपकी सदस्यता समाप्त हो गई है",
   te: "మీ సబ్‌స్క్రిప్షన్ ముగిసింది",
+  de: "Ihr Abonnement ist beendet",
+  es: "Tu suscripción ha finalizado",
+  ja: "サブスクリプションは終了しました",
+  zh: "您的订阅已结束",
+  pt: "Sua assinatura terminou",
+  ar: "لقد انتهى اشتراكك",
 };
 
 async function sendEmail(to: string, subject: string, html: string): Promise<void> {
@@ -50,9 +69,58 @@ async function sendEmail(to: string, subject: string, html: string): Promise<voi
   }
 }
 
+/**
+ * Sends a bulk marketing email.
+ *
+ * Separate from `sendEmail` for two reasons. It returns whether the send
+ * actually succeeded, because a campaign that silently swallows failures cannot
+ * report what happened; and it attaches the List-Unsubscribe headers, which
+ * Gmail and Yahoo require from bulk senders and which give the reader a
+ * one-click opt-out in the mail client itself rather than buried in the footer.
+ */
+export async function sendMarketingEmail(
+  to: string,
+  subject: string,
+  html: string,
+  unsubscribeLink: string,
+): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.info(`[Email] No RESEND_API_KEY set. Skipping marketing email for ${to}`);
+    return false;
+  }
+
+  try {
+    const { Resend } = await import("resend");
+    const resend = new Resend(apiKey);
+    const fromAddress = process.env.RESEND_FROM_EMAIL || "AI Educademy <onboarding@resend.dev>";
+
+    const result = await resend.emails.send({
+      from: fromAddress,
+      to,
+      subject,
+      html,
+      headers: {
+        "List-Unsubscribe": `<${unsubscribeLink}>`,
+        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      },
+    });
+
+    if (result.error) {
+      console.error(`[Email] Resend API error for ${to}:`, result.error);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error(`[Email] Failed to send marketing email to ${to}:`, error);
+    return false;
+  }
+}
+
 export async function sendWelcomeEmail(email: string, locale: string = "en", name?: string): Promise<void> {
   const subject = subjectByLocale[locale] || subjectByLocale.en;
-  const html = welcomeEmailHtml(email, locale, name);
+  const token = await getOrCreateUnsubscribeToken(email);
+  const html = welcomeEmailHtml(email, locale, name, unsubscribeLinkFor(token, locale));
   await sendEmail(email, subject, html);
 }
 
@@ -96,12 +164,20 @@ export async function sendAbandonedCartEmail(email: string, name?: string, local
   const pricingUrl = `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/pricing`;
   const promoCode = process.env.ABANDONED_CART_PROMO_CODE?.trim() || undefined;
   const subject = `${tr.t("abandonedCartSubject")} 🛒`;
-  const html = abandonedCartEmailHtml(name, pricingUrl, tr, promoCode);
+  const token = await getOrCreateUnsubscribeToken(email);
+  const html = abandonedCartEmailHtml(
+    name,
+    pricingUrl,
+    tr,
+    promoCode,
+    unsubscribeLinkFor(token, tr.locale),
+  );
   await sendEmail(email, subject, html);
 }
 
 export async function sendLeadMagnetEmail(email: string, name: string, downloadUrl: string): Promise<void> {
   const subject = "Your AI Starter Kit is Ready! 🚀";
-  const html = leadMagnetEmailHtml(name, downloadUrl);
+  const token = await getOrCreateUnsubscribeToken(email);
+  const html = leadMagnetEmailHtml(name, downloadUrl, unsubscribeLinkFor(token, "en"));
   await sendEmail(email, subject, html);
 }

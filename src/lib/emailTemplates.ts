@@ -90,6 +90,96 @@ const emailStrings: Record<string, Record<string, string>> = {
     footer: "మీరు AI Educademy కి సబ్‌స్క్రైబ్ చేసినందున ఈ ఇమెయిల్ అందింది.",
     unsubscribe: "అన్‌సబ్‌స్క్రైబ్",
   },
+  de: {
+    title: "Willkommen bei AI Educademy",
+    subtitle: "Willkommen in unserer Community!",
+    greeting: "Willkommen",
+    body: "Vielen Dank, dass Sie der AI Educademy-Community beigetreten sind! Wir freuen uns, Sie an Bord zu haben. Egal, ob Sie lernen, experimentieren oder zusammenarbeiten möchten, hier sind Sie richtig.",
+    explore: "Folgendes können Sie erkunden:",
+    browsePrograms: "Durchsuchen Sie ProGramm",
+    tryLab: "Probieren Sie AI Lab",
+    joinGithub: "Treten Sie GitHub bei",
+    closing: "Viel Spaß beim Lernen! Wenn Sie Fragen haben, können Sie sich jederzeit an uns wenden.",
+    regards: "Beste grüße,",
+    team: "Das AI Educademy-Team",
+    footer: "Sie haben diese E-Mail erhalten, weil Sie AI Educademy abonniert haben.",
+    unsubscribe: "Abbestellen",
+  },
+  es: {
+    title: "Bienvenido a AI Educademy",
+    subtitle: "¡Bienvenido a nuestra comunidad!",
+    greeting: "Bienvenido",
+    body: "¡Gracias por unirte a la comunidad AI Educademy! Estamos emocionados de tenerte a bordo. Ya sea que estés buscando aprender, experimentar o colaborar, estás en el lugar correcto.",
+    explore: "Esto es lo que puedes explorar:",
+    browsePrograms: "Explorar Programos",
+    tryLab: "Prueba AI Lab",
+    joinGithub: "Unirse GitHub",
+    closing: "¡Feliz aprendizaje! Si tiene alguna pregunta, no dude en comunicarse con nosotros en cualquier momento.",
+    regards: "Atentamente,",
+    team: "El equipo AI Educademy",
+    footer: "Recibiste este correo electrónico porque te suscribiste a AI Educademy.",
+    unsubscribe: "Darse de baja",
+  },
+  ja: {
+    title: "AI Educademyへようこそ",
+    subtitle: "私たちのコミュニティへようこそ！",
+    greeting: "いらっしゃいませ",
+    body: "AI Educademyコミュニティにご参加いただきありがとうございます。ぜひご参加ください。学習、実験、コラボレーションを目的としている場合でも、ここは適切な場所です。",
+    explore: "調査できる内容は次のとおりです。",
+    browsePrograms: "Proグラムを参照",
+    tryLab: "AI Lab を試してください",
+    joinGithub: "GitHubに参加する",
+    closing: "楽しく学習しましょう！ご質問がございましたら、いつでもお気軽にお問い合わせください。",
+    regards: "よろしくお願いします、",
+    team: "AI Educademy チーム",
+    footer: "このメールは、AI Educademy に登録したために受信しました。",
+    unsubscribe: "購読を解除する",
+  },
+  zh: {
+    title: "欢迎来到AI Educademy",
+    subtitle: "欢迎来到我们的社区！",
+    greeting: "欢迎",
+    body: "感谢您加入AI Educademy社区！我们很高兴您的加入。无论您是想学习、实验还是协作，您都来对地方了。",
+    explore: "您可以探索以下内容：",
+    browsePrograms: "浏览Pro克",
+    tryLab: "尝试AI Lab",
+    joinGithub: "加入GitHub",
+    closing: "快乐学习！如果您有任何疑问，请随时与我们联系。",
+    regards: "此致，",
+    team: "AI Educademy团队",
+    footer: "您收到这封电子邮件是因为您订阅了 AI Educademy。",
+    unsubscribe: "退订",
+  },
+  pt: {
+    title: "Bem-vindo ao AI Educademy",
+    subtitle: "Bem-vindo à nossa comunidade!",
+    greeting: "Bem-vindo",
+    body: "Obrigado por se juntar à comunidade AI Educademy! Estamos entusiasmados por ter você a bordo. Esteja você procurando aprender, experimentar ou colaborar, você está no lugar certo.",
+    explore: "Aqui está o que você pode explorar:",
+    browsePrograms: "Procure Programas",
+    tryLab: "Experimente AI Lab",
+    joinGithub: "Junte-se a GitHub",
+    closing: "Feliz aprendizado! Se você tiver alguma dúvida, sinta-se à vontade para entrar em contato conosco a qualquer momento.",
+    regards: "Atenciosamente,",
+    team: "A equipe AI Educademy",
+    footer: "Você recebeu este e-mail porque se inscreveu em AI Educademy.",
+    unsubscribe: "Cancelar inscrição",
+  },
+  ar: {
+    title: "مرحبا بكم في AI Educademy",
+    subtitle: "مرحبا بكم في مجتمعنا!",
+    greeting: "مرحباً",
+    body: "شكرًا لانضمامك إلى مجتمع AI Educademy! نحن متحمسون لوجودك على متن الطائرة. سواء كنت تتطلع إلى التعلم أو التجربة أو التعاون، فأنت في المكان الصحيح.",
+    explore: "إليك ما يمكنك استكشافه:",
+    browsePrograms: "تصفح Proجرام",
+    tryLab: "حاول AI Lab",
+    joinGithub: "انضم GitHub",
+    closing: "تعلم سعيد! إذا كانت لديك أي أسئلة، فلا تتردد في التواصل معنا في أي وقت.",
+    regards: "أطيب التحيات،",
+    team: "فريق AI Educademy",
+    footer: "لقد تلقيت هذا البريد الإلكتروني لأنك اشتركت في AI Educademy.",
+    unsubscribe: "إلغاء الاشتراك",
+  },
 };
 
 const subscriptionStrings: Record<string, Record<string, string>> = {
@@ -203,6 +293,138 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     annual: "Pro వార్షిక (£29.99/సం.)",
     lifetime: "లైఫ్‌టైమ్ యాక్సెస్ (£49.99)",
   },
+  de: {
+    proTitle: "Willkommen bei Pro! 🚀",
+    proSubtitle: "Ihr Upgrade ist bestätigt",
+    proGreeting: "Sie sind jetzt Pro-Mitglied",
+    proBody: "Vielen Dank für das Upgrade auf AI Educademy Pro! Sie haben jetzt vollen Zugriff auf alle Premium-Programme, fortgeschrittenen Lektionen und exklusiven Inhalte.",
+    proFeatures: "Was ist für Sie freigeschaltet:",
+    feature1: "Alle Premium-Programme und -Lektionen",
+    feature2: "Fortgeschrittene KI-Projekte und -Labore",
+    feature3: "Vorrangiger Support",
+    proCta: "Beginnen Sie mit dem Lernen",
+    proClosing: "Wir freuen uns, Sie bei uns zu haben. Tauchen Sie ein und erkunden Sie alles, was Pro zu bieten hat!",
+    cancelTitle: "Es tut uns leid, Sie gehen zu sehen 😢",
+    cancelSubtitle: "Ihr Abonnement ist beendet",
+    cancelGreeting: "Ihr Pro-Zugriff ist beendet",
+    cancelBody: "Ihr AI Educademy Pro-Abonnement wurde gekündigt. Sie haben weiterhin Zugriff auf alle kostenlosen Programme und die erste Lektion der Premium-Programme.",
+    cancelCta: "Abonnieren Sie erneut",
+    cancelClosing: "Wir hoffen, Sie wiederzusehen! Unsere kostenlosen Inhalte sind immer verfügbar und Sie können sich jederzeit erneut anmelden.",
+    planLabel: "Planen",
+    monthly: "Pro Monatlich (£3.99/mo)",
+    annual: "Pro Jährlich (£29.99/yr)",
+    lifetime: "Lebenslanger Zugriff (£49.99)",
+  },
+  es: {
+    proTitle: "¡Bienvenido a Pro! 🚀",
+    proSubtitle: "Su actualización está confirmada",
+    proGreeting: "Ahora eres miembro de Pro",
+    proBody: "¡Gracias por actualizar a AI Educademy Pro! Ahora tiene acceso completo a todos los programas premium, lecciones avanzadas y contenido exclusivo.",
+    proFeatures: "Qué está desbloqueado para ti:",
+    feature1: "Todos los programas y lecciones premium",
+    feature2: "Proyectos y laboratorios de IA avanzados",
+    feature3: "Apoyo prioritario",
+    proCta: "Empezar a aprender",
+    proClosing: "Estamos encantados de tenerte. ¡Sumérgete y explora todo lo que Pro tiene para ofrecer!",
+    cancelTitle: "Lamentamos que te vayas 😢",
+    cancelSubtitle: "Tu suscripción ha finalizado",
+    cancelGreeting: "Tu acceso a Pro ha finalizado",
+    cancelBody: "Su suscripción de AI Educademy Pro ha sido cancelada. Seguirás teniendo acceso a todos los programas gratuitos y a la primera lección de los programas premium.",
+    cancelCta: "Volver a suscribirse",
+    cancelClosing: "¡Esperamos verte de regreso! Nuestro contenido gratuito siempre está disponible y puedes volver a suscribirte en cualquier momento.",
+    planLabel: "Plan",
+    monthly: "Pro Mensual (£3.99/mo)",
+    annual: "Pro Anual (£29.99/yr)",
+    lifetime: "Acceso de por vida (£49.99)",
+  },
+  ja: {
+    proTitle: "Proへようこそ！ 🚀",
+    proSubtitle: "アップグレードが確認されました",
+    proGreeting: "あなたはProのメンバーになりました",
+    proBody: "AI Educademy Pro にアップグレードしていただきありがとうございます。すべてのプレミアム プログラム、高度なレッスン、限定コンテンツに完全にアクセスできるようになりました。",
+    proFeatures: "あなたにとってアンロックされるもの:",
+    feature1: "すべてのプレミアム プログラムとレッスン",
+    feature2: "高度な AI プロジェクトとラボ",
+    feature3: "優先サポート",
+    proCta: "学習を始める",
+    proClosing: "皆様にお会いできることを大変うれしく思っております。 Pro が提供するものをすべて探索してください。",
+    cancelTitle: "ごめんなさい😢",
+    cancelSubtitle: "サブスクリプションは終了しました",
+    cancelGreeting: "Pro のアクセスが終了しました",
+    cancelBody: "AI Educademy Pro のサブスクリプションはキャンセルされました。すべての無料プログラムとプレミアム プログラムの最初のレッスンには引き続きアクセスできます。",
+    cancelCta: "再購読",
+    cancelClosing: "またお会いできるのを楽しみにしています！無料のコンテンツはいつでも利用でき、いつでも再購読できます。",
+    planLabel: "プラン",
+    monthly: "Pro 毎月 (£3.99/mo)",
+    annual: "Pro 年次 (£29.99/yr)",
+    lifetime: "生涯アクセス (£49.99)",
+  },
+  zh: {
+    proTitle: "欢迎来到Pro！ 🚀",
+    proSubtitle: "您的升级已确认",
+    proGreeting: "您现在是Pro会员",
+    proBody: "感谢您升级至AI Educademy Pro！您现在可以完全访问所有高级课程、高级课程和独家内容。",
+    proFeatures: "为您解锁的内容：",
+    feature1: "所有优质课程和课程",
+    feature2: "先进的人工智能项目和实验室",
+    feature3: "优先支持",
+    proCta: "开始学习",
+    proClosing: "我们很高兴有你。潜入并探索 Pro 提供的一切！",
+    cancelTitle: "看到你离开我们感到很遗憾 😢",
+    cancelSubtitle: "您的订阅已结束",
+    cancelGreeting: "您的 Pro 访问权限已结束",
+    cancelBody: "您的 AI Educademy Pro 订阅已取消。您将继续可以访问所有免费课程和高级课程的第一课。",
+    cancelCta: "重新订阅",
+    cancelClosing: "我们希望再次见到您！我们的免费内容始终可用，您可以随时重新订阅。",
+    planLabel: "计划",
+    monthly: "Pro 每月 (£3.99/mo)",
+    annual: "Pro 年度 (£29.99/yr)",
+    lifetime: "终身访问 (£49.99)",
+  },
+  pt: {
+    proTitle: "Bem-vindo ao Pro! 🚀",
+    proSubtitle: "Sua atualização foi confirmada",
+    proGreeting: "Agora você é um membro Pro",
+    proBody: "Obrigado por atualizar para AI Educademy Pro! Agora você tem acesso total a todos os programas premium, aulas avançadas e conteúdo exclusivo.",
+    proFeatures: "O que está desbloqueado para você:",
+    feature1: "Todos os programas e aulas premium",
+    feature2: "Projetos e laboratórios avançados de IA",
+    feature3: "Suporte prioritário",
+    proCta: "Comece a aprender",
+    proClosing: "Estamos emocionados por ter você. Mergulhe e explore tudo o que Pro tem a oferecer!",
+    cancelTitle: "Lamentamos ver você partir 😢",
+    cancelSubtitle: "Sua assinatura terminou",
+    cancelGreeting: "Seu acesso Pro terminou",
+    cancelBody: "Sua assinatura AI Educademy Pro foi cancelada. Você continuará tendo acesso a todos os programas gratuitos e à primeira aula dos programas premium.",
+    cancelCta: "Inscrever-se novamente",
+    cancelClosing: "Esperamos vê-lo de volta! Nosso conteúdo gratuito está sempre disponível e você pode assinar novamente a qualquer momento.",
+    planLabel: "Plano",
+    monthly: "Pro Mensal (£3.99/mo)",
+    annual: "Pro Anual (£29.99/yr)",
+    lifetime: "Acesso vitalício (£49.99)",
+  },
+  ar: {
+    proTitle: "مرحبًا بك في Pro! 🚀",
+    proSubtitle: "تم تأكيد الترقية الخاصة بك",
+    proGreeting: "أنت الآن عضو Pro",
+    proBody: "شكرًا لك على الترقية إلى AI Educademy Pro! لديك الآن حق الوصول الكامل إلى جميع البرامج المتميزة والدروس المتقدمة والمحتوى الحصري.",
+    proFeatures: "ما هو مفتوح بالنسبة لك:",
+    feature1: "جميع البرامج والدروس المتميزة",
+    feature2: "مشاريع ومختبرات الذكاء الاصطناعي المتقدمة",
+    feature3: "دعم الأولوية",
+    proCta: "ابدأ التعلم",
+    proClosing: "نحن سعداء بوجودك. انغمس واستكشف كل ما تقدمه Pro!",
+    cancelTitle: "نأسف لرؤيتك تذهب 😢",
+    cancelSubtitle: "لقد انتهى اشتراكك",
+    cancelGreeting: "لقد انتهى وصولك إلى Pro",
+    cancelBody: "لقد تم إلغاء اشتراكك AI Educademy Pro. سيستمر بإمكانك الوصول إلى كافة البرامج المجانية والدرس الأول من البرامج المميزة.",
+    cancelCta: "إعادة الاشتراك",
+    cancelClosing: "نأمل أن نراكم مرة أخرى! المحتوى المجاني الخاص بنا متاح دائمًا، ويمكنك إعادة الاشتراك في أي وقت.",
+    planLabel: "يخطط",
+    monthly: "Pro شهريًا (£3.99/mo)",
+    annual: "Pro سنوي (£29.99/yr)",
+    lifetime: "الوصول مدى الحياة (£49.99)",
+  },
 };
 
 export function subscriptionEmailHtml(
@@ -211,6 +433,7 @@ export function subscriptionEmailHtml(
   plan: string = "monthly",
   locale: string = "en"
 ): string {
+  const dir = locale === "ar" ? "rtl" : "ltr";
   const s = subscriptionStrings[locale] || subscriptionStrings.en;
   const isActivated = type === "activated";
   const planLabel = s[plan as keyof typeof s] || plan;
@@ -228,13 +451,13 @@ export function subscriptionEmailHtml(
 
   return `
 <!DOCTYPE html>
-<html lang="${locale}">
+<html lang="${locale}" dir="${dir}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333;">
+<body dir="${dir}" style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333;">
   <table cellpadding="0" cellspacing="0" style="width: 100%; background-color: #f9fafb;">
     <tr>
       <td style="padding: 40px 20px;">
@@ -289,12 +512,20 @@ export function subscriptionEmailHtml(
   `.trim();
 }
 
-export function welcomeEmailHtml(email: string, locale: string = "en", name?: string): string {
+export function welcomeEmailHtml(
+  email: string,
+  locale: string = "en",
+  name?: string,
+  unsubscribeLink: string = "https://aieducademy.org/unsubscribe",
+): string {
+  // Arabic is right-to-left; without an explicit dir the whole email renders
+  // mirrored and unreadable in most mail clients.
+  const dir = locale === "ar" ? "rtl" : "ltr";
   const s = emailStrings[locale] || emailStrings.en;
   const displayName = name || email;
   return `
 <!DOCTYPE html>
-<html lang="${locale}">
+<html lang="${locale}" dir="${dir}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -375,7 +606,7 @@ export function welcomeEmailHtml(email: string, locale: string = "en", name?: st
             <td style="padding: 20px 30px; border-top: 1px solid #e5e7eb; background-color: #f9fafb; border-radius: 0 0 8px 8px;">
               <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.5; text-align: center;">
                 ${s.footer}<br>
-                <a href="https://aieducademy.org" style="color: #667eea; text-decoration: none;">${s.unsubscribe}</a>
+                <a href="${unsubscribeLink}" style="color: #667eea; text-decoration: none;">${s.unsubscribe}</a>
               </p>
             </td>
           </tr>
@@ -435,7 +666,11 @@ export function verificationCodeEmailHtml(code: string): string {
 
 /* ─────────────── Lead Magnet Email ─────────────── */
 
-export function leadMagnetEmailHtml(name: string, downloadUrl: string): string {
+export function leadMagnetEmailHtml(
+  name: string,
+  downloadUrl: string,
+  unsubscribeLink: string = "https://aieducademy.org/unsubscribe",
+): string {
   const safeName = name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
   return `
 <!DOCTYPE html>
@@ -483,7 +718,7 @@ export function leadMagnetEmailHtml(name: string, downloadUrl: string): string {
           <tr>
             <td style="padding:20px 30px;border-top:1px solid #e5e7eb;background-color:#f9fafb;border-radius:0 0 8px 8px;">
               <p style="margin:0 0 4px;color:#6b7280;font-size:12px;text-align:center;">AI Educademy · <a href="https://aieducademy.org" style="color:#667eea;text-decoration:none;">aieducademy.org</a></p>
-              <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">You received this email because you requested the AI Starter Kit. <a href="https://aieducademy.org" style="color:#9ca3af;">Unsubscribe</a></p>
+              <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">You received this email because you requested the AI Starter Kit. <a href="${unsubscribeLink}" style="color:#9ca3af;text-decoration:underline;">Unsubscribe</a></p>
             </td>
           </tr>
         </table>
@@ -502,6 +737,7 @@ export function abandonedCartEmailHtml(
   pricingUrl: string,
   tr: EmailTranslator,
   promoCode?: string,
+  unsubscribeLink: string = "https://aieducademy.org/unsubscribe",
 ): string {
   const { t, locale, dir } = tr;
   // The name is interpolated into the greeting and the whole string is escaped
@@ -568,7 +804,7 @@ export function abandonedCartEmailHtml(
           <tr>
             <td style="padding:20px 30px;border-top:1px solid #e5e7eb;background-color:#f9fafb;border-radius:0 0 8px 8px;">
               <p style="margin:0 0 4px;color:#6b7280;font-size:12px;text-align:center;">AI Educademy · <a href="https://aieducademy.org" style="color:#667eea;text-decoration:none;">aieducademy.org</a></p>
-              <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">${escapeHtml(t("abandonedCartFooter"))} <a href="https://aieducademy.org" style="color:#9ca3af;">${escapeHtml(t("abandonedCartUnsubscribe"))}</a></p>
+              <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">${escapeHtml(t("abandonedCartFooter"))} <a href="${unsubscribeLink}" style="color:#9ca3af;text-decoration:underline;">${escapeHtml(t("abandonedCartUnsubscribe"))}</a></p>
             </td>
           </tr>
         </table>
@@ -614,6 +850,61 @@ export function passwordResetEmailHtml(resetUrl: string): string {
           <tr>
             <td style="padding:20px 30px;border-top:1px solid #e5e7eb;background-color:#f9fafb;border-radius:0 0 8px 8px;">
               <p style="margin:0;color:#6b7280;font-size:12px;text-align:center;">AI Educademy · <a href="https://aieducademy.org" style="color:#667eea;text-decoration:none;">aieducademy.org</a></p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `.trim();
+}
+
+/* ─────────────── Pro Upgrade Campaign ─────────────── */
+
+/**
+ * Short marketing email inviting a free user to upgrade.
+ *
+ * Deliberately brief: a few lines, one link, one opt-out. Long promotional mail
+ * to an existing free user reads as spam and costs more goodwill than it earns.
+ */
+export function proUpgradeEmailHtml(
+  name: string | undefined,
+  pricingUrl: string,
+  unsubscribeLink: string,
+  tr: EmailTranslator,
+): string {
+  const { t, locale, dir } = tr;
+  const safeName = name || t("proUpgradeFallbackName");
+  const align = dir === "rtl" ? "right" : "left";
+
+  return `
+<!DOCTYPE html>
+<html lang="${locale}" dir="${dir}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${escapeHtml(t("proUpgradeSubject"))}</title></head>
+<body style="margin:0;padding:0;background-color:#f3f4f6;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;" dir="${dir}">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f3f4f6;">
+    <tr>
+      <td align="center" style="padding:40px 20px;">
+        <table role="presentation" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+          <tr>
+            <td style="padding:32px 30px 8px;text-align:${align};">
+              <p style="margin:0 0 16px;color:#111827;font-size:16px;line-height:1.7;">${escapeHtml(t("proUpgradeGreeting", { name: safeName }))}</p>
+              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.7;">${escapeHtml(t("proUpgradeBody1"))}</p>
+              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.7;">${escapeHtml(t("proUpgradeBody2"))}</p>
+              <p style="margin:0 0 8px;color:#374151;font-size:16px;line-height:1.7;">${escapeHtml(t("proUpgradeBody3"))}</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:16px 30px 32px;text-align:center;">
+              <a href="${pricingUrl}" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#ffffff;font-size:16px;font-weight:600;text-decoration:none;border-radius:8px;">${escapeHtml(t("proUpgradeCta"))}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:18px 30px;border-top:1px solid #e5e7eb;background-color:#f9fafb;border-radius:0 0 8px 8px;">
+              <p style="margin:0 0 6px;color:#6b7280;font-size:12px;text-align:center;">${escapeHtml(t("proUpgradeSignoff"))}</p>
+              <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">${escapeHtml(t("proUpgradeFooter"))} <a href="${unsubscribeLink}" style="color:#9ca3af;text-decoration:underline;">${escapeHtml(t("proUpgradeUnsubscribe"))}</a></p>
             </td>
           </tr>
         </table>

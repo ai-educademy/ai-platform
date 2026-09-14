@@ -21,7 +21,7 @@ import { BookmarkButton } from "@/components/lessons/BookmarkButton";
 import { db, isDbConfigured } from "@/lib/db";
 import { lessonBookmarks } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
-import { FallbackContentNotice } from "@/components/lessons/FallbackContentNotice";
+import { ContentLanguageNotice } from "@/components/lessons/ContentLanguageNotice";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -222,7 +222,10 @@ export default async function ProgramLessonPage({
         <>
           <QuizProvider>
             {lesson.isFallback && (
-              <FallbackContentNotice requestedLocale={locale} />
+              <ContentLanguageNotice requestedLocale={locale} variant="fallback" />
+            )}
+            {lesson.machineTranslated && (
+              <ContentLanguageNotice requestedLocale={locale} variant="machine" />
             )}
             {/* lang must describe the body text, not the page shell, so screen
                 readers switch voice instead of reading English in e.g. Japanese. */}

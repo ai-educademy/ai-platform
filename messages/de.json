@@ -201,7 +201,8 @@
       "ja": "Japanische",
       "zh": "Chinesische",
       "ar": "Arabische"
-    }
+    },
+    "machineTranslatedNotice": "Diese Lektion wurde automatisch ins {language} übersetzt und noch nicht von einem Menschen geprüft. Falls etwas seltsam klingt, gilt die englische Fassung."
   },
   "programs": {
     "badge": "",
@@ -2078,7 +2079,17 @@
     "abandonedCartUnlock4": "Abschlusszertifikate",
     "abandonedCartUnlock5": "Fortschritt geräteübergreifend synchronisiert",
     "abandonedCartFooter": "Du erhältst diese E-Mail, weil du auf AI Educademy einen Bezahlvorgang begonnen hast.",
-    "abandonedCartUnsubscribe": "Abmelden"
+    "abandonedCartUnsubscribe": "Abmelden",
+    "proUpgradeSubject": "Eine kleine Bitte von AI Educademy",
+    "proUpgradeFallbackName": "hallo",
+    "proUpgradeGreeting": "Hallo {name},",
+    "proUpgradeBody1": "Danke, dass du mit AI Educademy lernst. Zu sehen, wie Menschen die Lektionen wirklich durcharbeiten, ist mit Abstand das Schönste an dieser Seite.",
+    "proUpgradeBody2": "Die kostenlosen Lektionen bleiben kostenlos. Aber Hosting, das KI-Labor und das Schreiben neuer Inhalte kosten echtes Geld und viele Wochenenden.",
+    "proUpgradeBody3": "Wenn dir die Seite geholfen hat: Pro kostet 3,99 £ im Monat. Damit werden alle Programme, das Übungsinterview-Labor und Zertifikate freigeschaltet, und genau das sorgt dafür, dass neue Lektionen entstehen.",
+    "proUpgradeCta": "Ansehen, was Pro bietet",
+    "proUpgradeSignoff": "Danke, dass du dabei bist. Ramesh",
+    "proUpgradeFooter": "Du erhältst diese E-Mail, weil du ein AI Educademy-Konto hast.",
+    "proUpgradeUnsubscribe": "Solche E-Mails abbestellen"
   },
   "finalCta": {
     "headline": "Beginne noch heute mit dem KI-Lernen",
@@ -2314,5 +2325,15 @@
     "opening": "Wird geöffnet…",
     "noSubscription": "Wir konnten kein aktives Abonnement für Ihr Konto finden.",
     "error": "Beim Öffnen des Abrechnungsportals ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "unsubscribe": {
+    "title": "Abmelden",
+    "body": "Klicke unten, um keine Produktneuigkeiten und Angebote mehr zu erhalten. Wichtige Konto-E-Mails wie Belege und Passwort-Zurücksetzungen bekommst du weiterhin.",
+    "confirm": "Mich abmelden",
+    "working": "Abmeldung läuft…",
+    "done": "Fertig. Du bist abgemeldet.",
+    "doneDetail": "Du erhältst keine Marketing-E-Mails mehr von AI Educademy. Konto-E-Mails wie Belege werden weiterhin verschickt.",
+    "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "missingToken": "Dieser Abmeldelink ist unvollständig. Bitte nutze den Link aus deiner E-Mail."
   }
 }

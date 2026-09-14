@@ -201,7 +201,8 @@
       "ja": "japonais",
       "zh": "chinois",
       "ar": "arabe"
-    }
+    },
+    "machineTranslatedNotice": "Cette leçon a été traduite automatiquement en {language} et n'a pas encore été relue par une personne. Si quelque chose vous semble étrange, la version anglaise fait foi."
   },
   "programs": {
     "badge": "",
@@ -2078,7 +2079,17 @@
     "abandonedCartUnlock4": "Certificats de réussite",
     "abandonedCartUnlock5": "Synchronisation de la progression sur tous vos appareils",
     "abandonedCartFooter": "Vous recevez cet e-mail car vous avez commencé une commande sur AI Educademy.",
-    "abandonedCartUnsubscribe": "Se désabonner"
+    "abandonedCartUnsubscribe": "Se désabonner",
+    "proUpgradeSubject": "Une petite demande de la part d'AI Educademy",
+    "proUpgradeFallbackName": "à vous",
+    "proUpgradeGreeting": "Bonjour {name},",
+    "proUpgradeBody1": "Merci d'apprendre avec AI Educademy. Voir des personnes suivre réellement les leçons est de loin le meilleur aspect de ce projet.",
+    "proUpgradeBody2": "Les leçons gratuites le restent. Mais l'hébergement, le laboratoire IA et la rédaction de nouveaux contenus coûtent de l'argent et beaucoup de week-ends.",
+    "proUpgradeBody3": "Si le site vous a été utile, Pro coûte 3,99 £ par mois. Il débloque tous les programmes, le laboratoire d'entretiens simulés et les certificats, et c'est ce qui permet de continuer à publier de nouvelles leçons.",
+    "proUpgradeCta": "Découvrir Pro",
+    "proUpgradeSignoff": "Merci d'être là. Ramesh",
+    "proUpgradeFooter": "Vous recevez ce message car vous avez un compte AI Educademy.",
+    "proUpgradeUnsubscribe": "Se désabonner de ce type d'e-mails"
   },
   "finalCta": {
     "headline": "Commencez à apprendre l'IA aujourd'hui",
@@ -2314,5 +2325,15 @@
     "opening": "Ouverture…",
     "noSubscription": "Nous n'avons trouvé aucun abonnement actif sur votre compte.",
     "error": "Une erreur s'est produite lors de l'ouverture du portail de facturation. Veuillez réessayer."
+  },
+  "unsubscribe": {
+    "title": "Se désabonner",
+    "body": "Cliquez ci-dessous pour ne plus recevoir d'actualités et d'offres. Vous continuerez à recevoir les e-mails essentiels liés à votre compte, comme les reçus et les réinitialisations de mot de passe.",
+    "confirm": "Me désabonner",
+    "working": "Désabonnement…",
+    "done": "C'est fait. Vous êtes désabonné.",
+    "doneDetail": "Vous ne recevrez plus d'e-mails marketing d'AI Educademy. Les e-mails liés au compte, comme les reçus, seront toujours envoyés.",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "missingToken": "Ce lien de désabonnement est incomplet. Utilisez le lien figurant dans votre e-mail."
   }
 }
