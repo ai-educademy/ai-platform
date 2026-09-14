@@ -1833,7 +1833,11 @@
     "promoCodeApplied": "Code appliqué !",
     "promoCodeApply": "Appliquer",
     "promoCodeInvalid": "Code invalide",
-    "promoCodePlaceholder": "Entrez le code"
+    "promoCodePlaceholder": "Entrez le code",
+    "mostPopular": "Le plus populaire",
+    "redirecting": "Redirection…",
+    "checkoutError": "Impossible de créer la session de paiement. Veuillez réessayer.",
+    "genericError": "Une erreur est survenue. Veuillez réessayer."
   },
   "paywall": {
     "title": "Contenu Premium",
@@ -2060,7 +2064,21 @@
   },
   "emails": {
     "abandonedCartPreview": "Votre parcours d'apprentissage en IA vous attend",
-    "abandonedCartSubject": "Vous avez oublié quelque chose !"
+    "abandonedCartSubject": "Vous avez oublié quelque chose !",
+    "abandonedCartFallbackName": "à vous",
+    "abandonedCartGreeting": "Bonjour {name},",
+    "abandonedCartBody1": "Vous hésitez encore ? Nous avons remarqué que vous aviez commencé votre commande sans la terminer. Pas d'inquiétude, votre place est toujours disponible.",
+    "abandonedCartBody2": "Avec AI Educademy Pro, vous accédez à tous les programmes, aux parcours d'apprentissage, aux entretiens simulés par IA, aux certificats et bien plus encore.",
+    "abandonedCartPromo": "🎉 Utilisez le code {code} au paiement pour économiser sur votre abonnement.",
+    "abandonedCartCta": "Finaliser votre achat",
+    "abandonedCartUnlockTitle": "Ce que Pro vous débloque :",
+    "abandonedCartUnlock1": "Tous les programmes et parcours d'apprentissage",
+    "abandonedCartUnlock2": "Parcours de préparation aux entretiens Career Ready",
+    "abandonedCartUnlock3": "Laboratoire d'entretiens simulés par IA",
+    "abandonedCartUnlock4": "Certificats de réussite",
+    "abandonedCartUnlock5": "Synchronisation de la progression sur tous vos appareils",
+    "abandonedCartFooter": "Vous recevez cet e-mail car vous avez commencé une commande sur AI Educademy.",
+    "abandonedCartUnsubscribe": "Se désabonner"
   },
   "finalCta": {
     "headline": "Commencez à apprendre l'IA aujourd'hui",

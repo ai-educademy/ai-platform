@@ -1833,7 +1833,11 @@
     "promoCodeApplied": "Code angewendet!",
     "promoCodeApply": "Anwenden",
     "promoCodeInvalid": "Ungültiger Code",
-    "promoCodePlaceholder": "Code eingeben"
+    "promoCodePlaceholder": "Code eingeben",
+    "mostPopular": "Am beliebtesten",
+    "redirecting": "Weiterleitung…",
+    "checkoutError": "Bezahlvorgang konnte nicht gestartet werden. Bitte versuche es erneut.",
+    "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },
   "paywall": {
     "title": "Premium-Inhalte",
@@ -2060,7 +2064,21 @@
   },
   "emails": {
     "abandonedCartPreview": "Deine KI-Lernreise wartet auf dich",
-    "abandonedCartSubject": "Du hast etwas vergessen!"
+    "abandonedCartSubject": "Du hast etwas vergessen!",
+    "abandonedCartFallbackName": "hallo",
+    "abandonedCartGreeting": "Hallo {name},",
+    "abandonedCartBody1": "Noch am Überlegen? Wir haben gesehen, dass du den Bezahlvorgang begonnen, aber nicht abgeschlossen hast. Kein Problem, dein Platz ist weiterhin verfügbar.",
+    "abandonedCartBody2": "Mit AI Educademy Pro erhältst du Zugang zu allen Programmen, Lernpfaden, KI-Übungsinterviews, Zertifikaten und mehr.",
+    "abandonedCartPromo": "🎉 Nutze den Code {code} an der Kasse und spare bei deinem Tarif.",
+    "abandonedCartCta": "Kauf abschließen",
+    "abandonedCartUnlockTitle": "Das schaltest du mit Pro frei:",
+    "abandonedCartUnlock1": "Alle Programme und Lernpfade",
+    "abandonedCartUnlock2": "Career Ready Interview-Vorbereitung",
+    "abandonedCartUnlock3": "KI-Übungsinterview-Labor",
+    "abandonedCartUnlock4": "Abschlusszertifikate",
+    "abandonedCartUnlock5": "Fortschritt geräteübergreifend synchronisiert",
+    "abandonedCartFooter": "Du erhältst diese E-Mail, weil du auf AI Educademy einen Bezahlvorgang begonnen hast.",
+    "abandonedCartUnsubscribe": "Abmelden"
   },
   "finalCta": {
     "headline": "Beginne noch heute mit dem KI-Lernen",

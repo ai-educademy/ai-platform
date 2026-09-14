@@ -1833,7 +1833,11 @@
     "promoCodePlaceholder": "コードを入力",
     "promoCodeApply": "適用",
     "promoCodeApplied": "コードが適用されました！",
-    "promoCodeInvalid": "無効なコードです"
+    "promoCodeInvalid": "無効なコードです",
+    "mostPopular": "一番人気",
+    "redirecting": "リダイレクト中…",
+    "checkoutError": "お支払いセッションを作成できませんでした。もう一度お試しください。",
+    "genericError": "問題が発生しました。もう一度お試しください。"
   },
   "paywall": {
     "title": "プレミアムコンテンツ",
@@ -2096,7 +2100,21 @@
   },
   "emails": {
     "abandonedCartSubject": "やり残しがあります！",
-    "abandonedCartPreview": "あなたのAI学習ジャーニーが待っています"
+    "abandonedCartPreview": "あなたのAI学習ジャーニーが待っています",
+    "abandonedCartFallbackName": "こんにちは",
+    "abandonedCartGreeting": "{name} さん、こんにちは。",
+    "abandonedCartBody1": "まだ検討中ですか？お支払い手続きを開始されましたが、完了していないようです。ご安心ください、お席はまだご利用いただけます。",
+    "abandonedCartBody2": "AI Educademy Pro なら、すべてのプログラム、学習トラック、AI 模擬面接、修了証などをご利用いただけます。",
+    "abandonedCartPromo": "🎉 お支払い時にコード {code} をご利用いただくと、プランがお得になります。",
+    "abandonedCartCta": "ご購入を完了する",
+    "abandonedCartUnlockTitle": "Pro で利用できるようになるもの:",
+    "abandonedCartUnlock1": "すべてのプログラムと学習トラック",
+    "abandonedCartUnlock2": "Career Ready 面接対策トラック",
+    "abandonedCartUnlock3": "AI 模擬面接ラボ",
+    "abandonedCartUnlock4": "修了証",
+    "abandonedCartUnlock5": "デバイス間でのサーバー側進捗同期",
+    "abandonedCartFooter": "AI Educademy でお支払い手続きを開始されたため、このメールをお送りしています。",
+    "abandonedCartUnsubscribe": "配信停止"
   },
   "bookmarks": {
     "title": "マイブックマーク",

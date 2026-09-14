@@ -1833,7 +1833,11 @@
     "promoCodePlaceholder": "输入优惠码",
     "promoCodeApply": "使用",
     "promoCodeApplied": "优惠码已生效！",
-    "promoCodeInvalid": "无效的优惠码"
+    "promoCodeInvalid": "无效的优惠码",
+    "mostPopular": "最受欢迎",
+    "redirecting": "正在跳转…",
+    "checkoutError": "无法创建结账会话，请重试。",
+    "genericError": "出了点问题，请重试。"
   },
   "paywall": {
     "title": "高级内容",
@@ -2242,7 +2246,21 @@
   },
   "emails": {
     "abandonedCartSubject": "你落下了一些东西！",
-    "abandonedCartPreview": "你的 AI 学习之旅正在等你"
+    "abandonedCartPreview": "你的 AI 学习之旅正在等你",
+    "abandonedCartFallbackName": "你好",
+    "abandonedCartGreeting": "你好 {name}，",
+    "abandonedCartBody1": "还在考虑吗？我们注意到你开始结账但没有完成。别担心，你的名额仍然保留。",
+    "abandonedCartBody2": "使用 AI Educademy Pro，你可以访问所有课程、学习路径、AI 模拟面试、证书等更多内容。",
+    "abandonedCartPromo": "🎉 结账时使用优惠码 {code}，即可享受套餐优惠。",
+    "abandonedCartCta": "完成购买",
+    "abandonedCartUnlockTitle": "升级 Pro 后你将解锁：",
+    "abandonedCartUnlock1": "全部课程与学习路径",
+    "abandonedCartUnlock2": "Career Ready 面试准备路径",
+    "abandonedCartUnlock3": "AI 模拟面试实验室",
+    "abandonedCartUnlock4": "结业证书",
+    "abandonedCartUnlock5": "跨设备的服务端进度同步",
+    "abandonedCartFooter": "你收到这封邮件是因为你在 AI Educademy 开始了结账。",
+    "abandonedCartUnsubscribe": "取消订阅"
   },
   "bookmarks": {
     "title": "我的收藏",

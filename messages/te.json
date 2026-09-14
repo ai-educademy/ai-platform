@@ -1833,7 +1833,11 @@
     "promoCodePlaceholder": "కోడ్ నమోదు చేయండి",
     "promoCodeApply": "వర్తింపజేయండి",
     "promoCodeApplied": "కోడ్ వర్తింపజేయబడింది!",
-    "promoCodeInvalid": "చెల్లని కోడ్"
+    "promoCodeInvalid": "చెల్లని కోడ్",
+    "mostPopular": "అత్యంత జనాదరణ",
+    "redirecting": "దారి మళ్లిస్తోంది…",
+    "checkoutError": "చెక్‌అవుట్ సెషన్‌ను సృష్టించలేకపోయాం. దయచేసి మళ్లీ ప్రయత్నించండి.",
+    "genericError": "ఏదో తప్పు జరిగింది. దయచేసి మళ్లీ ప్రయత్నించండి."
   },
   "paywall": {
     "title": "ప్రీమియం కంటెంట్",
@@ -2096,7 +2100,21 @@
   },
   "emails": {
     "abandonedCartSubject": "మీరు ఏదో వదిలి వెళ్లారు!",
-    "abandonedCartPreview": "మీ AI అభ్యాస ప్రయాణం మీ కోసం ఎదురుచూస్తోంది"
+    "abandonedCartPreview": "మీ AI అభ్యాస ప్రయాణం మీ కోసం ఎదురుచూస్తోంది",
+    "abandonedCartFallbackName": "అక్కడ",
+    "abandonedCartGreeting": "హాయ్ {name},",
+    "abandonedCartBody1": "ఇంకా ఆలోచిస్తున్నారా? మీరు చెక్‌అవుట్ ప్రారంభించారు కానీ పూర్తి చేయలేదని మేము గమనించాం. చింతించకండి, మీ స్థానం ఇంకా అందుబాటులో ఉంది.",
+    "abandonedCartBody2": "AI Educademy Proతో మీకు అన్ని ప్రోగ్రామ్‌లు, లెర్నింగ్ ట్రాక్‌లు, AI మాక్ ఇంటర్వ్యూలు, సర్టిఫికెట్లు మరియు మరిన్ని లభిస్తాయి.",
+    "abandonedCartPromo": "🎉 చెక్‌అవుట్‌లో {code} కోడ్ ఉపయోగించి మీ ప్లాన్‌పై ఆదా చేయండి.",
+    "abandonedCartCta": "మీ కొనుగోలును పూర్తి చేయండి",
+    "abandonedCartUnlockTitle": "Proతో మీరు పొందేవి:",
+    "abandonedCartUnlock1": "అన్ని ప్రోగ్రామ్‌లు మరియు లెర్నింగ్ ట్రాక్‌లు",
+    "abandonedCartUnlock2": "Career Ready ఇంటర్వ్యూ ప్రిపరేషన్ ట్రాక్",
+    "abandonedCartUnlock3": "AI మాక్ ఇంటర్వ్యూ ల్యాబ్",
+    "abandonedCartUnlock4": "పూర్తి సర్టిఫికెట్లు",
+    "abandonedCartUnlock5": "అన్ని పరికరాల్లో ప్రోగ్రెస్ సింక్",
+    "abandonedCartFooter": "మీరు AI Educademyలో చెక్‌అవుట్ ప్రారంభించినందున ఈ ఇమెయిల్ అందుకున్నారు.",
+    "abandonedCartUnsubscribe": "సభ్యత్వం రద్దు చేయండి"
   },
   "bookmarks": {
     "title": "నా బుక్‌మార్క్‌లు",

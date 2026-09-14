@@ -1,3 +1,19 @@
+import type { EmailTranslator } from "./email-i18n";
+
+/**
+ * Escapes a value for interpolation into an email HTML body. Translated copy is
+ * plain text, and the customer name comes from Stripe, so everything that is
+ * not a URL or literal markup goes through here.
+ */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 const emailStrings: Record<string, Record<string, string>> = {
   en: {
     title: "Welcome to AI Educademy",
@@ -481,52 +497,70 @@ export function leadMagnetEmailHtml(name: string, downloadUrl: string): string {
 
 /* ─────────────── Password Reset Email ─────────────── */
 
-export function abandonedCartEmailHtml(name: string | undefined, pricingUrl: string): string {
-  const safeName = name ? name.replace(/</g, "&lt;").replace(/>/g, "&gt;") : "there";
+export function abandonedCartEmailHtml(
+  name: string | undefined,
+  pricingUrl: string,
+  tr: EmailTranslator,
+  promoCode?: string,
+): string {
+  const { t, locale, dir } = tr;
+  // The name is interpolated into the greeting and the whole string is escaped
+  // once below, so it must NOT be pre-escaped here or it double-encodes.
+  const safeName = name || t("abandonedCartFallbackName");
+  const align = dir === "rtl" ? "right" : "left";
+
+  // The promo banner used to hardcode a Product Hunt launch code with a
+  // "first 50 learners" claim. Advertising a code that may no longer resolve in
+  // Stripe sends people to checkout expecting a discount they cannot get, so the
+  // banner now only renders when a code is actually configured.
+  const promoBanner = promoCode
+    ? `
+          <tr>
+            <td style="padding:0 30px 24px;">
+              <div style="background-color:#fef3c7;border-radius:8px;padding:16px 20px;border:1px solid #fbbf24;">
+                <p style="margin:0;color:#92400e;font-size:14px;font-weight:600;text-align:center;">${escapeHtml(t("abandonedCartPromo", { code: promoCode }))}</p>
+              </div>
+            </td>
+          </tr>`
+    : "";
+
   return `
 <!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0;padding:0;background-color:#f3f4f6;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+<html lang="${locale}" dir="${dir}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${escapeHtml(t("abandonedCartSubject"))}</title></head>
+<body style="margin:0;padding:0;background-color:#f3f4f6;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;" dir="${dir}">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f3f4f6;">
     <tr>
       <td align="center" style="padding:40px 20px;">
         <table role="presentation" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
           <tr>
             <td style="padding:30px 30px 0;text-align:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:8px 8px 0 0;">
-              <h1 style="margin:0 0 8px;color:#ffffff;font-size:24px;">You left something behind! 🛒</h1>
-              <p style="margin:0 0 24px;color:rgba(255,255,255,0.9);font-size:16px;">Your AI learning journey is waiting</p>
+              <h1 style="margin:0 0 8px;color:#ffffff;font-size:24px;">${escapeHtml(t("abandonedCartSubject"))}</h1>
+              <p style="margin:0 0 24px;color:rgba(255,255,255,0.9);font-size:16px;">${escapeHtml(t("abandonedCartPreview"))}</p>
             </td>
           </tr>
           <tr>
-            <td style="padding:30px;">
-              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.6;">Hi ${safeName},</p>
-              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.6;">Still thinking about it? We noticed you started checking out but didn't finish. No worries — your spot is still available!</p>
-              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.6;">With AI Educademy Pro you get access to <strong>all programs</strong>, <strong>learning tracks</strong>, <strong>AI Mock Interviews</strong>, <strong>certificates</strong>, and more.</p>
+            <td style="padding:30px;text-align:${align};">
+              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.6;">${escapeHtml(t("abandonedCartGreeting", { name: safeName }))}</p>
+              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.6;">${escapeHtml(t("abandonedCartBody1"))}</p>
+              <p style="margin:0 0 16px;color:#374151;font-size:16px;line-height:1.6;">${escapeHtml(t("abandonedCartBody2"))}</p>
             </td>
-          </tr>
-          <tr>
-            <td style="padding:0 30px 24px;">
-              <div style="background-color:#fef3c7;border-radius:8px;padding:16px 20px;border:1px solid #fbbf24;">
-                <p style="margin:0;color:#92400e;font-size:14px;font-weight:600;text-align:center;">🎉 Use code <strong style="font-size:16px;">PH50</strong> for 50% off — limited to first 50 learners!</p>
-              </div>
-            </td>
-          </tr>
+          </tr>${promoBanner}
           <tr>
             <td style="padding:0 30px 30px;text-align:center;">
-              <a href="${pricingUrl}" style="display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#ffffff;font-size:16px;font-weight:600;text-decoration:none;border-radius:8px;">Complete Your Purchase</a>
+              <a href="${pricingUrl}" style="display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#ffffff;font-size:16px;font-weight:600;text-decoration:none;border-radius:8px;">${escapeHtml(t("abandonedCartCta"))}</a>
             </td>
           </tr>
           <tr>
             <td style="padding:0 30px 24px;">
               <div style="background-color:#f8fafc;border-radius:8px;padding:20px;border:1px solid #e5e7eb;">
-                <p style="margin:0 0 8px;color:#374151;font-size:14px;font-weight:600;">What you'll unlock with Pro:</p>
-                <ul style="margin:0;padding-left:20px;color:#6b7280;font-size:14px;line-height:1.8;">
-                  <li>All programs &amp; learning tracks</li>
-                  <li>Career Ready interview prep track</li>
-                  <li>AI Mock Interview lab</li>
-                  <li>Completion certificates</li>
-                  <li>Server-side progress sync across devices</li>
+                <p style="margin:0 0 8px;color:#374151;font-size:14px;font-weight:600;text-align:${align};">${escapeHtml(t("abandonedCartUnlockTitle"))}</p>
+                <ul style="margin:0;padding-${align}:20px;color:#6b7280;font-size:14px;line-height:1.8;text-align:${align};">
+                  <li>${escapeHtml(t("abandonedCartUnlock1"))}</li>
+                  <li>${escapeHtml(t("abandonedCartUnlock2"))}</li>
+                  <li>${escapeHtml(t("abandonedCartUnlock3"))}</li>
+                  <li>${escapeHtml(t("abandonedCartUnlock4"))}</li>
+                  <li>${escapeHtml(t("abandonedCartUnlock5"))}</li>
                 </ul>
               </div>
             </td>
@@ -534,7 +568,7 @@ export function abandonedCartEmailHtml(name: string | undefined, pricingUrl: str
           <tr>
             <td style="padding:20px 30px;border-top:1px solid #e5e7eb;background-color:#f9fafb;border-radius:0 0 8px 8px;">
               <p style="margin:0 0 4px;color:#6b7280;font-size:12px;text-align:center;">AI Educademy · <a href="https://aieducademy.org" style="color:#667eea;text-decoration:none;">aieducademy.org</a></p>
-              <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">You received this email because you started a checkout on AI Educademy. <a href="https://aieducademy.org" style="color:#9ca3af;">Unsubscribe</a></p>
+              <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">${escapeHtml(t("abandonedCartFooter"))} <a href="https://aieducademy.org" style="color:#9ca3af;">${escapeHtml(t("abandonedCartUnsubscribe"))}</a></p>
             </td>
           </tr>
         </table>

@@ -1833,7 +1833,11 @@
     "promoCodePlaceholder": "Voer code in",
     "promoCodeApply": "Toepassen",
     "promoCodeApplied": "Code toegepast!",
-    "promoCodeInvalid": "Ongeldige code"
+    "promoCodeInvalid": "Ongeldige code",
+    "mostPopular": "Meest gekozen",
+    "redirecting": "Doorverwijzen…",
+    "checkoutError": "Kon de afrekensessie niet aanmaken. Probeer het opnieuw.",
+    "genericError": "Er is iets misgegaan. Probeer het opnieuw."
   },
   "paywall": {
     "title": "Premium Inhoud",
@@ -2096,7 +2100,21 @@
   },
   "emails": {
     "abandonedCartSubject": "Je hebt iets laten liggen!",
-    "abandonedCartPreview": "Je AI-leertraject staat klaar"
+    "abandonedCartPreview": "Je AI-leertraject staat klaar",
+    "abandonedCartFallbackName": "daar",
+    "abandonedCartGreeting": "Hoi {name},",
+    "abandonedCartBody1": "Nog aan het twijfelen? We zagen dat je begon af te rekenen maar niet klaar bent. Geen zorgen, je plek is nog beschikbaar.",
+    "abandonedCartBody2": "Met AI Educademy Pro krijg je toegang tot alle programma's, leertrajecten, AI-oefengesprekken, certificaten en meer.",
+    "abandonedCartPromo": "🎉 Gebruik code {code} bij het afrekenen en bespaar op je abonnement.",
+    "abandonedCartCta": "Rond je aankoop af",
+    "abandonedCartUnlockTitle": "Wat je met Pro ontgrendelt:",
+    "abandonedCartUnlock1": "Alle programma's en leertrajecten",
+    "abandonedCartUnlock2": "Career Ready sollicitatietraject",
+    "abandonedCartUnlock3": "AI-oefengesprekkenlab",
+    "abandonedCartUnlock4": "Certificaten bij afronding",
+    "abandonedCartUnlock5": "Voortgang synchroniseren op al je apparaten",
+    "abandonedCartFooter": "Je ontvangt deze e-mail omdat je een bestelling bent gestart op AI Educademy.",
+    "abandonedCartUnsubscribe": "Afmelden"
   },
   "bookmarks": {
     "title": "Mijn bladwijzers",

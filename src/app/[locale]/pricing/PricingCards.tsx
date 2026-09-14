@@ -67,7 +67,7 @@ function PricingCard({
   plan,
   locale,
   promoCode,
-  onPromoApplied,
+  onPromoResult,
 }: {
   title: string;
   price: string;
@@ -78,8 +78,9 @@ function PricingCard({
   plan: "free" | "monthly" | "annual" | "lifetime";
   locale: string;
   promoCode: string;
-  onPromoApplied: () => void;
+  onPromoResult: (applied: boolean) => void;
 }) {
+  const t = useTranslations("pricing");
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -102,14 +103,20 @@ function PricingCard({
         body: JSON.stringify({ plan, locale, ...(promoCode ? { promoCode } : {}) }),
       });
       const data = await res.json();
-      if (data.url) {
-        if (promoCode) onPromoApplied();
-        window.location.href = data.url;
-      } else {
-        setError(data.error || "Could not create checkout session. Please try again.");
+      if (!data.url) {
+        setError(data.error || t("checkoutError"));
+        return;
       }
+      if (promoCode) {
+        onPromoResult(data.promoApplied === true);
+        // Stripe accepted the session but ignored the code. Redirecting here
+        // would charge full price while the customer believes a discount
+        // applied, so stop and let them correct it or retry without a code.
+        if (data.promoApplied !== true) return;
+      }
+      window.location.href = data.url;
     } catch {
-      setError("Something went wrong. Please try again.");
+      setError(t("genericError"));
     } finally {
       setLoading(false);
     }
@@ -125,7 +132,7 @@ function PricingCard({
     >
       {popular && (
         <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-violet-500 to-indigo-600 text-white">
-          Most Popular
+          {t("mostPopular")}
         </span>
       )}
 
@@ -163,7 +170,7 @@ function PricingCard({
               : "bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-violet-500 hover:text-violet-600"
         } disabled:opacity-50`}
       >
-        {loading ? "Redirecting…" : cta}
+        {loading ? t("redirecting") : cta}
       </button>
       {error && (
         <p className="mt-2 text-xs text-red-500 text-center">{error}</p>
@@ -251,7 +258,9 @@ export function PricingCards({ locale }: { locale: string }) {
             {...p}
             locale={locale}
             promoCode={promoCode}
-            onPromoApplied={() => setPromoStatus("applied")}
+            onPromoResult={(applied) =>
+              setPromoStatus(applied ? "applied" : "invalid")
+            }
           />
         ))}
       </div>
