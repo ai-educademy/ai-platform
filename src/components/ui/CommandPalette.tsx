@@ -21,7 +21,6 @@ import {
   Zap,
   Sun,
   Moon,
-  Github,
   LogIn,
   LogOut,
   Home,
@@ -37,6 +36,7 @@ import {
   Sparkles,
   MapIcon,
 } from "lucide-react";
+import { GithubIcon } from "@/components/ui/icons/GithubIcon";
 import { useSession } from "next-auth/react";
 import programsData from "@data/programs.json";
 
@@ -218,7 +218,7 @@ export function CommandPalette() {
     items.push({
       id: "action-github",
       title: "Go to GitHub",
-      icon: <Github className="w-4 h-4" />,
+      icon: <GithubIcon className="w-4 h-4" />,
       category: "actions",
       keywords: "github source code repository open source",
       action: () => window.open("https://github.com/ai-educademy", "_blank"),
