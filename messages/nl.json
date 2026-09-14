@@ -79,7 +79,10 @@
     "lab": "Lab",
     "pageViews": "paginaweergaven",
     "scrollToTop": "Naar boven scrollen",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "terms": "Servicevoorwaarden",
+    "privacy": "Privacybeleid",
+    "contact": "Contact"
   },
   "about": {
     "title": "Over AI Educademy",

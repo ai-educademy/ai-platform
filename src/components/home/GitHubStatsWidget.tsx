@@ -27,7 +27,9 @@ export default function GitHubStatsWidget() {
             return;
           }
         }
-      } catch {}
+      } catch {
+        // Corrupt or unavailable cache: fall through to a fresh fetch.
+      }
 
       try {
         const res = await fetch(`https://api.github.com/repos/${REPO}`, {
@@ -51,7 +53,9 @@ export default function GitHubStatsWidget() {
             const contribData = await contribRes.json();
             contributors = Array.isArray(contribData) ? contribData.length : 1;
           }
-        } catch {}
+        } catch {
+          // Contributors endpoint is best-effort; keep the count at 0.
+        }
 
         const data: GitHubStats = {
           stars: repo.stargazers_count ?? 0,
@@ -65,8 +69,12 @@ export default function GitHubStatsWidget() {
             CACHE_KEY,
             JSON.stringify({ data, timestamp: Date.now() })
           );
-        } catch {}
-      } catch {}
+        } catch {
+          // Storage can be full or blocked; caching is optional.
+        }
+      } catch {
+        // Stats are decorative, so a failed fetch just renders nothing.
+      }
     }
 
     fetchStats();

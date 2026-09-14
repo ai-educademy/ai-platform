@@ -122,7 +122,9 @@ export function useStreak() {
         // API failed — fall back to localStorage
         setStreak(local);
       });
-  }, [sessionStatus, isGuest]); // eslint-disable-line react-hooks/exhaustive-deps
+    // Intentionally keyed on auth state only: this syncs once per sign-in
+    // transition and must not re-run when the streak value itself changes.
+  }, [sessionStatus, isGuest]);
 
   const recordStreak = useCallback(() => {
     setStreak((prev) => {

@@ -79,7 +79,10 @@
     "lab": "ラボ",
     "pageViews": "ページビュー",
     "scrollToTop": "トップへスクロール",
-    "faq": "よくある質問"
+    "faq": "よくある質問",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "contact": "お問い合わせ"
   },
   "about": {
     "title": "AI Educademyについて",
