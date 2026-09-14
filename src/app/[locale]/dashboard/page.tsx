@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { Certificate } from "@/components/dashboard/Certificate";
 import { ReferralWidget } from "@/components/dashboard/ReferralWidget";
+import { ManageBilling } from "@/components/dashboard/ManageBilling";
 import { ShareAchievement } from "@/components/dashboard/ShareAchievement";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { AnimatedProgressBar } from "@/components/ui/MotionWrappers";
@@ -544,6 +545,13 @@ export default function DashboardPage() {
       {session?.user?.id && (
         <div className="mb-12">
           <ReferralWidget />
+        </div>
+      )}
+
+      {/* Billing — paying customers must always have a route to cancel */}
+      {session?.user?.id && isPremiumUser && (
+        <div className="mb-12">
+          <ManageBilling />
         </div>
       )}
 

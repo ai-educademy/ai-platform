@@ -202,7 +202,21 @@
     "quizRequired": "Answer all quizzes correctly to complete this lesson",
     "quizProgress": "{passed} of {total} quizzes passed",
     "allQuizzesPassed": "All quizzes passed!",
-    "lessonCompleted": "Lesson Complete!"
+    "lessonCompleted": "Lesson Complete!",
+    "fallbackNotice": "This lesson hasn't been translated into {language} yet, so you're reading the English version. The rest of the site stays in {language}.",
+    "languages": {
+      "en": "English",
+      "fr": "French",
+      "de": "German",
+      "es": "Spanish",
+      "pt": "Portuguese",
+      "nl": "Dutch",
+      "hi": "Hindi",
+      "te": "Telugu",
+      "ja": "Japanese",
+      "zh": "Chinese",
+      "ar": "Arabic"
+    }
   },
   "programs": {
     "badge": "",
@@ -2115,7 +2129,8 @@
     "current": "In Progress",
     "signInPrompt": "Sign in to track your progress and unlock your personalized learning journey.",
     "overallProgress": "Overall Progress",
-    "startJourney": "Start Your Journey"
+    "startJourney": "Start Your Journey",
+    "loadingProgress": "Loading your progress…"
   },
   "howItWorks": {
     "title": "How It Works",
@@ -2273,5 +2288,13 @@
     "close": "Close chat",
     "inputLabel": "Chat message input",
     "send": "Send message"
+  },
+  "billing": {
+    "title": "Billing & subscription",
+    "description": "Update your payment method, view invoices, or cancel your subscription at any time.",
+    "manage": "Manage billing",
+    "opening": "Opening…",
+    "noSubscription": "We couldn't find an active subscription on your account.",
+    "error": "Something went wrong opening the billing portal. Please try again."
   }
 }

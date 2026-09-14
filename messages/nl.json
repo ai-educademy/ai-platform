@@ -187,7 +187,21 @@
     "quizRequired": "Beantwoord alle quizzen correct om deze les af te ronden",
     "quizProgress": "{passed} van {total} quizzen behaald",
     "allQuizzesPassed": "Alle quizzen behaald!",
-    "lessonCompleted": "Les afgerond!"
+    "lessonCompleted": "Les afgerond!",
+    "fallbackNotice": "Deze les is nog niet vertaald naar het {language}, dus je leest de Engelse versie. De rest van de site blijft in het {language}.",
+    "languages": {
+      "en": "Engels",
+      "fr": "Frans",
+      "de": "Duits",
+      "es": "Spaans",
+      "pt": "Portugees",
+      "nl": "Nederlands",
+      "hi": "Hindi",
+      "te": "Telugu",
+      "ja": "Japans",
+      "zh": "Chinees",
+      "ar": "Arabisch"
+    }
   },
   "programs": {
     "badge": "",
@@ -2051,7 +2065,8 @@
     "current": "Bezig",
     "signInPrompt": "Log in om je voortgang bij te houden en je persoonlijke leertraject te ontgrendelen.",
     "overallProgress": "Totale voortgang",
-    "startJourney": "Start je traject"
+    "startJourney": "Start je traject",
+    "loadingProgress": "Je voortgang wordt geladen…"
   },
   "howItWorks": {
     "title": "Hoe het werkt",
@@ -2273,5 +2288,13 @@
     "close": "Chat sluiten",
     "inputLabel": "Invoerveld chatbericht",
     "send": "Bericht versturen"
+  },
+  "billing": {
+    "title": "Facturering en abonnement",
+    "description": "Werk je betaalmethode bij, bekijk facturen of zeg je abonnement op wanneer je wilt.",
+    "manage": "Facturering beheren",
+    "opening": "Bezig met openen…",
+    "noSubscription": "We konden geen actief abonnement op je account vinden.",
+    "error": "Er is iets misgegaan bij het openen van het factureringsportaal. Probeer het opnieuw."
   }
 }

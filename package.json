@@ -2,7 +2,7 @@
   "name": "@ai-educademy/ai-platform",
   "version": "0.1.0",
   "private": true,
-  "description": "Main Next.js app shell for AI Educademy — routing, auth, i18n, program registry",
+  "description": "Main Next.js app shell for AI Educademy \u2014 routing, auth, i18n, program registry",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -47,7 +47,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "resend": "^6.9.3",
-    "stripe": "^20.4.1",
+    "stripe": "^22.6.2",
     "tailwindcss": "^4.2.1",
     "zod": "^4.3.6"
   },
@@ -64,8 +64,8 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^5.1.4",
-    "drizzle-kit": "^0.31.9",
-    "esbuild": "^0.27.4",
+    "drizzle-kit": "^0.31.10",
+    "esbuild": "^0.28.2",
     "eslint": "^10.0.2",
     "eslint-config-next": "^16.1.6",
     "eslint-plugin-react-hooks": "^7.1.1",
@@ -75,6 +75,10 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "vitest": "^4.0.18"
+  },
+  "overrides": {
+    "esbuild": "^0.28.2",
+    "browserslist": "^4.28.7"
   },
   "browserslist": [
     "defaults and fully supports es6-module",

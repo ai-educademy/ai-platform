@@ -187,7 +187,21 @@
     "quizRequired": "Responde correctamente a todos los cuestionarios para completar esta lección",
     "quizProgress": "{passed} de {total} cuestionarios superados",
     "allQuizzesPassed": "¡Todos los cuestionarios superados!",
-    "lessonCompleted": "¡Lección completada!"
+    "lessonCompleted": "¡Lección completada!",
+    "fallbackNotice": "Esta lección aún no se ha traducido al {language}, por lo que estás leyendo la versión en inglés. El resto del sitio permanece en {language}.",
+    "languages": {
+      "en": "inglés",
+      "fr": "francés",
+      "de": "alemán",
+      "es": "español",
+      "pt": "portugués",
+      "nl": "neerlandés",
+      "hi": "hindi",
+      "te": "telugu",
+      "ja": "japonés",
+      "zh": "chino",
+      "ar": "árabe"
+    }
   },
   "programs": {
     "badge": "",
@@ -2076,7 +2090,8 @@
     "title": "Tu Viaje de Aprendizaje en IA",
     "trackAI": "Aprendizaje de IA",
     "trackCareer": "Preparación Profesional",
-    "trackCraft": "Ingeniería Práctica"
+    "trackCraft": "Ingeniería Práctica",
+    "loadingProgress": "Cargando tu progreso…"
   },
   "labPreview": {
     "aiChat": "Chat con IA",
@@ -2273,5 +2288,13 @@
     "close": "Cerrar chat",
     "inputLabel": "Campo de mensaje del chat",
     "send": "Enviar mensaje"
+  },
+  "billing": {
+    "title": "Facturación y suscripción",
+    "description": "Actualiza tu método de pago, consulta tus facturas o cancela tu suscripción en cualquier momento.",
+    "manage": "Gestionar facturación",
+    "opening": "Abriendo…",
+    "noSubscription": "No encontramos ninguna suscripción activa en tu cuenta.",
+    "error": "Se produjo un error al abrir el portal de facturación. Inténtalo de nuevo."
   }
 }

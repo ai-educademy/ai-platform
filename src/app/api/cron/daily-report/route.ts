@@ -183,7 +183,7 @@ export async function GET(req: NextRequest) {
         <td style="padding:12px 16px;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
           <span style="font-size:14px;">📄 Page views today: <strong>${pageViews}</strong></span> &nbsp;|&nbsp;
           <span style="font-size:14px;">👍 Feedback: <strong>${feedbackUp}</strong> up / <strong>${feedbackDown}</strong> down</span> &nbsp;|&nbsp;
-          <span style="font-size:14px;">📧 Newsletter signups: <strong>${todaySubscribersResult.count}</strong></span>
+          <span style="font-size:14px;">📧 Newsletter signups: <strong>${todaySubscribersResult.count}</strong> today / <strong>${totalSubscribersResult.count}</strong> total</span>
         </td>
       </tr>
     </table>
@@ -245,6 +245,7 @@ export async function GET(req: NextRequest) {
         feedbackUp,
         feedbackDown,
         newsletterSignups: todaySubscribersResult.count,
+        newsletterSubscribersTotal: totalSubscribersResult.count,
       },
     });
   } catch (error) {

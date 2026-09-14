@@ -187,7 +187,21 @@
     "quizRequired": "このレッスンを完了するには、すべてのクイズに正解してください",
     "quizProgress": "{total}問中{passed}問正解",
     "allQuizzesPassed": "すべてのクイズに合格しました！",
-    "lessonCompleted": "レッスン完了！"
+    "lessonCompleted": "レッスン完了！",
+    "fallbackNotice": "このレッスンはまだ{language}に翻訳されていないため、英語版を表示しています。サイトのその他の部分は{language}のままです。",
+    "languages": {
+      "en": "英語",
+      "fr": "フランス語",
+      "de": "ドイツ語",
+      "es": "スペイン語",
+      "pt": "ポルトガル語",
+      "nl": "オランダ語",
+      "hi": "ヒンディー語",
+      "te": "テルグ語",
+      "ja": "日本語",
+      "zh": "中国語",
+      "ar": "アラビア語"
+    }
   },
   "programs": {
     "badge": "",
@@ -2051,7 +2065,8 @@
     "current": "進行中",
     "signInPrompt": "サインインすると進捗を記録し、あなた専用の学習ジャーニーを利用できます。",
     "overallProgress": "全体の進捗",
-    "startJourney": "ジャーニーを始める"
+    "startJourney": "ジャーニーを始める",
+    "loadingProgress": "進捗を読み込んでいます…"
   },
   "howItWorks": {
     "title": "ご利用の流れ",
@@ -2273,5 +2288,13 @@
     "close": "チャットを閉じる",
     "inputLabel": "チャットメッセージ入力",
     "send": "メッセージを送信"
+  },
+  "billing": {
+    "title": "お支払いとサブスクリプション",
+    "description": "お支払い方法の更新、請求書の確認、サブスクリプションの解約がいつでも可能です。",
+    "manage": "お支払いを管理",
+    "opening": "開いています…",
+    "noSubscription": "お客様のアカウントで有効なサブスクリプションが見つかりませんでした。",
+    "error": "お支払いポータルを開く際に問題が発生しました。もう一度お試しください。"
   }
 }

@@ -18,9 +18,10 @@ import { getUserPlan, canAccessPremium } from "@/lib/subscription";
 import { Paywall } from "@/components/lessons/Paywall";
 import { LessonComments } from "@/components/lessons/LessonComments";
 import { BookmarkButton } from "@/components/lessons/BookmarkButton";
-import { db } from "@/lib/db";
+import { db, isDbConfigured } from "@/lib/db";
 import { lessonBookmarks } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
+import { FallbackContentNotice } from "@/components/lessons/FallbackContentNotice";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -58,11 +59,18 @@ export async function generateMetadata({
   const description = lesson.description;
   const canonicalUrl = `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${programSlug}/lessons/${slug}`;
 
+  // When the body text is English, the localised URL is a near-duplicate of the
+  // English page. Point the canonical at the original so the six untranslated
+  // locales stop competing with it in search results.
+  const canonicalTarget = lesson.isFallback
+    ? `${BASE_URL}/programs/${programSlug}/lessons/${slug}`
+    : canonicalUrl;
+
   return {
     title,
     description,
     alternates: {
-      canonical: canonicalUrl,
+      canonical: canonicalTarget,
       ...buildAlternates(`/programs/${programSlug}/lessons/${slug}`),
     },
     openGraph: {
@@ -113,7 +121,7 @@ export default async function ProgramLessonPage({
     }
 
     // Check bookmark status
-    if (db) {
+    if (isDbConfigured) {
       const [bookmark] = await db
         .select({ id: lessonBookmarks.id })
         .from(lessonBookmarks)
@@ -213,7 +221,12 @@ export default async function ProgramLessonPage({
       {hasAccess ? (
         <>
           <QuizProvider>
-            <div className="lesson-content">
+            {lesson.isFallback && (
+              <FallbackContentNotice requestedLocale={locale} />
+            )}
+            {/* lang must describe the body text, not the page shell, so screen
+                readers switch voice instead of reading English in e.g. Japanese. */}
+            <div className="lesson-content" lang={lesson.contentLocale}>
               <LessonRenderer content={lesson.content} />
             </div>
 

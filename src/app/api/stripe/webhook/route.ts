@@ -23,11 +23,24 @@ export async function POST(req: NextRequest) {
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
-    if (isDatabaseNotConfigured(err)) return databaseUnavailable();
+    // No database work happens during signature verification, so a db guard
+    // here would only ever mask a genuine signature failure.
     console.error("[stripe/webhook] signature verification failed:", err);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
+  try {
+    return await handleEvent(event);
+  } catch (err) {
+    if (isDatabaseNotConfigured(err)) return databaseUnavailable();
+    // Return 500 so Stripe retries. The handler is idempotent, so a retry after
+    // a partial failure cannot double-apply an entitlement or re-send an email.
+    console.error(`[stripe/webhook] handler failed for ${event.type}:`, err);
+    return NextResponse.json({ error: "Webhook handler failed" }, { status: 500 });
+  }
+}
+
+async function handleEvent(event: Stripe.Event) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object as Stripe.Checkout.Session;
@@ -44,13 +57,30 @@ export async function POST(req: NextRequest) {
       const [userRow] = await db.select({ email: users.email, name: users.name }).from(users).where(eq(users.id, userId)).limit(1);
       const userEmail = userRow?.email;
 
+      // Stripe delivers webhooks at least once, so this handler must be safe to
+      // replay. `stripe_subscription_id` is unique, so without onConflictDoNothing
+      // a redelivery raises a unique violation, we return 500, and Stripe retries
+      // that same event forever. `inserted` is empty on replay, which is what
+      // gates the emails below so a customer is not thanked twice.
+      let inserted: { id: string }[] = [];
+
       if (plan === "lifetime") {
-        await db.insert(subscriptions).values({
-          userId,
-          plan: "lifetime",
-          status: "active",
-          stripeSubscriptionId: session.payment_intent as string,
-        });
+        const paymentIntentId =
+          typeof session.payment_intent === "string"
+            ? session.payment_intent
+            : session.payment_intent?.id;
+
+        inserted = await db
+          .insert(subscriptions)
+          .values({
+            userId,
+            plan: "lifetime",
+            status: "active",
+            stripeSubscriptionId: paymentIntentId,
+          })
+          .onConflictDoNothing({ target: subscriptions.stripeSubscriptionId })
+          .returning({ id: subscriptions.id });
+
         await db
           .update(users)
           .set({ role: "pro", updatedAt: new Date() })
@@ -60,20 +90,28 @@ export async function POST(req: NextRequest) {
           session.subscription as string
         );
         const item = sub.items.data[0];
-        await db.insert(subscriptions).values({
-          userId,
-          plan,
-          status: "active",
-          stripeSubscriptionId: sub.id,
-          stripePriceId: item?.price.id,
-          currentPeriodStart: item ? new Date(item.current_period_start * 1000) : null,
-          currentPeriodEnd: item ? new Date(item.current_period_end * 1000) : null,
-        });
+        inserted = await db
+          .insert(subscriptions)
+          .values({
+            userId,
+            plan,
+            status: "active",
+            stripeSubscriptionId: sub.id,
+            stripePriceId: item?.price.id,
+            currentPeriodStart: item ? new Date(item.current_period_start * 1000) : null,
+            currentPeriodEnd: item ? new Date(item.current_period_end * 1000) : null,
+          })
+          .onConflictDoNothing({ target: subscriptions.stripeSubscriptionId })
+          .returning({ id: subscriptions.id });
         await db
           .update(users)
           .set({ role: "pro", updatedAt: new Date() })
           .where(eq(users.id, userId));
       }
+
+      // Replay of an already-processed event: entitlement is already correct and
+      // the customer has already been emailed, so stop here.
+      if (inserted.length === 0) break;
 
       // Send confirmation email to user
       if (userEmail) {
