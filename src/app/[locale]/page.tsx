@@ -114,6 +114,7 @@ export default async function HomePage({
         <HeroBackground />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative z-[2]">
           <HomeHero
+            badge={t("hero.badge")}
             title={t("hero.title")}
             titleHighlight={t("hero.titleHighlight")}
             subtitle={t("hero.subtitle")}

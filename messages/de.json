@@ -273,303 +273,335 @@
     "allTracks": "Alle Lernpfade",
     "ai-seeds": {
       "title": "AI Seeds",
-      "subtitle": "Pflanze dein erstes KI-Wissen",
-      "description": "Starte bei absolut null. Wir verwenden einfache Sprache und alltägliche Beispiele, um dein Verständnis Schritt für Schritt aufzubauen.",
-      "audience": "Komplette Anfänger ohne technischen Hintergrund",
-      "prerequisites": "Keine – nur Neugier!",
+      "subtitle": "AI literacy for the real world",
+      "description": "Build a clear mental model of modern AI, from training data and neural networks to generative tools, limitations, safety, and the choices people make around them.",
+      "audience": "Curious beginners, leaders, students, and career changers",
+      "prerequisites": "None. Just curiosity and a willingness to question the hype.",
       "topics": [
-        "Was ist KI?",
-        "Wie Maschinen lernen",
-        "Dein erstes KI-Modell"
+        "AI in everyday products",
+        "Data, models, and predictions",
+        "Generative AI and multimodal tools",
+        "Reliability, bias, and safety",
+        "Human judgement in an AI world"
       ],
       "outcomes": [
-        "Verstehen, was KI ist und was nicht",
-        "Wissen, wie Maschinen aus Daten lernen",
-        "Ein einfaches KI-Modell im Browser trainieren"
+        "Explain how modern AI systems learn and generate outputs",
+        "Choose AI tools with clear expectations and boundaries",
+        "Spot common reliability, bias, privacy, and safety risks",
+        "Complete a guided AI experiment and reflect on its limits"
       ],
       "tileLabel": "Grundlagen",
-      "homeDesc": "Starte bei null"
+      "homeDesc": "AI literacy for the real world"
     },
     "ai-sprouts": {
       "title": "AI Sprouts",
-      "subtitle": "Baue dein KI-Fundament",
-      "description": "Bereit zu wachsen? Tauche ein in die Bausteine der KI – Daten, Algorithmen und neuronale Netze. Praktische Übungen helfen dir, Intuition aufzubauen, bevor du Code schreibst.",
-      "audience": "Lernende, die AI Seeds abgeschlossen haben oder grundlegendes KI-Wissen mitbringen",
-      "prerequisites": "AI Seeds (empfohlen)",
+      "subtitle": "The foundations behind intelligent systems",
+      "description": "Understand the building blocks behind modern AI: datasets, features, embeddings, neural networks, transformers, evaluation, and the practical trade-offs that shape model behaviour.",
+      "audience": "Learners ready to move from AI literacy into technical understanding",
+      "prerequisites": "AI Seeds or equivalent practical AI awareness",
       "topics": [
-        "Arten von KI",
-        "Daten verstehen",
-        "Wie KI entscheidet",
-        "KI-Ethik Grundlagen"
+        "Datasets and data quality",
+        "Training, loss, and optimisation",
+        "Embeddings and vector search",
+        "Neural networks and transformers",
+        "Evaluation and responsible use"
       ],
       "outcomes": [
-        "Überwachtes, unüberwachtes und bestärkendes Lernen unterscheiden",
-        "Verstehen, was Trainingsdaten sind und warum sie wichtig sind",
-        "Kritisch über KI-Voreingenommenheit und Fairness nachdenken"
+        "Trace the path from data to model output",
+        "Explain embeddings, tokenisation, and transformer intuition",
+        "Select useful evaluation metrics for an AI task",
+        "Diagnose overfitting, bias, and data-quality failures"
       ],
       "tileLabel": "Kernkonzepte",
-      "homeDesc": "Fundament aufbauen"
+      "homeDesc": "The foundations behind intelligent systems"
     },
     "ai-branches": {
       "title": "AI Branches",
-      "subtitle": "Entdecke reale Anwendungen",
-      "description": "Erlebe KI in Aktion quer durch verschiedene Branchen – Gesundheitswesen, Finanzen, Kreativkunst und mehr. Baue erste Projekte und verstehe die Werkzeuge, die Profis nutzen.",
-      "audience": "Lernende, die bereit sind, KI in der Praxis zu erleben",
-      "prerequisites": "AI Sprouts",
+      "subtitle": "Build with today’s AI capabilities",
+      "description": "Move from concepts to applications. Work across text, vision, speech, and multimodal systems while learning where APIs, open models, structured outputs, and human review fit.",
+      "audience": "Learners who want to build useful AI features",
+      "prerequisites": "AI Sprouts or equivalent foundations",
       "topics": [
-        "KI im Gesundheitswesen",
-        "KI in der Kreativkunst",
-        "Chatbots & NLP",
-        "Computer Vision Grundlagen"
+        "Model APIs and structured output",
+        "Prompt and context design",
+        "Vision, speech, and multimodal AI",
+        "Fine-tuning versus retrieval",
+        "Human-in-the-loop product design"
       ],
       "outcomes": [
-        "Einen einfachen Chatbot bauen",
-        "Verstehen, wie Bilderkennung funktioniert",
-        "Ein KI-gestütztes Miniprojekt erstellen"
+        "Build a small multimodal AI feature",
+        "Choose between prompting, retrieval, and fine-tuning",
+        "Design clear input and output contracts for model calls",
+        "Explain failure modes to non-technical stakeholders"
       ],
       "tileLabel": "Anwendungen",
-      "homeDesc": "In der Praxis anwenden"
+      "homeDesc": "Build with today’s AI capabilities"
     },
     "ai-canopy": {
       "title": "AI Canopy",
-      "subtitle": "Tiefer Einstieg in KI-Systeme",
-      "description": "Tauche tiefer in neuronale Netze, Large Language Models und KI-Systemdesign ein. Lerne, KI-Tools kritisch zu bewerten und verstehe die Technik hinter moderner KI.",
-      "audience": "Fortgeschrittene Lernende, bereit für technische Tiefe",
-      "prerequisites": "AI Branches",
+      "subtitle": "Engineer reliable GenAI systems",
+      "description": "Design production-minded LLM applications with retrieval, tool use, agent workflows, MCP, evaluation, guardrails, and observability. Learn to optimise for quality, latency, safety, and cost.",
+      "audience": "Developers and technical practitioners building AI applications",
+      "prerequisites": "AI Branches plus basic Python or TypeScript",
       "topics": [
-        "Neuronale Netze",
-        "Large Language Models",
-        "Prompt Engineering",
-        "KI-Systemdesign"
+        "LLM application architecture",
+        "RAG, hybrid retrieval, and reranking",
+        "Tool calling, MCP, and agent workflows",
+        "Golden datasets and agent evaluation",
+        "Guardrails, tracing, latency, and cost"
       ],
       "outcomes": [
-        "Verstehen, wie neuronale Netze funktionieren",
-        "Prompt Engineering Techniken beherrschen",
-        "KI-Tools und -Dienste kritisch bewerten"
+        "Build a grounded RAG assistant with citations",
+        "Design a safe tool-using agent with explicit boundaries",
+        "Create regression evaluations for quality and tool behaviour",
+        "Instrument an AI feature for latency, cost, and failure analysis"
       ],
       "tileLabel": "Fortgeschritten",
-      "homeDesc": "In die Tiefe gehen"
+      "homeDesc": "Engineer reliable GenAI systems"
     },
     "ai-forest": {
       "title": "AI Forest",
-      "subtitle": "Meistere das KI-Ökosystem",
-      "description": "Das große Ganze – KI-Forschung, produktionsreife KI-Systeme bauen, zu Open-Source-KI beitragen und verstehen, wohin sich das Feld entwickelt. Für alle, die die Zukunft mitgestalten wollen.",
-      "audience": "Fortgeschrittene Lernende und angehende KI-Praktiker",
-      "prerequisites": "AI Canopy",
+      "subtitle": "Ship AI products responsibly",
+      "description": "Bring the full lifecycle together: product discovery, architecture, data governance, model and vendor choices, deployment, monitoring, incident response, regulation, and continuous improvement.",
+      "audience": "Senior builders, product engineers, technical leaders, and founders",
+      "prerequisites": "AI Canopy or equivalent production AI experience",
       "topics": [
-        "KI-Produkte bauen",
-        "Open-Source-KI",
-        "KI-Forschungsarbeiten",
-        "Zukunft der KI"
+        "AI product discovery and measurement",
+        "LLMOps and deployment strategy",
+        "Security, privacy, and threat modelling",
+        "Governance, regulation, and auditability",
+        "Reliability, economics, and incident response"
       ],
       "outcomes": [
-        "Eine KI-gestützte Anwendung bauen und bereitstellen",
-        "KI-Forschungsarbeiten lesen und verstehen",
-        "Zu Open-Source-KI-Projekten beitragen"
+        "Create a production AI delivery plan with measurable outcomes",
+        "Threat-model an AI system and define control points",
+        "Build a release and monitoring strategy for model change",
+        "Make defensible trade-offs across quality, cost, speed, and risk"
       ],
       "tileLabel": "Meisterschaft",
-      "homeDesc": "KI meistern"
+      "homeDesc": "Ship AI products responsibly"
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "Grobe Umrisse – DSA-Grundlagen",
-      "description": "Meistere die grundlegenden Datenstrukturen und Algorithmen, die KI-Systeme antreiben. Arrays, Hash Maps, Strings und Sortierung – visualisiert mit Diagrammen, erklärt anhand realer KI-Anwendungen.",
-      "audience": "Ingenieure, die sich auf Interviews vorbereiten oder Grundlagen auffrischen",
-      "prerequisites": "Grundlegende Programmierkenntnisse in einer beliebigen Sprache",
+      "subtitle": "Engineering foundations for AI builders",
+      "description": "Strengthen the programming, data structures, testing, and complexity fundamentals that make AI systems understandable, efficient, and maintainable.",
+      "audience": "Developers beginning AI engineering or interview preparation",
+      "prerequisites": "Basic programming in Python, JavaScript, Java, or another language",
       "topics": [
-        "Arrays & Hashing",
-        "Strings & Pattern Matching",
-        "Sortieren & Suchen"
+        "Complexity and trade-offs",
+        "Core data structures",
+        "Searching, sorting, and graphs",
+        "Testing and debugging",
+        "Data pipelines and API boundaries"
       ],
       "outcomes": [
-        "Array- und Hash-Map-Probleme sicher lösen",
-        "Verstehen, wie diese Muster KI-Systeme antreiben",
-        "Gängige Interview-Muster erkennen"
+        "Choose data structures deliberately",
+        "Explain time and space trade-offs",
+        "Write testable solutions under constraints",
+        "Connect algorithms to real AI application workloads"
       ],
       "tileLabel": "Grundlagen",
-      "homeDesc": "Starte bei null"
+      "homeDesc": "Engineering foundations for AI builders"
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "Präzisionsarbeit – Fortgeschrittene Muster",
-      "description": "Steigere dich mit fortgeschrittenen algorithmischen Mustern: Two Pointers, Sliding Window, BFS/DFS und Baum-Traversierung. Jedes Muster mit Bezug zu realen KI/ML-Anwendungen.",
-      "audience": "Ingenieure mit DSA-Grundlagen, bereit für mittelschwere Aufgaben",
-      "prerequisites": "AI Sketch oder gleichwertige Grundlagen",
+      "subtitle": "Patterns for solving harder problems",
+      "description": "Practise the algorithmic patterns that recur in production services, search, recommendation, data processing, and technical interviews.",
+      "audience": "Engineers with programming fundamentals",
+      "prerequisites": "AI Sketch or equivalent data-structure knowledge",
       "topics": [
-        "Two Pointers & Sliding Window",
-        "Bäume & Graph-Traversierung",
-        "Stacks, Queues & Monotone Muster"
+        "Sliding windows and intervals",
+        "Trees, graphs, and union-find",
+        "Heaps, tries, and monotonic structures",
+        "Dynamic programming",
+        "Performance and correctness"
       ],
       "outcomes": [
-        "Two Pointers und Sliding Window anwenden, um Lösungen zu optimieren",
-        "Bäume und Graphen mit BFS/DFS traversieren",
-        "Diese Muster mit KI-Suche und Inferenz verknüpfen"
+        "Recognise and apply reusable problem-solving patterns",
+        "Prove correctness and analyse complexity",
+        "Choose practical optimisations without premature complexity",
+        "Communicate a solution clearly under pressure"
       ],
       "tileLabel": "Datenstrukturen",
-      "homeDesc": "Fundament aufbauen"
+      "homeDesc": "Patterns for solving harder problems"
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "Handwerk – Systemdesign",
-      "description": "Entwirf große Systeme, die KI antreiben: Empfehlungssysteme, Suchautovervollständigung, Rate Limiter. Lerne in Architekturen zu denken, nicht nur in Code.",
-      "audience": "Mid-bis-Senior-Ingenieure, die sich auf Systemdesign-Runden vorbereiten",
-      "prerequisites": "Sicher in Coding-Interviews",
+      "subtitle": "Design systems that scale AI",
+      "description": "Learn system design for modern AI products: model gateways, retrieval services, async workloads, streaming, caches, rate limits, tenancy, and resilient APIs.",
+      "audience": "Mid-to-senior engineers designing distributed AI systems",
+      "prerequisites": "Comfort with APIs, databases, and distributed-system basics",
       "topics": [
-        "Einen URL-Shortener entwerfen",
-        "Einen Rate Limiter entwerfen",
-        "Eine Empfehlungsmaschine entwerfen"
+        "AI platform and model gateways",
+        "RAG and vector retrieval services",
+        "Queues, streaming, and async inference",
+        "Caching, rate limits, and tenancy",
+        "Resilience, security, and observability"
       ],
       "outcomes": [
-        "Systemdesign-Antworten klar strukturieren",
-        "Skalierbare verteilte Systeme entwerfen",
-        "KI-spezifische Infrastrukturmuster verstehen"
+        "Produce a clear architecture with justified trade-offs",
+        "Design for failure, scale, and operational visibility",
+        "Estimate AI cost and capacity before implementation",
+        "Defend an AI system design in a technical review"
       ],
       "tileLabel": "Systeme",
-      "homeDesc": "In der Praxis anwenden"
+      "homeDesc": "Design systems that scale AI"
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "Exzellenz verfeinern – Behavioral Mastery",
-      "description": "Meistere das Behavioral Interview mit strukturierten Frameworks. STAR-Methode, Führungsprinzipien, KI-Zeitalter-Szenarien und Kommunikationsstrategien.",
-      "audience": "Ingenieure jeder Erfahrungsstufe, die sich auf Behavioral Rounds vorbereiten",
-      "prerequisites": "Echte Projekterfahrung als Grundlage",
+      "subtitle": "Communicate and lead in the AI era",
+      "description": "Turn strong engineering into visible impact through technical communication, decision records, stakeholder alignment, responsible leadership, and AI-aware career storytelling.",
+      "audience": "Engineers moving into senior, lead, or AI-focused roles",
+      "prerequisites": "Professional project experience",
       "topics": [
-        "STAR-Framework für Ingenieure",
-        "Kommunikation im Systemdesign",
-        "Führungsszenarien im KI-Zeitalter"
+        "Technical storytelling",
+        "Architecture decision records",
+        "Influence and stakeholder alignment",
+        "Responsible AI leadership",
+        "Interview and promotion narratives"
       ],
       "outcomes": [
-        "Überzeugende Geschichten mit STAR strukturieren",
-        "Technische Entscheidungen klar kommunizieren",
-        "KI-Ethik- und Führungsfragen souverän meistern"
+        "Explain complex AI trade-offs to different audiences",
+        "Build evidence-based leadership stories",
+        "Lead decisions without hiding uncertainty",
+        "Position engineering impact clearly and credibly"
       ],
       "tileLabel": "Produktion",
-      "homeDesc": "In die Tiefe gehen"
+      "homeDesc": "Communicate and lead in the AI era"
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "Portfolio-tauglich – End-to-End Fallstudien",
-      "description": "Abschlussprojekte, die DSA, Systemdesign und Behavioral Skills kombinieren. Entwirf echte Systeme von A bis Z und baue dein Engineering-Portfolio auf.",
-      "audience": "Ingenieure, die für Senior+ Rollen bereit sind",
-      "prerequisites": "AI Sketch bis AI Polish abgeschlossen",
+      "subtitle": "Your production AI capstone",
+      "description": "Design, build, evaluate, and present an end-to-end AI product. Combine retrieval or tool use with security, tests, observability, a runbook, and a credible product case.",
+      "audience": "Engineers ready to demonstrate production AI capability",
+      "prerequisites": "AI Canopy plus AI Craft, or equivalent experience",
       "topics": [
-        "Twitters KI-Feed entwerfen",
-        "Vollständiges Mock Interview",
-        "Engineering-Portfolio"
+        "Product brief and success metrics",
+        "Architecture and threat model",
+        "RAG or agent implementation",
+        "Evaluation and observability",
+        "Launch review and portfolio case study"
       ],
       "outcomes": [
-        "Vollständige End-to-End-Systementwürfe abschließen",
-        "Souverän in Mock Interviews bestehen",
-        "Ein herausragendes Engineering-Portfolio aufbauen"
+        "Ship a portfolio-ready AI system design and prototype",
+        "Demonstrate evaluation beyond a happy-path demo",
+        "Document risk, operations, and rollback decisions",
+        "Present technical work with clear business and user value"
       ],
       "tileLabel": "Architektur",
-      "homeDesc": "KI meistern"
+      "homeDesc": "Your production AI capstone"
     },
     "ai-launchpad": {
       "title": "Interview-Startrampe",
-      "subtitle": "Deine Interview-Reise beginnt",
-      "description": "Meistere die Grundlagen der technischen Interviewvorbereitung. Lerne, wie du Unternehmen recherchierst, Stellenbeschreibungen entschlüsselst, deinen Vorbereitungszeitplan erstellst und die Denkweise entwickelst, die Nervosität in Selbstvertrauen verwandelt.",
-      "audience": "Alle, die ihre technische Interviewvorbereitung beginnen",
-      "prerequisites": "Keine. hier ist dein Startpunkt",
+      "subtitle": "Navigate the AI engineering job market",
+      "description": "Build a focused search strategy for AI-era roles: understand role families, read job descriptions, map your evidence, and prepare a realistic learning and application plan.",
+      "audience": "People starting or redirecting an AI-focused career",
+      "prerequisites": "None",
       "topics": [
-        "Techniken zur Unternehmensrecherche",
-        "Analyse von Stellenbeschreibungen",
-        "Zeitplan für die Interviewvorbereitung",
-        "Aufbau von Denkweise und Selbstvertrauen"
+        "AI role families and expectations",
+        "Job-description signal extraction",
+        "Skills-gap mapping",
+        "Evidence-led applications",
+        "A sustainable preparation plan"
       ],
       "outcomes": [
-        "Einen strukturierten Vorbereitungsplan erstellen",
-        "Jede Stellenbeschreibung effektiv entschlüsseln",
-        "Unternehmen wie ein Profi recherchieren",
-        "Selbstvertrauen für Interviews entwickeln"
+        "Choose target roles based on evidence and strengths",
+        "Turn job descriptions into a practical study plan",
+        "Build a credible project and application portfolio",
+        "Track progress without chasing every new tool"
       ],
       "tileLabel": "Vorbereitung",
-      "homeDesc": "Starte deine Reise"
+      "homeDesc": "Navigate the AI engineering job market"
     },
     "ai-behavioral": {
       "title": "Verhaltensinterview-Meisterschaft",
-      "subtitle": "Geschichten, die Angebote bringen",
-      "description": "Meistere Verhaltensinterviews mit der STAR-Methode, Führungsnarrativen und strukturiertem Storytelling. Lerne, deine Erfahrungen in überzeugende Antworten zu verwandeln, die deinen Wert beweisen.",
-      "audience": "Ingenieure auf allen Ebenen, die sich auf Verhaltensrunden vorbereiten",
-      "prerequisites": "Echte Projekterfahrung als Grundlage",
+      "subtitle": "Tell the story of how you create impact",
+      "description": "Prepare concise, honest stories about ambiguity, delivery, failure, influence, conflict, and responsible AI decisions using evidence rather than rehearsed slogans.",
+      "audience": "Engineers preparing for behavioural and leadership interviews",
+      "prerequisites": "Real project or collaboration experience",
       "topics": [
-        "Beherrschung der STAR-Methode",
-        "Führungs- und Teamgeschichten",
-        "Narrative zur Konfliktlösung",
-        "Bewertung der kulturellen Passung"
+        "Evidence-led STAR stories",
+        "Ambiguity and prioritisation",
+        "Failure, learning, and recovery",
+        "Conflict and influence",
+        "Responsible AI judgement"
       ],
       "outcomes": [
-        "Das STAR-Antwortrahmenwerk beherrschen",
-        "Überzeugende Karriere-Narrative gestalten",
-        "Jede Verhaltensfrage souverän meistern",
-        "Führungsqualität und Teamfähigkeit demonstrieren"
+        "Build a reusable story bank",
+        "Answer with context, action, and measurable outcome",
+        "Show judgement when technology and people trade-offs collide",
+        "Adapt one experience to different question styles"
       ],
       "tileLabel": "Verhalten",
-      "homeDesc": "Soft Skills meistern"
+      "homeDesc": "Tell the story of how you create impact"
     },
     "ai-technical": {
       "title": "Technische Interviews",
-      "subtitle": "Programmieren unter Druck",
-      "description": "Bestehe Coding-Interviews, System-Design-Runden und technische Vertiefungen. Von Datenstrukturen bis zu verteilten Systemen. baue die Fähigkeiten und das Selbstvertrauen auf, um unter Druck zu glänzen.",
-      "audience": "Softwareingenieure, die sich auf technische Interviewrunden vorbereiten",
-      "prerequisites": "Solide Programmierkenntnisse in mindestens einer Sprache",
+      "subtitle": "Solve, design, and communicate under pressure",
+      "description": "Practise coding, API, debugging, system design, and AI application questions with a repeatable method for clarifying requirements and defending trade-offs.",
+      "audience": "Software engineers preparing for technical interviews",
+      "prerequisites": "Solid programming fundamentals",
       "topics": [
-        "Datenstrukturen und Algorithmen",
-        "Grundlagen des Systemdesigns",
-        "Muster für Coding-Interviews",
-        "Strategien zur Problemlösung"
+        "Coding patterns and complexity",
+        "API and data-contract design",
+        "AI system design",
+        "Debugging and code review",
+        "Communication under pressure"
       ],
       "outcomes": [
-        "Gängige Coding-Interview-Muster lösen",
-        "Skalierbare Systeme am Whiteboard entwerfen",
-        "Technische Entscheidungen klar kommunizieren",
-        "Problemlösung unter Zeitdruck meistern"
+        "Solve problems with a repeatable framework",
+        "Design reliable AI-enabled services",
+        "Debug systematically instead of guessing",
+        "Communicate assumptions and trade-offs clearly"
       ],
       "tileLabel": "Technik",
-      "homeDesc": "Die Coding-Runde bestehen"
+      "homeDesc": "Solve, design, and communicate under pressure"
     },
     "ai-ml-interview": {
       "title": "AI- & ML-Interviews",
-      "subtitle": "Das Machine-Learning-Interview",
-      "description": "Spezialisierte Vorbereitung für KI- und Machine-Learning-Rollen. Behandle ML-Systemdesign, Modellbewertung, MLOps und die einzigartigen Interviewformate von KI-fokussierten Unternehmen.",
-      "audience": "Ingenieure, die KI/ML-Rollen bei Tech-Unternehmen anstreben",
-      "prerequisites": "Grundlegende ML-Kenntnisse (überwachtes/unüberwachtes Lernen)",
+      "subtitle": "Prepare for modern ML and GenAI interviews",
+      "description": "Cover model selection, experimentation, ML system design, RAG and agent evaluation, data quality, MLOps, safety, and the trade-offs interviewers expect you to articulate.",
+      "audience": "Engineers targeting ML, applied AI, or AI platform roles",
+      "prerequisites": "AI foundations plus basic statistics and Python",
       "topics": [
-        "ML-Systemdesign",
-        "Statistische Grundlagen",
-        "Modellauswahl und -bewertung",
-        "ML-Fallstudien"
+        "ML and GenAI system design",
+        "Experimentation and evaluation",
+        "Data and feature quality",
+        "RAG, agents, and LLMOps",
+        "Safety, fairness, and governance"
       ],
       "outcomes": [
-        "End-to-End-ML-Systeme entwerfen",
-        "Modell-Kompromisse klar erklären",
-        "ML-spezifische Fallstudien meistern",
-        "Praktisches ML-Wissen demonstrieren"
+        "Design an ML or GenAI system end to end",
+        "Choose metrics that match user and business outcomes",
+        "Explain deployment and monitoring trade-offs",
+        "Handle safety and failure-mode questions with confidence"
       ],
       "tileLabel": "ML",
-      "homeDesc": "ML-Interview meistern"
+      "homeDesc": "Prepare for modern ML and GenAI interviews"
     },
     "ai-offer": {
       "title": "Angebot & Karriere",
-      "subtitle": "Vom Angebot zum Karrierewachstum",
-      "description": "Navigiere die Zielgerade. Gehaltsverhandlung, Angebotsbewertung und Karrierewachstumsstrategien. Lerne, Vergütungen zu vergleichen, effektiv zu verhandeln und deine langfristige Karriere zu planen.",
-      "audience": "Ingenieure, die Jobangebote erhalten haben oder erwarten",
-      "prerequisites": "Aktiver Bewerbungsprozess oder kürzliches Angebot",
+      "subtitle": "Make a confident, informed next move",
+      "description": "Evaluate AI-era roles and offers with a practical framework covering scope, learning, leadership, compensation, risk, working patterns, and your first 90 days.",
+      "audience": "Candidates comparing offers or planning their next career step",
+      "prerequisites": "An active search, interview process, or offer",
       "topics": [
-        "Taktiken zur Gehaltsverhandlung",
-        "Rahmenwerk zum Angebotsvergleich",
-        "Analyse von Zusatzleistungen und Aktienoptionen",
-        "Karriereentscheidungen treffen"
+        "Role and scope evaluation",
+        "Compensation and equity",
+        "AI maturity and delivery risk",
+        "Negotiation with evidence",
+        "First 90 days and long-term growth"
       ],
       "outcomes": [
-        "Vergütung selbstbewusst verhandeln",
-        "Mehrere Angebote objektiv vergleichen",
-        "Aktien- und Leistungspakete verstehen",
-        "Strategische Karriereentscheidungen treffen"
+        "Compare offers beyond headline salary",
+        "Ask sharper questions about AI strategy and engineering quality",
+        "Negotiate from evidence without burning trust",
+        "Plan a strong first 90 days"
       ],
       "tileLabel": "Angebot",
-      "homeDesc": "Das beste Angebot sichern"
-    }
+      "homeDesc": "Make a confident, informed next move"
+    },
+    "curriculumVersion": "2026 production AI syllabus"
   },
   "programDetail": {
     "level": "Niveau",
@@ -1272,7 +1304,10 @@
     "ai-ethics-in-interviews": "AI Ethics in Interviews",
     "evaluating-multiple-offers": "Evaluating Multiple Offers",
     "first-90-days-strategy": "Your First 90 Days Strategy",
-    "long-term-career-architecture": "Long-Term Career Architecture"
+    "long-term-career-architecture": "Long-Term Career Architecture",
+    "rag-systems-in-practice": "RAG-Systeme in der Praxis",
+    "agent-tools-and-mcp": "Tool-nutzende Agenten und MCP",
+    "evaluate-and-operate-ai": "KI bewerten und betreiben"
   },
   "pwa": {
     "install": "App installieren",

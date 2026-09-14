@@ -265,303 +265,335 @@
     "allTracks": "అన్ని ట్రాక్‌లు",
     "ai-seeds": {
       "title": "AI Seeds",
-      "subtitle": "మీ మొదటి AI జ్ఞానాన్ని నాటండి",
-      "description": "సంపూర్ణ శూన్యం నుండి ప్రారంభించండి. మేము సరళమైన భాష మరియు రోజువారీ ఉదాహరణలను ఉపయోగించి మీ అవగాహనను అడుగు అడుగునా నిర్మిస్తాము.",
-      "audience": "సాంకేతిక నేపథ్యం లేని పూర్తి ప్రారంభకులు",
-      "prerequisites": "ఏమీ లేదు - కేవలం ఆసక్తి!",
+      "subtitle": "AI literacy for the real world",
+      "description": "Build a clear mental model of modern AI, from training data and neural networks to generative tools, limitations, safety, and the choices people make around them.",
+      "audience": "Curious beginners, leaders, students, and career changers",
+      "prerequisites": "None. Just curiosity and a willingness to question the hype.",
       "topics": [
-        "AI అంటే ఏమిటి?",
-        "యంత్రాలు ఎలా నేర్చుకుంటాయి",
-        "మీ మొదటి AI మోడల్"
+        "AI in everyday products",
+        "Data, models, and predictions",
+        "Generative AI and multimodal tools",
+        "Reliability, bias, and safety",
+        "Human judgement in an AI world"
       ],
       "outcomes": [
-        "AI అంటే ఏమిటో మరియు ఏమి కాదో అర్థం చేసుకోండి",
-        "యంత్రాలు డేటా నుండి ఎలా నేర్చుకుంటాయో తెలుసుకోండి",
-        "మీ బ్రౌజర్‌లో ఒక సాధారణ AI మోడల్‌ను శిక్షించండి"
+        "Explain how modern AI systems learn and generate outputs",
+        "Choose AI tools with clear expectations and boundaries",
+        "Spot common reliability, bias, privacy, and safety risks",
+        "Complete a guided AI experiment and reflect on its limits"
       ],
       "tileLabel": "Basics",
-      "homeDesc": "సున్నా నుండి ప్రారంభించండి"
+      "homeDesc": "AI literacy for the real world"
     },
     "ai-sprouts": {
       "title": "AI Sprouts",
-      "subtitle": "మీ AI పునాదులను నిర్మించుకోండి",
-      "description": "ఎదగడానికి సిద్ధంగా ఉన్నారా? AI యొక్క నిర్మాణ భాగాలలో మునిగిపోండి - డేటా, అల్గారిథమ్‌లు మరియు న్యూరల్ నెట్‌వర్క్‌లు. ప్రాక్టికల్ వ్యాయామాలు కోడ్ రాయడానికి ముందు అంతర్ దృష్టిని నిర్మించడంలో సహాయపడతాయి.",
-      "audience": "AI Seeds పూర్తి చేసిన లేదా ప్రాథమిక AI అవగాహన కలిగిన అభ్యాసకులు",
-      "prerequisites": "AI Seeds (సిఫార్సు)",
+      "subtitle": "The foundations behind intelligent systems",
+      "description": "Understand the building blocks behind modern AI: datasets, features, embeddings, neural networks, transformers, evaluation, and the practical trade-offs that shape model behaviour.",
+      "audience": "Learners ready to move from AI literacy into technical understanding",
+      "prerequisites": "AI Seeds or equivalent practical AI awareness",
       "topics": [
-        "AI రకాలు",
-        "డేటాను అర్థం చేసుకోవడం",
-        "AI ఎలా నిర్ణయిస్తుంది",
-        "AI నీతి - ప్రాథమికాలు"
+        "Datasets and data quality",
+        "Training, loss, and optimisation",
+        "Embeddings and vector search",
+        "Neural networks and transformers",
+        "Evaluation and responsible use"
       ],
       "outcomes": [
-        "సూపర్‌వైజ్డ్, అన్‌సూపర్‌వైజ్డ్ మరియు రీఇన్‌ఫోర్స్‌మెంట్ లెర్నింగ్ మధ్య తేడా గుర్తించండి",
-        "శిక్షణ డేటా అంటే ఏమిటో మరియు అది ఎందుకు ముఖ్యమో అర్థం చేసుకోండి",
-        "AI పక్షపాతం మరియు న్యాయం గురించి విమర్శనాత్మకంగా ఆలోచించండి"
+        "Trace the path from data to model output",
+        "Explain embeddings, tokenisation, and transformer intuition",
+        "Select useful evaluation metrics for an AI task",
+        "Diagnose overfitting, bias, and data-quality failures"
       ],
       "tileLabel": "Algorithms",
-      "homeDesc": "పునాదులు నిర్మించండి"
+      "homeDesc": "The foundations behind intelligent systems"
     },
     "ai-branches": {
       "title": "AI Branches",
-      "subtitle": "వాస్తవ ప్రపంచ అనువర్తనాలను అన్వేషించండి",
-      "description": "వివిధ రంగాలలో AI ని చర్యలో చూడండి - ఆరోగ్య సేవలు, ఆర్థిక రంగం, సృజనాత్మక కళలు మరియు మరిన్ని. సాధారణ ప్రాజెక్ట్‌లు నిర్మించడం ప్రారంభించండి మరియు నిపుణులు ఉపయోగించే సాధనాలను అర్థం చేసుకోండి.",
-      "audience": "AI ని ఆచరణలో చూడటానికి సిద్ధంగా ఉన్న అభ్యాసకులు",
-      "prerequisites": "AI Sprouts",
+      "subtitle": "Build with today’s AI capabilities",
+      "description": "Move from concepts to applications. Work across text, vision, speech, and multimodal systems while learning where APIs, open models, structured outputs, and human review fit.",
+      "audience": "Learners who want to build useful AI features",
+      "prerequisites": "AI Sprouts or equivalent foundations",
       "topics": [
-        "ఆరోగ్య సేవలో AI",
-        "సృజనాత్మక కళల్లో AI",
-        "చాట్‌బాట్‌లు మరియు NLP",
-        "కంప్యూటర్ విజన్ ప్రాథమికాలు"
+        "Model APIs and structured output",
+        "Prompt and context design",
+        "Vision, speech, and multimodal AI",
+        "Fine-tuning versus retrieval",
+        "Human-in-the-loop product design"
       ],
       "outcomes": [
-        "ఒక సాధారణ చాట్‌బాట్ నిర్మించండి",
-        "ఇమేజ్ రికగ్నిషన్ ఎలా పని చేస్తుందో అర్థం చేసుకోండి",
-        "AI-ఆధారిత మినీ ప్రాజెక్ట్ సృష్టించండి"
+        "Build a small multimodal AI feature",
+        "Choose between prompting, retrieval, and fine-tuning",
+        "Design clear input and output contracts for model calls",
+        "Explain failure modes to non-technical stakeholders"
       ],
       "tileLabel": "Applications",
-      "homeDesc": "ఆచరణలో అన్వయించండి"
+      "homeDesc": "Build with today’s AI capabilities"
     },
     "ai-canopy": {
       "title": "AI Canopy",
-      "subtitle": "AI వ్యవస్థలలో లోతైన అన్వేషణ",
-      "description": "న్యూరల్ నెట్‌వర్క్‌లు, పెద్ద భాషా నమూనాలు మరియు AI సిస్టమ్ డిజైన్‌లో లోతుగా వెళ్ళండి. AI సాధనాలను విమర్శనాత్మకంగా అంచనా వేయడం మరియు ఆధునిక AI వెనుక ఇంజనీరింగ్‌ను అర్థం చేసుకోవడం నేర్చుకోండి.",
-      "audience": "సాంకేతిక లోతు కోసం సిద్ధంగా ఉన్న మధ్యస్థ అభ్యాసకులు",
-      "prerequisites": "AI Branches",
+      "subtitle": "Engineer reliable GenAI systems",
+      "description": "Design production-minded LLM applications with retrieval, tool use, agent workflows, MCP, evaluation, guardrails, and observability. Learn to optimise for quality, latency, safety, and cost.",
+      "audience": "Developers and technical practitioners building AI applications",
+      "prerequisites": "AI Branches plus basic Python or TypeScript",
       "topics": [
-        "న్యూరల్ నెట్‌వర్క్‌లు",
-        "పెద్ద భాషా నమూనాలు",
-        "ప్రాంప్ట్ ఇంజనీరింగ్",
-        "AI సిస్టమ్ డిజైన్"
+        "LLM application architecture",
+        "RAG, hybrid retrieval, and reranking",
+        "Tool calling, MCP, and agent workflows",
+        "Golden datasets and agent evaluation",
+        "Guardrails, tracing, latency, and cost"
       ],
       "outcomes": [
-        "న్యూరల్ నెట్‌వర్క్‌లు ఎలా పని చేస్తాయో అర్థం చేసుకోండి",
-        "ప్రాంప్ట్ ఇంజనీరింగ్ టెక్నిక్‌లలో నైపుణ్యం సాధించండి",
-        "AI సాధనాలు మరియు సేవలను విమర్శనాత్మకంగా అంచనా వేయండి"
+        "Build a grounded RAG assistant with citations",
+        "Design a safe tool-using agent with explicit boundaries",
+        "Create regression evaluations for quality and tool behaviour",
+        "Instrument an AI feature for latency, cost, and failure analysis"
       ],
       "tileLabel": "Deep Learning",
-      "homeDesc": "లోతుగా వెళ్ళండి"
+      "homeDesc": "Engineer reliable GenAI systems"
     },
     "ai-forest": {
       "title": "AI Forest",
-      "subtitle": "AI పర్యావరణ వ్యవస్థపై పట్టు సాధించండి",
-      "description": "సంపూర్ణ చిత్రం - AI పరిశోధన, ప్రొడక్షన్ AI వ్యవస్థలను నిర్మించడం, ఓపెన్-సోర్స్ AI కి సహకారం అందించడం మరియు ఈ రంగం ఎటు వెళ్తుందో అర్థం చేసుకోవడం. భవిష్యత్తును రూపొందించాలనుకునే వారి కోసం.",
-      "audience": "అధునాతన అభ్యాసకులు మరియు ఆశావహ AI ప్రాక్టీషనర్లు",
-      "prerequisites": "AI Canopy",
+      "subtitle": "Ship AI products responsibly",
+      "description": "Bring the full lifecycle together: product discovery, architecture, data governance, model and vendor choices, deployment, monitoring, incident response, regulation, and continuous improvement.",
+      "audience": "Senior builders, product engineers, technical leaders, and founders",
+      "prerequisites": "AI Canopy or equivalent production AI experience",
       "topics": [
-        "AI ఉత్పత్తులు నిర్మించడం",
-        "ఓపెన్-సోర్స్ AI",
-        "AI పరిశోధన పత్రాలు",
-        "AI భవిష్యత్తు"
+        "AI product discovery and measurement",
+        "LLMOps and deployment strategy",
+        "Security, privacy, and threat modelling",
+        "Governance, regulation, and auditability",
+        "Reliability, economics, and incident response"
       ],
       "outcomes": [
-        "AI-ఆధారిత అప్లికేషన్ నిర్మించి డిప్లాయ్ చేయండి",
-        "AI పరిశోధన పత్రాలు చదివి అర్థం చేసుకోండి",
-        "ఓపెన్-సోర్స్ AI ప్రాజెక్ట్‌లకు సహకరించండి"
+        "Create a production AI delivery plan with measurable outcomes",
+        "Threat-model an AI system and define control points",
+        "Build a release and monitoring strategy for model change",
+        "Make defensible trade-offs across quality, cost, speed, and risk"
       ],
       "tileLabel": "Research",
-      "homeDesc": "AI లో నిపుణత సాధించండి"
+      "homeDesc": "Ship AI products responsibly"
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "స్థూల రూపరేఖలు - DSA ప్రాథమిక అంశాలు",
-      "description": "AI వ్యవస్థలను శక్తివంతం చేసే ప్రాథమిక డేటా నిర్మాణాలు మరియు అల్గారిథమ్‌లపై పట్టు సాధించండి. అర్రేలు, హాష్ మ్యాప్‌లు, స్ట్రింగ్‌లు మరియు సార్టింగ్ - రేఖాచిత్రాలతో దృశ్యమానం చేయబడింది, AI వాస్తవ ప్రపంచ అనువర్తనాలతో వివరించబడింది.",
-      "audience": "ఇంటర్వ్యూ ప్రిపరేషన్ ప్రారంభించే లేదా ప్రాథమికాలను రిఫ్రెష్ చేసే ఇంజనీర్లు",
-      "prerequisites": "ఏదైనా భాషలో బేసిక్ ప్రోగ్రామింగ్",
+      "subtitle": "Engineering foundations for AI builders",
+      "description": "Strengthen the programming, data structures, testing, and complexity fundamentals that make AI systems understandable, efficient, and maintainable.",
+      "audience": "Developers beginning AI engineering or interview preparation",
+      "prerequisites": "Basic programming in Python, JavaScript, Java, or another language",
       "topics": [
-        "అర్రేలు మరియు హాషింగ్",
-        "స్ట్రింగ్‌లు మరియు పాటర్న్ మ్యాచింగ్",
-        "సార్టింగ్ మరియు సెర్చింగ్"
+        "Complexity and trade-offs",
+        "Core data structures",
+        "Searching, sorting, and graphs",
+        "Testing and debugging",
+        "Data pipelines and API boundaries"
       ],
       "outcomes": [
-        "ఆత్మవిశ్వాసంతో అర్రే మరియు హాష్ మ్యాప్ సమస్యలను పరిష్కరించండి",
-        "ఈ నమూనాలు AI సిస్టమ్‌లను ఎలా శక్తివంతం చేస్తాయో అర్థం చేసుకోండి",
-        "సాధారణ ఇంటర్వ్యూ నమూనాలను గుర్తించండి"
+        "Choose data structures deliberately",
+        "Explain time and space trade-offs",
+        "Write testable solutions under constraints",
+        "Connect algorithms to real AI application workloads"
       ],
       "tileLabel": "DSA",
-      "homeDesc": "సున్నా నుండి ప్రారంభించండి"
+      "homeDesc": "Engineering foundations for AI builders"
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "ఖచ్చితత్వాన్ని చెక్కడం - మధ్యస్థ నమూనాలు",
-      "description": "మధ్యస్థ అల్గారిథమిక్ నమూనాలతో ముందుకు సాగండి: టూ పాయింటర్స్, స్లైడింగ్ విండో, BFS/DFS మరియు ట్రీ ట్రావర్సల్స్. ప్రతి నమూనా వాస్తవ AI/ML అనువర్తనాలతో అనుసంధానించబడింది.",
-      "audience": "DSA ప్రాథమికాలు తెలిసిన ఇంజనీర్లు మధ్యస్థ-స్థాయి సమస్యలకు సిద్ధం",
-      "prerequisites": "AI Sketch లేదా సమానమైన ప్రాథమికాలు",
+      "subtitle": "Patterns for solving harder problems",
+      "description": "Practise the algorithmic patterns that recur in production services, search, recommendation, data processing, and technical interviews.",
+      "audience": "Engineers with programming fundamentals",
+      "prerequisites": "AI Sketch or equivalent data-structure knowledge",
       "topics": [
-        "టూ పాయింటర్స్ మరియు స్లైడింగ్ విండో",
-        "ట్రీలు మరియు గ్రాఫ్ ట్రావర్సల్",
-        "స్టాక్స్, క్యూలు మరియు మోనోటోనిక్ నమూనాలు"
+        "Sliding windows and intervals",
+        "Trees, graphs, and union-find",
+        "Heaps, tries, and monotonic structures",
+        "Dynamic programming",
+        "Performance and correctness"
       ],
       "outcomes": [
-        "పరిష్కారాలను ఆప్టిమైజ్ చేయడానికి టూ పాయింటర్స్ మరియు స్లైడింగ్ విండో అన్వయించండి",
-        "BFS/DFS తో ట్రీలు మరియు గ్రాఫ్‌లను ట్రావర్స్ చేయండి",
-        "ఈ నమూనాలను AI సెర్చ్ మరియు ఇన్ఫరెన్స్‌కు అనుసంధానించండి"
+        "Recognise and apply reusable problem-solving patterns",
+        "Prove correctness and analyse complexity",
+        "Choose practical optimisations without premature complexity",
+        "Communicate a solution clearly under pressure"
       ],
       "tileLabel": "Patterns",
-      "homeDesc": "పునాదులు నిర్మించండి"
+      "homeDesc": "Patterns for solving harder problems"
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "నైపుణ్యం నిర్మించడం - సిస్టమ్ డిజైన్",
-      "description": "AI ని శక్తివంతం చేసే పెద్ద-స్థాయి వ్యవస్థలను రూపొందించండి: రికమెండేషన్ ఇంజన్లు, సెర్చ్ ఆటోకంప్లీట్, రేట్ లిమిటర్లు. కేవలం కోడ్‌లో కాదు, ఆర్కిటెక్చర్‌లలో ఆలోచించడం నేర్చుకోండి.",
-      "audience": "సిస్టమ్ డిజైన్ రౌండ్‌లకు సిద్ధమవుతున్న మధ్య నుండి సీనియర్ ఇంజనీర్లు",
-      "prerequisites": "కోడింగ్ ఇంటర్వ్యూలలో సౌకర్యంగా ఉన్నవారు",
+      "subtitle": "Design systems that scale AI",
+      "description": "Learn system design for modern AI products: model gateways, retrieval services, async workloads, streaming, caches, rate limits, tenancy, and resilient APIs.",
+      "audience": "Mid-to-senior engineers designing distributed AI systems",
+      "prerequisites": "Comfort with APIs, databases, and distributed-system basics",
       "topics": [
-        "URL షార్ట్‌నర్ డిజైన్ చేయండి",
-        "రేట్ లిమిటర్ డిజైన్ చేయండి",
-        "రికమెండేషన్ ఇంజన్ డిజైన్ చేయండి"
+        "AI platform and model gateways",
+        "RAG and vector retrieval services",
+        "Queues, streaming, and async inference",
+        "Caching, rate limits, and tenancy",
+        "Resilience, security, and observability"
       ],
       "outcomes": [
-        "సిస్టమ్ డిజైన్ సమాధానాలను స్పష్టంగా నిర్మించండి",
-        "స్కేలబుల్ డిస్ట్రిబ్యూటెడ్ సిస్టమ్‌లను డిజైన్ చేయండి",
-        "AI-నిర్దిష్ట ఇన్‌ఫ్రాస్ట్రక్చర్ నమూనాలను అర్థం చేసుకోండి"
+        "Produce a clear architecture with justified trade-offs",
+        "Design for failure, scale, and operational visibility",
+        "Estimate AI cost and capacity before implementation",
+        "Defend an AI system design in a technical review"
       ],
       "tileLabel": "System Design",
-      "homeDesc": "ఆచరణలో అన్వయించండి"
+      "homeDesc": "Design systems that scale AI"
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "శ్రేష్ఠతను మెరుగుపరచడం - ప్రవర్తనా నైపుణ్యం",
-      "description": "నిర్మాణాత్మక ఫ్రేమ్‌వర్క్‌లతో ప్రవర్తనా ఇంటర్వ్యూలో నైపుణ్యం సాధించండి. STAR పద్ధతి, నాయకత్వ సూత్రాలు, AI-యుగ దృశ్యాలు మరియు కమ్యూనికేషన్ వ్యూహాలు.",
-      "audience": "ప్రవర్తనా రౌండ్‌లకు సిద్ధమవుతున్న ఏ స్థాయి ఇంజనీర్లైనా",
-      "prerequisites": "పంచుకోవడానికి నిజమైన ప్రాజెక్ట్ అనుభవం",
+      "subtitle": "Communicate and lead in the AI era",
+      "description": "Turn strong engineering into visible impact through technical communication, decision records, stakeholder alignment, responsible leadership, and AI-aware career storytelling.",
+      "audience": "Engineers moving into senior, lead, or AI-focused roles",
+      "prerequisites": "Professional project experience",
       "topics": [
-        "ఇంజనీర్ల కోసం STAR ఫ్రేమ్‌వర్క్",
-        "సిస్టమ్ డిజైన్ కమ్యూనికేషన్",
-        "AI-యుగ లీడర్‌షిప్ సీనారియోలు"
+        "Technical storytelling",
+        "Architecture decision records",
+        "Influence and stakeholder alignment",
+        "Responsible AI leadership",
+        "Interview and promotion narratives"
       ],
       "outcomes": [
-        "STAR ఉపయోగించి ప్రభావవంతమైన కథలను నిర్మించండి",
-        "సాంకేతిక నిర్ణయాలను స్పష్టంగా కమ్యూనికేట్ చేయండి",
-        "AI నీతి మరియు నాయకత్వ ప్రశ్నలను నావిగేట్ చేయండి"
+        "Explain complex AI trade-offs to different audiences",
+        "Build evidence-based leadership stories",
+        "Lead decisions without hiding uncertainty",
+        "Position engineering impact clearly and credibly"
       ],
       "tileLabel": "Interviews",
-      "homeDesc": "లోతుగా వెళ్ళండి"
+      "homeDesc": "Communicate and lead in the AI era"
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "పోర్ట్‌ఫోలియో-సిద్ధం - సమగ్ర కేస్ స్టడీలు",
-      "description": "DSA, సిస్టమ్ డిజైన్ మరియు ప్రవర్తనా నైపుణ్యాలను కలిపే క్యాప్‌స్టోన్ ప్రాజెక్ట్‌లు. వాస్తవ వ్యవస్థలను ప్రారంభం నుండి చివరి వరకు రూపొందించండి మరియు మీ ఇంజనీరింగ్ పోర్ట్‌ఫోలియోను నిర్మించండి.",
-      "audience": "సీనియర్+ పాత్రలకు సిద్ధంగా ఉన్న ఇంజనీర్లు",
-      "prerequisites": "AI Sketch నుండి AI Polish వరకు పూర్తి చేసినవారు",
+      "subtitle": "Your production AI capstone",
+      "description": "Design, build, evaluate, and present an end-to-end AI product. Combine retrieval or tool use with security, tests, observability, a runbook, and a credible product case.",
+      "audience": "Engineers ready to demonstrate production AI capability",
+      "prerequisites": "AI Canopy plus AI Craft, or equivalent experience",
       "topics": [
-        "Twitter AI ఫీడ్ డిజైన్ చేయండి",
-        "పూర్తి మాక్ ఇంటర్వ్యూ",
-        "ఇంజనీరింగ్ పోర్ట్‌ఫోలియో"
+        "Product brief and success metrics",
+        "Architecture and threat model",
+        "RAG or agent implementation",
+        "Evaluation and observability",
+        "Launch review and portfolio case study"
       ],
       "outcomes": [
-        "ఎండ్-టు-ఎండ్ సిస్టమ్ డిజైన్‌లను పూర్తి చేయండి",
-        "మాక్ ఇంటర్వ్యూలలో ఆత్మవిశ్వాసంతో ప్రదర్శించండి",
-        "ఒక అసాధారణ ఇంజనీరింగ్ పోర్ట్‌ఫోలియోను నిర్మించండి"
+        "Ship a portfolio-ready AI system design and prototype",
+        "Demonstrate evaluation beyond a happy-path demo",
+        "Document risk, operations, and rollback decisions",
+        "Present technical work with clear business and user value"
       ],
       "tileLabel": "Architecture",
-      "homeDesc": "AI లో నిపుణత సాధించండి"
+      "homeDesc": "Your production AI capstone"
     },
     "ai-launchpad": {
       "title": "ఇంటర్వ్యూ లాంచ్‌ప్యాడ్",
-      "subtitle": "మీ ఇంటర్వ్యూ ప్రయాణం మొదలవుతుంది",
-      "description": "సాంకేతిక ఇంటర్వ్యూ సన్నాహ ప్రాథమిక అంశాలలో నైపుణ్యం సాధించండి. కంపెనీలను పరిశోధించడం, జాబ్ వివరణలను అర్థం చేసుకోవడం, సన్నాహ టైమ్‌లైన్ రూపొందించడం మరియు భయాన్ని ఆత్మవిశ్వాసంగా మార్చే మానసికతను అభివృద్ధి చేయడం నేర్చుకోండి.",
-      "audience": "సాంకేతిక ఇంటర్వ్యూ సన్నాహం ప్రారంభించే ఎవరైనా",
-      "prerequisites": "ఏమీ లేదు. ఇదే మీ ప్రారంభ బిందువు",
+      "subtitle": "Navigate the AI engineering job market",
+      "description": "Build a focused search strategy for AI-era roles: understand role families, read job descriptions, map your evidence, and prepare a realistic learning and application plan.",
+      "audience": "People starting or redirecting an AI-focused career",
+      "prerequisites": "None",
       "topics": [
-        "కంపెనీ పరిశోధన పద్ధతులు",
-        "జాబ్ వివరణ విశ్లేషణ",
-        "ఇంటర్వ్యూ సన్నాహ టైమ్‌లైన్",
-        "మానసికత & ఆత్మవిశ్వాసం పెంపు"
+        "AI role families and expectations",
+        "Job-description signal extraction",
+        "Skills-gap mapping",
+        "Evidence-led applications",
+        "A sustainable preparation plan"
       ],
       "outcomes": [
-        "నిర్మాణాత్మక ఇంటర్వ్యూ సన్నాహ ప్రణాళిక రూపొందించండి",
-        "ఏ జాబ్ వివరణనైనా సమర్థవంతంగా అర్థం చేసుకోండి",
-        "ప్రొఫెషనల్‌గా కంపెనీలను పరిశోధించండి",
-        "ఇంటర్వ్యూ ఆత్మవిశ్వాసం అభివృద్ధి చేయండి"
+        "Choose target roles based on evidence and strengths",
+        "Turn job descriptions into a practical study plan",
+        "Build a credible project and application portfolio",
+        "Track progress without chasing every new tool"
       ],
       "tileLabel": "సన్నాహం",
-      "homeDesc": "మీ ప్రయాణం ప్రారంభించండి"
+      "homeDesc": "Navigate the AI engineering job market"
     },
     "ai-behavioral": {
       "title": "ప్రవర్తనా ఇంటర్వ్యూ నైపుణ్యం",
-      "subtitle": "ఆఫర్లు తెచ్చే కథలు",
-      "description": "STAR ఫ్రేమ్‌వర్క్, నాయకత్వ కథనాలు మరియు నిర్మాణాత్మక కథా చెప్పడంతో ప్రవర్తనా ఇంటర్వ్యూలలో నైపుణ్యం సాధించండి. మీ అనుభవాన్ని మీ విలువను నిరూపించే ఒప్పించే సమాధానాలుగా మార్చడం నేర్చుకోండి.",
-      "audience": "ప్రవర్తనా రౌండ్లకు సిద్ధమవుతున్న ఏ స్థాయి ఇంజనీర్లైనా",
-      "prerequisites": "ఉదాహరణలు తీసుకోవడానికి నిజమైన ప్రాజెక్ట్ అనుభవం",
+      "subtitle": "Tell the story of how you create impact",
+      "description": "Prepare concise, honest stories about ambiguity, delivery, failure, influence, conflict, and responsible AI decisions using evidence rather than rehearsed slogans.",
+      "audience": "Engineers preparing for behavioural and leadership interviews",
+      "prerequisites": "Real project or collaboration experience",
       "topics": [
-        "STAR పద్ధతి నైపుణ్యం",
-        "నాయకత్వం & టీమ్‌వర్క్ కథలు",
-        "సంఘర్షణ పరిష్కార కథనాలు",
-        "సాంస్కృతిక అనుకూలత అంచనా"
+        "Evidence-led STAR stories",
+        "Ambiguity and prioritisation",
+        "Failure, learning, and recovery",
+        "Conflict and influence",
+        "Responsible AI judgement"
       ],
       "outcomes": [
-        "STAR ప్రతిస్పందన ఫ్రేమ్‌వర్క్‌లో నైపుణ్యం సాధించండి",
-        "ఒప్పించే కెరీర్ కథనాలు రూపొందించండి",
-        "ఏ ప్రవర్తనా ప్రశ్ననైనా ఆత్మవిశ్వాసంతో సమాధానమివ్వండి",
-        "నాయకత్వం మరియు సహకారాన్ని ప్రదర్శించండి"
+        "Build a reusable story bank",
+        "Answer with context, action, and measurable outcome",
+        "Show judgement when technology and people trade-offs collide",
+        "Adapt one experience to different question styles"
       ],
       "tileLabel": "ప్రవర్తన",
-      "homeDesc": "సాఫ్ట్ స్కిల్స్ నేర్చుకోండి"
+      "homeDesc": "Tell the story of how you create impact"
     },
     "ai-technical": {
       "title": "సాంకేతిక ఇంటర్వ్యూలు",
-      "subtitle": "ఒత్తిడిలో కోడింగ్",
-      "description": "కోడింగ్ ఇంటర్వ్యూలు, సిస్టమ్ డిజైన్ రౌండ్లు మరియు సాంకేతిక లోతైన చర్చలను జయించండి. డేటా స్ట్రక్చర్ల నుండి డిస్ట్రిబ్యూటెడ్ సిస్టమ్‌ల వరకు, ఒత్తిడిలో రాణించడానికి నైపుణ్యాలు మరియు ఆత్మవిశ్వాసం పెంచుకోండి.",
-      "audience": "సాంకేతిక ఇంటర్వ్యూ రౌండ్లకు సిద్ధమవుతున్న సాఫ్ట్‌వేర్ ఇంజనీర్లు",
-      "prerequisites": "కనీసం ఒక భాషలో బలమైన ప్రోగ్రామింగ్ ప్రాథమికాలు",
+      "subtitle": "Solve, design, and communicate under pressure",
+      "description": "Practise coding, API, debugging, system design, and AI application questions with a repeatable method for clarifying requirements and defending trade-offs.",
+      "audience": "Software engineers preparing for technical interviews",
+      "prerequisites": "Solid programming fundamentals",
       "topics": [
-        "డేటా స్ట్రక్చర్లు & అల్గారిథమ్‌లు",
-        "సిస్టమ్ డిజైన్ ప్రాథమికాలు",
-        "కోడింగ్ ఇంటర్వ్యూ నమూనాలు",
-        "సమస్య పరిష్కార వ్యూహాలు"
+        "Coding patterns and complexity",
+        "API and data-contract design",
+        "AI system design",
+        "Debugging and code review",
+        "Communication under pressure"
       ],
       "outcomes": [
-        "సాధారణ కోడింగ్ ఇంటర్వ్యూ నమూనాలను పరిష్కరించండి",
-        "వైట్‌బోర్డ్‌పై స్కేలబుల్ సిస్టమ్‌లను డిజైన్ చేయండి",
-        "సాంకేతిక నిర్ణయాలను స్పష్టంగా వివరించండి",
-        "సమయ ఒత్తిడిలో సమస్య పరిష్కారం నిర్వహించండి"
+        "Solve problems with a repeatable framework",
+        "Design reliable AI-enabled services",
+        "Debug systematically instead of guessing",
+        "Communicate assumptions and trade-offs clearly"
       ],
       "tileLabel": "సాంకేతిక",
-      "homeDesc": "కోడింగ్ రౌండ్ విజయం సాధించండి"
+      "homeDesc": "Solve, design, and communicate under pressure"
     },
     "ai-ml-interview": {
       "title": "AI & ML ఇంటర్వ్యూలు",
-      "subtitle": "మెషిన్ లెర్నింగ్ ఇంటర్వ్యూ",
-      "description": "AI మరియు మెషిన్ లెర్నింగ్ పాత్రల కోసం ప్రత్యేక సన్నాహం. ML సిస్టమ్ డిజైన్, మోడల్ మూల్యాంకనం, MLOps మరియు AI-కేంద్రిత కంపెనీలు ఉపయోగించే ప్రత్యేక ఇంటర్వ్యూ ఫార్మాట్‌లను కవర్ చేస్తుంది.",
-      "audience": "టెక్ కంపెనీలలో AI/ML పాత్రలను లక్ష్యంగా చేసుకునే ఇంజనీర్లు",
-      "prerequisites": "ప్రాథమిక ML జ్ఞానం (సూపర్‌వైజ్డ్/అన్‌సూపర్‌వైజ్డ్ లెర్నింగ్)",
+      "subtitle": "Prepare for modern ML and GenAI interviews",
+      "description": "Cover model selection, experimentation, ML system design, RAG and agent evaluation, data quality, MLOps, safety, and the trade-offs interviewers expect you to articulate.",
+      "audience": "Engineers targeting ML, applied AI, or AI platform roles",
+      "prerequisites": "AI foundations plus basic statistics and Python",
       "topics": [
-        "ML సిస్టమ్ డిజైన్",
-        "గణాంక ప్రాథమికాలు",
-        "మోడల్ ఎంపిక & మూల్యాంకనం",
-        "ML కేస్ స్టడీలు"
+        "ML and GenAI system design",
+        "Experimentation and evaluation",
+        "Data and feature quality",
+        "RAG, agents, and LLMOps",
+        "Safety, fairness, and governance"
       ],
       "outcomes": [
-        "ఎండ్-టు-ఎండ్ ML సిస్టమ్‌లను డిజైన్ చేయండి",
-        "మోడల్ ట్రేడ్-ఆఫ్‌లను స్పష్టంగా వివరించండి",
-        "ML-నిర్దిష్ట కేస్ స్టడీలను నిర్వహించండి",
-        "ఆచరణాత్మక ML జ్ఞానాన్ని ప్రదర్శించండి"
+        "Design an ML or GenAI system end to end",
+        "Choose metrics that match user and business outcomes",
+        "Explain deployment and monitoring trade-offs",
+        "Handle safety and failure-mode questions with confidence"
       ],
       "tileLabel": "ML",
-      "homeDesc": "ML ఇంటర్వ్యూ నైపుణ్యం"
+      "homeDesc": "Prepare for modern ML and GenAI interviews"
     },
     "ai-offer": {
       "title": "ఆఫర్ & అంతకు మించి",
-      "subtitle": "ఆఫర్ నుండి కెరీర్ వృద్ధి వరకు",
-      "description": "చివరి దశను నావిగేట్ చేయండి. జీతం చర్చలు, ఆఫర్ మూల్యాంకనం మరియు కెరీర్ వృద్ధి వ్యూహాలు. పరిహారాన్ని పోల్చడం, సమర్థవంతంగా చర్చించడం మరియు దీర్ఘకాలిక కెరీర్ మార్గాన్ని ప్లాన్ చేయడం నేర్చుకోండి.",
-      "audience": "జాబ్ ఆఫర్లు అందుకున్న లేదా ఆశించే ఇంజనీర్లు",
-      "prerequisites": "యాక్టివ్ ఇంటర్వ్యూ ప్రక్రియ లేదా ఇటీవలి ఆఫర్",
+      "subtitle": "Make a confident, informed next move",
+      "description": "Evaluate AI-era roles and offers with a practical framework covering scope, learning, leadership, compensation, risk, working patterns, and your first 90 days.",
+      "audience": "Candidates comparing offers or planning their next career step",
+      "prerequisites": "An active search, interview process, or offer",
       "topics": [
-        "జీతం చర్చల వ్యూహాలు",
-        "ఆఫర్ పోలిక ఫ్రేమ్‌వర్క్",
-        "ప్రయోజనాలు & ఈక్విటీ విశ్లేషణ",
-        "కెరీర్ నిర్ణయం తీసుకోవడం"
+        "Role and scope evaluation",
+        "Compensation and equity",
+        "AI maturity and delivery risk",
+        "Negotiation with evidence",
+        "First 90 days and long-term growth"
       ],
       "outcomes": [
-        "ఆత్మవిశ్వాసంతో పరిహారం చర్చించండి",
-        "బహుళ ఆఫర్లను నిష్పక్షపాతంగా పోల్చండి",
-        "ఈక్విటీ మరియు ప్రయోజన ప్యాకేజీలను అర్థం చేసుకోండి",
-        "వ్యూహాత్మక కెరీర్ నిర్ణయాలు తీసుకోండి"
+        "Compare offers beyond headline salary",
+        "Ask sharper questions about AI strategy and engineering quality",
+        "Negotiate from evidence without burning trust",
+        "Plan a strong first 90 days"
       ],
       "tileLabel": "ఆఫర్",
-      "homeDesc": "అత్యుత్తమ ఆఫర్ పొందండి"
-    }
+      "homeDesc": "Make a confident, informed next move"
+    },
+    "curriculumVersion": "2026 production AI syllabus"
   },
   "programDetail": {
     "level": "స్థాయి",
@@ -863,7 +895,10 @@
     "ai-ethics-in-interviews": "AI Ethics in Interviews",
     "evaluating-multiple-offers": "Evaluating Multiple Offers",
     "first-90-days-strategy": "Your First 90 Days Strategy",
-    "long-term-career-architecture": "Long-Term Career Architecture"
+    "long-term-career-architecture": "Long-Term Career Architecture",
+    "rag-systems-in-practice": "ఆచరణలో RAG వ్యవస్థలు",
+    "agent-tools-and-mcp": "టూల్స్ ఉపయోగించే ఏజెంట్లు మరియు MCP",
+    "evaluate-and-operate-ai": "AI మూల్యాంకనం మరియు నిర్వహణ"
   },
   "pwa": {
     "install": "యాప్ ఇన్‌స్టాల్ చేయండి",

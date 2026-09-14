@@ -273,303 +273,335 @@
     "allTracks": "Todas las Rutas",
     "ai-seeds": {
       "title": "AI Seeds",
-      "subtitle": "Planta Tu Primer Conocimiento en IA",
-      "description": "Empieza desde cero absoluto. Usamos lenguaje sencillo y ejemplos cotidianos para construir tu comprensión, paso a paso.",
-      "audience": "Principiantes sin experiencia técnica",
-      "prerequisites": "Ninguno, ¡solo curiosidad!",
+      "subtitle": "AI literacy for the real world",
+      "description": "Build a clear mental model of modern AI, from training data and neural networks to generative tools, limitations, safety, and the choices people make around them.",
+      "audience": "Curious beginners, leaders, students, and career changers",
+      "prerequisites": "None. Just curiosity and a willingness to question the hype.",
       "topics": [
-        "¿Qué es la IA?",
-        "Cómo aprenden las máquinas",
-        "Tu primer modelo de IA"
+        "AI in everyday products",
+        "Data, models, and predictions",
+        "Generative AI and multimodal tools",
+        "Reliability, bias, and safety",
+        "Human judgement in an AI world"
       ],
       "outcomes": [
-        "Entender qué es la IA y qué no es",
-        "Saber cómo las máquinas aprenden de los datos",
-        "Entrenar un modelo de IA simple en tu navegador"
+        "Explain how modern AI systems learn and generate outputs",
+        "Choose AI tools with clear expectations and boundaries",
+        "Spot common reliability, bias, privacy, and safety risks",
+        "Complete a guided AI experiment and reflect on its limits"
       ],
       "tileLabel": "Básicos",
-      "homeDesc": "Empieza desde cero"
+      "homeDesc": "AI literacy for the real world"
     },
     "ai-sprouts": {
       "title": "AI Sprouts",
-      "subtitle": "Construye Tus Bases en IA",
-      "description": "¿Listo para crecer? Sumérgete en los bloques fundamentales de la IA: datos, algoritmos y redes neuronales. Ejercicios prácticos te ayudan a desarrollar intuición antes de escribir código.",
-      "audience": "Estudiantes que completaron AI Seeds o tienen conocimiento básico de IA",
-      "prerequisites": "AI Seeds (recomendado)",
+      "subtitle": "The foundations behind intelligent systems",
+      "description": "Understand the building blocks behind modern AI: datasets, features, embeddings, neural networks, transformers, evaluation, and the practical trade-offs that shape model behaviour.",
+      "audience": "Learners ready to move from AI literacy into technical understanding",
+      "prerequisites": "AI Seeds or equivalent practical AI awareness",
       "topics": [
-        "Tipos de IA",
-        "Entendiendo los datos",
-        "Cómo decide la IA",
-        "Fundamentos de ética en IA"
+        "Datasets and data quality",
+        "Training, loss, and optimisation",
+        "Embeddings and vector search",
+        "Neural networks and transformers",
+        "Evaluation and responsible use"
       ],
       "outcomes": [
-        "Distinguir aprendizaje supervisado, no supervisado y por refuerzo",
-        "Entender qué son los datos de entrenamiento y por qué importan",
-        "Pensar críticamente sobre el sesgo y la equidad en IA"
+        "Trace the path from data to model output",
+        "Explain embeddings, tokenisation, and transformer intuition",
+        "Select useful evaluation metrics for an AI task",
+        "Diagnose overfitting, bias, and data-quality failures"
       ],
       "tileLabel": "Conceptos Clave",
-      "homeDesc": "Construye bases"
+      "homeDesc": "The foundations behind intelligent systems"
     },
     "ai-branches": {
       "title": "AI Branches",
-      "subtitle": "Explora Aplicaciones del Mundo Real",
-      "description": "Mira la IA en acción en diferentes industrias: salud, finanzas, artes creativas y más. Empieza a construir proyectos sencillos y comprende las herramientas que usan los profesionales.",
-      "audience": "Estudiantes listos para ver la IA aplicada en la práctica",
-      "prerequisites": "AI Sprouts",
+      "subtitle": "Build with today’s AI capabilities",
+      "description": "Move from concepts to applications. Work across text, vision, speech, and multimodal systems while learning where APIs, open models, structured outputs, and human review fit.",
+      "audience": "Learners who want to build useful AI features",
+      "prerequisites": "AI Sprouts or equivalent foundations",
       "topics": [
-        "IA en la salud",
-        "IA en las artes creativas",
-        "Chatbots y NLP",
-        "Fundamentos de visión por computadora"
+        "Model APIs and structured output",
+        "Prompt and context design",
+        "Vision, speech, and multimodal AI",
+        "Fine-tuning versus retrieval",
+        "Human-in-the-loop product design"
       ],
       "outcomes": [
-        "Construir un chatbot sencillo",
-        "Entender cómo funciona el reconocimiento de imágenes",
-        "Crear un mini proyecto impulsado por IA"
+        "Build a small multimodal AI feature",
+        "Choose between prompting, retrieval, and fine-tuning",
+        "Design clear input and output contracts for model calls",
+        "Explain failure modes to non-technical stakeholders"
       ],
       "tileLabel": "Aplicaciones",
-      "homeDesc": "Aplica en la práctica"
+      "homeDesc": "Build with today’s AI capabilities"
     },
     "ai-canopy": {
       "title": "AI Canopy",
-      "subtitle": "Inmersión Profunda en Sistemas de IA",
-      "description": "Profundiza en redes neuronales, modelos de lenguaje grandes y diseño de sistemas de IA. Aprende a evaluar herramientas de IA críticamente y comprende la ingeniería detrás de la IA moderna.",
-      "audience": "Estudiantes intermedios listos para profundidad técnica",
-      "prerequisites": "AI Branches",
+      "subtitle": "Engineer reliable GenAI systems",
+      "description": "Design production-minded LLM applications with retrieval, tool use, agent workflows, MCP, evaluation, guardrails, and observability. Learn to optimise for quality, latency, safety, and cost.",
+      "audience": "Developers and technical practitioners building AI applications",
+      "prerequisites": "AI Branches plus basic Python or TypeScript",
       "topics": [
-        "Redes neuronales",
-        "Modelos de Lenguaje Grandes",
-        "Prompt engineering",
-        "Diseño de sistemas de IA"
+        "LLM application architecture",
+        "RAG, hybrid retrieval, and reranking",
+        "Tool calling, MCP, and agent workflows",
+        "Golden datasets and agent evaluation",
+        "Guardrails, tracing, latency, and cost"
       ],
       "outcomes": [
-        "Comprender cómo funcionan las redes neuronales",
-        "Dominar técnicas de prompt engineering",
-        "Evaluar herramientas y servicios de IA críticamente"
+        "Build a grounded RAG assistant with citations",
+        "Design a safe tool-using agent with explicit boundaries",
+        "Create regression evaluations for quality and tool behaviour",
+        "Instrument an AI feature for latency, cost, and failure analysis"
       ],
       "tileLabel": "Avanzado",
-      "homeDesc": "Profundiza"
+      "homeDesc": "Engineer reliable GenAI systems"
     },
     "ai-forest": {
       "title": "AI Forest",
-      "subtitle": "Domina el Ecosistema de IA",
-      "description": "La visión completa: investigación en IA, construcción de sistemas de IA en producción, contribución a IA open source y comprensión de hacia dónde va el campo. Para quienes quieren dar forma al futuro.",
-      "audience": "Estudiantes avanzados y aspirantes a profesionales de IA",
-      "prerequisites": "AI Canopy",
+      "subtitle": "Ship AI products responsibly",
+      "description": "Bring the full lifecycle together: product discovery, architecture, data governance, model and vendor choices, deployment, monitoring, incident response, regulation, and continuous improvement.",
+      "audience": "Senior builders, product engineers, technical leaders, and founders",
+      "prerequisites": "AI Canopy or equivalent production AI experience",
       "topics": [
-        "Construir productos de IA",
-        "IA open source",
-        "Artículos de investigación en IA",
-        "El futuro de la IA"
+        "AI product discovery and measurement",
+        "LLMOps and deployment strategy",
+        "Security, privacy, and threat modelling",
+        "Governance, regulation, and auditability",
+        "Reliability, economics, and incident response"
       ],
       "outcomes": [
-        "Construir y desplegar una aplicación impulsada por IA",
-        "Leer y comprender artículos de investigación en IA",
-        "Contribuir a proyectos de IA open source"
+        "Create a production AI delivery plan with measurable outcomes",
+        "Threat-model an AI system and define control points",
+        "Build a release and monitoring strategy for model change",
+        "Make defensible trade-offs across quality, cost, speed, and risk"
       ],
       "tileLabel": "Maestría",
-      "homeDesc": "Domina la IA"
+      "homeDesc": "Ship AI products responsibly"
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "Trazos Iniciales - Fundamentos de DSA",
-      "description": "Domina las estructuras de datos y algoritmos fundamentales que impulsan los sistemas de IA. Arrays, hash maps, strings y ordenamiento, visualizados con diagramas y explicados con aplicaciones reales de IA.",
-      "audience": "Ingenieros que inician preparación para entrevistas o refrescan fundamentos",
-      "prerequisites": "Programación básica en cualquier lenguaje",
+      "subtitle": "Engineering foundations for AI builders",
+      "description": "Strengthen the programming, data structures, testing, and complexity fundamentals that make AI systems understandable, efficient, and maintainable.",
+      "audience": "Developers beginning AI engineering or interview preparation",
+      "prerequisites": "Basic programming in Python, JavaScript, Java, or another language",
       "topics": [
-        "Arrays y Hashing",
-        "Strings y Coincidencia de Patrones",
-        "Ordenamiento y Búsqueda"
+        "Complexity and trade-offs",
+        "Core data structures",
+        "Searching, sorting, and graphs",
+        "Testing and debugging",
+        "Data pipelines and API boundaries"
       ],
       "outcomes": [
-        "Resolver problemas de arrays y hash maps con confianza",
-        "Entender cómo estos patrones impulsan los sistemas de IA",
-        "Reconocer patrones comunes de entrevistas"
+        "Choose data structures deliberately",
+        "Explain time and space trade-offs",
+        "Write testable solutions under constraints",
+        "Connect algorithms to real AI application workloads"
       ],
       "tileLabel": "Fundamentos",
-      "homeDesc": "Empieza desde cero"
+      "homeDesc": "Engineering foundations for AI builders"
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "Tallando Precisión - Patrones Intermedios",
-      "description": "Sube de nivel con patrones algorítmicos intermedios: dos punteros, ventana deslizante, BFS/DFS y recorridos de árboles. Cada patrón vinculado a aplicaciones reales de IA/ML.",
-      "audience": "Ingenieros con fundamentos de DSA listos para problemas de nivel medio",
-      "prerequisites": "AI Sketch o fundamentos equivalentes",
+      "subtitle": "Patterns for solving harder problems",
+      "description": "Practise the algorithmic patterns that recur in production services, search, recommendation, data processing, and technical interviews.",
+      "audience": "Engineers with programming fundamentals",
+      "prerequisites": "AI Sketch or equivalent data-structure knowledge",
       "topics": [
-        "Dos Punteros y Ventana Deslizante",
-        "Árboles y Recorrido de Grafos",
-        "Pilas, Colas y Patrones Monotónicos"
+        "Sliding windows and intervals",
+        "Trees, graphs, and union-find",
+        "Heaps, tries, and monotonic structures",
+        "Dynamic programming",
+        "Performance and correctness"
       ],
       "outcomes": [
-        "Aplicar dos punteros y ventana deslizante para optimizar soluciones",
-        "Recorrer árboles y grafos con BFS/DFS",
-        "Conectar estos patrones con búsqueda e inferencia en IA"
+        "Recognise and apply reusable problem-solving patterns",
+        "Prove correctness and analyse complexity",
+        "Choose practical optimisations without premature complexity",
+        "Communicate a solution clearly under pressure"
       ],
       "tileLabel": "Estructuras de Datos",
-      "homeDesc": "Construye bases"
+      "homeDesc": "Patterns for solving harder problems"
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "Construyendo Habilidad - Diseño de Sistemas",
-      "description": "Diseña sistemas a gran escala que impulsan la IA: motores de recomendación, autocompletado de búsqueda, limitadores de tasa. Aprende a pensar en arquitecturas, no solo en código.",
-      "audience": "Ingenieros de nivel medio a senior preparándose para rondas de diseño de sistemas",
-      "prerequisites": "Experiencia cómoda con entrevistas de código",
+      "subtitle": "Design systems that scale AI",
+      "description": "Learn system design for modern AI products: model gateways, retrieval services, async workloads, streaming, caches, rate limits, tenancy, and resilient APIs.",
+      "audience": "Mid-to-senior engineers designing distributed AI systems",
+      "prerequisites": "Comfort with APIs, databases, and distributed-system basics",
       "topics": [
-        "Diseñar un Acortador de URLs",
-        "Diseñar un Limitador de Tasa",
-        "Diseñar un Motor de Recomendación"
+        "AI platform and model gateways",
+        "RAG and vector retrieval services",
+        "Queues, streaming, and async inference",
+        "Caching, rate limits, and tenancy",
+        "Resilience, security, and observability"
       ],
       "outcomes": [
-        "Estructurar respuestas de diseño de sistemas con claridad",
-        "Diseñar sistemas distribuidos escalables",
-        "Comprender patrones de infraestructura específicos de IA"
+        "Produce a clear architecture with justified trade-offs",
+        "Design for failure, scale, and operational visibility",
+        "Estimate AI cost and capacity before implementation",
+        "Defend an AI system design in a technical review"
       ],
       "tileLabel": "Sistemas",
-      "homeDesc": "Aplica en la práctica"
+      "homeDesc": "Design systems that scale AI"
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "Refinando la Excelencia - Dominio Conductual",
-      "description": "Domina la entrevista conductual con marcos estructurados. Método STAR, principios de liderazgo, escenarios de la era IA y estrategias de comunicación.",
-      "audience": "Ingenieros de cualquier nivel preparándose para rondas conductuales",
-      "prerequisites": "Experiencia real en proyectos de la que extraer ejemplos",
+      "subtitle": "Communicate and lead in the AI era",
+      "description": "Turn strong engineering into visible impact through technical communication, decision records, stakeholder alignment, responsible leadership, and AI-aware career storytelling.",
+      "audience": "Engineers moving into senior, lead, or AI-focused roles",
+      "prerequisites": "Professional project experience",
       "topics": [
-        "Marco STAR para Ingenieros",
-        "Comunicación en Diseño de Sistemas",
-        "Escenarios de Liderazgo en la Era IA"
+        "Technical storytelling",
+        "Architecture decision records",
+        "Influence and stakeholder alignment",
+        "Responsible AI leadership",
+        "Interview and promotion narratives"
       ],
       "outcomes": [
-        "Estructurar historias convincentes usando STAR",
-        "Comunicar decisiones técnicas con claridad",
-        "Navegar preguntas de ética y liderazgo en IA"
+        "Explain complex AI trade-offs to different audiences",
+        "Build evidence-based leadership stories",
+        "Lead decisions without hiding uncertainty",
+        "Position engineering impact clearly and credibly"
       ],
       "tileLabel": "Producción",
-      "homeDesc": "Profundiza"
+      "homeDesc": "Communicate and lead in the AI era"
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "Listo para el Portfolio - Casos de Estudio Completos",
-      "description": "Proyectos finales que combinan DSA, diseño de sistemas y habilidades conductuales. Diseña sistemas reales de principio a fin y construye tu portfolio de ingeniería.",
-      "audience": "Ingenieros listos para roles senior+",
-      "prerequisites": "Completados AI Sketch hasta AI Polish",
+      "subtitle": "Your production AI capstone",
+      "description": "Design, build, evaluate, and present an end-to-end AI product. Combine retrieval or tool use with security, tests, observability, a runbook, and a credible product case.",
+      "audience": "Engineers ready to demonstrate production AI capability",
+      "prerequisites": "AI Canopy plus AI Craft, or equivalent experience",
       "topics": [
-        "Diseñar el Feed IA de Twitter",
-        "Simulación Completa de Entrevista",
-        "Portfolio de Ingeniería"
+        "Product brief and success metrics",
+        "Architecture and threat model",
+        "RAG or agent implementation",
+        "Evaluation and observability",
+        "Launch review and portfolio case study"
       ],
       "outcomes": [
-        "Completar diseños de sistemas de principio a fin",
-        "Desempeñarse con confianza en simulaciones de entrevista",
-        "Construir un portfolio de ingeniería destacado"
+        "Ship a portfolio-ready AI system design and prototype",
+        "Demonstrate evaluation beyond a happy-path demo",
+        "Document risk, operations, and rollback decisions",
+        "Present technical work with clear business and user value"
       ],
       "tileLabel": "Arquitectura",
-      "homeDesc": "Domina la IA"
+      "homeDesc": "Your production AI capstone"
     },
     "ai-launchpad": {
       "title": "Plataforma de Entrevistas",
-      "subtitle": "Tu camino hacia las entrevistas comienza",
-      "description": "Domina los fundamentos de la preparación para entrevistas técnicas. Aprende a investigar empresas, descifrar descripciones de puestos, crear tu cronograma de preparación y desarrollar la mentalidad que transforma los nervios en confianza.",
-      "audience": "Cualquier persona que inicia su preparación para entrevistas técnicas",
-      "prerequisites": "Ninguno. este es tu punto de partida",
+      "subtitle": "Navigate the AI engineering job market",
+      "description": "Build a focused search strategy for AI-era roles: understand role families, read job descriptions, map your evidence, and prepare a realistic learning and application plan.",
+      "audience": "People starting or redirecting an AI-focused career",
+      "prerequisites": "None",
       "topics": [
-        "Técnicas de investigación de empresas",
-        "Análisis de descripciones de puestos",
-        "Cronograma de preparación para entrevistas",
-        "Desarrollo de mentalidad y confianza"
+        "AI role families and expectations",
+        "Job-description signal extraction",
+        "Skills-gap mapping",
+        "Evidence-led applications",
+        "A sustainable preparation plan"
       ],
       "outcomes": [
-        "Construir un plan estructurado de preparación para entrevistas",
-        "Descifrar cualquier descripción de puesto eficazmente",
-        "Investigar empresas como un profesional",
-        "Desarrollar confianza para las entrevistas"
+        "Choose target roles based on evidence and strengths",
+        "Turn job descriptions into a practical study plan",
+        "Build a credible project and application portfolio",
+        "Track progress without chasing every new tool"
       ],
       "tileLabel": "Preparación",
-      "homeDesc": "Comienza tu camino"
+      "homeDesc": "Navigate the AI engineering job market"
     },
     "ai-behavioral": {
       "title": "Dominio Conductual",
-      "subtitle": "Historias que consiguen ofertas",
-      "description": "Domina las entrevistas conductuales con el marco STAR, narrativas de liderazgo y storytelling estructurado. Aprende a transformar tu experiencia en respuestas convincentes que demuestren tu valor.",
-      "audience": "Ingenieros de cualquier nivel preparándose para rondas conductuales",
-      "prerequisites": "Experiencia real en proyectos de la cual extraer ejemplos",
+      "subtitle": "Tell the story of how you create impact",
+      "description": "Prepare concise, honest stories about ambiguity, delivery, failure, influence, conflict, and responsible AI decisions using evidence rather than rehearsed slogans.",
+      "audience": "Engineers preparing for behavioural and leadership interviews",
+      "prerequisites": "Real project or collaboration experience",
       "topics": [
-        "Dominio del método STAR",
-        "Historias de liderazgo y trabajo en equipo",
-        "Narrativas de resolución de conflictos",
-        "Evaluación de encaje cultural"
+        "Evidence-led STAR stories",
+        "Ambiguity and prioritisation",
+        "Failure, learning, and recovery",
+        "Conflict and influence",
+        "Responsible AI judgement"
       ],
       "outcomes": [
-        "Dominar el marco de respuesta STAR",
-        "Crear narrativas profesionales convincentes",
-        "Manejar cualquier pregunta conductual con confianza",
-        "Demostrar liderazgo y colaboración"
+        "Build a reusable story bank",
+        "Answer with context, action, and measurable outcome",
+        "Show judgement when technology and people trade-offs collide",
+        "Adapt one experience to different question styles"
       ],
       "tileLabel": "Conductual",
-      "homeDesc": "Domina las habilidades blandas"
+      "homeDesc": "Tell the story of how you create impact"
     },
     "ai-technical": {
       "title": "Entrevistas Técnicas",
-      "subtitle": "Programar bajo presión",
-      "description": "Conquista entrevistas de programación, rondas de diseño de sistemas y profundizaciones técnicas. Desde estructuras de datos hasta sistemas distribuidos, desarrolla las habilidades y confianza para brillar bajo presión.",
-      "audience": "Ingenieros de software preparándose para rondas de entrevistas técnicas",
-      "prerequisites": "Fundamentos sólidos de programación en al menos un lenguaje",
+      "subtitle": "Solve, design, and communicate under pressure",
+      "description": "Practise coding, API, debugging, system design, and AI application questions with a repeatable method for clarifying requirements and defending trade-offs.",
+      "audience": "Software engineers preparing for technical interviews",
+      "prerequisites": "Solid programming fundamentals",
       "topics": [
-        "Estructuras de datos y algoritmos",
-        "Fundamentos de diseño de sistemas",
-        "Patrones de entrevistas de programación",
-        "Estrategias de resolución de problemas"
+        "Coding patterns and complexity",
+        "API and data-contract design",
+        "AI system design",
+        "Debugging and code review",
+        "Communication under pressure"
       ],
       "outcomes": [
-        "Resolver patrones comunes de entrevistas de programación",
-        "Diseñar sistemas escalables en la pizarra",
-        "Comunicar decisiones técnicas con claridad",
-        "Manejar la resolución de problemas bajo presión de tiempo"
+        "Solve problems with a repeatable framework",
+        "Design reliable AI-enabled services",
+        "Debug systematically instead of guessing",
+        "Communicate assumptions and trade-offs clearly"
       ],
       "tileLabel": "Técnica",
-      "homeDesc": "Supera la ronda de código"
+      "homeDesc": "Solve, design, and communicate under pressure"
     },
     "ai-ml-interview": {
       "title": "Entrevistas de IA y ML",
-      "subtitle": "La entrevista de Machine Learning",
-      "description": "Preparación especializada para roles de IA y aprendizaje automático. Cubre diseño de sistemas ML, evaluación de modelos, MLOps y los formatos de entrevista únicos de empresas enfocadas en IA.",
-      "audience": "Ingenieros que buscan roles de IA/ML en empresas tecnológicas",
-      "prerequisites": "Conocimientos básicos de ML (aprendizaje supervisado/no supervisado)",
+      "subtitle": "Prepare for modern ML and GenAI interviews",
+      "description": "Cover model selection, experimentation, ML system design, RAG and agent evaluation, data quality, MLOps, safety, and the trade-offs interviewers expect you to articulate.",
+      "audience": "Engineers targeting ML, applied AI, or AI platform roles",
+      "prerequisites": "AI foundations plus basic statistics and Python",
       "topics": [
-        "Diseño de sistemas de ML",
-        "Fundamentos estadísticos",
-        "Selección y evaluación de modelos",
-        "Estudios de caso de ML"
+        "ML and GenAI system design",
+        "Experimentation and evaluation",
+        "Data and feature quality",
+        "RAG, agents, and LLMOps",
+        "Safety, fairness, and governance"
       ],
       "outcomes": [
-        "Diseñar sistemas de ML de extremo a extremo",
-        "Explicar las compensaciones de modelos con claridad",
-        "Manejar estudios de caso específicos de ML",
-        "Demostrar conocimiento práctico de ML"
+        "Design an ML or GenAI system end to end",
+        "Choose metrics that match user and business outcomes",
+        "Explain deployment and monitoring trade-offs",
+        "Handle safety and failure-mode questions with confidence"
       ],
       "tileLabel": "ML",
-      "homeDesc": "Dominio en entrevistas de ML"
+      "homeDesc": "Prepare for modern ML and GenAI interviews"
     },
     "ai-offer": {
       "title": "Oferta y Más Allá",
-      "subtitle": "De la oferta al crecimiento profesional",
-      "description": "Navega la recta final. negociación salarial, evaluación de ofertas y estrategias de crecimiento profesional. Aprende a comparar compensaciones, negociar eficazmente y planificar tu trayectoria profesional a largo plazo.",
-      "audience": "Ingenieros que han recibido o esperan ofertas de trabajo",
-      "prerequisites": "Proceso de entrevistas activo u oferta reciente",
+      "subtitle": "Make a confident, informed next move",
+      "description": "Evaluate AI-era roles and offers with a practical framework covering scope, learning, leadership, compensation, risk, working patterns, and your first 90 days.",
+      "audience": "Candidates comparing offers or planning their next career step",
+      "prerequisites": "An active search, interview process, or offer",
       "topics": [
-        "Tácticas de negociación salarial",
-        "Marco de comparación de ofertas",
-        "Análisis de beneficios y acciones",
-        "Toma de decisiones profesionales"
+        "Role and scope evaluation",
+        "Compensation and equity",
+        "AI maturity and delivery risk",
+        "Negotiation with evidence",
+        "First 90 days and long-term growth"
       ],
       "outcomes": [
-        "Negociar compensación con confianza",
-        "Comparar múltiples ofertas objetivamente",
-        "Comprender paquetes de acciones y beneficios",
-        "Tomar decisiones profesionales estratégicas"
+        "Compare offers beyond headline salary",
+        "Ask sharper questions about AI strategy and engineering quality",
+        "Negotiate from evidence without burning trust",
+        "Plan a strong first 90 days"
       ],
       "tileLabel": "Oferta",
-      "homeDesc": "Consigue la mejor oferta"
-    }
+      "homeDesc": "Make a confident, informed next move"
+    },
+    "curriculumVersion": "2026 production AI syllabus"
   },
   "programDetail": {
     "level": "Nivel",
@@ -1272,7 +1304,10 @@
     "ai-ethics-in-interviews": "AI Ethics in Interviews",
     "evaluating-multiple-offers": "Evaluating Multiple Offers",
     "first-90-days-strategy": "Your First 90 Days Strategy",
-    "long-term-career-architecture": "Long-Term Career Architecture"
+    "long-term-career-architecture": "Long-Term Career Architecture",
+    "rag-systems-in-practice": "Sistemas RAG en la práctica",
+    "agent-tools-and-mcp": "Agentes con herramientas y MCP",
+    "evaluate-and-operate-ai": "Evaluar y operar la IA"
   },
   "pwa": {
     "install": "Instalar App",
