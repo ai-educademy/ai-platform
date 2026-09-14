@@ -75,7 +75,7 @@ function PricingCard({
   features: string[];
   cta: string;
   popular?: boolean;
-  plan: "monthly" | "annual" | "lifetime";
+  plan: "free" | "monthly" | "annual" | "lifetime";
   locale: string;
   promoCode: string;
   onPromoApplied: () => void;
@@ -85,6 +85,7 @@ function PricingCard({
   const [error, setError] = useState("");
 
   const handleClick = async () => {
+    if (plan === "free") return;
     setError("");
 
     if (!session?.user) {
@@ -153,11 +154,13 @@ function PricingCard({
 
       <button
         onClick={handleClick}
-        disabled={loading}
+        disabled={plan === "free" || loading}
         className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all ${
           popular
             ? "bg-gradient-to-r from-violet-500 to-indigo-600 text-white hover:opacity-90 shadow-lg shadow-violet-500/25"
-            : "bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-violet-500 hover:text-violet-600"
+            : plan === "free"
+              ? "bg-[var(--color-surface)] text-[var(--color-text-muted)] border border-[var(--color-border)] cursor-default"
+              : "bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-violet-500 hover:text-violet-600"
         } disabled:opacity-50`}
       >
         {loading ? "Redirecting…" : cta}
@@ -175,6 +178,20 @@ export function PricingCards({ locale }: { locale: string }) {
   const [promoStatus, setPromoStatus] = useState<"idle" | "applied" | "invalid">("idle");
 
   const plans = [
+    {
+      title: t("free.title"),
+      price: "£0",
+      period: "",
+      plan: "free" as const,
+      features: [
+        t("free.f1"),
+        t("free.f2"),
+        t("free.f3"),
+        t("free.f4"),
+        t("free.f5"),
+      ],
+      cta: t("free.cta"),
+    },
     {
       title: t("monthly.title"),
       price: "£3.99",

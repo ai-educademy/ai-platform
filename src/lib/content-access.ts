@@ -1,16 +1,23 @@
 /**
- * Course access is paid. The public site can still expose programme
- * descriptions, the Lab, and articles, but lesson content requires a plan.
+ * Starter programmes are free. Premium programmes expose their first lesson
+ * as a preview; the remaining lessons require an active Pro plan or admin role.
  */
-export function isFreeProgram(_programSlug: string): boolean {
-  return false;
-}
+const FREE_PROGRAMS = new Set([
+  "ai-seeds",
+  "ai-sprouts",
+  "ai-sketch",
+  "ai-launchpad",
+]);
 
 export function isFreeLessonAccess(
-  _programSlug: string,
-  _lessonOrder: number
+  programSlug: string,
+  lessonOrder: number
 ): boolean {
-  return false;
+  return FREE_PROGRAMS.has(programSlug) || lessonOrder === 1;
+}
+
+export function isFreeProgram(programSlug: string): boolean {
+  return FREE_PROGRAMS.has(programSlug);
 }
 
 export function requiresPremium(

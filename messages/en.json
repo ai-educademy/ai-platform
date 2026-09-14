@@ -660,7 +660,7 @@
         },
         {
           "q": "Is AI Seeds really free?",
-          "a": "Yes, AI Seeds is completely free. AI Educademy is an open-source project committed to making AI education accessible to everyone. There are no hidden costs, paywalls, or premium upsells for this program."
+          "a": "Yes, AI Seeds is free to start, with Pro available for premium programmes. AI Educademy is an open-source project committed to making AI education accessible to everyone. There are no hidden costs, paywalls, or premium upsells for this program."
         },
         {
           "q": "What topics does AI Seeds cover?",
@@ -686,7 +686,7 @@
         },
         {
           "q": "Is AI Sprouts free?",
-          "a": "Yes, completely free. AI Educademy believes quality AI education should be accessible to everyone, everywhere."
+          "a": "Yes, free to start, with Pro available for premium programmes. AI Educademy believes quality AI education should be accessible to everyone, everywhere."
         },
         {
           "q": "What will I learn in AI Sprouts?",
@@ -712,7 +712,7 @@
         },
         {
           "q": "Is AI Branches free?",
-          "a": "Yes, AI Branches is completely free. All programs on AI Educademy are open-source and accessible without cost."
+          "a": "Yes, AI Branches is free to start, with Pro available for premium programmes. All programs on AI Educademy are open-source and accessible without cost."
         },
         {
           "q": "What industries does AI Branches cover?",
@@ -812,7 +812,7 @@
         },
         {
           "q": "Is AI Chisel free?",
-          "a": "Yes, completely free. All programs on AI Educademy are open-source and available at no cost."
+          "a": "Yes, free to start, with Pro available for premium programmes. All programs on AI Educademy are open-source and available at no cost."
         },
         {
           "q": "Will AI Chisel help me in coding interviews?",
@@ -842,7 +842,7 @@
         },
         {
           "q": "Is AI Craft free?",
-          "a": "Yes, AI Craft is completely free. Our goal is to democratise access to high-quality interview preparation resources."
+          "a": "Yes, AI Craft is free to start, with Pro available for premium programmes. Our goal is to democratise access to high-quality interview preparation resources."
         },
         {
           "q": "What systems will I learn to design?",
@@ -894,7 +894,7 @@
         },
         {
           "q": "Is AI Masterpiece free?",
-          "a": "Yes, completely free. AI Educademy is committed to making world-class interview prep accessible to all."
+          "a": "Yes, free to start, with Pro available for premium programmes. AI Educademy is committed to making world-class interview prep accessible to all."
         },
         {
           "q": "What kind of projects will I build?",
@@ -920,7 +920,7 @@
         },
         {
           "q": "Is Interview Launchpad free?",
-          "a": "Yes, completely free. AI Educademy's Career Ready track is designed to help everyone access quality interview preparation."
+          "a": "Yes, free to start, with Pro available for premium programmes. AI Educademy's Career Ready track is designed to help everyone access quality interview preparation."
         },
         {
           "q": "What makes Interview Launchpad different from other interview prep?",
@@ -946,7 +946,7 @@
         },
         {
           "q": "Is Behavioral Mastery free?",
-          "a": "Yes, completely free and always will be."
+          "a": "Yes, free to start, with Pro available for the full learning path."
         },
         {
           "q": "Do I need real project experience?",
@@ -972,7 +972,7 @@
         },
         {
           "q": "Is Technical Interviews free?",
-          "a": "Yes, completely free. We believe everyone deserves access to quality interview preparation."
+          "a": "Yes, free to start, with Pro available for premium programmes. We believe everyone deserves access to quality interview preparation."
         },
         {
           "q": "Does Technical Interviews include system design?",
@@ -998,7 +998,7 @@
         },
         {
           "q": "Is AI & ML Interviews free?",
-          "a": "Yes, completely free. Specialised ML interview prep is usually expensive — we're making it accessible to everyone."
+          "a": "Yes, free to start, with Pro available for premium programmes. Specialised ML interview prep is usually expensive — we're making it accessible to everyone."
         },
         {
           "q": "Which companies' interview styles does this program cover?",
@@ -1024,7 +1024,7 @@
         },
         {
           "q": "Is Offer & Beyond free?",
-          "a": "Yes, completely free. We believe everyone should have access to negotiation knowledge that can impact their career earnings significantly."
+          "a": "Yes, free to start, with Pro available for premium programmes. We believe everyone should have access to negotiation knowledge that can impact their career earnings significantly."
         },
         {
           "q": "Can Offer & Beyond help me compare multiple offers?",
@@ -1834,7 +1834,7 @@
     "q1": "What is AI Educademy?",
     "a1": "AI Educademy is an open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone, regardless of background, understand and apply AI concepts.",
     "q2": "How does AI Educademy pricing work?",
-    "a2": "AI Educademy is a focused learning platform with one clear goal: help you build practical AI capability. Programme content is available through a Pro plan, with monthly, annual, and lifetime options. The Lab, articles, and programme previews remain available so you can see the quality before you choose.",
+    "a2": "AI Educademy offers four free starter programmes and a first-lesson preview in every other programme. Pro unlocks every academy, track, certificate, and premium feature through monthly, annual, or lifetime access.",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
     "q4": "What programs are available?",
@@ -1862,7 +1862,7 @@
     "q15": "What is the Lab section?",
     "a15": "The Lab is a collection of interactive AI experiments you can run live in your browser. No installation or setup required. Explore a neural network playground, test AI vs human text detection, experiment with prompts, generate images, analyse sentiment, chat with an AI, and explore ethics scenarios.",
     "q16": "Do I need an account to start learning?",
-    "a16": "No account is needed to browse programmes, articles, and the Lab. Create an account to purchase access, track progress across devices, and earn completion certificates.",
+    "a16": "No account is needed to browse programmes, articles, and the Lab. Start the four starter programmes for free, or create an account to purchase Pro, track progress across devices, and earn completion certificates.",
     "q17": "Are there certificates or credentials?",
     "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available for Pro subscribers who complete programs.",
     "q18": "How often is new content added?",
@@ -1878,16 +1878,16 @@
     "q23": "How do I track my learning progress?",
     "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
     "q24": "What makes AI Educademy different from other platforms?",
-    "a24": "AI Educademy combines structured learning, practical projects, interactive experiments, and genuinely multilingual content. It is built for people who want to understand AI properly and use it confidently, not just collect another set of videos.",
+    "a24": "AI Educademy combines a generous starter tier, structured learning, practical projects, interactive experiments, and genuinely multilingual content. Pro takes you from foundations to production-minded AI skills.",
     "q25": "How do I get started?",
-    "a25": "Browse the academies, choose the path that matches your goal, and start with a monthly, annual, or lifetime plan. If you're new to AI, begin with AI Seeds. If you already build software, start with AI Canopy or the Craft Engineering path."
+    "a25": "Browse the academies and start with AI Seeds, AI Sprouts, AI Sketch, or Interview Launchpad for free. Choose a monthly, annual, or lifetime Pro plan when you are ready for the deeper programmes."
   },
   "pricing": {
     "pageTitle": "Pricing",
     "pageDescription": "Choose monthly, annual, or lifetime access to practical AI academies, projects, labs, and certificates.",
     "badge": "Invest in your edge",
     "heading": "One plan. Every academy.",
-    "subheading": "Go from first principles to production-minded AI skills with one focused membership. Pick the pace and commitment that work for you.",
+    "subheading": "Start with four free starter programmes, then unlock every academy, lesson, project, and certificate with Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
     "monthly": {
@@ -1918,7 +1918,16 @@
     "promoCodePlaceholder": "Enter code",
     "promoCodeApply": "Apply",
     "promoCodeApplied": "Code applied!",
-    "promoCodeInvalid": "Invalid code"
+    "promoCodeInvalid": "Invalid code",
+    "free": {
+      "title": "Explorer",
+      "f1": "Start with four free starter programmes, then unlock every academy, lesson, project, and certificate with Pro.",
+      "f2": "AI Educademy offers four free starter programmes and a first-lesson preview in every other programme. Pro unlocks every academy, track, certificate, and premium feature through monthly, annual, or lifetime access.",
+      "f3": "Articles and programme previews",
+      "f4": "Interactive AI Lab experiments",
+      "f5": "Progress saved locally",
+      "cta": "Start free"
+    }
   },
   "paywall": {
     "title": "Your next level is behind this door",
@@ -2306,7 +2315,7 @@
     "errorInvalidEmail": "Please enter a valid email address.",
     "errorNameRequired": "Please enter your name.",
     "pageCount": "10-page PDF guide",
-    "freeForever": "100% Free",
+    "freeForever": "Free starter access",
     "instantDownload": "Instant Download"
   },
   "launch": {
