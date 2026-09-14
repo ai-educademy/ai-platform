@@ -66,20 +66,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "Mock interview is not configured. Please add GEMINI_API_KEY." },
-        { status: 503 }
-      );
-    }
-
     const body = await req.json();
     const parsed = InterviewRequestSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
         { error: parsed.error.issues[0]?.message ?? "Invalid request" },
         { status: 400 }
+      );
+    }
+
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Mock interview is not configured. Please add GEMINI_API_KEY." },
+        { status: 503 }
       );
     }
 

@@ -1,7 +1,13 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("API Endpoints", () => {
+  // These two tests call the live Gemini API. Skip them when no key is available
+  // (e.g. fork PRs, where GitHub does not expose repository secrets) so the suite
+  // reports honestly instead of failing on a missing credential.
+  const hasGeminiKey = Boolean(process.env.GEMINI_API_KEY);
+
   test("chat API responds to POST", async ({ request }) => {
+    test.skip(!hasGeminiKey, "GEMINI_API_KEY not available in this environment");
     const response = await request.post("/api/chat", {
       data: {
         messages: [{ role: "user", content: "What is AI Seeds?" }],
@@ -26,6 +32,7 @@ test.describe("API Endpoints", () => {
   });
 
   test("mock-interview API responds to POST", async ({ request }) => {
+    test.skip(!hasGeminiKey, "GEMINI_API_KEY not available in this environment");
     const response = await request.post("/api/mock-interview", {
       data: {
         type: "behavioral",
@@ -66,9 +73,8 @@ test.describe("API Endpoints", () => {
   });
 
   test("certificates API rejects unauthenticated", async ({ request }) => {
-    const response = await request.post("/api/certificates", {
-      data: { programSlug: "ai-seeds" },
-    });
+    // The certificates API is GET-only and takes programSlug as a query param.
+    const response = await request.get("/api/certificates?programSlug=ai-seeds");
     // Should be 401 (unauthenticated) — not 500
     expect([401, 403]).toContain(response.status());
   });
