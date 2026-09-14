@@ -1848,7 +1848,11 @@
       "f4": "Interactive AI Lab experiments",
       "f5": "Progress saved locally",
       "cta": "Start free"
-    }
+    },
+    "mostPopular": "Most Popular",
+    "redirecting": "Redirecting…",
+    "checkoutError": "Could not create checkout session. Please try again.",
+    "genericError": "Something went wrong. Please try again."
   },
   "paywall": {
     "title": "Your next level is behind this door",
@@ -2242,7 +2246,21 @@
   },
   "emails": {
     "abandonedCartSubject": "You left something behind!",
-    "abandonedCartPreview": "Your AI learning journey is waiting"
+    "abandonedCartPreview": "Your AI learning journey is waiting",
+    "abandonedCartFallbackName": "there",
+    "abandonedCartGreeting": "Hi {name},",
+    "abandonedCartBody1": "Still thinking about it? We noticed you started checking out but didn't finish. No worries, your spot is still available.",
+    "abandonedCartBody2": "With AI Educademy Pro you get access to all programs, learning tracks, AI Mock Interviews, certificates, and more.",
+    "abandonedCartPromo": "🎉 Use code {code} at checkout to save on your plan.",
+    "abandonedCartCta": "Complete your purchase",
+    "abandonedCartUnlockTitle": "What you'll unlock with Pro:",
+    "abandonedCartUnlock1": "All programs & learning tracks",
+    "abandonedCartUnlock2": "Career Ready interview prep track",
+    "abandonedCartUnlock3": "AI Mock Interview lab",
+    "abandonedCartUnlock4": "Completion certificates",
+    "abandonedCartUnlock5": "Server-side progress sync across devices",
+    "abandonedCartFooter": "You received this email because you started a checkout on AI Educademy.",
+    "abandonedCartUnsubscribe": "Unsubscribe"
   },
   "bookmarks": {
     "title": "My Bookmarks",

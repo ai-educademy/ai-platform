@@ -1833,7 +1833,11 @@
     "promoCodePlaceholder": "कोड दर्ज करें",
     "promoCodeApply": "लागू करें",
     "promoCodeApplied": "कोड लागू हो गया!",
-    "promoCodeInvalid": "अमान्य कोड"
+    "promoCodeInvalid": "अमान्य कोड",
+    "mostPopular": "सबसे लोकप्रिय",
+    "redirecting": "रीडायरेक्ट हो रहा है…",
+    "checkoutError": "चेकआउट सत्र नहीं बनाया जा सका। कृपया फिर से प्रयास करें।",
+    "genericError": "कुछ गलत हो गया। कृपया फिर से प्रयास करें।"
   },
   "paywall": {
     "title": "प्रीमियम सामग्री",
@@ -2096,7 +2100,21 @@
   },
   "emails": {
     "abandonedCartSubject": "आप कुछ छोड़ गए!",
-    "abandonedCartPreview": "आपकी AI सीखने की यात्रा आपका इंतज़ार कर रही है"
+    "abandonedCartPreview": "आपकी AI सीखने की यात्रा आपका इंतज़ार कर रही है",
+    "abandonedCartFallbackName": "वहाँ",
+    "abandonedCartGreeting": "नमस्ते {name},",
+    "abandonedCartBody1": "अभी भी सोच रहे हैं? हमने देखा कि आपने चेकआउट शुरू किया लेकिन पूरा नहीं किया। चिंता न करें, आपकी जगह अब भी उपलब्ध है।",
+    "abandonedCartBody2": "AI Educademy Pro के साथ आपको सभी प्रोग्राम, लर्निंग ट्रैक, AI मॉक इंटरव्यू, प्रमाणपत्र और बहुत कुछ मिलता है।",
+    "abandonedCartPromo": "🎉 चेकआउट पर कोड {code} का उपयोग करें और अपने प्लान पर बचत करें।",
+    "abandonedCartCta": "अपनी खरीदारी पूरी करें",
+    "abandonedCartUnlockTitle": "Pro के साथ आपको क्या मिलेगा:",
+    "abandonedCartUnlock1": "सभी प्रोग्राम और लर्निंग ट्रैक",
+    "abandonedCartUnlock2": "Career Ready इंटरव्यू तैयारी ट्रैक",
+    "abandonedCartUnlock3": "AI मॉक इंटरव्यू लैब",
+    "abandonedCartUnlock4": "पूर्णता प्रमाणपत्र",
+    "abandonedCartUnlock5": "सभी डिवाइस पर प्रगति सिंक",
+    "abandonedCartFooter": "आपको यह ईमेल इसलिए मिला क्योंकि आपने AI Educademy पर चेकआउट शुरू किया था।",
+    "abandonedCartUnsubscribe": "सदस्यता समाप्त करें"
   },
   "bookmarks": {
     "title": "मेरे बुकमार्क",

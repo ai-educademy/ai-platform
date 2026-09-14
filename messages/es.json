@@ -1833,7 +1833,11 @@
     "promoCodeApplied": "¡Código aplicado!",
     "promoCodeApply": "Aplicar",
     "promoCodeInvalid": "Código inválido",
-    "promoCodePlaceholder": "Introduce el código"
+    "promoCodePlaceholder": "Introduce el código",
+    "mostPopular": "Más popular",
+    "redirecting": "Redirigiendo…",
+    "checkoutError": "No se pudo crear la sesión de pago. Inténtalo de nuevo.",
+    "genericError": "Algo salió mal. Inténtalo de nuevo."
   },
   "paywall": {
     "title": "Contenido Premium",
@@ -2060,7 +2064,21 @@
   },
   "emails": {
     "abandonedCartPreview": "Tu camino de aprendizaje en IA te está esperando",
-    "abandonedCartSubject": "¡Dejaste algo pendiente!"
+    "abandonedCartSubject": "¡Dejaste algo pendiente!",
+    "abandonedCartFallbackName": "hola",
+    "abandonedCartGreeting": "Hola {name},",
+    "abandonedCartBody1": "¿Aún lo estás pensando? Vimos que empezaste el pago pero no lo terminaste. Tranquilo, tu plaza sigue disponible.",
+    "abandonedCartBody2": "Con AI Educademy Pro accedes a todos los programas, rutas de aprendizaje, entrevistas simuladas con IA, certificados y mucho más.",
+    "abandonedCartPromo": "🎉 Usa el código {code} al pagar y ahorra en tu plan.",
+    "abandonedCartCta": "Completa tu compra",
+    "abandonedCartUnlockTitle": "Lo que desbloqueas con Pro:",
+    "abandonedCartUnlock1": "Todos los programas y rutas de aprendizaje",
+    "abandonedCartUnlock2": "Ruta de preparación de entrevistas Career Ready",
+    "abandonedCartUnlock3": "Laboratorio de entrevistas simuladas con IA",
+    "abandonedCartUnlock4": "Certificados de finalización",
+    "abandonedCartUnlock5": "Sincronización del progreso en todos tus dispositivos",
+    "abandonedCartFooter": "Recibes este correo porque iniciaste un pago en AI Educademy.",
+    "abandonedCartUnsubscribe": "Cancelar suscripción"
   },
   "finalCta": {
     "headline": "Empieza a Aprender IA Hoy",

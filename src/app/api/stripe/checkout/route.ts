@@ -55,8 +55,14 @@ export async function POST(req: NextRequest) {
 
     const basePath = localeBasePath(locale);
 
-    // Resolve promo code to a Stripe promotion code ID
+    // Resolve promo code to a Stripe promotion code ID.
+    //
+    // The outcome is reported back to the caller as `promoApplied`. Previously
+    // the client showed "code applied" whenever checkout returned a URL, so a
+    // typo'd or expired code silently sent the customer to Stripe at full price
+    // while the UI told them the discount had been applied.
     let discounts: Stripe.Checkout.SessionCreateParams["discounts"] | undefined;
+    let promoApplied = false;
     if (promoCode) {
       try {
         const promoCodes = await getStripe().promotionCodes.list({
@@ -66,10 +72,12 @@ export async function POST(req: NextRequest) {
         });
         if (promoCodes.data.length > 0) {
           discounts = [{ promotion_code: promoCodes.data[0].id }];
+          promoApplied = true;
         }
       } catch (err) {
         // Only Stripe is called here, so a db guard would be misleading. A bad
-        // promo code must not block checkout, so this stays non-fatal.
+        // promo code must not block checkout, so this stays non-fatal and is
+        // reported as "not applied".
         console.warn("[stripe/checkout] promo code lookup failed:", err);
       }
     }
@@ -92,7 +100,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json({ url: checkoutSession.url });
+    return NextResponse.json({ url: checkoutSession.url, promoApplied });
   } catch (err) {
     if (isDatabaseNotConfigured(err)) return databaseUnavailable();
     console.error("[stripe/checkout] error:", err);

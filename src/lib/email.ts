@@ -1,4 +1,6 @@
 import { welcomeEmailHtml, subscriptionEmailHtml, verificationCodeEmailHtml, passwordResetEmailHtml, leadMagnetEmailHtml, abandonedCartEmailHtml } from "./emailTemplates";
+import { getEmailTranslator } from "./email-i18n";
+import { localeBasePath } from "./safe-locale";
 
 const subjectByLocale: Record<string, string> = {
   en: "Welcome to AI Educademy! 🎓",
@@ -89,10 +91,12 @@ export async function sendPasswordResetEmail(email: string, resetUrl: string): P
 }
 
 export async function sendAbandonedCartEmail(email: string, name?: string, locale: string = "en"): Promise<void> {
-  const basePath = locale === "en" ? "" : `/${locale}`;
+  const tr = await getEmailTranslator(locale);
+  const basePath = localeBasePath(tr.locale);
   const pricingUrl = `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/pricing`;
-  const subject = "You left something behind! 🛒";
-  const html = abandonedCartEmailHtml(name, pricingUrl);
+  const promoCode = process.env.ABANDONED_CART_PROMO_CODE?.trim() || undefined;
+  const subject = `${tr.t("abandonedCartSubject")} 🛒`;
+  const html = abandonedCartEmailHtml(name, pricingUrl, tr, promoCode);
   await sendEmail(email, subject, html);
 }
 

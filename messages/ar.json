@@ -1833,7 +1833,11 @@
     "promoCodePlaceholder": "أدخل الرمز",
     "promoCodeApply": "تطبيق",
     "promoCodeApplied": "تم تطبيق الرمز!",
-    "promoCodeInvalid": "رمز غير صالح"
+    "promoCodeInvalid": "رمز غير صالح",
+    "mostPopular": "الأكثر شيوعًا",
+    "redirecting": "جارٍ التحويل…",
+    "checkoutError": "تعذّر إنشاء جلسة الدفع. يرجى المحاولة مرة أخرى.",
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   },
   "paywall": {
     "title": "محتوى مميز",
@@ -2096,7 +2100,21 @@
   },
   "emails": {
     "abandonedCartSubject": "لقد تركت شيئًا خلفك!",
-    "abandonedCartPreview": "رحلتك في تعلّم الذكاء الاصطناعي في انتظارك"
+    "abandonedCartPreview": "رحلتك في تعلّم الذكاء الاصطناعي في انتظارك",
+    "abandonedCartFallbackName": "مرحبًا",
+    "abandonedCartGreeting": "مرحبًا {name}،",
+    "abandonedCartBody1": "ما زلت تفكر في الأمر؟ لاحظنا أنك بدأت عملية الدفع ولم تكملها. لا تقلق، مقعدك ما زال متاحًا.",
+    "abandonedCartBody2": "مع AI Educademy Pro تحصل على جميع البرامج ومسارات التعلم والمقابلات التجريبية بالذكاء الاصطناعي والشهادات والمزيد.",
+    "abandonedCartPromo": "🎉 استخدم الرمز {code} عند الدفع لتوفير المال على باقتك.",
+    "abandonedCartCta": "أكمل عملية الشراء",
+    "abandonedCartUnlockTitle": "ما ستحصل عليه مع Pro:",
+    "abandonedCartUnlock1": "جميع البرامج ومسارات التعلم",
+    "abandonedCartUnlock2": "مسار التحضير للمقابلات Career Ready",
+    "abandonedCartUnlock3": "مختبر المقابلات التجريبية بالذكاء الاصطناعي",
+    "abandonedCartUnlock4": "شهادات إتمام",
+    "abandonedCartUnlock5": "مزامنة التقدم عبر جميع أجهزتك",
+    "abandonedCartFooter": "تلقيت هذا البريد لأنك بدأت عملية دفع على AI Educademy.",
+    "abandonedCartUnsubscribe": "إلغاء الاشتراك"
   },
   "bookmarks": {
     "title": "محفوظاتي",
