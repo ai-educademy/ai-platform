@@ -128,9 +128,15 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run build
       - name: Run Playwright tests
-        run: npx playwright test --project=chromium
+        run: |
+          # Ephemeral, throwaway value so NextAuth can initialise and return a
+          # proper 401 on unauthenticated routes instead of crashing with a 500.
+          # Generated in-process: never written to disk or $GITHUB_ENV.
+          export AUTH_SECRET="$(openssl rand -base64 32)"
+          npx playwright test --project=chromium
         env:
           BASE_URL: http://localhost:3000
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: ${{ !cancelled() }}
         with:

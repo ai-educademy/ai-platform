@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { mapAiError } from "@/lib/ai-errors";
 import { z } from "zod";
 
 const InterviewRequestSchema = z.object({
@@ -66,20 +67,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "Mock interview is not configured. Please add GEMINI_API_KEY." },
-        { status: 503 }
-      );
-    }
-
     const body = await req.json();
     const parsed = InterviewRequestSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
         { error: parsed.error.issues[0]?.message ?? "Invalid request" },
         { status: 400 }
+      );
+    }
+
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Mock interview is not configured. Please add GEMINI_API_KEY." },
+        { status: 503 }
       );
     }
 
@@ -103,23 +104,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ content: text });
   } catch (err: unknown) {
     console.error("[mock-interview/route] error:", err);
-    const msg = err instanceof Error ? err.message : String(err);
-    if (
-      msg.includes("429") ||
-      msg.includes("RESOURCE_EXHAUSTED") ||
-      msg.includes("quota")
-    ) {
-      return NextResponse.json(
-        {
-          error:
-            "The interviewer is taking a short break due to high demand 🙏 Please try again in a minute.",
-        },
-        { status: 429 }
-      );
-    }
-    return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
-      { status: 500 }
-    );
+    const { status, body } = mapAiError(err);
+    return NextResponse.json(body, { status });
   }
 }

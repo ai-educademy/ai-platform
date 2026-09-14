@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "AI Educademy - Free AI Education for Everyone";
+export const alt = "AI Educademy - Learn AI. Build Projects. Get Hired.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -94,7 +94,7 @@ export default function Image() {
             display: "flex",
           }}
         >
-          Free AI Education for Everyone
+          Learn AI. Build Projects. Get Hired.
         </div>
 
         {/* Features bar */}
@@ -108,13 +108,13 @@ export default function Image() {
           }}
         >
           <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            🌍 5 Languages
+            🌍 11 Languages
           </span>
           <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            💝 100% Free
+            🎓 15 Academies
           </span>
           <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            🔓 Open Source
+            📜 Certificates
           </span>
           <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
             🧪 Hands-on
