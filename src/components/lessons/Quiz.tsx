@@ -39,7 +39,6 @@ export function Quiz({ question, options: rawOptions, answer: rawAnswer, explana
     if (options.length > 0) registerQuiz(quizId);
   }, [quizId, registerQuiz, options.length]);
 
-  if (!options.length) return null;
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [shakeWrong, setShakeWrong] = useState(false);
@@ -80,6 +79,10 @@ export function Quiz({ question, options: rawOptions, answer: rawAnswer, explana
   }, []);
 
   const isCorrect = selected === answer;
+
+  // Must sit below every hook call: returning earlier changes the hook count
+  // between renders and trips "Rendered fewer hooks than expected".
+  if (!options.length) return null;
 
   return (
     <div

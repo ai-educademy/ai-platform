@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import typescript from 'typescript-eslint';
 import next from '@next/eslint-plugin-next';
+import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
   {
@@ -69,8 +70,18 @@ export default [
   },
   {
     files: ['**/*.{jsx,tsx}'],
+    plugins: {
+      'react-hooks': reactHooks
+    },
     rules: {
-      'react/no-unescaped-entities': 'off'
+      'react/no-unescaped-entities': 'off',
+
+      // Correctness rules only. eslint-plugin-react-hooks v7 also ships the
+      // React Compiler ruleset, which is far noisier and not what we need here.
+      // rules-of-hooks is an error because every violation is a latent crash:
+      // a hook count that changes between renders throws at runtime.
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn'
     }
   }
 ];
