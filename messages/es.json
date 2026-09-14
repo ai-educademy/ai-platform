@@ -39,7 +39,10 @@
     "careerReadyPath": "Preparación Profesional",
     "bookmarks": "Marcadores",
     "faq": "Preguntas Frecuentes",
-    "journey": "Viaje"
+    "journey": "Viaje",
+    "faqDesc": "Preguntas frecuentes resueltas",
+    "contact": "Contacto",
+    "contactDesc": "Ponte en contacto con nosotros"
   },
   "hero": {
     "badge": "Open Source • Multilingüe",
@@ -2237,5 +2240,38 @@
     "programs": "Programas",
     "freeValue": "Lección 1",
     "freePreview": "Gratis en cada programa"
+  },
+  "comments": {
+    "title": "Debate",
+    "placeholder": "Añade un comentario…",
+    "post": "Publicar",
+    "sendHint": "⌘ + Enter para enviar",
+    "signIn": "Inicia sesión",
+    "signInSuffix": "para unirte al debate",
+    "empty": "¡Sé el primero en iniciar el debate!",
+    "anonymous": "Anónimo",
+    "deleteComment": "Eliminar comentario",
+    "deleteConfirm": "¿Eliminar este comentario?",
+    "loadError": "No se pudieron cargar los comentarios",
+    "postError": "Algo salió mal",
+    "deleteError": "No se pudo eliminar el comentario",
+    "userAvatar": "Usuario"
+  },
+  "share": {
+    "linkedin": "Compartir en LinkedIn",
+    "reddit": "Compartir en Reddit",
+    "copyLink": "Copiar enlace",
+    "linkCopied": "¡Enlace copiado!",
+    "copied": "¡Copiado!"
+  },
+  "chat": {
+    "open": "Abrir asistente de chat",
+    "title": "Asistente de AI Educademy",
+    "dialogLabel": "Asistente de chat de AI Educademy",
+    "expand": "Ampliar chat",
+    "minimise": "Minimizar chat",
+    "close": "Cerrar chat",
+    "inputLabel": "Campo de mensaje del chat",
+    "send": "Enviar mensaje"
   }
 }

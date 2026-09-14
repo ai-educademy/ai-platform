@@ -39,7 +39,10 @@
     "careerReadyPath": "职业准备",
     "faq": "常见问题",
     "journey": "学习旅程",
-    "bookmarks": "收藏夹"
+    "bookmarks": "收藏夹",
+    "faqDesc": "常见问题解答",
+    "contact": "联系我们",
+    "contactDesc": "与我们取得联系"
   },
   "hero": {
     "badge": "开源 • 多语言",
@@ -2237,5 +2240,38 @@
     "bookmarked": "已收藏！",
     "removed": "已取消收藏",
     "addedOn": "收藏于"
+  },
+  "comments": {
+    "title": "讨论",
+    "placeholder": "添加评论…",
+    "post": "发布",
+    "sendHint": "⌘ + Enter 发送",
+    "signIn": "登录",
+    "signInSuffix": "后参与讨论",
+    "empty": "成为第一个发起讨论的人！",
+    "anonymous": "匿名",
+    "deleteComment": "删除评论",
+    "deleteConfirm": "要删除这条评论吗？",
+    "loadError": "无法加载评论",
+    "postError": "出了点问题",
+    "deleteError": "无法删除评论",
+    "userAvatar": "用户"
+  },
+  "share": {
+    "linkedin": "分享到 LinkedIn",
+    "reddit": "分享到 Reddit",
+    "copyLink": "复制链接",
+    "linkCopied": "链接已复制！",
+    "copied": "已复制！"
+  },
+  "chat": {
+    "open": "打开聊天助手",
+    "title": "AI Educademy 助手",
+    "dialogLabel": "AI Educademy 聊天助手",
+    "expand": "放大聊天窗口",
+    "minimise": "缩小聊天窗口",
+    "close": "关闭聊天",
+    "inputLabel": "聊天消息输入框",
+    "send": "发送消息"
   }
 }

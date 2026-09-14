@@ -39,7 +39,10 @@
     "aiMasteryPath": "AI Mastery",
     "careerReadyPath": "Career Ready",
     "journey": "Journey",
-    "bookmarks": "Bookmarks"
+    "bookmarks": "Bookmarks",
+    "faqDesc": "Common questions answered",
+    "contact": "Contact",
+    "contactDesc": "Get in touch with us"
   },
   "hero": {
     "badge": "Practical AI skills · 11 languages · Built for the AI era",
@@ -2237,5 +2240,38 @@
     "bookmarked": "Bookmarked!",
     "removed": "Bookmark removed",
     "addedOn": "Saved on"
+  },
+  "comments": {
+    "title": "Discussion",
+    "placeholder": "Add a comment…",
+    "post": "Post",
+    "sendHint": "⌘ + Enter to send",
+    "signIn": "Sign in",
+    "signInSuffix": "to join the discussion",
+    "empty": "Be the first to start a discussion!",
+    "anonymous": "Anonymous",
+    "deleteComment": "Delete comment",
+    "deleteConfirm": "Delete this comment?",
+    "loadError": "Could not load comments",
+    "postError": "Something went wrong",
+    "deleteError": "Could not delete comment",
+    "userAvatar": "User"
+  },
+  "share": {
+    "linkedin": "Share on LinkedIn",
+    "reddit": "Share on Reddit",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied!",
+    "copied": "Copied!"
+  },
+  "chat": {
+    "open": "Open chat assistant",
+    "title": "AI Educademy Assistant",
+    "dialogLabel": "AI Educademy Chat Assistant",
+    "expand": "Expand chat",
+    "minimise": "Minimise chat",
+    "close": "Close chat",
+    "inputLabel": "Chat message input",
+    "send": "Send message"
   }
 }

@@ -25,7 +25,7 @@ export function AboutDropdownContent({ basePath, t }: { basePath: string; t: (ke
             <span className="text-sm font-medium text-[var(--color-text)] group-hover/item:text-[var(--color-primary)] transition-colors">
               {t("faq")}
             </span>
-            <p className="text-xs text-[var(--color-text-muted)] mt-0.5">Common questions answered</p>
+            <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{t("faqDesc")}</p>
           </div>
         </Link>
         <Link
@@ -35,9 +35,9 @@ export function AboutDropdownContent({ basePath, t }: { basePath: string; t: (ke
           <span className="text-base mt-0.5">✉️</span>
           <div>
             <span className="text-sm font-medium text-[var(--color-text)] group-hover/item:text-[var(--color-primary)] transition-colors">
-              Contact
+              {t("contact")}
             </span>
-            <p className="text-xs text-[var(--color-text-muted)] mt-0.5">Get in touch with us</p>
+            <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{t("contactDesc")}</p>
           </div>
         </Link>
         <a

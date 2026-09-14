@@ -39,7 +39,10 @@
     "careerReadyPath": "करियर रेडी",
     "journey": "यात्रा",
     "bookmarks": "बुकमार्क",
-    "faq": "सामान्य प्रश्न"
+    "faq": "सामान्य प्रश्न",
+    "faqDesc": "सामान्य प्रश्नों के उत्तर",
+    "contact": "संपर्क",
+    "contactDesc": "हमसे संपर्क करें"
   },
   "hero": {
     "badge": "मुफ्त • ओपन सोर्स • बहुभाषी",
@@ -2237,5 +2240,38 @@
     "pageCount": "10 पेज की PDF गाइड",
     "freeForever": "मुफ़्त शुरुआती पहुंच",
     "instantDownload": "तुरंत डाउनलोड"
+  },
+  "comments": {
+    "title": "चर्चा",
+    "placeholder": "टिप्पणी जोड़ें…",
+    "post": "पोस्ट करें",
+    "sendHint": "भेजने के लिए ⌘ + Enter",
+    "signIn": "साइन इन करें",
+    "signInSuffix": "चर्चा में शामिल होने के लिए",
+    "empty": "चर्चा शुरू करने वाले पहले व्यक्ति बनें!",
+    "anonymous": "अनाम",
+    "deleteComment": "टिप्पणी हटाएँ",
+    "deleteConfirm": "क्या यह टिप्पणी हटानी है?",
+    "loadError": "टिप्पणियाँ लोड नहीं हो सकीं",
+    "postError": "कुछ गलत हो गया",
+    "deleteError": "टिप्पणी हटाई नहीं जा सकी",
+    "userAvatar": "उपयोगकर्ता"
+  },
+  "share": {
+    "linkedin": "LinkedIn पर साझा करें",
+    "reddit": "Reddit पर साझा करें",
+    "copyLink": "लिंक कॉपी करें",
+    "linkCopied": "लिंक कॉपी हो गया!",
+    "copied": "कॉपी हो गया!"
+  },
+  "chat": {
+    "open": "चैट सहायक खोलें",
+    "title": "AI Educademy सहायक",
+    "dialogLabel": "AI Educademy चैट सहायक",
+    "expand": "चैट बड़ा करें",
+    "minimise": "चैट छोटा करें",
+    "close": "चैट बंद करें",
+    "inputLabel": "चैट संदेश इनपुट",
+    "send": "संदेश भेजें"
   }
 }

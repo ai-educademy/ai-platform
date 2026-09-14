@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useSession } from "next-auth/react";
+import { useTranslations, useLocale } from "next-intl";
+import Link from "next/link";
 import { MessageCircle, Trash2, Loader2, Send } from "lucide-react";
 
 /* ────────────── Types ────────────── */
@@ -50,6 +52,9 @@ const MAX_CHARS = 2000;
 
 export function LessonComments({ lessonSlug, programSlug }: Props) {
   const { data: session } = useSession();
+  const t = useTranslations("comments");
+  const locale = useLocale();
+  const basePath = locale === "en" ? "" : `/${locale}`;
   const userId = session?.user?.id;
   const userRole = (session?.user as { role?: string })?.role;
 
@@ -79,10 +84,10 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
         setTotal(data.total);
         setHasMore(data.hasMore);
       } catch {
-        setError("Could not load comments");
+        setError(t("loadError"));
       }
     },
-    [lessonSlug, programSlug]
+    [lessonSlug, programSlug, t]
   );
 
   useEffect(() => {
@@ -125,7 +130,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
       await fetchComments();
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Something went wrong"
+        err instanceof Error ? err.message : t("postError")
       );
     } finally {
       setSubmitting(false);
@@ -134,7 +139,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
 
   /* ── Delete ── */
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this comment?")) return;
+    if (!confirm(t("deleteConfirm"))) return;
 
     setDeletingId(id);
     try {
@@ -147,7 +152,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
       setComments((prev) => prev.filter((c) => c.id !== id));
       setTotal((prev) => prev - 1);
     } catch {
-      setError("Could not delete comment");
+      setError(t("deleteError"));
     } finally {
       setDeletingId(null);
     }
@@ -166,7 +171,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
       {/* Header */}
       <div className="flex items-center gap-2.5 mb-8">
         <MessageCircle size={22} className="text-[var(--color-primary)]" />
-        <h2 className="text-xl font-bold tracking-tight">Discussion</h2>
+        <h2 className="text-xl font-bold tracking-tight">{t("title")}</h2>
         {!loading && (
           <span className="text-sm text-[var(--color-text-muted)] font-medium ml-1">
             ({total})
@@ -189,7 +194,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
               value={content}
               onChange={(e) => setContent(e.target.value.slice(0, MAX_CHARS))}
               onKeyDown={handleKeyDown}
-              placeholder="Add a comment…"
+              placeholder={t("placeholder")}
               rows={3}
               className="w-full bg-transparent text-[var(--color-text)] placeholder-[var(--color-text-muted)] resize-none outline-none text-sm leading-relaxed"
             />
@@ -205,7 +210,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
               </span>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-[var(--color-text-muted)] hidden sm:inline">
-                  ⌘ + Enter to send
+                  {t("sendHint")}
                 </span>
                 <button
                   onClick={handleSubmit}
@@ -221,7 +226,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
                   ) : (
                     <Send size={14} />
                   )}
-                  Post
+                  {t("post")}
                 </button>
               </div>
             </div>
@@ -236,13 +241,13 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
           }}
         >
           <p className="text-sm text-[var(--color-text-muted)]">
-            <a
-              href="/signin"
+            <Link
+              href={`${basePath}/signin`}
               className="text-[var(--color-primary)] font-medium hover:underline"
             >
-              Sign in
-            </a>{" "}
-            to join the discussion
+              {t("signIn")}
+            </Link>{" "}
+            {t("signInSuffix")}
           </p>
         </div>
       )}
@@ -285,7 +290,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
             size={40}
             className="mx-auto mb-3 opacity-30"
           />
-          <p className="text-sm">Be the first to start a discussion!</p>
+          <p className="text-sm">{t("empty")}</p>
         </div>
       )}
 
@@ -307,7 +312,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
                 {c.userImage ? (
                   <img
                     src={c.userImage}
-                    alt={c.userName ?? "User"}
+                    alt={c.userName ?? t("userAvatar")}
                     className="w-8 h-8 rounded-full object-cover shrink-0"
                   />
                 ) : (
@@ -326,7 +331,7 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-sm font-semibold text-[var(--color-text)] truncate">
-                      {c.userName ?? "Anonymous"}
+                      {c.userName ?? t("anonymous")}
                     </span>
                     {c.userRole === "admin" && (
                       <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[var(--color-primary)] text-white leading-none">
@@ -348,7 +353,8 @@ export function LessonComments({ lessonSlug, programSlug }: Props) {
                     onClick={() => handleDelete(c.id)}
                     disabled={deletingId === c.id}
                     className="shrink-0 p-1.5 rounded-[var(--radius-sm)] text-[var(--color-text-muted)] hover:text-red-500 hover:bg-red-500/10 transition-colors disabled:opacity-40"
-                    title="Delete comment"
+                    title={t("deleteComment")}
+                    aria-label={t("deleteComment")}
                   >
                     {deletingId === c.id ? (
                       <Loader2 size={14} className="animate-spin" />

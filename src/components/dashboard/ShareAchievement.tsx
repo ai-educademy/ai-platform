@@ -19,10 +19,8 @@ export function ShareAchievement({ programSlug, programName, userName }: ShareAc
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const shareUrl = `${SITE_URL}/achievement/${programSlug}?user=${encodeURIComponent(userName)}`;
-  const ogImageUrl = `${SITE_URL}/api/share-card?program=${encodeURIComponent(programSlug)}&user=${encodeURIComponent(userName)}`;
 
   const tweetText = t("shareTweet", { program: programName });
-  const shareDescription = t("shareDescription", { program: programName });
 
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;

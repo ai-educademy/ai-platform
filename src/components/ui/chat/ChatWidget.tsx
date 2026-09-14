@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Bot, Send, X, Minimize2, Maximize2, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type Message = {
   id: string;
@@ -56,6 +57,7 @@ function MessageBubble({ message }: { message: Message }) {
 }
 
 export function ChatWidget() {
+  const t = useTranslations("chat");
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimised, setIsMinimised] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
@@ -153,7 +155,7 @@ export function ChatWidget() {
       {!isOpen && (
         <button
           onClick={open}
-          aria-label="Open chat assistant"
+          aria-label={t("open")}
           className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-lg shadow-violet-500/40 flex items-center justify-center hover:scale-110 transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2"
         >
           <Bot className="w-6 h-6" />
@@ -170,7 +172,7 @@ export function ChatWidget() {
             isMinimised ? "h-14" : "h-[480px]"
           }`}
           role="dialog"
-          aria-label="AI Educademy Chat Assistant"
+          aria-label={t("dialogLabel")}
         >
           {/* Header */}
           <div className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-violet-500 to-indigo-600 text-white flex-shrink-0">
@@ -179,12 +181,12 @@ export function ChatWidget() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-sm leading-none">Edu</p>
-              <p className="text-xs text-white/80 mt-0.5">AI Educademy Assistant</p>
+              <p className="text-xs text-white/80 mt-0.5">{t("title")}</p>
             </div>
             <div className="flex items-center gap-1">
               <button
                 onClick={toggleMinimise}
-                aria-label={isMinimised ? "Expand chat" : "Minimise chat"}
+                aria-label={isMinimised ? t("expand") : t("minimise")}
                 className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 {isMinimised ? (
@@ -195,7 +197,7 @@ export function ChatWidget() {
               </button>
               <button
                 onClick={close}
-                aria-label="Close chat"
+                aria-label={t("close")}
                 className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <X className="w-4 h-4" />
@@ -226,12 +228,12 @@ export function ChatWidget() {
                     placeholder="Ask me anything…"
                     disabled={isLoading}
                     className="flex-1 bg-transparent text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] outline-none disabled:opacity-50"
-                    aria-label="Chat message input"
+                    aria-label={t("inputLabel")}
                   />
                   <button
                     onClick={sendMessage}
                     disabled={!input.trim() || isLoading}
-                    aria-label="Send message"
+                    aria-label={t("send")}
                     className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 text-white flex items-center justify-center hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed transition-opacity flex-shrink-0"
                   >
                     {isLoading ? (

@@ -39,7 +39,10 @@
     "careerReadyPath": "Carrière Klaar",
     "journey": "Traject",
     "bookmarks": "Bladwijzers",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "faqDesc": "Veelgestelde vragen beantwoord",
+    "contact": "Contact",
+    "contactDesc": "Neem contact met ons op"
   },
   "hero": {
     "badge": "Open source • Meertalig",
@@ -2237,5 +2240,38 @@
     "pageCount": "Pdf-gids van 10 pagina's",
     "freeForever": "Gratis starttoegang",
     "instantDownload": "Direct downloaden"
+  },
+  "comments": {
+    "title": "Discussie",
+    "placeholder": "Voeg een reactie toe…",
+    "post": "Plaatsen",
+    "sendHint": "⌘ + Enter om te versturen",
+    "signIn": "Meld je aan",
+    "signInSuffix": "om deel te nemen aan de discussie",
+    "empty": "Start als eerste een discussie!",
+    "anonymous": "Anoniem",
+    "deleteComment": "Reactie verwijderen",
+    "deleteConfirm": "Deze reactie verwijderen?",
+    "loadError": "Reacties konden niet worden geladen",
+    "postError": "Er ging iets mis",
+    "deleteError": "Reactie kon niet worden verwijderd",
+    "userAvatar": "Gebruiker"
+  },
+  "share": {
+    "linkedin": "Delen op LinkedIn",
+    "reddit": "Delen op Reddit",
+    "copyLink": "Link kopiëren",
+    "linkCopied": "Link gekopieerd!",
+    "copied": "Gekopieerd!"
+  },
+  "chat": {
+    "open": "Chatassistent openen",
+    "title": "AI Educademy-assistent",
+    "dialogLabel": "AI Educademy chatassistent",
+    "expand": "Chat vergroten",
+    "minimise": "Chat verkleinen",
+    "close": "Chat sluiten",
+    "inputLabel": "Invoerveld chatbericht",
+    "send": "Bericht versturen"
   }
 }

@@ -39,7 +39,10 @@
     "careerReadyPath": "キャリア準備",
     "journey": "ジャーニー",
     "bookmarks": "ブックマーク",
-    "faq": "よくある質問"
+    "faq": "よくある質問",
+    "faqDesc": "よくある質問への回答",
+    "contact": "お問い合わせ",
+    "contactDesc": "お気軽にご連絡ください"
   },
   "hero": {
     "badge": "オープンソース • 多言語対応",
@@ -2237,5 +2240,38 @@
     "pageCount": "全10ページのPDFガイド",
     "freeForever": "無料のスターターアクセス",
     "instantDownload": "すぐにダウンロード"
+  },
+  "comments": {
+    "title": "ディスカッション",
+    "placeholder": "コメントを追加…",
+    "post": "投稿",
+    "sendHint": "⌘ + Enter で送信",
+    "signIn": "サインイン",
+    "signInSuffix": "してディスカッションに参加",
+    "empty": "最初のディスカッションを始めましょう！",
+    "anonymous": "匿名",
+    "deleteComment": "コメントを削除",
+    "deleteConfirm": "このコメントを削除しますか？",
+    "loadError": "コメントを読み込めませんでした",
+    "postError": "問題が発生しました",
+    "deleteError": "コメントを削除できませんでした",
+    "userAvatar": "ユーザー"
+  },
+  "share": {
+    "linkedin": "LinkedIn で共有",
+    "reddit": "Reddit で共有",
+    "copyLink": "リンクをコピー",
+    "linkCopied": "リンクをコピーしました！",
+    "copied": "コピーしました！"
+  },
+  "chat": {
+    "open": "チャットアシスタントを開く",
+    "title": "AI Educademy アシスタント",
+    "dialogLabel": "AI Educademy チャットアシスタント",
+    "expand": "チャットを拡大",
+    "minimise": "チャットを縮小",
+    "close": "チャットを閉じる",
+    "inputLabel": "チャットメッセージ入力",
+    "send": "メッセージを送信"
   }
 }
