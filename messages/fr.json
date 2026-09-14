@@ -37,7 +37,6 @@
     "aiFoundationsPath": "Fondations IA",
     "aiMasteryPath": "Maîtrise IA",
     "careerReadyPath": "Prêt pour la Carrière",
-    "title": "AI Educademy. Apprenez l'IA à votre rythme",
     "bookmarks": "Favoris",
     "faq": "FAQ",
     "journey": "Parcours"
@@ -180,7 +179,12 @@
     "quickCheck": "Vérification rapide",
     "animationError": "L'animation n'a pas pu se charger",
     "progressPercent": "{percent}% terminé",
-    "suggestEdit": "Suggérer une modification de cette leçon"
+    "suggestEdit": "Suggérer une modification de cette leçon",
+    "completeLesson": "Terminer la leçon",
+    "quizRequired": "Réponds correctement à tous les quiz pour terminer cette leçon",
+    "quizProgress": "{passed} quiz sur {total} réussis",
+    "allQuizzesPassed": "Tous les quiz réussis !",
+    "lessonCompleted": "Leçon terminée !"
   },
   "programs": {
     "badge": "",

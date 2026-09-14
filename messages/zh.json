@@ -37,7 +37,6 @@
     "aiFoundationsPath": "AI基础",
     "aiMasteryPath": "AI精通",
     "careerReadyPath": "职业准备",
-    "title": "AI Educademy. 按你的方式学AI",
     "faq": "常见问题",
     "journey": "学习旅程",
     "bookmarks": "收藏夹"
@@ -180,7 +179,12 @@
     "quickCheck": "小测验",
     "animationError": "动画加载失败",
     "progressPercent": "已完成 {percent}%",
-    "suggestEdit": "建议修改本课内容"
+    "suggestEdit": "建议修改本课内容",
+    "completeLesson": "完成本课",
+    "quizRequired": "答对所有测验题才能完成本课",
+    "quizProgress": "已通过 {total} 个测验中的 {passed} 个",
+    "allQuizzesPassed": "所有测验均已通过！",
+    "lessonCompleted": "本课已完成！"
   },
   "programs": {
     "badge": "",

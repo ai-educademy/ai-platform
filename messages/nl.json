@@ -37,7 +37,9 @@
     "aiFoundationsPath": "AI-Fundamenten",
     "aiMasteryPath": "AI-Meesterschap",
     "careerReadyPath": "Carrière Klaar",
-    "title": "AI Educademy. Leer AI op jouw manier"
+    "journey": "Traject",
+    "bookmarks": "Bladwijzers",
+    "faq": "FAQ"
   },
   "hero": {
     "badge": "Open source • Meertalig",
@@ -131,7 +133,8 @@
     "pageSubtitle": "Gratis, open source AI-onderwijs voor elke student.",
     "openSourceTitle": "Open source",
     "openSourceDesc": "Elke les, elke regel code - gratis en open source. Fork het, vertaal het, maak het je eigen.",
-    "viewOnGithub": "Bekijk op GitHub"
+    "viewOnGithub": "Bekijk op GitHub",
+    "buyCoffee": "Trakteer me op een koffie"
   },
   "lessons": {
     "title": "Lessen",
@@ -175,7 +178,13 @@
     "tryAgain": "Probeer opnieuw",
     "quickCheck": "Snelle check",
     "animationError": "Animatie kon niet worden geladen",
-    "progressPercent": "{percent}% voltooid"
+    "progressPercent": "{percent}% voltooid",
+    "suggestEdit": "Stel een wijziging voor deze les voor",
+    "completeLesson": "Les afronden",
+    "quizRequired": "Beantwoord alle quizzen correct om deze les af te ronden",
+    "quizProgress": "{passed} van {total} quizzen behaald",
+    "allQuizzesPassed": "Alle quizzen behaald!",
+    "lessonCompleted": "Les afgerond!"
   },
   "programs": {
     "badge": "",
@@ -569,7 +578,347 @@
     "comingSoon": "Lessen binnenkort beschikbaar",
     "comingSoonDesc": "We werken zorgvuldig aan deze lessen. Kijk binnenkort nog eens!",
     "startFirst": "Begin eerste les",
-    "backToAll": "Terug naar alle opleidingen"
+    "backToAll": "Terug naar alle opleidingen",
+    "whoIsThisFor": "Voor wie is dit?",
+    "topicsCovered": "Behandelde onderwerpen",
+    "faqTitle": "Veelgestelde vragen",
+    "relatedArticles": "Gerelateerde artikelen",
+    "tryExperiments": "Probeer onze interactieve experimenten",
+    "tryExperimentsDesc": "Breng de theorie in praktijk met praktische AI-experimenten die je direct in je browser kunt uitvoeren.",
+    "tryPromptLab": "Ontdek het Prompt Lab",
+    "tryPromptLabDesc": "Oefen prompt-engineeringtechnieken in ons interactieve Prompt Lab en zie de resultaten direct.",
+    "faq": {
+      "ai-seeds": [
+        {
+          "q": "Is AI Seeds geschikt voor complete beginners?",
+          "a": "Absoluut! AI Seeds is speciaal gemaakt voor mensen zonder technische achtergrond. We gebruiken alledaagse taal, herkenbare vergelijkingen en visuele uitleg, zodat je AI-concepten begrijpt zonder voorkennis van programmeren of wiskunde."
+        },
+        {
+          "q": "Moet ik kunnen programmeren voor AI Seeds?",
+          "a": "Helemaal niet. AI Seeds richt zich op het opbouwen van begrip van kunstmatige intelligentie. Je schrijft geen enkele regel code. Het doel is dat je begrijpt wat AI is, hoe het werkt en waarom het ertoe doet, allemaal in gewone taal."
+        },
+        {
+          "q": "Krijg ik een certificaat na het afronden van AI Seeds?",
+          "a": "Ja! Zodra je alle lessen van AI Seeds hebt afgerond, kun je een persoonlijk certificaat genereren. Een mooie manier om te laten zien dat je serieus met AI aan de slag bent gegaan."
+        },
+        {
+          "q": "Is AI Seeds echt gratis?",
+          "a": "De eerste les van AI Seeds is gratis te proberen, zonder account. De rest van het programma is beschikbaar met een Pro-abonnement, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Welke onderwerpen behandelt AI Seeds?",
+          "a": "AI Seeds behandelt de basis: wat kunstmatige intelligentie precies is, hoe machines leren van data, het verschil tussen AI en traditionele software, en je traint zelfs een eenvoudig AI-model in je browser. Het perfecte startpunt voor je AI-reis."
+        }
+      ],
+      "ai-sprouts": [
+        {
+          "q": "Is AI Sprouts geschikt voor beginners?",
+          "a": "AI Sprouts is bedoeld voor lerenden die al basiskennis van AI hebben, idealiter na het afronden van AI Seeds. Als je op hoofdlijnen weet wat AI is, ben je klaar om bouwstenen als datatypen, algoritmes en ethiek te verkennen."
+        },
+        {
+          "q": "Heb ik programmeervaardigheden nodig voor AI Sprouts?",
+          "a": "Nee, programmeren is niet nodig. AI Sprouts gebruikt interactieve visualisaties en praktische oefeningen om je gevoel voor de werking van AI te ontwikkelen, zonder code te schrijven."
+        },
+        {
+          "q": "Krijg ik een certificaat na het afronden van AI Sprouts?",
+          "a": "Ja! Rond alle lessen af en je verdient een persoonlijk certificaat dat je kunt delen op LinkedIn of met werkgevers."
+        },
+        {
+          "q": "Is AI Sprouts gratis?",
+          "a": "De eerste les van AI Sprouts is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Wat leer ik in AI Sprouts?",
+          "a": "Je leert het verschil tussen supervised, unsupervised en reinforcement learning. Je krijgt inzicht in trainingsdata, ontdekt hoe AI beslissingen neemt en leert kritisch nadenken over bias en eerlijkheid in AI."
+        }
+      ],
+      "ai-branches": [
+        {
+          "q": "Wat maakt AI Branches anders dan de eerdere programma's?",
+          "a": "AI Branches draait om toepassingen in de praktijk. Waar Seeds en Sprouts de basiskennis leggen, laat Branches AI in actie zien in de zorg, financiën, creatieve sector en meer. Je gaat ook zelf eenvoudige projecten bouwen."
+        },
+        {
+          "q": "Heb ik programmeerervaring nodig voor AI Branches?",
+          "a": "Enige bekendheid met de concepten helpt, maar is niet vereist. De projecten gebruiken begeleide no-code tools, zodat je je kunt richten op het begrijpen van AI-toepassingen in plaats van op syntaxis."
+        },
+        {
+          "q": "Bouw ik echte projecten in AI Branches?",
+          "a": "Ja! Je bouwt een eenvoudige chatbot, onderzoekt hoe beeldherkenning werkt en maakt een AI-miniproject. Die praktijkervaring verankert wat je hebt geleerd."
+        },
+        {
+          "q": "Is AI Branches gratis?",
+          "a": "De eerste les van AI Branches is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Welke sectoren behandelt AI Branches?",
+          "a": "Je verkent AI-toepassingen in de zorg (diagnose, medicijnontwikkeling), creatieve sector (beeldgeneratie, muziek), financiën (fraudedetectie) en alledaagse tools zoals chatbots en virtuele assistenten."
+        }
+      ],
+      "ai-canopy": [
+        {
+          "q": "Is AI Canopy geschikt voor beginners?",
+          "a": "AI Canopy is een programma op gevorderd niveau. We raden aan eerst AI Branches af te ronden, omdat Canopy dieper ingaat op neurale netwerken, grote taalmodellen en het ontwerpen van AI-systemen."
+        },
+        {
+          "q": "Leer ik over ChatGPT en grote taalmodellen?",
+          "a": "Ja! AI Canopy behandelt hoe grote taalmodellen werken, inclusief de transformer-architectuur achter ChatGPT, GPT-4 en vergelijkbare modellen. Je leert ook prompt engineering beheersen."
+        },
+        {
+          "q": "Moet ik kunnen programmeren voor AI Canopy?",
+          "a": "Programmeren is niet vereist, al helpt enige technische basiskennis wel. We leggen neurale netwerken en LLM's conceptueel uit met diagrammen en interactieve visualisaties."
+        },
+        {
+          "q": "Krijg ik een certificaat na het afronden van AI Canopy?",
+          "a": "Ja! Na het afronden van alle lessen ontvang je een persoonlijk certificaat. Het toont aan dat je gevorderde AI-concepten beheerst."
+        },
+        {
+          "q": "Wat is prompt engineering en waarom behandelt AI Canopy het?",
+          "a": "Prompt engineering is de vaardigheid om effectieve instructies te schrijven voor AI-modellen zoals ChatGPT. Het is een van de meest gevraagde vaardigheden van dit moment, en AI Canopy wijdt er meerdere lessen aan."
+        }
+      ],
+      "ai-forest": [
+        {
+          "q": "Voor welk niveau is AI Forest bedoeld?",
+          "a": "AI Forest is ons meest geavanceerde programma binnen het AI Foundations-traject. Het is bedoeld voor lerenden die AI Canopy hebben afgerond en het volledige plaatje van het AI-landschap willen zien."
+        },
+        {
+          "q": "Leer ik AI-toepassingen bouwen in AI Forest?",
+          "a": "Ja! Een van de belangrijkste uitkomsten is het bouwen en uitrollen van een AI-toepassing. Je leert ook AI-onderzoekspapers lezen en bijdragen aan open-source AI-projecten."
+        },
+        {
+          "q": "Heb ik programmeerervaring nodig voor AI Forest?",
+          "a": "Basiskennis van programmeren helpt bij sommige gevorderde onderwerpen, maar de lessen zijn toegankelijk opgezet. We bieden begeleide voorbeelden en leggen code stap voor stap uit."
+        },
+        {
+          "q": "Is AI Forest gratis?",
+          "a": "De eerste les van AI Forest is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Op welke loopbanen bereidt AI Forest me voor?",
+          "a": "AI Forest bereidt je voor op rollen in AI-productmanagement, AI-onderzoeksondersteuning, AI-engineering en open-source AI-bijdragen. Je krijgt het overzicht waar werkgevers waarde aan hechten."
+        }
+      ],
+      "ai-sketch": [
+        {
+          "q": "Is AI Sketch geschikt voor complete beginners?",
+          "a": "AI Sketch vraagt basiskennis van programmeren in een willekeurige taal. Als je loops en functies kunt schrijven en variabelen begrijpt, ben je er klaar voor. Het programma richt zich op de basis van datastructuren en algoritmes."
+        },
+        {
+          "q": "Welke programmeertaal gebruikt AI Sketch?",
+          "a": "AI Sketch legt concepten taalonafhankelijk uit met pseudocode en visuele diagrammen. Voorbeelden staan in Python vanwege de leesbaarheid, maar de patronen gelden voor elke programmeertaal."
+        },
+        {
+          "q": "Is AI Sketch geschikt voor sollicitatievoorbereiding?",
+          "a": "Absoluut! AI Sketch behandelt de fundamentele datastructuren en algoritmepatronen die in 70% van de coding-interviews voorkomen: arrays, hash maps, strings, sorteren en zoeken."
+        },
+        {
+          "q": "Krijg ik een certificaat voor AI Sketch?",
+          "a": "Ja! Rond alle lessen af om je certificaat te verdienen. Het toont aan dat je de fundamenten van datastructuren en algoritmes beheerst."
+        },
+        {
+          "q": "Hoe hangt AI Sketch samen met AI?",
+          "a": "Elke datastructuur en elk algoritme wordt uitgelegd aan de hand van echte AI-toepassingen. Je ziet hoe hash maps aanbevelingssystemen aandrijven, hoe sorteren efficiënte datapijplijnen mogelijk maakt en hoe deze fundamenten aan alle AI-systemen ten grondslag liggen."
+        }
+      ],
+      "ai-chisel": [
+        {
+          "q": "Welke voorkennis vereist AI Chisel?",
+          "a": "Je moet AI Sketch hebben afgerond of gelijkwaardige kennis hebben van basisdatastructuren (arrays, hash maps, strings). AI Chisel bouwt daarop voort met patronen op gevorderd niveau."
+        },
+        {
+          "q": "Welke patronen behandelt AI Chisel?",
+          "a": "AI Chisel behandelt two pointers, sliding window, BFS/DFS-graaftraversal, boomtraversals, stacks, queues en monotone patronen, steeds gekoppeld aan echte AI- en ML-toepassingen."
+        },
+        {
+          "q": "Is AI Chisel gratis?",
+          "a": "De eerste les van AI Chisel is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Helpt AI Chisel me bij coding-interviews?",
+          "a": "Zeker. De patronen uit AI Chisel komen vaak voor bij interviewvragen van gemiddelde moeilijkheid bij grote techbedrijven. Elke les bevat oefenopgaven in interviewstijl."
+        },
+        {
+          "q": "Hoe verhoudt AI Chisel zich tot machine learning?",
+          "a": "Graaftraversal drijft kennisgrafen en sociale netwerkanalyse aan. Boomstructuren liggen ten grondslag aan decision trees en random forests. Two pointers optimaliseren dataverwerking in ML-pijplijnen. Elk patroon sluit aan bij een echte AI-toepassing."
+        }
+      ],
+      "ai-craft": [
+        {
+          "q": "Waar gaat AI Craft over?",
+          "a": "AI Craft leert je system design: hoe je grootschalige gedistribueerde systemen ontwerpt. Je ontwerpt aanbevelingssystemen, zoekautocomplete, rate limiters en andere systemen achter moderne AI-producten."
+        },
+        {
+          "q": "Heb ik programmeerervaring nodig voor AI Craft?",
+          "a": "Ja, AI Craft gaat ervan uit dat je vertrouwd bent met coding-interviews en de basis van gedistribueerde systemen. Het is bedoeld voor medior tot senior engineers die zich voorbereiden op system design-rondes."
+        },
+        {
+          "q": "Helpt AI Craft bij FAANG-sollicitaties?",
+          "a": "Ja! System design-rondes zijn een cruciaal onderdeel van sollicitaties op seniorniveau bij grote techbedrijven. AI Craft leert je je antwoorden helder te structureren en schaalbare systemen te ontwerpen."
+        },
+        {
+          "q": "Is AI Craft gratis?",
+          "a": "De eerste les van AI Craft is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Welke systemen leer ik ontwerpen?",
+          "a": "Je ontwerpt een URL-shortener, een rate limiter, een aanbevelingssysteem en meer. Elk systeem wordt uitgelegd met afwegingen, schaalbaarheidsvraagstukken en AI-specifieke infrastructuurpatronen."
+        }
+      ],
+      "ai-polish": [
+        {
+          "q": "Wat behandelt AI Polish?",
+          "a": "AI Polish richt zich op het beheersen van gedragsgerichte sollicitatiegesprekken. Je leert het STAR-raamwerk, gestructureerd vertellen, leiderschapsprincipes en communicatiestrategieën voor technische en AI-gerelateerde situaties."
+        },
+        {
+          "q": "Heb ik technische ervaring nodig voor AI Polish?",
+          "a": "Je hebt echte projectervaring nodig om je verhalen uit te putten. AI Polish leert je hoe je die ervaringen effectief structureert en presenteert, ongeacht je senioriteit."
+        },
+        {
+          "q": "Is AI Polish alleen voor senior engineers?",
+          "a": "Zeker niet! Engineers op elk niveau hebben baat bij vaardigheden voor gedragsgerichte gesprekken. AI Polish biedt raamwerken die werken of je nu solliciteert op je eerste baan of op een staff engineer-rol."
+        },
+        {
+          "q": "Krijg ik een certificaat?",
+          "a": "Ja! Rond alle lessen af en verdien een certificaat dat aantoont dat je gedragsgerichte interviewtechnieken beheerst."
+        },
+        {
+          "q": "Waarom zijn gedragsgerichte gesprekken belangrijk voor AI-rollen?",
+          "a": "AI-rollen vragen steeds vaker om sterke communicatie: modelbeslissingen uitleggen aan belanghebbenden, ethische dilemma's navigeren en multidisciplinaire teams leiden. AI Polish bereidt je precies daarop voor."
+        }
+      ],
+      "ai-masterpiece": [
+        {
+          "q": "Wat is AI Masterpiece?",
+          "a": "AI Masterpiece is het sluitstuk van het AI Mastery-traject. Het combineert datastructuren en algoritmes, system design en gedragsvaardigheden in end-to-end casestudy's en portfolioprojecten."
+        },
+        {
+          "q": "Welke voorkennis vereist AI Masterpiece?",
+          "a": "Je zou AI Sketch tot en met AI Polish moeten hebben afgerond, of gelijkwaardige kennis moeten hebben van datastructuren en algoritmes, system design en gedragsgerichte gesprekken."
+        },
+        {
+          "q": "Helpt AI Masterpiece me aan een seniorrol?",
+          "a": "Ja! Het programma is specifiek ontworpen voor engineers die mikken op senior- en hogere rollen. Je bouwt portfoliostukken en oefent volledige proefgesprekken."
+        },
+        {
+          "q": "Is AI Masterpiece gratis?",
+          "a": "De eerste les van AI Masterpiece is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Wat voor projecten ga ik bouwen?",
+          "a": "Je ontwerpt de AI-feed van Twitter van begin tot eind, doorloopt volledige proefgesprekken met uitgebreide feedback en bouwt een engineeringportfolio dat je technische breedte en diepgang laat zien."
+        }
+      ],
+      "ai-launchpad": [
+        {
+          "q": "Is Interview Launchpad geschikt voor complete beginners?",
+          "a": "Ja! Interview Launchpad is bedoeld als startpunt voor iedereen die begint aan sollicitatiegesprekken in tech. Eerdere interviewervaring is niet nodig."
+        },
+        {
+          "q": "Moet ik kunnen programmeren voor Interview Launchpad?",
+          "a": "Programmeerkennis is niet vereist. Interview Launchpad richt zich op voorbereidingsstrategie, bedrijfsonderzoek en mindset, vaardigheden die gelden ongeacht je technische niveau."
+        },
+        {
+          "q": "Leer ik hoe ik bedrijven onderzoek?",
+          "a": "Ja! Je leert systematische technieken om bedrijven te onderzoeken, vacatureteksten te ontcijferen en voorbereidingsplanningen te maken die passen bij specifieke rollen en bedrijven."
+        },
+        {
+          "q": "Is Interview Launchpad gratis?",
+          "a": "De eerste les van Interview Launchpad is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Wat onderscheidt Interview Launchpad van andere interviewvoorbereiding?",
+          "a": "Anders dan programma's die meteen in codeeropgaven duiken, legt Interview Launchpad eerst de strategische basis: hoe je onderzoekt, plant en het zelfvertrouwen opbouwt dat zenuwen omzet in prestatie."
+        }
+      ],
+      "ai-behavioral": [
+        {
+          "q": "Is Behavioral Mastery alleen voor engineers?",
+          "a": "De voorbeelden richten zich op engineeringsituaties, maar het STAR-raamwerk en de verteltechnieken gelden voor elke professional die zich voorbereidt op gedragsgerichte gesprekken in tech."
+        },
+        {
+          "q": "Wat is de STAR-methode?",
+          "a": "STAR staat voor Situation, Task, Action, Result. Het is een beproefd raamwerk om interviewantwoorden te structureren. Behavioral Mastery leert je het natuurlijk en effectief toe te passen."
+        },
+        {
+          "q": "Helpt Behavioral Mastery bij leiderschapsvragen?",
+          "a": "Absoluut! Het programma behandelt leiderschapsverhalen, conflictoplossing, samenwerkingsvoorbeelden en de beoordeling van culturele fit, allemaal gangbaar in gedragsgerichte rondes."
+        },
+        {
+          "q": "Is Behavioral Mastery gratis?",
+          "a": "De eerste les van Behavioral Mastery is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Heb ik echte projectervaring nodig?",
+          "a": "Ja, je hebt echte ervaringen nodig om uit te putten. Het programma leert je hoe je die ervaringen herkent, structureert en overtuigend presenteert, maar het ruwe materiaal moet uit je eigen loopbaan komen."
+        }
+      ],
+      "ai-technical": [
+        {
+          "q": "Welke programmeertalen behandelt Technical Interviews?",
+          "a": "Concepten worden taalonafhankelijk uitgelegd, met voorbeelden in Python. De probleemoplossingspatronen en system design-principes gelden ongeacht je voorkeurstaal."
+        },
+        {
+          "q": "Is Technical Interviews geschikt voor junior developers?",
+          "a": "Je hebt solide programmeerfundamenten nodig in minstens één taal. Als je functies en loops kunt schrijven en basisdatastructuren kunt gebruiken, ben je er klaar voor."
+        },
+        {
+          "q": "Welke codeerpatronen leer ik?",
+          "a": "Je beheerst de meest voorkomende patronen uit coding-interviews: arrays, hash maps, two pointers, sliding window, bomen, grafen, dynamisch programmeren en meer, steeds met heldere uitleg en oefenopgaven."
+        },
+        {
+          "q": "Is Technical Interviews gratis?",
+          "a": "De eerste les van Technical Interviews is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Bevat Technical Interviews ook system design?",
+          "a": "Ja! Het programma behandelt zowel coding-interviews als de basis van system design. Je leert schaalbare systemen ontwerpen en technische keuzes helder toelichten aan het whiteboard."
+        }
+      ],
+      "ai-ml-interview": [
+        {
+          "q": "Heb ik ML-ervaring nodig voor AI & ML Interviews?",
+          "a": "Je hebt basiskennis van ML nodig: het verschil tussen supervised en unsupervised learning, wat een model is en elementaire statistiek. Het programma bouwt daar interviewvaardigheden bovenop."
+        },
+        {
+          "q": "Wat maakt ML-gesprekken anders dan gewone tech-gesprekken?",
+          "a": "ML-gesprekken kennen eigen vormen, zoals ML system design, gesprekken over modelevaluatie en ML-casestudy's. Dit programma behandelt al die gespecialiseerde vormen die algemene interviewvoorbereiding overslaat."
+        },
+        {
+          "q": "Leer ik ML system design?",
+          "a": "Ja! ML system design is een kernonderdeel. Je leert end-to-end ML-systemen ontwerpen, inclusief datapijplijnen, modeltraining, evaluatie, uitrol en monitoring."
+        },
+        {
+          "q": "Is AI & ML Interviews gratis?",
+          "a": "De eerste les van AI & ML Interviews is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Welke interviewstijlen van bedrijven behandelt dit programma?",
+          "a": "Het programma bereidt je voor op de ML-interviewvormen van bedrijven als Google, Meta, Amazon, Apple en AI-startups. Elk legt eigen accenten, die we ontleden en oefenen."
+        }
+      ],
+      "ai-offer": [
+        {
+          "q": "Wanneer kan ik het beste met Offer & Beyond beginnen?",
+          "a": "Idealiter wanneer je een concreet aanbod hebt of in de laatste gespreksrondes zit. De raamwerken voor onderhandelen en beoordelen zijn het nuttigst als je met echte cijfers kunt werken."
+        },
+        {
+          "q": "Leer ik onderhandelen over salaris?",
+          "a": "Ja! Je leert onderbouwde onderhandelingstactieken, hoe je je beloning benchmarkt, omgaat met tegenvoorstellen en zelfverzekerd onderhandelt zonder het aanbod op het spel te zetten."
+        },
+        {
+          "q": "Behandelt Offer & Beyond ook aandelen en secundaire voorwaarden?",
+          "a": "Zeker. Je leert aandelenopties, RSU's, tekenbonussen, arbeidsvoorwaardenpakketten en totale beloning beoordelen, niet alleen het basissalaris."
+        },
+        {
+          "q": "Is Offer & Beyond gratis?",
+          "a": "De eerste les van Offer & Beyond is gratis te proberen. Pro ontgrendelt de rest van het programma, samen met alle andere academies, trajecten en certificaten."
+        },
+        {
+          "q": "Helpt Offer & Beyond me meerdere aanbiedingen te vergelijken?",
+          "a": "Ja! Het programma bevat een vergelijkingsraamwerk waarmee je meerdere aanbiedingen objectief afweegt op beloning, groeimogelijkheden, werk-privébalans en loopbaanperspectief."
+        }
+      ]
+    }
   },
   "dashboard": {
     "title": "Mijn leerdashboard",
@@ -626,7 +975,8 @@
     "linkCopied": "Copied!",
     "shareModalTitle": "Share Achievement",
     "shareTweet": "I just completed {program} on AI Educademy! 🎓🤖 #AILearning #AIEducademy",
-    "shareDescription": "I completed the {program} program on AI Educademy"
+    "shareDescription": "I completed the {program} program on AI Educademy",
+    "upgradeCertificate": "Upgrade voor een certificaat"
   },
   "auth": {
     "startLearning": "Begin met leren",
@@ -907,7 +1257,9 @@
     "shareText": "Gratis AI-onderwijs voor iedereen",
     "headline": "Doe mee met de beweging",
     "subtitle": "Ontvang de nieuwste lessen, tips en updates in je inbox. Geef ons een ster op GitHub om gratis AI-onderwijs voor iedereen te ondersteunen.",
-    "shareTitle": "AI Educademy"
+    "shareTitle": "AI Educademy",
+    "newsletterTitle": "Sluit je aan bij lerenden in 11 talen",
+    "githubTitle": "Open source en transparant"
   },
   "lab": {
     "title": "AI Lab",
@@ -1459,7 +1811,12 @@
       "f4": "AI Mock Interview lab",
       "f5": "Completion certificates",
       "f6": "Server-side progress sync across devices"
-    }
+    },
+    "promoCode": "Heb je een promocode?",
+    "promoCodePlaceholder": "Voer code in",
+    "promoCodeApply": "Toepassen",
+    "promoCodeApplied": "Code toegepast!",
+    "promoCodeInvalid": "Ongeldige code"
   },
   "paywall": {
     "title": "Premium Inhoud",
@@ -1521,7 +1878,9 @@
     "generating": "Genereren...",
     "progress": "Voltooi nog {remaining} lessen om je certificaat te verdienen",
     "completed": "Je hebt je certificaat verdiend!",
-    "notSignedIn": "Log in om je voortgang bij te houden en certificaten te verdienen"
+    "notSignedIn": "Log in om je voortgang bij te houden en certificaten te verdienen",
+    "upgradeToCertificate": "Upgrade naar Pro voor een certificaat",
+    "premiumOnly": "Certificaten voor premium programma's zijn beschikbaar met een Pro-abonnement"
   },
   "continueLearning": {
     "title": "Ga verder waar je gebleven was",
@@ -1676,5 +2035,207 @@
     "languages": "Talen",
     "freeValue": "Les 1",
     "freePreview": "Gratis in elk programma"
+  },
+  "journey": {
+    "title": "Jouw AI-leertraject",
+    "subtitle": "Volg je persoonlijke pad naar AI-beheersing, van de basis tot volledige carrièreklaarheid.",
+    "trackAI": "AI Learning",
+    "trackCraft": "Craft Engineering",
+    "trackCareer": "Career Ready",
+    "level": "Niveau",
+    "completed": "afgerond",
+    "locked": "Vergrendeld",
+    "current": "Bezig",
+    "signInPrompt": "Log in om je voortgang bij te houden en je persoonlijke leertraject te ontgrendelen.",
+    "overallProgress": "Totale voortgang",
+    "startJourney": "Start je traject"
+  },
+  "howItWorks": {
+    "title": "Hoe het werkt",
+    "subtitle": "Drie eenvoudige stappen van nieuwsgierige beginner tot zelfverzekerde AI-bouwer",
+    "step1Title": "Kies je pad",
+    "step1Desc": "Kies uit 3 trajecten: AI Learning, Craft Engineering of Career Ready. Elk traject bevat zorgvuldig samengestelde programma's die je van nul naar beheersing brengen.",
+    "step2Title": "Leer door te doen",
+    "step2Desc": "Interactieve lessen, praktische experimenten en echte code. Geen passief video's kijken, maar begrip opbouwen door te oefenen.",
+    "step3Title": "Bouw echte projecten",
+    "step3Desc": "Pas je vaardigheden toe in ons AI Lab met 7 experimenten. Bouw chatbots, classifiers en AI-agents die echte problemen oplossen."
+  },
+  "finalCta": {
+    "headline": "Jouw AI-voorsprong begint hier",
+    "subtitle": "Gestructureerde academies, praktische projecten en een leerpad dat meebeweegt met de technologie.",
+    "primaryText": "Kies je academie",
+    "secondaryText": "Bekijk de trajectkaart"
+  },
+  "launch": {
+    "countdownPrefix": "Lancering op Product Hunt over",
+    "days": "dagen",
+    "hours": "uren",
+    "minutes": "minuten",
+    "seconds": "seconden",
+    "liveMessage": "We zijn LIVE op Product Hunt! Bekijk het",
+    "dismiss": "Sluiten",
+    "badge": "Bekijk ons op Product Hunt"
+  },
+  "emails": {
+    "abandonedCartSubject": "Je hebt iets laten liggen!",
+    "abandonedCartPreview": "Je AI-leertraject staat klaar"
+  },
+  "bookmarks": {
+    "title": "Mijn bladwijzers",
+    "description": "Lessen die je hebt bewaard voor later",
+    "empty": "Nog geen bladwijzers",
+    "emptyDescription": "Blader door onze programma's en vind lessen die je aanspreken!",
+    "browsePrograms": "Bekijk programma's",
+    "bookmark": "Deze les bewaren",
+    "removeBookmark": "Bladwijzer verwijderen",
+    "bookmarked": "Bewaard!",
+    "removed": "Bladwijzer verwijderd",
+    "addedOn": "Bewaard op"
+  },
+  "labPreview": {
+    "title": "Interactief AI Lab",
+    "subtitle": "Experimenteer met echte AI-concepten in je browser. Geen installatie nodig.",
+    "ctaText": "Ontdek het Lab",
+    "neuralPlayground": "Neural Playground",
+    "neuralPlaygroundDesc": "Train neurale netwerken visueel",
+    "aiOrHuman": "AI of mens?",
+    "aiOrHumanDesc": "Test hoe goed je AI herkent",
+    "promptEngineering": "Prompt engineering",
+    "promptEngineeringDesc": "Beheers de kunst van AI-prompts",
+    "imageGeneration": "Beeldgeneratie",
+    "imageGenerationDesc": "Maak afbeeldingen met AI-modellen",
+    "sentimentAnalysis": "Sentimentanalyse",
+    "sentimentAnalysisDesc": "Analyseer emoties in tekst in realtime",
+    "aiChat": "AI-chat",
+    "aiChatDesc": "Bouw conversationele AI-systemen",
+    "ethicsScenarios": "Ethische scenario's",
+    "ethicsScenariosDesc": "Ga om met echte AI-dilemma's"
+  },
+  "projects": {
+    "title": "Wat je gaat bouwen",
+    "subtitle": "Stap van leren naar bouwen. Deze projecten laten zien waartoe je in staat zult zijn.",
+    "chatbot": "AI-chatbot",
+    "chatbotDesc": "Bouw een conversationele AI die context begrijpt, gesprekken over meerdere beurten voert en slim reageert.",
+    "chatbotTags": "NLP,Transformers,Python",
+    "chatbotDifficulty": "Gemiddeld",
+    "classifier": "Beeldclassificatie",
+    "classifierDesc": "Train een computer vision-model dat afbeeldingen met hoge nauwkeurigheid herkent en categoriseert.",
+    "classifierTags": "CNN,TensorFlow,Computer Vision",
+    "classifierDifficulty": "Gemiddeld",
+    "recommender": "Aanbevelingsengine",
+    "recommenderDesc": "Ontwerp een ML-systeem dat voorkeuren van gebruikers voorspelt en persoonlijke suggesties levert.",
+    "recommenderTags": "Collaborative Filtering,ML,Data Science",
+    "recommenderDifficulty": "Gevorderd",
+    "agent": "AI-agent",
+    "agentDesc": "Maak een autonome AI die redeneert, plant en taken uitvoert met behulp van tools en API's.",
+    "agentTags": "LLM's,Tool Use,Agents",
+    "agentDifficulty": "Gevorderd"
+  },
+  "onboarding": {
+    "metaTitle": "Aan de slag",
+    "metaDescription": "Maak je leerervaring bij AI Educademy persoonlijk",
+    "skip": "Overslaan",
+    "back": "Terug",
+    "next": "Volgende",
+    "getStarted": "Aan de slag",
+    "welcome": {
+      "title": "Welkom bij AI Educademy, {name}! 🎉",
+      "defaultName": "daar",
+      "subtitle": "Laten we je leerervaring in een paar stappen persoonlijk maken.",
+      "tagLearn": "Leren",
+      "tagBuild": "Bouwen",
+      "tagGrow": "Groeien"
+    },
+    "experience": {
+      "title": "Hoeveel ervaring heb je met AI?",
+      "subtitle": "Zo kunnen we het juiste startpunt aanraden",
+      "beginner": {
+        "title": "Beginner",
+        "description": "AI is nieuw voor me en ik wil vanaf nul leren"
+      },
+      "intermediate": {
+        "title": "Gevorderd",
+        "description": "Ik ken de basis en wil de diepte in"
+      },
+      "advanced": {
+        "title": "Expert",
+        "description": "Ik heb ervaring en wil gespecialiseerde vaardigheden"
+      }
+    },
+    "goals": {
+      "title": "Wat wil je bereiken?",
+      "subtitle": "Selecteer alles wat van toepassing is",
+      "understand": {
+        "title": "AI-concepten begrijpen",
+        "description": "Leer de grondbeginselen en de theorie achter AI"
+      },
+      "build": {
+        "title": "AI-toepassingen bouwen",
+        "description": "Praktisch programmeren met echte AI-projecten"
+      },
+      "interviews": {
+        "title": "AI-sollicitatiegesprekken winnen",
+        "description": "Bereid je voor op technische AI/ML-sollicitatiegesprekken"
+      },
+      "work": {
+        "title": "AI gebruiken op je werk",
+        "description": "Pas AI-tools en -technieken toe in je werk"
+      },
+      "creative": {
+        "title": "AI creatief verkennen",
+        "description": "Ontdek creatieve en artistieke toepassingen van AI"
+      }
+    },
+    "recommendation": {
+      "title": "Jouw aanbevolen pad ✨",
+      "subtitle": "Op basis van je keuzes denken we dat dit bij je past",
+      "cta": "Begin met leren →",
+      "exploreAll": "Of bekijk alle programma's",
+      "programs": {
+        "ai-seeds": {
+          "name": "AI Seeds",
+          "description": "Begin je AI-reis met toegankelijke lessen over kernbegrippen, terminologie en hoe AI de wereld verandert."
+        },
+        "ai-sketch": {
+          "name": "AI Sketch",
+          "description": "Begin met het bouwen van AI-toepassingen via praktische projecten. Leer werken met AI-API's, prompt engineering en bruikbare programmeerpatronen."
+        },
+        "ai-launchpad": {
+          "name": "AI Launchpad",
+          "description": "Geef je AI-loopbaanvoorbereiding een vliegende start met de basis van sollicitatiegesprekken, veelvoorkomende vraagpatronen en oefeningen die je zelfvertrouwen opbouwen."
+        }
+      }
+    }
+  },
+  "leadMagnet": {
+    "metaTitle": "Gratis download: de AI Starter Kit 2026 | AI Educademy",
+    "metaDescription": "Ontvang de gratis AI Starter Kit 2026, je complete gids voor AI leren, loopbaanpaden, tools en sollicitatievoorbereiding. Download nu!",
+    "title": "Gratis download: de AI Starter Kit 2026",
+    "subtitle": "Alles wat je nodig hebt om met AI te beginnen: leerroute, loopbaanpaden, onmisbare tools en sollicitatievoorbereiding, in één mooi vormgegeven gids.",
+    "description": "Sluit je aan bij duizenden lerenden die met deze gratis bron hun AI-loopbaan startten. Geen opvulling, alleen kennis waar je iets mee kunt.",
+    "whatInsideTitle": "Wat zit erin",
+    "whatInside": {
+      "roadmap": "AI-leerroute, van beginner tot klaar voor de arbeidsmarkt",
+      "concepts": "De 10 belangrijkste AI-begrippen, in gewone taal uitgelegd",
+      "careers": "AI-loopbaanpaden en salarisgids voor 2026",
+      "tools": "Onmisbare AI-tools en bronnen, samengesteld door experts",
+      "interview": "AI-sollicitatievoorbereiding, een handig spiekbriefje"
+    },
+    "socialProof": "Sluit je aan bij {count}+ lerenden die deze gids downloadden",
+    "namePlaceholder": "Je voornaam",
+    "emailPlaceholder": "Je e-mailadres",
+    "submitButton": "Download gratis pdf",
+    "submitting": "Versturen...",
+    "successTitle": "Check je inbox! 🎉",
+    "successMessage": "We hebben de AI Starter Kit naar je e-mail gestuurd. Kijk in je inbox (en spammap) voor de downloadlink.",
+    "successDownload": "Nu downloaden",
+    "privacyNote": "We respecteren je privacy. Je kunt je altijd afmelden.",
+    "errorGeneric": "Er ging iets mis. Probeer het opnieuw.",
+    "errorRateLimit": "Te veel pogingen. Probeer het over een paar minuten opnieuw.",
+    "errorInvalidEmail": "Voer een geldig e-mailadres in.",
+    "errorNameRequired": "Voer je naam in.",
+    "pageCount": "Pdf-gids van 10 pagina's",
+    "freeForever": "Gratis starttoegang",
+    "instantDownload": "Direct downloaden"
   }
 }
