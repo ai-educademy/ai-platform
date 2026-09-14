@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import Lottie from "lottie-react";
+import { Lottie } from "lottie-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface LottieAnimationProps {
@@ -27,7 +27,6 @@ export function LottieAnimation({
   const t = useTranslations("lessons");
   const noMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
-  const lottieRef = useRef<{ play: () => void; pause: () => void; setSpeed: (s: number) => void } | null>(null);
   const [animationData, setAnimationData] = useState<object | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [inView, setInView] = useState(false);
@@ -86,16 +85,11 @@ export function LottieAnimation({
           </div>
         ) : animationData ? (
           <Lottie
-            lottieRef={lottieRef as React.MutableRefObject<never>}
-            animationData={animationData}
+            src={animationData}
             loop={noMotion ? false : loop}
             autoplay={noMotion ? false : autoplay}
+            speed={noMotion ? 1 : speed}
             style={{ height: Math.min(height, typeof window !== "undefined" && window.innerWidth < 640 ? 200 : height), maxWidth: "100%" }}
-            onDOMLoaded={() => {
-              if (lottieRef.current && speed !== 1) {
-                lottieRef.current.setSpeed(speed);
-              }
-            }}
           />
         ) : (
           <div className="flex items-center justify-center" style={{ height: Math.min(height, 200) }}>

@@ -2,7 +2,8 @@
 
 import { useInView } from "@/hooks/useInView";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { Github, Star, Globe } from "lucide-react";
+import { Star, Globe } from "lucide-react";
+import { GithubIcon } from "@/components/ui/icons/GithubIcon";
 import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 import GitHubStatsWidget from "@/components/home/GitHubStatsWidget";
 
@@ -79,7 +80,7 @@ export default function HomeCommunitySection({
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center">
-              <Github size={20} className="text-[var(--color-primary)]" />
+              <GithubIcon size={20} className="text-[var(--color-primary)]" />
             </div>
             <h3 className="text-lg font-bold text-[var(--color-text)]">
               {githubTitle ?? "Open Source & Transparent"}
