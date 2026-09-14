@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { locales } from "@/i18n/request";
+import { locales } from "@/i18n/locales";
 
 const BASE_URL = "https://aieducademy.org";
 

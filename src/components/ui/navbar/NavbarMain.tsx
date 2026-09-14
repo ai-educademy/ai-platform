@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 
-import { locales } from "@/i18n/request";
+import { locales } from "@/i18n/locales";
 import { LanguageSwitcher } from "../LanguageSwitcher";
 import { ThemeToggle } from "../ThemeToggle";
 import { UserMenu } from "@/components/auth/UserMenu";

@@ -1,41 +1,17 @@
 import { getRequestConfig } from "next-intl/server";
+import { locale as rootLocale } from "next/root-params";
 import { routing } from "./routing";
+import { locales, type Locale } from "./locales";
 
-export const locales = routing.locales;
-export type Locale = (typeof locales)[number];
+export default getRequestConfig(async () => {
+  // `requestLocale` was deprecated in next-intl 4.13. Reading the root param
+  // directly is the supported replacement and, unlike the old header-based
+  // lookup, it does not opt the request out of static rendering.
+  let locale = await rootLocale();
 
-export const localeNames: Record<Locale, string> = {
-  en: "English",
-  fr: "Français",
-  nl: "Nederlands",
-  hi: "हिन्दी",
-  te: "తెలుగు",
-  es: "Español",
-  pt: "Português",
-  de: "Deutsch",
-  zh: "中文",
-  ja: "日本語",
-  ar: "العربية",
-};
-
-export const localeFlags: Record<Locale, string> = {
-  en: "🌐",
-  fr: "🇫🇷",
-  nl: "🇳🇱",
-  hi: "🇮🇳",
-  te: "🇮🇳",
-  es: "🇪🇸",
-  pt: "🇧🇷",
-  de: "🇩🇪",
-  zh: "🇨🇳",
-  ja: "🇯🇵",
-  ar: "🇸🇦",
-};
-
-export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
-
-  // Validate locale — fallback to default if invalid
+  // Anything outside the `[locale]` tree (sitemap.ts, robots.ts, feed.xml, the
+  // API routes) has no root param at all, and the catch-all segment will happily
+  // match junk paths like `/unknown.txt`. Both cases land on the default.
   if (!locale || !locales.includes(locale as Locale)) {
     locale = routing.defaultLocale;
   }

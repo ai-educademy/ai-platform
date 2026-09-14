@@ -1,4 +1,4 @@
-import { locales } from "@/i18n/request";
+import { locales } from "@/i18n/locales";
 
 type KnownLocale = (typeof locales)[number];
 
