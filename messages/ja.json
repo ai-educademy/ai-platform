@@ -56,51 +56,12 @@
     "statLanguages": "10言語"
   },
   "features": {
-    "title": "なぜAI Educademyなのか？",
-    "subtitle": "ゼロから始められます。前提知識は不要. 一歩ずつ導きます。",
-    "beginner": {
-      "title": "ゼロから始める",
-      "description": "コードに触れたことがない？大丈夫。日常の言葉と現実の例を使います。Netflixが映画を勧める仕組み、スマホが顔を認識する方法など。"
-    },
-    "interactive": {
-      "title": "実践で学ぶ",
-      "description": "ブラウザ上でのハンズオン実験。AIに絵を認識させたり、チャットボットを育てたり、結果をすぐに確認できます。"
-    },
-    "multilingual": {
-      "title": "あなたの言語で",
-      "description": "ヒンディー語、テルグ語、フランス語、オランダ語、英語で学べます。一番しっくりくる言語を選んでください。"
-    },
-    "community": {
-      "title": "一緒に学ぶ",
-      "description": "質問して、実験をシェアして、レッスンの翻訳を手伝いましょう。"
-    },
-    "practical": {
-      "title": "現実のAI",
-      "description": "検索エンジン、音声アシスタント、ソーシャルフィード、自動運転車、医療診断でAIがどう活用されているか。"
-    },
-    "structuredTitle": "体系的なプログラム",
-    "structuredDesc": "初心者から上級者まで丁寧に構成されたトラック",
     "lessonsTitle": "100以上の専門レッスン",
     "lessonsDesc": "あらゆるトピックを深く・丁寧に解説",
     "languagesTitle": "10言語",
     "languagesDesc": "英語、フランス語、オランダ語、ヒンディー語、テルグ語で学べます",
     "programsTitle": "15のプログラム",
-    "programsDesc": "学習、構築、キャリア準備の3つのトラック",
-    "labTitle": "インタラクティブラボ",
-    "labDesc": "理解を深めるハンズオン実験",
-    "openSourceTitle": "オープンソース",
-    "openSourceDesc": "完全透明. 見る、フォーク、貢献することができます"
-  },
-  "founder": {
-    "description": "AI Educademy のあらゆる部分をゼロから構想・設計・構築しました——アーキテクチャ、カリキュラム、多言語インフラ、オープンソースツールまで。JP Morgan、Sky、Marks & Spencer でアジアとヨーロッパにわたり15年以上、大規模システムのエンジニアリングに従事。その世界的な経験から明らかになったことがあります：言語は決して学びの壁であってはならない。",
-    "cta": "私について詳しく",
-    "role": "創設者 & クリエイター · エンジニアリングリーダー · ロンドン",
-    "statYears": "年のエンジニアリング",
-    "statRepos": "オープンソースリポジトリ",
-    "statContinents": "大陸",
-    "brainsTitle": "アイデアの生みの親",
-    "buyCoffee": "コーヒーを一杯おごる",
-    "statLanguages": "言語"
+    "programsDesc": "学習、構築、キャリア準備の3つのトラック"
   },
   "footer": {
     "lessons": "レッスン",
@@ -113,12 +74,15 @@
     "learnHeader": "学ぶ",
     "communityHeader": "コミュニティ",
     "supportHeader": "サポート",
-    "programs": "アカデミックス",
+    "programs": "プログラム",
     "dashboard": "ダッシュボード",
     "lab": "ラボ",
     "pageViews": "ページビュー",
     "scrollToTop": "トップへスクロール",
-    "faq": "よくある質問"
+    "faq": "よくある質問",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "contact": "お問い合わせ"
   },
   "about": {
     "title": "AI Educademyについて",
@@ -192,7 +156,7 @@
     "comingSoon3": {
       "title": "チャットボットの仕組み"
     },
-    "programs": "アカデミックス",
+    "programs": "プログラム",
     "lessonsComingSoon": "レッスン近日公開",
     "checkBackSoon": "またチェックしてください！",
     "backToProgram": "プログラムに戻る",
@@ -230,9 +194,9 @@
       "4": "上級",
       "5": "エキスパート"
     },
-    "viewAll": "全アカデミックスを見る",
-    "pageTitle": "AI & エンジニアリング アカデミックス",
-    "pageDescription": "無料のAI学習トラックとソフトウェアエンジニアリングアカデミックスを探索しましょう。完全な初心者から上級者まで、5言語で自分のペースで学べます。",
+    "viewAll": "全プログラムを見る",
+    "pageTitle": "AI & エンジニアリング プログラム",
+    "pageDescription": "無料のAI学習トラックとソフトウェアエンジニアリングプログラムを探索しましょう。完全な初心者から上級者まで、5言語で自分のペースで学べます。",
     "track": {
       "ai-learning": {
         "title": "AI基礎",
@@ -605,19 +569,19 @@
     "comingSoon": "レッスン近日公開",
     "comingSoonDesc": "丁寧にレッスンを作成中です。またチェックしてください！",
     "startFirst": "最初のレッスンを始める",
-    "backToAll": "全アカデミックスに戻る"
+    "backToAll": "全プログラムに戻る"
   },
   "dashboard": {
     "title": "マイ学習ダッシュボード",
     "titleUser": "{name}のダッシュボード",
-    "subtitle": "全アカデミックスの進捗",
+    "subtitle": "全プログラムの進捗",
     "overallProgress": "全体の進捗",
     "lessonsCompleted": "{total}件中{completed}件のレッスンを完了",
     "remaining": "残り{count}件",
     "min": "分",
     "achievements": "実績",
     "unlocked": "解除済み！",
-    "browsePrograms": "アカデミックス",
+    "browsePrograms": "プログラム",
     "resetProgress": "進捗をリセット",
     "firstStep": "最初の一歩",
     "firstStepDesc": "最初のレッスンを修了",
@@ -1451,7 +1415,9 @@
     "q24": "What makes AI Educademy different from other platforms?",
     "a24": "AI Educademyは、すべてのアカデミーでの本物の無料お試し、体系的な学習、実践的なプロジェクト、インタラクティブな実験、そして本格的な多言語対応を組み合わせています。Proは基礎から本番運用を意識したAIスキルまで導きます。",
     "q25": "How do I get started?",
-    "a25": "アカデミーを見て、AI Seeds、AI Canopy、Interview Launchpadなど、どのプログラムでも最初のレッスンを無料でお試しください。残りを解放する準備ができたら、月額・年額・生涯のProプランをお選びください。"
+    "a25": "アカデミーを見て、AI Seeds、AI Canopy、Interview Launchpadなど、どのプログラムでも最初のレッスンを無料でお試しください。残りを解放する準備ができたら、月額・年額・生涯のProプランをお選びください。",
+    "ctaTitle": "AIの学びを始める準備はできましたか？",
+    "ctaSubtitle": "どのアカデミーも最初のレッスンを無料でお試しいただけます。アカウント登録は不要です。"
   },
   "pricing": {
     "pageTitle": "Pricing",
@@ -1699,9 +1665,16 @@
     "completedBy": "Completed by",
     "badge": "🎓",
     "cta": "Start Learning at AI Educademy",
-    "ctaSubtitle": "Free AI education for everyone",
+    "ctaSubtitle": "体系的なAI教育を、一レッスンずつ",
     "verifiedCompletion": "Verified Completion",
     "defaultTitle": "Achievement | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - Free AI education for everyone."
+    "defaultDescription": "An achievement earned on AI Educademy - 体系的なAI教育を、一レッスンずつ."
+  },
+  "trustBar": {
+    "lessons": "レッスン",
+    "programs": "プログラム",
+    "languages": "言語",
+    "freeValue": "レッスン1",
+    "freePreview": "すべてのプログラムで無料"
   }
 }

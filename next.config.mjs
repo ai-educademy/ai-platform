@@ -25,7 +25,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https://avatars.githubusercontent.com https://*.vercel-storage.com",
       "font-src 'self' data:",
-      "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel.live wss://*.vercel.live",
+      "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel.live wss://*.vercel.live https://api.github.com",
       "frame-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",

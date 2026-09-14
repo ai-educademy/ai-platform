@@ -12,7 +12,6 @@ import {
   HomeHowItWorksLazy as HomeHowItWorks,
   HomeLabPreviewLazy as HomeLabPreview,
   HomeProjectsLazy as HomeProjects,
-  HomeTestimonialsLazy as HomeTestimonials,
   HomeFinalCTALazy as HomeFinalCTA,
 } from "@/components/home/HomeDynamic";
 
@@ -31,7 +30,6 @@ export default async function HomePage({
   const tHIW = await getTranslations("howItWorks");
   const tLP = await getTranslations("labPreview");
   const tPR = await getTranslations("projects");
-  const tTS = await getTranslations("testimonials");
   const tFC = await getTranslations("finalCta");
   const basePath = locale === "en" ? "" : `/${locale}`;
 
@@ -103,7 +101,7 @@ export default async function HomePage({
     { icon: "📚", value: String(totalLessons), label: tTB("lessons") },
     { icon: "🎯", value: String(totalPrograms), label: tTB("programs") },
     { icon: "🌍", value: String(totalLanguages), label: tTB("languages") },
-    { icon: "💎", value: "100%", label: tTB("openSource") },
+    { icon: "🔓", value: tTB("freeValue"), label: tTB("freePreview") },
   ];
 
   return (
@@ -262,21 +260,7 @@ export default async function HomePage({
         ]}
       />
 
-      {/* Section 8: Platform Highlights / Testimonials */}
-      <HomeTestimonials
-        title={tTS("title")}
-        stats={{
-          programs: tTS("programs"),
-          programsSub: tTS("programsSub"),
-          languages: tTS("languages"),
-          languagesSub: tTS("languagesSub"),
-          openSource: tTS("openSource"),
-          openSourceSub: tTS("openSourceSub"),
-        }}
-        quote={tTS("quote")}
-      />
-
-      {/* Section 9: Newsletter & Community */}
+      {/* Section 8: Newsletter & Community */}
       <section className="py-12 sm:py-16 relative overflow-hidden bg-gradient-mesh-cta">
         <div className="absolute inset-0 noise-texture pointer-events-none" />
         <HomeCommunitySection
@@ -288,7 +272,7 @@ export default async function HomePage({
         />
       </section>
 
-      {/* Section 10: Final CTA */}
+      {/* Section 9: Final CTA */}
       <HomeFinalCTA
         headline={tFC("headline")}
         subtitle={tFC("subtitle")}

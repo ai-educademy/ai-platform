@@ -128,9 +128,9 @@ export default async function FAQPage({
         <AnimatedSection animation="fade-up" delay={480}>
           <div className="mt-10 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-violet-500/5 to-purple-500/10 border border-indigo-500/20 p-8 text-center">
             <div className="text-3xl mb-3">🌱</div>
-            <h2 className="text-xl font-bold mb-2">Ready to start your AI journey?</h2>
+            <h2 className="text-xl font-bold mb-2">{t("ctaTitle")}</h2>
             <p className="text-[var(--color-text-muted)] text-sm mb-6 max-w-md mx-auto">
-              No account required. Free, in your language, at your own pace.
+              {t("ctaSubtitle")}
             </p>
             <Link
               href={`${basePath}${t("ctaHref")}`}
