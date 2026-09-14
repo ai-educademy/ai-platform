@@ -14,7 +14,7 @@ import { ManageBilling } from "@/components/dashboard/ManageBilling";
 import { ShareAchievement } from "@/components/dashboard/ShareAchievement";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { AnimatedProgressBar } from "@/components/ui/MotionWrappers";
-import { locales } from "@/i18n/request";
+import { locales } from "@/i18n/locales";
 import { Flame, ArrowRight, Trophy } from "lucide-react";
 import type { DynamicTranslate } from "@/lib/i18n-utils";
 

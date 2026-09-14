@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import { Bookmark, X, ArrowRight } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
-import { locales } from "@/i18n/request";
+import { locales } from "@/i18n/locales";
 
 interface BookmarkItem {
   id: string;

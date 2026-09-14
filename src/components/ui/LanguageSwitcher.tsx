@@ -3,8 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { locales, localeNames, localeFlags } from "@/i18n/request";
-import type { Locale } from "@/i18n/request";
+import { locales, localeNames, localeFlags } from "@/i18n/locales";
+import type { Locale } from "@/i18n/locales";
 
 export function LanguageSwitcher() {
   const pathname = usePathname();

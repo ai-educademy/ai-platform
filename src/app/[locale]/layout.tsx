@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/next";
@@ -140,7 +141,13 @@ export default async function LocaleLayout({
               <Footer />
             </div>
             <ChatWidget />
-            <ReferralTracker />
+            {/* useSearchParams() opts the whole tree out of static rendering
+                unless it sits behind a Suspense boundary. This component only
+                runs effects and renders null, so there is nothing to fall back
+                to. */}
+            <Suspense fallback={null}>
+              <ReferralTracker />
+            </Suspense>
           </NextIntlClientProvider>
         </Providers>
         <Analytics />

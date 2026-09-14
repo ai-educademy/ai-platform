@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 import { ArrowUp } from "lucide-react";
-import { locales } from "@/i18n/request";
+import { locales } from "@/i18n/locales";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { BrandMark } from "./BrandMark";
 import { PageViewCounter } from "./PageViewCounter";

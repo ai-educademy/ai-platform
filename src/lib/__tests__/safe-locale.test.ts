@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { safeLocale, localeBasePath } from "@/lib/safe-locale";
-import { locales } from "@/i18n/request";
+import { locales } from "@/i18n/locales";
 
 describe("safeLocale", () => {
   it("given every supported locale, when laundered, then it is preserved", () => {
