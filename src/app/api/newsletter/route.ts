@@ -4,6 +4,7 @@ import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { db } from "@/lib/db";
 import { newsletterSubscribers } from "@/lib/db/schema";
 import { z } from "zod";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 const NewsletterSchema = z.object({
   email: z.string().email("Invalid email format"),
@@ -49,6 +50,7 @@ export async function POST(req: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Newsletter API error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },

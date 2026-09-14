@@ -5,6 +5,7 @@ import { subscriptions, users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { sendSubscriptionEmail, sendAdminNotification, sendAbandonedCartEmail } from "@/lib/email";
 import type Stripe from "stripe";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
@@ -22,6 +23,7 @@ export async function POST(req: NextRequest) {
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
+    if (isDatabaseNotConfigured(err)) return databaseUnavailable();
     console.error("[stripe/webhook] signature verification failed:", err);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }

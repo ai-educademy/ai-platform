@@ -4,6 +4,7 @@ import { eq, and } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { users, verificationTokens } from "@/lib/db/schema";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 const PASSWORD_RE = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
 
@@ -90,6 +91,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: "Password reset successfully. You can now sign in." });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("[ResetPassword] Error:", error);
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },

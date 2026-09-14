@@ -7,6 +7,7 @@ import { lessonBookmarks } from "@/lib/db/schema";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { getProgram } from "@/lib/programs";
 import { getLesson } from "@/lib/lessons";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 /* ────────────── GET — fetch all bookmarks for the signed-in user ────────────── */
 
@@ -69,7 +70,8 @@ export async function POST(req: NextRequest) {
   let body: unknown;
   try {
     body = await req.json();
-  } catch {
+  } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     return NextResponse.json(
       { error: "Invalid JSON" },
       { status: 400, headers: rateLimitHeaders(rl) }

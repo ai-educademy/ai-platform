@@ -4,6 +4,7 @@ import { sendAdminNotification } from "@/lib/email";
 import { db } from "@/lib/db";
 import { contactSubmissions } from "@/lib/db/schema";
 import { z } from "zod";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 const SUBJECTS = [
   "General Inquiry",
@@ -141,6 +142,7 @@ export async function POST(req: NextRequest) {
         });
       }
     } catch (err) {
+      if (isDatabaseNotConfigured(err)) return databaseUnavailable();
       console.error("[Contact] Failed to send confirmation email:", err);
     }
 
@@ -149,6 +151,7 @@ export async function POST(req: NextRequest) {
       { status: 200, headers: rateLimitHeaders(rl) },
     );
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("[Contact] API error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },

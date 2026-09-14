@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { users, verificationTokens } from "@/lib/db/schema";
 import { sendWelcomeEmail, sendAdminNotification } from "@/lib/email";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -101,6 +102,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: "Email verified successfully. You can now sign in." });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("[VerifyEmail] Error:", error);
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },

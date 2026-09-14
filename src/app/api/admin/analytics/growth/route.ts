@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { users, newsletterSubscribers } from "@/lib/db/schema";
 import { sql } from "drizzle-orm";
 import { requireAdmin } from "@/lib/admin-auth";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 export async function GET() {
   const check = await requireAdmin();
@@ -58,6 +59,7 @@ export async function GET() {
 
     return NextResponse.json(data);
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Admin analytics growth error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { lessonFeedback } from "@/lib/db/schema";
 import { eq, and, sql } from "drizzle-orm";
 import { z } from "zod";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 const FeedbackSchema = z.object({
   lessonSlug: z.string().min(1).max(100),
@@ -68,6 +69,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Feedback API error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },
@@ -116,6 +118,7 @@ export async function GET(req: NextRequest) {
       comments,
     });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("Feedback GET error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },

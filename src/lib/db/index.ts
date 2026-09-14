@@ -1,6 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle, NeonHttpDatabase } from "drizzle-orm/neon-http";
 import * as schema from "./schema";
+import { DatabaseNotConfiguredError } from "@/lib/db-guard";
 
 type Db = NeonHttpDatabase<typeof schema>;
 
@@ -19,10 +20,7 @@ export const isDbConfigured = instance !== null;
 
 function createUnconfiguredDb(): Db {
   const fail = (): never => {
-    throw new Error(
-      "Database is not configured: DATABASE_URL is not set. " +
-        "Guard this code path with `isDbConfigured` from @/lib/db."
-    );
+    throw new DatabaseNotConfiguredError();
   };
 
   return new Proxy({} as Db, { get: fail, apply: fail, has: fail });

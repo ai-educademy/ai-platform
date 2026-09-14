@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { lessonComments, users } from "@/lib/db/schema";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 function stripHtml(str: string): string {
   return str.replace(/<[^>]*>/g, "").trim();
@@ -100,7 +101,8 @@ export async function POST(req: NextRequest) {
   let body: unknown;
   try {
     body = await req.json();
-  } catch {
+  } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
@@ -151,7 +153,8 @@ export async function DELETE(req: NextRequest) {
   let body: unknown;
   try {
     body = await req.json();
-  } catch {
+  } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 

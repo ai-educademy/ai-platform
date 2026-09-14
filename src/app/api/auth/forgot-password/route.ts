@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { users, verificationTokens } from "@/lib/db/schema";
 import { sendPasswordResetEmail } from "@/lib/email";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -56,6 +57,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: genericMessage });
   } catch (error) {
+    if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("[ForgotPassword] Error:", error);
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },
