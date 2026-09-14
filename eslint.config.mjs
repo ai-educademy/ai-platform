@@ -71,6 +71,22 @@ export default [
     }
   },
   {
+    // Standalone maintenance scripts run under Node, not Next's bundler, so the
+    // Node globals are legitimately available and progress output is the point.
+    files: ['scripts/**/*.{mjs,js,ts}'],
+    languageOptions: {
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        Buffer: 'readonly',
+        URL: 'readonly'
+      }
+    },
+    rules: {
+      'no-console': 'off'
+    }
+  },
+  {
     files: ['**/*.{jsx,tsx}'],
     plugins: {
       'react-hooks': reactHooks

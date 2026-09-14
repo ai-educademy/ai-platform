@@ -8,6 +8,13 @@ import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { safeLocale } from "@/lib/safe-locale";
 
+/** Postgres 42703 is undefined_column. */
+function isMissingColumn(error: unknown, column: string): boolean {
+  const code = (error as { code?: string })?.code;
+  const message = String((error as { message?: string })?.message ?? "");
+  return code === "42703" && message.includes(column);
+}
+
 function generateCode(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
@@ -75,14 +82,32 @@ export async function POST(req: NextRequest) {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // Create user
-    await db.insert(users).values({
-      name,
-      email,
-      password: hashedPassword,
-      emailVerified: null,
-      locale,
-    });
+    // Create user.
+    //
+    // `locale` arrives with migration 0004, and migrations are applied by hand
+    // on this project rather than during the build, so code can reach
+    // production ahead of the schema. Sign-up is too important to fail over a
+    // column that only personalises later email, so a missing column falls back
+    // to creating the account without it. Remove this once 0004 is applied
+    // everywhere.
+    try {
+      await db.insert(users).values({
+        name,
+        email,
+        password: hashedPassword,
+        emailVerified: null,
+        locale,
+      });
+    } catch (error) {
+      if (!isMissingColumn(error, "locale")) throw error;
+      console.warn("[Signup] users.locale missing; apply migration 0004.");
+      await db.insert(users).values({
+        name,
+        email,
+        password: hashedPassword,
+        emailVerified: null,
+      });
+    }
 
     // Generate verification code and store it
     const code = generateCode();
