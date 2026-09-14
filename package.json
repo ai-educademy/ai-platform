@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "Main Next.js app shell for AI Educademy — routing, auth, i18n, program registry",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
