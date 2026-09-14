@@ -4,6 +4,13 @@ import { db } from "@/lib/db";
 import { userStreaks } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+
+function serverError(route: string, error: unknown): NextResponse {
+  if (isDatabaseNotConfigured(error)) return databaseUnavailable();
+  console.error(`[api/streak] ${route} failed`, error);
+  return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+}
 
 function getToday(): string {
   return new Date().toISOString().split("T")[0];
@@ -27,36 +34,40 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const [row] = await db
-    .select({
-      currentStreak: userStreaks.currentStreak,
-      longestStreak: userStreaks.longestStreak,
-      lastActivityDate: userStreaks.lastActivityDate,
-    })
-    .from(userStreaks)
-    .where(eq(userStreaks.userId, session.user.id))
-    .limit(1);
+  try {
+    const [row] = await db
+      .select({
+        currentStreak: userStreaks.currentStreak,
+        longestStreak: userStreaks.longestStreak,
+        lastActivityDate: userStreaks.lastActivityDate,
+      })
+      .from(userStreaks)
+      .where(eq(userStreaks.userId, session.user.id))
+      .limit(1);
 
-  if (!row) {
-    return NextResponse.json({
-      currentStreak: 0,
-      longestStreak: 0,
-      lastActivityDate: "",
-    });
+    if (!row) {
+      return NextResponse.json({
+        currentStreak: 0,
+        longestStreak: 0,
+        lastActivityDate: "",
+      });
+    }
+
+    // Recalculate current streak based on staleness
+    const today = getToday();
+    const yesterday = getYesterday();
+    if (row.lastActivityDate !== today && row.lastActivityDate !== yesterday) {
+      return NextResponse.json({
+        currentStreak: 0,
+        longestStreak: row.longestStreak,
+        lastActivityDate: row.lastActivityDate,
+      });
+    }
+
+    return NextResponse.json(row);
+  } catch (error) {
+    return serverError("GET", error);
   }
-
-  // Recalculate current streak based on staleness
-  const today = getToday();
-  const yesterday = getYesterday();
-  if (row.lastActivityDate !== today && row.lastActivityDate !== yesterday) {
-    return NextResponse.json({
-      currentStreak: 0,
-      longestStreak: row.longestStreak,
-      lastActivityDate: row.lastActivityDate,
-    });
-  }
-
-  return NextResponse.json(row);
 }
 
 export async function POST(req: Request) {
@@ -67,16 +78,38 @@ export async function POST(req: Request) {
 
   const body = await req.json().catch(() => null);
 
-  // Migration: client sends full streak data from localStorage
-  if (body && typeof body.currentStreak === "number") {
-    const parsed = MigrateSchema.safeParse(body);
-    if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+  try {
+    // Migration: client sends full streak data from localStorage
+    if (body && typeof body.currentStreak === "number") {
+      const parsed = MigrateSchema.safeParse(body);
+      if (!parsed.success) {
+        return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+      }
+      const { currentStreak, longestStreak, lastActivityDate } = parsed.data;
+
+      const [existing] = await db
+        .select({ id: userStreaks.id })
+        .from(userStreaks)
+        .where(eq(userStreaks.userId, session.user.id))
+        .limit(1);
+
+      if (!existing) {
+        await db.insert(userStreaks).values({
+          userId: session.user.id,
+          currentStreak,
+          longestStreak,
+          lastActivityDate,
+        });
+      }
+      return NextResponse.json({ success: true });
     }
-    const { currentStreak, longestStreak, lastActivityDate } = parsed.data;
+
+    // Normal: record today's activity
+    const today = getToday();
+    const yesterday = getYesterday();
 
     const [existing] = await db
-      .select({ id: userStreaks.id })
+      .select()
       .from(userStreaks)
       .where(eq(userStreaks.userId, session.user.id))
       .limit(1);
@@ -84,64 +117,46 @@ export async function POST(req: Request) {
     if (!existing) {
       await db.insert(userStreaks).values({
         userId: session.user.id,
-        currentStreak,
-        longestStreak,
-        lastActivityDate,
+        currentStreak: 1,
+        longestStreak: 1,
+        lastActivityDate: today,
+      });
+      return NextResponse.json({ currentStreak: 1, longestStreak: 1, lastActivityDate: today });
+    }
+
+    // Already recorded today
+    if (existing.lastActivityDate === today) {
+      return NextResponse.json({
+        currentStreak: existing.currentStreak,
+        longestStreak: existing.longestStreak,
+        lastActivityDate: existing.lastActivityDate,
       });
     }
-    return NextResponse.json({ success: true });
-  }
 
-  // Normal: record today's activity
-  const today = getToday();
-  const yesterday = getYesterday();
+    let newCurrent: number;
+    if (existing.lastActivityDate === yesterday) {
+      newCurrent = existing.currentStreak + 1;
+    } else {
+      newCurrent = 1;
+    }
+    const newLongest = Math.max(existing.longestStreak, newCurrent);
 
-  const [existing] = await db
-    .select()
-    .from(userStreaks)
-    .where(eq(userStreaks.userId, session.user.id))
-    .limit(1);
+    await db
+      .update(userStreaks)
+      .set({
+        currentStreak: newCurrent,
+        longestStreak: newLongest,
+        lastActivityDate: today,
+        updatedAt: new Date(),
+      })
+      .where(eq(userStreaks.userId, session.user.id));
 
-  if (!existing) {
-    await db.insert(userStreaks).values({
-      userId: session.user.id,
-      currentStreak: 1,
-      longestStreak: 1,
-      lastActivityDate: today,
-    });
-    return NextResponse.json({ currentStreak: 1, longestStreak: 1, lastActivityDate: today });
-  }
-
-  // Already recorded today
-  if (existing.lastActivityDate === today) {
     return NextResponse.json({
-      currentStreak: existing.currentStreak,
-      longestStreak: existing.longestStreak,
-      lastActivityDate: existing.lastActivityDate,
-    });
-  }
-
-  let newCurrent: number;
-  if (existing.lastActivityDate === yesterday) {
-    newCurrent = existing.currentStreak + 1;
-  } else {
-    newCurrent = 1;
-  }
-  const newLongest = Math.max(existing.longestStreak, newCurrent);
-
-  await db
-    .update(userStreaks)
-    .set({
       currentStreak: newCurrent,
       longestStreak: newLongest,
       lastActivityDate: today,
-      updatedAt: new Date(),
-    })
-    .where(eq(userStreaks.userId, session.user.id));
-
-  return NextResponse.json({
-    currentStreak: newCurrent,
-    longestStreak: newLongest,
-    lastActivityDate: today,
-  });
+    });
+  } catch (error) {
+    return serverError("POST", error);
+  }
 }

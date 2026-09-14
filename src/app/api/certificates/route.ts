@@ -9,6 +9,16 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
+import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+
+function serverError(error: unknown): Response {
+  if (isDatabaseNotConfigured(error)) return databaseUnavailable();
+  console.error("[api/certificates] GET failed", error);
+  return new Response(JSON.stringify({ error: "Something went wrong" }), {
+    status: 500,
+    headers: { "Content-Type": "application/json" },
+  });
+}
 
 export async function GET(req: NextRequest) {
   const session = await auth();
@@ -46,67 +56,71 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // Check user's completed lessons for this program
-  const completed = await db
-    .select({ lessonSlug: lessonProgress.lessonSlug })
-    .from(lessonProgress)
-    .where(
-      and(
-        eq(lessonProgress.userId, session.user.id),
-        eq(lessonProgress.programSlug, programSlug)
-      )
-    );
+  try {
+    // Check user's completed lessons for this program
+    const completed = await db
+      .select({ lessonSlug: lessonProgress.lessonSlug })
+      .from(lessonProgress)
+      .where(
+        and(
+          eq(lessonProgress.userId, session.user.id),
+          eq(lessonProgress.programSlug, programSlug)
+        )
+      );
 
-  const completedSlugs = new Set(completed.map((c) => c.lessonSlug));
-  const allCompleted = lessons.every((l) => completedSlugs.has(l.slug));
+    const completedSlugs = new Set(completed.map((c) => c.lessonSlug));
+    const allCompleted = lessons.every((l) => completedSlugs.has(l.slug));
 
-  if (!allCompleted) {
-    return new Response(
-      JSON.stringify({
-        error: "Complete all lessons to earn your certificate",
-      }),
-      { status: 403, headers: { "Content-Type": "application/json" } }
-    );
-  }
-
-  // Premium gate: only premium users can download certificates
-  {
-    const userRecord = await db
-      .select({ role: users.role })
-      .from(users)
-      .where(eq(users.id, session.user.id))
-      .then((rows) => rows[0]);
-    const role = userRecord?.role ?? "free";
-    if (role !== "pro" && role !== "admin") {
+    if (!allCompleted) {
       return new Response(
-        JSON.stringify({ error: "Upgrade to Pro to download certificates" }),
+        JSON.stringify({
+          error: "Complete all lessons to earn your certificate",
+        }),
         { status: 403, headers: { "Content-Type": "application/json" } }
       );
     }
+
+    // Premium gate: only premium users can download certificates
+    {
+      const userRecord = await db
+        .select({ role: users.role })
+        .from(users)
+        .where(eq(users.id, session.user.id))
+        .then((rows) => rows[0]);
+      const role = userRecord?.role ?? "free";
+      if (role !== "pro" && role !== "admin") {
+        return new Response(
+          JSON.stringify({ error: "Upgrade to Pro to download certificates" }),
+          { status: 403, headers: { "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // Generate certificate PDF
+    const pdfBytes = await generateCertificatePdf({
+      userName: session.user.name || session.user.email || "Learner",
+      programTitle: programSlug
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" "),
+      trackName: program.track
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" "),
+      programIcon: program.icon,
+      userId: session.user.id,
+      programSlug,
+    });
+
+    return new Response(Buffer.from(pdfBytes), {
+      headers: {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `inline; filename="certificate-${programSlug}.pdf"`,
+      },
+    });
+  } catch (error) {
+    return serverError(error);
   }
-
-  // Generate certificate PDF
-  const pdfBytes = await generateCertificatePdf({
-    userName: session.user.name || session.user.email || "Learner",
-    programTitle: programSlug
-      .split("-")
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" "),
-    trackName: program.track
-      .split("-")
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" "),
-    programIcon: program.icon,
-    userId: session.user.id,
-    programSlug,
-  });
-
-  return new Response(Buffer.from(pdfBytes), {
-    headers: {
-      "Content-Type": "application/pdf",
-      "Content-Disposition": `inline; filename="certificate-${programSlug}.pdf"`,
-    },
-  });
 }
 
 interface CertificateData {
