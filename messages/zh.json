@@ -642,7 +642,7 @@
         },
         {
           "q": "AI Seeds 真的是免费的吗？",
-          "a": "是的，AI Seeds 完全免费。AI Educademy 是一个致力于让 AI 教育人人可及的开源项目，没有任何隐藏费用、付费墙或高级版追加销售。"
+          "a": "AI Seeds 的第一课免费试听，无需注册账号。课程其余部分需要 Pro 计划才能访问，其他所有学院、学习路径和证书也是如此。"
         },
         {
           "q": "AI Seeds 涵盖哪些内容？",
@@ -668,7 +668,7 @@
         },
         {
           "q": "AI Sprouts 是免费的吗？",
-          "a": "是的，完全免费。AI Educademy 相信优质的 AI 教育应该让每个人都能获得。"
+          "a": "AI Sprouts 的第一课免费试听。Pro 可解锁课程其余部分，以及其他所有学院、学习路径和证书。"
         },
         {
           "q": "AI Sprouts 能学到什么？",
@@ -902,7 +902,7 @@
         },
         {
           "q": "Interview Launchpad 是免费的吗？",
-          "a": "是的，完全免费。AI Educademy 的 Career Ready 系列旨在帮助每个人获得优质的面试准备资源。"
+          "a": "Interview Launchpad 的第一课免费试听。Pro 可解锁课程其余部分，以及其他所有学院、学习路径和证书。"
         },
         {
           "q": "Interview Launchpad 和其他面试准备课程有什么不同？",
@@ -1816,7 +1816,7 @@
     "q1": "What is AI Educademy?",
     "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
     "q2": "Is AI Educademy really free?",
-    "a2": "Yes,  free. , , . Every lesson, program, and lab experiment is fully accessible at no cost. and will stay that way.",
+    "a2": "AI Educademy 的每个学院都以一节免费的第一课开始，让你在承诺之前先体验一下。订阅 Pro 即可解锁其余所有课程、学院、学习路径、证书和高级功能，支持按月、按年或终身访问。",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
     "q4": "What programs are available?",
@@ -1844,7 +1844,7 @@
     "q15": "What is the Lab section?",
     "a15": "The Lab is a collection of interactive AI experiments you can run live in your browser. no installation or setup required. Explore a neural network playground, test AI vs human text detection, experiment with prompts, generate images, analyse sentiment, chat with an AI, and explore ethics scenarios.",
     "q16": "Do I need an account to start learning?",
-    "a16": "No account needed. You can start any lesson or program immediately without signing up. Creating a free account (or signing in with Google) lets you track your progress across devices and pick up exactly where you left off.",
+    "a16": "浏览课程、文章和 Lab 无需账号。免费试听任意学院的第一课，或创建账号购买 Pro、跨设备同步学习进度并获得结业证书。",
     "q17": "Are there certificates or credentials?",
     "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available free of charge for all completed programs.",
     "q18": "How often is new content added?",
@@ -1860,26 +1860,26 @@
     "q23": "How do I track my learning progress?",
     "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
     "q24": "What makes AI Educademy different from other platforms?",
-    "a24": "Four things set us apart: it's includes four free starter programmes and a free first lesson in every other programme, with Pro for the full path, it's fully open source and transparent, it's available in 9 languages with genuine multilingual content, and it's designed from the ground up for true beginners. no jargon, no intimidating prerequisites, no gatekeeping.",
+    "a24": "AI Educademy 将每个学院真正的免费试听、结构化学习、实践项目、互动实验和真正的多语言内容结合在一起。Pro 带你从基础知识走向面向生产环境的 AI 能力。",
     "q25": "How do I get started?",
-    "a25": "Just click 'Start Learning for Free' below (or the 'Get Started' button in the navigation) and choose a program. We recommend starting with AI Seeds if you're new to AI. No registration required. you can begin learning right now, in your language."
+    "a25": "浏览各个学院，免费试听任意课程的第一课，无论是 AI Seeds、AI Canopy 还是 Interview Launchpad。准备好解锁其余内容时，可选择按月、按年或终身的 Pro 计划。"
   },
   "pricing": {
     "pageTitle": "Pricing",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
     "badge": "Simple Pricing",
     "heading": "Learn AI at your own pace",
-    "subheading": "Start with our beginner programs. Upgrade to Pro to unlock every program, track, certificate, and premium feature.",
+    "subheading": "免费试听任意学院的第一课，然后通过 Pro 解锁其余所有课程、项目和证书。",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
     "free": {
-      "title": "Explorer",
-      "f1": "Beginner programs (AI Seeds & AI Sprouts)",
-      "f2": "First lesson of every program",
-      "f3": "All blog posts & articles",
-      "f4": "Lab playground experiments",
-      "f5": "Edu AI chatbot assistant",
-      "cta": "Current Plan"
+      "title": "探索者",
+      "f1": "免费试听每个学院的第一课，然后通过 Pro 解锁其余内容。",
+      "f2": "AI Educademy 让你免费预览每个学院的第一课。Pro 可解锁其余所有课程、学习路径、证书和高级功能，支持按月、按年或终身访问。",
+      "f3": "文章和课程预览",
+      "f4": "互动式 AI Lab 实验",
+      "f5": "进度本地保存",
+      "cta": "免费开始"
     },
     "monthly": {
       "title": "Pro Monthly",

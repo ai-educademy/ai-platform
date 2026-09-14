@@ -6,17 +6,18 @@ import {
 } from "@/lib/content-access";
 
 describe("content access", () => {
-  it("keeps the starter programmes fully free", () => {
+  it("gives every programme, including the former starter tier, only a one-lesson taste", () => {
     for (const program of [
       "ai-seeds",
       "ai-sprouts",
       "ai-sketch",
       "ai-launchpad",
     ]) {
-      expect(isFreeProgram(program)).toBe(true);
+      expect(isFreeProgram(program)).toBe(false);
       expect(isFreeLessonAccess(program, 1)).toBe(true);
-      expect(isFreeLessonAccess(program, 10)).toBe(true);
-      expect(requiresPremium(program, 10)).toBe(false);
+      expect(requiresPremium(program, 1)).toBe(false);
+      expect(isFreeLessonAccess(program, 2)).toBe(false);
+      expect(requiresPremium(program, 2)).toBe(true);
     }
   });
 
