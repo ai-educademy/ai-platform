@@ -93,7 +93,6 @@ export default function GameCard({
   const [bestScore, setBestScore] = useState<number | null>(null);
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLButtonElement>(null);
-  const isGuest = sessionStatus !== "authenticated";
 
   // Load best score: localStorage first, then merge with DB for signed-in users
   useEffect(() => {

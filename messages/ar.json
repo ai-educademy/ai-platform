@@ -39,7 +39,10 @@
     "aiMasteryPath": "إتقان الذكاء الاصطناعي",
     "careerReadyPath": "جاهز للمسيرة المهنية",
     "journey": "الرحلة",
-    "bookmarks": "المحفوظات"
+    "bookmarks": "المحفوظات",
+    "faqDesc": "إجابات على الأسئلة الشائعة",
+    "contact": "اتصل بنا",
+    "contactDesc": "تواصل معنا"
   },
   "hero": {
     "badge": "مفتوح المصدر • متعدد اللغات",
@@ -2237,5 +2240,38 @@
     "pageCount": "دليل PDF من 10 صفحات",
     "freeForever": "وصول مجاني للبداية",
     "instantDownload": "تحميل فوري"
+  },
+  "comments": {
+    "title": "النقاش",
+    "placeholder": "أضف تعليقًا…",
+    "post": "نشر",
+    "sendHint": "⌘ + Enter للإرسال",
+    "signIn": "سجّل الدخول",
+    "signInSuffix": "للانضمام إلى النقاش",
+    "empty": "كن أول من يبدأ النقاش!",
+    "anonymous": "مجهول",
+    "deleteComment": "حذف التعليق",
+    "deleteConfirm": "هل تريد حذف هذا التعليق؟",
+    "loadError": "تعذّر تحميل التعليقات",
+    "postError": "حدث خطأ ما",
+    "deleteError": "تعذّر حذف التعليق",
+    "userAvatar": "مستخدم"
+  },
+  "share": {
+    "linkedin": "المشاركة على LinkedIn",
+    "reddit": "المشاركة على Reddit",
+    "copyLink": "نسخ الرابط",
+    "linkCopied": "تم نسخ الرابط!",
+    "copied": "تم النسخ!"
+  },
+  "chat": {
+    "open": "فتح مساعد المحادثة",
+    "title": "مساعد AI Educademy",
+    "dialogLabel": "مساعد المحادثة في AI Educademy",
+    "expand": "توسيع المحادثة",
+    "minimise": "تصغير المحادثة",
+    "close": "إغلاق المحادثة",
+    "inputLabel": "حقل إدخال رسالة المحادثة",
+    "send": "إرسال الرسالة"
   }
 }

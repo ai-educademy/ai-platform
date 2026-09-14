@@ -61,7 +61,9 @@ export default [
       'no-var': 'warn',
       'prefer-const': 'warn',
       'prefer-arrow-callback': 'warn',
-      'eqeqeq': ['warn', 'always'],
+      // `x != null` is the idiomatic way to catch both null and undefined in
+      // one check. Forcing `!==` there would silently narrow the check.
+      'eqeqeq': ['warn', 'always', { null: 'ignore' }],
       
       // Disable strict rules that would cause too many warnings
       '@typescript-eslint/no-require-imports': 'off',

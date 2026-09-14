@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 interface ShareButtonsProps {
   url: string;
@@ -9,6 +10,7 @@ interface ShareButtonsProps {
 }
 
 export function ShareButtons({ url, title, description }: ShareButtonsProps) {
+  const t = useTranslations("share");
   const [copied, setCopied] = useState(false);
 
   const encoded = {
@@ -65,7 +67,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
         href={shareLinks.linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on LinkedIn"
+        aria-label={t("linkedin")}
         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[#0077b5] hover:border-[#0077b5] hover:bg-[var(--color-bg-section)] transition-all duration-200"
       >
         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -79,7 +81,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
         href={shareLinks.reddit}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on Reddit"
+        aria-label={t("reddit")}
         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[#ff4500] hover:border-[#ff4500] hover:bg-[var(--color-bg-section)] transition-all duration-200"
       >
         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -91,7 +93,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
       {/* Copy link */}
       <button
         onClick={copyLink}
-        aria-label={copied ? "Link copied!" : "Copy link"}
+        aria-label={copied ? t("linkCopied") : t("copyLink")}
         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-primary)] hover:bg-[var(--color-bg-section)] transition-all duration-200"
       >
         {copied ? (
@@ -99,14 +101,14 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
             <svg className="w-3.5 h-3.5 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
-            <span className="text-green-500">Copied!</span>
+            <span className="text-green-500">{t("copied")}</span>
           </>
         ) : (
           <>
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
             </svg>
-            Copy link
+            {t("copyLink")}
           </>
         )}
       </button>

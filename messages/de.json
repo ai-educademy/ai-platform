@@ -39,7 +39,10 @@
     "careerReadyPath": "Karrierebereit",
     "bookmarks": "Lesezeichen",
     "faq": "FAQ",
-    "journey": "Lernreise"
+    "journey": "Lernreise",
+    "faqDesc": "Häufige Fragen beantwortet",
+    "contact": "Kontakt",
+    "contactDesc": "Nehmen Sie Kontakt mit uns auf"
   },
   "hero": {
     "badge": "Open Source • Mehrsprachig",
@@ -2237,5 +2240,38 @@
     "programs": "Programme",
     "freeValue": "Lektion 1",
     "freePreview": "Kostenlos in jedem Programm"
+  },
+  "comments": {
+    "title": "Diskussion",
+    "placeholder": "Kommentar hinzufügen…",
+    "post": "Senden",
+    "sendHint": "⌘ + Enter zum Senden",
+    "signIn": "Anmelden",
+    "signInSuffix": "um an der Diskussion teilzunehmen",
+    "empty": "Starten Sie die erste Diskussion!",
+    "anonymous": "Anonym",
+    "deleteComment": "Kommentar löschen",
+    "deleteConfirm": "Diesen Kommentar löschen?",
+    "loadError": "Kommentare konnten nicht geladen werden",
+    "postError": "Etwas ist schiefgelaufen",
+    "deleteError": "Kommentar konnte nicht gelöscht werden",
+    "userAvatar": "Benutzer"
+  },
+  "share": {
+    "linkedin": "Auf LinkedIn teilen",
+    "reddit": "Auf Reddit teilen",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert!",
+    "copied": "Kopiert!"
+  },
+  "chat": {
+    "open": "Chat-Assistenten öffnen",
+    "title": "AI Educademy Assistent",
+    "dialogLabel": "AI Educademy Chat-Assistent",
+    "expand": "Chat vergrößern",
+    "minimise": "Chat verkleinern",
+    "close": "Chat schließen",
+    "inputLabel": "Chat-Nachrichteneingabe",
+    "send": "Nachricht senden"
   }
 }
