@@ -5,6 +5,27 @@ import { users, verificationTokens } from "@/lib/db/schema";
 import { sendWelcomeEmail, sendAdminNotification } from "@/lib/email";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+import { isMissingColumn } from "@/lib/db/missing-column";
+
+/**
+ * Reads the account's preferred language, falling back to English when the
+ * column has not been migrated in yet. Only the language of the welcome email
+ * depends on this, so it must never be able to fail verification.
+ */
+async function readUserLocale(email: string): Promise<string> {
+  try {
+    const [row] = await db
+      .select({ locale: users.locale })
+      .from(users)
+      .where(eq(users.email, email))
+      .limit(1);
+    return row?.locale || "en";
+  } catch (error) {
+    if (!isMissingColumn(error, "locale")) throw error;
+    console.warn("[VerifyEmail] users.locale missing; apply migration 0004.");
+    return "en";
+  }
+}
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -80,15 +101,25 @@ export async function POST(req: NextRequest) {
         )
       );
 
-    // Get user for welcome email
+    // Get user for welcome email.
+    //
+    // Columns are listed explicitly so that verification cannot fail because a
+    // column was declared ahead of its migration. `locale` is fetched
+    // separately for the same reason: it only personalises the welcome email,
+    // which is not worth failing a verification over.
     const [user] = await db
-      .select()
+      .select({
+        id: users.id,
+        name: users.name,
+        email: users.email,
+      })
       .from(users)
       .where(eq(users.email, email))
       .limit(1);
 
     if (user) {
-      sendWelcomeEmail(email, user.locale || "en", user.name || undefined).catch((err) =>
+      const locale = await readUserLocale(email);
+      sendWelcomeEmail(email, locale, user.name || undefined).catch((err) =>
         console.error("[VerifyEmail] Welcome email failed:", err)
       );
       sendAdminNotification(

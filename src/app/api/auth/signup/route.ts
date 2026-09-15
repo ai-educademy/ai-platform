@@ -7,13 +7,7 @@ import { sendVerificationEmail } from "@/lib/email";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { safeLocale } from "@/lib/safe-locale";
-
-/** Postgres 42703 is undefined_column. */
-function isMissingColumn(error: unknown, column: string): boolean {
-  const code = (error as { code?: string })?.code;
-  const message = String((error as { message?: string })?.message ?? "");
-  return code === "42703" && message.includes(column);
-}
+import { isMissingColumn } from "@/lib/db/missing-column";
 
 function generateCode(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
