@@ -154,3 +154,4 @@ test-results/
 # Generated from content submodule via scripts/sync-assets.sh
 public/images/lessons/
 scripts/__pycache__/
+src/lib/.campaign-runner.bundle.mjs

@@ -7,6 +7,10 @@ export default [
   {
     ignores: [
       'node_modules/',
+      // Generated on the fly by scripts/run-campaign.mjs. It is removed after
+      // each run, but a hard kill can leave it behind and it must never be
+      // linted or committed.
+      'src/lib/.campaign-runner.bundle.mjs',
       '.next/',
       'out/',
       'build/',

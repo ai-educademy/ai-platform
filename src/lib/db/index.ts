@@ -1,7 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle, NeonHttpDatabase } from "drizzle-orm/neon-http";
 import * as schema from "./schema";
-import { DatabaseNotConfiguredError } from "@/lib/db-guard";
+import { DatabaseNotConfiguredError } from "./not-configured";
 
 type Db = NeonHttpDatabase<typeof schema>;
 

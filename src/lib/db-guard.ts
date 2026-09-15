@@ -1,22 +1,9 @@
 import { NextResponse } from "next/server";
 
-/**
- * Thrown when a code path reaches the database while DATABASE_URL is unset,
- * which is the case in CI and in some preview environments.
- */
-export class DatabaseNotConfiguredError extends Error {
-  constructor() {
-    super(
-      "Database is not configured: DATABASE_URL is not set. " +
-        "Guard this code path with `isDbConfigured` from @/lib/db."
-    );
-    this.name = "DatabaseNotConfiguredError";
-  }
-}
-
-export function isDatabaseNotConfigured(err: unknown): boolean {
-  return err instanceof DatabaseNotConfiguredError;
-}
+export {
+  DatabaseNotConfiguredError,
+  isDatabaseNotConfigured,
+} from "@/lib/db/not-configured";
 
 /**
  * The response to send when a handler could not reach the database.
