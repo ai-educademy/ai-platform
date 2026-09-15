@@ -16,9 +16,10 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "prebuild": "bash scripts/sync-assets.sh",
+    "prebuild": "bash scripts/sync-assets.sh && node scripts/migrate.mjs",
     "sync-assets": "bash scripts/sync-assets.sh",
-    "db:apply": "node scripts/apply-migration.mjs"
+    "db:apply": "node scripts/apply-migration.mjs",
+    "db:migrate": "MIGRATE_ON_BUILD=1 node scripts/migrate.mjs"
   },
   "dependencies": {
     "@ai-educademy/ai-ui-library": "^1.0.0",
