@@ -79,7 +79,29 @@ export async function runProUpgradeCampaign(opts: {
   // it can be repeated while iterating on copy.
   if (opts.testEmail) {
     const tr = await getEmailTranslator("en");
-    const token = generateUnsubscribeToken();
+
+    // If the test address belongs to a real account, reuse (and persist) that
+    // account's token so the unsubscribe link in the rehearsal actually works.
+    // A throwaway token would render a dead link and make a working opt-out
+    // look broken during the one check that is meant to catch that.
+    const [existing] = await db
+      .select({ id: users.id, unsubscribeToken: users.unsubscribeToken })
+      .from(users)
+      .where(eq(users.email, opts.testEmail))
+      .limit(1);
+
+    let token = existing?.unsubscribeToken ?? null;
+    if (existing && !token) {
+      token = generateUnsubscribeToken();
+      await db.update(users).set({ unsubscribeToken: token }).where(eq(users.id, existing.id));
+    }
+    if (!token) {
+      token = generateUnsubscribeToken();
+      result.errors.push(
+        `${opts.testEmail} is not a registered user, so its unsubscribe link is not live.`,
+      );
+    }
+
     const link = unsubscribeUrl(token, "en");
     const html = proUpgradeEmailHtml(
       undefined,
@@ -94,14 +116,26 @@ export async function runProUpgradeCampaign(opts: {
       link,
     );
     result.eligible = 1;
-    result.sent = ok ? 1 : 0;
-    result.failed = ok ? 0 : 1;
+    result.sent = ok.status === "sent" ? 1 : 0;
+    result.failed = ok.status === "sent" ? 0 : 1;
+    if (ok.status !== "sent") result.errors.push(`${ok.status}: ${ok.reason}`);
     result.sampleRecipients = [opts.testEmail];
     return result;
   }
 
   const recipients = await findEligibleRecipients();
   result.eligible = recipients.length;
+
+  // Fail before claiming anyone. The ledger is written ahead of dispatch, so a
+  // misconfigured mailer would otherwise mark every recipient as contacted
+  // while sending nothing, and the ledger would then suppress the retry. That
+  // turns one missing variable into a permanently burnt mailing list.
+  if (!dryRun && !process.env.RESEND_API_KEY) {
+    result.errors.push(
+      "RESEND_API_KEY is not set. Refusing to start so the campaign ledger is not consumed without sending.",
+    );
+    return result;
+  }
 
   const alreadySent = await db
     .select({ email: campaignSends.email })
@@ -151,12 +185,20 @@ export async function runProUpgradeCampaign(opts: {
         continue;
       }
 
-      const ok = await sendMarketingEmail(email, tr.t("proUpgradeSubject"), html, link);
-      if (ok) {
+      const send = await sendMarketingEmail(email, tr.t("proUpgradeSubject"), html, link);
+      if (send.status === "sent") {
         result.sent += 1;
       } else {
         result.failed += 1;
-        result.errors.push(`send failed: ${email}`);
+        result.errors.push(`send failed (${send.status}): ${email}: ${send.reason}`);
+
+        // A rejection means the message was definitely not transmitted, so the
+        // claim is released and a later run can retry this recipient. An
+        // unknown outcome keeps its claim: a duplicate marketing email is worse
+        // than a missed one.
+        if (send.status === "rejected") {
+          await db.delete(campaignSends).where(eq(campaignSends.id, claimed[0].id));
+        }
       }
 
       // Resend's default ceiling is 2 requests/second. Staying under it is

@@ -66,7 +66,7 @@ describe("marketing email recipient privacy", () => {
 
     const ok = await sendMarketingEmail("learner@example.com", "S", "<p>B</p>", "https://x/u");
 
-    expect(ok).toBe(false);
+    expect(ok.status).toBe("rejected");
   });
 
   it("does not attempt a send when no API key is configured", async () => {
@@ -75,7 +75,7 @@ describe("marketing email recipient privacy", () => {
 
     const ok = await sendMarketingEmail("learner@example.com", "S", "<p>B</p>", "https://x/u");
 
-    expect(ok).toBe(false);
+    expect(ok.status).toBe("rejected");
     expect(sendMock).not.toHaveBeenCalled();
   });
 });
