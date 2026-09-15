@@ -415,16 +415,24 @@ def translate_file(src_path: str, dst_path: str, locale: str, tr: Translator) ->
     translated = tr.translate_batch(doc.spans, locale)
 
     # Sentinels must survive translation or the document loses its code blocks.
-    for original, result in zip(doc.spans, translated):
-        want = set(_sentinel_re.findall(original))
-        got = set(_sentinel_re.findall(result))
-        if want != got:
-            missing = want - got
-            if missing:
-                raise ValueError(
-                    f"{os.path.basename(src_path)} [{locale}]: translator dropped "
-                    f"placeholder(s) {sorted(missing)}"
-                )
+    # The translator drops them occasionally, and deterministically for a few
+    # inputs, so a lost sentinel falls back to the English span rather than
+    # discarding the whole document. A span left in English is far better than a
+    # lesson that exists in ten locales but not this one.
+    fallbacks = 0
+    for i, (original, result) in enumerate(zip(doc.spans, translated)):
+        missing = set(_sentinel_re.findall(original)) - set(_sentinel_re.findall(result))
+        if missing:
+            translated[i] = original
+            fallbacks += 1
+
+    # If most of the document failed, the output would be a confusing mix rather
+    # than a translation, so refuse it and leave the locale to fall back wholesale.
+    if doc.spans and fallbacks / len(doc.spans) > 0.25:
+        raise ValueError(
+            f"{os.path.basename(src_path)} [{locale}]: translator dropped placeholders in "
+            f"{fallbacks}/{len(doc.spans)} spans"
+        )
 
     rendered = doc.render(translated)
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
