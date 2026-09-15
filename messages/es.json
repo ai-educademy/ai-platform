@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy, Educación en IA Gratuita para Todos",
+    "title": "AI Educademy: aprende IA a tu manera",
     "description": "Aprende Inteligencia Artificial desde cero, en tu idioma. No se necesita experiencia en programación."
   },
   "nav": {
@@ -42,7 +42,9 @@
     "journey": "Viaje",
     "faqDesc": "Preguntas frecuentes resueltas",
     "contact": "Contacto",
-    "contactDesc": "Ponte en contacto con nosotros"
+    "contactDesc": "Ponte en contacto con nosotros",
+    "pricing": "Precios",
+    "goPro": "Hazte Pro"
   },
   "hero": {
     "badge": "Open Source • Multilingüe",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "Prueba gratis la primera lección de cualquier academia, sin necesidad de cuenta."
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "Precios",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "Invierte en tu ventaja",
+    "heading": "Un plan. Todas las academias.",
     "subheading": "Prueba la primera lección de cualquier academia gratis y luego desbloquea cada lección, proyecto y certificado restante con Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "Ahorra un {percent} % frente al mensual"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "Más popular",
     "redirecting": "Redirigiendo…",
     "checkoutError": "No se pudo crear la sesión de pago. Inténtalo de nuevo.",
-    "genericError": "Algo salió mal. Inténtalo de nuevo."
+    "genericError": "Algo salió mal. Inténtalo de nuevo.",
+    "comparePlans": "Comparar planes"
   },
   "paywall": {
     "title": "Contenido Premium",

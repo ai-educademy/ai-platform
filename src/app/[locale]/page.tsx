@@ -14,6 +14,8 @@ import {
   HomeProjectsLazy as HomeProjects,
   HomeFinalCTALazy as HomeFinalCTA,
 } from "@/components/home/HomeDynamic";
+import HomeProBand from "@/components/home/HomeProBand";
+import { PLAN_PRICE_LABELS, ANNUAL_SAVING_PERCENT } from "@/lib/pricing";
 
 export default async function HomePage({
   params,
@@ -272,7 +274,19 @@ export default async function HomePage({
         />
       </section>
 
-      {/* Section 9: Final CTA */}
+      {/* Section 9: Pro plan, one compact row */}
+      <HomeProBand
+        badge={t("pricing.badge")}
+        heading={t("pricing.heading")}
+        price={PLAN_PRICE_LABELS.monthly}
+        period={`/${t("pricing.monthly.period")}`}
+        saveNote={t("pricing.annual.save", { percent: ANNUAL_SAVING_PERCENT })}
+        ctaText={t("paywall.upgradeCta")}
+        compareText={t("pricing.comparePlans")}
+        ctaHref={`${basePath}/pricing`}
+      />
+
+      {/* Section 10: Final CTA */}
       <HomeFinalCTA
         headline={tFC("headline")}
         subtitle={tFC("subtitle")}

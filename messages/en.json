@@ -42,7 +42,9 @@
     "bookmarks": "Bookmarks",
     "faqDesc": "Common questions answered",
     "contact": "Contact",
-    "contactDesc": "Get in touch with us"
+    "contactDesc": "Get in touch with us",
+    "pricing": "Pricing",
+    "goPro": "Go Pro"
   },
   "hero": {
     "badge": "Practical AI skills · 11 languages · Built for the AI era",
@@ -1821,7 +1823,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "Save {percent}% vs monthly"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1853,7 +1855,8 @@
     "mostPopular": "Most Popular",
     "redirecting": "Redirecting…",
     "checkoutError": "Could not create checkout session. Please try again.",
-    "genericError": "Something went wrong. Please try again."
+    "genericError": "Something went wrong. Please try again.",
+    "comparePlans": "Compare plans"
   },
   "paywall": {
     "title": "Your next level is behind this door",

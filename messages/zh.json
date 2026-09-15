@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy, 免费AI教育，面向所有人",
+    "title": "AI Educademy：以你的方式学习 AI",
     "description": "从零开始学习人工智能，用你的母语。无需编程经验。"
   },
   "nav": {
@@ -42,7 +42,9 @@
     "bookmarks": "收藏夹",
     "faqDesc": "常见问题解答",
     "contact": "联系我们",
-    "contactDesc": "与我们取得联系"
+    "contactDesc": "与我们取得联系",
+    "pricing": "定价",
+    "goPro": "升级 Pro"
   },
   "hero": {
     "badge": "开源 • 多语言",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "免费试学任意学院的第一课，无需注册账号。"
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "定价",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "投资你的优势",
+    "heading": "一个方案，畅学所有学院。",
     "subheading": "免费试听任意学院的第一课，然后通过 Pro 解锁其余所有课程、项目和证书。",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "比月付节省 {percent}%"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "最受欢迎",
     "redirecting": "正在跳转…",
     "checkoutError": "无法创建结账会话，请重试。",
-    "genericError": "出了点问题，请重试。"
+    "genericError": "出了点问题，请重试。",
+    "comparePlans": "比较方案"
   },
   "paywall": {
     "title": "高级内容",

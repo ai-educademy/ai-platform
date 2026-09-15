@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy, Formation gratuite en IA pour tous",
+    "title": "AI Educademy : apprenez l'IA à votre façon",
     "description": "Apprenez l'Intelligence Artificielle à partir de zéro, dans votre langue. Aucune expérience en programmation requise."
   },
   "nav": {
@@ -42,7 +42,9 @@
     "journey": "Parcours",
     "faqDesc": "Questions fréquentes résolues",
     "contact": "Contact",
-    "contactDesc": "Entrez en contact avec nous"
+    "contactDesc": "Entrez en contact avec nous",
+    "pricing": "Tarifs",
+    "goPro": "Passer à Pro"
   },
   "hero": {
     "badge": "Open Source • Multilingue",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "Essayez gratuitement la première leçon de n'importe quelle académie, sans compte requis."
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "Tarifs",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "Investissez dans votre avantage",
+    "heading": "Un seul abonnement. Toutes les académies.",
     "subheading": "Essayez gratuitement la première leçon de n'importe quelle académie, puis débloquez chaque leçon, projet et certificat restant avec Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "Économisez {percent} % par rapport au mensuel"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "Le plus populaire",
     "redirecting": "Redirection…",
     "checkoutError": "Impossible de créer la session de paiement. Veuillez réessayer.",
-    "genericError": "Une erreur est survenue. Veuillez réessayer."
+    "genericError": "Une erreur est survenue. Veuillez réessayer.",
+    "comparePlans": "Comparer les offres"
   },
   "paywall": {
     "title": "Contenu Premium",

@@ -11,6 +11,7 @@ import { LanguageSwitcher } from "../LanguageSwitcher";
 import { ThemeToggle } from "../ThemeToggle";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
+import { useShouldPromptUpgrade } from "@/hooks/useProStatus";
 import { BrandMark } from "../BrandMark";
 import { CommandPalette } from "../CommandPalette";
 import { NavDropdown } from "../NavDropdown";
@@ -18,7 +19,7 @@ import { AI_PATH, CRAFT_PATH, CAREER_READY_PATH, LAB_EXPERIMENTS } from "./navDa
 import { HamburgerIcon } from "./HamburgerIcon";
 import { MobileSection } from "./MobileSection";
 import { MobilePrograms } from "./MobileMenu";
-import { Bookmark } from "lucide-react";
+import { Bookmark, Sparkles } from "lucide-react";
 import {
   ProgramsDropdownContent,
   LabDropdownContent,
@@ -36,6 +37,7 @@ export function Navbar() {
   const { profile } = useGuestProfile();
   const { data: session } = useSession();
   const isSignedIn = !!profile || !!session?.user;
+  const showUpgrade = useShouldPromptUpgrade();
 
   const labTitles: Record<string, string> = {
     "neural-playground": tl("navNeural"),
@@ -159,6 +161,22 @@ export function Navbar() {
                 <AboutDropdownContent basePath={basePath} t={t} />
               </NavDropdown>
 
+              {/* Pricing: the only non-lesson route to checkout, so it stays a
+                  top-level link for signed-out and signed-in visitors alike. */}
+              <Link
+                href={`${basePath}/pricing`}
+                className={`relative px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  isActive("/pricing")
+                    ? "text-[var(--color-primary)] bg-[var(--color-primary)]/10 font-semibold"
+                    : "text-[var(--color-text)] hover:text-[var(--color-primary)] hover:bg-[var(--color-text)]/[0.06]"
+                }`}
+              >
+                {t("pricing")}
+                {isActive("/pricing") && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[var(--color-primary)]" />
+                )}
+              </Link>
+
               {/* Dashboard: simple link (no dropdown) - only when signed in */}
               {isSignedIn && (
                 <>
@@ -200,6 +218,17 @@ export function Navbar() {
               <LanguageSwitcher />
               <ThemeToggle />
               <div className="w-px h-5 bg-[var(--color-border)] mx-0.5" />
+              {/* Rendered only once the plan is known, so a subscriber never
+                  sees an upgrade prompt flash on every page load. */}
+              {showUpgrade && (
+                <Link
+                  href={`${basePath}/pricing`}
+                  className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full text-[var(--color-primary)] border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 hover:bg-[var(--color-primary)]/20 transition-colors"
+                >
+                  <Sparkles size={13} />
+                  {t("goPro")}
+                </Link>
+              )}
               {isSignedIn ? (
                 <UserMenu />
               ) : (
@@ -317,6 +346,16 @@ export function Navbar() {
                 {t("blog")}
               </Link>
 
+              {/* Pricing */}
+              <Link
+                href={`${basePath}/pricing`}
+                onClick={closeMobile}
+                className="flex items-center gap-2.5 py-3.5 px-4 text-sm font-semibold text-[var(--color-text)] hover:bg-[var(--color-text)]/[0.03] border-b border-[var(--color-border)]/50 transition-colors"
+              >
+                <span className="text-base">💎</span>
+                {t("pricing")}
+              </Link>
+
               {/* About */}
               <MobileSection title={t("about")} icon="💡">
                 <Link
@@ -371,6 +410,16 @@ export function Navbar() {
 
             {/* Drawer footer */}
             <div className="px-5 py-4 mt-auto border-t border-[var(--color-border)]">
+              {showUpgrade && (
+                <Link
+                  href={`${basePath}/pricing`}
+                  onClick={closeMobile}
+                  className="flex items-center justify-center gap-1.5 w-full mb-4 px-4 py-2.5 text-sm font-bold rounded-xl text-[var(--color-primary)] border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 transition-colors"
+                >
+                  <Sparkles size={15} />
+                  {t("goPro")}
+                </Link>
+              )}
               <div className="flex items-center justify-between mb-4">
                 <LanguageSwitcher />
                 {isSignedIn && <UserMenu />}

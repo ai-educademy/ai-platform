@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy, Educação em IA Gratuita para Todos",
+    "title": "AI Educademy: aprenda IA do seu jeito",
     "description": "Aprenda Inteligência Artificial do zero, no seu idioma. Nenhuma experiência em programação necessária."
   },
   "nav": {
@@ -42,7 +42,9 @@
     "journey": "Jornada",
     "faqDesc": "Perguntas frequentes respondidas",
     "contact": "Contacto",
-    "contactDesc": "Entre em contacto connosco"
+    "contactDesc": "Entre em contacto connosco",
+    "pricing": "Preços",
+    "goPro": "Seja Pro"
   },
   "hero": {
     "badge": "Grátis • Open Source • Multilíngue",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "Experimente a primeira aula de qualquer academia gratuitamente, sem necessidade de conta."
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "Preços",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "Invista na sua vantagem",
+    "heading": "Um plano. Todas as academias.",
     "subheading": "Experimente a primeira aula de qualquer academia gratuitamente e depois desbloqueie todas as demais aulas, projetos e certificados com o Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "Economize {percent}% em relação ao mensal"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "Mais popular",
     "redirecting": "Redirecionando…",
     "checkoutError": "Não foi possível criar a sessão de pagamento. Tente novamente.",
-    "genericError": "Algo deu errado. Tente novamente."
+    "genericError": "Algo deu errado. Tente novamente.",
+    "comparePlans": "Comparar planos"
   },
   "paywall": {
     "title": "Conteúdo Premium",

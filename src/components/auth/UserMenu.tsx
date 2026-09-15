@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { useSession, signOut as nextAuthSignOut } from "next-auth/react";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
+import { useShouldPromptUpgrade } from "@/hooks/useProStatus";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -27,6 +28,9 @@ export function UserMenu() {
   const { data: session } = useSession();
   const { profile, clearProfile, isSignedIn: isGuestSignedIn } = useGuestProfile();
   const t = useTranslations("auth");
+  // Already translated in all 11 locales, so reused rather than duplicated.
+  const tPaywall = useTranslations("paywall");
+  const showUpgrade = useShouldPromptUpgrade();
   const [menuOpen, setMenuOpen] = useState(false);
   const [imgError, setImgError] = useState(false);
   const pathname = usePathname();
@@ -124,6 +128,15 @@ export function UserMenu() {
             >
               <span>📚</span> {t("allPrograms")}
             </Link>
+            {showUpgrade && (
+              <Link
+                href={`${basePath}/pricing`}
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-[var(--color-primary)] hover:bg-[var(--color-bg)] transition-colors"
+              >
+                <span>💎</span> {tPaywall("upgradeCta")}
+              </Link>
+            )}
             <div className="border-t border-[var(--color-border)] mt-1 pt-1">
               <button
                 onClick={handleSignOut}
