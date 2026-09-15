@@ -6,8 +6,14 @@ test.describe("API Endpoints", () => {
   // reports honestly instead of failing on a missing credential.
   const hasGeminiKey = Boolean(process.env.GEMINI_API_KEY);
 
+  // A generative response is routinely slower than Playwright's 30s default, so
+  // these tests were failing on the model being thoughtful rather than on any
+  // fault of ours. The assertions below still catch a genuinely broken route.
+  const LIVE_MODEL_TIMEOUT_MS = 90_000;
+
   test("chat API responds to POST", async ({ request }) => {
     test.skip(!hasGeminiKey, "GEMINI_API_KEY not available in this environment");
+    test.setTimeout(LIVE_MODEL_TIMEOUT_MS);
     const response = await request.post("/api/chat", {
       data: {
         messages: [{ role: "user", content: "What is AI Seeds?" }],
@@ -37,6 +43,7 @@ test.describe("API Endpoints", () => {
 
   test("mock-interview API responds to POST", async ({ request }) => {
     test.skip(!hasGeminiKey, "GEMINI_API_KEY not available in this environment");
+    test.setTimeout(LIVE_MODEL_TIMEOUT_MS);
     const response = await request.post("/api/mock-interview", {
       data: {
         type: "behavioral",
