@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy - सभी के लिए मुफ्त AI शिक्षा",
+    "title": "AI Educademy: AI सीखें, अपने तरीके से",
     "description": "अपनी भाषा में शुरू से आर्टिफिशियल इंटेलिजेंस सीखें। कोई कोडिंग अनुभव जरूरी नहीं।"
   },
   "nav": {
@@ -42,7 +42,9 @@
     "faq": "सामान्य प्रश्न",
     "faqDesc": "सामान्य प्रश्नों के उत्तर",
     "contact": "संपर्क",
-    "contactDesc": "हमसे संपर्क करें"
+    "contactDesc": "हमसे संपर्क करें",
+    "pricing": "मूल्य",
+    "goPro": "Pro लें"
   },
   "hero": {
     "badge": "मुफ्त • ओपन सोर्स • बहुभाषी",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "किसी भी अकादमी का पहला पाठ मुफ़्त में आज़माएं, खाते की ज़रूरत नहीं।"
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "मूल्य",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "अपनी बढ़त में निवेश करें",
+    "heading": "एक प्लान। हर अकादमी।",
     "subheading": "किसी भी अकादमी का पहला पाठ मुफ़्त में आज़माएं, फिर Pro के साथ हर बचा हुआ पाठ, प्रोजेक्ट और प्रमाणपत्र अनलॉक करें।",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "मासिक की तुलना में {percent}% बचाएँ"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "सबसे लोकप्रिय",
     "redirecting": "रीडायरेक्ट हो रहा है…",
     "checkoutError": "चेकआउट सत्र नहीं बनाया जा सका। कृपया फिर से प्रयास करें।",
-    "genericError": "कुछ गलत हो गया। कृपया फिर से प्रयास करें।"
+    "genericError": "कुछ गलत हो गया। कृपया फिर से प्रयास करें।",
+    "comparePlans": "प्लान की तुलना करें"
   },
   "paywall": {
     "title": "प्रीमियम सामग्री",

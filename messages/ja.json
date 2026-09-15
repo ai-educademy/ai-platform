@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy、誰でも無料でAIを学べる",
+    "title": "AI Educademy：自分のやり方でAIを学ぶ",
     "description": "ゼロから始めるAI学習。あなたの言語で。コーディング経験不要。"
   },
   "nav": {
@@ -42,7 +42,9 @@
     "faq": "よくある質問",
     "faqDesc": "よくある質問への回答",
     "contact": "お問い合わせ",
-    "contactDesc": "お気軽にご連絡ください"
+    "contactDesc": "お気軽にご連絡ください",
+    "pricing": "料金",
+    "goPro": "Proにする"
   },
   "hero": {
     "badge": "オープンソース • 多言語対応",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "どのアカデミーも最初のレッスンを無料でお試しいただけます。アカウント登録は不要です。"
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "料金",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "自分の強みに投資する",
+    "heading": "ひとつのプランで、すべてのアカデミーを。",
     "subheading": "どのアカデミーの最初のレッスンも無料でお試しいただけます。準備ができたらProで残りのレッスン、プロジェクト、修了証を解放しましょう。",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "月額プランより{percent}%お得"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "一番人気",
     "redirecting": "リダイレクト中…",
     "checkoutError": "お支払いセッションを作成できませんでした。もう一度お試しください。",
-    "genericError": "問題が発生しました。もう一度お試しください。"
+    "genericError": "問題が発生しました。もう一度お試しください。",
+    "comparePlans": "プランを比較"
   },
   "paywall": {
     "title": "プレミアムコンテンツ",

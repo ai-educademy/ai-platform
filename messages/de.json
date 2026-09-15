@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy, Kostenlose KI-Bildung für Alle",
+    "title": "AI Educademy: KI lernen, auf deine Art",
     "description": "Lerne Künstliche Intelligenz von Grund auf, in deiner Sprache. Keine Programmiererfahrung nötig."
   },
   "nav": {
@@ -42,7 +42,9 @@
     "journey": "Lernreise",
     "faqDesc": "Häufige Fragen beantwortet",
     "contact": "Kontakt",
-    "contactDesc": "Nehmen Sie Kontakt mit uns auf"
+    "contactDesc": "Nehmen Sie Kontakt mit uns auf",
+    "pricing": "Preise",
+    "goPro": "Pro holen"
   },
   "hero": {
     "badge": "Open Source • Mehrsprachig",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "Probiere die erste Lektion jeder Akademie kostenlos aus, kein Konto erforderlich."
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "Preise",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "Investiere in deinen Vorsprung",
+    "heading": "Ein Tarif. Alle Akademien.",
     "subheading": "Probiere die erste Lektion jeder Akademie kostenlos aus und schalte dann mit Pro jede weitere Lektion, jedes Projekt und Zertifikat frei.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "Spare {percent} % gegenüber monatlich"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "Am beliebtesten",
     "redirecting": "Weiterleitung…",
     "checkoutError": "Bezahlvorgang konnte nicht gestartet werden. Bitte versuche es erneut.",
-    "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "comparePlans": "Tarife vergleichen"
   },
   "paywall": {
     "title": "Premium-Inhalte",

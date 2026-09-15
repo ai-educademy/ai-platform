@@ -46,6 +46,9 @@ function FooterLink({
 
 export function Footer() {
   const t = useTranslations("footer");
+  // The pricing label already exists in the nav namespace and is translated in
+  // every locale, so it is reused rather than duplicated into footer.
+  const tNav = useTranslations("nav");
   const pathname = usePathname();
   const { data: session } = useSession();
   const { profile } = useGuestProfile();
@@ -139,6 +142,11 @@ export function Footer() {
               </li>
               <li>
                 <FooterLink href={`${basePath}/lab`}>{t("lab")}</FooterLink>
+              </li>
+              <li>
+                <FooterLink href={`${basePath}/pricing`}>
+                  {tNav("pricing")}
+                </FooterLink>
               </li>
               {isSignedIn && (
                 <li>

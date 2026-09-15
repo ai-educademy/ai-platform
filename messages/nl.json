@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy, Gratis AI-onderwijs voor Iedereen",
+    "title": "AI Educademy: leer AI op jouw manier",
     "description": "Leer kunstmatige intelligentie vanaf nul, in jouw taal. Geen programmeerervaring nodig."
   },
   "nav": {
@@ -42,7 +42,9 @@
     "faq": "FAQ",
     "faqDesc": "Veelgestelde vragen beantwoord",
     "contact": "Contact",
-    "contactDesc": "Neem contact met ons op"
+    "contactDesc": "Neem contact met ons op",
+    "pricing": "Prijzen",
+    "goPro": "Word Pro"
   },
   "hero": {
     "badge": "Open source • Meertalig",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "Probeer de eerste les van elke academie gratis, geen account nodig."
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "Prijzen",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "Investeer in je voorsprong",
+    "heading": "Eén abonnement. Alle academies.",
     "subheading": "Probeer de eerste les van elke academie gratis en ontgrendel daarna elke overige les, project en certificaat met Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "Bespaar {percent}% ten opzichte van maandelijks"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "Meest gekozen",
     "redirecting": "Doorverwijzen…",
     "checkoutError": "Kon de afrekensessie niet aanmaken. Probeer het opnieuw.",
-    "genericError": "Er is iets misgegaan. Probeer het opnieuw."
+    "genericError": "Er is iets misgegaan. Probeer het opnieuw.",
+    "comparePlans": "Abonnementen vergelijken"
   },
   "paywall": {
     "title": "Premium Inhoud",

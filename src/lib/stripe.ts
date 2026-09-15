@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { PLAN_PRICES_PENCE } from "@/lib/pricing";
 
 let _stripe: Stripe | null = null;
 
@@ -18,19 +19,19 @@ export function getStripe(): Stripe {
 export const PLANS = {
   monthly: {
     name: "Pro Monthly",
-    price: 399, // £3.99 in pence
+    price: PLAN_PRICES_PENCE.monthly,
     interval: "month" as const,
     priceId: process.env.STRIPE_PRICE_MONTHLY ?? "",
   },
   annual: {
     name: "Pro Annual",
-    price: 2999, // £29.99 in pence — save 37%
+    price: PLAN_PRICES_PENCE.annual,
     interval: "year" as const,
     priceId: process.env.STRIPE_PRICE_ANNUAL ?? "",
   },
   lifetime: {
     name: "Lifetime Access",
-    price: 4999, // £49.99 in pence
+    price: PLAN_PRICES_PENCE.lifetime,
     interval: null,
     priceId: process.env.STRIPE_PRICE_LIFETIME ?? "",
   },

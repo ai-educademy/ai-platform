@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy. تعليم الذكاء الاصطناعي مجاناً للجميع",
+    "title": "AI Educademy: تعلّم الذكاء الاصطناعي بطريقتك",
     "description": "تعلّم الذكاء الاصطناعي من الصفر بلغتك. لا خبرة برمجية مطلوبة."
   },
   "nav": {
@@ -42,7 +42,9 @@
     "bookmarks": "المحفوظات",
     "faqDesc": "إجابات على الأسئلة الشائعة",
     "contact": "اتصل بنا",
-    "contactDesc": "تواصل معنا"
+    "contactDesc": "تواصل معنا",
+    "pricing": "الأسعار",
+    "goPro": "اشترك في Pro"
   },
   "hero": {
     "badge": "مفتوح المصدر • متعدد اللغات",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "جرّب الدرس الأول من أي أكاديمية مجانًا، دون الحاجة لحساب."
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "الأسعار",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "استثمر في تميّزك",
+    "heading": "خطة واحدة. كل الأكاديميات.",
     "subheading": "جرّب الدرس الأول من أي أكاديمية مجاناً، ثم افتح كل الدروس والمشاريع والشهادات المتبقية مع Pro.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "وفّر {percent}% مقارنة بالاشتراك الشهري"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "الأكثر شيوعًا",
     "redirecting": "جارٍ التحويل…",
     "checkoutError": "تعذّر إنشاء جلسة الدفع. يرجى المحاولة مرة أخرى.",
-    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "comparePlans": "قارن الخطط"
   },
   "paywall": {
     "title": "محتوى مميز",

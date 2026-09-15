@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import { Check, Tag, ChevronDown, ChevronUp } from "lucide-react";
+import { PLAN_PRICE_LABELS, ANNUAL_SAVING_PERCENT } from "@/lib/pricing";
 
 function PromoCodeInput({
   promoCode,
@@ -187,7 +188,7 @@ export function PricingCards({ locale }: { locale: string }) {
   const plans = [
     {
       title: t("free.title"),
-      price: "£0",
+      price: PLAN_PRICE_LABELS.free,
       period: "",
       plan: "free" as const,
       features: [
@@ -201,7 +202,7 @@ export function PricingCards({ locale }: { locale: string }) {
     },
     {
       title: t("monthly.title"),
-      price: "£3.99",
+      price: PLAN_PRICE_LABELS.monthly,
       period: t("monthly.period"),
       plan: "monthly" as const,
       features: [
@@ -217,7 +218,7 @@ export function PricingCards({ locale }: { locale: string }) {
     },
     {
       title: t("annual.title"),
-      price: "£29.99",
+      price: PLAN_PRICE_LABELS.annual,
       period: t("annual.period"),
       plan: "annual" as const,
       features: [
@@ -227,13 +228,13 @@ export function PricingCards({ locale }: { locale: string }) {
         t("pro.f4"),
         t("pro.f5"),
         t("pro.f6"),
-        t("annual.save"),
+        t("annual.save", { percent: ANNUAL_SAVING_PERCENT }),
       ],
       cta: t("annual.cta"),
     },
     {
       title: t("lifetime.title"),
-      price: "£49.99",
+      price: PLAN_PRICE_LABELS.lifetime,
       period: "",
       plan: "lifetime" as const,
       features: [

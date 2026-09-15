@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "AI Educademy - అందరికీ ఉచిత AI విద్య",
+    "title": "AI Educademy: మీ పద్ధతిలో AI నేర్చుకోండి",
     "description": "మీ భాషలో మొదటి నుండి ఆర్టిఫిషియల్ ఇంటెలిజెన్స్ నేర్చుకోండి. కోడింగ్ అనుభవం అవసరం లేదు."
   },
   "nav": {
@@ -42,7 +42,9 @@
     "faq": "తరచుగా అడిగే ప్రశ్నలు",
     "faqDesc": "సాధారణ ప్రశ్నలకు సమాధానాలు",
     "contact": "సంప్రదించండి",
-    "contactDesc": "మమ్మల్ని సంప్రదించండి"
+    "contactDesc": "మమ్మల్ని సంప్రదించండి",
+    "pricing": "ధరలు",
+    "goPro": "Pro పొందండి"
   },
   "hero": {
     "badge": "ఓపెన్ సోర్స్ • బహుభాషా",
@@ -1790,10 +1792,10 @@
     "ctaSubtitle": "ఏ అకాడమీ అయినా మొదటి పాఠాన్ని ఉచితంగా ప్రయత్నించండి, ఖాతా అవసరం లేదు."
   },
   "pricing": {
-    "pageTitle": "Pricing",
+    "pageTitle": "ధరలు",
     "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "Simple Pricing",
-    "heading": "Learn AI at your own pace",
+    "badge": "మీ ఆధిక్యంలో పెట్టుబడి పెట్టండి",
+    "heading": "ఒకే ప్లాన్. అన్ని అకాడమీలు.",
     "subheading": "ఏదైనా అకాడమీ యొక్క మొదటి పాఠాన్ని ఉచితంగా ప్రయత్నించండి, ఆపై Pro తో మిగిలిన ప్రతి పాఠం, ప్రాజెక్ట్ మరియు సర్టిఫికేట్‌ను అన్‌లాక్ చేయండి.",
     "faqTeaser": "Have questions about our plans?",
     "faqLink": "Check our FAQ",
@@ -1815,7 +1817,7 @@
       "title": "Pro Annual",
       "period": "year",
       "cta": "Start Pro Annual",
-      "save": "Save 27% vs monthly"
+      "save": "నెలవారీ కంటే {percent}% ఆదా చేసుకోండి"
     },
     "lifetime": {
       "title": "Lifetime",
@@ -1838,7 +1840,8 @@
     "mostPopular": "అత్యంత జనాదరణ",
     "redirecting": "దారి మళ్లిస్తోంది…",
     "checkoutError": "చెక్‌అవుట్ సెషన్‌ను సృష్టించలేకపోయాం. దయచేసి మళ్లీ ప్రయత్నించండి.",
-    "genericError": "ఏదో తప్పు జరిగింది. దయచేసి మళ్లీ ప్రయత్నించండి."
+    "genericError": "ఏదో తప్పు జరిగింది. దయచేసి మళ్లీ ప్రయత్నించండి.",
+    "comparePlans": "ప్లాన్‌లను పోల్చండి"
   },
   "paywall": {
     "title": "ప్రీమియం కంటెంట్",
