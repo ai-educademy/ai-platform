@@ -72,22 +72,38 @@ async function sendEmail(to: string, subject: string, html: string): Promise<voi
 /**
  * Sends a bulk marketing email.
  *
- * Separate from `sendEmail` for two reasons. It returns whether the send
- * actually succeeded, because a campaign that silently swallows failures cannot
- * report what happened; and it attaches the List-Unsubscribe headers, which
- * Gmail and Yahoo require from bulk senders and which give the reader a
- * one-click opt-out in the mail client itself rather than buried in the footer.
+ * Separate from `sendEmail` for two reasons. It reports the outcome of the
+ * send, because a campaign that silently swallows failures cannot report what
+ * happened, and it distinguishes a definite rejection from an unknown outcome
+ * so the caller can decide whether retrying risks a duplicate; and it attaches
+ * the List-Unsubscribe headers, which Gmail and Yahoo require from bulk senders
+ * and which give the reader a one-click opt-out in the mail client itself
+ * rather than buried in the footer.
  */
+export type MarketingSendResult =
+  /** The provider accepted the message. */
+  | { status: "sent" }
+  /**
+   * The message was definitely not transmitted: we never called the provider,
+   * or the provider rejected it outright. Safe to retry.
+   */
+  | { status: "rejected"; reason: string }
+  /**
+   * The outcome is unknown. The provider may have accepted the message before
+   * the failure surfaced, so a retry risks a duplicate.
+   */
+  | { status: "unknown"; reason: string };
+
 export async function sendMarketingEmail(
   to: string,
   subject: string,
   html: string,
   unsubscribeLink: string,
-): Promise<boolean> {
+): Promise<MarketingSendResult> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.info(`[Email] No RESEND_API_KEY set. Skipping marketing email for ${to}`);
-    return false;
+    return { status: "rejected", reason: "RESEND_API_KEY is not set" };
   }
 
   try {
@@ -108,12 +124,14 @@ export async function sendMarketingEmail(
 
     if (result.error) {
       console.error(`[Email] Resend API error for ${to}:`, result.error);
-      return false;
+      return { status: "rejected", reason: result.error.message ?? String(result.error) };
     }
-    return true;
+    return { status: "sent" };
   } catch (error) {
+    // The request may have reached Resend before this threw, so the caller must
+    // not assume the message can be safely resent.
     console.error(`[Email] Failed to send marketing email to ${to}:`, error);
-    return false;
+    return { status: "unknown", reason: String(error) };
   }
 }
 
