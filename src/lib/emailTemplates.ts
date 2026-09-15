@@ -903,7 +903,7 @@ export function proUpgradeEmailHtml(
           </tr>
           <tr>
             <td style="padding:18px 30px;border-top:1px solid #e5e7eb;background-color:#f9fafb;border-radius:0 0 8px 8px;">
-              <p style="margin:0 0 6px;color:#6b7280;font-size:12px;text-align:center;">${escapeHtml(t("proUpgradeSignoff"))}</p>
+              <p style="margin:0 0 6px;color:#6b7280;font-size:12px;text-align:center;">${escapeHtml(t("proUpgradeSignoff")).replace(/\n/g, "<br>")}</p>
               <p style="margin:0;color:#9ca3af;font-size:11px;text-align:center;">${escapeHtml(t("proUpgradeFooter"))} <a href="${unsubscribeLink}" style="color:#9ca3af;text-decoration:underline;">${escapeHtml(t("proUpgradeUnsubscribe"))}</a></p>
             </td>
           </tr>
