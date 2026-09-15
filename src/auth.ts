@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/lib/db";
 import { users, accounts, sessions, verificationTokens } from "@/lib/db/schema";
+import { authUsers } from "@/lib/db/auth-schema";
 import { sendWelcomeEmail, sendAdminNotification } from "@/lib/email";
 
 if (!process.env.AUTH_SECRET) {
@@ -32,8 +33,19 @@ providers.push(
       const email = (credentials.email as string).toLowerCase().trim();
       const password = credentials.password as string;
 
+      // Selected column by column on purpose. An unqualified `select()` pulls
+      // every column declared in code, so signing in would break the moment a
+      // new column is declared ahead of its migration reaching production.
       const [user] = await db
-        .select()
+        .select({
+          id: users.id,
+          name: users.name,
+          email: users.email,
+          image: users.image,
+          role: users.role,
+          password: users.password,
+          emailVerified: users.emailVerified,
+        })
         .from(users)
         .where(eq(users.email, email))
         .limit(1);
@@ -58,7 +70,7 @@ providers.push(
 
 const adapter = process.env.DATABASE_URL
   ? DrizzleAdapter(db, {
-      usersTable: users,
+      usersTable: authUsers,
       accountsTable: accounts,
       sessionsTable: sessions,
       verificationTokensTable: verificationTokens,
