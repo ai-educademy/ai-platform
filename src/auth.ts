@@ -3,12 +3,14 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { eq } from "drizzle-orm";
+import { eq, and, ne } from "drizzle-orm";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/lib/db";
 import { users, accounts, sessions, verificationTokens } from "@/lib/db/schema";
 import { authUsers } from "@/lib/db/auth-schema";
 import { sendWelcomeEmail, sendAdminNotification } from "@/lib/email";
+import { cookies } from "next/headers";
+import { safeLocale } from "@/lib/safe-locale";
 
 if (!process.env.AUTH_SECRET) {
   console.warn(
@@ -68,6 +70,25 @@ providers.push(
   })
 );
 
+/**
+ * The language the visitor is currently reading the site in.
+ *
+ * next-intl's middleware keeps NEXT_LOCALE in step with the URL, so this is
+ * the only locale signal available during an OAuth callback: the provider
+ * tells us nothing about language, and the adapter creates the user row
+ * without it. Reading the cookie here is what stops every Google and GitHub
+ * account being recorded, and emailed, as English.
+ */
+async function localeFromRequest(): Promise<string> {
+  try {
+    const store = await cookies();
+    return safeLocale(store.get("NEXT_LOCALE")?.value);
+  } catch {
+    // Outside a request context (there is none for some background calls).
+    return "en";
+  }
+}
+
 const adapter = process.env.DATABASE_URL
   ? DrizzleAdapter(db, {
       usersTable: authUsers,
@@ -88,9 +109,35 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     verifyRequest: "/signin?verify=1",
   },
   events: {
+    async signIn({ user }) {
+      // Keeps the stored language current for people who signed up before the
+      // column existed, or who signed up through a provider. Only writes on a
+      // genuine change.
+      if (!user?.id) return;
+      try {
+        const locale = await localeFromRequest();
+        await db
+          .update(users)
+          .set({ locale })
+          .where(and(eq(users.id, user.id), ne(users.locale, locale)));
+      } catch (err) {
+        // Never block a sign-in over a preference.
+        console.error("[Auth] Locale sync failed:", err);
+      }
+    },
     async createUser({ user }) {
       if (user.email) {
-        sendWelcomeEmail(user.email, "en", user.name || undefined).catch((err) =>
+        const locale = await localeFromRequest();
+        if (locale !== "en" && user.id) {
+          // The adapter inserts the row without a locale, so it lands on the
+          // "en" default. Correct it before the welcome email goes out.
+          await db
+            .update(users)
+            .set({ locale })
+            .where(eq(users.id, user.id))
+            .catch((err) => console.error("[Auth] Locale set failed:", err));
+        }
+        sendWelcomeEmail(user.email, locale, user.name || undefined).catch((err) =>
           console.error("[Auth] Welcome email failed:", err)
         );
         sendAdminNotification(

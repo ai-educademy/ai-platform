@@ -32,6 +32,19 @@ export function LanguageSwitcher() {
 
     document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000;SameSite=Lax`;
 
+    // An explicit language change is the strongest signal we get about which
+    // language to write to someone in. Persist it for signed-in learners so
+    // their emails follow. Fire and forget: navigation must not wait on it,
+    // and the endpoint ignores anonymous callers.
+    fetch("/api/user/locale", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ locale: newLocale }),
+      keepalive: true,
+    }).catch(() => {
+      /* preference sync is best-effort */
+    });
+
     const segments = pathname.split("/").filter(Boolean);
     if ((locales as readonly string[]).includes(segments[0])) {
       segments.shift();
