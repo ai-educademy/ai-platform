@@ -5,6 +5,7 @@ import { getEmailTranslator } from "@/lib/email-i18n";
 import { proUpgradeEmailHtml } from "@/lib/emailTemplates";
 import { safeLocale, localeBasePath } from "@/lib/safe-locale";
 import { generateUnsubscribeToken, unsubscribeUrl } from "@/lib/unsubscribe";
+import { isUndeliverableAddress } from "@/lib/email-hygiene";
 import { sendMarketingEmail } from "@/lib/email";
 
 export const PRO_UPGRADE_CAMPAIGN = "pro-upgrade-2026-09";
@@ -42,7 +43,7 @@ async function findEligibleRecipients() {
     .where(and(eq(users.role, "free"), isNull(users.marketingOptOutAt)));
 
   return candidates.filter(
-    (u) => u.email && !payingIds.has(u.id) && !u.email.endsWith("@example.com"),
+    (u) => u.email && !payingIds.has(u.id) && !isUndeliverableAddress(u.email),
   );
 }
 
