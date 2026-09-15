@@ -5,7 +5,7 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useQuizContext } from "./QuizContext";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import programsData from "@data/programs.json";
 
 interface LessonCompleteProps {
@@ -174,6 +174,7 @@ export function LessonComplete({
   const { allQuizzesPassed, totalQuizzes, passedQuizzes } = useQuizContext();
   const tL = useTranslations("lessons");
   const tP = useTranslations("programs");
+  const locale = useLocale();
   const noMotion = useReducedMotion();
   const [justCompleted, setJustCompleted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -224,9 +225,12 @@ export function LessonComplete({
   // Explicit completion handler — gated by quiz state
   const handleComplete = useCallback(() => {
     if (!allQuizzesPassed || completed || justCompleted) return;
-    markComplete(slug);
+    // The locale has to be passed explicitly. markComplete defaults it to
+    // "en" when omitted, which silently recorded every completion as English
+    // regardless of the language the lesson was actually read in.
+    markComplete(slug, locale);
     setJustCompleted(true);
-  }, [allQuizzesPassed, completed, justCompleted, markComplete, slug]);
+  }, [allQuizzesPassed, completed, justCompleted, markComplete, slug, locale]);
 
   // Check track completion whenever progress data changes
   useEffect(() => {
