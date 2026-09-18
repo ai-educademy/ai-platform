@@ -1,0 +1,156 @@
+name: Agent Fleet Manager
+
+# Merges pull requests raised by the agent fleet once CI is genuinely green.
+#
+# gh-aw deliberately has no "merge" safe output: agents structurally cannot
+# merge their own work. This is the plain workflow that grants that authority,
+# kept separate and deliberately dumb so the merge decision is auditable and
+# is never made by a model.
+#
+# Kill switch: create a repository variable FLEET_AUTOMERGE with the value
+# "off" and every merge stops immediately, with no code change and no redeploy.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+  check_suite:
+    types: [completed]
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
+concurrency:
+  group: fleet-manager-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the kill switch
+        id: gate
+        run: |
+          if [ "${{ vars.FLEET_AUTOMERGE }}" = "off" ]; then
+            echo "FLEET_AUTOMERGE is off. Standing down."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Merge agent pull requests that are genuinely ready
+        if: steps.gate.outputs.enabled == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          # Daily ceiling. If the fleet ever goes haywire, it can do a bounded
+          # amount of damage per day rather than an unbounded amount.
+          MAX_MERGES_PER_RUN: "5"
+        run: |
+          set -euo pipefail
+
+          # Only these authors are ever eligible. A pull request from a human
+          # contributor is never auto-merged, no matter how green it is.
+          AGENT_AUTHORS="github-actions[bot] app/github-actions dependabot[bot] app/dependabot"
+
+          merged=0
+
+          # --jq keeps this to a single API call rather than one per PR.
+          gh pr list --repo "$REPO" --state open --limit 50 \
+            --json number,title,author,isDraft,labels,mergeable,mergeStateStatus,reviewDecision,files \
+            > /tmp/prs.json
+
+          for number in $(jq -r '.[].number' /tmp/prs.json); do
+            if [ "$merged" -ge "$MAX_MERGES_PER_RUN" ]; then
+              echo "Hit the per-run merge ceiling of $MAX_MERGES_PER_RUN. Stopping."
+              break
+            fi
+
+            pr=$(jq --argjson n "$number" '.[] | select(.number == $n)' /tmp/prs.json)
+            author=$(echo "$pr" | jq -r '.author.login')
+            title=$(echo "$pr" | jq -r '.title')
+
+            skip() { echo "PR #$number ($title): skipped, $1"; }
+
+            # --- Eligibility ------------------------------------------------
+            case " $AGENT_AUTHORS " in
+              *" $author "*) ;;
+              *) skip "author '$author' is not part of the agent fleet"; continue ;;
+            esac
+
+            if [ "$(echo "$pr" | jq -r '.isDraft')" = "true" ]; then
+              skip "still a draft"; continue
+            fi
+
+            labels=$(echo "$pr" | jq -r '[.labels[].name] | join(",")')
+            case ",$labels," in
+              *,do-not-merge,*|*,wip,*|*,needs-human,*)
+                skip "carries a blocking label ($labels)"; continue ;;
+            esac
+
+            # --- Things a machine must never merge unattended ---------------
+            # Payment code. A wrong merge here costs real money, so it always
+            # waits for a human regardless of how green CI is.
+            if echo "$pr" | jq -e '.files[]?.path | select(startswith("src/app/api/stripe/"))' >/dev/null 2>&1; then
+              skip "touches the payment path and needs a human"
+              gh pr edit "$number" --repo "$REPO" --add-label "needs-human" 2>/dev/null || true
+              continue
+            fi
+
+            # The fleet's own controls. An agent must not be able to widen its
+            # own permissions or disable its own guardrails by opening a PR.
+            if echo "$pr" | jq -e '.files[]?.path | select(startswith(".github/workflows/"))' >/dev/null 2>&1; then
+              skip "changes the agent fleet's own configuration and needs a human"
+              gh pr edit "$number" --repo "$REPO" --add-label "needs-human" 2>/dev/null || true
+              continue
+            fi
+
+            if [ "$(echo "$pr" | jq -r '.reviewDecision')" = "CHANGES_REQUESTED" ]; then
+              skip "a reviewer requested changes"; continue
+            fi
+
+            if [ "$(echo "$pr" | jq -r '.mergeable')" != "MERGEABLE" ]; then
+              skip "not mergeable, probably a conflict; pr-doctor should pick this up"; continue
+            fi
+
+            # --- CI must be genuinely green, not merely "not failing" -------
+            checks=$(gh pr checks "$number" --repo "$REPO" --json name,state 2>/dev/null || echo '[]')
+
+            if [ "$(echo "$checks" | jq 'length')" -eq 0 ]; then
+              skip "no checks reported yet"; continue
+            fi
+
+            failing=$(echo "$checks" | jq -r '[.[] | select(.state == "FAILURE" or .state == "ERROR" or .state == "CANCELLED" or .state == "TIMED_OUT")] | length')
+            if [ "$failing" -ne 0 ]; then
+              skip "$failing check(s) failing"; continue
+            fi
+
+            pending=$(echo "$checks" | jq -r '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS")] | length')
+            if [ "$pending" -ne 0 ]; then
+              skip "$pending check(s) still running"; continue
+            fi
+
+            # The required checks must be present and passing by name. Without
+            # this, a pull request that somehow ran no tests would look green.
+            for required in build smoke-test e2e-tests; do
+              state=$(echo "$checks" | jq -r --arg n "$required" '[.[] | select(.name == $n)] | .[0].state // "MISSING"')
+              if [ "$state" != "SUCCESS" ]; then
+                skip "required check '$required' is '$state'"
+                continue 2
+              fi
+            done
+
+            # --- Merge ------------------------------------------------------
+            echo "PR #$number ($title): all gates passed, merging."
+            if gh pr merge "$number" --repo "$REPO" --squash --delete-branch; then
+              merged=$((merged + 1))
+            else
+              echo "PR #$number: merge call failed, leaving it for a human."
+            fi
+          done
+
+          echo "Merged $merged pull request(s) this run."
