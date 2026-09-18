@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getPrograms } from "@/lib/programs";
 import { getAllBlogSlugs } from "@/lib/blog";
+import { routing } from "@/i18n/routing";
+import { buildAlternates, localeUrl } from "@/lib/seo";
 
-const BASE_URL = "https://aieducademy.org";
-const locales = ["en", "fr", "nl", "hi", "te", "es", "pt", "de", "zh", "ja", "ar"];
+const locales = routing.locales;
 
 function localizedEntries(
   path: string,
@@ -11,16 +12,16 @@ function localizedEntries(
   priority: number,
   lastModified?: Date
 ): MetadataRoute.Sitemap {
+  // localeUrl and buildAlternates are shared with the page metadata. This file
+  // previously had its own copy of both, which always prefixed "/en" and
+  // omitted x-default, so the sitemap and the HTML head advertised different
+  // URLs for the same page.
   return locales.map((locale) => ({
-    url: `${BASE_URL}/${locale}${path}`,
+    url: localeUrl(locale, path),
     lastModified: lastModified ?? new Date(),
     changeFrequency,
     priority,
-    alternates: {
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${BASE_URL}/${l}${path}`])
-      ),
-    },
+    alternates: buildAlternates(path),
   }));
 }
 
