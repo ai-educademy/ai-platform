@@ -13,7 +13,6 @@ permissions:
   copilot-requests: write
 engine:
   id: copilot
-  copilot-sdk: true
 timeout-minutes: 25
 strict: true
 network:
