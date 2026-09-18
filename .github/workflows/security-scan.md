@@ -13,7 +13,6 @@ permissions:
   issues: read
   security-events: read
   vulnerability-alerts: read
-  copilot-requests: write
 engine:
   id: copilot
 timeout-minutes: 25

@@ -14,7 +14,6 @@ max-daily-ai-credits: 8000
 permissions:
   contents: read
   issues: read
-  copilot-requests: write
 engine:
   id: copilot
 timeout-minutes: 30
