@@ -16,7 +16,7 @@ permissions:
   issues: read
 engine:
   id: gemini
-  model: gemini-3.6-flash
+  model: gemini-flash-lite-latest
 timeout-minutes: 30
 strict: true
 network: defaults
