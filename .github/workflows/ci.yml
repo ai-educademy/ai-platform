@@ -33,6 +33,11 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
+      # Runs after build because `prebuild` is what merges the private paid
+      # content into content/programs/. Before that merge the catalogue would
+      # look half empty and the check would be meaningless.
+      - name: Validate catalogue integrity
+        run: npm run validate:catalogue
 
   smoke-test:
     needs: build

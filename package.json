@@ -18,6 +18,7 @@
     "test:e2e:ui": "playwright test --ui",
     "prebuild": "bash scripts/sync-assets.sh && node scripts/migrate.mjs",
     "sync-assets": "bash scripts/sync-assets.sh",
+    "validate:catalogue": "node scripts/validate-catalogue.mjs",
     "db:apply": "node scripts/apply-migration.mjs",
     "db:migrate": "MIGRATE_ON_BUILD=1 node scripts/migrate.mjs",
     "campaign:pro-upgrade": "node scripts/run-campaign.mjs"
