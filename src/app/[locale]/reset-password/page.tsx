@@ -110,15 +110,15 @@ export default function ResetPasswordPage() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center">
+            <div id="reset-password-error" role="alert" className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-3" style={anim(500)}>
+          <form onSubmit={handleSubmit} className="space-y-3" style={anim(500)} aria-describedby={error ? "reset-password-error" : undefined}>
             <div>
               <label htmlFor="password" className="block text-sm font-medium mb-1 text-[var(--color-text-secondary)]">
-                {t("newPassword")}
+                {t("newPassword")} <span aria-hidden="true">*</span>
               </label>
               <input
                 id="password"
@@ -127,13 +127,15 @@ export default function ResetPasswordPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder={t("newPasswordPlaceholder")}
                 required
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? "reset-password-error" : undefined}
                 className="w-full px-4 py-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-all"
               />
             </div>
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1 text-[var(--color-text-secondary)]">
-                {t("confirmNewPassword")}
+                {t("confirmNewPassword")} <span aria-hidden="true">*</span>
               </label>
               <input
                 id="confirmPassword"
@@ -142,6 +144,8 @@ export default function ResetPasswordPage() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder={t("confirmNewPasswordPlaceholder")}
                 required
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? "reset-password-error" : undefined}
                 className="w-full px-4 py-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-all"
               />
             </div>

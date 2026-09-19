@@ -32,6 +32,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const mobilePanelId = "mobile-table-of-contents";
 
   useEffect(() => {
     if (headings.length === 0) return;
@@ -104,6 +105,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
           onClick={() => setMobileOpen((v) => !v)}
           className="flex items-center justify-between w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm font-semibold text-[var(--color-text)]"
           aria-expanded={mobileOpen}
+          aria-controls={mobilePanelId}
         >
           <span className="flex items-center gap-2">
             <span aria-hidden="true">📋</span> Contents
@@ -117,7 +119,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
           </span>
         </button>
         {mobileOpen && (
-          <div className="mt-2 px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
+          <div id={mobilePanelId} className="mt-2 px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
             {tocItems}
           </div>
         )}

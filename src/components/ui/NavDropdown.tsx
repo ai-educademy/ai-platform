@@ -7,6 +7,7 @@ interface NavDropdownProps {
   children: React.ReactNode;
   isActive?: boolean;
   align?: "left" | "center" | "right";
+  ariaLabel?: string;
 }
 
 export function NavDropdown({
@@ -14,6 +15,7 @@ export function NavDropdown({
   children,
   isActive = false,
   align = "center",
+  ariaLabel = "Dropdown navigation",
 }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -102,6 +104,7 @@ export function NavDropdown({
             boxShadow: "var(--shadow-lg)",
           }}
           role="navigation"
+          aria-label={ariaLabel}
           onFocus={handleOpen}
           onBlur={handleClose}
         >

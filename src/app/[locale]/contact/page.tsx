@@ -146,7 +146,7 @@ export default function ContactPage() {
             }}
           >
             {status === "success" ? (
-              <div className="text-center py-8">
+              <div className="text-center py-8" role="status" aria-live="polite">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/10 mb-4">
                   <span className="text-3xl" aria-hidden="true">🎉</span>
                 </div>
@@ -160,12 +160,23 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                noValidate
+                className="space-y-6"
+                aria-describedby={
+                  status === "error"
+                    ? "contact-form-error"
+                    : status === "rateLimit"
+                      ? "contact-form-rate-limit"
+                      : undefined
+                }
+              >
                 {/* Name + Email row */}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="contact-name" className="block text-sm font-medium mb-2">
-                      {t("name")}
+                      {t("name")} <span aria-hidden="true">*</span>
                     </label>
                     <input
                       id="contact-name"
@@ -174,13 +185,15 @@ export default function ContactPage() {
                       placeholder={t("namePlaceholder")}
                       value={name}
                       onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: "" })); }}
+                      aria-invalid={errors.name ? true : undefined}
+                      aria-describedby={errors.name ? "contact-name-error" : undefined}
                       className={inputCls}
                     />
-                    {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name}</p>}
+                    {errors.name && <p id="contact-name-error" role="alert" className="text-xs text-red-400 mt-1">{errors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="contact-email" className="block text-sm font-medium mb-2">
-                      {t("email")}
+                      {t("email")} <span aria-hidden="true">*</span>
                     </label>
                     <input
                       id="contact-email"
@@ -189,9 +202,11 @@ export default function ContactPage() {
                       placeholder={t("emailPlaceholder")}
                       value={email}
                       onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: "" })); }}
+                      aria-invalid={errors.email ? true : undefined}
+                      aria-describedby={errors.email ? "contact-email-error" : undefined}
                       className={inputCls}
                     />
-                    {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email}</p>}
+                    {errors.email && <p id="contact-email-error" role="alert" className="text-xs text-red-400 mt-1">{errors.email}</p>}
                   </div>
                 </div>
 
@@ -217,7 +232,7 @@ export default function ContactPage() {
                 {/* Message */}
                 <div>
                   <label htmlFor="contact-message" className="block text-sm font-medium mb-2">
-                    {t("message")}
+                    {t("message")} <span aria-hidden="true">*</span>
                   </label>
                   <textarea
                     id="contact-message"
@@ -226,19 +241,21 @@ export default function ContactPage() {
                     placeholder={t("messagePlaceholder")}
                     value={message}
                     onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: "" })); }}
+                    aria-invalid={errors.message ? true : undefined}
+                    aria-describedby={errors.message ? "contact-message-error" : undefined}
                     className={`${inputCls} resize-y`}
                   />
-                  {errors.message && <p className="text-xs text-red-400 mt-1">{errors.message}</p>}
+                  {errors.message && <p id="contact-message-error" role="alert" className="text-xs text-red-400 mt-1">{errors.message}</p>}
                 </div>
 
                 {/* Error / rate limit banners */}
                 {status === "error" && (
-                  <p className="text-sm text-red-400 bg-red-500/10 px-4 py-3 rounded-xl">
+                  <p id="contact-form-error" role="alert" className="text-sm text-red-400 bg-red-500/10 px-4 py-3 rounded-xl">
                     {t("error")}
                   </p>
                 )}
                 {status === "rateLimit" && (
-                  <p className="text-sm text-amber-400 bg-amber-500/10 px-4 py-3 rounded-xl">
+                  <p id="contact-form-rate-limit" role="alert" className="text-sm text-amber-400 bg-amber-500/10 px-4 py-3 rounded-xl">
                     {t("rateLimit")}
                   </p>
                 )}

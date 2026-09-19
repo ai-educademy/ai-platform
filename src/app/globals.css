@@ -545,6 +545,9 @@ h1, h2, h3, h4, h5, h6 {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
+  box-shadow:
+    0 0 0 4px var(--color-bg),
+    0 0 0 6px var(--color-primary);
 }
 
 /* ═══════════════════════════════════════════
@@ -999,6 +1002,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Respect reduced motion preference (blanket disable) ─── */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
   .animate-float,
   .animate-float-slow,
   .animate-float-delay,

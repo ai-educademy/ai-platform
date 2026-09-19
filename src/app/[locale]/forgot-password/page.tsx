@@ -88,21 +88,26 @@ export default function ForgotPasswordPage() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center">
+            <div id="forgot-password-error" role="alert" className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center">
               {error}
             </div>
           )}
 
           {success && (
-            <div className="mb-4 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-sm text-green-600 text-center">
+            <div id="forgot-password-success" role="status" className="mb-4 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-sm text-green-600 text-center">
               {success}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-3" style={anim(500)}>
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-3"
+            style={anim(500)}
+            aria-describedby={error ? "forgot-password-error" : success ? "forgot-password-success" : undefined}
+          >
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-1 text-[var(--color-text-secondary)]">
-                {t("email")}
+                {t("email")} <span aria-hidden="true">*</span>
               </label>
               <input
                 id="email"
@@ -111,6 +116,8 @@ export default function ForgotPasswordPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t("emailPlaceholder")}
                 required
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? "forgot-password-error" : success ? "forgot-password-success" : undefined}
                 className="w-full px-4 py-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-all"
               />
             </div>

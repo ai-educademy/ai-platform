@@ -154,6 +154,8 @@ export function CommandPalette() {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
   const router = useRouter();
   const locale = useLocale();
   const tP = useTranslations("programs");
@@ -313,6 +315,7 @@ export function CommandPalette() {
   /* ─── Open / close handlers ─── */
 
   const openPalette = useCallback(() => {
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
     setOpen(true);
     setQuery("");
     setSelectedIdx(0);
@@ -322,6 +325,10 @@ export function CommandPalette() {
     setOpen(false);
     setQuery("");
     setSelectedIdx(0);
+    requestAnimationFrame(() => {
+      previousFocusRef.current?.focus();
+      previousFocusRef.current = null;
+    });
   }, []);
 
   /* ─── Global Cmd+K / Ctrl+K listener ─── */
@@ -340,6 +347,27 @@ export function CommandPalette() {
       }
       if (e.key === "Escape" && open) {
         closePalette();
+      }
+      if (e.key === "Tab" && open && modalRef.current) {
+        const focusable = Array.from(
+          modalRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter((el) => !el.hasAttribute("aria-hidden"));
+
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+
+        if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     }
     document.addEventListener("keydown", handleKey);
@@ -450,6 +478,10 @@ export function CommandPalette() {
           {/* Modal container */}
           <div className="relative flex items-start justify-center pt-[15vh] sm:pt-[20vh] px-4">
             <div
+              ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={tNav("searchAriaLabel")}
               className="w-full max-w-[560px] rounded-2xl border border-[var(--color-border)] overflow-hidden cmd-palette-modal-in"
               style={{
                 background: "var(--color-glass)",
@@ -471,6 +503,7 @@ export function CommandPalette() {
                   }}
                   onKeyDown={handleInputKey}
                   placeholder="Search or jump to..."
+                  aria-label={tNav("searchAriaLabel")}
                   className="flex-1 bg-transparent text-[15px] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 outline-none"
                   autoComplete="off"
                   spellCheck={false}
@@ -482,6 +515,7 @@ export function CommandPalette() {
                       setSelectedIdx(0);
                       inputRef.current?.focus();
                     }}
+                    aria-label="Clear search"
                     className="p-0.5 rounded hover:bg-[var(--color-text)]/[0.06] transition-colors"
                   >
                     <X className="w-4 h-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)]" />

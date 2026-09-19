@@ -66,9 +66,12 @@ export function ChatWidget() {
   const [hasUnread, setHasUnread] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   const scrollToBottom = useCallback(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    messagesEndRef.current?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
   }, []);
 
   useEffect(() => {
@@ -137,17 +140,58 @@ export function ChatWidget() {
   };
 
   const open = () => {
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
     setIsOpen(true);
     setIsMinimised(false);
     setHasUnread(false);
   };
 
-  const close = () => {
+  const close = useCallback(() => {
     setIsOpen(false);
     setIsMinimised(false);
-  };
+    requestAnimationFrame(() => {
+      previousFocusRef.current?.focus();
+      previousFocusRef.current = null;
+    });
+  }, []);
 
   const toggleMinimise = () => setIsMinimised((v) => !v);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleDialogKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+
+      if (e.key !== "Tab" || !panelRef.current) return;
+
+      const focusable = Array.from(
+        panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => !el.hasAttribute("aria-hidden"));
+
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleDialogKey);
+    return () => document.removeEventListener("keydown", handleDialogKey);
+  }, [isOpen, close]);
 
   return (
     <>
@@ -160,7 +204,7 @@ export function ChatWidget() {
         >
           <Bot className="w-6 h-6" />
           {hasUnread && (
-            <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500 border-2 border-white" />
+            <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500 border-2 border-white" aria-hidden="true" />
           )}
         </button>
       )}
@@ -168,6 +212,7 @@ export function ChatWidget() {
       {/* Chat panel */}
       {isOpen && (
         <div
+          ref={panelRef}
           className={`fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl shadow-2xl shadow-black/20 flex flex-col overflow-hidden transition-all duration-200 ${
             isMinimised ? "h-14" : "h-[480px]"
           }`}
@@ -208,7 +253,7 @@ export function ChatWidget() {
           {!isMinimised && (
             <>
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scroll-smooth">
+              <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scroll-smooth" aria-live="polite" aria-relevant="additions text">
                 {messages.map((m) => (
                   <MessageBubble key={m.id} message={m} />
                 ))}
