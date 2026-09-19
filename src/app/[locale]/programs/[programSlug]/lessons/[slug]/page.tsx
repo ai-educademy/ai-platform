@@ -44,10 +44,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, programSlug, slug } = await params;
   const program = getProgram(programSlug);
-  if (!program) return { robots: { index: false, follow: false } };
+  if (!program) notFound();
 
   const lesson = getLesson(programSlug, locale, slug);
-  if (!lesson) return { robots: { index: false, follow: false } };
+  if (!lesson) notFound();
 
   const tP = await getTranslations({ locale, namespace: "programs" });
   const tLT = await getTranslations({ locale, namespace: "lessonTitles" });
