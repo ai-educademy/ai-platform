@@ -130,7 +130,7 @@
     },
     "value4": {
       "title": "Open",
-      "description": "Every lesson, every line of code is open source. Fork it, translate it, improve it."
+      "description": "The platform code is open source. Fork it, translate it, improve it."
     },
     "timeline": "Journey",
     "connect": "Connect",
@@ -150,10 +150,10 @@
     "timeline2024": "Open-source contributions, Apache Gravitino, GOV.UK, Spring Boot MCP 🌐",
     "timeline2025": "Founded AI Educademy. AI education for everyone 🎓",
     "pageTitle": "About",
-    "pageDescription": "AI Educademy is an open-source AI education platform built for everyone. Learn about our mission to make AI education accessible worldwide.",
-    "pageSubtitle": "Open-source AI education for every student.",
-    "openSourceTitle": "Open Source",
-    "openSourceDesc": "Every lesson, every line of code. Open source. Fork it, translate it, make it yours.",
+    "pageDescription": "AI Educademy is a multilingual AI education platform built for everyone. Learn about our mission to make AI education accessible worldwide.",
+    "pageSubtitle": "Practical AI education for every learner, in your language.",
+    "openSourceTitle": "Open-Source Platform",
+    "openSourceDesc": "The code behind AI Educademy is open source. Fork it, translate it, make it yours.",
     "viewOnGithub": "View on GitHub"
   },
   "lessons": {
@@ -1292,7 +1292,7 @@
     "openSourceDesc": "Built openly, view code, contribute, or fork",
     "shareText": "AI education for everyone",
     "headline": "Join the Movement",
-    "subtitle": "Get the latest lessons, tips, and updates delivered to your inbox. Star us on GitHub to support AI education for everyone.",
+    "subtitle": "Get the latest lessons, tips, and updates delivered to your inbox. Star us on GitHub to support the project.",
     "shareTitle": "AI Educademy",
     "newsletterTitle": "Join 11 languages of learners",
     "githubTitle": "Open Source & Transparent"

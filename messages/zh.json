@@ -115,7 +115,7 @@
     },
     "value4": {
       "title": "开放",
-      "description": "每一节课、每一行代码都是开源的。Fork 它、翻译它、改进它。"
+      "description": "平台代码是开源的。Fork 它、翻译它、改进它。"
     },
     "timeline": "历程",
     "connect": "联系",
@@ -132,12 +132,12 @@
     "timeline2020": "移居伦敦 🇬🇧",
     "timeline2021": "大规模云原生微服务和数据管道 🛒",
     "timeline2024": "开源贡献：Apache Gravitino、GOV.UK、Spring Boot MCP 🌐",
-    "timeline2025": "创办 AI Educademy，让AI教育免费惠及每个人 🎓",
+    "timeline2025": "创办 AI Educademy，让AI教育惠及每个人 🎓",
     "pageTitle": "关于",
-    "pageDescription": "AI Educademy 是一个免费的开源AI教育平台，为每个人而建。了解我们让AI教育触达全球的使命。",
-    "pageSubtitle": "免费、开源的AI教育，面向每一位学生。",
-    "openSourceTitle": "Open Source",
-    "openSourceDesc": "每一节课、每一行代码--免费且开源。Fork 它、翻译它、让它成为你的。",
+    "pageDescription": "AI Educademy 是一个多语言AI教育平台，为每个人而建。了解我们让AI教育触达全球的使命。",
+    "pageSubtitle": "面向每一位学生的AI教育，用你的语言。",
+    "openSourceTitle": "开源平台",
+    "openSourceDesc": "AI Educademy 的代码是开源的。Fork 它、翻译它、让它成为你的。",
     "viewOnGithub": "在 GitHub 上查看",
     "buyCoffee": "请我喝杯咖啡"
   },
@@ -225,7 +225,7 @@
     },
     "viewAll": "查看所有学习计划",
     "pageTitle": "AI & 工程学习计划",
-    "pageDescription": "探索我们免费的AI学习路线和软件工程学习计划。从零基础到高级，按自己的节奏用5种语言学习。",
+    "pageDescription": "探索我们的AI学习路线和软件工程学习计划。从零基础到高级，按自己的节奏用5种语言学习。",
     "track": {
       "ai-learning": {
         "title": "AI基础",
@@ -1275,9 +1275,9 @@
     "updates": "保持更新",
     "openSource": "Open Source",
     "openSourceDesc": "公开构建，查看代码、贡献或 fork",
-    "shareText": "免费AI教育，面向每个人",
+    "shareText": "AI教育，面向每个人",
     "headline": "加入我们",
-    "subtitle": "最新课程、技巧和更新直达你的收件箱。在 GitHub 上给我们加星，支持免费AI教育惠及每个人。",
+    "subtitle": "最新课程、技巧和更新直达你的收件箱。在 GitHub 上给我们加星，支持这个项目。",
     "shareTitle": "AI Educademy",
     "newsletterTitle": "加入 11 种语言的学习者社区",
     "githubTitle": "开源且透明"
@@ -1740,8 +1740,8 @@
     "cta": "Start Learning Now",
     "ctaHref": "/programs",
     "q1": "What is AI Educademy?",
-    "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
-    "q2": "Is AI Educademy really free?",
+    "a1": "AI Educademy is an open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
+    "q2": "How does AI Educademy pricing work?",
     "a2": "AI Educademy 的每个学院都以一节免费的第一课开始，让你在承诺之前先体验一下。订阅 Pro 即可解锁其余所有课程、学院、学习路径、证书和高级功能，支持按月、按年或终身访问。",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
@@ -1772,7 +1772,7 @@
     "q16": "Do I need an account to start learning?",
     "a16": "浏览课程、文章和 Lab 无需账号。免费试听任意学院的第一课，或创建账号购买 Pro、跨设备同步学习进度并获得结业证书。",
     "q17": "Are there certificates or credentials?",
-    "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available free of charge for all completed programs.",
+    "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available for Pro subscribers who complete programs.",
     "q18": "How often is new content added?",
     "a18": "New lessons, programs, blog articles, and lab experiments are added regularly. The platform is actively maintained and evolves alongside advances in AI technology, so there's always something new to explore.",
     "q19": "What AI topics do the programs cover?",
@@ -2208,7 +2208,7 @@
   },
   "finalCta": {
     "headline": "今天就开始学习 AI",
-    "subtitle": "免费、开源、支持多语言",
+    "subtitle": "多语言，用你的语言",
     "primaryText": "开始学习",
     "secondaryText": "查看学习路线图"
   },
