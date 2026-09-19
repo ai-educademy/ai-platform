@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("terms");
-  return {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "terms" });
+  return createSeoMetadata({
+    locale,
+    path: "/terms",
     title: t("title"),
-    description: "Terms of Service for AI Educademy",
+    description: t("subtitle"),
     robots: { index: true, follow: true },
-  };
+  });
 }
 
 const sectionKeys = [
@@ -24,15 +32,21 @@ const sectionKeys = [
   "contact",
 ] as const;
 
-export default async function TermsPage() {
-  const t = await getTranslations("terms");
+export default async function TermsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "terms" });
+  const basePath = locale === "en" ? "" : `/${locale}`;
 
   return (
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://aieducademy.org" },
-          { name: t("title"), url: "https://aieducademy.org/terms" },
+          { name: "Home", url: `${BASE_URL}${basePath}` },
+          { name: t("title"), url: `${BASE_URL}${basePath}/terms` },
         ]}
       />
 

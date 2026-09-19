@@ -6,10 +6,8 @@ import { getTracks } from "@/lib/tracks";
 import ProgramsShowcase from "@/components/programs/ProgramsShowcase";
 import type { TrackData, ProgramData } from "@/components/programs/ProgramsShowcase";
 import { CourseListJsonLd } from "@/components/seo/JsonLd";
-import { buildAlternates } from "@/lib/seo";
+import { createSeoMetadata } from "@/components/seo/metadata";
 import { isFreeProgram } from "@/lib/content-access";
-
-const BASE_URL = "https://aieducademy.org";
 
 export async function generateMetadata({
   params,
@@ -18,18 +16,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "programs" });
-  return {
+  return createSeoMetadata({
+    locale,
+    path: "/programs",
     title: t("pageTitle"),
     description: t("pageDescription"),
-    alternates: {
-      canonical: `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs`,
-      ...buildAlternates("/programs"),
-    },
-    openGraph: {
-      title: `${t("pageTitle")} | AI Educademy`,
-      description: t("pageDescription"),
-    },
-  };
+  });
 }
 
 export default async function ProgramsPage({

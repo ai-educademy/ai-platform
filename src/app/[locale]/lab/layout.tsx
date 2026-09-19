@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { buildAlternates } from "@/lib/seo";
-
-const BASE_URL = "https://aieducademy.org";
+import { createSeoMetadata } from "@/components/seo/metadata";
 
 export async function generateMetadata({
   params,
@@ -11,18 +9,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "lab" });
-  return {
+  return createSeoMetadata({
+    locale,
+    path: "/lab",
     title: t("pageTitle"),
     description: t("pageDescription"),
-    alternates: {
-      canonical: `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/lab`,
-      ...buildAlternates("/lab"),
-    },
-    openGraph: {
-      title: `${t("pageTitle")} | AI Educademy`,
-      description: t("pageDescription"),
-    },
-  };
+  });
 }
 
 export default function LabLayout({

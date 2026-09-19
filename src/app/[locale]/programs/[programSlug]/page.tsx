@@ -10,7 +10,7 @@ import { FaqAccordion } from "@/components/programs/FaqAccordion";
 import { RelatedArticles } from "@/components/programs/RelatedArticles";
 import { ExperimentCta } from "@/components/programs/ExperimentCta";
 import { routing } from "@/i18n/routing";
-import { buildAlternates } from "@/lib/seo";
+import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { lessonProgress } from "@/lib/db/schema";
@@ -18,8 +18,6 @@ import { eq, and } from "drizzle-orm";
 import { CertificateButton } from "@/components/certificates/CertificateButton";
 import { isFreeProgram } from "@/lib/content-access";
 import { users } from "@/lib/db/schema";
-
-const BASE_URL = "https://aieducademy.org";
 
 export const dynamicParams = false;
 
@@ -42,28 +40,13 @@ export async function generateMetadata({
   const tP = await getTranslations({ locale, namespace: "programs" });
   const title = tP(`${programSlug}.title`);
   const description = tP(`${programSlug}.description`);
-  const canonicalUrl = `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${programSlug}`;
 
-  return {
+  return createSeoMetadata({
+    locale,
+    path: `/programs/${programSlug}`,
     title,
     description,
-    alternates: {
-      canonical: canonicalUrl,
-      ...buildAlternates(`/programs/${programSlug}`),
-    },
-    openGraph: {
-      title: `${title} | AI Educademy`,
-      description,
-      type: "website",
-      url: canonicalUrl,
-      siteName: "AI Educademy",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | AI Educademy`,
-      description,
-    },
-  };
+  });
 }
 
 export default async function ProgramPage({

@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { getProgram } from "@/lib/programs";
-import { buildAlternates } from "@/lib/seo";
-
-const BASE_URL = "https://aieducademy.org";
+import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
 
 const PROGRAM_ICONS: Record<string, string> = {
   "ai-seeds": "🌱",
@@ -42,37 +40,16 @@ export async function generateMetadata({
 
   const title = t("title", { program: programName });
   const description = t("description", { user: userName, program: programName });
-  const canonical = `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/achievement/${programSlug}`;
   const ogImage = `${BASE_URL}/api/share-card?program=${encodeURIComponent(programSlug)}&user=${encodeURIComponent(userName)}`;
 
-  return {
+  return createSeoMetadata({
+    locale,
+    path: `/achievement/${programSlug}`,
     title,
     description,
-    alternates: {
-      canonical,
-      ...buildAlternates(`/achievement/${programSlug}`),
-    },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: "website",
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `${programName} achievement`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+    imageUrl: ogImage,
+    imageAlt: `${programName} achievement`,
+  });
 }
 
 export default async function AchievementPage({

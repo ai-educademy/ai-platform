@@ -8,16 +8,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "about" });
+  const t = await getTranslations({ locale, namespace: "leadMagnet" });
+
   return createSeoMetadata({
     locale,
-    path: "/about",
-    title: t("pageTitle"),
-    description: t("pageDescription"),
+    path: "/resources/ai-starter-kit",
+    title: t("title"),
+    description: t("metaDescription"),
   });
 }
 
-export default function AboutLayout({
+export default function AIStarterKitLayout({
   children,
 }: {
   children: React.ReactNode;

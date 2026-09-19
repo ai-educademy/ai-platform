@@ -10,11 +10,9 @@ import { ArticleJsonLd } from "@/components/seo/JsonLd";
 import { ShareButtons } from "@/components/blog/ShareButtons";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { slugify } from "@/lib/slugify";
-import { buildAlternates } from "@/lib/seo";
+import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
 
-const BASE_URL = "https://aieducademy.org";
-
-/* ID-aware heading wrappers for blog posts – enables TableOfContents scroll tracking */
+/* ID-aware heading wrappers for blog posts, enabling TableOfContents scroll tracking */
 function BlogH2({
   children,
   ...props
@@ -59,24 +57,26 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const post = getBlogPost(slug, locale);
   if (!post) return { robots: { index: false, follow: false } };
+  const imageUrl = post.image?.startsWith("http")
+    ? post.image
+    : post.image
+      ? `${BASE_URL}${post.image}`
+      : undefined;
 
-  return {
+  return createSeoMetadata({
+    locale,
+    path: `/blog/${slug}`,
     title: post.title,
     description: post.description,
-    alternates: {
-      canonical: `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/blog/${slug}`,
-      ...buildAlternates(`/blog/${slug}`),
-    },
+    type: "article",
+    ...(imageUrl ? { imageUrl } : {}),
     openGraph: {
-      title: `${post.title} | AI Educademy`,
-      description: post.description,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
-      ...(post.image ? { images: [post.image] } : {}),
     },
-  };
+  });
 }
 
 function estimateReadTime(content: string): number {
