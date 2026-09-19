@@ -304,6 +304,18 @@ export default function DashboardPage() {
           >
             {t("emptyStart")} →
           </Link>
+
+          {/*
+            A brand new account lands here, and this used to be the end of the
+            page. The upgrade card further down only renders once somebody has
+            completed a lesson, so the people most worth converting saw no
+            offer at all beyond the small navbar button.
+          */}
+          {!isPremiumUser && (
+            <div className="mx-auto mt-16 max-w-md text-left">
+              <UpgradeCard />
+            </div>
+          )}
         </MotionReveal>
       </div>
     );
