@@ -11,6 +11,7 @@ import { authUsers } from "@/lib/db/auth-schema";
 import { sendWelcomeEmail, sendAdminNotification } from "@/lib/email";
 import { cookies } from "next/headers";
 import { safeLocale } from "@/lib/safe-locale";
+import { refreshTokenRole } from "@/lib/auth-role";
 
 if (!process.env.AUTH_SECRET) {
   console.warn(
@@ -150,11 +151,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user) {
         token.role = (user as { role?: string }).role ?? "free";
+        token.roleCheckedAt = Date.now();
+        return token;
       }
-      return token;
+
+      return refreshTokenRole(token, trigger, async (userId) => {
+        const [row] = await db
+          .select({ role: users.role })
+          .from(users)
+          .where(eq(users.id, userId))
+          .limit(1);
+        return row?.role ?? null;
+      });
     },
     async session({ session, token }) {
       if (token?.sub) {
