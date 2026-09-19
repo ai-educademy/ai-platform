@@ -219,11 +219,16 @@ export function Navbar() {
               <ThemeToggle />
               <div className="w-px h-5 bg-[var(--color-border)] mx-0.5" />
               {/* Rendered only once the plan is known, so a subscriber never
-                  sees an upgrade prompt flash on every page load. */}
+                  sees an upgrade prompt flash on every page load.
+
+                  Shown from md upward, not lg. The desktop bar appears at md
+                  while the mobile drawer disappears at the same breakpoint, so
+                  gating this on lg left tablet widths with no visible route to
+                  checkout at all. */}
               {showUpgrade && (
                 <Link
                   href={`${basePath}/pricing`}
-                  className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full text-[var(--color-primary)] border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 hover:bg-[var(--color-primary)]/20 transition-colors"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full text-[var(--color-primary)] border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 hover:bg-[var(--color-primary)]/20 transition-colors"
                 >
                   <Sparkles size={13} />
                   {t("goPro")}

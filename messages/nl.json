@@ -1841,7 +1841,11 @@
     "redirecting": "Doorverwijzen…",
     "checkoutError": "Kon de afrekensessie niet aanmaken. Probeer het opnieuw.",
     "genericError": "Er is iets misgegaan. Probeer het opnieuw.",
-    "comparePlans": "Abonnementen vergelijken"
+    "comparePlans": "Abonnementen vergelijken",
+    "chooseAPlan": "Kies een abonnement",
+    "selected": "Geselecteerd",
+    "selectThisPlan": "Kies dit abonnement",
+    "alreadyPro": "Je hebt Pro al. Beheer je abonnement in je account."
   },
   "paywall": {
     "title": "Premium Inhoud",

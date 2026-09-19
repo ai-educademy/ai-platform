@@ -1841,7 +1841,11 @@
     "redirecting": "正在跳转…",
     "checkoutError": "无法创建结账会话，请重试。",
     "genericError": "出了点问题，请重试。",
-    "comparePlans": "比较方案"
+    "comparePlans": "比较方案",
+    "chooseAPlan": "选择方案",
+    "selected": "已选择",
+    "selectThisPlan": "选择此方案",
+    "alreadyPro": "您已拥有 Pro，可在账户中管理订阅。"
   },
   "paywall": {
     "title": "高级内容",

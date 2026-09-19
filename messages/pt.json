@@ -1841,7 +1841,11 @@
     "redirecting": "Redirecionando…",
     "checkoutError": "Não foi possível criar a sessão de pagamento. Tente novamente.",
     "genericError": "Algo deu errado. Tente novamente.",
-    "comparePlans": "Comparar planos"
+    "comparePlans": "Comparar planos",
+    "chooseAPlan": "Escolha um plano",
+    "selected": "Selecionado",
+    "selectThisPlan": "Selecionar este plano",
+    "alreadyPro": "Você já tem Pro. Faça a gestão da sua assinatura na sua conta."
   },
   "paywall": {
     "title": "Conteúdo Premium",

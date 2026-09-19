@@ -1856,7 +1856,11 @@
     "redirecting": "Redirecting…",
     "checkoutError": "Could not create checkout session. Please try again.",
     "genericError": "Something went wrong. Please try again.",
-    "comparePlans": "Compare plans"
+    "comparePlans": "Compare plans",
+    "chooseAPlan": "Choose a plan",
+    "selected": "Selected",
+    "selectThisPlan": "Select this plan",
+    "alreadyPro": "You already have Pro. Manage your subscription from your account."
   },
   "paywall": {
     "title": "Your next level is behind this door",

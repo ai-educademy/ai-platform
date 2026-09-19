@@ -1841,7 +1841,11 @@
     "redirecting": "Weiterleitung…",
     "checkoutError": "Bezahlvorgang konnte nicht gestartet werden. Bitte versuche es erneut.",
     "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-    "comparePlans": "Tarife vergleichen"
+    "comparePlans": "Tarife vergleichen",
+    "chooseAPlan": "Wähle einen Tarif",
+    "selected": "Ausgewählt",
+    "selectThisPlan": "Diesen Tarif wählen",
+    "alreadyPro": "Du hast bereits Pro. Verwalte dein Abo in deinem Konto."
   },
   "paywall": {
     "title": "Premium-Inhalte",
