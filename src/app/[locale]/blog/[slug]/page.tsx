@@ -91,6 +91,9 @@ export default async function BlogPostPage({
 }) {
   const { locale, slug } = await params;
   const t = await getTranslations("blog");
+  const tPrograms = await getTranslations("programs");
+  const tPricing = await getTranslations("pricing");
+  const tProgramDetail = await getTranslations("programDetail");
   const post = getBlogPost(slug, locale);
 
   if (!post) {
@@ -202,29 +205,34 @@ export default async function BlogPostPage({
             <div className="mt-16 space-y-8">
               {/* Share bar */}
               <div className="py-6 border-t border-b border-[var(--color-border)] flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <p className="text-sm font-medium text-[var(--color-text)] shrink-0">Found this useful?</p>
+                <p className="text-sm font-medium text-[var(--color-text)] shrink-0">{t("shareLabel")}</p>
                 <ShareButtons url={postUrl} title={post.title} description={post.description} />
               </div>
 
-              {/* Start Learning CTA */}
+              {/* Start Learning CTA.
+                  This block used to be hard-coded English on all 11 locales,
+                  and it promised "Free, in your language, no account
+                  required" on a paid product. Only the first lesson of each
+                  programme is free, so it was both untranslated and untrue at
+                  the exact point a reader decides whether to sign up. */}
               <div className="rounded-2xl bg-gradient-to-br from-indigo-500/10 via-violet-500/5 to-purple-500/10 border border-indigo-500/20 p-8 text-center">
                 <div className="text-3xl mb-3">🌱</div>
-                <h3 className="text-xl font-bold mb-2">Ready to learn AI properly?</h3>
+                <h3 className="text-xl font-bold mb-2">{tPrograms("title")}</h3>
                 <p className="text-[var(--color-text-muted)] text-sm mb-6 max-w-md mx-auto">
-                  Start with AI Seeds, a structured, beginner-friendly program. Free, in your language, no account required.
+                  {tPricing("subheading")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link
                     href={`${basePath}/programs/ai-seeds`}
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-semibold shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-shadow duration-300"
                   >
-                    Start AI Seeds: Free →
+                    {tPrograms("startLearning")} →
                   </Link>
                   <Link
                     href={`${basePath}/programs`}
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[var(--color-border)] rounded-xl text-sm font-semibold hover:border-[var(--color-primary)] transition-colors duration-200"
                   >
-                    Browse all programs
+                    {tPrograms("viewAll")}
                   </Link>
                 </div>
               </div>
@@ -232,7 +240,7 @@ export default async function BlogPostPage({
               {/* Related posts */}
               {related.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-bold mb-4">Related articles</h3>
+                  <h3 className="text-lg font-bold mb-4">{tProgramDetail("relatedArticles")}</h3>
                   <div className="grid gap-4">
                     {related.map((rp) => (
                       <Link

@@ -1251,7 +1251,8 @@
     "minuteRead": "min de lectura",
     "tags": "Etiquetas",
     "badge": "",
-    "noPosts": "No hay publicaciones aún. ¡Vuelve pronto!"
+    "noPosts": "No hay publicaciones aún. ¡Vuelve pronto!",
+    "shareLabel": "¿Te ha resultado útil?"
   },
   "feedback": {
     "title": "¿Te fue útil esta lección?",

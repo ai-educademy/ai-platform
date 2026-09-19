@@ -1251,7 +1251,8 @@
     "minuteRead": "min de leitura",
     "tags": "Tags",
     "badge": "",
-    "noPosts": "Nenhuma publicação ainda. Volte em breve!"
+    "noPosts": "Nenhuma publicação ainda. Volte em breve!",
+    "shareLabel": "Achou isto útil?"
   },
   "feedback": {
     "title": "Esta aula foi útil?",

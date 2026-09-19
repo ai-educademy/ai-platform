@@ -30,6 +30,8 @@ type FormStatus = "idle" | "sending" | "success" | "error" | "rateLimit";
 
 export default function ContactPage() {
   const t = useTranslations("contact");
+  const tPrograms = useTranslations("programs");
+  const tPricing = useTranslations("pricing");
   const pathname = usePathname();
 
   const segments = pathname.split("/").filter(Boolean);
@@ -326,15 +328,17 @@ export default function ContactPage() {
         <AnimatedSection animation="fade-up" delay={300}>
           <div className="mt-14 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-violet-500/5 to-purple-500/10 border border-indigo-500/20 p-8 text-center">
             <div className="text-3xl mb-3">🌱</div>
-            <h2 className="text-xl font-bold mb-2">Explore our learning programs</h2>
+            <h2 className="text-xl font-bold mb-2">{tPrograms("title")}</h2>
+            {/* Was hard-coded English claiming the programmes are free.
+                Only the first lesson of each is. */}
             <p className="text-[var(--color-text-muted)] text-sm mb-6 max-w-md mx-auto">
-              Free, in your language, at your own pace.
+              {tPricing("subheading")}
             </p>
             <Link
               href={`${basePath}/programs`}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-semibold shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-shadow duration-300"
             >
-              Browse Programs →
+              {tPrograms("viewAll")} →
             </Link>
           </div>
         </AnimatedSection>

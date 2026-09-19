@@ -1266,7 +1266,8 @@
     "minuteRead": "min read",
     "tags": "Tags",
     "badge": "",
-    "noPosts": "No posts yet. Check back soon!"
+    "noPosts": "No posts yet. Check back soon!",
+    "shareLabel": "Found this useful?"
   },
   "feedback": {
     "title": "Was this lesson helpful?",

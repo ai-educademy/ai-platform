@@ -1251,7 +1251,8 @@
     "minuteRead": "Min. Lesezeit",
     "tags": "Tags",
     "badge": "",
-    "noPosts": "Noch keine Beiträge. Schau bald wieder vorbei!"
+    "noPosts": "Noch keine Beiträge. Schau bald wieder vorbei!",
+    "shareLabel": "War das hilfreich?"
   },
   "feedback": {
     "title": "War diese Lektion hilfreich?",

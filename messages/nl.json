@@ -1251,7 +1251,8 @@
     "minuteRead": "min leestijd",
     "tags": "Tags",
     "badge": "",
-    "noPosts": "Nog geen berichten. Kijk binnenkort nog eens!"
+    "noPosts": "Nog geen berichten. Kijk binnenkort nog eens!",
+    "shareLabel": "Was dit nuttig?"
   },
   "feedback": {
     "title": "Was deze les nuttig?",
