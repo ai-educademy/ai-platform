@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { userStreaks } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
@@ -87,20 +87,15 @@ export async function POST(req: Request) {
       }
       const { currentStreak, longestStreak, lastActivityDate } = parsed.data;
 
-      const [existing] = await db
-        .select({ id: userStreaks.id })
-        .from(userStreaks)
-        .where(eq(userStreaks.userId, session.user.id))
-        .limit(1);
-
-      if (!existing) {
-        await db.insert(userStreaks).values({
+      await db
+        .insert(userStreaks)
+        .values({
           userId: session.user.id,
           currentStreak,
           longestStreak,
           lastActivityDate,
-        });
-      }
+        })
+        .onConflictDoNothing({ target: userStreaks.userId });
       return NextResponse.json({ success: true });
     }
 
@@ -108,53 +103,42 @@ export async function POST(req: Request) {
     const today = getToday();
     const yesterday = getYesterday();
 
-    const [existing] = await db
-      .select()
-      .from(userStreaks)
-      .where(eq(userStreaks.userId, session.user.id))
-      .limit(1);
+    const nextCurrentStreak = sql<number>`case
+      when ${userStreaks.lastActivityDate} = ${today} then ${userStreaks.currentStreak}
+      when ${userStreaks.lastActivityDate} = ${yesterday} then ${userStreaks.currentStreak} + 1
+      else 1
+    end`;
 
-    if (!existing) {
-      await db.insert(userStreaks).values({
+    const [row] = await db
+      .insert(userStreaks)
+      .values({
         userId: session.user.id,
         currentStreak: 1,
         longestStreak: 1,
         lastActivityDate: today,
-      });
-      return NextResponse.json({ currentStreak: 1, longestStreak: 1, lastActivityDate: today });
-    }
-
-    // Already recorded today
-    if (existing.lastActivityDate === today) {
-      return NextResponse.json({
-        currentStreak: existing.currentStreak,
-        longestStreak: existing.longestStreak,
-        lastActivityDate: existing.lastActivityDate,
-      });
-    }
-
-    let newCurrent: number;
-    if (existing.lastActivityDate === yesterday) {
-      newCurrent = existing.currentStreak + 1;
-    } else {
-      newCurrent = 1;
-    }
-    const newLongest = Math.max(existing.longestStreak, newCurrent);
-
-    await db
-      .update(userStreaks)
-      .set({
-        currentStreak: newCurrent,
-        longestStreak: newLongest,
-        lastActivityDate: today,
-        updatedAt: new Date(),
       })
-      .where(eq(userStreaks.userId, session.user.id));
+      .onConflictDoUpdate({
+        target: userStreaks.userId,
+        set: {
+          currentStreak: nextCurrentStreak,
+          longestStreak: sql<number>`greatest(${userStreaks.longestStreak}, ${nextCurrentStreak})`,
+          lastActivityDate: sql<string>`case
+            when ${userStreaks.lastActivityDate} = ${today} then ${userStreaks.lastActivityDate}
+            else ${today}
+          end`,
+          updatedAt: new Date(),
+        },
+      })
+      .returning({
+        currentStreak: userStreaks.currentStreak,
+        longestStreak: userStreaks.longestStreak,
+        lastActivityDate: userStreaks.lastActivityDate,
+      });
 
     return NextResponse.json({
-      currentStreak: newCurrent,
-      longestStreak: newLongest,
-      lastActivityDate: today,
+      currentStreak: row.currentStreak,
+      longestStreak: row.longestStreak,
+      lastActivityDate: row.lastActivityDate,
     });
   } catch (error) {
     return serverError("POST", error);
