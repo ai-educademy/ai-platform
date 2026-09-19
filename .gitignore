@@ -155,3 +155,7 @@ test-results/
 public/images/lessons/
 scripts/__pycache__/
 src/lib/.campaign-runner.bundle.mjs
+
+# Playwright local run output
+playwright-report/
+test-results/

@@ -106,7 +106,7 @@ export function Navbar() {
             </Link>
 
             {/* ─── Desktop Nav with Mega Dropdowns ─── */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden xl:flex items-center gap-1">
               <NavDropdown
                 trigger={t("programs")}
                 isActive={isActive("/programs")}
@@ -213,10 +213,15 @@ export function Navbar() {
             </div>
 
             {/* ─── Desktop Actions ─── */}
-            <div className="hidden md:flex items-center gap-2 shrink-0">
+            <div className="hidden xl:flex items-center gap-2 shrink-0">
               <CommandPalette />
               <LanguageSwitcher />
-              <ThemeToggle />
+              {/* Icon only. The "Light"/"Dark" labels translate long: they
+                  pushed the desktop bar past the viewport in French, Dutch
+                  and Telugu and gave those locales a horizontally scrolling
+                  page. The buttons keep their aria-label and aria-pressed,
+                  so nothing is lost for screen readers. */}
+              <ThemeToggle compact />
               <div className="w-px h-5 bg-[var(--color-border)] mx-0.5" />
               {/* Rendered only once the plan is known, so a subscriber never
                   sees an upgrade prompt flash on every page load.
@@ -253,9 +258,22 @@ export function Navbar() {
             </div>
 
             {/* ─── Mobile Actions ─── */}
-            <div className="flex items-center gap-2 md:hidden">
+            <div className="flex items-center gap-2 xl:hidden">
               <CommandPalette />
               <ThemeToggle compact />
+              {/* The desktop bar now only appears at xl, so without this the
+                  upgrade CTA would be buried in the drawer for every tablet
+                  and small laptop. Hidden on the narrowest phones, where the
+                  bar genuinely has no room and the drawer carries it. */}
+              {showUpgrade && (
+                <Link
+                  href={`${basePath}/pricing`}
+                  className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full text-[var(--color-primary)] border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 hover:bg-[var(--color-primary)]/20 transition-colors"
+                >
+                  <Sparkles size={13} />
+                  {t("goPro")}
+                </Link>
+              )}
               <button
                 className="p-1.5 rounded-full text-[var(--color-text-muted)] hover:bg-[var(--color-text)]/[0.06] transition-colors"
                 onClick={() => setMobileOpen(!mobileOpen)}
@@ -274,13 +292,13 @@ export function Navbar() {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-40 bg-black/40 md:hidden animate-navbar-backdrop"
+            className="fixed inset-0 z-40 bg-black/40 xl:hidden animate-navbar-backdrop"
             onClick={closeMobile}
             aria-hidden
           />
           {/* Drawer */}
           <div
-            className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-sm md:hidden overflow-y-auto animate-navbar-drawer"
+            className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-sm xl:hidden overflow-y-auto animate-navbar-drawer"
             style={{
               background: "var(--color-bg)",
               borderLeft: "1px solid var(--color-border)",

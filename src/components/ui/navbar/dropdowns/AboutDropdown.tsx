@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function AboutDropdownContent({ basePath, t }: { basePath: string; t: (key: string) => string }) {
   return (
-    <div className="w-[300px] p-4">
+    <div className="w-[min(300px,calc(100vw-2rem))] p-4">
       <div className="space-y-0.5">
         <Link
           href={`${basePath}/about`}
