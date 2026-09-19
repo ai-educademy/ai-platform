@@ -111,7 +111,7 @@ test.describe("Checkout API", () => {
     });
 
     await page.goto("/en/pricing");
-    await page.getByRole("radio", { name: /pro annual/i }).check();
+    await page.getByRole("radio", { name: /pro annual/i }).check({ force: true });
     await page.getByRole("button", { name: /start pro annual/i }).click();
 
     await expect(page).toHaveURL(/#stripe-checkout$/);
