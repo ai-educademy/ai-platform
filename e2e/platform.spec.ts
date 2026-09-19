@@ -16,12 +16,29 @@ test.describe("Navigation & Pages", () => {
     }
   });
 
-  test("programs page loads with both tracks", async ({ page }) => {
+  test("programs page lists multiple programmes", async ({ page }) => {
     await page.goto("/en/programs");
     await expect(page.locator("h1").first()).toBeVisible();
-    // Should have program cards
-    const cards = page.locator('[href*="/programs/ai-"]');
-    await expect(cards.first()).toBeVisible();
+    // Scoped to main because the navbar links to /programs/* too, and those
+    // links sit in closed dropdown panels that are correctly invisible.
+    const links = page.locator('main [href*="/programs/ai-"]');
+    await expect(links.first()).toBeVisible();
+
+    // The raw link count is a poor signal: this page links straight to every
+    // lesson, so it sits around 105 and would stay green even if a whole
+    // programme vanished. Count distinct programme slugs instead. The floor
+    // is deliberately low (there are 15 today): this is a smoke check that
+    // the index renders a catalogue at all. Catalogue completeness is
+    // `npm run validate:catalogue`'s job, and a hard count here would break
+    // on every programme we add.
+    const slugs = new Set(
+      (await links.evaluateAll((els) =>
+        els.map((el) => el.getAttribute("href") ?? ""),
+      ))
+        .map((href) => href.match(/\/programs\/(ai-[^/]+)/)?.[1])
+        .filter(Boolean),
+    );
+    expect(slugs.size).toBeGreaterThanOrEqual(2);
   });
 
   test("lab page loads", async ({ page }) => {
