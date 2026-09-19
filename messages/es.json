@@ -115,7 +115,7 @@
     },
     "value4": {
       "title": "Abierto",
-      "description": "Cada lección, cada línea de código es open source. Bifúrcalo, tradúcelo, mejóralo."
+      "description": "El código de la plataforma es open source. Bifúrcalo, tradúcelo, mejóralo."
     },
     "timeline": "Trayectoria",
     "connect": "Conectar",
@@ -132,12 +132,12 @@
     "timeline2020": "Se mudó a Londres 🇬🇧",
     "timeline2021": "Microservicios cloud-native y pipelines de datos a escala 🛒",
     "timeline2024": "Contribuciones open source, Apache Gravitino, GOV.UK, Spring Boot MCP 🌐",
-    "timeline2025": "Fundó AI Educademy, educación en IA gratuita para todos 🎓",
+    "timeline2025": "Fundó AI Educademy, educación en IA para todos 🎓",
     "pageTitle": "Acerca de",
-    "pageDescription": "AI Educademy es una plataforma de educación en IA gratuita y open source creada para todos. Conoce nuestra misión de hacer la educación en IA accesible en todo el mundo.",
-    "pageSubtitle": "Educación en IA gratuita y open source para cada estudiante.",
-    "openSourceTitle": "Open Source",
-    "openSourceDesc": "Cada lección, cada línea de código, gratis y open source. Bifúrcalo, tradúcelo, hazlo tuyo.",
+    "pageDescription": "AI Educademy es una plataforma de educación en IA multilingüe creada para todos. Conoce nuestra misión de hacer la educación en IA accesible en todo el mundo.",
+    "pageSubtitle": "Educación en IA para cada estudiante, en tu idioma.",
+    "openSourceTitle": "Plataforma open source",
+    "openSourceDesc": "El código de AI Educademy es open source. Bifúrcalo, tradúcelo, hazlo tuyo.",
     "viewOnGithub": "Ver en GitHub",
     "buyCoffee": "Invítame a un café"
   },
@@ -225,7 +225,7 @@
     },
     "viewAll": "Ver Todos los Programas",
     "pageTitle": "Programas de IA e Ingeniería",
-    "pageDescription": "Explora nuestras rutas gratuitas de aprendizaje en IA e ingeniería de software. Desde principiante absoluto hasta avanzado, aprende a tu ritmo en 5 idiomas.",
+    "pageDescription": "Explora nuestras rutas de aprendizaje en IA e ingeniería de software. Desde principiante absoluto hasta avanzado, aprende a tu ritmo en 5 idiomas.",
     "track": {
       "ai-learning": {
         "title": "Fundamentos de IA",
@@ -1275,9 +1275,9 @@
     "updates": "Mantente Informado",
     "openSource": "Open Source",
     "openSourceDesc": "Construido de forma abierta, mira el código, contribuye o bifurca",
-    "shareText": "Educación en IA gratuita para todos",
+    "shareText": "Educación en IA para todos",
     "headline": "Únete al Movimiento",
-    "subtitle": "Recibe las últimas lecciones, consejos y novedades en tu bandeja de entrada. Danos una estrella en GitHub para apoyar la educación en IA gratuita para todos.",
+    "subtitle": "Recibe las últimas lecciones, consejos y novedades en tu bandeja de entrada. Danos una estrella en GitHub para apoyar el proyecto.",
     "shareTitle": "AI Educademy",
     "githubTitle": "Código Abierto y Transparente",
     "newsletterTitle": "Únete a estudiantes en 11 idiomas"
@@ -1740,8 +1740,8 @@
     "cta": "Start Learning Now",
     "ctaHref": "/programs",
     "q1": "What is AI Educademy?",
-    "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
-    "q2": "Is AI Educademy really free?",
+    "a1": "AI Educademy is an open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
+    "q2": "How does AI Educademy pricing work?",
     "a2": "Cada academia de AI Educademy comienza con una primera lección gratuita, para que puedas probarla antes de comprometerte. Pro desbloquea cada lección, academia, itinerario, certificado y función premium restante, con acceso mensual, anual o de por vida.",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
@@ -1772,7 +1772,7 @@
     "q16": "Do I need an account to start learning?",
     "a16": "No necesitas una cuenta para explorar programas, artículos y el Lab. Prueba la primera lección de cualquier academia gratis, o crea una cuenta para adquirir Pro, seguir tu progreso en varios dispositivos y obtener certificados de finalización.",
     "q17": "Are there certificates or credentials?",
-    "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available free of charge for all completed programs.",
+    "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available for Pro subscribers who complete programs.",
     "q18": "How often is new content added?",
     "a18": "New lessons, programs, blog articles, and lab experiments are added regularly. The platform is actively maintained and evolves alongside advances in AI technology, so there's always something new to explore.",
     "q19": "What AI topics do the programs cover?",
@@ -2103,7 +2103,7 @@
     "headline": "Empieza a Aprender IA Hoy",
     "primaryText": "Empezar a Aprender",
     "secondaryText": "Ver Mapa de Ruta",
-    "subtitle": "Gratis, código abierto, en tu idioma"
+    "subtitle": "Multilingüe, en tu idioma"
   },
   "howItWorks": {
     "step1Desc": "Elige entre 3 rutas - Aprendizaje de IA, Ingeniería Práctica o Preparación Profesional. Cada ruta tiene programas seleccionados que te llevan de cero a la maestría.",

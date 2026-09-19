@@ -47,7 +47,7 @@
     "goPro": "Seja Pro"
   },
   "hero": {
-    "badge": "Grátis • Open Source • Multilíngue",
+    "badge": "Open Source • Multilíngue",
     "title": "Aprendizado de IA,",
     "titleHighlight": "Simplificado.",
     "subtitle": "Aulas interativas que levam você de iniciante curioso a criador confiante. Comece do zero. vá tão longe quanto quiser.",
@@ -115,7 +115,7 @@
     },
     "value4": {
       "title": "Aberto",
-      "description": "Cada aula, cada linha de código é open source. Bifurque, traduza, melhore."
+      "description": "O código da plataforma é open source. Bifurque, traduza, melhore."
     },
     "timeline": "Trajetória",
     "connect": "Conectar",
@@ -132,12 +132,12 @@
     "timeline2020": "Mudou-se para Londres 🇬🇧",
     "timeline2021": "Microsserviços cloud-native e pipelines de dados em escala 🛒",
     "timeline2024": "Contribuições open source, Apache Gravitino, GOV.UK, Spring Boot MCP 🌐",
-    "timeline2025": "Fundou a AI Educademy, educação em IA gratuita para todos 🎓",
+    "timeline2025": "Fundou a AI Educademy, educação em IA para todos 🎓",
     "pageTitle": "Sobre",
-    "pageDescription": "AI Educademy é uma plataforma de educação em IA gratuita e open source criada para todos. Conheça nossa missão de tornar a educação em IA acessível mundialmente.",
-    "pageSubtitle": "Educação em IA gratuita e open source para cada estudante.",
-    "openSourceTitle": "Open Source",
-    "openSourceDesc": "Cada aula, cada linha de código. grátis e open source. Bifurque, traduza, faça do seu jeito.",
+    "pageDescription": "AI Educademy é uma plataforma de educação em IA multilíngue criada para todos. Conheça nossa missão de tornar a educação em IA acessível mundialmente.",
+    "pageSubtitle": "Educação em IA para cada estudante, no seu idioma.",
+    "openSourceTitle": "Plataforma open source",
+    "openSourceDesc": "O código do AI Educademy é open source. Bifurque, traduza, faça do seu jeito.",
     "viewOnGithub": "Ver no GitHub",
     "buyCoffee": "Me pague um café"
   },
@@ -225,7 +225,7 @@
     },
     "viewAll": "Ver Todos os Programas",
     "pageTitle": "Programas de IA e Engenharia",
-    "pageDescription": "Explore nossas trilhas gratuitas de aprendizado em IA e engenharia de software. Do iniciante absoluto ao avançado, aprenda no seu ritmo em 5 idiomas.",
+    "pageDescription": "Explore nossas trilhas de aprendizado em IA e engenharia de software. Do iniciante absoluto ao avançado, aprenda no seu ritmo em 5 idiomas.",
     "track": {
       "ai-learning": {
         "title": "Fundamentos de IA",
@@ -1275,9 +1275,9 @@
     "updates": "Fique Atualizado",
     "openSource": "Open Source",
     "openSourceDesc": "Construído de forma aberta. veja o código, contribua ou bifurque",
-    "shareText": "Educação em IA gratuita para todos",
+    "shareText": "Educação em IA para todos",
     "headline": "Junte-se ao Movimento",
-    "subtitle": "Receba as últimas aulas, dicas e novidades na sua caixa de entrada. Dê uma estrela no GitHub para apoiar educação em IA gratuita para todos.",
+    "subtitle": "Receba as últimas aulas, dicas e novidades na sua caixa de entrada. Dê uma estrela no GitHub para apoiar o projeto.",
     "shareTitle": "AI Educademy",
     "githubTitle": "Código Aberto e Transparente",
     "newsletterTitle": "Junte-se a alunos em 11 idiomas"
@@ -1740,8 +1740,8 @@
     "cta": "Start Learning Now",
     "ctaHref": "/programs",
     "q1": "What is AI Educademy?",
-    "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
-    "q2": "Is AI Educademy really free?",
+    "a1": "AI Educademy is an open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
+    "q2": "How does AI Educademy pricing work?",
     "a2": "Cada academia da AI Educademy começa com uma primeira aula gratuita, para que você possa experimentar antes de se comprometer. O Pro desbloqueia todas as demais aulas, academias, trilhas, certificados e recursos premium com acesso mensal, anual ou vitalício.",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
@@ -1772,7 +1772,7 @@
     "q16": "Do I need an account to start learning?",
     "a16": "Não é necessária uma conta para navegar pelos programas, artigos e o Lab. Experimente a primeira aula de qualquer academia gratuitamente, ou crie uma conta para adquirir o Pro, acompanhar o progresso em vários dispositivos e obter certificados de conclusão.",
     "q17": "Are there certificates or credentials?",
-    "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available free of charge for all completed programs.",
+    "a17": "Completion certificates are on our roadmap. Currently, the focus is on building genuine understanding and practical skills. When certificates launch, they'll be available for Pro subscribers who complete programs.",
     "q18": "How often is new content added?",
     "a18": "New lessons, programs, blog articles, and lab experiments are added regularly. The platform is actively maintained and evolves alongside advances in AI technology, so there's always something new to explore.",
     "q19": "What AI topics do the programs cover?",
@@ -2103,7 +2103,7 @@
     "headline": "Comece a Aprender IA Hoje",
     "primaryText": "Começar a Aprender",
     "secondaryText": "Ver Mapa da Jornada",
-    "subtitle": "Gratuito, código aberto, no seu idioma"
+    "subtitle": "Multilíngue, no seu idioma"
   },
   "howItWorks": {
     "step1Desc": "Escolha entre 3 trilhas - Aprendizado de IA, Engenharia Prática ou Preparação Profissional. Cada trilha tem programas selecionados que levam você do zero à maestria.",
