@@ -143,6 +143,7 @@ async function handleEvent(event: Stripe.Event) {
 
       if (existing[0]) {
         const status = sub.status === "active" ? "active" :
+          sub.status === "trialing" ? "trialing" :
           sub.status === "past_due" ? "past_due" :
           sub.status === "canceled" ? "cancelled" : "incomplete";
 
