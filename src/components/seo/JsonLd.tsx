@@ -1,6 +1,40 @@
 "use client";
 
 const BASE_URL = "https://aieducademy.org";
+const GBP_OFFERS = [
+  {
+    "@type": "Offer",
+    name: "Free preview lesson",
+    price: "0",
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    category: "free",
+  },
+  {
+    "@type": "Offer",
+    name: "Pro monthly",
+    price: "3.99",
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    category: "subscription",
+  },
+  {
+    "@type": "Offer",
+    name: "Pro annual",
+    price: "29.99",
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    category: "subscription",
+  },
+  {
+    "@type": "Offer",
+    name: "Pro lifetime",
+    price: "49.99",
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    category: "lifetime",
+  },
+];
 const SUPPORTED_LANGUAGES = [
   "en", "fr", "nl", "hi", "te", "es", "pt", "de", "ja", "zh", "ar",
 ];
@@ -12,26 +46,34 @@ function proficiencyLevel(level: number): string {
 export function OrganizationJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@type": ["Organization", "WebSite"],
+    "@id": `${BASE_URL}/#website`,
     name: "AI Educademy",
     url: BASE_URL,
     description:
-      "Free AI education platform with interactive lessons in 11 languages",
+      "Multilingual AI education platform with interactive lessons and a Pro subscription",
     inLanguage: SUPPORTED_LANGUAGES,
+    logo: {
+      "@type": "ImageObject",
+      url: `${BASE_URL}/icon-512.png`,
+    },
+    founder: {
+      "@type": "Person",
+      name: "Ramesh Reddy Adutla",
+      url: "https://github.com/rameshreddy-adutla",
+    },
     publisher: {
       "@type": "Organization",
       name: "AI Educademy",
       url: BASE_URL,
-      logo: `${BASE_URL}/icon-512.png`,
-      founder: {
-        "@type": "Person",
-        name: "Ramesh Reddy Adutla",
-        url: "https://github.com/rameshreddy-adutla",
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/icon-512.png`,
       },
     },
     potentialAction: {
       "@type": "SearchAction",
-      target: `${BASE_URL}/en/programs?q={search_term_string}`,
+      target: `${BASE_URL}/programs?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
@@ -66,14 +108,14 @@ export function CourseJsonLd({
     "@type": "Course",
     name,
     description,
-    url: `${BASE_URL}/${locale}/programs/${slug}`,
+    url: `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${slug}`,
     provider: {
       "@type": "Organization",
       name: provider,
       url: BASE_URL,
     },
     inLanguage: locale,
-    isAccessibleForFree: true,
+    isAccessibleForFree: false,
     educationalLevel: proficiencyLevel(level),
     numberOfCredits: 0,
     audience: {
@@ -86,10 +128,12 @@ export function CourseJsonLd({
       courseWorkload: `PT${estimatedHours ?? 2}H`,
     },
     offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
+      "@type": "AggregateOffer",
+      lowPrice: "0",
+      highPrice: "49.99",
+      priceCurrency: "GBP",
+      offerCount: GBP_OFFERS.length,
+      offers: GBP_OFFERS,
     },
   };
 
@@ -112,15 +156,30 @@ export function CourseListJsonLd({
     "@context": "https://schema.org",
     "@type": "ItemList",
     itemListElement: courses.map((course, index) => ({
-      "@type": "Course",
+      "@type": "ListItem",
       position: index + 1,
-      name: course.name,
-      description: course.description,
-      provider: { "@type": "Organization", name: "AI Educademy" },
-      isAccessibleForFree: true,
-      inLanguage: SUPPORTED_LANGUAGES,
-      educationalLevel: proficiencyLevel(course.level),
-      url: `${BASE_URL}/${locale}/programs/${course.slug}`,
+      item: {
+        "@type": "Course",
+        name: course.name,
+        description: course.description,
+        provider: {
+          "@type": "Organization",
+          name: "AI Educademy",
+          url: BASE_URL,
+        },
+        isAccessibleForFree: false,
+        inLanguage: locale,
+        educationalLevel: proficiencyLevel(course.level),
+        url: `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${course.slug}`,
+        offers: {
+          "@type": "AggregateOffer",
+          lowPrice: "0",
+          highPrice: "49.99",
+          priceCurrency: "GBP",
+          offerCount: GBP_OFFERS.length,
+          offers: GBP_OFFERS,
+        },
+      },
     })),
   };
 
@@ -139,6 +198,8 @@ export function LearningResourceJsonLd({
   duration,
   locale,
   courseName,
+  url,
+  isAccessibleForFree = true,
 }: {
   name: string;
   description: string;
@@ -146,6 +207,8 @@ export function LearningResourceJsonLd({
   duration: number;
   locale: string;
   courseName: string;
+  url?: string;
+  isAccessibleForFree?: boolean;
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -154,9 +217,30 @@ export function LearningResourceJsonLd({
     description,
     educationalLevel,
     timeRequired: `PT${duration}M`,
-    isAccessibleForFree: true,
+    isAccessibleForFree,
     inLanguage: locale,
-    isPartOf: { "@type": "Course", name: courseName },
+    ...(url ? { url } : {}),
+    isPartOf: {
+      "@type": "Course",
+      name: courseName,
+      provider: {
+        "@type": "Organization",
+        name: "AI Educademy",
+        url: BASE_URL,
+      },
+    },
+    ...(!isAccessibleForFree
+      ? {
+          offers: {
+            "@type": "AggregateOffer",
+            lowPrice: "3.99",
+            highPrice: "49.99",
+            priceCurrency: "GBP",
+            offerCount: GBP_OFFERS.length - 1,
+            offers: GBP_OFFERS.slice(1),
+          },
+        }
+      : {}),
   };
 
   return (

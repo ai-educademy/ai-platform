@@ -3,9 +3,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { FAQJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
-import { buildAlternates } from "@/lib/seo";
-
-const BASE_URL = "https://aieducademy.org";
+import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
 
 export async function generateMetadata({
   params,
@@ -13,23 +11,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations("faq");
-  const canonical = `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/faq`;
+  const t = await getTranslations({ locale, namespace: "faq" });
 
-  return {
-    title: `${t("title")} | AI Educademy`,
+  return createSeoMetadata({
+    locale,
+    path: "/faq",
+    title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical,
-      ...buildAlternates("/faq"),
-    },
-    openGraph: {
-      title: `${t("title")} | AI Educademy`,
-      description: t("subtitle"),
-      url: canonical,
-      type: "website",
-    },
-  };
+  });
 }
 
 const FAQ_COUNT = 25;

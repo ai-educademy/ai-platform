@@ -11,7 +11,7 @@ import { LessonFeedback } from "@/components/lessons/LessonFeedback";
 import { ListenButton } from "@/components/ui/ListenButton";
 import { BreadcrumbJsonLd, LearningResourceJsonLd } from "@/components/seo/JsonLd";
 import { routing } from "@/i18n/routing";
-import { buildAlternates } from "@/lib/seo";
+import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
 import { requiresPremium } from "@/lib/content-access";
 import { auth } from "@/auth";
 import { getUserPlan, canAccessPremium } from "@/lib/subscription";
@@ -22,8 +22,6 @@ import { db, isDbConfigured } from "@/lib/db";
 import { lessonBookmarks } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { ContentLanguageNotice } from "@/components/lessons/ContentLanguageNotice";
-
-const BASE_URL = "https://aieducademy.org";
 
 export const dynamicParams = false;
 
@@ -57,35 +55,14 @@ export async function generateMetadata({
   const programTitle = tP(`${programSlug}.title`);
   const title = `${lessonTitle} - ${programTitle}`;
   const description = lesson.description;
-  const canonicalUrl = `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${programSlug}/lessons/${slug}`;
 
-  // When the body text is English, the localised URL is a near-duplicate of the
-  // English page. Point the canonical at the original so the six untranslated
-  // locales stop competing with it in search results.
-  const canonicalTarget = lesson.isFallback
-    ? `${BASE_URL}/programs/${programSlug}/lessons/${slug}`
-    : canonicalUrl;
-
-  return {
+  return createSeoMetadata({
+    locale,
+    path: `/programs/${programSlug}/lessons/${slug}`,
     title,
     description,
-    alternates: {
-      canonical: canonicalTarget,
-      ...buildAlternates(`/programs/${programSlug}/lessons/${slug}`),
-    },
-    openGraph: {
-      title: `${title} | AI Educademy`,
-      description,
-      type: "article",
-      url: canonicalUrl,
-      siteName: "AI Educademy",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | AI Educademy`,
-      description,
-    },
-  };
+    type: "article",
+  });
 }
 
 export default async function ProgramLessonPage({
@@ -168,6 +145,8 @@ export default async function ProgramLessonPage({
         duration={lesson.duration}
         locale={locale}
         courseName={tP(`${programSlug}.title`)}
+        url={`${BASE_URL}${programPath}/lessons/${slug}`}
+        isAccessibleForFree={!isPremium}
       />
       {/* Breadcrumb */}
       <div className="mb-8 text-sm text-[var(--color-text-muted)]">
@@ -217,7 +196,7 @@ export default async function ProgramLessonPage({
         </div>
       </div>
 
-      {/* Content — gated for premium lessons */}
+      {/* Content is gated for premium lessons */}
       {hasAccess ? (
         <>
           <QuizProvider>

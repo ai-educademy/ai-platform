@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -6,6 +7,28 @@ import { getProgram } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { LessonProgressBadge } from "@/components/lessons/LessonProgressBadge";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
+import { createSeoMetadata } from "@/components/seo/metadata";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; programSlug: string }>;
+}): Promise<Metadata> {
+  const { locale, programSlug } = await params;
+  const program = getProgram(programSlug);
+  if (!program) return { robots: { index: false, follow: false } };
+
+  const t = await getTranslations({ locale, namespace: "lessons" });
+  const tP = await getTranslations({ locale, namespace: "programs" });
+  const title = `${tP(`${programSlug}.title`)} ${t("title")}`;
+
+  return createSeoMetadata({
+    locale,
+    path: `/programs/${programSlug}/lessons`,
+    title,
+    description: t("subtitle"),
+  });
+}
 
 export default async function ProgramLessonsPage({
   params,

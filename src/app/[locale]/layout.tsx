@@ -84,11 +84,20 @@ export async function generateMetadata({
       siteName: "AI Educademy",
       locale: locale,
       url: canonicalUrl,
+      images: [
+        {
+          url: `${BASE_URL}/social-preview.png`,
+          width: 1200,
+          height: 630,
+          alt: "AI Educademy multilingual AI learning platform",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "AI Educademy",
+      title: t("title"),
       description: t("description"),
+      images: [`${BASE_URL}/social-preview.png`],
     },
     robots: {
       index: true,
