@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { playgroundScores } from "@/lib/db/schema";
-import { eq, and } from "drizzle-orm";
+import { eq, and, sql } from "drizzle-orm";
 import { z } from "zod";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
@@ -77,6 +77,27 @@ export async function POST(req: NextRequest) {
   const { gameId, score } = parsed.data;
 
   try {
+    const [updated] = await db
+      .insert(playgroundScores)
+      .values({
+        userId: session.user.id,
+        gameId,
+        bestScore: score,
+      })
+      .onConflictDoUpdate({
+        target: [playgroundScores.userId, playgroundScores.gameId],
+        set: {
+          bestScore: score,
+          updatedAt: new Date(),
+        },
+        setWhere: sql`${playgroundScores.bestScore} < excluded.best_score`,
+      })
+      .returning({ bestScore: playgroundScores.bestScore });
+
+    if (updated) {
+      return NextResponse.json({ bestScore: score, isNew: true });
+    }
+
     const [existing] = await db
       .select({ bestScore: playgroundScores.bestScore })
       .from(playgroundScores)
@@ -88,29 +109,7 @@ export async function POST(req: NextRequest) {
       )
       .limit(1);
 
-    if (!existing) {
-      await db.insert(playgroundScores).values({
-        userId: session.user.id,
-        gameId,
-        bestScore: score,
-      });
-      return NextResponse.json({ bestScore: score, isNew: true });
-    }
-
-    if (score > existing.bestScore) {
-      await db
-        .update(playgroundScores)
-        .set({ bestScore: score, updatedAt: new Date() })
-        .where(
-          and(
-            eq(playgroundScores.userId, session.user.id),
-            eq(playgroundScores.gameId, gameId)
-          )
-        );
-      return NextResponse.json({ bestScore: score, isNew: true });
-    }
-
-    return NextResponse.json({ bestScore: existing.bestScore, isNew: false });
+    return NextResponse.json({ bestScore: existing?.bestScore ?? score, isNew: false });
   } catch (error) {
     return serverError("POST", error);
   }
