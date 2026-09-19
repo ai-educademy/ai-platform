@@ -28,7 +28,7 @@
     "missionDesc": "AI-onderwijs toegankelijk maken voor iedereen, overal",
     "values": "Waarden",
     "valuesDesc": "Open source, meertalig en community-gedreven",
-    "openSource": "Open Source",
+    "openSource": "Open source",
     "openSourceDesc": "Openbaar gebouwd op GitHub",
     "meetCreator": "Ontmoet de maker",
     "viewOnGithub": "Bekijk op GitHub",
@@ -59,7 +59,7 @@
     "cost": "Kosten",
     "openSource": "Open source",
     "statPrograms": "10 programma's",
-    "statLessons": "100+ lessen",
+    "statLessons": "{count}+ lessen",
     "statLanguages": "10 Talen"
   },
   "features": {
@@ -1038,36 +1038,36 @@
     "myProgress": "Mijn voortgang",
     "allPrograms": "Alle programma's",
     "userAvatar": "Gebruikersavatar",
-    "email": "Email",
+    "email": "E-mail",
     "name": "Name",
     "confirmPassword": "Confirm Password",
     "confirmPasswordPlaceholder": "Re-enter your password",
-    "forgotPassword": "Forgot password?",
+    "forgotPassword": "Wachtwoord vergeten?",
     "forgotPasswordTitle": "Forgot Password",
     "forgotPasswordPrompt": "Enter your email and we'll send you a reset link.",
     "sendResetLink": "Send Reset Link",
     "resetLinkSent": "If an account exists with that email, we've sent a password reset link.",
-    "resetPassword": "Reset Password",
+    "resetPassword": "Wachtwoord opnieuw instellen",
     "resetPasswordTitle": "Reset Your Password",
     "resetPasswordPrompt": "Enter your new password below.",
     "newPassword": "New Password",
     "newPasswordPlaceholder": "Enter new password",
     "confirmNewPassword": "Confirm New Password",
     "confirmNewPasswordPlaceholder": "Re-enter new password",
-    "passwordResetSuccess": "Password reset successful! You can now sign in.",
+    "passwordResetSuccess": "Wachtwoord opnieuw ingesteld. Je kunt nu inloggen.",
     "signUpTitle": "Create Account",
     "signUpPrompt": "Sign up to track your learning progress across devices",
-    "signUpButton": "Create Account",
+    "signUpButton": "Account maken",
     "verifyEmailTitle": "Verify Your Email",
     "verifyEmailPrompt": "Enter the 6-digit code sent to",
-    "verifyCode": "Verify",
+    "verifyCode": "Verifieren",
     "resendCode": "Resend Code",
-    "resendCooldown": "Resend in {seconds}s",
+    "resendCooldown": "Opnieuw verzenden over {seconds}s",
     "codeSent": "A new code has been sent to your email.",
     "emailVerified": "Email verified! You can now sign in.",
     "orContinueWith": "or continue with",
     "passwordRequirements": "Password must contain at least 1 letter and 1 number",
-    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordsDoNotMatch": "Wachtwoorden komen niet overeen",
     "nameMinLengthTwo": "Name must be at least 2 characters",
     "nameMaxLength": "Name must be less than 50 characters",
     "emailRequired": "Email is required",
@@ -1081,8 +1081,8 @@
     "verifying": "Verifying...",
     "resetting": "Resetting...",
     "sending": "Sending...",
-    "signingIn": "Signing in...",
-    "errorCredentials": "Invalid email or password. Have you verified your email?"
+    "signingIn": "Inloggen...",
+    "errorCredentials": "Ongeldig e-mailadres of wachtwoord. Heb je je e-mail geverifieerd?"
   },
   "lessonTitles": {
     "agentic-workflows": "Agentische workflows",
@@ -1718,7 +1718,7 @@
     "noVoices": "Geen stemmen beschikbaar voor deze taal"
   },
   "error": {
-    "title": "Er is iets misgegaan",
+    "title": "Er ging iets mis",
     "description": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
     "retry": "Opnieuw proberen"
   },
@@ -1793,72 +1793,72 @@
   },
   "pricing": {
     "pageTitle": "Prijzen",
-    "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
+    "pageDescription": "Kies maandelijkse, jaarlijkse of levenslange toegang tot praktische AI academies, projecten, labs en certificaten.",
     "badge": "Investeer in je voorsprong",
-    "heading": "Eén abonnement. Alle academies.",
-    "subheading": "Probeer de eerste les van elke academie gratis en ontgrendel daarna elke overige les, project en certificaat met Pro.",
-    "faqTeaser": "Have questions about our plans?",
-    "faqLink": "Check our FAQ",
+    "heading": "Een plan. Elke academy.",
+    "subheading": "Probeer de eerste les van elke academy gratis en ontgrendel daarna elke resterende les, elk project en elk certificaat met Pro.",
+    "faqTeaser": "Vragen over onze plannen?",
+    "faqLink": "Bekijk onze FAQ",
     "free": {
-      "title": "Ontdekker",
-      "f1": "Probeer de eerste les van elke academie gratis en ontgrendel daarna de rest met Pro.",
-      "f2": "AI Educademy geeft je een gratis voorproefje van de eerste les in elke academie. Pro ontgrendelt elke overige les, track, certificaat en premium functie met maandelijkse, jaarlijkse of levenslange toegang.",
-      "f3": "Artikelen en programmavoorbeelden",
-      "f4": "Interactieve AI Lab-experimenten",
-      "f5": "Voortgang wordt lokaal opgeslagen",
-      "cta": "Gratis starten"
+      "title": "Verkenner",
+      "f1": "Probeer de eerste les van elke academy gratis en ontgrendel daarna de rest met Pro.",
+      "f2": "AI Educademy geeft je een gratis preview van de eerste les in elke academy. Pro ontgrendelt alle overige lessen, tracks, certificaten en premiumfuncties met maandelijkse, jaarlijkse of levenslange toegang.",
+      "f3": "Artikelen en programmapreviews",
+      "f4": "Interactieve AI Lab experimenten",
+      "f5": "Voortgang lokaal opgeslagen",
+      "cta": "Start gratis"
     },
     "monthly": {
-      "title": "Pro Monthly",
-      "period": "month",
-      "cta": "Start Pro Monthly"
+      "title": "Pro Maandelijks",
+      "period": "maand",
+      "cta": "Start Pro Maandelijks"
     },
     "annual": {
-      "title": "Pro Annual",
-      "period": "year",
-      "cta": "Start Pro Annual",
-      "save": "Bespaar {percent}% ten opzichte van maandelijks"
+      "title": "Pro Jaarlijks",
+      "period": "jaar",
+      "cta": "Start Pro Jaarlijks",
+      "save": "Bespaar {percent}% vergeleken met maandelijks"
     },
     "lifetime": {
-      "title": "Lifetime",
-      "cta": "Get Lifetime Access",
-      "forever": "One payment, yours forever"
+      "title": "Levenslang",
+      "cta": "Krijg levenslange toegang",
+      "forever": "Een betaling, voor altijd van jou"
     },
     "pro": {
-      "f1": "Everything in Explorer",
-      "f2": "All programs & learning tracks",
-      "f3": "Career Ready interview prep track",
+      "f1": "Elke academy en leertrack",
+      "f2": "Alle programma’s en leertracks",
+      "f3": "Career Ready interviewvoorbereiding",
       "f4": "AI Mock Interview lab",
-      "f5": "Completion certificates",
-      "f6": "Server-side progress sync across devices"
+      "f5": "Voltooiingscertificaten",
+      "f6": "Server-side voortgangssync op al je apparaten"
     },
-    "promoCode": "Heb je een promocode?",
+    "promoCode": "Heb je een promotiecode?",
     "promoCodePlaceholder": "Voer code in",
     "promoCodeApply": "Toepassen",
     "promoCodeApplied": "Code toegepast!",
     "promoCodeInvalid": "Ongeldige code",
-    "mostPopular": "Meest gekozen",
-    "redirecting": "Doorverwijzen…",
-    "checkoutError": "Kon de afrekensessie niet aanmaken. Probeer het opnieuw.",
-    "genericError": "Er is iets misgegaan. Probeer het opnieuw.",
-    "comparePlans": "Abonnementen vergelijken",
-    "chooseAPlan": "Kies een abonnement",
+    "mostPopular": "Meest populair",
+    "redirecting": "Doorsturen...",
+    "checkoutError": "Kan de checkoutsessie niet maken. Probeer het opnieuw.",
+    "genericError": "Er ging iets mis. Probeer het opnieuw.",
+    "comparePlans": "Vergelijk plannen",
+    "chooseAPlan": "Kies een plan",
     "selected": "Geselecteerd",
-    "selectThisPlan": "Kies dit abonnement",
-    "alreadyPro": "Je hebt Pro al. Beheer je abonnement in je account."
+    "selectThisPlan": "Kies dit plan",
+    "alreadyPro": "Je hebt al Pro. Beheer je abonnement vanuit je account."
   },
   "paywall": {
-    "title": "Premium Inhoud",
-    "isPartOf": "maakt deel uit van het premium-aanbod",
-    "description": "Upgrade naar Pro om alle programma's, alle leertrajecten, servergebaseerde voortgangssynchronisatie, voltooiingscertificaten en prioritaire toegang tot de AI-chatbot te ontgrendelen.",
+    "title": "Je volgende niveau zit achter deze deur",
+    "isPartOf": "is onderdeel van",
+    "description": "Kies een plan om elke academy, elke les, voortgangssync en voltooiingscertificaten te ontgrendelen. Bouw vaardigheden die blijven groeien.",
     "features": {
-      "allPrograms": "Alle programma's en leertrajecten",
-      "progressSync": "Voortgangssynchronisatie",
+      "allPrograms": "Alle programma’s en tracks",
+      "progressSync": "Voortgangssync",
       "certificates": "Certificaten"
     },
-    "upgradeCta": "Upgraden naar Pro",
-    "signInCta": "Meld je eerst aan",
-    "guarantee": "7 dagen geld-terug-garantie. Op elk moment opzegbaar."
+    "upgradeCta": "Upgrade naar Pro",
+    "signInCta": "Log eerst in",
+    "guarantee": "7 dagen geld-terug-garantie. Altijd opzegbaar."
   },
   "mockInterview": {
     "title": "AI Proef-sollicitatielab",
@@ -2326,12 +2326,12 @@
     "send": "Bericht versturen"
   },
   "billing": {
-    "title": "Facturering en abonnement",
+    "title": "Facturatie en abonnement",
     "description": "Werk je betaalmethode bij, bekijk facturen of zeg je abonnement op wanneer je wilt.",
-    "manage": "Facturering beheren",
-    "opening": "Bezig met openen…",
-    "noSubscription": "We konden geen actief abonnement op je account vinden.",
-    "error": "Er is iets misgegaan bij het openen van het factureringsportaal. Probeer het opnieuw."
+    "manage": "Facturatie beheren",
+    "opening": "Openen...",
+    "noSubscription": "We konden geen actief abonnement vinden op je account.",
+    "error": "Er ging iets mis bij het openen van het facturatieportaal. Probeer het opnieuw."
   },
   "unsubscribe": {
     "title": "Afmelden",

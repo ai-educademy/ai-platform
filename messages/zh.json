@@ -6,7 +6,7 @@
   "nav": {
     "home": "首页",
     "lessons": "课程",
-    "dashboard": "学习面板",
+    "dashboard": "仪表板",
     "about": "关于",
     "getStarted": "立即开始",
     "language": "语言",
@@ -28,7 +28,7 @@
     "missionDesc": "让AI教育触达每一个人、每一个角落",
     "values": "价值观",
     "valuesDesc": "开源、多语言、社区驱动",
-    "openSource": "Open Source",
+    "openSource": "开源",
     "openSourceDesc": "在 GitHub 上公开构建",
     "meetCreator": "认识创始人",
     "viewOnGithub": "在 GitHub 上查看",
@@ -37,11 +37,11 @@
     "aiFoundationsPath": "AI基础",
     "aiMasteryPath": "AI精通",
     "careerReadyPath": "职业准备",
-    "faq": "常见问题",
+    "faq": "FAQ",
     "journey": "学习旅程",
     "bookmarks": "收藏夹",
     "faqDesc": "常见问题解答",
-    "contact": "联系我们",
+    "contact": "联系",
     "contactDesc": "与我们取得联系",
     "pricing": "定价",
     "goPro": "升级 Pro"
@@ -50,7 +50,7 @@
     "badge": "开源 • 多语言",
     "title": "AI学习，",
     "titleHighlight": "化繁为简。",
-    "subtitle": "互动课程，带你从好奇的初学者成长为自信的创造者。从零开始——想走多远就走多远。",
+    "subtitle": "互动课程，带你从好奇的初学者成长为自信的创造者。从零开始--想走多远就走多远。",
     "cta": "开启你的AI之旅",
     "ctaSecondary": "探索实验室",
     "students": "正在学习的学生",
@@ -59,7 +59,7 @@
     "cost": "费用",
     "openSource": "Open Source",
     "statPrograms": "10 个学习计划",
-    "statLessons": "100+ 节课程",
+    "statLessons": "{count}+ 课",
     "statLanguages": "10 种语言"
   },
   "features": {
@@ -96,9 +96,9 @@
     "mission": "我们的使命",
     "missionText": "AI教育面向每一位学生，不论语言、背景或经验。",
     "story": "理念的缔造者",
-    "storyText1": "我是拉梅什·雷迪·阿杜特拉——AI Educademy 的创始人、设计师和唯一工程师。我在 JP Morgan、Sky 和 Marks & Spencer 跨亚洲和欧洲构建大规模分布式系统 15 年，整个职业生涯都致力于技术与现实影响力的交汇处。",
-    "storyText2": "AI 将重塑每一个行业。然而最好的AI教育仍然被锁在少数几个国家的昂贵学府之中。这种差距不仅仅是不公平——更是对潜力的巨大浪费。",
-    "storyText3": "我构思了 AI Educademy，并从零开始完全自主构建——架构、课程、多语言基础设施、开源工具、每一行代码。从利用晚上和周末开始，发展成为一个服务于 6 大洲 11 种语言学习者的完整免费平台。",
+    "storyText1": "我是拉梅什·雷迪·阿杜特拉--AI Educademy 的创始人、设计师和唯一工程师。我在 JP Morgan、Sky 和 Marks & Spencer 跨亚洲和欧洲构建大规模分布式系统 15 年，整个职业生涯都致力于技术与现实影响力的交汇处。",
+    "storyText2": "AI 将重塑每一个行业。然而最好的AI教育仍然被锁在少数几个国家的昂贵学府之中。这种差距不仅仅是不公平--更是对潜力的巨大浪费。",
+    "storyText3": "我构思了 AI Educademy，并从零开始完全自主构建--架构、课程、多语言基础设施、开源工具、每一行代码。从利用晚上和周末开始，发展成为一个服务于 6 大洲 11 种语言学习者的完整免费平台。",
     "storyText4": "在多个英语不是第一语言的国家工作让一件事变得非常清楚：语言永远不应该成为学习的障碍。我会说英语、法语和泰卢固语，所以打造一个多语言平台是顺理成章的事。",
     "values": "我们的价值观",
     "value1": {
@@ -137,7 +137,7 @@
     "pageDescription": "AI Educademy 是一个免费的开源AI教育平台，为每个人而建。了解我们让AI教育触达全球的使命。",
     "pageSubtitle": "免费、开源的AI教育，面向每一位学生。",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "每一节课、每一行代码——免费且开源。Fork 它、翻译它、让它成为你的。",
+    "openSourceDesc": "每一节课、每一行代码--免费且开源。Fork 它、翻译它、让它成为你的。",
     "viewOnGithub": "在 GitHub 上查看",
     "buyCoffee": "请我喝杯咖啡"
   },
@@ -171,7 +171,7 @@
     "breadcrumbLessons": "课程",
     "trackComplete": "路径完成！",
     "trackCompleteDesc": "你已完成以下学习路径的所有课程：",
-    "trackCompleteDismiss": "太棒了——继续加油！",
+    "trackCompleteDismiss": "太棒了--继续加油！",
     "lessonOf": "第 {current} 课，共 {total} 课",
     "completedOf": "已完成 {completed} / {total}",
     "allPrograms": "所有学习计划",
@@ -179,7 +179,7 @@
     "trackCraft": "代码与算法",
     "checkAnswer": "检查答案",
     "quizCorrect": "正确！做得好！",
-    "quizIncorrect": "不太对——但这就是学习的过程！",
+    "quizIncorrect": "不太对--但这就是学习的过程！",
     "tryAgain": "再试一次",
     "quickCheck": "小测验",
     "animationError": "动画加载失败",
@@ -231,7 +231,7 @@
         "title": "AI基础",
         "desc": "从零成长为AI专家，自然渐进的学习路径",
         "tagline": "种子 → 萌芽 → 枝干 → 树冠 → 森林",
-        "brand": "理解机器如何思考、学习和创造——从你的第一个\"什么是AI？\"到构建生产系统。"
+        "brand": "理解机器如何思考、学习和创造--从你的第一个\"什么是AI？\"到构建生产系统。"
       },
       "craft-engineering": {
         "title": "AI精通",
@@ -244,7 +244,7 @@
         "desc": "从紧张到签下录用通知",
         "tagline": "准备 → 行为面试 → 技术面试 → ML面试 → Offer",
         "brand": "掌握技术面试流程的每个阶段. 从准备和行为面试到系统设计和薪资谈判。",
-        "description": "从面对白纸的紧张到签下录用通知——你的完整面试准备之旅"
+        "description": "从面对白纸的紧张到签下录用通知--你的完整面试准备之旅"
       }
     },
     "statsTracksLabel": "路径",
@@ -633,7 +633,7 @@
       "ai-sprouts": [
         {
           "q": "AI Sprouts 适合初学者吗？",
-          "a": "AI Sprouts 面向已具备基本 AI 认知的学习者——建议先完成 AI Seeds。如果你已经大致了解什么是 AI，就可以开始探索数据类型、算法和 AI 伦理等进阶内容了。"
+          "a": "AI Sprouts 面向已具备基本 AI 认知的学习者--建议先完成 AI Seeds。如果你已经大致了解什么是 AI，就可以开始探索数据类型、算法和 AI 伦理等进阶内容了。"
         },
         {
           "q": "学 AI Sprouts 需要编程技能吗？",
@@ -655,7 +655,7 @@
       "ai-branches": [
         {
           "q": "AI Branches 和前面的课程有什么不同？",
-          "a": "AI Branches 聚焦于真实场景中的应用。AI Seeds 和 AI Sprouts 帮你建立基础知识，而 AI Branches 则展示 AI 在医疗、金融、创意艺术等领域的实际应用——并且你将开始动手做项目。"
+          "a": "AI Branches 聚焦于真实场景中的应用。AI Seeds 和 AI Sprouts 帮你建立基础知识，而 AI Branches 则展示 AI 在医疗、金融、创意艺术等领域的实际应用--并且你将开始动手做项目。"
         },
         {
           "q": "学 AI Branches 需要编程经验吗？",
@@ -721,7 +721,7 @@
       "ai-sketch": [
         {
           "q": "AI Sketch 适合零基础的初学者吗？",
-          "a": "AI Sketch 要求具备任意语言的基本编程知识——如果你会写循环、函数并理解变量，就可以开始了。课程聚焦于数据结构与算法基础。"
+          "a": "AI Sketch 要求具备任意语言的基本编程知识--如果你会写循环、函数并理解变量，就可以开始了。课程聚焦于数据结构与算法基础。"
         },
         {
           "q": "AI Sketch 使用什么编程语言？",
@@ -747,7 +747,7 @@
         },
         {
           "q": "AI Chisel 涵盖哪些算法模式？",
-          "a": "AI Chisel 涵盖双指针、滑动窗口、BFS/DFS 图遍历、树遍历、栈、队列和单调栈等模式——每种模式都关联实际的 AI 和 ML 应用。"
+          "a": "AI Chisel 涵盖双指针、滑动窗口、BFS/DFS 图遍历、树遍历、栈、队列和单调栈等模式--每种模式都关联实际的 AI 和 ML 应用。"
         },
         {
           "q": "AI Chisel 是免费的吗？",
@@ -765,7 +765,7 @@
       "ai-craft": [
         {
           "q": "AI Craft 讲什么内容？",
-          "a": "AI Craft 教授系统设计——如何架构大规模分布式系统。你将设计推荐引擎、搜索自动补全、限流器等驱动现代 AI 产品的核心系统。"
+          "a": "AI Craft 教授系统设计--如何架构大规模分布式系统。你将设计推荐引擎、搜索自动补全、限流器等驱动现代 AI 产品的核心系统。"
         },
         {
           "q": "学 AI Craft 需要编程经验吗？",
@@ -803,7 +803,7 @@
         },
         {
           "q": "为什么行为面试对 AI 岗位很重要？",
-          "a": "AI 岗位越来越看重沟通能力——向利益相关者解释模型决策、处理伦理困境、带领跨职能团队。AI Polish 专为这些场景做好准备。"
+          "a": "AI 岗位越来越看重沟通能力--向利益相关者解释模型决策、处理伦理困境、带领跨职能团队。AI Polish 专为这些场景做好准备。"
         }
       ],
       "ai-masterpiece": [
@@ -835,7 +835,7 @@
         },
         {
           "q": "学 Interview Launchpad 需要会编程吗？",
-          "a": "不需要。Interview Launchpad 侧重于备战策略、公司调研和心态建设——这些技能不论你的技术水平如何都适用。"
+          "a": "不需要。Interview Launchpad 侧重于备战策略、公司调研和心态建设--这些技能不论你的技术水平如何都适用。"
         },
         {
           "q": "会教如何调研公司吗？",
@@ -861,7 +861,7 @@
         },
         {
           "q": "Behavioral Mastery 对领导力相关问题有帮助吗？",
-          "a": "当然有帮助！课程涵盖领导力叙事、冲突解决、团队协作故事和文化契合度评估——都是行为面试中的常见主题。"
+          "a": "当然有帮助！课程涵盖领导力叙事、冲突解决、团队协作故事和文化契合度评估--都是行为面试中的常见主题。"
         },
         {
           "q": "Behavioral Mastery 是免费的吗？",
@@ -869,7 +869,7 @@
         },
         {
           "q": "需要有真实的项目经历吗？",
-          "a": "是的，你需要有真实的经历作为素材。课程教你如何识别、组织和有感染力地呈现你的经历——但原始素材需要来自你的职业经历。"
+          "a": "是的，你需要有真实的经历作为素材。课程教你如何识别、组织和有感染力地呈现你的经历--但原始素材需要来自你的职业经历。"
         }
       ],
       "ai-technical": [
@@ -883,7 +883,7 @@
         },
         {
           "q": "会学到哪些编程模式？",
-          "a": "你将掌握最常见的编程面试模式：数组、哈希表、双指针、滑动窗口、树、图、动态规划等——每种都配有清晰的讲解和练习题。"
+          "a": "你将掌握最常见的编程面试模式：数组、哈希表、双指针、滑动窗口、树、图、动态规划等--每种都配有清晰的讲解和练习题。"
         },
         {
           "q": "Technical Interviews 是免费的吗？",
@@ -897,7 +897,7 @@
       "ai-ml-interview": [
         {
           "q": "学 AI & ML Interviews 需要 ML 经验吗？",
-          "a": "你需要具备基本的 ML 知识——了解监督学习与无监督学习的区别、什么是模型以及基础统计学。课程在此基础上培养面试技能。"
+          "a": "你需要具备基本的 ML 知识--了解监督学习与无监督学习的区别、什么是模型以及基础统计学。课程在此基础上培养面试技能。"
         },
         {
           "q": "ML 面试和普通技术面试有什么不同？",
@@ -927,7 +927,7 @@
         },
         {
           "q": "Offer & Beyond 涵盖股权和福利吗？",
-          "a": "当然涵盖。你将学会评估股票期权、RSU、签约奖金、福利待遇和整体薪酬——而不仅仅是基本工资。"
+          "a": "当然涵盖。你将学会评估股票期权、RSU、签约奖金、福利待遇和整体薪酬--而不仅仅是基本工资。"
         },
         {
           "q": "Offer & Beyond 是免费的吗？",
@@ -1004,7 +1004,7 @@
     "progressSavedLocally": "你的进度已保存在本设备上。",
     "signIn": "登录",
     "signUp": "注册",
-    "signOut": "退出",
+    "signOut": "退出登录",
     "username": "用户名",
     "password": "密码",
     "displayName": "显示名称",
@@ -1031,43 +1031,43 @@
     "magicLinkSent": "请查收邮箱！我们已发送登录链接。",
     "magicLinkError": "无法发送登录链接，请重试。",
     "errorOAuth": "此邮箱已关联其他登录方式。",
-    "errorGeneric": "出了点问题，请重试。",
+    "errorGeneric": "出了点问题。请重试。",
     "learner": "学习者",
     "guestLearner": "访客学习者",
     "userMenuLabel": "用户菜单",
     "myProgress": "我的进度",
     "allPrograms": "所有学习计划",
     "userAvatar": "用户头像",
-    "email": "Email",
+    "email": "邮箱",
     "name": "Name",
     "confirmPassword": "Confirm Password",
     "confirmPasswordPlaceholder": "Re-enter your password",
-    "forgotPassword": "Forgot password?",
+    "forgotPassword": "忘记密码？",
     "forgotPasswordTitle": "Forgot Password",
     "forgotPasswordPrompt": "Enter your email and we'll send you a reset link.",
     "sendResetLink": "Send Reset Link",
     "resetLinkSent": "If an account exists with that email, we've sent a password reset link.",
-    "resetPassword": "Reset Password",
+    "resetPassword": "重置密码",
     "resetPasswordTitle": "Reset Your Password",
     "resetPasswordPrompt": "Enter your new password below.",
     "newPassword": "New Password",
     "newPasswordPlaceholder": "Enter new password",
     "confirmNewPassword": "Confirm New Password",
     "confirmNewPasswordPlaceholder": "Re-enter new password",
-    "passwordResetSuccess": "Password reset successful! You can now sign in.",
+    "passwordResetSuccess": "密码已重置。你现在可以登录。",
     "signUpTitle": "Create Account",
     "signUpPrompt": "Sign up to track your learning progress across devices",
-    "signUpButton": "Create Account",
+    "signUpButton": "创建账户",
     "verifyEmailTitle": "Verify Your Email",
     "verifyEmailPrompt": "Enter the 6-digit code sent to",
-    "verifyCode": "Verify",
+    "verifyCode": "验证",
     "resendCode": "Resend Code",
-    "resendCooldown": "Resend in {seconds}s",
+    "resendCooldown": "{seconds}s 后重新发送",
     "codeSent": "A new code has been sent to your email.",
     "emailVerified": "Email verified! You can now sign in.",
     "orContinueWith": "or continue with",
     "passwordRequirements": "Password must contain at least 1 letter and 1 number",
-    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordsDoNotMatch": "两次密码不一致",
     "nameMinLengthTwo": "Name must be at least 2 characters",
     "nameMaxLength": "Name must be less than 50 characters",
     "emailRequired": "Email is required",
@@ -1081,8 +1081,8 @@
     "verifying": "Verifying...",
     "resetting": "Resetting...",
     "sending": "Sending...",
-    "signingIn": "Signing in...",
-    "errorCredentials": "Invalid email or password. Have you verified your email?"
+    "signingIn": "正在登录...",
+    "errorCredentials": "邮箱或密码无效。你是否已验证邮箱？"
   },
   "lessonTitles": {
     "agentic-workflows": "智能体工作流",
@@ -1283,7 +1283,7 @@
   },
   "lab": {
     "title": "AI 实验室",
-    "subtitle": "在浏览器中体验真实的AI概念。无需安装、无需编程——尽管动手玩和学习！",
+    "subtitle": "在浏览器中体验真实的AI概念。无需安装、无需编程--尽管动手玩和学习！",
     "badge": "互动 • 有趣 • 寓教于乐",
     "pageTitle": "AI 实验室",
     "pageDescription": "体验AI概念。分析情感、可视化神经网络、探索排序算法、理解分词。",
@@ -1509,7 +1509,7 @@
     },
     "tokenizerSection": {
       "title": "AI 分词器",
-      "description": "看看大语言模型如何将文本分解为 token——AI处理的基本单元。",
+      "description": "看看大语言模型如何将文本分解为 token--AI处理的基本单元。",
       "placeholder": "输入文本看看AI如何将其分解为 token...",
       "tokens": "个 token",
       "characters": "个字符",
@@ -1518,7 +1518,7 @@
     },
     "hub": {
       "title": "AI 实验室",
-      "subtitle": "互动AI游戏和工具——动手玩、实验、在实践中学习。",
+      "subtitle": "互动AI游戏和工具--动手玩、实验、在实践中学习。",
       "badge": "互动 • 有趣 • 寓教于乐",
       "gamesAvailable": "{count} 个游戏可玩",
       "searchPlaceholder": "搜索游戏...",
@@ -1601,7 +1601,7 @@
       "seeResults": "查看结果",
       "nextChallenge": "下一个挑战",
       "gameNeuralName": "神经网络游乐场",
-      "gameNeuralDesc": "构建和训练一个小型神经网络——放置点，观察它学习",
+      "gameNeuralDesc": "构建和训练一个小型神经网络--放置点，观察它学习",
       "gamePromptName": "提示工程道场",
       "gamePromptDesc": "精心编写提示以匹配目标输出",
       "gameAlgoName": "算法竞速",
@@ -1609,7 +1609,7 @@
       "gameTriviaName": "AI 知识挑战",
       "gameTriviaDesc": "用限时题目测试你的AI知识",
       "gameDesignName": "系统设计画布",
-      "gameDesignDesc": "拖拽、连接、设计——练习架构图",
+      "gameDesignDesc": "拖拽、连接、设计--练习架构图",
       "promptPlaceholder": "在这里输入你的提示...（Ctrl+Enter 提交）",
       "missionLabel": "// 任务",
       "targetOutputLabel": "// 目标输出",
@@ -1617,11 +1617,11 @@
       "promptFile": "prompt.txt",
       "feedbackExcellent": "🎯 出色的提示！清晰、具体、结构良好。",
       "feedbackGood": "👍 不错的尝试！试着更具体地描述格式和约束条件。",
-      "feedbackGettingThere": "📝 快了——加入更多相关关键词，明确说明你想要什么。",
+      "feedbackGettingThere": "📝 快了--加入更多相关关键词，明确说明你想要什么。",
       "feedbackVague": "🔄 太模糊了。试着明确指定任务、格式和任何约束条件。",
       "avgScoreLabel": "在 {count} 个挑战中的平均提示得分",
       "vagueResponse": "我不太确定你在找什么。能更具体地描述你的需求吗？",
-      "placeBet": "// 下注——你觉得哪个算法会赢？",
+      "placeBet": "// 下注--你觉得哪个算法会赢？",
       "startRaceBtn": "🏁 开始竞速",
       "newRace": "↻ 新一轮",
       "yourBet": "你的下注",
@@ -1632,8 +1632,8 @@
       "betWon": "🎉 你猜对了！",
       "betLost": "😅 这次没猜中！",
       "mergeWins": "归并排序以 O(n log n) 的稳定性能获胜！",
-      "quickWins": "快速排序平均最快——O(n log n) 且开销低！",
-      "bubbleWins": "冒泡排序赢了？！随机数据中极为罕见——通常是 O(n²)！",
+      "quickWins": "快速排序平均最快--O(n log n) 且开销低！",
+      "bubbleWins": "冒泡排序赢了？！随机数据中极为罕见--通常是 O(n²)！",
       "comparingLegend": "比较中",
       "swappingLegend": "交换中",
       "sortedLegend": "已排序",
@@ -1792,73 +1792,73 @@
     "ctaSubtitle": "免费试学任意学院的第一课，无需注册账号。"
   },
   "pricing": {
-    "pageTitle": "定价",
-    "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
+    "pageTitle": "价格",
+    "pageDescription": "选择月度、年度或终身访问，学习实用 AI 学院、项目、实验和证书内容。",
     "badge": "投资你的优势",
-    "heading": "一个方案，畅学所有学院。",
-    "subheading": "免费试听任意学院的第一课，然后通过 Pro 解锁其余所有课程、项目和证书。",
-    "faqTeaser": "Have questions about our plans?",
-    "faqLink": "Check our FAQ",
+    "heading": "一个方案。所有学院。",
+    "subheading": "免费试学任意学院的第一课，然后用 Pro 解锁所有剩余课程、项目和证书。",
+    "faqTeaser": "对方案有疑问？",
+    "faqLink": "查看我们的 FAQ",
     "free": {
       "title": "探索者",
-      "f1": "免费试听每个学院的第一课，然后通过 Pro 解锁其余内容。",
-      "f2": "AI Educademy 让你免费预览每个学院的第一课。Pro 可解锁其余所有课程、学习路径、证书和高级功能，支持按月、按年或终身访问。",
+      "f1": "免费试学每个学院的第一课，然后用 Pro 解锁其余内容。",
+      "f2": "AI Educademy 在每个学院提供第一课免费预览。Pro 通过月度、年度或终身访问解锁所有剩余课程、学习路径、证书和高级功能。",
       "f3": "文章和课程预览",
-      "f4": "互动式 AI Lab 实验",
-      "f5": "进度本地保存",
+      "f4": "互动 AI Lab 实验",
+      "f5": "进度保存在本地",
       "cta": "免费开始"
     },
     "monthly": {
-      "title": "Pro Monthly",
-      "period": "month",
-      "cta": "Start Pro Monthly"
+      "title": "Pro 月度版",
+      "period": "月",
+      "cta": "开始 Pro 月度版"
     },
     "annual": {
-      "title": "Pro Annual",
-      "period": "year",
-      "cta": "Start Pro Annual",
+      "title": "Pro 年度版",
+      "period": "年",
+      "cta": "开始 Pro 年度版",
       "save": "比月付节省 {percent}%"
     },
     "lifetime": {
-      "title": "Lifetime",
-      "cta": "Get Lifetime Access",
-      "forever": "One payment, yours forever"
+      "title": "终身",
+      "cta": "获取终身访问",
+      "forever": "一次付款，永久拥有"
     },
     "pro": {
-      "f1": "Everything in Explorer",
-      "f2": "All programs & learning tracks",
-      "f3": "Career Ready interview prep track",
-      "f4": "AI Mock Interview lab",
-      "f5": "Completion certificates",
-      "f6": "Server-side progress sync across devices"
+      "f1": "所有学院和学习路径",
+      "f2": "所有课程和学习路径",
+      "f3": "Career Ready 面试准备路径",
+      "f4": "AI 模拟面试实验室",
+      "f5": "结业证书",
+      "f6": "跨设备服务器端进度同步"
     },
     "promoCode": "有优惠码？",
-    "promoCodePlaceholder": "输入优惠码",
-    "promoCodeApply": "使用",
-    "promoCodeApplied": "优惠码已生效！",
-    "promoCodeInvalid": "无效的优惠码",
+    "promoCodePlaceholder": "输入代码",
+    "promoCodeApply": "应用",
+    "promoCodeApplied": "优惠码已应用！",
+    "promoCodeInvalid": "优惠码无效",
     "mostPopular": "最受欢迎",
-    "redirecting": "正在跳转…",
-    "checkoutError": "无法创建结账会话，请重试。",
-    "genericError": "出了点问题，请重试。",
+    "redirecting": "正在跳转...",
+    "checkoutError": "无法创建结账会话。请重试。",
+    "genericError": "出了点问题。请重试。",
     "comparePlans": "比较方案",
     "chooseAPlan": "选择方案",
     "selected": "已选择",
     "selectThisPlan": "选择此方案",
-    "alreadyPro": "您已拥有 Pro，可在账户中管理订阅。"
+    "alreadyPro": "你已经拥有 Pro。可在账户中管理订阅。"
   },
   "paywall": {
-    "title": "高级内容",
-    "isPartOf": "属于高级版内容",
-    "description": "升级到 Pro 以解锁所有课程、所有学习路径、服务端进度同步、结业证书和优先 AI 聊天机器人访问权限。",
+    "title": "你的下一阶段就在这扇门后",
+    "isPartOf": "属于",
+    "description": "选择一个方案，解锁所有学院、所有课程、进度同步和结业证书。开始积累真正有复利的技能。",
     "features": {
-      "allPrograms": "所有课程和学习路径",
+      "allPrograms": "所有课程和路径",
       "progressSync": "进度同步",
       "certificates": "证书"
     },
     "upgradeCta": "升级到 Pro",
     "signInCta": "请先登录",
-    "guarantee": "7 天退款保证。随时可取消。"
+    "guarantee": "7 天退款保证。可随时取消。"
   },
   "mockInterview": {
     "title": "AI 模拟面试实验室",
@@ -2143,7 +2143,7 @@
   },
   "journey": {
     "title": "你的 AI 学习旅程",
-    "subtitle": "沿着个性化路径掌握 AI——从基础到职业就绪。",
+    "subtitle": "沿着个性化路径掌握 AI--从基础到职业就绪。",
     "trackAI": "AI 学习",
     "trackCraft": "工程精通",
     "trackCareer": "职业准备",
@@ -2160,9 +2160,9 @@
     "title": "如何开始",
     "subtitle": "三步轻松从好奇的初学者成长为自信的 AI 构建者",
     "step1Title": "选择你的方向",
-    "step1Desc": "从三大方向中选择——AI 学习、工程精通或职业准备。每个方向都有精心设计的课程，带你从零到精通。",
+    "step1Desc": "从三大方向中选择--AI 学习、工程精通或职业准备。每个方向都有精心设计的课程，带你从零到精通。",
     "step2Title": "在实践中学习",
-    "step2Desc": "互动式课程、动手实验和真实代码——告别被动看视频，通过实践来理解知识。",
+    "step2Desc": "互动式课程、动手实验和真实代码--告别被动看视频，通过实践来理解知识。",
     "step3Title": "构建真实项目",
     "step3Desc": "在我们的 AI 实验室中通过 7 个实验应用你的技能。构建聊天机器人、分类器和能解决真实问题的 AI 智能体。"
   },
@@ -2213,13 +2213,13 @@
   },
   "leadMagnet": {
     "metaTitle": "免费下载：2026 AI 入门套件 | AI Educademy",
-    "metaDescription": "获取免费的 2026 AI 入门套件——你的 AI 学习、职业路径、工具和面试准备完整指南。立即下载！",
+    "metaDescription": "获取免费的 2026 AI 入门套件--你的 AI 学习、职业路径、工具和面试准备完整指南。立即下载！",
     "title": "免费下载：2026 AI 入门套件",
-    "subtitle": "开启你的 AI 之旅所需的一切——学习路线图、职业路径、必备工具和面试准备——尽在一本精心设计的指南中。",
+    "subtitle": "开启你的 AI 之旅所需的一切--学习路线图、职业路径、必备工具和面试准备--尽在一本精心设计的指南中。",
     "description": "加入数千名通过这份免费资源开启 AI 职业之路的学习者。没有废话，只有可落地的知识。",
     "whatInsideTitle": "内容概览",
     "whatInside": {
-      "roadmap": "AI 学习路线图——从入门到求职就绪",
+      "roadmap": "AI 学习路线图--从入门到求职就绪",
       "concepts": "10 大 AI 核心概念的通俗讲解",
       "careers": "2026 AI 职业路径与薪酬指南",
       "tools": "专家精选的 AI 必备工具与资源",
@@ -2326,12 +2326,12 @@
     "send": "发送消息"
   },
   "billing": {
-    "title": "账单与订阅",
+    "title": "账单和订阅",
     "description": "随时更新付款方式、查看发票或取消订阅。",
     "manage": "管理账单",
-    "opening": "正在打开…",
-    "noSubscription": "未在您的账户中找到有效订阅。",
-    "error": "打开账单门户时出现问题，请重试。"
+    "opening": "正在打开...",
+    "noSubscription": "我们在你的账户中未找到有效订阅。",
+    "error": "打开账单门户时出了点问题。请重试。"
   },
   "unsubscribe": {
     "title": "退订",

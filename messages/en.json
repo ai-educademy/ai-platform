@@ -630,7 +630,7 @@
         },
         {
           "q": "Do I need to know programming for AI Seeds?",
-          "a": "Not at all. AI Seeds focuses on building conceptual understanding of artificial intelligence. You won't write a single line of code. The goal is to help you understand what AI is, how it works, and why it matters — all in plain language."
+          "a": "Not at all. AI Seeds focuses on building conceptual understanding of artificial intelligence. You won't write a single line of code. The goal is to help you understand what AI is, how it works, and why it matters - all in plain language."
         },
         {
           "q": "Will I get a certificate after completing AI Seeds?",
@@ -648,7 +648,7 @@
       "ai-sprouts": [
         {
           "q": "Is AI Sprouts suitable for beginners?",
-          "a": "AI Sprouts is designed for learners who have basic AI awareness — ideally after completing AI Seeds. If you already know what AI is at a high level, you're ready to explore the building blocks like data types, algorithms, and ethics."
+          "a": "AI Sprouts is designed for learners who have basic AI awareness - ideally after completing AI Seeds. If you already know what AI is at a high level, you're ready to explore the building blocks like data types, algorithms, and ethics."
         },
         {
           "q": "Do I need programming skills for AI Sprouts?",
@@ -670,7 +670,7 @@
       "ai-branches": [
         {
           "q": "What makes AI Branches different from earlier programs?",
-          "a": "AI Branches focuses on real-world applications. While Seeds and Sprouts build foundational knowledge, Branches shows you AI in action across healthcare, finance, creative arts, and more — and you'll start building simple projects."
+          "a": "AI Branches focuses on real-world applications. While Seeds and Sprouts build foundational knowledge, Branches shows you AI in action across healthcare, finance, creative arts, and more - and you'll start building simple projects."
         },
         {
           "q": "Do I need coding experience for AI Branches?",
@@ -762,7 +762,7 @@
         },
         {
           "q": "What patterns does AI Chisel cover?",
-          "a": "AI Chisel covers two pointers, sliding window, BFS/DFS graph traversal, tree traversals, stacks, queues, and monotonic patterns — all tied to real AI and ML applications."
+          "a": "AI Chisel covers two pointers, sliding window, BFS/DFS graph traversal, tree traversals, stacks, queues, and monotonic patterns - all tied to real AI and ML applications."
         },
         {
           "q": "Is AI Chisel free?",
@@ -780,7 +780,7 @@
       "ai-craft": [
         {
           "q": "What is AI Craft about?",
-          "a": "AI Craft teaches system design — how to architect large-scale distributed systems. You'll design recommendation engines, search autocomplete, rate limiters, and other systems that power modern AI products."
+          "a": "AI Craft teaches system design - how to architect large-scale distributed systems. You'll design recommendation engines, search autocomplete, rate limiters, and other systems that power modern AI products."
         },
         {
           "q": "Do I need coding experience for AI Craft?",
@@ -818,7 +818,7 @@
         },
         {
           "q": "Why are behavioral interviews important for AI roles?",
-          "a": "AI roles increasingly require strong communication skills — explaining model decisions to stakeholders, navigating ethical dilemmas, and leading cross-functional teams. AI Polish prepares you for these exact scenarios."
+          "a": "AI roles increasingly require strong communication skills - explaining model decisions to stakeholders, navigating ethical dilemmas, and leading cross-functional teams. AI Polish prepares you for these exact scenarios."
         }
       ],
       "ai-masterpiece": [
@@ -850,7 +850,7 @@
         },
         {
           "q": "Do I need to know programming for Interview Launchpad?",
-          "a": "No programming knowledge is required. Interview Launchpad focuses on preparation strategy, company research, and mindset — skills that apply regardless of your technical level."
+          "a": "No programming knowledge is required. Interview Launchpad focuses on preparation strategy, company research, and mindset - skills that apply regardless of your technical level."
         },
         {
           "q": "Will I learn how to research companies?",
@@ -876,7 +876,7 @@
         },
         {
           "q": "Will Behavioral Mastery help with leadership questions?",
-          "a": "Absolutely! The program covers leadership narratives, conflict resolution, teamwork stories, and cultural fit assessment — all common in behavioral rounds."
+          "a": "Absolutely! The program covers leadership narratives, conflict resolution, teamwork stories, and cultural fit assessment - all common in behavioral rounds."
         },
         {
           "q": "Is Behavioral Mastery free?",
@@ -884,7 +884,7 @@
         },
         {
           "q": "Do I need real project experience?",
-          "a": "Yes, you'll need real experiences to draw from. The program teaches you how to identify, structure, and present your experiences compellingly — but the raw material needs to come from your career."
+          "a": "Yes, you'll need real experiences to draw from. The program teaches you how to identify, structure, and present your experiences compellingly - but the raw material needs to come from your career."
         }
       ],
       "ai-technical": [
@@ -898,7 +898,7 @@
         },
         {
           "q": "What coding patterns will I learn?",
-          "a": "You'll master the most common coding interview patterns: arrays, hash maps, two pointers, sliding window, trees, graphs, dynamic programming, and more — all with clear explanations and practice problems."
+          "a": "You'll master the most common coding interview patterns: arrays, hash maps, two pointers, sliding window, trees, graphs, dynamic programming, and more - all with clear explanations and practice problems."
         },
         {
           "q": "Is Technical Interviews free?",
@@ -912,7 +912,7 @@
       "ai-ml-interview": [
         {
           "q": "Do I need ML experience for AI & ML Interviews?",
-          "a": "You should have basic ML knowledge — understanding supervised vs unsupervised learning, what a model is, and basic statistics. The program builds interview skills on top of this foundation."
+          "a": "You should have basic ML knowledge - understanding supervised vs unsupervised learning, what a model is, and basic statistics. The program builds interview skills on top of this foundation."
         },
         {
           "q": "What makes ML interviews different from regular tech interviews?",
@@ -942,7 +942,7 @@
         },
         {
           "q": "Does Offer & Beyond cover equity and benefits?",
-          "a": "Absolutely. You'll learn to evaluate stock options, RSUs, signing bonuses, benefits packages, and total compensation — not just base salary."
+          "a": "Absolutely. You'll learn to evaluate stock options, RSUs, signing bonuses, benefits packages, and total compensation - not just base salary."
         },
         {
           "q": "Is Offer & Beyond free?",
@@ -2131,7 +2131,7 @@
   },
   "journey": {
     "title": "Your AI Learning Journey",
-    "subtitle": "Navigate your personalized path through AI mastery — from foundations to career readiness.",
+    "subtitle": "Navigate your personalized path through AI mastery - from foundations to career readiness.",
     "trackAI": "AI Learning",
     "trackCraft": "Craft Engineering",
     "trackCareer": "Career Ready",
@@ -2148,9 +2148,9 @@
     "title": "How It Works",
     "subtitle": "Three simple steps from curious beginner to confident AI builder",
     "step1Title": "Choose Your Path",
-    "step1Desc": "Pick from 3 tracks — AI Learning, Craft Engineering, or Career Ready. Each track has curated programs that take you from zero to mastery.",
+    "step1Desc": "Pick from 3 tracks - AI Learning, Craft Engineering, or Career Ready. Each track has curated programs that take you from zero to mastery.",
     "step2Title": "Learn by Doing",
-    "step2Desc": "Interactive lessons, hands-on experiments, and real code. No passive video watching — you build understanding through practice.",
+    "step2Desc": "Interactive lessons, hands-on experiments, and real code. No passive video watching - you build understanding through practice.",
     "step3Title": "Build Real Projects",
     "step3Desc": "Apply your skills in our AI Lab with 7 experiments. Build chatbots, classifiers, and AI agents that solve real problems."
   },
@@ -2213,17 +2213,17 @@
   },
   "leadMagnet": {
     "metaTitle": "Free Download: The 2026 AI Starter Kit | AI Educademy",
-    "metaDescription": "Get the free 2026 AI Starter Kit — your complete guide to learning AI, career paths, tools, and interview prep. Download now!",
+    "metaDescription": "Get the free 2026 AI Starter Kit - your complete guide to learning AI, career paths, tools, and interview prep. Download now!",
     "title": "Free Download: The 2026 AI Starter Kit",
-    "subtitle": "Everything you need to start your AI journey — learning roadmap, career paths, essential tools, and interview prep — in one beautifully designed guide.",
+    "subtitle": "Everything you need to start your AI journey - learning roadmap, career paths, essential tools, and interview prep - in one beautifully designed guide.",
     "description": "Join thousands of learners who kickstarted their AI career with this free resource. No fluff, just actionable knowledge.",
     "whatInsideTitle": "What's Inside",
     "whatInside": {
-      "roadmap": "AI Learning Roadmap — from beginner to job-ready",
+      "roadmap": "AI Learning Roadmap - from beginner to job-ready",
       "concepts": "Top 10 AI Concepts explained in plain English",
       "careers": "AI Career Paths & Salary Guide for 2026",
       "tools": "Essential AI Tools & Resources curated by experts",
-      "interview": "AI Interview Prep — quick reference cheat sheet"
+      "interview": "AI Interview Prep - quick reference cheat sheet"
     },
     "socialProof": "Join {count}+ learners who downloaded this guide",
     "namePlaceholder": "Your first name",

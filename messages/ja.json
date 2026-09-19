@@ -39,7 +39,7 @@
     "careerReadyPath": "キャリア準備",
     "journey": "ジャーニー",
     "bookmarks": "ブックマーク",
-    "faq": "よくある質問",
+    "faq": "FAQ",
     "faqDesc": "よくある質問への回答",
     "contact": "お問い合わせ",
     "contactDesc": "お気軽にご連絡ください",
@@ -59,7 +59,7 @@
     "cost": "費用",
     "openSource": "オープンソース",
     "statPrograms": "10プログラム",
-    "statLessons": "100以上のレッスン",
+    "statLessons": "{count}+ レッスン",
     "statLanguages": "10言語"
   },
   "features": {
@@ -1003,7 +1003,7 @@
     "skipForNow": "今はスキップ",
     "progressSavedLocally": "進捗はこのデバイスにローカル保存されます。",
     "signIn": "サインイン",
-    "signUp": "新規登録",
+    "signUp": "登録",
     "signOut": "サインアウト",
     "username": "ユーザー名",
     "password": "パスワード",
@@ -1038,36 +1038,36 @@
     "myProgress": "マイ進捗",
     "allPrograms": "全プログラム",
     "userAvatar": "ユーザーアバター",
-    "email": "Email",
+    "email": "メール",
     "name": "Name",
     "confirmPassword": "Confirm Password",
     "confirmPasswordPlaceholder": "Re-enter your password",
-    "forgotPassword": "Forgot password?",
+    "forgotPassword": "パスワードをお忘れですか？",
     "forgotPasswordTitle": "Forgot Password",
     "forgotPasswordPrompt": "Enter your email and we'll send you a reset link.",
     "sendResetLink": "Send Reset Link",
     "resetLinkSent": "If an account exists with that email, we've sent a password reset link.",
-    "resetPassword": "Reset Password",
+    "resetPassword": "パスワードをリセット",
     "resetPasswordTitle": "Reset Your Password",
     "resetPasswordPrompt": "Enter your new password below.",
     "newPassword": "New Password",
     "newPasswordPlaceholder": "Enter new password",
     "confirmNewPassword": "Confirm New Password",
     "confirmNewPasswordPlaceholder": "Re-enter new password",
-    "passwordResetSuccess": "Password reset successful! You can now sign in.",
+    "passwordResetSuccess": "パスワードをリセットしました。サインインできます。",
     "signUpTitle": "Create Account",
     "signUpPrompt": "Sign up to track your learning progress across devices",
-    "signUpButton": "Create Account",
+    "signUpButton": "アカウントを作成",
     "verifyEmailTitle": "Verify Your Email",
     "verifyEmailPrompt": "Enter the 6-digit code sent to",
-    "verifyCode": "Verify",
+    "verifyCode": "確認",
     "resendCode": "Resend Code",
-    "resendCooldown": "Resend in {seconds}s",
+    "resendCooldown": "{seconds}s 後に再送",
     "codeSent": "A new code has been sent to your email.",
     "emailVerified": "Email verified! You can now sign in.",
     "orContinueWith": "or continue with",
     "passwordRequirements": "Password must contain at least 1 letter and 1 number",
-    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordsDoNotMatch": "パスワードが一致しません",
     "nameMinLengthTwo": "Name must be at least 2 characters",
     "nameMaxLength": "Name must be less than 50 characters",
     "emailRequired": "Email is required",
@@ -1081,8 +1081,8 @@
     "verifying": "Verifying...",
     "resetting": "Resetting...",
     "sending": "Sending...",
-    "signingIn": "Signing in...",
-    "errorCredentials": "Invalid email or password. Have you verified your email?"
+    "signingIn": "サインイン中...",
+    "errorCredentials": "メールまたはパスワードが無効です。メール認証は完了していますか？"
   },
   "lessonTitles": {
     "agentic-workflows": "エージェントワークフロー",
@@ -1720,7 +1720,7 @@
   "error": {
     "title": "問題が発生しました",
     "description": "予期しないエラーが発生しました。もう一度お試しください。",
-    "retry": "再試行する"
+    "retry": "もう一度試す"
   },
   "notFound": {
     "title": "ページが見つかりません",
@@ -1793,72 +1793,72 @@
   },
   "pricing": {
     "pageTitle": "料金",
-    "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
+    "pageDescription": "実践的な AI アカデミー、プロジェクト、ラボ、証明書への月額、年額、または生涯アクセスを選べます。",
     "badge": "自分の強みに投資する",
-    "heading": "ひとつのプランで、すべてのアカデミーを。",
-    "subheading": "どのアカデミーの最初のレッスンも無料でお試しいただけます。準備ができたらProで残りのレッスン、プロジェクト、修了証を解放しましょう。",
-    "faqTeaser": "Have questions about our plans?",
-    "faqLink": "Check our FAQ",
+    "heading": "1つのプランで全アカデミー。",
+    "subheading": "任意のアカデミーの最初のレッスンを無料で試し、残りのレッスン、プロジェクト、証明書を Pro で解除できます。",
+    "faqTeaser": "プランについて質問がありますか？",
+    "faqLink": "FAQ を確認",
     "free": {
-      "title": "エクスプローラー",
-      "f1": "どのアカデミーの最初のレッスンも無料でお試しいただき、その後Proで残りを解放できます。",
-      "f2": "AI Educademyでは、すべてのアカデミーで最初のレッスンを無料でお試しいただけます。Proは残りのすべてのレッスン、トラック、修了証、プレミアム機能を月額・年額・生涯プランで解放します。",
+      "title": "Explorer",
+      "f1": "各アカデミーの最初のレッスンを無料で試し、残りは Pro で解除できます。",
+      "f2": "AI Educademy では、各アカデミーの最初のレッスンを無料でプレビューできます。Pro なら月額、年額、または買い切りで、残りのレッスン、トラック、証明書、プレミアム機能をすべて利用できます。",
       "f3": "記事とプログラムのプレビュー",
-      "f4": "インタラクティブなAI Lab実験",
-      "f5": "進捗はローカルに保存されます",
+      "f4": "インタラクティブな AI Lab 実験",
+      "f5": "進捗はローカルに保存",
       "cta": "無料で始める"
     },
     "monthly": {
-      "title": "Pro Monthly",
-      "period": "month",
-      "cta": "Start Pro Monthly"
+      "title": "Pro 月額",
+      "period": "月",
+      "cta": "Pro 月額を始める"
     },
     "annual": {
-      "title": "Pro Annual",
-      "period": "year",
-      "cta": "Start Pro Annual",
-      "save": "月額プランより{percent}%お得"
+      "title": "Pro 年額",
+      "period": "年",
+      "cta": "Pro 年額を始める",
+      "save": "月額より {percent}% お得"
     },
     "lifetime": {
-      "title": "Lifetime",
-      "cta": "Get Lifetime Access",
-      "forever": "One payment, yours forever"
+      "title": "生涯",
+      "cta": "生涯アクセスを取得",
+      "forever": "一度の支払いで、ずっと利用可能"
     },
     "pro": {
-      "f1": "Everything in Explorer",
-      "f2": "All programs & learning tracks",
-      "f3": "Career Ready interview prep track",
-      "f4": "AI Mock Interview lab",
-      "f5": "Completion certificates",
-      "f6": "Server-side progress sync across devices"
+      "f1": "すべてのアカデミーと学習トラック",
+      "f2": "すべてのプログラムと学習トラック",
+      "f3": "Career Ready 面接準備トラック",
+      "f4": "AI Mock Interview ラボ",
+      "f5": "修了証明書",
+      "f6": "デバイス間のサーバー側進捗同期"
     },
     "promoCode": "プロモコードをお持ちですか？",
     "promoCodePlaceholder": "コードを入力",
     "promoCodeApply": "適用",
-    "promoCodeApplied": "コードが適用されました！",
+    "promoCodeApplied": "コードを適用しました！",
     "promoCodeInvalid": "無効なコードです",
     "mostPopular": "一番人気",
-    "redirecting": "リダイレクト中…",
-    "checkoutError": "お支払いセッションを作成できませんでした。もう一度お試しください。",
+    "redirecting": "リダイレクト中...",
+    "checkoutError": "チェックアウトセッションを作成できませんでした。もう一度お試しください。",
     "genericError": "問題が発生しました。もう一度お試しください。",
     "comparePlans": "プランを比較",
     "chooseAPlan": "プランを選択",
-    "selected": "選択中",
-    "selectThisPlan": "このプランを選ぶ",
-    "alreadyPro": "すでに Pro をご利用中です。サブスクリプションはアカウントから管理できます。"
+    "selected": "選択済み",
+    "selectThisPlan": "このプランを選択",
+    "alreadyPro": "すでに Pro を利用中です。アカウントからサブスクリプションを管理できます。"
   },
   "paywall": {
-    "title": "プレミアムコンテンツ",
-    "isPartOf": "プレミアムの一部です",
-    "description": "Proにアップグレードして、すべてのプログラム、すべてのトラック、サーバーサイドの進捗同期、修了証明書、優先AIチャットボットアクセスをアンロックしましょう。",
+    "title": "次のレベルはこの扉の先にあります",
+    "isPartOf": "の一部です",
+    "description": "プランを選ぶと、すべてのアカデミー、レッスン、進捗同期、修了証明書を利用できます。積み上がるスキルを作りましょう。",
     "features": {
       "allPrograms": "すべてのプログラムとトラック",
       "progressSync": "進捗同期",
-      "certificates": "修了証明書"
+      "certificates": "証明書"
     },
-    "upgradeCta": "Proにアップグレード",
-    "signInCta": "まずサインイン",
-    "guarantee": "7日間の返金保証。いつでもキャンセル可能。"
+    "upgradeCta": "Pro にアップグレード",
+    "signInCta": "先にサインイン",
+    "guarantee": "7日間返金保証。いつでも解約できます。"
   },
   "mockInterview": {
     "title": "AI模擬面接ラボ",
@@ -2326,12 +2326,12 @@
     "send": "メッセージを送信"
   },
   "billing": {
-    "title": "お支払いとサブスクリプション",
-    "description": "お支払い方法の更新、請求書の確認、サブスクリプションの解約がいつでも可能です。",
-    "manage": "お支払いを管理",
-    "opening": "開いています…",
-    "noSubscription": "お客様のアカウントで有効なサブスクリプションが見つかりませんでした。",
-    "error": "お支払いポータルを開く際に問題が発生しました。もう一度お試しください。"
+    "title": "請求とサブスクリプション",
+    "description": "支払い方法の更新、請求書の確認、サブスクリプションの解約をいつでも行えます。",
+    "manage": "請求を管理",
+    "opening": "開いています...",
+    "noSubscription": "アカウントに有効なサブスクリプションが見つかりませんでした。",
+    "error": "請求ポータルを開く際に問題が発生しました。もう一度お試しください。"
   },
   "unsubscribe": {
     "title": "配信停止",
