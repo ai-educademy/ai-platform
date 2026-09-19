@@ -85,7 +85,11 @@ export default function ProgramsShowcase({ tracks, programsByTrack, basePath, t 
           <p className="text-lg text-[var(--color-text-muted)]">{t.noResults}</p>
         </div>
       ) : (
-        <div key={`${activeTrack}-${searchQuery}`} className="grid gap-6 md:gap-8 pb-24">
+        <div key={`${activeTrack}-${searchQuery}`} className="grid grid-cols-[minmax(0,1fr)] gap-6 md:gap-8 pb-24">
+          {/* grid-cols-[minmax(0,1fr)] rather than a bare `grid`: grid items
+              default to min-width:auto, so a single long compound word
+              (German is full of them) sets a min-content floor wider than the
+              column and pushes the whole page sideways on a 320px screen. */}
           {filtered.map((program, idx) => (
             <ProgramCard key={program.slug} program={program} basePath={basePath} t={t} index={idx} reducedMotion={prefersReducedMotion} />
           ))}

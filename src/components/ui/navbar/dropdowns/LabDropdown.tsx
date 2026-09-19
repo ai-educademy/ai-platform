@@ -16,7 +16,7 @@ export function LabDropdownContent({ basePath, t }: { basePath: string; t: (key:
     "ethics-sim": tl("navEthics"),
   };
   return (
-    <div className="w-[320px] p-4">
+    <div className="w-[min(320px,calc(100vw-2rem))] p-4">
       <div className="flex items-center justify-between px-3 mb-3">
         <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
           {t("lab")}

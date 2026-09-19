@@ -86,14 +86,21 @@ export function NavDropdown({
         )}
       </button>
 
-      {/* Dropdown panel — CSS transition (always rendered, hidden via opacity/transform) */}
+      {/* Dropdown panel.
+          This stays mounted so the open and close transitions run, but a
+          closed panel must not influence layout or the accessibility tree.
+          `invisible` takes it out of the a11y tree while still allowing the
+          transition, and the width is clamped to the viewport because a
+          fixed 780px panel inside a 768px tablet viewport was widening the
+          whole document and giving every page a horizontal scrollbar. */}
       <div
-        className={`absolute top-full pt-2 ${alignClass} transition-all duration-300 ease-out ${
+        className={`absolute top-full pt-2 ${alignClass} max-w-[calc(100vw-1.5rem)] transition-all duration-300 ease-out ${
           open
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-1 pointer-events-none"
+            ? "visible opacity-100 translate-y-0 pointer-events-auto"
+            : "invisible opacity-0 -translate-y-1 pointer-events-none"
         }`}
         style={{ zIndex: 60 }}
+        aria-hidden={!open}
       >
         <div
           className="rounded-xl border border-[var(--color-border)] shadow-lg overflow-hidden"

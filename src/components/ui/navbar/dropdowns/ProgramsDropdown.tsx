@@ -8,7 +8,7 @@ import { ProgramItem } from "./ProgramItem";
 export function ProgramsDropdownContent({ basePath, t }: { basePath: string; t: (key: string) => string }) {
   const tP = useTranslations("programs");
   return (
-    <div className="w-[780px] p-4">
+    <div className="w-[min(780px,calc(100vw-2rem))] p-4">
       <div className="grid grid-cols-3 gap-4">
         {/* AI Foundations */}
         <div>
