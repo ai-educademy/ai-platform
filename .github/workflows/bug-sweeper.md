@@ -4,7 +4,7 @@ name: Bug Sweeper
 description: Hunts real defects across the codebase - type errors, lint failures, runtime JS errors, broken links, accessibility violations - and opens focused pull requests.
 on:
   schedule:
-    - cron: "daily"
+    - cron: "weekly on saturday"
   workflow_dispatch:
 permissions:
   contents: read

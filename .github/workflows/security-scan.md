@@ -4,7 +4,7 @@ name: Security Scan
 description: Hunts vulnerabilities, leaked secrets and unsafe patterns, and fixes the mechanical ones.
 on:
   schedule:
-    - cron: "daily"
+    - cron: "weekly on wednesday"
   workflow_dispatch:
 max-daily-ai-credits: 6000
 permissions:

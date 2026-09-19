@@ -4,7 +4,7 @@ name: Revenue Guard
 description: Protects the paywall, pricing integrity and conversion path - the only route by which the site earns.
 on:
   schedule:
-    - cron: "daily"
+    - cron: "weekly on sunday"
   workflow_dispatch:
 max-daily-ai-credits: 6000
 permissions:
