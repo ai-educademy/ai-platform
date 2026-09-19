@@ -24,7 +24,6 @@ const subUpdates: Array<Record<string, unknown>> = [];
 let insertReturns: Array<{ id: string }> = [];
 let userSelectRows: Array<Record<string, unknown>> = [];
 let subSelectRows: Array<Record<string, unknown>> = [];
-let selectCall = 0;
 
 vi.mock("@/lib/stripe", () => ({
   getStripe: () => ({
@@ -52,7 +51,6 @@ vi.mock("@/lib/db", () => ({
       from: (table: { id?: string }) => ({
         where: () => ({
           limit: () => {
-            selectCall += 1;
             return Promise.resolve(table?.id === "users.id" ? userSelectRows : subSelectRows);
           },
         }),
@@ -101,7 +99,6 @@ beforeEach(() => {
   vi.clearAllMocks();
   userUpdates.length = 0;
   subUpdates.length = 0;
-  selectCall = 0;
   insertReturns = [{ id: "row_1" }];
   userSelectRows = [{ email: "learner@example.com", name: "Learner" }];
   subSelectRows = [{ userId: "user_1" }];
@@ -166,6 +163,20 @@ describe("POST /api/stripe/webhook", () => {
       await POST(request());
 
       expect(userUpdates).toContainEqual(expect.objectContaining({ role: "pro" }));
+    });
+
+    it("does not grant access when a payment fails", async () => {
+      mockConstructEvent.mockReturnValue({
+        type: "invoice.payment_failed",
+        data: { object: { customer: "cus_1", subscription: "sub_123" } },
+      });
+
+      const res = await POST(request());
+
+      expect(res.status).toBe(200);
+      expect(userUpdates).toEqual([]);
+      expect(subUpdates).toEqual([]);
+      expect(mockSendSubscriptionEmail).not.toHaveBeenCalled();
     });
 
     it("confirms to the customer and notifies the admin", async () => {

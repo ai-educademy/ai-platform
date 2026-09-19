@@ -50,6 +50,14 @@ test.describe("Pricing page", () => {
 });
 
 test.describe("Route to upgrade", () => {
+  test("sign in page is reachable before a learner upgrades", async ({ page }) => {
+    await page.goto("/en/signin?callbackUrl=%2Fpricing");
+
+    await expect(page.locator('input[type="email"]')).toBeVisible();
+    await expect(page.locator('input[type="password"]')).toBeVisible();
+    await expect(page.getByRole("button", { name: /sign in/i })).toBeVisible();
+  });
+
   test("pricing is reachable from the homepage without hitting a paywall first", async ({ page }) => {
     // The only upgrade prompt used to be mid-lesson, so anyone who decided to
     // subscribe at any other moment had nowhere to go.
@@ -76,6 +84,39 @@ test.describe("Route to upgrade", () => {
 });
 
 test.describe("Checkout API", () => {
+  test("signed-in learner reaches a stubbed Stripe redirect from the pricing page", async ({ page }) => {
+    await page.route("**/api/auth/session", async (route) => {
+      await route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify({
+          user: { id: "user_1", email: "learner@example.com", name: "Learner" },
+          expires: "2099-01-01T00:00:00.000Z",
+        }),
+      });
+    });
+    await page.route("**/api/subscription/status", async (route) => {
+      await route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify({ plan: "free", isPro: false }),
+      });
+    });
+    await page.route("**/api/stripe/checkout", async (route) => {
+      const request = route.request();
+      expect(request.method()).toBe("POST");
+      expect(request.postDataJSON()).toMatchObject({ plan: "annual", locale: "en" });
+      await route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify({ url: "#stripe-checkout", promoApplied: false }),
+      });
+    });
+
+    await page.goto("/en/pricing");
+    await page.getByRole("radio", { name: /pro annual/i }).check({ force: true });
+    await page.getByRole("button", { name: /start pro annual/i }).click();
+
+    await expect(page).toHaveURL(/#stripe-checkout$/);
+  });
+
   test("refuses to create a session for an anonymous visitor", async ({ request }) => {
     const res = await request.post("/api/stripe/checkout", {
       data: { plan: "monthly" },
