@@ -64,7 +64,7 @@ export default function SignInPage() {
         };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-16 relative">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-[var(--color-primary)] opacity-[0.06] blur-[80px] pointer-events-none" />
 
