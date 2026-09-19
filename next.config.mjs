@@ -18,14 +18,18 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
   {
+    // Google Analytics was being refused by this policy on every page load in
+    // production, so the site has been collecting no analytics and no
+    // conversion data at all. The tag is injected by the Vercel integration
+    // rather than by code, which is why nothing in src referenced it.
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://vercel.live",
+      "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://vercel.live https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://avatars.githubusercontent.com https://*.vercel-storage.com",
+      "img-src 'self' data: blob: https://avatars.githubusercontent.com https://lh3.googleusercontent.com https://*.vercel-storage.com https://www.google-analytics.com",
       "font-src 'self' data:",
-      "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel.live wss://*.vercel.live https://api.github.com",
+      "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel.live wss://*.vercel.live https://api.github.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
       "frame-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",
@@ -84,6 +88,13 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
+      },
+      {
+        // Google is the most used sign in provider here, and its avatars are
+        // served from this host. Without it next/image refuses every Google
+        // account's picture and everyone falls back to initials.
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
       },
     ],
     formats: ["image/avif", "image/webp"],
