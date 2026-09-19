@@ -110,6 +110,18 @@ export async function generateMetadata({
 }
 
 // Inline script to set theme class before paint (prevents flash)
+/**
+ * Environment variables set through a dashboard very easily pick up a trailing
+ * newline from a copy and paste, and this one is interpolated straight into a
+ * single quoted string inside the Google Analytics init script. A newline
+ * there makes it an unterminated string literal, so the whole init script
+ * throws `SyntaxError: Invalid or unexpected token` and no page view is ever
+ * recorded. That is exactly what production was doing, silently, on every
+ * page load. Trimming costs nothing and makes the value safe however it was
+ * entered.
+ */
+const gaId = process.env.NEXT_PUBLIC_GA_ID?.trim() || undefined;
+
 const themeScript = `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}else{document.documentElement.classList.add('light')}})()`;
 
 export default async function LocaleLayout({
@@ -163,7 +175,7 @@ export default async function LocaleLayout({
         </Providers>
         <Analytics />
         <SpeedInsights />
-        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
+        {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );
