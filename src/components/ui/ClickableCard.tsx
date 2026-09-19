@@ -18,7 +18,8 @@ export function ClickableCard({ href, children, className, ariaLabel }: { href: 
         router.push(href);
       }}
       onKeyDown={(e) => {
-        if (e.key === "Enter" && !(e.target as HTMLElement).closest("a")) {
+        if ((e.key === "Enter" || e.key === " ") && !(e.target as HTMLElement).closest("a")) {
+          e.preventDefault();
           router.push(href);
         }
       }}

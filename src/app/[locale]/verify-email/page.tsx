@@ -161,18 +161,24 @@ export default function VerifyEmailPage() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center">
+            <div id="verify-email-error" role="alert" className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center">
               {error}
             </div>
           )}
 
           {success && (
-            <div className="mb-4 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-sm text-green-600 text-center">
+            <div id="verify-email-success" role="status" className="mb-4 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-sm text-green-600 text-center">
               {success}
             </div>
           )}
 
-          <div className="flex justify-center gap-2 mb-6" style={anim(500)}>
+          <div
+            className="flex justify-center gap-2 mb-6"
+            style={anim(500)}
+            role="group"
+            aria-label={t("verifyCode")}
+            aria-describedby={error ? "verify-email-error" : success ? "verify-email-success" : undefined}
+          >
             {digits.map((digit, i) => (
               <input
                 key={i}
@@ -185,6 +191,7 @@ export default function VerifyEmailPage() {
                 onKeyDown={(e) => handleKeyDown(i, e)}
                 className="w-12 h-14 text-center text-xl font-bold rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-all"
                 aria-label={`Digit ${i + 1}`}
+                aria-invalid={error ? true : undefined}
               />
             ))}
           </div>

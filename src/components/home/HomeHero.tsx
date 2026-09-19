@@ -201,11 +201,10 @@ export default function HomeHero({
       {/* Logo - scale-in + subtle float */}
       <div
         style={{
-          opacity: noMotion || isInView ? 1 : 0,
           transform: noMotion || isInView ? "none" : "scale(0.8)",
           transition: noMotion
             ? "none"
-            : `opacity 0.5s ${ease} 0.1s, transform 0.5s ${ease} 0.1s`,
+            : `transform 0.5s ${ease} 0.1s`,
         }}
       >
         <div
@@ -228,8 +227,7 @@ export default function HomeHero({
       <h1
         className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-6"
         style={{
-          opacity: noMotion || isInView ? 1 : 0,
-          transition: noMotion ? "none" : `opacity 0.3s ${ease} 0.2s`,
+          transition: noMotion ? "none" : `color 0.3s ${ease} 0.2s`,
         }}
       >
         <AnimatedWords text={title} className="block" />
@@ -253,11 +251,10 @@ export default function HomeHero({
       <div
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
         style={{
-          opacity: noMotion || isInView ? 1 : 0,
           transform: noMotion || isInView ? "none" : "translateY(16px)",
           transition: noMotion
             ? "none"
-            : `opacity 0.5s cubic-bezier(0.25,0.4,0.25,1) 0.9s, transform 0.5s cubic-bezier(0.25,0.4,0.25,1) 0.9s`,
+            : `transform 0.5s cubic-bezier(0.25,0.4,0.25,1) 0.9s`,
         }}
       >
         {/* Primary CTA - shimmer sweep */}

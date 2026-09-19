@@ -93,6 +93,8 @@ export default function SignInPage() {
 
           {verified && (
             <div
+              id="signin-verified-status"
+              role="status"
               className="mb-4 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-sm text-green-600 text-center"
               style={{ animation: `fade-up 0.3s ${EASE} both` }}
             >
@@ -102,6 +104,8 @@ export default function SignInPage() {
 
           {reset && (
             <div
+              id="signin-reset-status"
+              role="status"
               className="mb-4 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-sm text-green-600 text-center"
               style={{ animation: `fade-up 0.3s ${EASE} both` }}
             >
@@ -111,6 +115,8 @@ export default function SignInPage() {
 
           {error && (
             <div
+              id="signin-auth-error"
+              role="alert"
               className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center"
               style={{ animation: `fade-up 0.3s ${EASE} both` }}
             >
@@ -124,6 +130,8 @@ export default function SignInPage() {
 
           {credError && (
             <div
+              id="signin-credentials-error"
+              role="alert"
               className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-500 text-center"
               style={{ animation: `fade-up 0.3s ${EASE} both` }}
             >
@@ -132,24 +140,41 @@ export default function SignInPage() {
           )}
 
           {/* Email/Password form */}
-          <form onSubmit={handleCredentials} className="space-y-3 mb-5" style={anim(450)}>
+          <form
+            onSubmit={handleCredentials}
+            className="space-y-3 mb-5"
+            style={anim(450)}
+            aria-describedby={credError ? "signin-credentials-error" : undefined}
+          >
             <div>
+              <label htmlFor="signin-email" className="sr-only">
+                {t("email")} <span aria-hidden="true">*</span>
+              </label>
               <input
+                id="signin-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t("emailPlaceholder")}
                 required
+                aria-invalid={credError ? true : undefined}
+                aria-describedby={credError ? "signin-credentials-error" : undefined}
                 className="w-full px-4 py-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-all"
               />
             </div>
             <div>
+              <label htmlFor="signin-password" className="sr-only">
+                {t("password")} <span aria-hidden="true">*</span>
+              </label>
               <input
+                id="signin-password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder={t("password")}
                 required
+                aria-invalid={credError ? true : undefined}
+                aria-describedby={credError ? "signin-credentials-error" : undefined}
                 className="w-full px-4 py-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/50 transition-all"
               />
             </div>
