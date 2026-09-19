@@ -113,6 +113,25 @@ describe("POST /api/stripe/checkout", () => {
     expect(mockSessionsCreate).not.toHaveBeenCalled();
   });
 
+  // A real plan with no configured Stripe price is an operator mistake, not a
+  // malformed request. Collapsing both into 400 "Invalid plan" made a silent
+  // revenue leak indistinguishable from ordinary client noise in the logs.
+  it("reports a real plan with no configured price as unavailable, not as a bad request", async () => {
+    const { PLANS } = await import("@/lib/stripe");
+    const original = PLANS.annual.priceId;
+    (PLANS.annual as { priceId: string }).priceId = "";
+
+    try {
+      const res = await POST(request({ plan: "annual" }));
+
+      expect(res.status).toBe(503);
+      expect((await res.json()).error).toBe("Plan unavailable");
+      expect(mockSessionsCreate).not.toHaveBeenCalled();
+    } finally {
+      (PLANS.annual as { priceId: string }).priceId = original;
+    }
+  });
+
   it("bills lifetime as a one-off payment, not a recurring subscription", async () => {
     await POST(request({ plan: "lifetime" }));
 

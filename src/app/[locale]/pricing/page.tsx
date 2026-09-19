@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
+import { getPurchasablePlans } from "@/lib/stripe";
 import { PricingCards } from "./PricingCards";
 
 export async function generateMetadata({
@@ -45,7 +46,7 @@ export default async function PricingPage({
         </p>
       </div>
 
-      <PricingCards locale={locale} />
+      <PricingCards locale={locale} purchasablePlans={getPurchasablePlans()} />
 
       {/* FAQ teaser */}
       <div className="mt-20 text-center">
