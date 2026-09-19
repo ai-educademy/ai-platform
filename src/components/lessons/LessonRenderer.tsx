@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { normaliseMdxSource } from "@/lib/mdx-safety";
 import { Quiz } from "./Quiz";
 import { LottieAnimation } from "./LottieAnimation";
 import {
@@ -68,5 +69,5 @@ export function LessonRenderer({
   const merged = extraComponents
     ? { ...components, ...extraComponents }
     : components;
-  return <MDXRemote source={content} components={merged} />;
+  return <MDXRemote source={normaliseMdxSource(content)} components={merged} />;
 }
