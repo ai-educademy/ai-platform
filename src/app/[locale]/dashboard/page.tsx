@@ -11,6 +11,7 @@ import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { Certificate } from "@/components/dashboard/Certificate";
 import { ReferralWidget } from "@/components/dashboard/ReferralWidget";
 import { ManageBilling } from "@/components/dashboard/ManageBilling";
+import { UpgradeCard } from "@/components/dashboard/UpgradeCard";
 import { ShareAchievement } from "@/components/dashboard/ShareAchievement";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { AnimatedProgressBar } from "@/components/ui/MotionWrappers";
@@ -548,11 +549,10 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Billing — paying customers must always have a route to cancel */}
-      {session?.user?.id && isPremiumUser && (
-        <div className="mb-12">
-          <ManageBilling />
-        </div>
+      {/* Billing. Paying customers must always have a route to cancel, and
+          everyone else gets the offer in the same slot rather than a blank. */}
+      {session?.user?.id && (
+        <div className="mb-12">{isPremiumUser ? <ManageBilling /> : <UpgradeCard />}</div>
       )}
 
       {/* Actions */}

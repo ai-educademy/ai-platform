@@ -1841,7 +1841,11 @@
     "redirecting": "جارٍ التحويل…",
     "checkoutError": "تعذّر إنشاء جلسة الدفع. يرجى المحاولة مرة أخرى.",
     "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
-    "comparePlans": "قارن الخطط"
+    "comparePlans": "قارن الخطط",
+    "chooseAPlan": "اختر خطة",
+    "selected": "محددة",
+    "selectThisPlan": "اختر هذه الخطة",
+    "alreadyPro": "لديك Pro بالفعل. يمكنك إدارة اشتراكك من حسابك."
   },
   "paywall": {
     "title": "محتوى مميز",

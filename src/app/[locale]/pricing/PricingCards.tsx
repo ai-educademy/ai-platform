@@ -3,8 +3,11 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
-import { Check, Tag, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, Tag, ChevronDown, ChevronUp, Sparkles } from "lucide-react";
 import { PLAN_PRICE_LABELS, ANNUAL_SAVING_PERCENT } from "@/lib/pricing";
+import { useProStatus } from "@/hooks/useProStatus";
+
+type PaidPlan = "monthly" | "annual" | "lifetime";
 
 function PromoCodeInput({
   promoCode,
@@ -23,76 +26,204 @@ function PromoCodeInput({
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-violet-600 transition-colors mx-auto"
+        aria-expanded={expanded}
+        className="mx-auto flex items-center gap-2 rounded-lg px-2 py-1 text-sm text-[var(--color-text-muted)] transition-colors hover:text-violet-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60"
       >
-        <Tag className="w-3.5 h-3.5" />
+        <Tag className="h-3.5 w-3.5" aria-hidden="true" />
         {t("promoCode")}
         {expanded ? (
-          <ChevronUp className="w-3.5 h-3.5" />
+          <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" />
         ) : (
-          <ChevronDown className="w-3.5 h-3.5" />
+          <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
         )}
       </button>
       {expanded && (
-        <div className="mt-3 flex items-center gap-2 max-w-xs mx-auto">
+        <div className="mx-auto mt-3 flex max-w-xs items-center gap-2">
+          <label htmlFor="promo-code" className="sr-only">
+            {t("promoCode")}
+          </label>
           <input
+            id="promo-code"
             type="text"
             value={promoCode}
             onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
             placeholder={t("promoCodePlaceholder")}
-            className="flex-1 px-3 py-2 text-sm rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+            className="flex-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-violet-500/40"
           />
         </div>
       )}
-      {promoStatus === "applied" && (
-        <p className="mt-2 text-xs text-emerald-600 text-center font-medium">
-          ✓ {t("promoCodeApplied")}
-        </p>
-      )}
-      {promoStatus === "invalid" && (
-        <p className="mt-2 text-xs text-red-500 text-center">
-          {t("promoCodeInvalid")}
-        </p>
-      )}
+      {/* Announced, because the result of a code only arrives after the
+          checkout call and a sighted user sees it appear. */}
+      <div aria-live="polite">
+        {promoStatus === "applied" && (
+          <p className="mt-2 text-center text-xs font-medium text-emerald-600">
+            {t("promoCodeApplied")}
+          </p>
+        )}
+        {promoStatus === "invalid" && (
+          <p className="mt-2 text-center text-xs text-red-500">{t("promoCodeInvalid")}</p>
+        )}
+      </div>
     </div>
   );
 }
 
-function PricingCard({
+/**
+ * One selectable plan.
+ *
+ * Built on a real radio input wrapped in a label rather than a div with an
+ * onClick handler. That makes the entire card a click target, and the browser
+ * supplies arrow key navigation, roving focus and screen reader semantics for
+ * nothing. Previously only the button at the foot of each card did anything,
+ * so most of the card looked interactive and was not, and the violet ring on
+ * the monthly plan was a hardcoded "most popular" badge that visitors read as
+ * a selection they were unable to change.
+ */
+function SelectablePlanCard({
   title,
   price,
   period,
   features,
-  cta,
   popular,
   plan,
-  locale,
-  promoCode,
-  onPromoResult,
+  selected,
+  onSelect,
 }: {
   title: string;
   price: string;
   period: string;
   features: string[];
-  cta: string;
   popular?: boolean;
-  plan: "free" | "monthly" | "annual" | "lifetime";
-  locale: string;
-  promoCode: string;
-  onPromoResult: (applied: boolean) => void;
+  plan: PaidPlan;
+  selected: boolean;
+  onSelect: (plan: PaidPlan) => void;
 }) {
   const t = useTranslations("pricing");
+
+  return (
+    <label
+      className={`group relative flex cursor-pointer flex-col rounded-2xl border p-8 transition-all has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-violet-500 has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-[var(--color-bg)] ${
+        selected
+          ? "border-violet-500 shadow-xl shadow-violet-500/10 ring-2 ring-violet-500"
+          : "border-[var(--color-border)] hover:border-violet-400 hover:shadow-lg"
+      }`}
+    >
+      <input
+        type="radio"
+        name="plan"
+        value={plan}
+        checked={selected}
+        onChange={() => onSelect(plan)}
+        className="sr-only"
+      />
+
+      {popular && (
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-r from-violet-500 to-indigo-600 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+          {t("mostPopular")}
+        </span>
+      )}
+
+      <div className="mb-6">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-xl font-bold text-[var(--color-text)]">{title}</h3>
+          {/* The tick is the only thing that means "selected". The popular
+              badge is social proof and must never be mistaken for one, which
+              is exactly how the previous design read. */}
+          <span
+            aria-hidden="true"
+            className={`mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
+              selected
+                ? "border-violet-500 bg-violet-500 text-white"
+                : "border-[var(--color-border)] group-hover:border-violet-400"
+            }`}
+          >
+            {selected && <Check className="h-3 w-3" strokeWidth={3} />}
+          </span>
+        </div>
+        <div className="mt-4 flex items-baseline gap-1">
+          <span className="text-4xl font-extrabold tabular-nums text-[var(--color-text)]">
+            {price}
+          </span>
+          {period && <span className="text-sm text-[var(--color-text-muted)]">/{period}</span>}
+        </div>
+      </div>
+
+      <ul className="flex-1 space-y-3">
+        {features.map((f, i) => (
+          <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--color-text)]">
+            <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" aria-hidden="true" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+
+      <span
+        className={`mt-6 block text-center text-xs font-bold uppercase tracking-wider transition-colors ${
+          selected ? "text-violet-600" : "text-[var(--color-text-muted)]"
+        }`}
+      >
+        {selected ? t("selected") : t("selectThisPlan")}
+      </span>
+    </label>
+  );
+}
+
+/** The free tier. Informational: nobody checks out with it. */
+function FreePlanCard({
+  title,
+  price,
+  features,
+}: {
+  title: string;
+  price: string;
+  features: string[];
+}) {
+  const t = useTranslations("pricing");
+  return (
+    <div className="flex flex-col rounded-2xl border border-[var(--color-border)] p-8">
+      <div className="mb-6">
+        <h3 className="text-xl font-bold text-[var(--color-text)]">{title}</h3>
+        <div className="mt-4 flex items-baseline gap-1">
+          <span className="text-4xl font-extrabold tabular-nums text-[var(--color-text)]">
+            {price}
+          </span>
+        </div>
+      </div>
+      <ul className="mb-8 flex-1 space-y-3">
+        {features.map((f, i) => (
+          <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--color-text)]">
+            <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" aria-hidden="true" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-3 text-center text-sm font-semibold text-[var(--color-text-muted)]">
+        {t("free.cta")}
+      </p>
+    </div>
+  );
+}
+
+export function PricingCards({ locale }: { locale: string }) {
+  const t = useTranslations("pricing");
   const { data: session } = useSession();
+  const { isPro, loading: proLoading } = useProStatus();
+
+  const [selected, setSelected] = useState<PaidPlan>("monthly");
+  const [promoCode, setPromoCode] = useState("");
+  const [promoStatus, setPromoStatus] = useState<"idle" | "applied" | "invalid">("idle");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleClick = async () => {
-    if (plan === "free") return;
+  const basePath = locale === "en" ? "" : `/${locale}`;
+
+  const handleCheckout = async () => {
     setError("");
 
     if (!session?.user) {
-      const basePath = locale === "en" ? "" : `/${locale}`;
-      window.location.href = `${basePath}/signin?callbackUrl=${encodeURIComponent(`${basePath}/pricing`)}`;
+      window.location.href = `${basePath}/signin?callbackUrl=${encodeURIComponent(
+        `${basePath}/pricing`
+      )}`;
       return;
     }
 
@@ -101,7 +232,7 @@ function PricingCard({
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan, locale, ...(promoCode ? { promoCode } : {}) }),
+        body: JSON.stringify({ plan: selected, locale, ...(promoCode ? { promoCode } : {}) }),
       });
       const data = await res.json();
       if (!data.url) {
@@ -109,7 +240,7 @@ function PricingCard({
         return;
       }
       if (promoCode) {
-        onPromoResult(data.promoApplied === true);
+        setPromoStatus(data.promoApplied === true ? "applied" : "invalid");
         // Stripe accepted the session but ignored the code. Redirecting here
         // would charge full price while the customer believes a discount
         // applied, so stop and let them correct it or retry without a code.
@@ -123,104 +254,27 @@ function PricingCard({
     }
   };
 
-  return (
-    <div
-      className={`relative flex flex-col rounded-2xl border p-8 ${
-        popular
-          ? "border-violet-500 shadow-xl shadow-violet-500/10 scale-[1.02]"
-          : "border-[var(--color-border)]"
-      }`}
-    >
-      {popular && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-violet-500 to-indigo-600 text-white">
-          {t("mostPopular")}
-        </span>
-      )}
-
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-[var(--color-text)]">{title}</h3>
-        <div className="mt-4 flex items-baseline gap-1">
-          <span className="text-4xl font-extrabold text-[var(--color-text)]">
-            {price}
-          </span>
-          {period && (
-            <span className="text-[var(--color-text-muted)] text-sm">
-              /{period}
-            </span>
-          )}
-        </div>
-      </div>
-
-      <ul className="flex-1 space-y-3 mb-8">
-        {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--color-text)]">
-            <Check className="w-4 h-4 mt-0.5 text-emerald-500 flex-shrink-0" />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        onClick={handleClick}
-        disabled={plan === "free" || loading}
-        className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all ${
-          popular
-            ? "bg-gradient-to-r from-violet-500 to-indigo-600 text-white hover:opacity-90 shadow-lg shadow-violet-500/25"
-            : plan === "free"
-              ? "bg-[var(--color-surface)] text-[var(--color-text-muted)] border border-[var(--color-border)] cursor-default"
-              : "bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-violet-500 hover:text-violet-600"
-        } disabled:opacity-50`}
-      >
-        {loading ? t("redirecting") : cta}
-      </button>
-      {error && (
-        <p className="mt-2 text-xs text-red-500 text-center">{error}</p>
-      )}
-    </div>
-  );
-}
-
-export function PricingCards({ locale }: { locale: string }) {
-  const t = useTranslations("pricing");
-  const [promoCode, setPromoCode] = useState("");
-  const [promoStatus, setPromoStatus] = useState<"idle" | "applied" | "invalid">("idle");
-
-  const plans = [
+  const paidPlans: {
+    plan: PaidPlan;
+    title: string;
+    price: string;
+    period: string;
+    features: string[];
+    popular?: boolean;
+  }[] = [
     {
-      title: t("free.title"),
-      price: PLAN_PRICE_LABELS.free,
-      period: "",
-      plan: "free" as const,
-      features: [
-        t("free.f1"),
-        t("free.f2"),
-        t("free.f3"),
-        t("free.f4"),
-        t("free.f5"),
-      ],
-      cta: t("free.cta"),
-    },
-    {
+      plan: "monthly",
       title: t("monthly.title"),
       price: PLAN_PRICE_LABELS.monthly,
       period: t("monthly.period"),
-      plan: "monthly" as const,
-      features: [
-        t("pro.f1"),
-        t("pro.f2"),
-        t("pro.f3"),
-        t("pro.f4"),
-        t("pro.f5"),
-        t("pro.f6"),
-      ],
-      cta: t("monthly.cta"),
+      features: [t("pro.f1"), t("pro.f2"), t("pro.f3"), t("pro.f4"), t("pro.f5"), t("pro.f6")],
       popular: true,
     },
     {
+      plan: "annual",
       title: t("annual.title"),
       price: PLAN_PRICE_LABELS.annual,
       period: t("annual.period"),
-      plan: "annual" as const,
       features: [
         t("pro.f1"),
         t("pro.f2"),
@@ -230,13 +284,12 @@ export function PricingCards({ locale }: { locale: string }) {
         t("pro.f6"),
         t("annual.save", { percent: ANNUAL_SAVING_PERCENT }),
       ],
-      cta: t("annual.cta"),
     },
     {
+      plan: "lifetime",
       title: t("lifetime.title"),
       price: PLAN_PRICE_LABELS.lifetime,
       period: "",
-      plan: "lifetime" as const,
       features: [
         t("pro.f1"),
         t("pro.f2"),
@@ -246,25 +299,58 @@ export function PricingCards({ locale }: { locale: string }) {
         t("pro.f6"),
         t("lifetime.forever"),
       ],
-      cta: t("lifetime.cta"),
     },
   ];
 
+  const ctaLabel = {
+    monthly: t("monthly.cta"),
+    annual: t("annual.cta"),
+    lifetime: t("lifetime.cta"),
+  }[selected];
+
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {plans.map((p) => (
-          <PricingCard
-            key={p.plan}
-            {...p}
-            locale={locale}
-            promoCode={promoCode}
-            onPromoResult={(applied) =>
-              setPromoStatus(applied ? "applied" : "invalid")
-            }
+      <fieldset className="border-0 p-0">
+        <legend className="sr-only">{t("chooseAPlan")}</legend>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <FreePlanCard
+            title={t("free.title")}
+            price={PLAN_PRICE_LABELS.free}
+            features={[t("free.f1"), t("free.f2"), t("free.f3"), t("free.f4"), t("free.f5")]}
           />
-        ))}
-      </div>
+          {paidPlans.map((p) => (
+            <SelectablePlanCard
+              key={p.plan}
+              {...p}
+              selected={selected === p.plan}
+              onSelect={setSelected}
+            />
+          ))}
+        </div>
+      </fieldset>
+
+      {/* One checkout action for the page, acting on whatever is selected.
+          Each card used to carry its own button, so the page offered four
+          competing calls to action with no way to tell which was active. */}
+      {!proLoading && isPro ? (
+        <p className="mt-8 text-center text-sm font-medium text-emerald-600">{t("alreadyPro")}</p>
+      ) : (
+        <div className="mt-8 flex flex-col items-center">
+          <button
+            type="button"
+            onClick={handleCheckout}
+            disabled={loading}
+            className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-lg shadow-violet-500/25 transition-all hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] disabled:opacity-50"
+          >
+            <Sparkles size={18} aria-hidden="true" />
+            {loading ? t("redirecting") : ctaLabel}
+          </button>
+          <div aria-live="polite">
+            {error && <p className="mt-3 text-center text-sm text-red-500">{error}</p>}
+          </div>
+        </div>
+      )}
+
       <PromoCodeInput
         promoCode={promoCode}
         setPromoCode={(v) => {

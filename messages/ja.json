@@ -1841,7 +1841,11 @@
     "redirecting": "リダイレクト中…",
     "checkoutError": "お支払いセッションを作成できませんでした。もう一度お試しください。",
     "genericError": "問題が発生しました。もう一度お試しください。",
-    "comparePlans": "プランを比較"
+    "comparePlans": "プランを比較",
+    "chooseAPlan": "プランを選択",
+    "selected": "選択中",
+    "selectThisPlan": "このプランを選ぶ",
+    "alreadyPro": "すでに Pro をご利用中です。サブスクリプションはアカウントから管理できます。"
   },
   "paywall": {
     "title": "プレミアムコンテンツ",
