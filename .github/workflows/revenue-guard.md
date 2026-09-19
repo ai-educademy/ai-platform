@@ -13,7 +13,7 @@ permissions:
   issues: read
 engine:
   id: gemini
-  model: gemini-3.6-flash
+  model: gemini-3-flash-preview
 timeout-minutes: 20
 strict: true
 network:
