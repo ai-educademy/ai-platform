@@ -204,12 +204,29 @@ function FreePlanCard({
   );
 }
 
-export function PricingCards({ locale }: { locale: string }) {
+export function PricingCards({
+  locale,
+  purchasablePlans,
+}: {
+  locale: string;
+  /**
+   * Which plans this deployment can actually charge for. Defaults to all
+   * three so existing callers and tests keep their previous behaviour.
+   */
+  purchasablePlans?: PaidPlan[];
+}) {
   const t = useTranslations("pricing");
   const { data: session } = useSession();
   const { isPro, loading: proLoading } = useProStatus();
 
-  const [selected, setSelected] = useState<PaidPlan>("monthly");
+  const available: PaidPlan[] =
+    purchasablePlans && purchasablePlans.length > 0
+      ? purchasablePlans
+      : (["monthly", "annual", "lifetime"] as PaidPlan[]);
+
+  const [selected, setSelected] = useState<PaidPlan>(
+    available.includes("monthly") ? "monthly" : available[0]
+  );
   const [promoCode, setPromoCode] = useState("");
   const [promoStatus, setPromoStatus] = useState<"idle" | "applied" | "invalid">("idle");
   const [loading, setLoading] = useState(false);
@@ -312,20 +329,30 @@ export function PricingCards({ locale }: { locale: string }) {
     <div>
       <fieldset className="border-0 p-0">
         <legend className="sr-only">{t("chooseAPlan")}</legend>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div
+          className={`grid grid-cols-1 gap-6 sm:grid-cols-2 ${
+            available.length === 3
+              ? "lg:grid-cols-4"
+              : available.length === 2
+                ? "lg:grid-cols-3"
+                : "lg:grid-cols-2"
+          }`}
+        >
           <FreePlanCard
             title={t("free.title")}
             price={PLAN_PRICE_LABELS.free}
             features={[t("free.f1"), t("free.f2"), t("free.f3"), t("free.f4"), t("free.f5")]}
           />
-          {paidPlans.map((p) => (
-            <SelectablePlanCard
-              key={p.plan}
-              {...p}
-              selected={selected === p.plan}
-              onSelect={setSelected}
-            />
-          ))}
+          {paidPlans
+            .filter((p) => available.includes(p.plan))
+            .map((p) => (
+              <SelectablePlanCard
+                key={p.plan}
+                {...p}
+                selected={selected === p.plan}
+                onSelect={setSelected}
+              />
+            ))}
         </div>
       </fieldset>
 

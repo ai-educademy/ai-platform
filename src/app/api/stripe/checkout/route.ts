@@ -26,8 +26,19 @@ export async function POST(req: NextRequest) {
     const locale = safeLocale(rawLocale);
 
     const planConfig = PLANS[plan];
-    if (!planConfig || !planConfig.priceId) {
+    if (!planConfig) {
       return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
+    }
+    if (!planConfig.priceId) {
+      // A real plan that this deployment cannot sell, because its Stripe price
+      // ID is missing from the environment. That is an operator problem, not a
+      // bad request, and returning 400 "Invalid plan" made the two
+      // indistinguishable in the logs while quietly losing the sale.
+      console.error(
+        `[stripe] No price ID configured for the "${plan}" plan. ` +
+          `Set STRIPE_PRICE_${plan.toUpperCase()} in this environment.`
+      );
+      return NextResponse.json({ error: "Plan unavailable" }, { status: 503 });
     }
 
     // Get or create Stripe customer

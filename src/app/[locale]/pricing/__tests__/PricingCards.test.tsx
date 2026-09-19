@@ -83,3 +83,33 @@ describe("PricingCards", () => {
     expect(screen.queryByRole("button", { name: /monthly.cta/ })).not.toBeInTheDocument();
   });
 });
+
+/**
+ * A plan whose Stripe price ID is missing cannot be bought. Showing it anyway
+ * walks a customer who has already decided to pay into a dead end, which is
+ * the most expensive moment possible to fail.
+ */
+describe("PricingCards plan availability", () => {
+  it("given only monthly can be sold, when the page renders, then annual and lifetime are not offered", () => {
+    render(<PricingCards locale="en" purchasablePlans={["monthly"]} />);
+
+    expect(screen.getByRole("radio", { name: /monthly.title/ })).toBeInTheDocument();
+    expect(screen.queryByRole("radio", { name: /annual.title/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("radio", { name: /lifetime.title/ })).not.toBeInTheDocument();
+  });
+
+  it("given monthly cannot be sold, when the page renders, then the first sellable plan is preselected", () => {
+    render(<PricingCards locale="en" purchasablePlans={["annual", "lifetime"]} />);
+
+    expect(screen.getByRole("radio", { name: /annual.title/ })).toBeChecked();
+    expect(screen.getByRole("button", { name: /annual.cta/ })).toBeInTheDocument();
+  });
+
+  it("given no explicit availability, when the page renders, then all three plans are offered", () => {
+    render(<PricingCards locale="en" />);
+
+    expect(screen.getByRole("radio", { name: /monthly.title/ })).toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: /annual.title/ })).toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: /lifetime.title/ })).toBeInTheDocument();
+  });
+});
