@@ -21,9 +21,13 @@ export function ExperimentCta({
   promptDescription: string;
 }) {
   const isPromptProgram = PROMPT_PROGRAMS.has(programSlug);
-  const href = isPromptProgram
-    ? `${basePath}/experiments/prompt-lab`
-    : `${basePath}/experiments`;
+  // Both branches used to point at /experiments and /experiments/prompt-lab.
+  // Neither route exists: the experiments area is /lab, and it has no
+  // per-experiment deep links, which is why every entry in the navbar's lab
+  // dropdown also points at /lab. This CTA renders on every programme page in
+  // every locale, so it was the single biggest source of 404s on the site.
+  // The prompt/non-prompt split still drives the label and icon.
+  const href = `${basePath}/lab`;
   const title = isPromptProgram ? promptLabel : label;
   const desc = isPromptProgram ? promptDescription : description;
   const icon = isPromptProgram ? "✨" : "🧪";
