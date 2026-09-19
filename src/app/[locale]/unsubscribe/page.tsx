@@ -10,7 +10,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "unsubscribe" });
   return {
-    title: `${t("title")} | AI Educademy`,
+    // The root layout already applies a `%s | AI Educademy` title
+    // template, so appending the brand here rendered it twice.
+    title: t("title"),
     // An unsubscribe page has no business in search results.
     robots: { index: false, follow: false },
   };

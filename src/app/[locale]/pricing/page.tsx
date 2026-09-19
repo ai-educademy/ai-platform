@@ -11,7 +11,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pricing" });
   return {
-    title: `${t("pageTitle")} | AI Educademy`,
+    // The root layout already applies a `%s | AI Educademy` title
+    // template, so appending the brand here rendered it twice.
+    title: t("pageTitle"),
     description: t("pageDescription"),
     alternates: {
       canonical: `https://aieducademy.org${locale === "en" ? "" : `/${locale}`}/pricing`,
