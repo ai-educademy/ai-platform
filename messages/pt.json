@@ -4,15 +4,15 @@
     "description": "Aprenda Inteligência Artificial do zero, no seu idioma. Nenhuma experiência em programação necessária."
   },
   "nav": {
-    "home": "Início",
+    "home": "Inicio",
     "lessons": "Aulas",
-    "dashboard": "Dashboard",
+    "dashboard": "Painel",
     "about": "Sobre",
     "getStarted": "Começar",
     "language": "Idioma",
     "programs": "Programas",
     "blog": "Blog",
-    "lab": "Laboratório",
+    "lab": "Lab",
     "search": "buscar",
     "logIn": "Entrar",
     "signUp": "Cadastrar",
@@ -24,11 +24,11 @@
     "readBlog": "Ler o Blog",
     "latestArticles": "Últimos artigos sobre IA, educação e tecnologia",
     "experimentsLoaded": "7 experimentos carregados",
-    "mission": "Missão",
+    "mission": "Missao",
     "missionDesc": "Tornar a educação em IA acessível para todos, em todo lugar",
     "values": "Valores",
     "valuesDesc": "Open Source, multilíngue e movido pela comunidade",
-    "openSource": "Open Source",
+    "openSource": "Codigo aberto",
     "openSourceDesc": "Construído de forma aberta no GitHub",
     "meetCreator": "Conheça o Criador",
     "viewOnGithub": "Ver no GitHub",
@@ -38,10 +38,10 @@
     "aiMasteryPath": "Mestria em IA",
     "careerReadyPath": "Preparação para Carreira",
     "bookmarks": "Favoritos",
-    "faq": "Perguntas Frequentes",
+    "faq": "FAQ",
     "journey": "Jornada",
     "faqDesc": "Perguntas frequentes respondidas",
-    "contact": "Contacto",
+    "contact": "Contato",
     "contactDesc": "Entre em contacto connosco",
     "pricing": "Preços",
     "goPro": "Seja Pro"
@@ -59,7 +59,7 @@
     "cost": "Custo",
     "openSource": "Open Source",
     "statPrograms": "10 Programas",
-    "statLessons": "100+ Aulas",
+    "statLessons": "{count}+ aulas",
     "statLanguages": "10 Idiomas"
   },
   "features": {
@@ -619,7 +619,7 @@
         },
         {
           "q": "O Behavioral Mastery ajuda com perguntas de liderança?",
-          "a": "Com certeza! O programa cobre narrativas de liderança, resolução de conflitos, histórias de trabalho em equipe e avaliação de fit cultural — todos temas comuns em rodadas comportamentais."
+          "a": "Com certeza! O programa cobre narrativas de liderança, resolução de conflitos, histórias de trabalho em equipe e avaliação de fit cultural - todos temas comuns em rodadas comportamentais."
         },
         {
           "q": "O Behavioral Mastery é gratuito?",
@@ -627,13 +627,13 @@
         },
         {
           "q": "Preciso de experiência real em projetos?",
-          "a": "Sim, você vai precisar de experiências reais para usar como base. O programa ensina como identificar, estruturar e apresentar suas experiências de forma convincente — mas a matéria-prima precisa vir da sua carreira."
+          "a": "Sim, você vai precisar de experiências reais para usar como base. O programa ensina como identificar, estruturar e apresentar suas experiências de forma convincente - mas a matéria-prima precisa vir da sua carreira."
         }
       ],
       "ai-branches": [
         {
           "q": "O que diferencia o AI Branches dos programas anteriores?",
-          "a": "O AI Branches foca em aplicações do mundo real. Enquanto Seeds e Sprouts constroem conhecimentos fundamentais, Branches mostra a IA em ação na saúde, finanças, artes criativas e muito mais — e você começará a construir projetos simples."
+          "a": "O AI Branches foca em aplicações do mundo real. Enquanto Seeds e Sprouts constroem conhecimentos fundamentais, Branches mostra a IA em ação na saúde, finanças, artes criativas e muito mais - e você começará a construir projetos simples."
         },
         {
           "q": "Preciso de experiência em programação para o AI Branches?",
@@ -681,7 +681,7 @@
         },
         {
           "q": "Quais padrões o AI Chisel cobre?",
-          "a": "O AI Chisel cobre two pointers, sliding window, travessia de grafos com BFS/DFS, travessias de árvores, stacks, queues e padrões monotônicos — todos conectados a aplicações reais de IA e ML."
+          "a": "O AI Chisel cobre two pointers, sliding window, travessia de grafos com BFS/DFS, travessias de árvores, stacks, queues e padrões monotônicos - todos conectados a aplicações reais de IA e ML."
         },
         {
           "q": "O AI Chisel é gratuito?",
@@ -699,7 +699,7 @@
       "ai-craft": [
         {
           "q": "Sobre o que é o AI Craft?",
-          "a": "O AI Craft ensina design de sistemas — como projetar a arquitetura de sistemas distribuídos em larga escala. Você vai projetar motores de recomendação, autocompletar de busca, limitadores de taxa e outros sistemas que impulsionam produtos modernos de IA."
+          "a": "O AI Craft ensina design de sistemas - como projetar a arquitetura de sistemas distribuídos em larga escala. Você vai projetar motores de recomendação, autocompletar de busca, limitadores de taxa e outros sistemas que impulsionam produtos modernos de IA."
         },
         {
           "q": "Preciso de experiência em programação para o AI Craft?",
@@ -747,7 +747,7 @@
         },
         {
           "q": "Preciso saber programação para o Interview Launchpad?",
-          "a": "Não é necessário nenhum conhecimento de programação. O Interview Launchpad foca em estratégia de preparação, pesquisa de empresas e mentalidade — habilidades que se aplicam independentemente do seu nível técnico."
+          "a": "Não é necessário nenhum conhecimento de programação. O Interview Launchpad foca em estratégia de preparação, pesquisa de empresas e mentalidade - habilidades que se aplicam independentemente do seu nível técnico."
         },
         {
           "q": "Vou aprender a pesquisar empresas?",
@@ -787,7 +787,7 @@
       "ai-ml-interview": [
         {
           "q": "Preciso de experiência em ML para o AI & ML Interviews?",
-          "a": "Você deve ter conhecimentos básicos de ML — entender aprendizado supervisionado vs não supervisionado, o que é um modelo e estatísticas básicas. O programa desenvolve habilidades de entrevista sobre essa base."
+          "a": "Você deve ter conhecimentos básicos de ML - entender aprendizado supervisionado vs não supervisionado, o que é um modelo e estatísticas básicas. O programa desenvolve habilidades de entrevista sobre essa base."
         },
         {
           "q": "O que torna as entrevistas de ML diferentes das entrevistas técnicas comuns?",
@@ -817,7 +817,7 @@
         },
         {
           "q": "O Offer & Beyond cobre ações e benefícios?",
-          "a": "Com certeza. Você vai aprender a avaliar stock options, RSUs, bônus de assinatura, pacotes de benefícios e remuneração total — não apenas o salário base."
+          "a": "Com certeza. Você vai aprender a avaliar stock options, RSUs, bônus de assinatura, pacotes de benefícios e remuneração total - não apenas o salário base."
         },
         {
           "q": "O Offer & Beyond é gratuito?",
@@ -847,7 +847,7 @@
         },
         {
           "q": "Por que entrevistas comportamentais são importantes para funções de IA?",
-          "a": "Funções de IA exigem cada vez mais fortes habilidades de comunicação — explicar decisões de modelos para stakeholders, navegar dilemas éticos e liderar equipes multifuncionais. O AI Polish prepara você para exatamente esses cenários."
+          "a": "Funções de IA exigem cada vez mais fortes habilidades de comunicação - explicar decisões de modelos para stakeholders, navegar dilemas éticos e liderar equipes multifuncionais. O AI Polish prepara você para exatamente esses cenários."
         }
       ],
       "ai-seeds": [
@@ -857,7 +857,7 @@
         },
         {
           "q": "Preciso saber programação para o AI Seeds?",
-          "a": "De forma alguma. O AI Seeds foca em construir uma compreensão conceitual da inteligência artificial. Você não vai escrever uma única linha de código. O objetivo é ajudá-lo a entender o que é IA, como funciona e por que é importante — tudo em linguagem simples."
+          "a": "De forma alguma. O AI Seeds foca em construir uma compreensão conceitual da inteligência artificial. Você não vai escrever uma única linha de código. O objetivo é ajudá-lo a entender o que é IA, como funciona e por que é importante - tudo em linguagem simples."
         },
         {
           "q": "Vou receber um certificado ao concluir o AI Seeds?",
@@ -897,7 +897,7 @@
       "ai-sprouts": [
         {
           "q": "O AI Sprouts é adequado para iniciantes?",
-          "a": "O AI Sprouts foi projetado para estudantes que têm noções básicas de IA — idealmente após concluir o AI Seeds. Se você já sabe em alto nível o que é IA, está pronto para explorar os componentes fundamentais como tipos de dados, algoritmos e ética."
+          "a": "O AI Sprouts foi projetado para estudantes que têm noções básicas de IA - idealmente após concluir o AI Seeds. Se você já sabe em alto nível o que é IA, está pronto para explorar os componentes fundamentais como tipos de dados, algoritmos e ética."
         },
         {
           "q": "Preciso de habilidades de programação para o AI Sprouts?",
@@ -927,7 +927,7 @@
         },
         {
           "q": "Quais padrões de programação vou aprender?",
-          "a": "Você vai dominar os padrões mais comuns em entrevistas de programação: arrays, hash maps, two pointers, sliding window, árvores, grafos, programação dinâmica e mais — tudo com explicações claras e problemas de prática."
+          "a": "Você vai dominar os padrões mais comuns em entrevistas de programação: arrays, hash maps, two pointers, sliding window, árvores, grafos, programação dinâmica e mais - tudo com explicações claras e problemas de prática."
         },
         {
           "q": "O Technical Interviews é gratuito?",
@@ -1031,43 +1031,43 @@
     "magicLinkSent": "Verifique sua caixa de entrada! Enviamos um link de login.",
     "magicLinkError": "Não foi possível enviar o link mágico. Tente novamente.",
     "errorOAuth": "Este email já está associado a outro provedor.",
-    "errorGeneric": "Algo deu errado. Por favor, tente novamente.",
+    "errorGeneric": "Algo deu errado. Tente novamente.",
     "learner": "Aluno",
     "guestLearner": "Aluno convidado",
     "userMenuLabel": "Menu do usuário",
     "myProgress": "Meu Progresso",
     "allPrograms": "Todos os Programas",
     "userAvatar": "Avatar do usuário",
-    "email": "Email",
+    "email": "E-mail",
     "name": "Name",
     "confirmPassword": "Confirm Password",
     "confirmPasswordPlaceholder": "Re-enter your password",
-    "forgotPassword": "Forgot password?",
+    "forgotPassword": "Esqueceu a senha?",
     "forgotPasswordTitle": "Forgot Password",
     "forgotPasswordPrompt": "Enter your email and we'll send you a reset link.",
     "sendResetLink": "Send Reset Link",
     "resetLinkSent": "If an account exists with that email, we've sent a password reset link.",
-    "resetPassword": "Reset Password",
+    "resetPassword": "Redefinir senha",
     "resetPasswordTitle": "Reset Your Password",
     "resetPasswordPrompt": "Enter your new password below.",
     "newPassword": "New Password",
     "newPasswordPlaceholder": "Enter new password",
     "confirmNewPassword": "Confirm New Password",
     "confirmNewPasswordPlaceholder": "Re-enter new password",
-    "passwordResetSuccess": "Password reset successful! You can now sign in.",
+    "passwordResetSuccess": "Senha redefinida. Voce ja pode entrar.",
     "signUpTitle": "Create Account",
     "signUpPrompt": "Sign up to track your learning progress across devices",
-    "signUpButton": "Create Account",
+    "signUpButton": "Criar conta",
     "verifyEmailTitle": "Verify Your Email",
     "verifyEmailPrompt": "Enter the 6-digit code sent to",
-    "verifyCode": "Verify",
+    "verifyCode": "Verificar",
     "resendCode": "Resend Code",
-    "resendCooldown": "Resend in {seconds}s",
+    "resendCooldown": "Reenviar em {seconds}s",
     "codeSent": "A new code has been sent to your email.",
     "emailVerified": "Email verified! You can now sign in.",
     "orContinueWith": "or continue with",
     "passwordRequirements": "Password must contain at least 1 letter and 1 number",
-    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordsDoNotMatch": "As senhas nao coincidem",
     "nameMinLengthTwo": "Name must be at least 2 characters",
     "nameMaxLength": "Name must be less than 50 characters",
     "emailRequired": "Email is required",
@@ -1081,8 +1081,8 @@
     "verifying": "Verifying...",
     "resetting": "Resetting...",
     "sending": "Sending...",
-    "signingIn": "Signing in...",
-    "errorCredentials": "Invalid email or password. Have you verified your email?"
+    "signingIn": "Entrando...",
+    "errorCredentials": "E-mail ou senha invalidos. Voce verificou seu e-mail?"
   },
   "lessonTitles": {
     "agentic-workflows": "Fluxos de Trabalho Agênticos",
@@ -1719,7 +1719,7 @@
   },
   "error": {
     "title": "Algo deu errado",
-    "description": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+    "description": "Ocorreu um erro inesperado. Tente novamente.",
     "retry": "Tentar novamente"
   },
   "notFound": {
@@ -1792,73 +1792,73 @@
     "ctaSubtitle": "Experimente a primeira aula de qualquer academia gratuitamente, sem necessidade de conta."
   },
   "pricing": {
-    "pageTitle": "Preços",
-    "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
+    "pageTitle": "Precos",
+    "pageDescription": "Escolha acesso mensal, anual ou vitalicio a academias praticas de IA, projetos, labs e certificados.",
     "badge": "Invista na sua vantagem",
     "heading": "Um plano. Todas as academias.",
-    "subheading": "Experimente a primeira aula de qualquer academia gratuitamente e depois desbloqueie todas as demais aulas, projetos e certificados com o Pro.",
-    "faqTeaser": "Have questions about our plans?",
-    "faqLink": "Check our FAQ",
+    "subheading": "Experimente gratis a primeira aula de qualquer academia e desbloqueie todas as aulas restantes, projetos e certificados com Pro.",
+    "faqTeaser": "Tem duvidas sobre nossos planos?",
+    "faqLink": "Veja nossa FAQ",
     "free": {
       "title": "Explorador",
-      "f1": "Experimente a primeira aula de cada academia gratuitamente e depois desbloqueie o restante com o Pro.",
-      "f2": "A AI Educademy oferece uma prévia gratuita da primeira aula em cada academia. O Pro desbloqueia todas as demais aulas, trilhas, certificados e recursos premium com acesso mensal, anual ou vitalício.",
-      "f3": "Artigos e prévias de programas",
+      "f1": "Experimente gratis a primeira aula de cada academia e desbloqueie o restante com Pro.",
+      "f2": "AI Educademy oferece uma previa gratuita da primeira aula em cada academia. Pro desbloqueia todas as demais aulas, trilhas, certificados e recursos premium com acesso mensal, anual ou vitalicio.",
+      "f3": "Artigos e previas de programas",
       "f4": "Experimentos interativos do AI Lab",
       "f5": "Progresso salvo localmente",
-      "cta": "Começar grátis"
+      "cta": "Comecar gratis"
     },
     "monthly": {
-      "title": "Pro Monthly",
-      "period": "month",
-      "cta": "Start Pro Monthly"
+      "title": "Pro mensal",
+      "period": "mes",
+      "cta": "Iniciar Pro mensal"
     },
     "annual": {
-      "title": "Pro Annual",
-      "period": "year",
-      "cta": "Start Pro Annual",
-      "save": "Economize {percent}% em relação ao mensal"
+      "title": "Pro anual",
+      "period": "ano",
+      "cta": "Iniciar Pro anual",
+      "save": "Economize {percent}% em relacao ao mensal"
     },
     "lifetime": {
-      "title": "Lifetime",
-      "cta": "Get Lifetime Access",
-      "forever": "One payment, yours forever"
+      "title": "Vitalicio",
+      "cta": "Obter acesso vitalicio",
+      "forever": "Um pagamento, seu para sempre"
     },
     "pro": {
-      "f1": "Everything in Explorer",
-      "f2": "All programs & learning tracks",
-      "f3": "Career Ready interview prep track",
-      "f4": "AI Mock Interview lab",
-      "f5": "Completion certificates",
-      "f6": "Server-side progress sync across devices"
+      "f1": "Todas as academias e trilhas de aprendizado",
+      "f2": "Todos os programas e trilhas de aprendizado",
+      "f3": "Trilha de preparacao para entrevistas Career Ready",
+      "f4": "Lab de entrevista simulada com IA",
+      "f5": "Certificados de conclusao",
+      "f6": "Sincronizacao de progresso no servidor entre dispositivos"
     },
-    "promoCode": "Tem um código promocional?",
-    "promoCodeApplied": "Código aplicado!",
+    "promoCode": "Tem um codigo promocional?",
+    "promoCodeApplied": "Codigo aplicado!",
     "promoCodeApply": "Aplicar",
-    "promoCodeInvalid": "Código inválido",
-    "promoCodePlaceholder": "Insira o código",
+    "promoCodeInvalid": "Codigo invalido",
+    "promoCodePlaceholder": "Digite o codigo",
     "mostPopular": "Mais popular",
-    "redirecting": "Redirecionando…",
-    "checkoutError": "Não foi possível criar a sessão de pagamento. Tente novamente.",
+    "redirecting": "Redirecionando...",
+    "checkoutError": "Nao foi possivel criar a sessao de checkout. Tente novamente.",
     "genericError": "Algo deu errado. Tente novamente.",
     "comparePlans": "Comparar planos",
     "chooseAPlan": "Escolha um plano",
     "selected": "Selecionado",
     "selectThisPlan": "Selecionar este plano",
-    "alreadyPro": "Você já tem Pro. Faça a gestão da sua assinatura na sua conta."
+    "alreadyPro": "Voce ja tem Pro. Gerencie sua assinatura pela sua conta."
   },
   "paywall": {
-    "title": "Conteúdo Premium",
-    "isPartOf": "faz parte do plano premium",
-    "description": "Atualize para o Pro para desbloquear todos os programas, todas as trilhas, sincronização de progresso no servidor, certificados de conclusão e acesso prioritário ao chatbot de IA.",
+    "title": "Seu proximo nivel esta atras desta porta",
+    "isPartOf": "faz parte de",
+    "description": "Escolha um plano para desbloquear todas as academias, aulas, sincronizacao de progresso e certificados. Construa habilidades que se acumulam.",
     "features": {
       "allPrograms": "Todos os programas e trilhas",
-      "progressSync": "Sincronização de progresso",
+      "progressSync": "Sincronizacao de progresso",
       "certificates": "Certificados"
     },
-    "upgradeCta": "Atualizar para Pro",
-    "signInCta": "Faça login primeiro",
-    "guarantee": "Garantia de reembolso de 7 dias. Cancele a qualquer momento."
+    "upgradeCta": "Fazer upgrade para Pro",
+    "signInCta": "Entre primeiro",
+    "guarantee": "Garantia de reembolso de 7 dias. Cancele quando quiser."
   },
   "mockInterview": {
     "title": "Laboratório de Entrevista Simulada com IA",
@@ -2105,9 +2105,9 @@
     "subtitle": "Gratuito, código aberto, no seu idioma"
   },
   "howItWorks": {
-    "step1Desc": "Escolha entre 3 trilhas — Aprendizado de IA, Engenharia Prática ou Preparação Profissional. Cada trilha tem programas selecionados que levam você do zero à maestria.",
+    "step1Desc": "Escolha entre 3 trilhas - Aprendizado de IA, Engenharia Prática ou Preparação Profissional. Cada trilha tem programas selecionados que levam você do zero à maestria.",
     "step1Title": "Escolha Seu Caminho",
-    "step2Desc": "Lições interativas, experimentos práticos e código real. Nada de assistir vídeos passivamente — você constrói compreensão através da prática.",
+    "step2Desc": "Lições interativas, experimentos práticos e código real. Nada de assistir vídeos passivamente - você constrói compreensão através da prática.",
     "step2Title": "Aprenda Fazendo",
     "step3Desc": "Aplique suas habilidades no nosso Laboratório de IA com 7 experimentos. Construa chatbots, classificadores e agentes de IA que resolvem problemas reais.",
     "step3Title": "Construa Projetos Reais",
@@ -2122,7 +2122,7 @@
     "overallProgress": "Progresso Geral",
     "signInPrompt": "Faça login para acompanhar seu progresso e desbloquear sua jornada de aprendizado personalizada.",
     "startJourney": "Comece Sua Jornada",
-    "subtitle": "Navegue pelo seu caminho personalizado rumo ao domínio da IA — dos fundamentos à preparação profissional.",
+    "subtitle": "Navegue pelo seu caminho personalizado rumo ao domínio da IA - dos fundamentos à preparação profissional.",
     "title": "Sua Jornada de Aprendizado em IA",
     "trackAI": "Aprendizado de IA",
     "trackCareer": "Preparação Profissional",
@@ -2167,7 +2167,7 @@
     "errorRateLimit": "Muitas tentativas. Por favor, tente novamente em alguns minutos.",
     "freeForever": "100% Gratuito",
     "instantDownload": "Download Instantâneo",
-    "metaDescription": "Baixe o Kit Inicial de IA 2026 gratuito — seu guia completo para aprender IA, carreiras, ferramentas e preparação para entrevistas. Baixe agora!",
+    "metaDescription": "Baixe o Kit Inicial de IA 2026 gratuito - seu guia completo para aprender IA, carreiras, ferramentas e preparação para entrevistas. Baixe agora!",
     "metaTitle": "Download Grátis: O Kit Inicial de IA 2026 | AI Educademy",
     "namePlaceholder": "Seu nome",
     "pageCount": "Guia em PDF de 10 páginas",
@@ -2175,7 +2175,7 @@
     "socialProof": "Junte-se a {count}+ alunos que baixaram este guia",
     "submitButton": "Baixar PDF Grátis",
     "submitting": "Enviando...",
-    "subtitle": "Tudo o que você precisa para começar sua jornada em IA — roteiro de aprendizado, carreiras, ferramentas essenciais e preparação para entrevistas — em um guia lindamente projetado.",
+    "subtitle": "Tudo o que você precisa para começar sua jornada em IA - roteiro de aprendizado, carreiras, ferramentas essenciais e preparação para entrevistas - em um guia lindamente projetado.",
     "successDownload": "Baixar Agora",
     "successMessage": "Enviamos o Kit Inicial de IA para seu e-mail. Verifique sua caixa de entrada (e a pasta de spam) para o link de download.",
     "successTitle": "Verifique sua caixa de entrada! 🎉",
@@ -2183,8 +2183,8 @@
     "whatInside": {
       "careers": "Carreiras em IA e Guia Salarial para 2026",
       "concepts": "Os 10 Principais Conceitos de IA explicados de forma simples",
-      "interview": "Preparação para Entrevistas de IA — folha de referência rápida",
-      "roadmap": "Roteiro de Aprendizado de IA — de iniciante a pronto para o mercado",
+      "interview": "Preparação para Entrevistas de IA - folha de referência rápida",
+      "roadmap": "Roteiro de Aprendizado de IA - de iniciante a pronto para o mercado",
       "tools": "Ferramentas e Recursos Essenciais de IA selecionados por especialistas"
     },
     "whatInsideTitle": "O Que Está Incluído"
@@ -2326,12 +2326,12 @@
     "send": "Enviar mensagem"
   },
   "billing": {
-    "title": "Faturação e subscrição",
-    "description": "Atualize o seu método de pagamento, veja as faturas ou cancele a sua subscrição a qualquer momento.",
-    "manage": "Gerir faturação",
-    "opening": "A abrir…",
-    "noSubscription": "Não encontrámos uma subscrição ativa na sua conta.",
-    "error": "Ocorreu um erro ao abrir o portal de faturação. Tente novamente."
+    "title": "Faturamento e assinatura",
+    "description": "Atualize seu metodo de pagamento, veja faturas ou cancele sua assinatura quando quiser.",
+    "manage": "Gerenciar faturamento",
+    "opening": "Abrindo...",
+    "noSubscription": "Nao encontramos uma assinatura ativa na sua conta.",
+    "error": "Algo deu errado ao abrir o portal de faturamento. Tente novamente."
   },
   "unsubscribe": {
     "title": "Cancelar inscrição",

@@ -6,7 +6,7 @@
   "nav": {
     "home": "الرئيسية",
     "lessons": "الدروس",
-    "dashboard": "لوحة التقدم",
+    "dashboard": "لوحة التحكم",
     "about": "عن المنصة",
     "getStarted": "ابدأ الآن",
     "language": "اللغة",
@@ -24,7 +24,7 @@
     "readBlog": "اقرأ المدونة",
     "latestArticles": "أحدث المقالات في الذكاء الاصطناعي والتعليم والتكنولوجيا",
     "experimentsLoaded": "تم تحميل 7 تجارب",
-    "mission": "رسالتنا",
+    "mission": "المهمة",
     "missionDesc": "جعل تعليم الذكاء الاصطناعي متاحاً للجميع في كل مكان",
     "values": "قيمنا",
     "valuesDesc": "مفتوح المصدر، متعدد اللغات، وقائم على المجتمع",
@@ -41,7 +41,7 @@
     "journey": "الرحلة",
     "bookmarks": "المحفوظات",
     "faqDesc": "إجابات على الأسئلة الشائعة",
-    "contact": "اتصل بنا",
+    "contact": "تواصل",
     "contactDesc": "تواصل معنا",
     "pricing": "الأسعار",
     "goPro": "اشترك في Pro"
@@ -59,7 +59,7 @@
     "cost": "التكلفة",
     "openSource": "مفتوح المصدر",
     "statPrograms": "١٠ برامج",
-    "statLessons": "١٠٠+ درس",
+    "statLessons": "{count}+ درس",
     "statLanguages": "١٠ لغات"
   },
   "features": {
@@ -1027,7 +1027,7 @@
     "continueWithGithub": "المتابعة مع GitHub",
     "orUseEmail": "أو استخدم البريد الإلكتروني",
     "emailPlaceholder": "أدخل بريدك الإلكتروني",
-    "forgotPassword": "نسيت كلمة المرور؟",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
     "resetPassword": "إعادة تعيين كلمة المرور",
     "newPassword": "كلمة المرور الجديدة",
     "confirmPassword": "تأكيد كلمة المرور",
@@ -1037,14 +1037,14 @@
     "magicLinkSent": "تحقق من بريدك! أرسلنا لك رابط تسجيل الدخول.",
     "magicLinkError": "تعذر الإرسال. حاول مرة أخرى.",
     "errorOAuth": "هذا البريد مرتبط بمزود آخر.",
-    "errorGeneric": "حدث خطأ ما. يرجى المحاولة مجدداً.",
+    "errorGeneric": "حدث خطأ ما. حاول مرة أخرى.",
     "learner": "متعلّم",
     "guestLearner": "متعلّم ضيف",
     "userMenuLabel": "قائمة المستخدم",
     "myProgress": "تقدمي",
     "allPrograms": "كل البرامج",
     "userAvatar": "صورة المستخدم",
-    "email": "Email",
+    "email": "البريد الإلكتروني",
     "name": "Name",
     "confirmPasswordPlaceholder": "Re-enter your password",
     "forgotPasswordTitle": "Forgot Password",
@@ -1056,20 +1056,20 @@
     "newPasswordPlaceholder": "Enter new password",
     "confirmNewPassword": "Confirm New Password",
     "confirmNewPasswordPlaceholder": "Re-enter new password",
-    "passwordResetSuccess": "Password reset successful! You can now sign in.",
+    "passwordResetSuccess": "تمت إعادة تعيين كلمة المرور. يمكنك تسجيل الدخول الآن.",
     "signUpTitle": "Create Account",
     "signUpPrompt": "Sign up to track your learning progress across devices",
-    "signUpButton": "Create Account",
+    "signUpButton": "إنشاء حساب",
     "verifyEmailTitle": "Verify Your Email",
     "verifyEmailPrompt": "Enter the 6-digit code sent to",
-    "verifyCode": "Verify",
+    "verifyCode": "تحقق",
     "resendCode": "Resend Code",
-    "resendCooldown": "Resend in {seconds}s",
+    "resendCooldown": "إعادة الإرسال خلال {seconds} ث",
     "codeSent": "A new code has been sent to your email.",
     "emailVerified": "Email verified! You can now sign in.",
     "orContinueWith": "or continue with",
     "passwordRequirements": "Password must contain at least 1 letter and 1 number",
-    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
     "nameMinLengthTwo": "Name must be at least 2 characters",
     "nameMaxLength": "Name must be less than 50 characters",
     "emailAlreadyRegistered": "Email already registered",
@@ -1081,8 +1081,8 @@
     "verifying": "Verifying...",
     "resetting": "Resetting...",
     "sending": "Sending...",
-    "signingIn": "Signing in...",
-    "errorCredentials": "Invalid email or password. Have you verified your email?"
+    "signingIn": "جارٍ تسجيل الدخول...",
+    "errorCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة. هل أكدت بريدك؟"
   },
   "lessonTitles": {
     "agentic-workflows": "سير العمل الوكيلية",
@@ -1488,7 +1488,7 @@
     "neuralSection": {
       "title": "مصوّر الشبكة العصبية",
       "description": "شاهد البيانات تتدفق عبر شبكة عصبية وتتعلم التصنيف.",
-      "input": "الإدخال",
+      "input": "الإدخال {num}",
       "forwardPass": "التمرير الأمامي",
       "explanation": "شاهد كيف تتدفق البيانات عبر الشبكة",
       "layerInput": "طبقة الإدخال",
@@ -1513,7 +1513,7 @@
       "placeholder": "اكتب أي شيء هنا...",
       "tokens": "رموز",
       "characters": "أحرف",
-      "wordsEquivalent": "ما يعادل {words} كلمة",
+      "wordsEquivalent": "ما يعادل نحو {count} كلمة",
       "explanation": "كل مستطيل ملوّن = رمز واحد. قد يكون كلمة أو جزءاً أو علامة ترقيم"
     },
     "hub": {
@@ -1531,12 +1531,12 @@
       "difficultyEasy": "سهل",
       "difficultyMedium": "متوسط",
       "difficultyHard": "صعب",
-      "estimatedTime": "الوقت المقدر",
+      "estimatedTime": "{time} دقيقة",
       "playNow": "العب الآن",
-      "personalBest": "أفضل نتيجة شخصية",
+      "personalBest": "الأفضل: {score}",
       "noGamesFound": "لا ألعاب",
       "backToHub": "العودة للمختبر",
-      "roundOf": "جولة من",
+      "roundOf": "الجولة {current} من {total}",
       "highScore": "أعلى نتيجة",
       "closeGame": "إغلاق اللعبة"
     },
@@ -1544,7 +1544,7 @@
       "neuralTitle": "ملعب الشبكة العصبية",
       "brush": "الفرشاة:",
       "blue": "أزرق",
-      "accuracy": "الدقة: {pct}٪",
+      "accuracy": "الدقة:",
       "red": "أحمر",
       "hidden": "مخفي",
       "clickToPlace": "انقر للوضع",
@@ -1619,7 +1619,7 @@
       "feedbackGood": "جيد! نتيجة ممتازة.",
       "feedbackGettingThere": "في الطريق الصحيح.",
       "feedbackVague": "توجيه غامض.",
-      "avgScoreLabel": "متوسط النتيجة",
+      "avgScoreLabel": "متوسط نتيجة المطالبات عبر {count} تحديات",
       "vagueResponse": "التوجيه غامض جداً.",
       "placeBet": "راهن",
       "startRaceBtn": "ابدأ السباق",
@@ -1646,8 +1646,8 @@
       "arrowLabelPlaceholder": "تسمية السهم",
       "helpText": "انقر للإضافة · اسحب للتحريك · انقر مرتين للحذف",
       "defaultLabel": "المكوّن",
-      "shapesArrows": "الأشكال والأسهم",
-      "challengeLabel": "التحدي"
+      "shapesArrows": "{shapes} أشكال · {arrows} أسهم",
+      "challengeLabel": "التحدي {current}/{total}"
     },
     "categoryNlp": "معالجة اللغة الطبيعية",
     "categoryLogic": "المنطق",
@@ -1719,7 +1719,7 @@
   },
   "error": {
     "title": "حدث خطأ ما",
-    "description": "وقع خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+    "description": "حدث خطأ غير متوقع. حاول مرة أخرى.",
     "retry": "حاول مرة أخرى"
   },
   "notFound": {
@@ -1793,72 +1793,72 @@
   },
   "pricing": {
     "pageTitle": "الأسعار",
-    "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
-    "badge": "استثمر في تميّزك",
+    "pageDescription": "اختر وصولًا شهريًا أو سنويًا أو مدى الحياة إلى أكاديميات AI عملية ومشاريع ومختبرات وشهادات.",
+    "badge": "استثمر في ميزتك",
     "heading": "خطة واحدة. كل الأكاديميات.",
-    "subheading": "جرّب الدرس الأول من أي أكاديمية مجاناً، ثم افتح كل الدروس والمشاريع والشهادات المتبقية مع Pro.",
-    "faqTeaser": "Have questions about our plans?",
-    "faqLink": "Check our FAQ",
+    "subheading": "جرّب أول درس في أي أكاديمية مجانًا، ثم افتح كل درس ومشروع وشهادة متبقية مع Pro.",
+    "faqTeaser": "هل لديك أسئلة عن خططنا؟",
+    "faqLink": "راجع الأسئلة الشائعة",
     "free": {
-      "title": "المستكشف",
-      "f1": "جرّب الدرس الأول من كل أكاديمية مجاناً، ثم افتح الباقي مع Pro.",
-      "f2": "يمنحك AI Educademy معاينة مجانية للدرس الأول في كل أكاديمية. يفتح Pro كل الدروس والمسارات والشهادات والميزات المميزة المتبقية، عبر اشتراك شهري أو سنوي أو مدى الحياة.",
-      "f3": "مقالات ومعاينات للبرامج",
-      "f4": "تجارب مختبر الذكاء الاصطناعي التفاعلية",
-      "f5": "يُحفظ التقدم محلياً",
-      "cta": "ابدأ مجاناً"
+      "title": "Explorer",
+      "f1": "جرّب أول درس في كل أكاديمية مجانًا، ثم افتح الباقي مع Pro.",
+      "f2": "تمنحك AI Educademy معاينة مجانية لأول درس في كل أكاديمية. يفتح Pro كل الدروس والمسارات والشهادات والميزات المميزة المتبقية من خلال وصول شهري أو سنوي أو مدى الحياة.",
+      "f3": "مقالات ومعاينات البرامج",
+      "f4": "تجارب AI Lab التفاعلية",
+      "f5": "يُحفظ التقدم محليًا",
+      "cta": "ابدأ مجانًا"
     },
     "monthly": {
-      "title": "Pro Monthly",
-      "period": "month",
-      "cta": "Start Pro Monthly"
+      "title": "Pro الشهري",
+      "period": "شهر",
+      "cta": "ابدأ Pro الشهري"
     },
     "annual": {
-      "title": "Pro Annual",
-      "period": "year",
-      "cta": "Start Pro Annual",
-      "save": "وفّر {percent}% مقارنة بالاشتراك الشهري"
+      "title": "Pro السنوي",
+      "period": "سنة",
+      "cta": "ابدأ Pro السنوي",
+      "save": "وفّر {percent}% مقارنة بالشهري"
     },
     "lifetime": {
-      "title": "Lifetime",
-      "cta": "Get Lifetime Access",
-      "forever": "One payment, yours forever"
+      "title": "مدى الحياة",
+      "cta": "احصل على وصول مدى الحياة",
+      "forever": "دفعة واحدة، لك إلى الأبد"
     },
     "pro": {
-      "f1": "Everything in Explorer",
-      "f2": "All programs & learning tracks",
-      "f3": "Career Ready interview prep track",
-      "f4": "AI Mock Interview lab",
-      "f5": "Completion certificates",
-      "f6": "Server-side progress sync across devices"
+      "f1": "كل الأكاديميات ومسارات التعلم",
+      "f2": "كل البرامج ومسارات التعلم",
+      "f3": "مسار استعداد المقابلات Career Ready",
+      "f4": "مختبر AI Mock Interview",
+      "f5": "شهادات إتمام",
+      "f6": "مزامنة التقدم من الخادم عبر الأجهزة"
     },
-    "promoCode": "لديك رمز ترويجي؟",
+    "promoCode": "هل لديك رمز ترويجي؟",
     "promoCodePlaceholder": "أدخل الرمز",
     "promoCodeApply": "تطبيق",
     "promoCodeApplied": "تم تطبيق الرمز!",
     "promoCodeInvalid": "رمز غير صالح",
     "mostPopular": "الأكثر شيوعًا",
-    "redirecting": "جارٍ التحويل…",
-    "checkoutError": "تعذّر إنشاء جلسة الدفع. يرجى المحاولة مرة أخرى.",
-    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "redirecting": "جارٍ التحويل...",
+    "checkoutError": "تعذر إنشاء جلسة الدفع. حاول مرة أخرى.",
+    "genericError": "حدث خطأ ما. حاول مرة أخرى.",
     "comparePlans": "قارن الخطط",
     "chooseAPlan": "اختر خطة",
-    "selected": "محددة",
+    "selected": "تم الاختيار",
     "selectThisPlan": "اختر هذه الخطة",
     "alreadyPro": "لديك Pro بالفعل. يمكنك إدارة اشتراكك من حسابك."
   },
   "paywall": {
-    "title": "محتوى مميز",
-    "isPartOf": "هو جزء من الباقة المميزة",
-    "description": "قم بالترقية إلى Pro لفتح جميع البرامج والمسارات ومزامنة التقدم عبر الأجهزة وشهادات الإتمام والوصول ذي الأولوية إلى روبوت الدردشة بالذكاء الاصطناعي.",
+    "title": "مستواك التالي خلف هذا الباب",
+    "isPartOf": "جزء من",
+    "description": "اختر خطة لفتح كل أكاديمية وكل درس ومزامنة التقدم وشهادات الإتمام. ابنِ مهارات تتراكم قيمتها.",
     "features": {
-      "allPrograms": "جميع البرامج والمسارات",
+      "allPrograms": "كل البرامج والمسارات",
       "progressSync": "مزامنة التقدم",
       "certificates": "الشهادات"
     },
     "upgradeCta": "الترقية إلى Pro",
-    "signInCta": "سجّل الدخول أولاً",
-    "guarantee": "ضمان استرداد الأموال خلال 7 أيام. يمكنك الإلغاء في أي وقت."
+    "signInCta": "سجّل الدخول أولًا",
+    "guarantee": "ضمان استرداد خلال 7 أيام. ألغِ في أي وقت."
   },
   "mockInterview": {
     "title": "مختبر المقابلة التجريبية بالذكاء الاصطناعي",
@@ -2327,11 +2327,11 @@
   },
   "billing": {
     "title": "الفوترة والاشتراك",
-    "description": "حدّث طريقة الدفع، أو اطّلع على الفواتير، أو ألغِ اشتراكك في أي وقت.",
+    "description": "حدّث طريقة الدفع، اعرض الفواتير أو ألغِ اشتراكك في أي وقت.",
     "manage": "إدارة الفوترة",
-    "opening": "جارٍ الفتح…",
-    "noSubscription": "لم نعثر على اشتراك نشط في حسابك.",
-    "error": "حدث خطأ أثناء فتح بوابة الفوترة. يرجى المحاولة مرة أخرى."
+    "opening": "جارٍ الفتح...",
+    "noSubscription": "لم نجد اشتراكًا نشطًا في حسابك.",
+    "error": "حدث خطأ أثناء فتح بوابة الفوترة. حاول مرة أخرى."
   },
   "unsubscribe": {
     "title": "إلغاء الاشتراك",

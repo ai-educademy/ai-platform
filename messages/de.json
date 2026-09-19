@@ -12,7 +12,7 @@
     "language": "Sprache",
     "programs": "Programme",
     "blog": "Blog",
-    "lab": "Labor",
+    "lab": "Lab",
     "search": "Suchen",
     "logIn": "Anmelden",
     "signUp": "Registrieren",
@@ -50,7 +50,7 @@
     "badge": "Open Source • Mehrsprachig",
     "title": "KI-Lernen,",
     "titleHighlight": "Vereinfacht.",
-    "subtitle": "Interaktive Lektionen, die dich vom neugierigen Anfänger zum selbstbewussten Gestalter führen. Starte bei null – geh so weit du willst.",
+    "subtitle": "Interaktive Lektionen, die dich vom neugierigen Anfänger zum selbstbewussten Gestalter führen. Starte bei null - geh so weit du willst.",
     "cta": "Starte deine KI-Reise",
     "ctaSecondary": "Labor entdecken",
     "students": "Lernende",
@@ -59,7 +59,7 @@
     "cost": "Kosten",
     "openSource": "Open Source",
     "statPrograms": "10 Programme",
-    "statLessons": "100+ Lektionen",
+    "statLessons": "{count}+ Lektionen",
     "statLanguages": "10 Sprachen"
   },
   "features": {
@@ -97,9 +97,9 @@
     "missionText": "KI-Bildung für jeden Lernenden, unabhängig von Sprache, Hintergrund oder Erfahrung.",
     "story": "Der Kopf hinter der Idee",
     "storyText1": "Ich bin Ramesh Reddy Adutla. der Gründer, Designer und einzige Ingenieur hinter AI Educademy. Mit 15 Jahren Erfahrung beim Aufbau groß angelegter verteilter Systeme bei JP Morgan, Sky und Marks & Spencer in Asien und Europa habe ich meine Karriere an der Schnittstelle von Technologie und realem Impact verbracht.",
-    "storyText2": "KI wird jede Branche verändern. Doch die beste KI-Bildung bleibt hinter teuren Institutionen in einer Handvoll Länder verschlossen. Diese Lücke ist nicht nur ungerecht – sie ist eine enorme Verschwendung von Potenzial.",
+    "storyText2": "KI wird jede Branche verändern. Doch die beste KI-Bildung bleibt hinter teuren Institutionen in einer Handvoll Länder verschlossen. Diese Lücke ist nicht nur ungerecht - sie ist eine enorme Verschwendung von Potenzial.",
     "storyText3": "Ich habe AI Educademy konzipiert und vollständig von Grund auf aufgebaut. die Architektur, den Lehrplan, die mehrsprachige Infrastruktur, die Open-Source-Tools, jede Zeile Code. Was mit Abenden und Wochenenden begann, ist zu einer vollständigen kostenlosen Plattform für Lernende in 11 Sprachen auf 6 Kontinenten geworden.",
-    "storyText4": "Die Arbeit in mehreren Ländern, in denen Englisch nicht die Muttersprache ist, hat eines klar gemacht: Sprache sollte niemals ein Hindernis beim Lernen sein. Ich spreche Englisch, Französisch und Telugu – daher war der Aufbau einer mehrsprachigen Plattform der naheliegende Schritt.",
+    "storyText4": "Die Arbeit in mehreren Ländern, in denen Englisch nicht die Muttersprache ist, hat eines klar gemacht: Sprache sollte niemals ein Hindernis beim Lernen sein. Ich spreche Englisch, Französisch und Telugu - daher war der Aufbau einer mehrsprachigen Plattform der naheliegende Schritt.",
     "values": "Unsere Werte",
     "value1": {
       "title": "Zugänglich",
@@ -137,7 +137,7 @@
     "pageDescription": "AI Educademy ist eine Open-Source-Plattform für KI-Bildung, die für alle entwickelt wurde. Erfahre mehr über unsere Mission, KI-Bildung weltweit zugänglich zu machen.",
     "pageSubtitle": "Quelloffene KI-Bildung für jeden Lernenden.",
     "openSourceTitle": "Open Source",
-    "openSourceDesc": "Jede Lektion, jede Zeile Code – kostenlos und Open Source. Forke es, übersetze es, mach es zu deinem.",
+    "openSourceDesc": "Jede Lektion, jede Zeile Code - kostenlos und Open Source. Forke es, übersetze es, mach es zu deinem.",
     "viewOnGithub": "Auf GitHub ansehen",
     "buyCoffee": "Kauf mir einen Kaffee"
   },
@@ -171,7 +171,7 @@
     "breadcrumbLessons": "Lektionen",
     "trackComplete": "Lernpfad abgeschlossen!",
     "trackCompleteDesc": "Du hast alle Lektionen abgeschlossen in",
-    "trackCompleteDismiss": "Großartig – weiter so!",
+    "trackCompleteDismiss": "Großartig - weiter so!",
     "lessonOf": "Lektion {current} von {total}",
     "completedOf": "{completed} von {total} abgeschlossen",
     "allPrograms": "Alle Programme",
@@ -179,7 +179,7 @@
     "trackCraft": "Code & Algorithmen",
     "checkAnswer": "Antwort prüfen",
     "quizCorrect": "Richtig! Gut gemacht!",
-    "quizIncorrect": "Nicht ganz – aber so lernt man!",
+    "quizIncorrect": "Nicht ganz - aber so lernt man!",
     "tryAgain": "Nochmal versuchen",
     "quickCheck": "Kurzer Check",
     "animationError": "Animation konnte nicht geladen werden",
@@ -231,7 +231,7 @@
         "title": "KI-Grundlagen",
         "desc": "Von null zum KI-Experten, naturinspirierter Aufbau",
         "tagline": "Samen → Keimlinge → Äste → Baumkrone → Wald",
-        "brand": "Verstehe, wie Maschinen denken, lernen und erschaffen – von deinem ersten ‚Was ist KI?' bis zum Aufbau produktionsreifer Systeme."
+        "brand": "Verstehe, wie Maschinen denken, lernen und erschaffen - von deinem ersten ‚Was ist KI?' bis zum Aufbau produktionsreifer Systeme."
       },
       "craft-engineering": {
         "title": "KI-Meisterschaft",
@@ -619,7 +619,7 @@
         },
         {
           "q": "Hilft Behavioral Mastery bei Führungsfragen?",
-          "a": "Auf jeden Fall! Das Programm behandelt Führungsgeschichten, Konfliktlösung, Teamwork-Erzählungen und kulturelle Passung – alles häufige Themen in Verhaltensrunden."
+          "a": "Auf jeden Fall! Das Programm behandelt Führungsgeschichten, Konfliktlösung, Teamwork-Erzählungen und kulturelle Passung - alles häufige Themen in Verhaltensrunden."
         },
         {
           "q": "Ist Behavioral Mastery kostenlos?",
@@ -627,13 +627,13 @@
         },
         {
           "q": "Brauche ich echte Projekterfahrung?",
-          "a": "Ja, du brauchst echte Erfahrungen, aus denen du schöpfen kannst. Das Programm lehrt dich, wie du deine Erfahrungen identifizierst, strukturierst und überzeugend präsentierst – aber das Rohmaterial muss aus deiner Karriere stammen."
+          "a": "Ja, du brauchst echte Erfahrungen, aus denen du schöpfen kannst. Das Programm lehrt dich, wie du deine Erfahrungen identifizierst, strukturierst und überzeugend präsentierst - aber das Rohmaterial muss aus deiner Karriere stammen."
         }
       ],
       "ai-branches": [
         {
           "q": "Was unterscheidet AI Branches von früheren Programmen?",
-          "a": "AI Branches konzentriert sich auf reale Anwendungen. Während Seeds und Sprouts Grundlagenwissen aufbauen, zeigt dir Branches KI in Aktion in den Bereichen Gesundheitswesen, Finanzen, kreative Künste und mehr – und du beginnst, einfache Projekte zu bauen."
+          "a": "AI Branches konzentriert sich auf reale Anwendungen. Während Seeds und Sprouts Grundlagenwissen aufbauen, zeigt dir Branches KI in Aktion in den Bereichen Gesundheitswesen, Finanzen, kreative Künste und mehr - und du beginnst, einfache Projekte zu bauen."
         },
         {
           "q": "Brauche ich Programmiererfahrung für AI Branches?",
@@ -681,7 +681,7 @@
         },
         {
           "q": "Welche Muster behandelt AI Chisel?",
-          "a": "AI Chisel behandelt Two Pointers, Sliding Window, BFS/DFS-Graphentraversierung, Baumtraversierungen, Stacks, Queues und monotone Muster – alle verknüpft mit realen KI- und ML-Anwendungen."
+          "a": "AI Chisel behandelt Two Pointers, Sliding Window, BFS/DFS-Graphentraversierung, Baumtraversierungen, Stacks, Queues und monotone Muster - alle verknüpft mit realen KI- und ML-Anwendungen."
         },
         {
           "q": "Ist AI Chisel kostenlos?",
@@ -699,7 +699,7 @@
       "ai-craft": [
         {
           "q": "Worum geht es bei AI Craft?",
-          "a": "AI Craft lehrt Systemdesign – wie man große verteilte Systeme architektiert. Du entwirfst Empfehlungssysteme, Suchautovervollständigung, Rate Limiter und andere Systeme, die moderne KI-Produkte antreiben."
+          "a": "AI Craft lehrt Systemdesign - wie man große verteilte Systeme architektiert. Du entwirfst Empfehlungssysteme, Suchautovervollständigung, Rate Limiter und andere Systeme, die moderne KI-Produkte antreiben."
         },
         {
           "q": "Brauche ich Programmiererfahrung für AI Craft?",
@@ -747,7 +747,7 @@
         },
         {
           "q": "Muss ich für Interview Launchpad programmieren können?",
-          "a": "Programmierkenntnisse sind nicht erforderlich. Interview Launchpad konzentriert sich auf Vorbereitungsstrategie, Unternehmensrecherche und Einstellung – Fähigkeiten, die unabhängig von deinem technischen Niveau gelten."
+          "a": "Programmierkenntnisse sind nicht erforderlich. Interview Launchpad konzentriert sich auf Vorbereitungsstrategie, Unternehmensrecherche und Einstellung - Fähigkeiten, die unabhängig von deinem technischen Niveau gelten."
         },
         {
           "q": "Werde ich lernen, wie man Unternehmen recherchiert?",
@@ -787,7 +787,7 @@
       "ai-ml-interview": [
         {
           "q": "Brauche ich ML-Erfahrung für KI- & ML-Interviews?",
-          "a": "Du solltest grundlegendes ML-Wissen mitbringen – Verständnis von überwachtem vs. unüberwachtem Lernen, was ein Modell ist und grundlegende Statistik. Das Programm baut Interview-Fähigkeiten auf dieser Grundlage auf."
+          "a": "Du solltest grundlegendes ML-Wissen mitbringen - Verständnis von überwachtem vs. unüberwachtem Lernen, was ein Modell ist und grundlegende Statistik. Das Programm baut Interview-Fähigkeiten auf dieser Grundlage auf."
         },
         {
           "q": "Was macht ML-Interviews anders als normale Tech-Interviews?",
@@ -817,7 +817,7 @@
         },
         {
           "q": "Behandelt Offer & Beyond Aktienoptionen und Benefits?",
-          "a": "Auf jeden Fall. Du lernst, Aktienoptionen, RSUs, Signing-Boni, Leistungspakete und die Gesamtvergütung zu bewerten – nicht nur das Grundgehalt."
+          "a": "Auf jeden Fall. Du lernst, Aktienoptionen, RSUs, Signing-Boni, Leistungspakete und die Gesamtvergütung zu bewerten - nicht nur das Grundgehalt."
         },
         {
           "q": "Ist Offer & Beyond kostenlos?",
@@ -825,7 +825,7 @@
         },
         {
           "q": "Kann Offer & Beyond mir helfen, mehrere Angebote zu vergleichen?",
-          "a": "Ja! Das Programm enthält ein Angebotsvergleichs-Framework, das dir hilft, mehrere Angebote objektiv zu bewerten – nach Vergütung, Wachstumspotenzial, Work-Life-Balance und Karriereentwicklung."
+          "a": "Ja! Das Programm enthält ein Angebotsvergleichs-Framework, das dir hilft, mehrere Angebote objektiv zu bewerten - nach Vergütung, Wachstumspotenzial, Work-Life-Balance und Karriereentwicklung."
         }
       ],
       "ai-polish": [
@@ -847,7 +847,7 @@
         },
         {
           "q": "Warum sind Verhaltensinterviews für KI-Rollen wichtig?",
-          "a": "KI-Rollen erfordern zunehmend starke Kommunikationsfähigkeiten – Modellergebnisse Stakeholdern erklären, ethische Dilemmas navigieren und funktionsübergreifende Teams führen. AI Polish bereitet dich genau auf diese Szenarien vor."
+          "a": "KI-Rollen erfordern zunehmend starke Kommunikationsfähigkeiten - Modellergebnisse Stakeholdern erklären, ethische Dilemmas navigieren und funktionsübergreifende Teams führen. AI Polish bereitet dich genau auf diese Szenarien vor."
         }
       ],
       "ai-seeds": [
@@ -857,7 +857,7 @@
         },
         {
           "q": "Muss ich für AI Seeds programmieren können?",
-          "a": "Überhaupt nicht. AI Seeds konzentriert sich auf den Aufbau eines konzeptionellen Verständnisses von Künstlicher Intelligenz. Du wirst keine einzige Zeile Code schreiben. Das Ziel ist, dir zu helfen zu verstehen, was KI ist, wie sie funktioniert und warum sie wichtig ist – alles in einfacher Sprache."
+          "a": "Überhaupt nicht. AI Seeds konzentriert sich auf den Aufbau eines konzeptionellen Verständnisses von Künstlicher Intelligenz. Du wirst keine einzige Zeile Code schreiben. Das Ziel ist, dir zu helfen zu verstehen, was KI ist, wie sie funktioniert und warum sie wichtig ist - alles in einfacher Sprache."
         },
         {
           "q": "Bekomme ich nach Abschluss von AI Seeds ein Zertifikat?",
@@ -869,7 +869,7 @@
         },
         {
           "q": "Welche Themen behandelt AI Seeds?",
-          "a": "AI Seeds behandelt die Grundlagen: Was Künstliche Intelligenz wirklich ist, wie Maschinen aus Daten lernen, den Unterschied zwischen KI und traditioneller Software – und du trainierst sogar ein einfaches KI-Modell direkt in deinem Browser. Es ist der perfekte Startpunkt für deine KI-Lernreise."
+          "a": "AI Seeds behandelt die Grundlagen: Was Künstliche Intelligenz wirklich ist, wie Maschinen aus Daten lernen, den Unterschied zwischen KI und traditioneller Software - und du trainierst sogar ein einfaches KI-Modell direkt in deinem Browser. Es ist der perfekte Startpunkt für deine KI-Lernreise."
         }
       ],
       "ai-sketch": [
@@ -897,7 +897,7 @@
       "ai-sprouts": [
         {
           "q": "Ist AI Sprouts für Anfänger geeignet?",
-          "a": "AI Sprouts richtet sich an Lernende mit grundlegendem KI-Bewusstsein – idealerweise nach Abschluss von AI Seeds. Wenn du bereits weißt, was KI auf hoher Ebene ist, bist du bereit, die Bausteine wie Datentypen, Algorithmen und Ethik zu erkunden."
+          "a": "AI Sprouts richtet sich an Lernende mit grundlegendem KI-Bewusstsein - idealerweise nach Abschluss von AI Seeds. Wenn du bereits weißt, was KI auf hoher Ebene ist, bist du bereit, die Bausteine wie Datentypen, Algorithmen und Ethik zu erkunden."
         },
         {
           "q": "Brauche ich Programmierkenntnisse für AI Sprouts?",
@@ -927,7 +927,7 @@
         },
         {
           "q": "Welche Coding-Muster werde ich lernen?",
-          "a": "Du meisterst die häufigsten Coding-Interview-Muster: Arrays, Hash Maps, Two Pointers, Sliding Window, Bäume, Graphen, dynamische Programmierung und mehr – alles mit klaren Erklärungen und Übungsaufgaben."
+          "a": "Du meisterst die häufigsten Coding-Interview-Muster: Arrays, Hash Maps, Two Pointers, Sliding Window, Bäume, Graphen, dynamische Programmierung und mehr - alles mit klaren Erklärungen und Übungsaufgaben."
         },
         {
           "q": "Ist Technical Interviews kostenlos?",
@@ -1038,36 +1038,36 @@
     "myProgress": "Mein Fortschritt",
     "allPrograms": "Alle Programme",
     "userAvatar": "Benutzeravatar",
-    "email": "Email",
+    "email": "E-Mail",
     "name": "Name",
     "confirmPassword": "Confirm Password",
     "confirmPasswordPlaceholder": "Re-enter your password",
-    "forgotPassword": "Forgot password?",
+    "forgotPassword": "Passwort vergessen?",
     "forgotPasswordTitle": "Forgot Password",
     "forgotPasswordPrompt": "Enter your email and we'll send you a reset link.",
     "sendResetLink": "Send Reset Link",
     "resetLinkSent": "If an account exists with that email, we've sent a password reset link.",
-    "resetPassword": "Reset Password",
+    "resetPassword": "Passwort zuruecksetzen",
     "resetPasswordTitle": "Reset Your Password",
     "resetPasswordPrompt": "Enter your new password below.",
     "newPassword": "New Password",
     "newPasswordPlaceholder": "Enter new password",
     "confirmNewPassword": "Confirm New Password",
     "confirmNewPasswordPlaceholder": "Re-enter new password",
-    "passwordResetSuccess": "Password reset successful! You can now sign in.",
+    "passwordResetSuccess": "Passwort zurueckgesetzt. Du kannst dich jetzt anmelden.",
     "signUpTitle": "Create Account",
     "signUpPrompt": "Sign up to track your learning progress across devices",
-    "signUpButton": "Create Account",
+    "signUpButton": "Konto erstellen",
     "verifyEmailTitle": "Verify Your Email",
     "verifyEmailPrompt": "Enter the 6-digit code sent to",
-    "verifyCode": "Verify",
+    "verifyCode": "Bestaetigen",
     "resendCode": "Resend Code",
-    "resendCooldown": "Resend in {seconds}s",
+    "resendCooldown": "Erneut senden in {seconds}s",
     "codeSent": "A new code has been sent to your email.",
     "emailVerified": "Email verified! You can now sign in.",
     "orContinueWith": "or continue with",
     "passwordRequirements": "Password must contain at least 1 letter and 1 number",
-    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordsDoNotMatch": "Passwoerter stimmen nicht ueberein",
     "nameMinLengthTwo": "Name must be at least 2 characters",
     "nameMaxLength": "Name must be less than 50 characters",
     "emailRequired": "Email is required",
@@ -1081,8 +1081,8 @@
     "verifying": "Verifying...",
     "resetting": "Resetting...",
     "sending": "Sending...",
-    "signingIn": "Signing in...",
-    "errorCredentials": "Invalid email or password. Have you verified your email?"
+    "signingIn": "Anmeldung...",
+    "errorCredentials": "Ungueltige E-Mail oder falsches Passwort. Hast du deine E-Mail bestaetigt?"
   },
   "lessonTitles": {
     "agentic-workflows": "Agentic Workflows",
@@ -1273,7 +1273,7 @@
   "community": {
     "updates": "Auf dem Laufenden bleiben",
     "openSource": "Open Source",
-    "openSourceDesc": "Offen entwickelt – Code ansehen, beitragen oder forken",
+    "openSourceDesc": "Offen entwickelt - Code ansehen, beitragen oder forken",
     "shareText": "Kostenlose KI-Bildung für alle",
     "headline": "Werde Teil der Bewegung",
     "subtitle": "Erhalte die neuesten Lektionen, Tipps und Updates direkt in dein Postfach. Gib uns einen Stern auf GitHub, um kostenlose KI-Bildung für alle zu unterstützen.",
@@ -1283,11 +1283,11 @@
   },
   "lab": {
     "title": "KI-Labor",
-    "subtitle": "Experimentiere mit echten KI-Konzepten direkt in deinem Browser. Keine Installation, kein Programmieren – einfach spielen und lernen!",
+    "subtitle": "Experimentiere mit echten KI-Konzepten direkt in deinem Browser. Keine Installation, kein Programmieren - einfach spielen und lernen!",
     "badge": "Interaktiv • Spaßig • Lehrreich",
     "pageTitle": "KI-Labor",
     "pageDescription": "Experimentiere mit KI-Konzepten. Analysiere Stimmungen, visualisiere neuronale Netze, erkunde Sortieralgorithmen und verstehe Tokenisierung.",
-    "footer": "Alle Demos laufen vollständig in deinem Browser – es werden keine Daten an einen Server gesendet.",
+    "footer": "Alle Demos laufen vollständig in deinem Browser - es werden keine Daten an einen Server gesendet.",
     "tabs": {
       "games": {
         "label": "Minispiele",
@@ -1476,7 +1476,7 @@
     },
     "sentimentSection": {
       "title": "Stimmungsanalyse",
-      "description": "Analysiere den emotionalen Ton eines Textes mithilfe schlüsselwortbasierter NLP – läuft vollständig in deinem Browser.",
+      "description": "Analysiere den emotionalen Ton eines Textes mithilfe schlüsselwortbasierter NLP - läuft vollständig in deinem Browser.",
       "placeholder": "Tippe oder füge einen Text ein, um seine Stimmung zu analysieren...",
       "analyse": "Stimmung analysieren",
       "analysing": "Analysiere...",
@@ -1509,16 +1509,16 @@
     },
     "tokenizerSection": {
       "title": "KI-Tokeniser",
-      "description": "Sieh, wie LLMs Text in Token aufteilen – die grundlegenden Einheiten, die KI verarbeitet.",
+      "description": "Sieh, wie LLMs Text in Token aufteilen - die grundlegenden Einheiten, die KI verarbeitet.",
       "placeholder": "Tippe Text ein, um zu sehen, wie KI ihn in Token zerlegt...",
       "tokens": "Token",
       "characters": "Zeichen",
       "wordsEquivalent": "~{count} Wörter Entsprechung",
-      "explanation": "KI liest Text nicht wie Menschen. Sie zerlegt Text in Token – Teilwort-Stücke, die einzeln verarbeitet werden. Längere Wörter werden in kleinere Teile aufgeteilt."
+      "explanation": "KI liest Text nicht wie Menschen. Sie zerlegt Text in Token - Teilwort-Stücke, die einzeln verarbeitet werden. Längere Wörter werden in kleinere Teile aufgeteilt."
     },
     "hub": {
       "title": "KI-Labor",
-      "subtitle": "Interaktive KI-Spiele und -Werkzeuge – spielen, experimentieren und durch Machen lernen.",
+      "subtitle": "Interaktive KI-Spiele und -Werkzeuge - spielen, experimentieren und durch Machen lernen.",
       "badge": "Interaktiv • Spaßig • Lehrreich",
       "gamesAvailable": "{count} Spiele verfügbar",
       "searchPlaceholder": "Spiele suchen...",
@@ -1601,7 +1601,7 @@
       "seeResults": "ERGEBNISSE ANSEHEN",
       "nextChallenge": "NÄCHSTE AUFGABE",
       "gameNeuralName": "Neuronales Netz Spielplatz",
-      "gameNeuralDesc": "Baue & trainiere ein kleines neuronales Netz – platziere Punkte, beobachte das Lernen",
+      "gameNeuralDesc": "Baue & trainiere ein kleines neuronales Netz - platziere Punkte, beobachte das Lernen",
       "gamePromptName": "Prompt Engineering Dojo",
       "gamePromptDesc": "Formuliere den perfekten Prompt, um Zielausgaben zu erreichen",
       "gameAlgoName": "Algorithmus-Rennen",
@@ -1609,7 +1609,7 @@
       "gameTriviaName": "KI-Quizduell",
       "gameTriviaDesc": "Teste dein KI-Wissen mit zeitgesteuerten Fragen",
       "gameDesignName": "Systemdesign Leinwand",
-      "gameDesignDesc": "Ziehen, verbinden und entwerfen – übe Architekturdiagramme",
+      "gameDesignDesc": "Ziehen, verbinden und entwerfen - übe Architekturdiagramme",
       "promptPlaceholder": "Gib deinen Prompt hier ein... (Strg+Enter zum Absenden)",
       "missionLabel": "// MISSION",
       "targetOutputLabel": "// ZIELAUSGABE",
@@ -1617,11 +1617,11 @@
       "promptFile": "prompt.txt",
       "feedbackExcellent": "🎯 Exzellenter Prompt! Klar, spezifisch und gut strukturiert.",
       "feedbackGood": "👍 Guter Versuch! Versuche, genauer bei Format und Einschränkungen zu sein.",
-      "feedbackGettingThere": "📝 Du kommst näher – verwende mehr relevante Schlüsselwörter und sei explizit bei dem, was du willst.",
+      "feedbackGettingThere": "📝 Du kommst näher - verwende mehr relevante Schlüsselwörter und sei explizit bei dem, was du willst.",
       "feedbackVague": "🔄 Zu vage. Versuche, die Aufgabe, das Format und eventuelle Einschränkungen explizit anzugeben.",
       "avgScoreLabel": "Durchschnittliche Prompt-Punktzahl über {count} Aufgaben",
       "vagueResponse": "Ich bin mir nicht sicher, was du suchst. Kannst du genauer angeben, was du brauchst?",
-      "placeBet": "// Setze deinen Einsatz – welcher Algorithmus gewinnt?",
+      "placeBet": "// Setze deinen Einsatz - welcher Algorithmus gewinnt?",
       "startRaceBtn": "🏁 RENNEN STARTEN",
       "newRace": "↻ NEUES RENNEN",
       "yourBet": "DEIN EINSATZ",
@@ -1632,8 +1632,8 @@
       "betWon": "🎉 Richtig getippt!",
       "betLost": "😅 Dieses Mal nicht!",
       "mergeWins": "Merge Sort gewinnt mit garantierter O(n log n) Leistung!",
-      "quickWins": "Quick Sort ist im Durchschnitt am schnellsten – O(n log n) mit geringem Overhead!",
-      "bubbleWins": "Bubble Sort hat gewonnen?! Das ist extrem selten bei Zufallsdaten – normalerweise O(n²)!",
+      "quickWins": "Quick Sort ist im Durchschnitt am schnellsten - O(n log n) mit geringem Overhead!",
+      "bubbleWins": "Bubble Sort hat gewonnen?! Das ist extrem selten bei Zufallsdaten - normalerweise O(n²)!",
       "comparingLegend": "Vergleichen",
       "swappingLegend": "Tauschen",
       "sortedLegend": "Sortiert",
@@ -1741,7 +1741,7 @@
     "q1": "What is AI Educademy?",
     "a1": "AI Educademy is a free, open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
     "q2": "Is AI Educademy really free?",
-    "a2": "Jede Akademie bei AI Educademy beginnt mit einer kostenlosen ersten Lektion, damit du sie unverbindlich ausprobieren kannst. Pro schaltet jede weitere Lektion, Akademie, jeden Lernpfad, jedes Zertifikat und alle Premium-Funktionen frei – monatlich, jährlich oder lebenslang.",
+    "a2": "Jede Akademie bei AI Educademy beginnt mit einer kostenlosen ersten Lektion, damit du sie unverbindlich ausprobieren kannst. Pro schaltet jede weitere Lektion, Akademie, jeden Lernpfad, jedes Zertifikat und alle Premium-Funktionen frei - monatlich, jährlich oder lebenslang.",
     "q3": "Who created AI Educademy?",
     "a3": "AI Educademy was built with the mission of making AI education accessible to everyone, everywhere. The project is open-source and community-driven, welcoming contributions from developers, educators, and learners worldwide.",
     "q4": "What programs are available?",
@@ -1787,78 +1787,78 @@
     "q24": "What makes AI Educademy different from other platforms?",
     "a24": "AI Educademy verbindet eine echte kostenlose Kostprobe in jeder Akademie mit strukturiertem Lernen, praktischen Projekten, interaktiven Experimenten und echter Mehrsprachigkeit. Pro führt dich von den Grundlagen zu produktionsreifen KI-Fähigkeiten.",
     "q25": "How do I get started?",
-    "a25": "Durchstöbere die Akademien und probiere die kostenlose erste Lektion eines beliebigen Programms aus – ob AI Seeds, AI Canopy oder Interview Launchpad. Wähle einen monatlichen, jährlichen oder lebenslangen Pro-Plan, wenn du bereit bist, den Rest freizuschalten.",
+    "a25": "Durchstöbere die Akademien und probiere die kostenlose erste Lektion eines beliebigen Programms aus - ob AI Seeds, AI Canopy oder Interview Launchpad. Wähle einen monatlichen, jährlichen oder lebenslangen Pro-Plan, wenn du bereit bist, den Rest freizuschalten.",
     "ctaTitle": "Bereit für deine KI-Reise?",
     "ctaSubtitle": "Probiere die erste Lektion jeder Akademie kostenlos aus, kein Konto erforderlich."
   },
   "pricing": {
     "pageTitle": "Preise",
-    "pageDescription": "Choose the plan that fits your learning journey. Start learning, upgrade when you are ready.",
+    "pageDescription": "Waehle monatlichen, jaehrlichen oder lebenslangen Zugriff auf praktische KI-Akademien, Projekte, Labs und Zertifikate.",
     "badge": "Investiere in deinen Vorsprung",
-    "heading": "Ein Tarif. Alle Akademien.",
-    "subheading": "Probiere die erste Lektion jeder Akademie kostenlos aus und schalte dann mit Pro jede weitere Lektion, jedes Projekt und Zertifikat frei.",
-    "faqTeaser": "Have questions about our plans?",
-    "faqLink": "Check our FAQ",
+    "heading": "Ein Plan. Jede Akademie.",
+    "subheading": "Teste die erste Lektion jeder Akademie kostenlos und schalte danach jede weitere Lektion, jedes Projekt und jedes Zertifikat mit Pro frei.",
+    "faqTeaser": "Fragen zu unseren Plaenen?",
+    "faqLink": "Sieh dir unsere FAQ an",
     "free": {
-      "title": "Entdecker",
-      "f1": "Probiere die erste Lektion jeder Akademie kostenlos aus, dann schaltest du mit Pro den Rest frei.",
-      "f2": "AI Educademy bietet dir eine kostenlose Vorschau der ersten Lektion in jeder Akademie. Pro schaltet jede weitere Lektion, jeden Lernpfad, jedes Zertifikat und alle Premium-Funktionen frei – monatlich, jährlich oder lebenslang.",
+      "title": "Explorer",
+      "f1": "Teste die erste Lektion jeder Akademie kostenlos und schalte den Rest mit Pro frei.",
+      "f2": "AI Educademy gibt dir in jeder Akademie eine kostenlose Vorschau auf die erste Lektion. Pro schaltet alle weiteren Lektionen, Tracks, Zertifikate und Premium-Funktionen mit monatlichem, jaehrlichem oder lebenslangem Zugriff frei.",
       "f3": "Artikel und Programmvorschauen",
-      "f4": "Interaktive KI-Lab-Experimente",
-      "f5": "Fortschritt wird lokal gespeichert",
+      "f4": "Interaktive AI Lab Experimente",
+      "f5": "Fortschritt lokal gespeichert",
       "cta": "Kostenlos starten"
     },
     "monthly": {
-      "title": "Pro Monthly",
-      "period": "month",
-      "cta": "Start Pro Monthly"
+      "title": "Pro Monatlich",
+      "period": "Monat",
+      "cta": "Pro Monatlich starten"
     },
     "annual": {
-      "title": "Pro Annual",
-      "period": "year",
-      "cta": "Start Pro Annual",
-      "save": "Spare {percent} % gegenüber monatlich"
+      "title": "Pro Jaehrlich",
+      "period": "Jahr",
+      "cta": "Pro Jaehrlich starten",
+      "save": "Spare {percent}% gegenueber monatlich"
     },
     "lifetime": {
-      "title": "Lifetime",
-      "cta": "Get Lifetime Access",
-      "forever": "One payment, yours forever"
+      "title": "Lebenslang",
+      "cta": "Lebenslangen Zugriff holen",
+      "forever": "Einmal zahlen, fuer immer deins"
     },
     "pro": {
-      "f1": "Everything in Explorer",
-      "f2": "All programs & learning tracks",
-      "f3": "Career Ready interview prep track",
-      "f4": "AI Mock Interview lab",
-      "f5": "Completion certificates",
-      "f6": "Server-side progress sync across devices"
+      "f1": "Jede Akademie und jeder Lerntrack",
+      "f2": "Alle Programme und Lerntracks",
+      "f3": "Career Ready Interviewvorbereitung",
+      "f4": "AI Mock Interview Lab",
+      "f5": "Abschlusszertifikate",
+      "f6": "Serverseitige Fortschrittssynchronisierung auf allen Geraeten"
     },
-    "promoCode": "Hast du einen Promo-Code?",
+    "promoCode": "Hast du einen Gutscheincode?",
     "promoCodeApplied": "Code angewendet!",
     "promoCodeApply": "Anwenden",
-    "promoCodeInvalid": "Ungültiger Code",
+    "promoCodeInvalid": "Ungueltiger Code",
     "promoCodePlaceholder": "Code eingeben",
     "mostPopular": "Am beliebtesten",
-    "redirecting": "Weiterleitung…",
-    "checkoutError": "Bezahlvorgang konnte nicht gestartet werden. Bitte versuche es erneut.",
+    "redirecting": "Weiterleitung...",
+    "checkoutError": "Checkout-Sitzung konnte nicht erstellt werden. Bitte versuche es erneut.",
     "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-    "comparePlans": "Tarife vergleichen",
-    "chooseAPlan": "Wähle einen Tarif",
-    "selected": "Ausgewählt",
-    "selectThisPlan": "Diesen Tarif wählen",
+    "comparePlans": "Plaene vergleichen",
+    "chooseAPlan": "Waehle einen Plan",
+    "selected": "Ausgewaehlt",
+    "selectThisPlan": "Diesen Plan auswaehlen",
     "alreadyPro": "Du hast bereits Pro. Verwalte dein Abo in deinem Konto."
   },
   "paywall": {
-    "title": "Premium-Inhalte",
-    "isPartOf": "ist Teil des Premium-Angebots",
-    "description": "Upgrade auf Pro, um alle Programme, alle Lernpfade, serverseitige Fortschrittssynchronisierung, Abschlusszertifikate und bevorzugten Zugang zum KI-Chatbot freizuschalten.",
+    "title": "Dein naechstes Level liegt hinter dieser Tuer",
+    "isPartOf": "ist Teil von",
+    "description": "Waehle einen Plan, um jede Akademie, jede Lektion, Fortschrittssynchronisierung und Abschlusszertifikate freizuschalten. Baue Faehigkeiten auf, die sich auszahlen.",
     "features": {
-      "allPrograms": "Alle Programme & Lernpfade",
+      "allPrograms": "Alle Programme und Tracks",
       "progressSync": "Fortschrittssynchronisierung",
       "certificates": "Zertifikate"
     },
     "upgradeCta": "Auf Pro upgraden",
-    "signInCta": "Zuerst anmelden",
-    "guarantee": "7-Tage-Geld-zurück-Garantie. Jederzeit kündbar."
+    "signInCta": "Melde dich zuerst an",
+    "guarantee": "7 Tage Geld-zurueck-Garantie. Jederzeit kuendbar."
   },
   "mockInterview": {
     "title": "KI-Probeinterview-Labor",
@@ -2105,9 +2105,9 @@
     "subtitle": "Kostenlos, Open Source, in deiner Sprache"
   },
   "howItWorks": {
-    "step1Desc": "Wähle aus 3 Tracks – KI-Lernen, Handwerkskunst oder Karrierebereit. Jeder Track bietet kuratierte Programme, die dich vom Anfänger zum Experten führen.",
+    "step1Desc": "Wähle aus 3 Tracks - KI-Lernen, Handwerkskunst oder Karrierebereit. Jeder Track bietet kuratierte Programme, die dich vom Anfänger zum Experten führen.",
     "step1Title": "Wähle deinen Weg",
-    "step2Desc": "Interaktive Lektionen, praktische Experimente und echter Code. Kein passives Video-Schauen – du baust Verständnis durch Übung auf.",
+    "step2Desc": "Interaktive Lektionen, praktische Experimente und echter Code. Kein passives Video-Schauen - du baust Verständnis durch Übung auf.",
     "step2Title": "Lernen durch Handeln",
     "step3Desc": "Wende deine Fähigkeiten in unserem KI-Labor mit 7 Experimenten an. Baue Chatbots, Klassifikatoren und KI-Agenten, die echte Probleme lösen.",
     "step3Title": "Echte Projekte bauen",
@@ -2122,7 +2122,7 @@
     "overallProgress": "Gesamtfortschritt",
     "signInPrompt": "Melde dich an, um deinen Fortschritt zu verfolgen und deinen persönlichen Lernpfad freizuschalten.",
     "startJourney": "Starte deine Reise",
-    "subtitle": "Navigiere deinen persönlichen Weg zur KI-Meisterschaft – von den Grundlagen bis zur Karrierebereitschaft.",
+    "subtitle": "Navigiere deinen persönlichen Weg zur KI-Meisterschaft - von den Grundlagen bis zur Karrierebereitschaft.",
     "title": "Deine KI-Lernreise",
     "trackAI": "KI-Lernen",
     "trackCareer": "Karrierebereit",
@@ -2167,7 +2167,7 @@
     "errorRateLimit": "Zu viele Versuche. Bitte versuche es in ein paar Minuten erneut.",
     "freeForever": "100 % Kostenlos",
     "instantDownload": "Sofortiger Download",
-    "metaDescription": "Hol dir das kostenlose 2026 KI-Starterpaket – dein vollständiger Leitfaden zum KI-Lernen, Karrierewege, Tools und Interviewvorbereitung. Sofort herunterladen.",
+    "metaDescription": "Hol dir das kostenlose 2026 KI-Starterpaket - dein vollständiger Leitfaden zum KI-Lernen, Karrierewege, Tools und Interviewvorbereitung. Sofort herunterladen.",
     "metaTitle": "Kostenloser Download: Das 2026 KI-Starterpaket | AI Educademy",
     "namePlaceholder": "Dein Vorname",
     "pageCount": "10-seitiger PDF-Leitfaden",
@@ -2175,7 +2175,7 @@
     "socialProof": "Schließe dich {count}+ Lernenden an, die diesen Leitfaden heruntergeladen haben",
     "submitButton": "Kostenloses PDF herunterladen",
     "submitting": "Wird gesendet...",
-    "subtitle": "Alles, was du für den Start deiner KI-Reise brauchst – Lernplan, Karrierewege, wichtige Tools und Interviewvorbereitung – in einem kostenlosen PDF.",
+    "subtitle": "Alles, was du für den Start deiner KI-Reise brauchst - Lernplan, Karrierewege, wichtige Tools und Interviewvorbereitung - in einem kostenlosen PDF.",
     "successDownload": "Jetzt herunterladen",
     "successMessage": "Wir haben das KI-Starterpaket an deine E-Mail gesendet. Überprüfe deinen Posteingang (und den Spam-Ordner) für den Download-Link.",
     "successTitle": "Überprüfe deinen Posteingang! 🎉",
@@ -2183,8 +2183,8 @@
     "whatInside": {
       "careers": "KI-Karrierewege & Gehaltsguide für 2026",
       "concepts": "Die 10 wichtigsten KI-Konzepte einfach erklärt",
-      "interview": "KI-Interviewvorbereitung – Kurzreferenz-Spickzettel",
-      "roadmap": "KI-Lernplan – vom Anfänger bis zum Berufseinstieg",
+      "interview": "KI-Interviewvorbereitung - Kurzreferenz-Spickzettel",
+      "roadmap": "KI-Lernplan - vom Anfänger bis zum Berufseinstieg",
       "tools": "Wichtige KI-Tools & Ressourcen, von Experten kuratiert"
     },
     "whatInsideTitle": "Was enthalten ist"
@@ -2326,12 +2326,12 @@
     "send": "Nachricht senden"
   },
   "billing": {
-    "title": "Abrechnung und Abonnement",
-    "description": "Aktualisieren Sie Ihre Zahlungsmethode, sehen Sie Rechnungen ein oder kündigen Sie Ihr Abonnement jederzeit.",
+    "title": "Abrechnung und Abo",
+    "description": "Aktualisiere deine Zahlungsmethode, sieh Rechnungen an oder kuendige dein Abo jederzeit.",
     "manage": "Abrechnung verwalten",
-    "opening": "Wird geöffnet…",
-    "noSubscription": "Wir konnten kein aktives Abonnement für Ihr Konto finden.",
-    "error": "Beim Öffnen des Abrechnungsportals ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    "opening": "Wird geoeffnet...",
+    "noSubscription": "Wir konnten kein aktives Abo in deinem Konto finden.",
+    "error": "Beim Oeffnen des Abrechnungsportals ist etwas schiefgelaufen. Bitte versuche es erneut."
   },
   "unsubscribe": {
     "title": "Abmelden",
