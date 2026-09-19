@@ -4,15 +4,15 @@
     "description": "Leer kunstmatige intelligentie vanaf nul, in jouw taal. Geen programmeerervaring nodig."
   },
   "nav": {
-    "home": "Home",
+    "home": "Thuis",
     "lessons": "Lessen",
-    "dashboard": "Dashboard",
+    "dashboard": "Leerbord",
     "about": "Over ons",
     "getStarted": "Begin met leren",
     "language": "Taal",
     "programs": "Opleidingen",
-    "blog": "Blog",
-    "lab": "Lab",
+    "blog": "Bloggen",
+    "lab": "Laboratorium",
     "search": "zoeken",
     "logIn": "Inloggen",
     "signUp": "Registreren",
@@ -20,14 +20,14 @@
     "noResults": "Geen resultaten",
     "toggleMenu": "Menu wisselen",
     "viewAllPrograms": "Alle programma's bekijken",
-    "enterLab": "Ga naar het lab",
+    "enterLab": "Ga het laboratorium binnen",
     "readBlog": "Lees de blog",
     "latestArticles": "Laatste artikelen over AI, onderwijs en technologie",
     "experimentsLoaded": "7 experimenten geladen",
     "mission": "Missie",
     "missionDesc": "AI-onderwijs toegankelijk maken voor iedereen, overal",
     "values": "Waarden",
-    "valuesDesc": "Open source, meertalig en community-gedreven",
+    "valuesDesc": "Open source, meertalig en gemeenschapsgestuurd",
     "openSource": "Open source",
     "openSourceDesc": "Openbaar gebouwd op GitHub",
     "meetCreator": "Ontmoet de maker",
@@ -39,9 +39,9 @@
     "careerReadyPath": "Carrière Klaar",
     "journey": "Traject",
     "bookmarks": "Bladwijzers",
-    "faq": "FAQ",
+    "faq": "Veelgestelde vragen",
     "faqDesc": "Veelgestelde vragen beantwoord",
-    "contact": "Contact",
+    "contact": "Contacteer",
     "contactDesc": "Neem contact met ons op",
     "pricing": "Prijzen",
     "goPro": "Word Pro"
@@ -50,9 +50,9 @@
     "badge": "Open source • Meertalig",
     "title": "AI Leren,",
     "titleHighlight": "Vereenvoudigd.",
-    "subtitle": "Interactieve lessen die je van nieuwsgierige beginner naar zelfverzekerde bouwer brengen. Begin bij nul - ga zo ver als je wilt.",
+    "subtitle": "Ontwikkel echte AI-vaardigheid via begeleide academies, interactieve laboratoria en carrièreklare projecten. Leer de concepten, verzend het werk en blijf voorop terwijl het veld beweegt.",
     "cta": "Begin jouw AI-reis",
-    "ctaSecondary": "Ontdek het Lab",
+    "ctaSecondary": "Ontdek AI Lab",
     "students": "Studenten aan het leren",
     "languages": "Talen",
     "lessons": "Interactieve lessen",
@@ -79,17 +79,17 @@
     "buyMeACoffee": "Koop een koffie voor me",
     "license": "Alle rechten voorbehouden.",
     "learnHeader": "Leren",
-    "communityHeader": "Community",
+    "communityHeader": "Gemeenschap",
     "supportHeader": "Ondersteuning",
     "programs": "Opleidingen",
-    "dashboard": "Dashboard",
-    "lab": "Lab",
+    "dashboard": "Leerbord",
+    "lab": "Laboratorium",
     "pageViews": "paginaweergaven",
     "scrollToTop": "Naar boven scrollen",
-    "faq": "FAQ",
+    "faq": "Veelgestelde vragen",
     "terms": "Servicevoorwaarden",
     "privacy": "Privacybeleid",
-    "contact": "Contact"
+    "contact": "Contacteer"
   },
   "about": {
     "title": "Over AI Educademy",
@@ -98,7 +98,7 @@
     "story": "Het brein achter het idee",
     "storyText1": "Ik ben Ramesh Reddy Adutla. de oprichter, ontwerper en enige ingenieur achter AI Educademy. Met 15 jaar aan het bouwen van grootschalige gedistribueerde systemen bij JP Morgan, Sky en Marks & Spencer in Azië en Europa, heb ik mijn carrière besteed aan het snijvlak van technologie en echte impact.",
     "storyText2": "AI gaat elke sector veranderen. Toch blijft het beste AI-onderwijs opgesloten achter dure instellingen in een handvol landen. Die kloof is niet alleen oneerlijk, het is een enorme verspilling van potentieel.",
-    "storyText3": "Ik heb AI Educademy bedacht en het volledig van nul af aan gebouwd. de architectuur, het curriculum, de meertalige infrastructuur, de open-source tools, elke regel code. Wat begon als avonden en weekenden is uitgegroeid tot een volledig gratis platform voor leerlingen in 11 talen op 6 continenten.",
+    "storyText3": "Ik heb AI Educademy bedacht en helemaal opnieuw gebouwd: de architectuur, het curriculum, de meertalige infrastructuur, open-sourcetools, elke regel code. Wat begon als avonden en weekenden werd een volwaardig platform dat leerlingen in 11 talen op 6 continenten bedient.",
     "storyText4": "Werken in meerdere landen waar Engels niet de eerste taal is maakte één ding duidelijk: taal mag nooit een barrière zijn om te leren. Ik spreek Engels, Frans en Telugu, dus een meertalig platform bouwen voelde als de logische stap.",
     "values": "Onze waarden",
     "value1": {
@@ -118,7 +118,7 @@
       "description": "De code van het platform is open source. Fork het, vertaal het, verbeter het."
     },
     "timeline": "Tijdlijn",
-    "connect": "Contact",
+    "connect": "Verbinden",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "devto": "Dev.to",
@@ -130,7 +130,7 @@
     "timeline2017": "JP Morgan, handelsplatforms en high-performance systemen 💹",
     "timeline2019": "Sky, streamingplatform voor miljoenen gebruikers 📺",
     "timeline2020": "Verhuisd naar Londen 🇬🇧",
-    "timeline2021": "Cloud-native microservices en datapipelines op schaal 🛒",
+    "timeline2021": "Cloud-native microservices en datapijplijnen op schaal 🛒",
     "timeline2024": "Open source-bijdragen, Apache Gravitino, GOV.UK, Spring Boot MCP 🌐",
     "timeline2025": "AI Educademy opgericht, AI-onderwijs voor iedereen 🎓",
     "pageTitle": "Over ons",
@@ -145,7 +145,7 @@
     "title": "Lessen",
     "subtitle": "Elke les bouwt voort op de vorige. Geen haast, geen aannames.",
     "difficulty": {
-      "beginner": "Beginner",
+      "beginner": "Beginnerniveau",
       "intermediate": "Gemiddeld",
       "advanced": "Gevorderd"
     },
@@ -173,12 +173,12 @@
     "trackCompleteDesc": "Je hebt elke les afgerond in",
     "trackCompleteDismiss": "Geweldig - ga verder!",
     "lessonOf": "Les {current} van {total}",
-    "completedOf": "{completed} van {total} voltooid",
+    "completedOf": "{completed} of {total} voltooid",
     "allPrograms": "Alle programma's",
     "trackAI": "AI begrijpen",
-    "trackCraft": "Code & Algoritmen",
+    "trackCraft": "Code en algoritmen",
     "checkAnswer": "Controleer antwoord",
-    "quizCorrect": "Correct! Goed gedaan!",
+    "quizCorrect": "Juist! Geweldig werk!",
     "quizIncorrect": "Niet helemaal - maar zo leer je!",
     "tryAgain": "Probeer opnieuw",
     "quickCheck": "Snelle check",
@@ -186,8 +186,8 @@
     "progressPercent": "{percent}% voltooid",
     "suggestEdit": "Stel een wijziging voor deze les voor",
     "completeLesson": "Les afronden",
-    "quizRequired": "Beantwoord alle quizzen correct om deze les af te ronden",
-    "quizProgress": "{passed} van {total} quizzen behaald",
+    "quizRequired": "Beantwoord alle quizzen correct om deze les te voltooien",
+    "quizProgress": "{passed} van de {total}-quizzen zijn geslaagd",
     "allQuizzesPassed": "Alle quizzen behaald!",
     "lessonCompleted": "Les afgerond!",
     "fallbackNotice": "Deze les is nog niet vertaald naar het {language}, dus je leest de Engelse versie. De rest van de site blijft in het {language}.",
@@ -217,11 +217,11 @@
     "free": "Gratis",
     "pro": "Pro",
     "levelLabels": {
-      "1": "Beginner",
+      "1": "Beginnerniveau",
       "2": "Basis",
       "3": "Toegepast",
       "4": "Gevorderd",
-      "5": "Expert"
+      "5": "Deskundige"
     },
     "viewAll": "Bekijk alle opleidingen",
     "pageTitle": "AI & Engineering Opleidingen",
@@ -229,7 +229,7 @@
     "track": {
       "ai-learning": {
         "title": "AI-Fundamenten",
-        "desc": "Groei van nul naar AI-expert, door de natuur geïnspireerde voortgang",
+        "desc": "Van nieuwsgierige beginner tot zelfverzekerde AI-beoefenaar",
         "tagline": "Zaden → Spruiten → Takken → Kruin → Bos",
         "brand": "Begrijp hoe machines denken, leren en creëren - van je eerste \"wat is AI?\" tot het bouwen van productiesystemen."
       },
@@ -242,7 +242,7 @@
       "career-ready": {
         "title": "Klaar voor je carrière",
         "desc": "Van zenuwen naar een ondertekend aanbod",
-        "tagline": "Start → Gedrag → Technisch → ML-interview → Aanbod",
+        "tagline": "Launchpad → Gedrag → Technisch → ML Interview → Aanbieding",
         "brand": "Beheers elke fase van het technische sollicitatieproces. van voorbereiding en gedragsvragen tot systeemontwerp en onderhandeling.",
         "description": "Van blanco-pagina-zenuwen tot een getekend aanbod. je complete voorbereiding op sollicitatiegesprekken"
       }
@@ -258,10 +258,10 @@
     "allTracks": "Alle trajecten",
     "ai-seeds": {
       "title": "AI Seeds",
-      "subtitle": "AI literacy for the real world",
-      "description": "Build a clear mental model of modern AI, from training data and neural networks to generative tools, limitations, safety, and the choices people make around them.",
-      "audience": "Curious beginners, leaders, students, and career changers",
-      "prerequisites": "None. Just curiosity and a willingness to question the hype.",
+      "subtitle": "AI-geletterdheid voor de echte wereld",
+      "description": "Bouw een helder mentaal model van moderne AI, van trainingsgegevens en neurale netwerken tot generatieve tools, beperkingen, veiligheid en de keuzes die mensen daaromheen maken.",
+      "audience": "Nieuwsgierige beginners, leiders, studenten en carrièrewisselaars",
+      "prerequisites": "Geen. Gewoon nieuwsgierigheid en de bereidheid om de hype in twijfel te trekken.",
       "topics": [
         "AI in everyday products",
         "Data, models, and predictions",
@@ -276,14 +276,14 @@
         "Complete a guided AI experiment and reflect on its limits"
       ],
       "tileLabel": "Basis",
-      "homeDesc": "AI literacy for the real world"
+      "homeDesc": "AI-geletterdheid voor de echte wereld"
     },
     "ai-sprouts": {
       "title": "AI Sprouts",
-      "subtitle": "The foundations behind intelligent systems",
-      "description": "Understand the building blocks behind modern AI: datasets, features, embeddings, neural networks, transformers, evaluation, and the practical trade-offs that shape model behaviour.",
-      "audience": "Learners ready to move from AI literacy into technical understanding",
-      "prerequisites": "AI Seeds or equivalent practical AI awareness",
+      "subtitle": "De fundamenten achter intelligente systemen",
+      "description": "Begrijp de bouwstenen achter moderne AI: datasets, functies, inbedding, neurale netwerken, transformatoren, evaluatie en de praktische afwegingen die modelgedrag bepalen.",
+      "audience": "Leerlingen die klaar zijn om van AI-geletterdheid over te stappen naar technisch inzicht",
+      "prerequisites": "AI Seeds of gelijkwaardig praktisch AI-bewustzijn",
       "topics": [
         "Datasets and data quality",
         "Training, loss, and optimisation",
@@ -298,14 +298,14 @@
         "Diagnose overfitting, bias, and data-quality failures"
       ],
       "tileLabel": "Kernconcepten",
-      "homeDesc": "The foundations behind intelligent systems"
+      "homeDesc": "De fundamenten achter intelligente systemen"
     },
     "ai-branches": {
       "title": "AI Branches",
-      "subtitle": "Build with today’s AI capabilities",
-      "description": "Move from concepts to applications. Work across text, vision, speech, and multimodal systems while learning where APIs, open models, structured outputs, and human review fit.",
-      "audience": "Learners who want to build useful AI features",
-      "prerequisites": "AI Sprouts or equivalent foundations",
+      "subtitle": "Bouw met de huidige AI-mogelijkheden",
+      "description": "Ga van concepten naar toepassingen. Werk met tekst-, beeld-, spraak- en multimodale systemen en leer waar APIs, open modellen, gestructureerde uitvoer en menselijke beoordeling passen.",
+      "audience": "Leerlingen die nuttige AI-functies willen bouwen",
+      "prerequisites": "AI Sprouts of gelijkwaardige funderingen",
       "topics": [
         "Model APIs and structured output",
         "Prompt and context design",
@@ -320,14 +320,14 @@
         "Explain failure modes to non-technical stakeholders"
       ],
       "tileLabel": "Toepassingen",
-      "homeDesc": "Build with today’s AI capabilities"
+      "homeDesc": "Bouw met de huidige AI-mogelijkheden"
     },
     "ai-canopy": {
       "title": "AI Canopy",
-      "subtitle": "Engineer reliable GenAI systems",
-      "description": "Design production-minded LLM applications with retrieval, tool use, agent workflows, MCP, evaluation, guardrails, and observability. Learn to optimise for quality, latency, safety, and cost.",
-      "audience": "Developers and technical practitioners building AI applications",
-      "prerequisites": "AI Branches plus basic Python or TypeScript",
+      "subtitle": "Ontwikkel betrouwbare GenAI-systemen",
+      "description": "Ontwerp productiegerichte LLM-applicaties met ophaalmogelijkheden, toolgebruik, agentworkflows, MCP, evaluatie, vangrails en observatie. Leer hoe u kunt optimaliseren op het gebied van kwaliteit, latentie, veiligheid en kosten.",
+      "audience": "Ontwikkelaars en technische beoefenaars die AI-toepassingen bouwen",
+      "prerequisites": "AI Branches plus basis Python of TypeScript",
       "topics": [
         "LLM application architecture",
         "RAG, hybrid retrieval, and reranking",
@@ -342,14 +342,14 @@
         "Instrument an AI feature for latency, cost, and failure analysis"
       ],
       "tileLabel": "Gevorderd",
-      "homeDesc": "Engineer reliable GenAI systems"
+      "homeDesc": "Ontwikkel betrouwbare GenAI-systemen"
     },
     "ai-forest": {
       "title": "AI Forest",
-      "subtitle": "Ship AI products responsibly",
-      "description": "Bring the full lifecycle together: product discovery, architecture, data governance, model and vendor choices, deployment, monitoring, incident response, regulation, and continuous improvement.",
-      "audience": "Senior builders, product engineers, technical leaders, and founders",
-      "prerequisites": "AI Canopy or equivalent production AI experience",
+      "subtitle": "Verstuur AI-producten op verantwoorde wijze",
+      "description": "Breng de volledige levenscyclus samen: productontdekking, architectuur, databeheer, model- en leverancierskeuzes, implementatie, monitoring, incidentrespons, regelgeving en continue verbetering.",
+      "audience": "Senior bouwers, productingenieurs, technische leiders en oprichters",
+      "prerequisites": "AI Canopy of gelijkwaardige productie-AI-ervaring",
       "topics": [
         "AI product discovery and measurement",
         "LLMOps and deployment strategy",
@@ -364,14 +364,14 @@
         "Make defensible trade-offs across quality, cost, speed, and risk"
       ],
       "tileLabel": "Meesterschap",
-      "homeDesc": "Ship AI products responsibly"
+      "homeDesc": "Verstuur AI-producten op verantwoorde wijze"
     },
     "ai-sketch": {
       "title": "AI Sketch",
-      "subtitle": "Engineering foundations for AI builders",
-      "description": "Strengthen the programming, data structures, testing, and complexity fundamentals that make AI systems understandable, efficient, and maintainable.",
-      "audience": "Developers beginning AI engineering or interview preparation",
-      "prerequisites": "Basic programming in Python, JavaScript, Java, or another language",
+      "subtitle": "Technische basis voor AI-bouwers",
+      "description": "Versterk de fundamenten van programmeren, datastructuren, testen en complexiteit die AI-systemen begrijpelijk, efficiënt en onderhoudbaar maken.",
+      "audience": "Ontwikkelaars die beginnen met AI-engineering of interviewvoorbereiding",
+      "prerequisites": "Basisprogrammering in Python, JavaScript, Java of een andere taal",
       "topics": [
         "Complexity and trade-offs",
         "Core data structures",
@@ -386,14 +386,14 @@
         "Connect algorithms to real AI application workloads"
       ],
       "tileLabel": "Fundamenten",
-      "homeDesc": "Engineering foundations for AI builders"
+      "homeDesc": "Technische basis voor AI-bouwers"
     },
     "ai-chisel": {
       "title": "AI Chisel",
-      "subtitle": "Patterns for solving harder problems",
-      "description": "Practise the algorithmic patterns that recur in production services, search, recommendation, data processing, and technical interviews.",
-      "audience": "Engineers with programming fundamentals",
-      "prerequisites": "AI Sketch or equivalent data-structure knowledge",
+      "subtitle": "Patronen voor het oplossen van moeilijkere problemen",
+      "description": "Oefen de algoritmische patronen die terugkeren in productiediensten, zoeken, aanbevelen, gegevensverwerking en technische interviews.",
+      "audience": "Ingenieurs met programmeerfundamentals",
+      "prerequisites": "AI Sketch of gelijkwaardige kennis van datastructuur",
       "topics": [
         "Sliding windows and intervals",
         "Trees, graphs, and union-find",
@@ -408,14 +408,14 @@
         "Communicate a solution clearly under pressure"
       ],
       "tileLabel": "Datastructuren",
-      "homeDesc": "Patterns for solving harder problems"
+      "homeDesc": "Patronen voor het oplossen van moeilijkere problemen"
     },
     "ai-craft": {
       "title": "AI Craft",
-      "subtitle": "Design systems that scale AI",
-      "description": "Learn system design for modern AI products: model gateways, retrieval services, async workloads, streaming, caches, rate limits, tenancy, and resilient APIs.",
-      "audience": "Mid-to-senior engineers designing distributed AI systems",
-      "prerequisites": "Comfort with APIs, databases, and distributed-system basics",
+      "subtitle": "Ontwerp systemen die AI schalen",
+      "description": "Leer systeemontwerp voor moderne AI-producten: modelgateways, ophaalservices, asynchrone workloads, streaming, caches, snelheidslimieten, huur en veerkrachtige APIs.",
+      "audience": "Middelgrote tot senior ingenieurs die gedistribueerde AI-systemen ontwerpen",
+      "prerequisites": "Comfort met APIs, databases en basisprincipes van gedistribueerde systemen",
       "topics": [
         "AI platform and model gateways",
         "RAG and vector retrieval services",
@@ -430,14 +430,14 @@
         "Defend an AI system design in a technical review"
       ],
       "tileLabel": "Systemen",
-      "homeDesc": "Design systems that scale AI"
+      "homeDesc": "Ontwerp systemen die AI schalen"
     },
     "ai-polish": {
       "title": "AI Polish",
-      "subtitle": "Communicate and lead in the AI era",
-      "description": "Turn strong engineering into visible impact through technical communication, decision records, stakeholder alignment, responsible leadership, and AI-aware career storytelling.",
-      "audience": "Engineers moving into senior, lead, or AI-focused roles",
-      "prerequisites": "Professional project experience",
+      "subtitle": "Communiceer en geef leiding in het AI-tijdperk",
+      "description": "Zet sterke engineering om in zichtbare impact door middel van technische communicatie, besluitvorming, afstemming van belanghebbenden, verantwoordelijk leiderschap en AI-bewuste loopbaanverhalen.",
+      "audience": "Ingenieurs die overstappen naar senior-, lead- of AI-gerichte functies",
+      "prerequisites": "Pro Professionele projectervaring",
       "topics": [
         "Technical storytelling",
         "Architecture decision records",
@@ -452,14 +452,14 @@
         "Position engineering impact clearly and credibly"
       ],
       "tileLabel": "Productie",
-      "homeDesc": "Communicate and lead in the AI era"
+      "homeDesc": "Communiceer en geef leiding in het AI-tijdperk"
     },
     "ai-masterpiece": {
       "title": "AI Masterpiece",
-      "subtitle": "Your production AI capstone",
-      "description": "Design, build, evaluate, and present an end-to-end AI product. Combine retrieval or tool use with security, tests, observability, a runbook, and a credible product case.",
-      "audience": "Engineers ready to demonstrate production AI capability",
-      "prerequisites": "AI Canopy plus AI Craft, or equivalent experience",
+      "subtitle": "Het sluitstuk van uw productie-AI",
+      "description": "Ontwerp, bouw, evalueer en presenteer een end-to-end AI-product. Combineer het ophalen of gebruiken van tools met beveiliging, tests, observatie, een runbook en een geloofwaardige productcase.",
+      "audience": "Ingenieurs klaar om de AI-productiecapaciteiten te demonstreren",
+      "prerequisites": "AI Canopy plus AI Craft, of gelijkwaardige ervaring",
       "topics": [
         "Product brief and success metrics",
         "Architecture and threat model",
@@ -474,14 +474,14 @@
         "Present technical work with clear business and user value"
       ],
       "tileLabel": "Architectuur",
-      "homeDesc": "Your production AI capstone"
+      "homeDesc": "Het sluitstuk van uw productie-AI"
     },
     "ai-launchpad": {
       "title": "Interview Startplatform",
-      "subtitle": "Navigate the AI engineering job market",
-      "description": "Build a focused search strategy for AI-era roles: understand role families, read job descriptions, map your evidence, and prepare a realistic learning and application plan.",
-      "audience": "People starting or redirecting an AI-focused career",
-      "prerequisites": "None",
+      "subtitle": "Navigeer door de AI-engineering-banenmarkt",
+      "description": "Bouw een gerichte zoekstrategie voor rollen uit het AI-tijdperk: begrijp rolfamilies, lees functiebeschrijvingen, breng uw bewijsmateriaal in kaart en bereid een realistisch leer- en toepassingsplan voor.",
+      "audience": "Mensen die een op AI gerichte carrière beginnen of een nieuwe richting willen geven",
+      "prerequisites": "Geen",
       "topics": [
         "AI role families and expectations",
         "Job-description signal extraction",
@@ -496,14 +496,14 @@
         "Track progress without chasing every new tool"
       ],
       "tileLabel": "Voorbereiding",
-      "homeDesc": "Navigate the AI engineering job market"
+      "homeDesc": "Navigeer door de AI-engineering-banenmarkt"
     },
     "ai-behavioral": {
       "title": "Gedragsinterview Meesterschap",
-      "subtitle": "Tell the story of how you create impact",
-      "description": "Prepare concise, honest stories about ambiguity, delivery, failure, influence, conflict, and responsible AI decisions using evidence rather than rehearsed slogans.",
-      "audience": "Engineers preparing for behavioural and leadership interviews",
-      "prerequisites": "Real project or collaboration experience",
+      "subtitle": "Vertel het verhaal over hoe jij impact creëert",
+      "description": "Bereid beknopte, eerlijke verhalen voor over ambiguïteit, resultaten, mislukkingen, invloed, conflicten en verantwoorde AI-beslissingen, waarbij u bewijsmateriaal gebruikt in plaats van ingestudeerde slogans.",
+      "audience": "Ingenieurs bereiden zich voor op gedrags- en leiderschapsgesprekken",
+      "prerequisites": "Echte project- of samenwerkingservaring",
       "topics": [
         "Evidence-led STAR stories",
         "Ambiguity and prioritisation",
@@ -518,14 +518,14 @@
         "Adapt one experience to different question styles"
       ],
       "tileLabel": "Gedrag",
-      "homeDesc": "Tell the story of how you create impact"
+      "homeDesc": "Vertel het verhaal over hoe jij impact creëert"
     },
     "ai-technical": {
       "title": "Technische Interviews",
-      "subtitle": "Solve, design, and communicate under pressure",
-      "description": "Practise coding, API, debugging, system design, and AI application questions with a repeatable method for clarifying requirements and defending trade-offs.",
-      "audience": "Software engineers preparing for technical interviews",
-      "prerequisites": "Solid programming fundamentals",
+      "subtitle": "Oplossen, ontwerpen en communiceren onder druk",
+      "description": "Oefen met coderen, API, debuggen, systeemontwerp en AI-toepassingsvragen met een herhaalbare methode voor het verduidelijken van vereisten en het verdedigen van afwegingen.",
+      "audience": "Software-ingenieurs bereiden zich voor op technische interviews",
+      "prerequisites": "Solide programmeerfundamenten",
       "topics": [
         "Coding patterns and complexity",
         "API and data-contract design",
@@ -540,14 +540,14 @@
         "Communicate assumptions and trade-offs clearly"
       ],
       "tileLabel": "Technisch",
-      "homeDesc": "Solve, design, and communicate under pressure"
+      "homeDesc": "Oplossen, ontwerpen en communiceren onder druk"
     },
     "ai-ml-interview": {
       "title": "AI- & ML-interviews",
-      "subtitle": "Prepare for modern ML and GenAI interviews",
-      "description": "Cover model selection, experimentation, ML system design, RAG and agent evaluation, data quality, MLOps, safety, and the trade-offs interviewers expect you to articulate.",
-      "audience": "Engineers targeting ML, applied AI, or AI platform roles",
-      "prerequisites": "AI foundations plus basic statistics and Python",
+      "subtitle": "Bereid je voor op moderne ML- en GenAI-interviews",
+      "description": "Behandel modelselectie, experimenten, ML-systeemontwerp, RAG en agentevaluatie, gegevenskwaliteit, MLOps, veiligheid en de afwegingen die interviewers van u verwachten dat u ze verwoordt.",
+      "audience": "Ingenieurs die zich richten op ML, toegepaste AI of AI-platformrollen",
+      "prerequisites": "AI-fundamenten plus basisstatistieken en Python",
       "topics": [
         "ML and GenAI system design",
         "Experimentation and evaluation",
@@ -562,14 +562,14 @@
         "Handle safety and failure-mode questions with confidence"
       ],
       "tileLabel": "ML",
-      "homeDesc": "Prepare for modern ML and GenAI interviews"
+      "homeDesc": "Bereid je voor op moderne ML- en GenAI-interviews"
     },
     "ai-offer": {
       "title": "Aanbod & verder",
-      "subtitle": "Make a confident, informed next move",
-      "description": "Evaluate AI-era roles and offers with a practical framework covering scope, learning, leadership, compensation, risk, working patterns, and your first 90 days.",
-      "audience": "Candidates comparing offers or planning their next career step",
-      "prerequisites": "An active search, interview process, or offer",
+      "subtitle": "Maak een zelfverzekerde, geïnformeerde volgende stap",
+      "description": "Evalueer rollen en aanbiedingen uit het AI-tijdperk met een praktisch raamwerk dat betrekking heeft op reikwijdte, leren, leiderschap, beloning, risico's, werkpatronen en uw eerste 90 dagen.",
+      "audience": "Kandidaten vergelijken aanbiedingen of plannen hun volgende carrièrestap",
+      "prerequisites": "Een actieve zoektocht, sollicitatiegesprek of aanbod",
       "topics": [
         "Role and scope evaluation",
         "Compensation and equity",
@@ -584,9 +584,9 @@
         "Plan a strong first 90 days"
       ],
       "tileLabel": "Aanbod",
-      "homeDesc": "Make a confident, informed next move"
+      "homeDesc": "Maak een zelfverzekerde, geïnformeerde volgende stap"
     },
-    "curriculumVersion": "2026 production AI syllabus"
+    "curriculumVersion": "2026 productie AI-syllabus"
   },
   "programDetail": {
     "level": "Niveau",
@@ -605,8 +605,8 @@
     "relatedArticles": "Gerelateerde artikelen",
     "tryExperiments": "Probeer onze interactieve experimenten",
     "tryExperimentsDesc": "Breng de theorie in praktijk met praktische AI-experimenten die je direct in je browser kunt uitvoeren.",
-    "tryPromptLab": "Ontdek het Prompt Lab",
-    "tryPromptLabDesc": "Oefen prompt-engineeringtechnieken in ons interactieve Prompt Lab en zie de resultaten direct.",
+    "tryPromptLab": "Verken het Prompt-lab",
+    "tryPromptLabDesc": "Oefen snelle engineeringtechnieken met ons interactieve Prompt Lab en bekijk de resultaten in realtime.",
     "faq": {
       "ai-seeds": [
         {
@@ -942,10 +942,10 @@
   },
   "dashboard": {
     "title": "Mijn leerdashboard",
-    "titleUser": "Dashboard van {name}",
+    "titleUser": "Het dashboard van {name}",
     "subtitle": "Je voortgang over alle opleidingen",
     "overallProgress": "Totale voortgang",
-    "lessonsCompleted": "{completed} van {total} lessen voltooid",
+    "lessonsCompleted": "{completed} van {total}-lessen voltooid",
     "remaining": "nog {count}",
     "min": "min",
     "achievements": "Prestaties",
@@ -962,7 +962,7 @@
     "emptySubtitle": "Rond een les af om te beginnen met bijhouden.",
     "emptyStart": "Beginnen",
     "trackAI": "AI begrijpen",
-    "trackCraft": "Code & Algoritmen",
+    "trackCraft": "Code en algoritmen",
     "certificate": "Certificaat",
     "certificateTitle": "Certificaat van voltooiing",
     "completedBy": "Voltooid door",
@@ -988,15 +988,15 @@
     "certDate": "Voltooid op",
     "certOrg": "AI Educademy",
     "certShareText": "Ik heb {program} voltooid op AI Educademy! 🎓",
-    "shareAchievement": "Share",
+    "shareAchievement": "Deel",
     "shareOnTwitter": "Twitter/X",
     "shareOnLinkedin": "LinkedIn",
-    "copyLink": "Copy Link",
-    "linkCopied": "Copied!",
-    "shareModalTitle": "Share Achievement",
-    "shareTweet": "I just completed {program} on AI Educademy! 🎓🤖 #AILearning #AIEducademy",
-    "shareDescription": "I completed the {program} program on AI Educademy",
-    "upgradeCertificate": "Upgrade voor een certificaat"
+    "copyLink": "Kopieer link",
+    "linkCopied": "Gekopieerd!",
+    "shareModalTitle": "Deel prestatie",
+    "shareTweet": "Ik heb zojuist {program} voltooid op AI Educademy! 🎓🤖 #AILearning #AIEducademy",
+    "shareDescription": "Ik heb het {program}-programma voltooid op AI Educademy",
+    "upgradeCertificate": "Upgrade om een ​​certificaat te krijgen"
   },
   "auth": {
     "startLearning": "Begin met leren",
@@ -1019,10 +1019,10 @@
     "usernameTaken": "Gebruikersnaam is al bezet",
     "invalidCredentials": "Ongeldige gebruikersnaam of wachtwoord",
     "welcomeBack": "Welkom terug",
-    "accountCreated": "Account succesvol aangemaakt",
+    "accountCreated": "Account aangemaakt",
     "signInPrompt": "Log in om je leervoortgang op meerdere apparaten bij te houden",
-    "noAccount": "Heb je nog geen account?",
-    "hasAccount": "Heb je al een account?",
+    "noAccount": "Heeft u geen account?",
+    "hasAccount": "Heeft u al een account?",
     "continueWithGoogle": "Doorgaan met Google",
     "continueWithGithub": "Doorgaan met GitHub",
     "orUseEmail": "Of gebruik e-mail",
@@ -1039,48 +1039,48 @@
     "allPrograms": "Alle programma's",
     "userAvatar": "Gebruikersavatar",
     "email": "E-mail",
-    "name": "Name",
-    "confirmPassword": "Confirm Password",
-    "confirmPasswordPlaceholder": "Re-enter your password",
+    "name": "Naam",
+    "confirmPassword": "Bevestig wachtwoord",
+    "confirmPasswordPlaceholder": "Voer uw wachtwoord opnieuw in",
     "forgotPassword": "Wachtwoord vergeten?",
-    "forgotPasswordTitle": "Forgot Password",
-    "forgotPasswordPrompt": "Enter your email and we'll send you a reset link.",
-    "sendResetLink": "Send Reset Link",
-    "resetLinkSent": "If an account exists with that email, we've sent a password reset link.",
+    "forgotPasswordTitle": "Wachtwoord vergeten",
+    "forgotPasswordPrompt": "Voer uw e-mailadres in en wij sturen u een resetlink.",
+    "sendResetLink": "Resetlink verzenden",
+    "resetLinkSent": "Als er een account bestaat met dat e-mailadres, hebben we een link voor het opnieuw instellen van het wachtwoord verzonden.",
     "resetPassword": "Wachtwoord opnieuw instellen",
-    "resetPasswordTitle": "Reset Your Password",
-    "resetPasswordPrompt": "Enter your new password below.",
-    "newPassword": "New Password",
-    "newPasswordPlaceholder": "Enter new password",
-    "confirmNewPassword": "Confirm New Password",
-    "confirmNewPasswordPlaceholder": "Re-enter new password",
+    "resetPasswordTitle": "Reset uw wachtwoord",
+    "resetPasswordPrompt": "Vul hieronder uw nieuwe wachtwoord in.",
+    "newPassword": "Nieuw wachtwoord",
+    "newPasswordPlaceholder": "Voer een nieuw wachtwoord in",
+    "confirmNewPassword": "Bevestig nieuw wachtwoord",
+    "confirmNewPasswordPlaceholder": "Voer het nieuwe wachtwoord opnieuw in",
     "passwordResetSuccess": "Wachtwoord opnieuw ingesteld. Je kunt nu inloggen.",
-    "signUpTitle": "Create Account",
-    "signUpPrompt": "Sign up to track your learning progress across devices",
-    "signUpButton": "Account maken",
-    "verifyEmailTitle": "Verify Your Email",
-    "verifyEmailPrompt": "Enter the 6-digit code sent to",
+    "signUpTitle": "Account aanmaken",
+    "signUpPrompt": "Meld u aan om uw leervoortgang op verschillende apparaten bij te houden",
+    "signUpButton": "Account aanmaken",
+    "verifyEmailTitle": "Controleer uw e-mailadres",
+    "verifyEmailPrompt": "Voer de 6-cijferige code in die is verzonden naar",
     "verifyCode": "Verifieren",
-    "resendCode": "Resend Code",
+    "resendCode": "Code opnieuw verzenden",
     "resendCooldown": "Opnieuw verzenden over {seconds}s",
-    "codeSent": "A new code has been sent to your email.",
-    "emailVerified": "Email verified! You can now sign in.",
-    "orContinueWith": "or continue with",
-    "passwordRequirements": "Password must contain at least 1 letter and 1 number",
+    "codeSent": "Er is een nieuwe code naar uw e-mailadres verzonden.",
+    "emailVerified": "E-mail geverifieerd! U kunt nu inloggen.",
+    "orContinueWith": "of doorgaan met",
+    "passwordRequirements": "Wachtwoord moet minimaal 1 letter en 1 cijfer bevatten",
     "passwordsDoNotMatch": "Wachtwoorden komen niet overeen",
-    "nameMinLengthTwo": "Name must be at least 2 characters",
-    "nameMaxLength": "Name must be less than 50 characters",
-    "emailRequired": "Email is required",
-    "emailInvalid": "Please enter a valid email address",
-    "emailAlreadyRegistered": "Email already registered",
-    "invalidVerificationCode": "Invalid verification code",
-    "codeExpired": "Code expired. Please request a new one.",
-    "invalidResetLink": "Invalid or expired reset link",
-    "backToSignIn": "Back to Sign In",
-    "creatingAccount": "Creating account...",
-    "verifying": "Verifying...",
-    "resetting": "Resetting...",
-    "sending": "Sending...",
+    "nameMinLengthTwo": "Naam moet minimaal 2 tekens bevatten",
+    "nameMaxLength": "Naam moet minder dan 50 tekens bevatten",
+    "emailRequired": "E-mail is vereist",
+    "emailInvalid": "Voer een geldig e-mailadres in",
+    "emailAlreadyRegistered": "E-mailadres al geregistreerd",
+    "invalidVerificationCode": "Ongeldige verificatiecode",
+    "codeExpired": "Code verlopen. Vraag een nieuwe aan.",
+    "invalidResetLink": "Ongeldige of verlopen resetlink",
+    "backToSignIn": "Terug naar Inloggen",
+    "creatingAccount": "Account aanmaken...",
+    "verifying": "Verifiëren...",
+    "resetting": "Resetten...",
+    "sending": "Verzenden...",
     "signingIn": "Inloggen...",
     "errorCredentials": "Ongeldig e-mailadres of wachtwoord. Heb je je e-mail geverifieerd?"
   },
@@ -1103,7 +1103,7 @@
     "arrays-and-hashmaps": "Arrays en hash maps",
     "attention-and-transformers": "Attention en transformers",
     "autonomous-vehicles": "Zelfrijdende voertuigen",
-    "backpropagation": "Backpropagation",
+    "backpropagation": "Terugpropagatie",
     "behavioural-interview-mastery": "Gedragsgerichte sollicitatiegesprekken beheersen",
     "binary-search-patterns": "Patronen voor binair zoeken",
     "bit-manipulation": "Bitmanipulatie",
@@ -1129,7 +1129,7 @@
     "design-video-streaming": "Ontwerp een videostreamingplatform",
     "design-web-crawler": "Ontwerp een webcrawler",
     "dynamic-programming": "Dynamisch programmeren",
-    "edge-ai": "Edge AI",
+    "edge-ai": "Edge-AI",
     "embeddings-and-vectors": "Embeddings en vectordatabases",
     "end-to-end-ml-pipeline": "End-to-end ML-pipeline",
     "engineering-portfolio": "Engineering portfolio",
@@ -1151,7 +1151,7 @@
     "loss-functions-and-optimisers": "Verliesfuncties en optimizers",
     "matrix-and-grid-problems": "Matrix- en rasterproblemen",
     "mlops-and-deployment": "MLOps en deployment",
-    "monotonic-stack-and-queue": "Monotone stack en queue",
+    "monotonic-stack-and-queue": "Monotone stapel en wachtrij",
     "multimodal-ai": "Multimodale AI",
     "natural-language-processing": "Natuurlijke taalverwerking",
     "negotiating-your-offer": "Onderhandelen over je technische aanbod",
@@ -1169,7 +1169,7 @@
     "responsible-ai-governance": "Verantwoord AI-bestuur",
     "rlhf-and-alignment": "RLHF en alignment",
     "salary-benchmarking": "Salarisbenchmarking",
-    "scaling-laws-and-training": "Schalingswetten en training op schaal",
+    "scaling-laws-and-training": "Schaalwetten en training op schaal",
     "sorting-and-searching": "Sorteren en zoeken",
     "star-framework": "Het STAR-sollicitatieraamwerk",
     "strings-and-text": "Strings en tekstverwerking",
@@ -1184,7 +1184,7 @@
     "two-pointers-and-sliding-window": "Twee pointers en sliding window",
     "types-of-ai": "Soorten AI",
     "understanding-llms": "Grote taalmodellen begrijpen",
-    "union-find-and-disjoint-sets": "Union-Find",
+    "union-find-and-disjoint-sets": "Unie-vind",
     "voice-ai-and-speech": "Spraak-AI en spraakherkenning",
     "what-is-ai": "Wat is AI? Een laagdrempelige introductie",
     "your-first-ai-experiment": "Je eerste AI-experiment",
@@ -1201,35 +1201,35 @@
     "decision-trees-explained": "Beslisbomen: het algoritme dat je op papier kunt tekenen",
     "clustering-algorithms": "Clustering: hoe AI patronen vindt zonder labels",
     "fine-tuning-llms": "LLM's verfijnen: AI aanpassen voor jouw gebruik",
-    "leadership-principles": "Leadership Principles for Tech Interviews",
-    "conflict-resolution-stories": "Conflict Resolution Stories That Impress",
-    "cross-functional-collaboration": "Cross-Functional Collaboration Excellence",
-    "failure-and-growth-narratives": "Failure and Growth Narratives",
-    "managing-up-and-stakeholders": "Managing Up and Stakeholder Influence",
-    "cultural-fit-conversations": "Cultural Fit Conversations",
-    "understanding-interview-landscape": "Understanding the Interview Landscape",
-    "decoding-job-descriptions": "Decoding Job Descriptions",
-    "company-research-strategies": "Company Research Strategies",
-    "building-preparation-timeline": "Building Your Preparation Timeline",
-    "growth-mindset-for-interviews": "Growth Mindset for Interviews",
-    "your-interview-toolkit": "Your Complete Interview Toolkit",
-    "data-structures-for-interviews": "Data Structures for Interviews",
-    "algorithm-patterns-and-strategies": "Algorithm Patterns and Strategies",
-    "complexity-analysis-mastery": "Complexity Analysis Mastery",
-    "live-coding-best-practices": "Live Coding Best Practices",
-    "debugging-under-pressure": "Debugging Under Pressure",
-    "code-review-interviews": "Code Review Interviews",
-    "api-design-interviews": "API Design Interviews",
-    "model-evaluation-deep-dives": "Model Evaluation Deep Dives",
-    "feature-engineering-questions": "Feature Engineering Interview Questions",
-    "nlp-and-llm-interview-topics": "NLP and LLM Interview Topics",
-    "computer-vision-interview-prep": "Computer Vision Interview Prep",
-    "ml-system-design-interviews": "ML System Design Interviews",
-    "mlops-and-production-ml": "MLOps and Production ML",
-    "ai-ethics-in-interviews": "AI Ethics in Interviews",
-    "evaluating-multiple-offers": "Evaluating Multiple Offers",
-    "first-90-days-strategy": "Your First 90 Days Strategy",
-    "long-term-career-architecture": "Long-Term Career Architecture",
+    "leadership-principles": "Leiderschapsprincipes voor technische interviews",
+    "conflict-resolution-stories": "Verhalen over conflictoplossing die indruk maken",
+    "cross-functional-collaboration": "Cross-functionele samenwerking",
+    "failure-and-growth-narratives": "Mislukkings- en groeiverhalen",
+    "managing-up-and-stakeholders": "Beheer van de invloed van belanghebbenden en belanghebbenden",
+    "cultural-fit-conversations": "Culturele Fit-gesprekken",
+    "understanding-interview-landscape": "Het interviewlandschap begrijpen",
+    "decoding-job-descriptions": "Taakomschrijvingen decoderen",
+    "company-research-strategies": "Onderzoeksstrategieën van bedrijven",
+    "building-preparation-timeline": "Het opbouwen van uw voorbereidingstijdlijn",
+    "growth-mindset-for-interviews": "Groeimindset voor sollicitatiegesprekken",
+    "your-interview-toolkit": "Uw complete sollicitatietoolkit",
+    "data-structures-for-interviews": "Datastructuren voor interviews",
+    "algorithm-patterns-and-strategies": "Algoritmepatronen en strategieën",
+    "complexity-analysis-mastery": "Beheersing van complexiteitsanalyse",
+    "live-coding-best-practices": "Beste praktijken voor live coderen",
+    "debugging-under-pressure": "Foutopsporing onder druk",
+    "code-review-interviews": "Codebeoordelingsinterviews",
+    "api-design-interviews": "API Ontwerpinterviews",
+    "model-evaluation-deep-dives": "Modelevaluatie diepe duiken",
+    "feature-engineering-questions": "Feature Engineering sollicitatievragen",
+    "nlp-and-llm-interview-topics": "NLP- en LLM-interviewonderwerpen",
+    "computer-vision-interview-prep": "Voorbereiding op computervisie-interview",
+    "ml-system-design-interviews": "ML Systeemontwerpinterviews",
+    "mlops-and-production-ml": "MLOps en Productie ML",
+    "ai-ethics-in-interviews": "AI-ethiek in interviews",
+    "evaluating-multiple-offers": "Meerdere aanbiedingen evalueren",
+    "first-90-days-strategy": "Uw eerste 90-dagenstrategie",
+    "long-term-career-architecture": "Architectuur voor carrière op lange termijn",
     "rag-systems-in-practice": "RAG-systemen in de praktijk",
     "agent-tools-and-mcp": "Agents met tools en MCP",
     "evaluate-and-operate-ai": "AI evalueren en beheren"
@@ -1243,13 +1243,13 @@
     "goHome": "Ga naar de homepagina"
   },
   "blog": {
-    "title": "Blog",
+    "title": "Bloggen",
     "subtitle": "Gedachten over AI, engineering en onderwijs",
     "readMore": "Lees meer",
-    "backToBlog": "Blog",
+    "backToBlog": "Bloggen",
     "publishedOn": "Gepubliceerd op",
     "minuteRead": "min leestijd",
-    "tags": "Tags",
+    "tags": "Labels",
     "badge": "",
     "noPosts": "Nog geen berichten. Kijk binnenkort nog eens!",
     "shareLabel": "Was dit nuttig?"
@@ -1283,12 +1283,12 @@
     "githubTitle": "Open source en transparant"
   },
   "lab": {
-    "title": "AI Lab",
-    "subtitle": "Experimenteer met echte AI-concepten direct in je browser. Geen installatie, geen code, gewoon spelen en leren!",
+    "title": "AI-lab",
+    "subtitle": "Experimenteer met echte AI-concepten rechtstreeks in uw browser. Geen installatie, geen codering, gewoon spelen en leren!",
     "badge": "Interactief • Leuk • Leerzaam",
-    "pageTitle": "AI Lab",
+    "pageTitle": "AI-lab",
     "pageDescription": "Experimenteer met AI-concepten. Analyseer sentiment, visualiseer neurale netwerken, verken sorteeralgoritmen en begrijp tokenisatie.",
-    "footer": "Alle demo's draaien volledig in je browser - er worden geen gegevens naar een server gestuurd.",
+    "footer": "Alle demo's draaien volledig in uw browser, er worden geen gegevens naar een server verzonden.",
     "tabs": {
       "games": {
         "label": "Minigames",
@@ -1314,16 +1314,16 @@
     "aiOrHuman": {
       "title": "Kun jij het verschil zien?",
       "description": "Lees {count} tekstfragmenten en raad of elk door een mens geschreven is of door AI gegenereerd. Het is moeilijker dan je denkt.",
-      "startGame": "Start spel",
+      "startGame": "Spel starten",
       "playAgain": "Opnieuw spelen",
       "human": "Mens",
       "ai": "AI-gegenereerd",
-      "round": "Ronde {current} van {total}",
-      "score": "Score",
+      "round": "Ronde {current} of {total}",
+      "score": "Scoren",
       "streak": "{count} reeks",
       "bestStreak": "{count} beste reeks",
       "accuracy": "{pct}% nauwkeurigheid",
-      "correct": "Correct!",
+      "correct": "Juist!",
       "wrong": "Fout!",
       "writtenBy": "Geschreven door",
       "writtenByAI": "AI",
@@ -1337,9 +1337,9 @@
       "scoreTitleLow": "AI heeft je gefopt"
     },
     "common": {
-      "score": "Score",
+      "score": "Scoren",
       "round": "Ronde",
-      "correct": "Correct!",
+      "correct": "Juist!",
       "wrong": "Fout!",
       "tryAgain": "Probeer opnieuw",
       "next": "Volgende",
@@ -1354,7 +1354,7 @@
       "yourOrder": "Jouw volgorde:",
       "lockIn": "Bevestigen",
       "seeResults": "Bekijk resultaten",
-      "go": "Start",
+      "go": "Ga",
       "startTyping": "Begin met typen...",
       "ready": "Klaar...",
       "lastTime": "Vorige: {time}s",
@@ -1367,8 +1367,8 @@
       "conceptsDecoded": "AI-concepten ontcijferd",
       "binaryDecoded": "Binair ontcijferd als een machine",
       "jargonBusted": "jargon ontrafeld",
-      "promptScore": "prompt engineering-score",
-      "avgDistance": "Gemiddelde afwijking van het werkelijke aantal tokens",
+      "promptScore": "snelle technische score",
+      "avgDistance": "Gemiddelde afstand vanaf het werkelijke aantal tokens",
       "greatDetective": "Goed detectivewerk!",
       "reviewedBias": "Je hebt {count} vooroordeelscenario's bekeken. Vooroordelen begrijpen is de eerste stap naar eerlijkere AI.",
       "perfectOrder": "Perfecte volgorde!",
@@ -1392,7 +1392,7 @@
       "speedTyper": {
         "title": "Sneltyper",
         "instruction": "Typ de AI-term zo snel als je kunt!",
-        "term": "Term {current}/{total}",
+        "term": "Termijn {current}/{total}",
         "placeholder": "Begin met typen..."
       },
       "oddOneOut": {
@@ -1401,7 +1401,7 @@
       },
       "memoryMatch": {
         "title": "Memory",
-        "instruction": "Koppel elke AI-term aan de juiste definitie"
+        "instruction": "Zorg ervoor dat elke AI-term overeenkomt met de bijbehorende definitie"
       },
       "aiTimeline": {
         "title": "AI-tijdlijn",
@@ -1411,7 +1411,7 @@
         "title": "Vooroordeeldetective",
         "instruction": "Lees het scenario en herken het vooroordeel",
         "revealBias": "Onthul het vooroordeel",
-        "case": "Zaak {current}/{total}",
+        "case": "Behuizing {current}/{total}",
         "nextCase": "Volgende zaak"
       },
       "tokenCounter": {
@@ -1426,14 +1426,14 @@
         "offBy": "Er {count} naast"
       },
       "promptEngineer": {
-        "title": "Prompt Engineer",
+        "title": "Prompt-ingenieur",
         "instruction": "Welke prompt zou beter werken?",
         "task": "Opdracht"
       },
       "jargonBuster": {
         "title": "Jargonbreker",
         "instruction": "Klopt deze definitie?",
-        "term": "Term",
+        "term": "Termijn",
         "true": "Waar",
         "false": "Onwaar",
         "timeUp": "Tijd is op!"
@@ -1441,14 +1441,14 @@
       "aiTrivia": {
         "title": "AI-triviant",
         "instruction": "Test je kennis van AI-geschiedenis, -concepten en beroemde figuren!",
-        "timeLeft": "{seconds}s",
+        "timeLeft": "{seconds}'s",
         "multiplier": "×{mult} snelheidsbonus",
         "questionOf": "Vraag {current} van {total}",
-        "correctAnswer": "Correct! +{points} punten",
+        "correctAnswer": "Juist! +{points} punten",
         "wrongAnswer": "Het antwoord was: {answer}",
         "timesUp": "Tijd is op!",
         "finalScore": "Eindscore",
-        "questionsCorrect": "{correct}/{total} correct",
+        "questionsCorrect": "{correct}/{total} klopt",
         "leaderboard": "Ranglijst",
         "noScores": "Nog geen scores. Wees de eerste!",
         "fastAnswer": "Bliksemsnel!",
@@ -1500,9 +1500,9 @@
     "sortingSection": {
       "title": "Sorteeralgoritme-visualisatie",
       "description": "Vergelijk Bubble Sort, Quick Sort en Merge Sort naast elkaar.",
-      "bubble": "Bubble Sort",
-      "quick": "Quick Sort",
-      "merge": "Merge Sort",
+      "bubble": "Bellen sorteren",
+      "quick": "Snel sorteren",
+      "merge": "Sortering samenvoegen",
       "comparisons": "vergelijkingen",
       "shuffle": "Schudden",
       "sort": "Sorteren",
@@ -1510,15 +1510,15 @@
     },
     "tokenizerSection": {
       "title": "AI-tokenizer",
-      "description": "Bekijk hoe LLM's tekst opsplitsen in tokens - de basisbouwstenen die AI verwerkt.",
-      "placeholder": "Typ tekst om te zien hoe AI het in tokens opsplitst...",
+      "description": "Bekijk hoe LLMs tekst opsplitst in tokens, de fundamentele eenheden die AI verwerkt.",
+      "placeholder": "Typ tekst om te zien hoe AI deze in tokens opsplitst...",
       "tokens": "tokens",
       "characters": "tekens",
       "wordsEquivalent": "~{count} woorden equivalent",
-      "explanation": "AI leest tekst niet zoals mensen. Het splitst tekst op in tokens - subwoordstukken die afzonderlijk verwerkt worden. Langere woorden worden in kleinere stukken opgedeeld."
+      "explanation": "AI leest geen tekst zoals mensen. Het verdeelt tekst in tokens, subwoordstukken die afzonderlijk worden verwerkt. Langere woorden worden in kleinere stukken opgesplitst."
     },
     "hub": {
-      "title": "AI Lab",
+      "title": "AI-lab",
       "subtitle": "Interactieve AI-spellen en hulpmiddelen - speel, experimenteer en leer al doende.",
       "badge": "Interactief • Leuk • Leerzaam",
       "gamesAvailable": "{count} spellen beschikbaar",
@@ -1534,10 +1534,10 @@
       "difficultyHard": "Moeilijk",
       "estimatedTime": "{time} min",
       "playNow": "Nu spelen",
-      "personalBest": "Record: {score}",
+      "personalBest": "Beste: {score}",
       "noGamesFound": "Geen spellen gevonden voor je zoekopdracht",
       "backToHub": "← Terug naar spellen",
-      "roundOf": "Ronde {current} van {total}",
+      "roundOf": "Ronde {current} of {total}",
       "highScore": "Nieuwe highscore!",
       "closeGame": "Sluiten"
     },
@@ -1563,9 +1563,9 @@
       "outputLayer": "Uitvoer",
       "playAgain": "Opnieuw spelen",
       "algoRace": "Algoritme-race",
-      "bubbleSort": "Bubble Sort",
-      "quickSort": "Quick Sort",
-      "mergeSort": "Merge Sort",
+      "bubbleSort": "Bellen sorteren",
+      "quickSort": "Snel sorteren",
+      "mergeSort": "Sortering samenvoegen",
       "perQuestion": "per vraag",
       "questions": "vragen",
       "speedBonus": "Snelheidsbonusmultiplicator",
@@ -1574,10 +1574,10 @@
       "serverLabel": "Server",
       "dbLabel": "DB",
       "gateLabel": "Gateway",
-      "serviceLabel": "Service",
+      "serviceLabel": "Dienst",
       "queueLabel": "Wachtrij",
-      "clientLabel": "Client",
-      "cloudLabel": "Cloud",
+      "clientLabel": "Klant",
+      "cloudLabel": "Wolk",
       "textLabel": "Tekst",
       "saved": "Opgeslagen",
       "clickTarget": "Klik op de doelvorm",
@@ -1589,10 +1589,10 @@
       "shapeServer": "Server",
       "shapeDB": "DB",
       "shapeGate": "Gateway",
-      "shapeService": "Service",
+      "shapeService": "Dienst",
       "shapeQueue": "Wachtrij",
-      "shapeClient": "Client",
-      "shapeCloud": "Cloud",
+      "shapeClient": "Klant",
+      "shapeCloud": "Wolk",
       "shapeText": "Tekst",
       "yourDesigns": "Jouw ontwerpen",
       "newCanvas": "Nieuw canvas",
@@ -1612,21 +1612,21 @@
       "gameDesignName": "Systeemontwerp Canvas",
       "gameDesignDesc": "Sleep, verbind en ontwerp - oefen architectuurdiagrammen",
       "aiResponseLabel": "// AI ANTWOORD",
-      "arrowLabelPlaceholder": "label…",
+      "arrowLabelPlaceholder": "etiket…",
       "avgScoreLabel": "Gemiddelde promptscore over {count} uitdagingen",
       "betLost": "😅 Niet deze keer!",
       "betWon": "🎉 Goed geraden!",
       "bubbleWins": "Bubble Sort won?! Dat is extreem zeldzaam met willekeurige data - meestal O(n²)!",
-      "challengeLabel": "Uitdaging {current}/{total}",
+      "challengeLabel": "Daag {current}/{total} uit",
       "clearTooltip": "Wissen",
       "comparingLegend": "Vergelijken",
-      "defaultLabel": "Label",
+      "defaultLabel": "Etiket",
       "doneStatus": "✓ KLAAR",
       "feedbackExcellent": "🎯 Uitstekende prompt! Helder, specifiek en goed gestructureerd.",
       "feedbackGettingThere": "📝 Je bent op weg - voeg meer relevante trefwoorden toe en wees explicieter.",
       "feedbackGood": "👍 Goed geprobeerd! Probeer specifieker te zijn over het formaat en de beperkingen.",
       "feedbackVague": "🔄 Te vaag. Probeer de taak, het formaat en eventuele beperkingen expliciet te specificeren.",
-      "helpText": "Dubbelklik hernoem · Del verwijder · ⌘Z ongedaan · ⌘+/- zoom · ⌘0 reset · Middelklik pannen",
+      "helpText": "Dbl-klik hernoemen · Verwijderen · ⌘Z ongedaan maken · ⌘+/- zoomen · ⌘0 opnieuw instellen · Middelklikken pannen",
       "mergeWins": "Merge Sort wint met gegarandeerde O(n log n) prestaties!",
       "missionLabel": "// MISSIE",
       "myDesignsTooltip": "Mijn ontwerpen",
@@ -1641,7 +1641,7 @@
       "shapesArrows": "{shapes} vormen · {arrows} pijlen",
       "sortedLegend": "Gesorteerd",
       "sortingStatus": "sorteren...",
-      "startRaceBtn": "🏁 START RACE",
+      "startRaceBtn": "🏁 BEGIN RACE",
       "swappingLegend": "Verwisselen",
       "targetOutputLabel": "// VERWACHTE UITVOER",
       "undoTooltip": "Ongedaan maken (⌘Z)",
@@ -1656,20 +1656,20 @@
     "diffMedium": "GEM",
     "diffHard": "MOEILIJK",
     "filterAll": "ALLES",
-    "initializing": "AI Lab wordt geladen...",
+    "initializing": "AI Lab initialiseren...",
     "experimentsLoaded": "experimenten geladen",
     "allSystemsOp": "alle systemen operationeel",
     "featuredExperiment": "Uitgelicht experiment",
-    "runButton": "START",
+    "runButton": "REN",
     "navNeural": "Neuraal netwerk speeltuin",
     "navAiOrHuman": "AI of mens?",
-    "navPromptLab": "Prompt lab",
+    "navPromptLab": "Prompt-lab",
     "navImageGen": "Beeldgenerator",
     "navSentiment": "Sentimentanalyse",
     "navChatbot": "Chatbot bouwer",
     "navEthics": "Ethiek simulator",
-    "mockInterviewTitle": "AI Mock Interview Lab",
-    "mockInterviewDesc": "Practice behavioral, technical & system design interviews with AI"
+    "mockInterviewTitle": "AI Mock Interview-lab",
+    "mockInterviewDesc": "Oefen gedrags-, technische en systeemontwerpinterviews met AI"
   },
   "ui": {
     "light": "Licht",
@@ -1684,11 +1684,11 @@
   "admin": {
     "loginTitle": "🔐 Beheerderstoegang",
     "passwordPlaceholder": "Voer beheerderscode in",
-    "accessButton": "Dashboard openen",
+    "accessButton": "Toegang tot Dashboard",
     "loading": "Analyses laden...",
     "noData": "Geen gegevens beschikbaar",
     "loadError": "Kan analysegegevens niet laden",
-    "invalidSecret": "Ongeldige code",
+    "invalidSecret": "Ongeldig geheim",
     "title": "📊 Beheerderanalyses",
     "subscribers": "Nieuwsbriefabonnees",
     "totalFeedback": "Totale feedback",
@@ -1730,14 +1730,14 @@
     "popularPages": "Populaire pagina's",
     "searchSuggestion": "Probeer te zoeken naar wat u nodig heeft",
     "programs": "Programma's",
-    "blog": "Blog",
-    "lab": "AI Lab",
+    "blog": "Bloggen",
+    "lab": "AI-lab",
     "about": "Over ons"
   },
   "faq": {
-    "title": "Frequently Asked Questions",
+    "title": "Veelgestelde vragen",
     "subtitle": "Everything you need to know about AI Educademy. from getting started to going deep.",
-    "cta": "Start Learning Now",
+    "cta": "Begin nu met leren",
     "ctaHref": "/programs",
     "q1": "What is AI Educademy?",
     "a1": "AI Educademy is an open-source platform for learning Artificial Intelligence. We offer structured programs, interactive lessons, and hands-on lab experiments to help anyone. regardless of background. understand and apply AI concepts.",
@@ -1757,8 +1757,8 @@
     "a8": "For beginner programs: none at all. For intermediate and advanced programs, it helps to have completed earlier programs in the path, but it's not strictly required. Jump in wherever feels right for you.",
     "q9": "What languages is the content available in?",
     "a9": "AI Educademy is available in 9 languages: English, French, Dutch, Hindi, Telugu, Spanish, Portuguese, German, and Chinese. All content is thoughtfully translated. not machine-generated. so the experience feels natural in your language.",
-    "q10": "Can I switch between languages?",
-    "a10": "Yes! Use the language switcher in the navigation bar to change the platform language at any time. Your learning progress is stored per language, so you can study in multiple languages simultaneously if you want.",
+    "q10": "Kan ik tussen talen wisselen?",
+    "a10": "Ja! Gebruik de taalwisselaar in de navigatiebalk om de platformtaal op elk gewenst moment te wijzigen. Je leervoortgang wordt per taal opgeslagen, zodat je desgewenst in meerdere talen tegelijk kunt studeren.",
     "q11": "Is AI Educademy open source?",
     "a11": "Yes, fully open source. The entire codebase is publicly available on GitHub under an open licence. You can inspect the code, suggest improvements, fork it, or build on top of it.",
     "q12": "How can I contribute to the project?",
@@ -1779,15 +1779,15 @@
     "a19": "Topics include: what AI and machine learning really are, how neural networks work, natural language processing, computer vision, AI ethics and bias, prompt engineering, large language models, and how to apply AI tools effectively in real-world projects.",
     "q20": "What is the Craft Engineering path?",
     "a20": "The Craft Engineering path focuses on the software engineering skills needed to build AI-powered applications. covering software design principles, clean architecture, reliability engineering, and how to integrate AI models into production-grade systems.",
-    "q21": "Can I learn on my phone or tablet?",
+    "q21": "Kan ik leren op mijn telefoon of tablet?",
     "a21": "Absolutely! AI Educademy is fully responsive and works beautifully on mobile devices and tablets. It's also a Progressive Web App (PWA), so you can install it on your home screen for a fast, app-like experience. even with limited connectivity.",
-    "q22": "Is there a community or forum?",
-    "a22": "Yes! We have a community section where learners connect, share progress, ask questions, and support each other. You're not learning alone. there are fellow learners at every stage of the journey.",
-    "q23": "How do I track my learning progress?",
-    "a23": "Progress is tracked automatically as you complete lessons and programs. Sign in or create a guest profile to access your personalised progress dashboard, see your completion stats, and easily resume where you left off.",
-    "q24": "What makes AI Educademy different from other platforms?",
+    "q22": "Is er een community of forum?",
+    "a22": "Ja! We hebben een gemeenschapsgedeelte waar leerlingen verbinding maken, hun voortgang delen, vragen stellen en elkaar ondersteunen. Je leert niet alleen. In elke fase van de reis zijn er medeleerlingen.",
+    "q23": "Hoe houd ik mijn leervoortgang bij?",
+    "a23": "Progress wordt automatisch bijgehouden terwijl u lessen en programma's voltooit. Meld u aan of maak een gastprofiel om toegang te krijgen tot uw persoonlijke voortgangsdashboard, uw voltooiingsstatistieken te bekijken en eenvoudig verder te gaan waar u was gebleven.",
+    "q24": "Wat maakt AI Educademy anders dan andere platforms?",
     "a24": "AI Educademy combineert een echte gratis proefles in elke academie met gestructureerd leren, praktische projecten, interactieve experimenten en écht meertalige content. Pro brengt je van de basis naar productiegerichte AI-vaardigheden.",
-    "q25": "How do I get started?",
+    "q25": "Hoe begin ik?",
     "a25": "Bekijk de academies en probeer de gratis eerste les van elk programma, of dat nu AI Seeds, AI Canopy of Interview Launchpad is. Kies een maandelijks, jaarlijks of levenslang Pro-abonnement wanneer je klaar bent om de rest te ontgrendelen.",
     "ctaTitle": "Klaar om aan je AI-reis te beginnen?",
     "ctaSubtitle": "Probeer de eerste les van elke academie gratis, geen account nodig."
@@ -1803,21 +1803,21 @@
     "free": {
       "title": "Verkenner",
       "f1": "Probeer de eerste les van elke academy gratis en ontgrendel daarna de rest met Pro.",
-      "f2": "AI Educademy geeft je een gratis preview van de eerste les in elke academy. Pro ontgrendelt alle overige lessen, tracks, certificaten en premiumfuncties met maandelijkse, jaarlijkse of levenslange toegang.",
+      "f2": "AI Educademy geeft je in elke academie een gratis preview van de eerste les. Pro ontgrendelt alle resterende lessen, trajecten, certificaten en premiumfuncties via maandelijkse, jaarlijkse of levenslange toegang.",
       "f3": "Artikelen en programmapreviews",
-      "f4": "Interactieve AI Lab experimenten",
+      "f4": "Interactieve AI Lab-experimenten",
       "f5": "Voortgang lokaal opgeslagen",
-      "cta": "Start gratis"
+      "cta": "Begin gratis"
     },
     "monthly": {
       "title": "Pro Maandelijks",
       "period": "maand",
-      "cta": "Start Pro Maandelijks"
+      "cta": "Pro maandelijks starten"
     },
     "annual": {
       "title": "Pro Jaarlijks",
       "period": "jaar",
-      "cta": "Start Pro Jaarlijks",
+      "cta": "Start Pro jaarlijks",
       "save": "Bespaar {percent}% vergeleken met maandelijks"
     },
     "lifetime": {
@@ -1829,9 +1829,9 @@
       "f1": "Elke academy en leertrack",
       "f2": "Alle programma’s en leertracks",
       "f3": "Career Ready interviewvoorbereiding",
-      "f4": "AI Mock Interview lab",
+      "f4": "AI Mock Interview-lab",
       "f5": "Voltooiingscertificaten",
-      "f6": "Server-side voortgangssync op al je apparaten"
+      "f6": "Voortgangssynchronisatie aan de serverzijde op verschillende apparaten"
     },
     "promoCode": "Heb je een promotiecode?",
     "promoCodePlaceholder": "Voer code in",
@@ -1846,14 +1846,14 @@
     "chooseAPlan": "Kies een plan",
     "selected": "Geselecteerd",
     "selectThisPlan": "Kies dit plan",
-    "alreadyPro": "Je hebt al Pro. Beheer je abonnement vanuit je account."
+    "alreadyPro": "Je hebt al Pro. Beheer uw abonnement vanuit uw account."
   },
   "paywall": {
     "title": "Je volgende niveau zit achter deze deur",
     "isPartOf": "is onderdeel van",
     "description": "Kies een plan om elke academy, elke les, voortgangssync en voltooiingscertificaten te ontgrendelen. Bouw vaardigheden die blijven groeien.",
     "features": {
-      "allPrograms": "Alle programma’s en tracks",
+      "allPrograms": "Alle programma's en nummers",
       "progressSync": "Voortgangssync",
       "certificates": "Certificaten"
     },
@@ -1909,7 +1909,7 @@
     "progress": "Voltooi nog {remaining} lessen om je certificaat te verdienen",
     "completed": "Je hebt je certificaat verdiend!",
     "notSignedIn": "Log in om je voortgang bij te houden en certificaten te verdienen",
-    "upgradeToCertificate": "Upgrade naar Pro voor een certificaat",
+    "upgradeToCertificate": "Upgrade naar Pro voor certificaat",
     "premiumOnly": "Certificaten voor premium programma's zijn beschikbaar met een Pro-abonnement"
   },
   "continueLearning": {
@@ -1918,7 +1918,7 @@
     "startFirstDesc": "Kies een programma en begin je AI-reis",
     "continueCta": "Doorgaan",
     "startCta": "Programma's bekijken",
-    "progress": "{completed} van {total} lessen"
+    "progress": "{completed} van {total}-lessen"
   },
   "contact": {
     "title": "Neem contact op",
@@ -1937,13 +1937,13 @@
     "messagePlaceholder": "Vertel ons wat je bezighoudt...",
     "submit": "Bericht verzenden",
     "sending": "Verzenden...",
-    "success": "Bericht verzonden! We nemen snel contact met je op.",
+    "success": "Bericht verzonden! We nemen snel contact met u op.",
     "error": "Er is iets misgegaan. Probeer het opnieuw.",
     "rateLimit": "Te veel berichten. Wacht even.",
     "required": "Dit veld is verplicht",
     "invalidEmail": "Voer een geldig e-mailadres in",
     "messageTooShort": "Het bericht moet minimaal 10 tekens bevatten",
-    "or": "Of neem direct contact met ons op",
+    "or": "Of bereik ons direct",
     "emailUs": "Stuur ons een e-mail",
     "emailAddress": "hello@aieducademy.org",
     "socials": "Vind ons op",
@@ -1960,7 +1960,7 @@
       },
       "use": {
         "title": "2. Hoe we je informatie gebruiken",
-        "content": "We gebruiken je informatie om: de leerervaring te bieden en te personaliseren; je cursusvoortgang te volgen; betalingen te verwerken en abonnementen te beheren; belangrijke account- en servicemeldingen te verzenden; ons platform te verbeteren door middel van analyse; optionele educatieve nieuwsbrieven te verzenden (je kunt je op elk moment afmelden)."
+        "content": "Wij gebruiken uw gegevens om: de leerervaring aan te bieden en te personaliseren; volg uw cursusvoortgang; betalingen verwerken en abonnementen beheren; belangrijke account- en servicemeldingen verzenden; ons platform verbeteren door middel van analyses; het versturen van optionele educatieve nieuwsbrieven (u kunt zich op elk moment afmelden)."
       },
       "sharing": {
         "title": "3. Delen van informatie",
@@ -1972,11 +1972,11 @@
       },
       "retention": {
         "title": "5. Gegevensbewaring",
-        "content": "We bewaren je accountgegevens zolang je account actief is. Als je je account verwijdert, verwijderen we je persoonlijke gegevens binnen 30 dagen. Geanonimiseerde analysegegevens kunnen voor onbepaalde tijd worden bewaard. Betalingsgegevens worden bewaard zoals vereist door de Britse belastingwetgeving."
+        "content": "Wij bewaren uw accountgegevens zolang uw account actief is. Als u uw account verwijdert, verwijderen wij uw persoonsgegevens binnen 30 dagen. Geanonimiseerde analysegegevens kunnen voor onbepaalde tijd worden bewaard. Betalingsgegevens worden bewaard zoals vereist door de Britse belastingwetgeving."
       },
       "rights": {
         "title": "6. Je rechten (AVG)",
-        "content": "Op grond van de Britse AVG heb je het recht om: toegang te krijgen tot je persoonlijke gegevens; onjuiste gegevens te corrigeren; verwijdering van je gegevens te verzoeken; je gegevens in een draagbaar formaat te exporteren; bezwaar te maken tegen de verwerking van je gegevens; je toestemming op elk moment in te trekken. Om deze rechten uit te oefenen, neem contact met ons op via privacy@aieducademy.org."
+        "content": "Onder de Britse AVG heeft u het recht op: toegang tot uw persoonlijke gegevens; onjuiste gegevens corrigeren; verzoeken om verwijdering van uw gegevens; exporteer uw gegevens in een draagbaar formaat; bezwaar maken tegen de verwerking van uw gegevens; toestemming op elk gewenst moment intrekken. Om deze rechten uit te oefenen, kunt u contact met ons opnemen via privacy@aieducademy.org."
       },
       "security": {
         "title": "7. Beveiliging",
@@ -1984,7 +1984,7 @@
       },
       "children": {
         "title": "8. Privacy van kinderen",
-        "content": "AI Educademy is niet bedoeld voor kinderen jonger dan 13 jaar. We verzamelen niet bewust persoonlijke gegevens van kinderen jonger dan 13 jaar. Als je denkt dat een kind ons persoonlijke gegevens heeft verstrekt, neem dan onmiddellijk contact met ons op."
+        "content": "AI Educademy is niet bedoeld voor kinderen jonger dan 13 jaar. We verzamelen niet bewust persoonlijke gegevens van kinderen jonger dan 13 jaar. Als u denkt dat een kind ons persoonlijke gegevens heeft verstrekt, neem dan onmiddellijk contact met ons op."
       },
       "international": {
         "title": "9. Internationale gegevensoverdrachten",
@@ -1995,7 +1995,7 @@
         "content": "We kunnen dit beleid van tijd tot tijd bijwerken. We informeren je per e-mail over belangrijke wijzigingen. Voortgezet gebruik van de dienst na wijzigingen geldt als aanvaarding."
       },
       "contact": {
-        "title": "11. Contact",
+        "title": "11. Neem contact met ons op",
         "content": "Voor privacygerelateerde vragen: e-mail privacy@aieducademy.org. Vragen over gegevensbescherming kunnen worden gericht aan theglobalmind.ai@gmail.com."
       }
     }
@@ -2011,7 +2011,7 @@
       },
       "accounts": {
         "title": "2. Gebruikersaccounts",
-        "content": "Je kunt inloggen met Google of GitHub OAuth. Je bent verantwoordelijk voor de beveiliging van je account. Je moet nauwkeurige informatie verstrekken bij registratie. We behouden ons het recht voor om accounts die deze voorwaarden schenden op te schorten."
+        "content": "U kunt zich aanmelden met Google of GitHub OAuth. U bent verantwoordelijk voor het handhaven van de veiligheid van uw account. Tijdens de registratie moet u nauwkeurige informatie verstrekken. We behouden ons het recht voor om accounts op te schorten die deze voorwaarden schenden."
       },
       "subscriptions": {
         "title": "3. Abonnementen en betalingen",
@@ -2023,10 +2023,10 @@
       },
       "conduct": {
         "title": "5. Aanvaardbaar gebruik",
-        "content": "Je stemt ermee in om niet: je accountgegevens te delen, te proberen premium-inhoud te openen zonder geldig abonnement, geautomatiseerde tools te gebruiken om inhoud te scrapen, schadelijke inhoud te uploaden of andere gebruikers lastig te vallen. Overtredingen kunnen leiden tot beëindiging van het account."
+        "content": "U stemt ermee in om: uw accountgegevens niet te delen, te proberen toegang te krijgen tot premium-inhoud zonder een geldig abonnement, geautomatiseerde tools te gebruiken om inhoud te schrapen, kwaadaardige inhoud te uploaden of andere gebruikers lastig te vallen. Schending kan leiden tot beëindiging van het account."
       },
       "disclaimer": {
-        "title": "6. Disclaimer",
+        "title": "6. Vrijwaring",
         "content": "AI Educademy biedt educatieve inhoud op basis van \"zoals het is\". Hoewel we streven naar nauwkeurigheid, garanderen we niet dat alle inhoud foutloos of actueel is. AI Educademy is niet verantwoordelijk voor carrièreresultaten of sollicitatiegesprekken."
       },
       "liability": {
@@ -2042,22 +2042,22 @@
         "content": "Deze voorwaarden worden beheerst door het recht van Engeland en Wales. Geschillen vallen onder de exclusieve bevoegdheid van de rechtbanken van Engeland en Wales."
       },
       "contact": {
-        "title": "10. Contact",
-        "content": "Voor vragen over deze voorwaarden, neem contact met ons op via support@aieducademy.org."
+        "title": "10. Contactpersoon",
+        "content": "Voor vragen over deze voorwaarden kunt u contact met ons opnemen via support@aieducademy.org."
       }
     }
   },
   "achievement": {
-    "title": "{program} - Achievement | AI Educademy",
-    "description": "{user} completed the {program} program on AI Educademy!",
-    "heading": "Achievement Unlocked!",
-    "completedBy": "Completed by",
+    "title": "{program} - Prestatie | AI Educademy",
+    "description": "{user} voltooide het {program}-programma op AI Educademy!",
+    "heading": "Prestatie ontgrendeld!",
+    "completedBy": "Voltooid door",
     "badge": "🎓",
-    "cta": "Start Learning at AI Educademy",
+    "cta": "Begin met leren bij AI Educademy",
     "ctaSubtitle": "Gestructureerd AI-onderwijs, les voor les",
-    "verifiedCompletion": "Verified Completion",
-    "defaultTitle": "Achievement | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - gestructureerd AI-onderwijs, les voor les."
+    "verifiedCompletion": "Geverifieerde voltooiing",
+    "defaultTitle": "Prestatie | AI Educademy",
+    "defaultDescription": "Een prestatie verdiend op AI Educademy: gestructureerd AI-onderwijs, les voor les."
   },
   "trustBar": {
     "lessons": "Lessen",
@@ -2069,16 +2069,16 @@
   "journey": {
     "title": "Jouw AI-leertraject",
     "subtitle": "Volg je persoonlijke pad naar AI-beheersing, van de basis tot volledige carrièreklaarheid.",
-    "trackAI": "AI Learning",
-    "trackCraft": "Craft Engineering",
-    "trackCareer": "Career Ready",
+    "trackAI": "AI-leren",
+    "trackCraft": "Ambachtelijke techniek",
+    "trackCareer": "Carrière klaar",
     "level": "Niveau",
     "completed": "afgerond",
     "locked": "Vergrendeld",
     "current": "Bezig",
     "signInPrompt": "Log in om je voortgang bij te houden en je persoonlijke leertraject te ontgrendelen.",
     "overallProgress": "Totale voortgang",
-    "startJourney": "Start je traject",
+    "startJourney": "Begin uw reis",
     "loadingProgress": "Je voortgang wordt geladen…"
   },
   "howItWorks": {
@@ -2087,9 +2087,9 @@
     "step1Title": "Kies je pad",
     "step1Desc": "Kies uit 3 trajecten: AI Learning, Craft Engineering of Career Ready. Elk traject bevat zorgvuldig samengestelde programma's die je van nul naar beheersing brengen.",
     "step2Title": "Leer door te doen",
-    "step2Desc": "Interactieve lessen, praktische experimenten en echte code. Geen passief video's kijken, maar begrip opbouwen door te oefenen.",
+    "step2Desc": "Interactieve lessen, praktische experimenten en echte code. Geen passief video kijken; je bouwt begrip op door te oefenen.",
     "step3Title": "Bouw echte projecten",
-    "step3Desc": "Pas je vaardigheden toe in ons AI Lab met 7 experimenten. Bouw chatbots, classifiers en AI-agents die echte problemen oplossen."
+    "step3Desc": "Pas je vaardigheden toe in onze AI Lab met 7 experimenten. Bouw chatbots, classifiers en AI-agents die echte problemen oplossen."
   },
   "finalCta": {
     "headline": "Jouw AI-voorsprong begint hier",
@@ -2111,10 +2111,10 @@
     "abandonedCartSubject": "Je hebt iets laten liggen!",
     "abandonedCartPreview": "Je AI-leertraject staat klaar",
     "abandonedCartFallbackName": "daar",
-    "abandonedCartGreeting": "Hoi {name},",
+    "abandonedCartGreeting": "Hallo {name},",
     "abandonedCartBody1": "Nog aan het twijfelen? We zagen dat je begon af te rekenen maar niet klaar bent. Geen zorgen, je plek is nog beschikbaar.",
     "abandonedCartBody2": "Met AI Educademy Pro krijg je toegang tot alle programma's, leertrajecten, AI-oefengesprekken, certificaten en meer.",
-    "abandonedCartPromo": "🎉 Gebruik code {code} bij het afrekenen en bespaar op je abonnement.",
+    "abandonedCartPromo": "🎉 Gebruik code {code} bij het afrekenen om te besparen op uw abonnement.",
     "abandonedCartCta": "Rond je aankoop af",
     "abandonedCartUnlockTitle": "Wat je met Pro ontgrendelt:",
     "abandonedCartUnlock1": "Alle programma's en leertrajecten",
@@ -2126,13 +2126,13 @@
     "abandonedCartUnsubscribe": "Afmelden",
     "proUpgradeSubject": "Een klein verzoek van AI Educademy",
     "proUpgradeFallbackName": "daar",
-    "proUpgradeGreeting": "Hoi {name},",
+    "proUpgradeGreeting": "Hallo {name},",
     "proUpgradeBody1": "Bedankt dat je leert met AI Educademy. Mensen de lessen echt zien doorlopen is veruit het leukste aan het runnen van deze site.",
-    "proUpgradeBody2": "De gratis lessen blijven gratis. Maar hosting, het AI-lab en het schrijven van nieuw materiaal kosten echt geld en heel wat weekenden.",
+    "proUpgradeBody2": "De gratis lessen blijven gratis. Maar het hosten, het AI-lab en het schrijven van nieuw materiaal kosten allemaal echt geld en veel weekenden.",
     "proUpgradeBody3": "Als de site nuttig voor je was: Pro kost £3,99 per maand. Het ontgrendelt alle programma's, het oefengesprekkenlab en certificaten, en het zorgt ervoor dat er nieuwe lessen blijven komen.",
     "proUpgradeCta": "Bekijk wat Pro biedt",
     "proUpgradeSignoff": "Fijn dat je er bent.\nHet AI Educademy-team",
-    "proUpgradeFooter": "Je ontvangt dit omdat je een AI Educademy-account hebt.",
+    "proUpgradeFooter": "Je ontvangt deze omdat je een AI Educademy-account hebt.",
     "proUpgradeUnsubscribe": "Afmelden voor dit soort e-mails"
   },
   "bookmarks": {
@@ -2148,10 +2148,10 @@
     "addedOn": "Bewaard op"
   },
   "labPreview": {
-    "title": "Interactief AI Lab",
+    "title": "Interactieve AI Lab",
     "subtitle": "Experimenteer met echte AI-concepten in je browser. Geen installatie nodig.",
-    "ctaText": "Ontdek het Lab",
-    "neuralPlayground": "Neural Playground",
+    "ctaText": "Verken het laboratorium",
+    "neuralPlayground": "Neurale speeltuin",
     "neuralPlaygroundDesc": "Train neurale netwerken visueel",
     "aiOrHuman": "AI of mens?",
     "aiOrHumanDesc": "Test hoe goed je AI herkent",
@@ -2171,15 +2171,15 @@
     "subtitle": "Stap van leren naar bouwen. Deze projecten laten zien waartoe je in staat zult zijn.",
     "chatbot": "AI-chatbot",
     "chatbotDesc": "Bouw een conversationele AI die context begrijpt, gesprekken over meerdere beurten voert en slim reageert.",
-    "chatbotTags": "NLP,Transformers,Python",
+    "chatbotTags": "NLP,Transformatoren,Python",
     "chatbotDifficulty": "Gemiddeld",
     "classifier": "Beeldclassificatie",
     "classifierDesc": "Train een computer vision-model dat afbeeldingen met hoge nauwkeurigheid herkent en categoriseert.",
-    "classifierTags": "CNN,TensorFlow,Computer Vision",
+    "classifierTags": "CNN,TensorFlow,Computervisie",
     "classifierDifficulty": "Gemiddeld",
     "recommender": "Aanbevelingsengine",
     "recommenderDesc": "Ontwerp een ML-systeem dat voorkeuren van gebruikers voorspelt en persoonlijke suggesties levert.",
-    "recommenderTags": "Collaborative Filtering,ML,Data Science",
+    "recommenderTags": "Samenwerkingsfiltering,ML,datawetenschap",
     "recommenderDifficulty": "Gevorderd",
     "agent": "AI-agent",
     "agentDesc": "Maak een autonome AI die redeneert, plant en taken uitvoert met behulp van tools en API's.",
@@ -2205,7 +2205,7 @@
       "title": "Hoeveel ervaring heb je met AI?",
       "subtitle": "Zo kunnen we het juiste startpunt aanraden",
       "beginner": {
-        "title": "Beginner",
+        "title": "Beginnerniveau",
         "description": "AI is nieuw voor me en ik wil vanaf nul leren"
       },
       "intermediate": {
@@ -2213,7 +2213,7 @@
         "description": "Ik ken de basis en wil de diepte in"
       },
       "advanced": {
-        "title": "Expert",
+        "title": "Geavanceerd",
         "description": "Ik heb ervaring en wil gespecialiseerde vaardigheden"
       }
     },
@@ -2257,7 +2257,7 @@
         },
         "ai-launchpad": {
           "name": "AI Launchpad",
-          "description": "Geef je AI-loopbaanvoorbereiding een vliegende start met de basis van sollicitatiegesprekken, veelvoorkomende vraagpatronen en oefeningen die je zelfvertrouwen opbouwen."
+          "description": "Geef uw carrièrevoorbereiding op het gebied van AI een vliegende start met de basisbeginselen van sollicitatiegesprekken, veelvoorkomende vraagpatronen en oefeningen voor het opbouwen van vertrouwen."
         }
       }
     }
@@ -2270,7 +2270,7 @@
     "description": "Sluit je aan bij duizenden lerenden die met deze gratis bron hun AI-loopbaan startten. Geen opvulling, alleen kennis waar je iets mee kunt.",
     "whatInsideTitle": "Wat zit erin",
     "whatInside": {
-      "roadmap": "AI-leerroute, van beginner tot klaar voor de arbeidsmarkt",
+      "roadmap": "AI Learning Roadmap - van beginner tot werkklaar",
       "concepts": "De 10 belangrijkste AI-begrippen, in gewone taal uitgelegd",
       "careers": "AI-loopbaanpaden en salarisgids voor 2026",
       "tools": "Onmisbare AI-tools en bronnen, samengesteld door experts",
@@ -2300,7 +2300,7 @@
     "sendHint": "⌘ + Enter om te versturen",
     "signIn": "Meld je aan",
     "signInSuffix": "om deel te nemen aan de discussie",
-    "empty": "Start als eerste een discussie!",
+    "empty": "Wees de eerste die een discussie start!",
     "anonymous": "Anoniem",
     "deleteComment": "Reactie verwijderen",
     "deleteConfirm": "Deze reactie verwijderen?",
@@ -2331,7 +2331,7 @@
     "description": "Werk je betaalmethode bij, bekijk facturen of zeg je abonnement op wanneer je wilt.",
     "manage": "Facturatie beheren",
     "opening": "Openen...",
-    "noSubscription": "We konden geen actief abonnement vinden op je account.",
+    "noSubscription": "We kunnen geen actief abonnement in uw account vinden.",
     "error": "Er ging iets mis bij het openen van het facturatieportaal. Probeer het opnieuw."
   },
   "unsubscribe": {

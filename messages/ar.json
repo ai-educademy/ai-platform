@@ -173,7 +173,7 @@
     "trackCompleteDesc": "لقد أنهيت كل درس في",
     "trackCompleteDismiss": "رائع. واصل!",
     "lessonOf": "الدرس {current} من {total}",
-    "completedOf": "{completed} من {total} مكتمل",
+    "completedOf": "اكتمل {completed} من {total}",
     "allPrograms": "كل البرامج",
     "trackAI": "فهم الذكاء الاصطناعي",
     "trackCraft": "الكود والخوارزميات",
@@ -187,7 +187,7 @@
     "suggestEdit": "اقترح تعديلاً على هذا الدرس",
     "completeLesson": "إكمال الدرس",
     "quizRequired": "أجب عن جميع الاختبارات بشكل صحيح لإكمال هذا الدرس",
-    "quizProgress": "{passed} من {total} اختبارات ناجحة",
+    "quizProgress": "تم اجتياز اختبارات {passed} الخاصة بـ {total}",
     "allQuizzesPassed": "تم اجتياز جميع الاختبارات!",
     "lessonCompleted": "اكتمل الدرس!",
     "fallbackNotice": "لم تُترجم هذه الدروس إلى {language} بعد، لذا تقرأ النسخة الإنجليزية. يبقى باقي الموقع باللغة {language}.",
@@ -942,10 +942,10 @@
   },
   "dashboard": {
     "title": "لوحة تعلّمي",
-    "titleUser": "لوحة {name}",
+    "titleUser": "لوحة تحكم {name}",
     "subtitle": "تقدمك عبر كل البرامج الأكاديمية",
     "overallProgress": "التقدم الإجمالي",
-    "lessonsCompleted": "{completed} من {total} درس مكتمل",
+    "lessonsCompleted": "تم إكمال دروس {completed} الخاصة بـ {total}",
     "remaining": "{count} متبقٍ",
     "min": "دقيقة",
     "achievements": "الإنجازات",
@@ -988,7 +988,7 @@
     "certDate": "أُتمّ في",
     "certOrg": "AI Educademy",
     "certShareText": "أتممت {program} على AI Educademy! 🎓",
-    "shareAchievement": "Share",
+    "shareAchievement": "شارك",
     "shareOnTwitter": "Twitter/X",
     "shareOnLinkedin": "LinkedIn",
     "copyLink": "Copy Link",
@@ -1063,7 +1063,7 @@
     "verifyEmailTitle": "تأكيد بريدك الإلكتروني",
     "verifyEmailPrompt": "أدخل الرمز المكوّن من 6 أرقام المُرسل إلى",
     "verifyCode": "تحقق",
-    "resendCode": "Resend Code",
+    "resendCode": "إعادة إرسال الرمز",
     "resendCooldown": "إعادة الإرسال خلال {seconds} ث",
     "codeSent": "تم إرسال رمز جديد إلى بريدك الإلكتروني.",
     "emailVerified": "تم تأكيد البريد الإلكتروني! يمكنك تسجيل الدخول الآن.",
@@ -1319,7 +1319,7 @@
       "ai": "ذكاء اصطناعي",
       "correct": "صحيح! 🎉",
       "playAgain": "العب مرة أخرى",
-      "round": "الجولة {current} من {total}",
+      "round": "جولة {current} من {total}",
       "score": "النتيجة",
       "streak": "{count} متتالية",
       "bestStreak": "{count} أفضل متتالية",
@@ -1387,12 +1387,12 @@
         "instruction": "فكّ الشفرة الثنائية إلى كلمة",
         "hint": "تلميح: كل مجموعة 8 أرقام = حرف واحد",
         "placeholder": "اكتب الكلمة...",
-        "word": "الكلمة {current}/{total}"
+        "word": "كلمة {current}/{total}"
       },
       "speedTyper": {
         "title": "الكاتب السريع",
         "instruction": "اكتب مصطلح الذكاء الاصطناعي بأسرع ما يمكن!",
-        "term": "مصطلح {current}/{total}",
+        "term": "المصطلح {current}/{total}",
         "placeholder": "ابدأ الكتابة..."
       },
       "oddOneOut": {
@@ -1417,7 +1417,7 @@
       "tokenCounter": {
         "title": "عدّاد الرموز",
         "instruction": "كم رمزاً يرى نموذج اللغة الكبيرة؟",
-        "sentence": "جملة {current}/{total}",
+        "sentence": "الجملة {current}/{total}",
         "actual": "الفعلي",
         "tokens": "رموز",
         "yourGuess": "تخمينك",
@@ -1448,7 +1448,7 @@
         "wrongAnswer": "الإجابة كانت: {answer}",
         "timesUp": "انتهى الوقت!",
         "finalScore": "النتيجة النهائية",
-        "questionsCorrect": "{correct}/{total} إجابة صحيحة",
+        "questionsCorrect": "{correct}/{total} صحيح",
         "leaderboard": "لوحة المتصدرين",
         "noScores": "لا نتائج بعد. كن الأول!",
         "fastAnswer": "سريع البرق!",
@@ -1537,7 +1537,7 @@
       "personalBest": "الأفضل: {score}",
       "noGamesFound": "لا ألعاب",
       "backToHub": "العودة للمختبر",
-      "roundOf": "الجولة {current} من {total}",
+      "roundOf": "جولة {current} من {total}",
       "highScore": "أعلى نتيجة",
       "closeGame": "إغلاق اللعبة"
     },
@@ -1648,7 +1648,7 @@
       "helpText": "انقر للإضافة · اسحب للتحريك · انقر مرتين للحذف",
       "defaultLabel": "المكوّن",
       "shapesArrows": "{shapes} أشكال · {arrows} أسهم",
-      "challengeLabel": "التحدي {current}/{total}"
+      "challengeLabel": "تحدي {current}/{total}"
     },
     "categoryNlp": "معالجة اللغة الطبيعية",
     "categoryLogic": "المنطق",
@@ -1801,7 +1801,7 @@
     "faqTeaser": "هل لديك أسئلة عن خططنا؟",
     "faqLink": "راجع الأسئلة الشائعة",
     "free": {
-      "title": "Explorer",
+      "title": "إكسبلورر",
       "f1": "جرّب أول درس في كل أكاديمية مجانًا، ثم افتح الباقي مع Pro.",
       "f2": "تمنحك AI Educademy معاينة مجانية لأول درس في كل أكاديمية. يفتح Pro كل الدروس والمسارات والشهادات والميزات المميزة المتبقية من خلال وصول شهري أو سنوي أو مدى الحياة.",
       "f3": "مقالات ومعاينات البرامج",
@@ -1874,7 +1874,7 @@
     "submitAnswer": "إرسال الإجابة",
     "getFeedback": "الحصول على التغذية الراجعة",
     "nextQuestion": "السؤال التالي",
-    "questionOf": "السؤال {current} من {total}",
+    "questionOf": "سؤال {current} من {total}",
     "typeYourAnswer": "اكتب إجابتك هنا...",
     "interviewComplete": "اكتملت المقابلة!",
     "overallScore": "الدرجة الإجمالية",
@@ -1918,7 +1918,7 @@
     "startFirstDesc": "اختر برنامجًا وابدأ رحلتك في الذكاء الاصطناعي",
     "continueCta": "متابعة",
     "startCta": "تصفّح البرامج",
-    "progress": "{completed} من {total} دروس"
+    "progress": "{completed} من دروس {total}"
   },
   "contact": {
     "title": "تواصل معنا",
@@ -2114,7 +2114,7 @@
     "abandonedCartGreeting": "مرحبًا {name}،",
     "abandonedCartBody1": "ما زلت تفكر في الأمر؟ لاحظنا أنك بدأت عملية الدفع ولم تكملها. لا تقلق، مقعدك ما زال متاحًا.",
     "abandonedCartBody2": "مع AI Educademy Pro تحصل على جميع البرامج ومسارات التعلم والمقابلات التجريبية بالذكاء الاصطناعي والشهادات والمزيد.",
-    "abandonedCartPromo": "🎉 استخدم الرمز {code} عند الدفع لتوفير المال على باقتك.",
+    "abandonedCartPromo": "🎉 استخدم الرمز {code} عند الدفع لحفظ خطتك.",
     "abandonedCartCta": "أكمل عملية الشراء",
     "abandonedCartUnlockTitle": "ما ستحصل عليه مع Pro:",
     "abandonedCartUnlock1": "جميع البرامج ومسارات التعلم",
@@ -2194,7 +2194,7 @@
     "next": "التالي",
     "getStarted": "لنبدأ",
     "welcome": {
-      "title": "مرحبًا بك في AI Educademy يا {name}! 🎉",
+      "title": "مرحبًا بك في AI Educademy، {name}! 🎉",
       "defaultName": "صديقي",
       "subtitle": "لنخصّص تجربة التعلّم الخاصة بك في بضع خطوات فقط.",
       "tagLearn": "تعلّم",
