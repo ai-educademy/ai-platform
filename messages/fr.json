@@ -1251,7 +1251,8 @@
     "minuteRead": "min de lecture",
     "tags": "Tags",
     "badge": "",
-    "noPosts": "Aucun article pour l'instant. Revenez bientôt !"
+    "noPosts": "Aucun article pour l'instant. Revenez bientôt !",
+    "shareLabel": "Cet article vous a été utile ?"
   },
   "feedback": {
     "title": "Cette leçon vous a été utile ?",

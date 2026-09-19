@@ -1251,7 +1251,8 @@
     "minuteRead": "分钟阅读",
     "tags": "标签",
     "badge": "",
-    "noPosts": "暂无文章。请稍后再来查看！"
+    "noPosts": "暂无文章。请稍后再来查看！",
+    "shareLabel": "觉得有用吗？"
   },
   "feedback": {
     "title": "这节课对你有帮助吗？",
