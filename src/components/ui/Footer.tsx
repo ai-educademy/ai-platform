@@ -117,7 +117,12 @@ export function Footer() {
               <BrandMark size="sm" />
             </Link>
             <p className="text-xs text-[var(--color-text-muted)] mt-2 leading-relaxed">
-              {t("license")}
+              {/* This previously read "MIT Licence. Open Source". The course
+                  content is a paid product, so advertising it as open source
+                  both undercut the paywall and was a licence claim we did not
+                  mean to make. The year is rendered here rather than baked
+                  into the catalogues so it cannot go stale in 11 locales. */}
+              © {new Date().getFullYear()} AI Educademy. {t("license")}
             </p>
             <div className="mt-3">
               <PageViewCounter />

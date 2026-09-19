@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Lock } from "lucide-react";
 import { getProgram, getPrograms } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
@@ -16,8 +17,8 @@ import { db } from "@/lib/db";
 import { lessonProgress } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { CertificateButton } from "@/components/certificates/CertificateButton";
-import { isFreeProgram } from "@/lib/content-access";
-import { users } from "@/lib/db/schema";
+import { isFreeProgram, requiresPremium } from "@/lib/content-access";
+import { canAccessPremium, getUserPlan } from "@/lib/subscription";
 
 export const dynamicParams = false;
 
@@ -61,6 +62,7 @@ export default async function ProgramPage({
   const t = await getTranslations("programDetail");
   const tP = await getTranslations("programs");
   const tLT = await getTranslations("lessonTitles");
+  const tPaywall = await getTranslations("paywall");
   const lessons = getLessons(programSlug, locale);
   const basePath = locale === "en" ? "" : `/${locale}`;
 
@@ -73,12 +75,15 @@ export default async function ProgramPage({
     }
   })();
 
-  // Fetch certificate progress and user role
+  // Fetch certificate progress and entitlement
   const session = await auth();
   let completedLessons = 0;
-  let userRole = "free";
+  let isPremiumUser = false;
   if (session?.user?.id && db) {
-    const [completed, userRecord] = await Promise.all([
+    // Entitlement comes from getUserPlan rather than a raw users.role read,
+    // so a subscriber whose role column has drifted out of sync with Stripe
+    // is not shown locks on content they are paying for.
+    const [completed, plan] = await Promise.all([
       db
         .select({ lessonSlug: lessonProgress.lessonSlug })
         .from(lessonProgress)
@@ -88,16 +93,16 @@ export default async function ProgramPage({
             eq(lessonProgress.programSlug, programSlug)
           )
         ),
-      db
-        .select({ role: users.role })
-        .from(users)
-        .where(eq(users.id, session.user.id))
-        .then((rows) => rows[0]),
+      getUserPlan(session.user.id),
     ]);
     const completedSlugs = new Set(completed.map((c) => c.lessonSlug));
     completedLessons = lessons.filter((l) => completedSlugs.has(l.slug)).length;
-    userRole = userRecord?.role ?? "free";
+    isPremiumUser = canAccessPremium(plan);
   }
+
+  const lockedCount = isPremiumUser
+    ? 0
+    : lessons.filter((_, idx) => requiresPremium(programSlug, idx + 1)).length;
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
@@ -219,7 +224,9 @@ export default async function ProgramPage({
 
       {lessons.length > 0 ? (
         <div className="space-y-4 mb-8">
-          {lessons.map((lesson, idx) => (
+          {lessons.map((lesson, idx) => {
+            const locked = !isPremiumUser && requiresPremium(programSlug, idx + 1);
+            return (
             <AnimatedSection key={lesson.slug} animation="fade-up" delay={300 + idx * 80}>
               <Link
                 href={`${basePath}/programs/${programSlug}/lessons/${lesson.slug}`}
@@ -240,13 +247,23 @@ export default async function ProgramPage({
                     <p className="text-sm text-[var(--color-text-muted)] line-clamp-1">{lesson.description}</p>
                   </div>
                   <div className="flex items-center gap-3 shrink-0">
+                    {locked && (
+                      /* Stating the lock up front. Previously every lesson
+                         looked open and the paywall only appeared after the
+                         click, which reads as a bait and switch. */
+                      <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400">
+                        <Lock className="h-3 w-3" aria-hidden="true" />
+                        {tP("pro")}
+                      </span>
+                    )}
                     <span className="text-xs text-[var(--color-text-muted)]">⏱️ {lesson.duration}m</span>
                     <span className="text-[var(--color-text-muted)] transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </div>
                 </div>
               </Link>
             </AnimatedSection>
-          ))}
+            );
+          })}
         </div>
       ) : (
         <AnimatedSection animation="fade-in">
@@ -295,6 +312,35 @@ export default async function ProgramPage({
         </AnimatedSection>
       )}
 
+      {/* The upgrade offer. This page is where somebody decides whether the
+          programme is worth paying for, and until now it was the one
+          high-intent surface with no way to buy. */}
+      {lockedCount > 0 && (
+        <AnimatedSection animation="fade-up" delay={420}>
+          <div className="mt-10 rounded-2xl border border-violet-500/30 bg-gradient-to-br from-violet-500/10 to-indigo-500/10 p-8 text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400">
+              <Lock className="h-3 w-3" aria-hidden="true" />
+              {lockedCount} · {tP("pro")}
+            </span>
+            <h2 className="mt-4 text-2xl font-bold text-[var(--color-text)]">
+              {tPaywall("title")}
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-[var(--color-text-muted)]">
+              {tPaywall("description")}
+            </p>
+            <Link
+              href={`${basePath}/pricing`}
+              className="btn-primary mt-6 inline-flex items-center gap-2 rounded-full px-8 py-3 font-semibold text-white transition-all duration-200 hover:scale-[1.03] hover:shadow-xl"
+            >
+              {tPaywall("upgradeCta")} →
+            </Link>
+            <p className="mt-3 text-xs text-[var(--color-text-muted)]">
+              {tPaywall("guarantee")}
+            </p>
+          </div>
+        </AnimatedSection>
+      )}
+
       {/* Certificate */}
       {lessons.length > 0 && (
         <AnimatedSection animation="fade-up" delay={500}>
@@ -304,7 +350,7 @@ export default async function ProgramPage({
               totalLessons={lessons.length}
               completedLessons={completedLessons}
               isSignedIn={!!session?.user}
-              isPremiumUser={userRole === "pro" || userRole === "admin"}
+              isPremiumUser={isPremiumUser}
               isFree={isFreeProgram(programSlug)}
               locale={locale}
             />
