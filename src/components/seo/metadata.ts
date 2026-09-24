@@ -38,10 +38,11 @@ export function createSeoMetadata({
 }): Metadata {
   const canonical = canonicalUrl(locale, path);
   const titled = titleWithSite(title);
+  const pageTitle = title.includes(SITE_NAME) ? { absolute: title } : title;
 
   return {
     metadataBase: new URL(BASE_URL),
-    title,
+    title: pageTitle,
     description,
     alternates: {
       canonical,
