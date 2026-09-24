@@ -1171,7 +1171,7 @@
     "salary-benchmarking": "वेतन बेंचमार्किंग",
     "scaling-laws-and-training": "स्केलिंग कानून और स्केल पर प्रशिक्षण",
     "sorting-and-searching": "Sorting और Searching",
-    "star-framework": "STAR Interview Framework",
+    "star-framework": "STAR इंटरव्यू फ्रेमवर्क",
     "strings-and-text": "स्ट्रिंग्स और टेक्स्ट Processing",
     "system-design-fundamentals": "सिस्टम डिज़ाइन की बुनियादी बातें",
     "system-design-mock-interview": "सिस्टम डिज़ाइन Mock Interview",
@@ -1439,7 +1439,7 @@
         "timeUp": "समय खत्म!"
       },
       "neuralNetwork": {
-        "title": "Neural Network Playground",
+        "title": "न्यूरल नेटवर्क सैंडबॉक्स",
         "instruction": "डेटा बिंदु रखें और उन्हें वर्गीकृत करने के लिए एक तंत्रिका नेटवर्क को प्रशिक्षित करें"
       },
       "promptDojo": {
@@ -1736,7 +1736,7 @@
   },
   "faq": {
     "title": "अक्सर पूछे जाने वाले प्रश्नों",
-    "subtitle": "Everything you need to know about AI Educademy. from getting started to going deep.",
+    "subtitle": "AI Educademy के बारे में वह सब कुछ जो आपको जानना चाहिए, शुरुआत से लेकर गहराई तक।",
     "cta": "अभी सीखना शुरू करें",
     "ctaHref": "/programs",
     "q1": "AI Educademy क्या है?",
@@ -1756,7 +1756,7 @@
     "q8": "क्या कोई पूर्वापेक्षाएँ हैं?",
     "a8": "शुरुआती कार्यक्रमों के लिए: बिल्कुल नहीं। मध्यवर्ती और उन्नत कार्यक्रमों के लिए, पथ में पहले के कार्यक्रमों को पूरा करने से मदद मिलती है, लेकिन इसकी सख्ती से आवश्यकता नहीं है। जहां भी आपको सही लगे वहां कूद पड़ें।",
     "q9": "सामग्री किन भाषाओं में उपलब्ध है?",
-    "a9": "AI Educademy is available in 9 languages: English, French, Dutch, Hindi, Telugu, Spanish, Portuguese, German, and Chinese. All content is thoughtfully translated. not machine-generated. so the experience feels natural in your language.",
+    "a9": "AI Educademy 11 भाषाओं में उपलब्ध है: अंग्रेज़ी, अरबी, फ़्रेंच, डच, हिंदी, तेलुगु, स्पेनिश, पुर्तगाली, जर्मन, जापानी और चीनी। सारी सामग्री सोच-समझकर अनुवादित है, मशीन-जनित नहीं, ताकि अनुभव आपकी भाषा में स्वाभाविक लगे।",
     "q10": "क्या मैं भाषाओं के बीच स्विच कर सकता हूँ?",
     "a10": "हाँ! किसी भी समय प्लेटफ़ॉर्म भाषा बदलने के लिए नेविगेशन बार में भाषा स्विचर का उपयोग करें। आपकी सीखने की प्रगति प्रति भाषा संग्रहीत की जाती है, इसलिए यदि आप चाहें तो आप एक साथ कई भाषाओं में अध्ययन कर सकते हैं।",
     "q11": "क्या AI Educademy खुला स्रोत है?",
@@ -1778,9 +1778,9 @@
     "q19": "कार्यक्रम किन AI विषयों को कवर करते हैं?",
     "a19": "विषयों में शामिल हैं: एआई और मशीन लर्निंग वास्तव में क्या हैं, तंत्रिका नेटवर्क कैसे काम करते हैं, प्राकृतिक भाषा प्रसंस्करण, कंप्यूटर दृष्टि, एआई नैतिकता और पूर्वाग्रह, त्वरित इंजीनियरिंग, बड़े भाषा मॉडल, और वास्तविक दुनिया की परियोजनाओं में एआई टूल को प्रभावी ढंग से कैसे लागू किया जाए।",
     "q20": "क्राफ्ट इंजीनियरिंग पथ क्या है?",
-    "a20": "The Craft Engineering path focuses on the software engineering skills needed to build AI-powered applications. covering software design principles, clean architecture, reliability engineering, and how to integrate AI models into production-grade systems.",
+    "a20": "Craft Engineering पथ AI-संचालित एप्लिकेशन बनाने के लिए ज़रूरी सॉफ़्टवेयर इंजीनियरिंग कौशल पर केंद्रित है, जिसमें सॉफ़्टवेयर डिज़ाइन सिद्धांत, क्लीन आर्किटेक्चर, रिलायबिलिटी इंजीनियरिंग और AI मॉडल को प्रोडक्शन-स्तरीय सिस्टम में जोड़ना शामिल है।",
     "q21": "क्या मैं अपने फ़ोन या टैबलेट पर सीख सकता हूँ?",
-    "a21": "Absolutely! AI Educademy is fully responsive and works beautifully on mobile devices and tablets. It's also a Progressive Web App (PWA), so you can install it on your home screen for a fast, app-like experience. even with limited connectivity.",
+    "a21": "बिल्कुल! AI Educademy पूरी तरह से रिस्पॉन्सिव है और मोबाइल डिवाइस और टैबलेट पर बेहतरीन तरीके से काम करता है। यह एक Progressive Web App (PWA) भी है, इसलिए आप इसे अपनी होम स्क्रीन पर इंस्टॉल करके तेज़, ऐप जैसा अनुभव पा सकते हैं, भले ही कनेक्टिविटी सीमित हो।",
     "q22": "क्या कोई समुदाय या मंच है?",
     "a22": "हाँ! हमारे पास एक सामुदायिक अनुभाग है जहां शिक्षार्थी जुड़ते हैं, प्रगति साझा करते हैं, प्रश्न पूछते हैं और एक-दूसरे का समर्थन करते हैं। आप अकेले नहीं सीख रहे हैं. यात्रा के हर चरण में साथी शिक्षार्थी होते हैं।",
     "q23": "मैं अपनी सीखने की प्रगति को कैसे ट्रैक करूं?",
