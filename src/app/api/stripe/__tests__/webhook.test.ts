@@ -413,6 +413,124 @@ describe("POST /api/stripe/webhook", () => {
     });
   });
 
+  describe("subscription updates", () => {
+    function updated(status: string, cancelAtPeriodEnd = false) {
+      const future = Math.floor(Date.now() / 1000) + 86_400 * 20;
+      return {
+        type: "customer.subscription.updated",
+        data: {
+          object: {
+            id: "sub_123",
+            status,
+            cancel_at_period_end: cancelAtPeriodEnd,
+            items: {
+              data: [
+                {
+                  current_period_start: future - 86_400 * 30,
+                  current_period_end: future,
+                },
+              ],
+            },
+          },
+        },
+      };
+    }
+
+    it("keeps a learner who scheduled cancellation on Pro until the period ends", async () => {
+      subSelectRows = [{ userId: "user_1", plan: "monthly" }];
+      mockConstructEvent.mockReturnValue(updated("active", true));
+
+      await POST(request());
+
+      expect(subUpdates).toContainEqual(
+        expect.objectContaining({ status: "active", cancelAtPeriodEnd: true }),
+      );
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "pro" }),
+      );
+      expect(mockSendSubscriptionEmail).not.toHaveBeenCalled();
+    });
+
+    it("keeps a past-due learner inside a period they already paid for", async () => {
+      subSelectRows = [{ userId: "user_1", plan: "monthly" }];
+      mockConstructEvent.mockReturnValue(updated("past_due"));
+
+      await POST(request());
+
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "pro" }),
+      );
+    });
+
+    it("drops a cancelled subscription to free and tells the learner once", async () => {
+      subSelectRows = [{ userId: "user_1", plan: "monthly" }];
+      mockConstructEvent.mockReturnValue(updated("canceled"));
+
+      await POST(request());
+
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "free" }),
+      );
+      await vi.waitFor(() =>
+        expect(mockSendSubscriptionEmail).toHaveBeenCalledWith(
+          "learner@example.com",
+          "cancelled",
+          "monthly",
+        ),
+      );
+    });
+
+    it("never demotes an admin when their subscription is cancelled", async () => {
+      subSelectRows = [{ userId: "user_1", plan: "monthly" }];
+      userSelectRows = [
+        { email: "admin@example.com", role: "admin", locale: "en" },
+      ];
+      mockConstructEvent.mockReturnValue(updated("canceled"));
+
+      await POST(request());
+
+      expect(userUpdates).not.toContainEqual(
+        expect.objectContaining({ role: "free" }),
+      );
+    });
+  });
+
+  describe("abandoned checkout", () => {
+    it("sends the abandoned-cart email in the checkout locale", async () => {
+      mockConstructEvent.mockReturnValue({
+        type: "checkout.session.expired",
+        data: {
+          object: {
+            customer_details: { email: "buyer@example.com", name: "Buyer" },
+            metadata: { locale: "fr" },
+          },
+        },
+      });
+
+      const res = await POST(request());
+
+      expect(res.status).toBe(200);
+      expect(mockSendAbandonedCart).toHaveBeenCalledWith(
+        "buyer@example.com",
+        "Buyer",
+        "fr",
+      );
+    });
+
+    it("does nothing when Stripe has no address for the session", async () => {
+      mockConstructEvent.mockReturnValue({
+        type: "checkout.session.expired",
+        data: { object: { customer_details: null, metadata: {} } },
+      });
+
+      const res = await POST(request());
+
+      expect(res.status).toBe(200);
+      expect(mockSendAbandonedCart).not.toHaveBeenCalled();
+      expect(userUpdates).toEqual([]);
+    });
+  });
+
   describe("referral rewards", () => {
     it("runs referral rewards from invoice.paid without changing user roles", async () => {
       const invoice = {

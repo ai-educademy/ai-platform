@@ -7,7 +7,11 @@ import {
   abandonedCartEmailHtml,
 } from "./emailTemplates";
 import { getEmailTranslator } from "./email-i18n";
-import { getOrCreateUnsubscribeToken, unsubscribeLinkFor } from "./unsubscribe";
+import {
+  getOrCreateUnsubscribeToken,
+  isMarketingSuppressed,
+  unsubscribeLinkFor,
+} from "./unsubscribe";
 import { localeBasePath } from "./safe-locale";
 
 const subjectByLocale: Record<string, string> = {
@@ -281,6 +285,7 @@ export async function sendAbandonedCartEmail(
   name?: string,
   locale: string = "en",
 ): Promise<void> {
+  if (await isMarketingSuppressed(email)) return;
   const tr = await getEmailTranslator(locale);
   const basePath = localeBasePath(tr.locale);
   const pricingUrl = `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/pricing`;
