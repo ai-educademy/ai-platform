@@ -1473,7 +1473,7 @@
         "instruction": "Plaats datapunten en train een neuraal netwerk om ze te classificeren"
       },
       "promptDojo": {
-        "title": "Prompt Engineering Dojo",
+        "title": "Prompt-engineering-dojo",
         "instruction": "Schrijf de perfecte prompt om de gewenste uitvoer te genereren"
       },
       "algoRace": {
@@ -1607,13 +1607,13 @@
       "yourDesigns": "Jouw ontwerpen",
       "newCanvas": "Nieuw canvas",
       "noDesigns": "Nog geen opgeslagen ontwerpen. Begin een nieuw canvas!",
-      "promptTitle": "Prompt Engineering Dojo",
+      "promptTitle": "Prompt-engineering-dojo",
       "submit": "VERSTUREN",
       "seeResults": "RESULTATEN BEKIJKEN",
       "nextChallenge": "VOLGENDE UITDAGING",
       "gameNeuralName": "Neuraal Netwerk Speeltuin",
       "gameNeuralDesc": "Bouw en train een klein neuraal netwerk - plaats punten en kijk hoe het leert",
-      "gamePromptName": "Prompt Engineering Dojo",
+      "gamePromptName": "Prompt-engineering-dojo",
       "gamePromptDesc": "Schrijf de perfecte prompt om de gewenste uitvoer te genereren",
       "gameAlgoName": "Algoritme-race",
       "gameAlgoDesc": "Wed op sorteeralgoritmen en kijk hoe ze in realtime racen",
@@ -1769,7 +1769,7 @@
     "a9": "AI Educademy is beschikbaar in 11 talen: Engels, Arabisch, Frans, Nederlands, Hindi, Telugu, Spaans, Portugees, Duits, Japans en Chinees. Alle inhoud is zorgvuldig vertaald, niet machinaal gegenereerd, zodat de ervaring natuurlijk aanvoelt in jouw taal.",
     "q10": "Kan ik tussen talen wisselen?",
     "a10": "Ja! Gebruik de taalwisselaar in de navigatiebalk om de platformtaal op elk gewenst moment te wijzigen. Je leervoortgang wordt per taal opgeslagen, zodat je desgewenst in meerdere talen tegelijk kunt studeren.",
-    "q11": "Is AI Educademy open source?",
+    "q11": "Is AI Educademy opensource?",
     "a11": "Ja, volledig open source. De volledige codebase is publiek beschikbaar op GitHub onder een open licentie. Je kunt de code inspecteren, verbeteringen voorstellen, forken of erop voortbouwen.",
     "q12": "Hoe kan ik bijdragen aan het project?",
     "a12": "Er zijn veel manieren om bij te dragen: code-verbeteringen indienen, lessen schrijven of vertalen, bugs melden, documentatie verbeteren, of gewoon de repository op GitHub een ster geven zodat anderen het project ontdekken. Elke bijdrage telt.",
