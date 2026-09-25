@@ -17,6 +17,7 @@ permissions:
 engine:
   id: gemini
   model: gemini-3.1-pro-preview
+  version: "0.39.1"
 timeout-minutes: 30
 strict: true
 network: defaults
