@@ -38,7 +38,9 @@ export function unsubscribeUrl(token: string, locale: string): string {
  * Existing accounts predate the column, so tokens are backfilled lazily here
  * rather than in a migration that would have to rewrite every row.
  */
-export async function getOrCreateUnsubscribeToken(email: string): Promise<string | null> {
+export async function getOrCreateUnsubscribeToken(
+  email: string,
+): Promise<string | null> {
   const { db, isDbConfigured } = await import("@/lib/db");
   const { users } = await import("@/lib/db/schema");
   const { eq } = await import("drizzle-orm");
@@ -56,7 +58,10 @@ export async function getOrCreateUnsubscribeToken(email: string): Promise<string
     if (user.unsubscribeToken) return user.unsubscribeToken;
 
     const token = generateUnsubscribeToken();
-    await db.update(users).set({ unsubscribeToken: token }).where(eq(users.id, user.id));
+    await db
+      .update(users)
+      .set({ unsubscribeToken: token })
+      .where(eq(users.id, user.id));
     return token;
   } catch {
     return null;
@@ -70,8 +75,47 @@ export async function getOrCreateUnsubscribeToken(email: string): Promise<string
  * newsletter-only address with no account), which still lets someone opt out
  * instead of dead-ending them on the homepage.
  */
-export function unsubscribeLinkFor(token: string | null, locale: string): string {
+export function unsubscribeLinkFor(
+  token: string | null,
+  locale: string,
+): string {
   const base = process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org";
   const prefix = locale === "en" ? "" : `/${locale}`;
   return token ? unsubscribeUrl(token, locale) : `${base}${prefix}/unsubscribe`;
+}
+
+/**
+ * True when a marketing email must not go to this address: it opted out as an
+ * account holder or newsletter subscriber, or it is undeliverable. Fails
+ * closed, because a missed nudge costs little and mailing someone who said no
+ * costs trust and breaks PECR.
+ */
+export async function isMarketingSuppressed(email: string): Promise<boolean> {
+  const { isUndeliverableAddress } = await import("@/lib/email-hygiene");
+  if (isUndeliverableAddress(email)) return true;
+
+  const { db, isDbConfigured } = await import("@/lib/db");
+  const { users, newsletterSubscribers } = await import("@/lib/db/schema");
+  const { sql } = await import("drizzle-orm");
+
+  if (!isDbConfigured) return true;
+
+  try {
+    const address = email.trim().toLowerCase();
+    const [user] = await db
+      .select({ optedOutAt: users.marketingOptOutAt })
+      .from(users)
+      .where(sql`lower(${users.email}) = ${address}`)
+      .limit(1);
+    if (user?.optedOutAt) return true;
+
+    const [subscriber] = await db
+      .select({ unsubscribedAt: newsletterSubscribers.unsubscribedAt })
+      .from(newsletterSubscribers)
+      .where(sql`lower(${newsletterSubscribers.email}) = ${address}`)
+      .limit(1);
+    return Boolean(subscriber?.unsubscribedAt);
+  } catch {
+    return true;
+  }
 }
