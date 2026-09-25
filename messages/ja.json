@@ -1822,12 +1822,12 @@
     "monthly": {
       "title": "Pro 月額",
       "period": "月",
-      "cta": "7日間の無料トライアルを開始"
+      "cta": "Proを7日間無料で試す"
     },
     "annual": {
       "title": "Pro 年額",
       "period": "年",
-      "cta": "7日間の無料トライアルを開始",
+      "cta": "Proを7日間無料で試す",
       "save": "月額より {percent}% お得"
     },
     "lifetime": {
@@ -1858,8 +1858,8 @@
     "selected": "選択済み",
     "selectThisPlan": "このプランを選択",
     "alreadyPro": "すでに Pro を利用中です。アカウントからサブスクリプションを管理できます。",
-    "trialCta": "7日間の無料トライアルを開始",
-    "trialNote": "7日間無料、カード登録が必要です。トライアル終了前ならいつでもキャンセルでき、請求されません。"
+    "trialCta": "Proを7日間無料で試す",
+    "trialNote": "7日間無料。いつでも理由を問わず解約できます。トライアル後もProを続ける場合のみ課金されます。"
   },
   "paywall": {
     "title": "次のレベルはこの扉の先にあります",
@@ -1870,9 +1870,9 @@
       "progressSync": "進捗同期",
       "certificates": "証明書"
     },
-    "upgradeCta": "7日間の無料トライアルを開始",
+    "upgradeCta": "Proを7日間無料で試す",
     "signInCta": "先にサインイン",
-    "guarantee": "7日間の無料トライアル、カード登録が必要です。トライアル終了前ならいつでもキャンセルできます。"
+    "guarantee": "7日間無料。いつでも理由を問わず解約できます。"
   },
   "mockInterview": {
     "title": "AI模擬面接ラボ",

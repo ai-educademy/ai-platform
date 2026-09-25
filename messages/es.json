@@ -1822,12 +1822,12 @@
     "monthly": {
       "title": "Pro mensual",
       "period": "mes",
-      "cta": "Iniciar prueba gratis de 7 días"
+      "cta": "Prueba Pro gratis durante 7 días"
     },
     "annual": {
       "title": "Pro anual",
       "period": "ano",
-      "cta": "Iniciar prueba gratis de 7 días",
+      "cta": "Prueba Pro gratis durante 7 días",
       "save": "Ahorra {percent}% frente al mensual"
     },
     "lifetime": {
@@ -1858,8 +1858,8 @@
     "selected": "Seleccionado",
     "selectThisPlan": "Seleccionar este plan",
     "alreadyPro": "Ya tienes Pro. Gestiona tu suscripcion desde tu cuenta.",
-    "trialCta": "Iniciar prueba gratis de 7 días",
-    "trialNote": "7 días gratis, se requiere tarjeta. Cancela en cualquier momento antes de que termine la prueba y no se te cobrará."
+    "trialCta": "Prueba Pro gratis durante 7 días",
+    "trialNote": "Gratis durante 7 días. Cancela cuando quieras, sin preguntas. Solo se te cobra si mantienes Pro después de la prueba."
   },
   "paywall": {
     "title": "Tu siguiente nivel esta detras de esta puerta",
@@ -1870,9 +1870,9 @@
       "progressSync": "Sincronizacion de progreso",
       "certificates": "Certificados"
     },
-    "upgradeCta": "Iniciar prueba gratis de 7 días",
+    "upgradeCta": "Prueba Pro gratis durante 7 días",
     "signInCta": "Inicia sesion primero",
-    "guarantee": "Prueba gratis de 7 días, se requiere tarjeta. Cancela en cualquier momento antes de que termine la prueba."
+    "guarantee": "Gratis durante 7 días. Cancela cuando quieras, sin preguntas."
   },
   "mockInterview": {
     "title": "Laboratorio de Entrevista Simulada con IA",

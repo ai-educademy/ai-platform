@@ -1822,12 +1822,12 @@
     "monthly": {
       "title": "Pro Monatlich",
       "period": "Monat",
-      "cta": "7-tägige Gratis-Testphase starten"
+      "cta": "Pro 7 Tage kostenlos testen"
     },
     "annual": {
       "title": "Pro Jaehrlich",
       "period": "Jahr",
-      "cta": "7-tägige Gratis-Testphase starten",
+      "cta": "Pro 7 Tage kostenlos testen",
       "save": "Spare {percent}% gegenueber monatlich"
     },
     "lifetime": {
@@ -1858,8 +1858,8 @@
     "selected": "Ausgewaehlt",
     "selectThisPlan": "Diesen Plan auswaehlen",
     "alreadyPro": "Du hast bereits Pro. Verwalte dein Abo in deinem Konto.",
-    "trialCta": "7-tägige Gratis-Testphase starten",
-    "trialNote": "7 Tage gratis, Karte erforderlich. Kündige jederzeit vor Ende der Testphase, dann wird nichts berechnet."
+    "trialCta": "Pro 7 Tage kostenlos testen",
+    "trialNote": "7 Tage kostenlos. Jederzeit kündbar, ohne Rückfragen. Du zahlst nur, wenn du Pro nach dem Test behältst."
   },
   "paywall": {
     "title": "Ihr nächstes Level befindet sich hinter dieser Tür",
@@ -1870,9 +1870,9 @@
       "progressSync": "Fortschrittssynchronisierung",
       "certificates": "Zertifikate"
     },
-    "upgradeCta": "7-tägige Gratis-Testphase starten",
+    "upgradeCta": "Pro 7 Tage kostenlos testen",
     "signInCta": "Melde dich zuerst an",
-    "guarantee": "7-tägige Gratis-Testphase, Karte erforderlich. Kündige jederzeit vor Ende der Testphase."
+    "guarantee": "7 Tage kostenlos. Jederzeit kündbar, ohne Rückfragen."
   },
   "mockInterview": {
     "title": "KI-Probeinterview-Labor",

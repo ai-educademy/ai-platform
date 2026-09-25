@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import { Check, Tag, ChevronDown, ChevronUp, Sparkles } from "lucide-react";
@@ -234,7 +234,7 @@ export function PricingCards({
   purchasablePlans?: PaidPlan[];
 }) {
   const t = useTranslations("pricing");
-  const { data: session } = useSession();
+  const { data: session, status: sessionStatus } = useSession();
   const { isPro, loading: proLoading } = useProStatus();
 
   const available: PaidPlan[] =
@@ -247,6 +247,7 @@ export function PricingCards({
   const [promoStatus, setPromoStatus] = useState<
     "idle" | "applied" | "invalid"
   >("idle");
+  const [parkedPlan, setParkedPlan] = useState<PaidPlan | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -258,9 +259,18 @@ export function PricingCards({
     setError("");
     setPendingPlan(plan);
 
+    // While the session is still loading, a signed-in user looks signed out.
+    // Park the choice and let the effect below resume it, rather than
+    // bouncing them back through sign-in.
+    if (sessionStatus === "loading") {
+      setParkedPlan(plan);
+      return;
+    }
+
     if (!session?.user) {
+      // Carry the chosen plan through sign-in so checkout resumes on return.
       window.location.href = `${basePath}/signin?callbackUrl=${encodeURIComponent(
-        `${basePath}/pricing`,
+        `${basePath}/pricing?checkout=${plan}`,
       )}`;
       return;
     }
@@ -296,6 +306,33 @@ export function PricingCards({
       setPendingPlan(null);
     }
   };
+
+  const resumed = useRef(false);
+  useEffect(() => {
+    if (resumed.current || sessionStatus === "loading" || proLoading) return;
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get("checkout");
+    const plan = (fromUrl ?? parkedPlan) as PaidPlan | null;
+    if (!plan || !available.includes(plan)) return;
+    if (fromUrl) resumed.current = true;
+    setParkedPlan(null);
+    if (fromUrl) {
+      params.delete("checkout");
+      const query = params.toString();
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${query ? `?${query}` : ""}`,
+      );
+    }
+    if (isPro) {
+      setPendingPlan(null);
+      return;
+    }
+    void handleCheckout(plan);
+    // handleCheckout is recreated each render; the ref makes this run once.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionStatus, proLoading, isPro, parkedPlan]);
 
   const paidPlans: {
     plan: PaidPlan;
