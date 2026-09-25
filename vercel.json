@@ -2,6 +2,7 @@
   "git": {
     "submodules": false
   },
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude).github' ':(exclude)e2e' ':(exclude)README.md' ':(exclude)CONTRIBUTING.md' ':(exclude)scripts/indexnow.mjs' ':(exclude)scripts/run-campaign.ts'",
   "installCommand": "sh scripts/vercel-install.sh",
   "crons": [
     {
