@@ -204,7 +204,8 @@
       "zh": "Chinesische",
       "ar": "Arabische"
     },
-    "machineTranslatedNotice": "Diese Lektion wurde automatisch ins {language} übersetzt und noch nicht von einem Menschen geprüft. Falls etwas seltsam klingt, gilt die englische Fassung."
+    "machineTranslatedNotice": "Diese Lektion wurde automatisch ins {language} übersetzt und noch nicht von einem Menschen geprüft. Falls etwas seltsam klingt, gilt die englische Fassung.",
+    "continueToLesson": "Weiter: {title}"
   },
   "programs": {
     "badge": "",
@@ -1082,7 +1083,15 @@
     "resetting": "Zurücksetzen...",
     "sending": "Senden...",
     "signingIn": "Anmeldung...",
-    "errorCredentials": "Ungueltige E-Mail oder falsches Passwort. Hast du deine E-Mail bestaetigt?"
+    "errorCredentials": "Ungueltige E-Mail oder falsches Passwort. Hast du deine E-Mail bestaetigt?",
+    "orContinueWithEmail": "Oder E-Mail verwenden",
+    "verifyBannerTitle": "Bestätige deine E-Mail, wenn du kurz Zeit hast",
+    "verifyBannerBody": "Du kannst jetzt weiterlernen. Die Bestätigung hilft bei der Kontowiederherstellung und kann vor dem Bezahlen nötig sein.",
+    "verifyBannerSend": "Code senden",
+    "verifyBannerSending": "Wird gesendet...",
+    "verifyBannerSent": "Code gesendet. Prüfe dein Postfach.",
+    "verifyBannerOpen": "Code eingeben",
+    "verifyBannerError": "Der Code konnte nicht gesendet werden. Bitte versuche es gleich noch einmal."
   },
   "lessonTitles": {
     "agentic-workflows": "Agenten-Workflows",

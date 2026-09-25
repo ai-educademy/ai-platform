@@ -204,7 +204,8 @@
       "zh": "中文",
       "ar": "阿拉伯文"
     },
-    "machineTranslatedNotice": "本课程由机器自动翻译成{language}，尚未经过人工校对。如果读起来有些奇怪，请以英文原文为准。"
+    "machineTranslatedNotice": "本课程由机器自动翻译成{language}，尚未经过人工校对。如果读起来有些奇怪，请以英文原文为准。",
+    "continueToLesson": "继续：{title}"
   },
   "programs": {
     "badge": "",
@@ -1082,7 +1083,15 @@
     "resetting": "Resetting...",
     "sending": "Sending...",
     "signingIn": "正在登录...",
-    "errorCredentials": "邮箱或密码无效。你是否已验证邮箱？"
+    "errorCredentials": "邮箱或密码无效。你是否已验证邮箱？",
+    "orContinueWithEmail": "或使用邮箱",
+    "verifyBannerTitle": "有空时验证你的邮箱",
+    "verifyBannerBody": "你现在可以继续学习。验证邮箱能帮助你找回账号，并且结账前可能需要完成验证。",
+    "verifyBannerSend": "发送验证码",
+    "verifyBannerSending": "正在发送...",
+    "verifyBannerSent": "验证码已发送。请查看收件箱。",
+    "verifyBannerOpen": "输入验证码",
+    "verifyBannerError": "无法发送验证码。请稍后再试。"
   },
   "lessonTitles": {
     "agentic-workflows": "智能体工作流",

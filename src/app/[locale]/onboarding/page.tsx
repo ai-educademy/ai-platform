@@ -16,12 +16,7 @@ import {
 
 type ExperienceLevel = "beginner" | "intermediate" | "advanced";
 
-type Goal =
-  | "understand"
-  | "build"
-  | "interviews"
-  | "work"
-  | "creative";
+type Goal = "understand" | "build" | "interviews" | "work" | "creative";
 
 interface Recommendation {
   program: string;
@@ -34,6 +29,12 @@ interface Recommendation {
 /* ─── Constants ─── */
 
 const TOTAL_STEPS = 4;
+
+const FIRST_LESSON_BY_PROGRAM: Record<string, string> = {
+  "ai-seeds": "what-is-ai",
+  "ai-sketch": "arrays-and-hashmaps",
+  "ai-launchpad": "understanding-interview-landscape",
+};
 
 const EXPERIENCE_OPTIONS: {
   id: ExperienceLevel;
@@ -135,12 +136,8 @@ function SelectionCard({
       onClick={onClick}
       className="w-full text-left rounded-2xl p-5 transition-all duration-300 ease-out cursor-pointer border-2"
       style={{
-        background: selected
-          ? "var(--color-glass)"
-          : "var(--color-bg-card)",
-        borderColor: selected
-          ? "var(--color-primary)"
-          : "var(--color-border)",
+        background: selected ? "var(--color-glass)" : "var(--color-bg-card)",
+        borderColor: selected ? "var(--color-primary)" : "var(--color-border)",
         boxShadow: selected
           ? "0 0 20px rgba(91, 94, 240, 0.15), 0 0 60px rgba(91, 94, 240, 0.05)"
           : "none",
@@ -276,9 +273,7 @@ function GoalsStep({
         <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text)]">
           {t("goals.title")}
         </h2>
-        <p className="text-[var(--color-text-muted)]">
-          {t("goals.subtitle")}
-        </p>
+        <p className="text-[var(--color-text-muted)]">{t("goals.subtitle")}</p>
       </div>
       <div className="space-y-3 max-w-lg mx-auto">
         {GOAL_OPTIONS.map((opt) => (
@@ -306,7 +301,11 @@ function RecommendationStep({
   const router = useRouter();
 
   const programSlug = recommendation.program;
-  const programHref = `/${locale === "en" ? "" : `${locale}/`}programs/${programSlug}`;
+  const basePath = locale === "en" ? "" : `/${locale}`;
+  const firstLesson = FIRST_LESSON_BY_PROGRAM[programSlug];
+  const programHref = firstLesson
+    ? `${basePath}/programs/${programSlug}/lessons/${firstLesson}`
+    : `${basePath}/programs/${programSlug}`;
 
   return (
     <div className="space-y-8 text-center">
@@ -367,7 +366,7 @@ function RecommendationStep({
 
       <button
         type="button"
-        onClick={() => router.push(`/${locale === "en" ? "" : `${locale}/`}programs/ai-seeds`)}
+        onClick={() => router.push(`${basePath}/programs/ai-seeds`)}
         className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
       >
         <Compass className="w-4 h-4" />
@@ -460,9 +459,7 @@ export default function OnboardingPage() {
             <ExperienceStep selected={experience} onSelect={setExperience} />
           )}
           {step === 2 && <GoalsStep selected={goals} onToggle={toggleGoal} />}
-          {step === 3 && (
-            <RecommendationStep recommendation={recommendation} />
-          )}
+          {step === 3 && <RecommendationStep recommendation={recommendation} />}
         </div>
       </div>
 

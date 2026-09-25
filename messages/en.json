@@ -219,7 +219,8 @@
       "zh": "Chinese",
       "ar": "Arabic"
     },
-    "machineTranslatedNotice": "This lesson was translated into {language} automatically and has not been reviewed by a person yet. If something reads oddly, the English original is the definitive version."
+    "machineTranslatedNotice": "This lesson was translated into {language} automatically and has not been reviewed by a person yet. If something reads oddly, the English original is the definitive version.",
+    "continueToLesson": "Continue: {title}"
   },
   "programs": {
     "badge": "",
@@ -1097,7 +1098,15 @@
     "resetting": "Resetting...",
     "sending": "Sending...",
     "signingIn": "Signing in...",
-    "errorCredentials": "Invalid email or password. Have you verified your email?"
+    "errorCredentials": "Invalid email or password. Have you verified your email?",
+    "orContinueWithEmail": "Or use email",
+    "verifyBannerTitle": "Verify your email when you get a minute",
+    "verifyBannerBody": "You can keep learning now. Verification keeps your account recoverable and may be needed before checkout.",
+    "verifyBannerSend": "Send code",
+    "verifyBannerSending": "Sending...",
+    "verifyBannerSent": "Code sent. Check your inbox.",
+    "verifyBannerOpen": "Enter code",
+    "verifyBannerError": "We could not send the code. Try again shortly."
   },
   "lessonTitles": {
     "agentic-workflows": "Agentic Workflows",

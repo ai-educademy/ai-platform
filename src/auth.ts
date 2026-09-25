@@ -3,7 +3,7 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { eq, and, ne } from "drizzle-orm";
+import { eq, and, ne, isNull } from "drizzle-orm";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/lib/db";
 import { users, accounts, sessions, verificationTokens } from "@/lib/db/schema";
@@ -13,10 +13,15 @@ import { cookies } from "next/headers";
 import { safeLocale } from "@/lib/safe-locale";
 import { refreshTokenRole } from "@/lib/auth-role";
 import { trackEvent } from "@/lib/funnel";
+import {
+  credentialsUserForSession,
+  googleEmailVerificationPatch,
+  roleForInitialToken,
+} from "@/lib/auth-signin";
 
 if (!process.env.AUTH_SECRET) {
   console.warn(
-    "⚠️  AUTH_SECRET is not set. Authentication will not work in production."
+    "⚠️  AUTH_SECRET is not set. Authentication will not work in production.",
   );
 }
 
@@ -57,19 +62,9 @@ providers.push(
       if (!user || !user.password) return null;
 
       const valid = await bcrypt.compare(password, user.password);
-      if (!valid) return null;
-
-      if (!user.emailVerified) return null;
-
-      return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        image: user.image,
-      };
+      return credentialsUserForSession(user, valid);
     },
-  })
+  }),
 );
 
 /**
@@ -140,23 +135,72 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             .where(eq(users.id, user.id))
             .catch((err) => console.error("[Auth] Locale set failed:", err));
         }
-        trackEvent("signup_completed", { userId: user.id, locale, path: "/signup" });
-        sendWelcomeEmail(user.email, locale, user.name || undefined).catch((err) =>
-          console.error("[Auth] Welcome email failed:", err)
+        trackEvent("signup_completed", {
+          userId: user.id,
+          locale,
+          path: "/signup",
+        });
+        sendWelcomeEmail(user.email, locale, user.name || undefined).catch(
+          (err) => console.error("[Auth] Welcome email failed:", err),
         );
         sendAdminNotification(
           "New user signed up! 🎉",
           `<p><strong>Name:</strong> ${user.name || "—"}</p>
            <p><strong>Email:</strong> ${user.email}</p>
-           <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
-        ).catch((err) => console.error("[Auth] Admin notification failed:", err));
+           <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`,
+        ).catch((err) =>
+          console.error("[Auth] Admin notification failed:", err),
+        );
       }
     },
   },
   callbacks: {
+    async signIn({ user, account }) {
+      if (!user?.id) return true;
+
+      const existingVerified = (
+        user as { emailVerified?: Date | boolean | null }
+      ).emailVerified;
+      const patch = googleEmailVerificationPatch(
+        account?.provider,
+        existingVerified,
+        new Date(),
+      );
+      if (!patch) return true;
+
+      try {
+        await db
+          .update(users)
+          .set(patch)
+          .where(and(eq(users.id, user.id), isNull(users.emailVerified)));
+        (user as { emailVerified?: boolean }).emailVerified = true;
+      } catch (err) {
+        console.error("[Auth] Google email verification sync failed:", err);
+      }
+
+      return true;
+    },
     async jwt({ token, user, trigger }) {
       if (user) {
-        token.role = (user as { role?: string }).role ?? "free";
+        const userRole = (user as { role?: string }).role;
+        let databaseRole: string | null = null;
+        const userId = user.id ?? token.sub;
+        if (!userRole && userId) {
+          try {
+            const [row] = await db
+              .select({ role: users.role })
+              .from(users)
+              .where(eq(users.id, userId))
+              .limit(1);
+            databaseRole = row?.role ?? null;
+          } catch (err) {
+            console.error("[Auth] Initial role lookup failed:", err);
+          }
+        }
+        token.role = roleForInitialToken(userRole, databaseRole);
+        token.emailVerified = Boolean(
+          (user as { emailVerified?: boolean | Date | null }).emailVerified,
+        );
         token.roleCheckedAt = Date.now();
         return token;
       }
@@ -177,6 +221,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token?.role) {
         (session.user as { role?: string }).role = token.role as string;
       }
+      (session.user as { emailVerified?: boolean }).emailVerified =
+        token.emailVerified === true;
       return session;
     },
   },

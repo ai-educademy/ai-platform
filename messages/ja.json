@@ -204,7 +204,8 @@
       "zh": "中国語",
       "ar": "アラビア語"
     },
-    "machineTranslatedNotice": "このレッスンは{language}に自動翻訳されたもので、まだ人によるチェックを受けていません。表現に違和感がある場合は、英語の原文が正となります。"
+    "machineTranslatedNotice": "このレッスンは{language}に自動翻訳されたもので、まだ人によるチェックを受けていません。表現に違和感がある場合は、英語の原文が正となります。",
+    "continueToLesson": "続ける: {title}"
   },
   "programs": {
     "badge": "",
@@ -1082,7 +1083,15 @@
     "resetting": "Resetting...",
     "sending": "Sending...",
     "signingIn": "サインイン中...",
-    "errorCredentials": "メールまたはパスワードが無効です。メール認証は完了していますか？"
+    "errorCredentials": "メールまたはパスワードが無効です。メール認証は完了していますか？",
+    "orContinueWithEmail": "またはメールを使う",
+    "verifyBannerTitle": "時間があるときにメールを確認してください",
+    "verifyBannerBody": "今すぐ学習を続けられます。確認しておくとアカウントを復旧しやすくなり、支払い前に必要になる場合があります。",
+    "verifyBannerSend": "コードを送信",
+    "verifyBannerSending": "送信中...",
+    "verifyBannerSent": "コードを送信しました。受信トレイを確認してください。",
+    "verifyBannerOpen": "コードを入力",
+    "verifyBannerError": "コードを送信できませんでした。少ししてからもう一度お試しください。"
   },
   "lessonTitles": {
     "agentic-workflows": "エージェントワークフロー",

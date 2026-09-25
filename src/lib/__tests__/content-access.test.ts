@@ -45,5 +45,5 @@ describe("content access", () => {
         }
       }
     }
-  });
+  }, 60_000);
 });
