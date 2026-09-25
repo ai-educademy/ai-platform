@@ -1270,7 +1270,9 @@
     "notHelpful": "Precisa melhorar",
     "tellUsMore": "Conte-nos mais (opcional)",
     "submit": "Enviar feedback",
-    "thanks": "Obrigado pelo seu feedback!"
+    "thanks": "Obrigado pelo seu feedback!",
+    "certificateNudge": "Quer isso no seu LinkedIn? Membros Pro ganham um certificado verificado de cada academia, adicionado ao perfil com um clique.",
+    "certificateNudgeCta": "Ver o Pro"
   },
   "newsletter": {
     "title": "Fique por dentro",

@@ -36,7 +36,6 @@ describe("isUndeliverableAddress", () => {
   it("keeps real mailboxes, including unfamiliar and regional domains", () => {
     for (const email of [
       "learner@gmail.com",
-      "learner@minitts.net",
       "learner@t-online.de",
       "learner@bluewin.ch",
       "learner@clavis.mu",
@@ -58,5 +57,14 @@ describe("isUndeliverableAddress", () => {
     expect(isUndeliverableAddress("a@testing.com")).toBe(false);
     expect(isUndeliverableAddress("a@mytest.com")).toBe(false);
     expect(isUndeliverableAddress("a@notresend.appliances.com")).toBe(false);
+  });
+  it("excludes throwaway inboxes on the disposable blocklist", () => {
+    expect(isUndeliverableAddress("someone@minitts.net")).toBe(true);
+    expect(isUndeliverableAddress("someone@mailinator.com")).toBe(true);
+  });
+
+  it("keeps real providers and unfamiliar regional domains", () => {
+    expect(isUndeliverableAddress("someone@gmail.com")).toBe(false);
+    expect(isUndeliverableAddress("someone@cu.edu.ge")).toBe(false);
   });
 });

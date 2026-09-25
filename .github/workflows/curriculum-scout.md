@@ -29,6 +29,9 @@ tools:
     mode: gh-proxy
     toolsets: [repos, issues]
 safe-outputs:
+  # No Copilot token in this org; skip the AI pass. Agent PRs still need green CI.
+  threat-detection:
+    engine: false
   create-issue:
     labels: [curriculum]
     title-prefix: "[Curriculum] "

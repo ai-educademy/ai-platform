@@ -483,7 +483,7 @@
       "subtitle": "驾驭 AI 工程求职市场",
       "description": "为 AI 时代的岗位制定聚焦的求职策略：了解岗位类别、读懂职位描述、梳理你的证据，并准备一份切实可行的学习与投递计划。",
       "audience": "开启或转向 AI 方向职业的人",
-      "prerequisites": "None",
+      "prerequisites": "无",
       "topics": [
         "AI role families and expectations",
         "Job-description signal extraction",
@@ -585,7 +585,7 @@
         "Negotiate from evidence without burning trust",
         "Plan a strong first 90 days"
       ],
-      "tileLabel": "Offer",
+      "tileLabel": "录用通知",
       "homeDesc": "做出自信而明智的下一步"
     },
     "curriculumVersion": "2026 生产级 AI 教学大纲"
@@ -994,7 +994,7 @@
     "shareOnTwitter": "Twitter/X",
     "shareOnLinkedin": "LinkedIn",
     "copyLink": "复制链接",
-    "linkCopied": "Copied!",
+    "linkCopied": "已复制！",
     "shareModalTitle": "分享成就",
     "shareTweet": "我刚刚在 AI Educademy 完成了 {program}！🎓🤖 #AILearning #AIEducademy",
     "shareDescription": "我在 AI Educademy 完成了 {program} 学习计划",
@@ -1041,11 +1041,11 @@
     "allPrograms": "所有学习计划",
     "userAvatar": "用户头像",
     "email": "邮箱",
-    "name": "Name",
+    "name": "姓名",
     "confirmPassword": "确认密码",
     "confirmPasswordPlaceholder": "请再次输入密码",
     "forgotPassword": "忘记密码？",
-    "forgotPasswordTitle": "Forgot Password",
+    "forgotPasswordTitle": "忘记密码",
     "forgotPasswordPrompt": "输入你的邮箱，我们会给你发送重置链接。",
     "sendResetLink": "发送重置链接",
     "resetLinkSent": "如果该邮箱存在对应账户，我们已发送密码重置链接。",
@@ -1080,9 +1080,9 @@
     "invalidResetLink": "重置链接无效或已过期",
     "backToSignIn": "返回登录",
     "creatingAccount": "正在创建账户...",
-    "verifying": "Verifying...",
-    "resetting": "Resetting...",
-    "sending": "Sending...",
+    "verifying": "正在验证...",
+    "resetting": "正在重置...",
+    "sending": "正在发送...",
     "signingIn": "正在登录...",
     "errorCredentials": "邮箱或密码无效。你是否已验证邮箱？",
     "orContinueWithEmail": "或使用邮箱",
@@ -1270,7 +1270,9 @@
     "notHelpful": "有待改进",
     "tellUsMore": "告诉我们更多（可选）",
     "submit": "提交反馈",
-    "thanks": "感谢你的反馈！"
+    "thanks": "感谢你的反馈！",
+    "certificateNudge": "想把它展示在 LinkedIn 上吗？Pro 会员每完成一个学院都能获得认证证书，一键添加到个人资料。",
+    "certificateNudgeCta": "了解 Pro"
   },
   "newsletter": {
     "title": "保持关注",

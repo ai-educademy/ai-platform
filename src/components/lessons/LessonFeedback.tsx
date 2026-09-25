@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ThumbsUp, ThumbsDown, Loader2 } from "lucide-react";
 import { useProgress } from "@/hooks/useProgress";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useProStatus } from "@/hooks/useProStatus";
 
 const STORAGE_KEY = "aieducademy-feedback";
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -22,10 +24,14 @@ interface LessonFeedbackProps {
   locale?: string;
 }
 
-function saveToLocalStorage(lessonSlug: string, isHelpful: boolean, text: string) {
+function saveToLocalStorage(
+  lessonSlug: string,
+  isHelpful: boolean,
+  text: string,
+) {
   try {
     const existing: FeedbackEntry[] = JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || "[]"
+      localStorage.getItem(STORAGE_KEY) || "[]",
     );
     existing.push({
       lessonSlug,
@@ -39,16 +45,23 @@ function saveToLocalStorage(lessonSlug: string, isHelpful: boolean, text: string
   }
 }
 
-export function LessonFeedback({ lessonSlug, programSlug, locale }: LessonFeedbackProps) {
+export function LessonFeedback({
+  lessonSlug,
+  programSlug,
+  locale,
+}: LessonFeedbackProps) {
   const t = useTranslations("feedback");
   const { isCompleted } = useProgress(programSlug);
   const noMotion = useReducedMotion();
+  const { isPro, loading: proLoading } = useProStatus();
   const [step, setStep] = useState<"ask" | "comment" | "done">("ask");
   const [helpful, setHelpful] = useState<boolean | null>(null);
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const completionKey = programSlug ? `${programSlug}/${lessonSlug}` : lessonSlug;
+  const completionKey = programSlug
+    ? `${programSlug}/${lessonSlug}`
+    : lessonSlug;
   const lessonComplete = isCompleted(completionKey);
 
   if (!lessonComplete) return null;
@@ -117,7 +130,9 @@ export function LessonFeedback({ lessonSlug, programSlug, locale }: LessonFeedba
       {step === "comment" && (
         <div
           className="space-y-4"
-          style={noMotion ? undefined : { animation: `fade-up 0.3s ${EASE} both` }}
+          style={
+            noMotion ? undefined : { animation: `fade-up 0.3s ${EASE} both` }
+          }
         >
           <p className="text-sm text-[var(--color-text-muted)]">
             {t("tellUsMore")}
@@ -143,9 +158,25 @@ export function LessonFeedback({ lessonSlug, programSlug, locale }: LessonFeedba
       {step === "done" && (
         <p
           className="text-center text-[var(--color-accent)] font-semibold py-2"
-          style={noMotion ? undefined : { animation: `scale-in 0.4s ${EASE} both` }}
+          style={
+            noMotion ? undefined : { animation: `scale-in 0.4s ${EASE} both` }
+          }
         >
           ✅ {t("thanks")}
+        </p>
+      )}
+
+      {/* Learners who liked a lesson ask how to show it off. Certificates are
+          the Pro answer, so say so at the moment of goodwill. */}
+      {step === "done" && helpful === true && !isPro && !proLoading && (
+        <p className="mt-3 text-center text-sm text-[var(--color-text-muted)]">
+          {t("certificateNudge")}{" "}
+          <Link
+            href={`${locale && locale !== "en" ? `/${locale}` : ""}/pricing`}
+            className="font-semibold text-[var(--color-accent)] underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            {t("certificateNudgeCta")}
+          </Link>
         </p>
       )}
     </div>
