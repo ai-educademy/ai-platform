@@ -1270,7 +1270,9 @@
     "notHelpful": "Kan beter",
     "tellUsMore": "Vertel ons meer (optioneel)",
     "submit": "Feedback versturen",
-    "thanks": "Bedankt voor je feedback!"
+    "thanks": "Bedankt voor je feedback!",
+    "certificateNudge": "Wil je dit op LinkedIn? Pro-leden krijgen voor elke academie een geverifieerd certificaat, met één klik op hun profiel.",
+    "certificateNudgeCta": "Bekijk Pro"
   },
   "newsletter": {
     "title": "Blijf op de hoogte",

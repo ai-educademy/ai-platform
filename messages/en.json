@@ -1285,7 +1285,9 @@
     "notHelpful": "Needs improvement",
     "tellUsMore": "Tell us more (optional)",
     "submit": "Submit feedback",
-    "thanks": "Thank you for your feedback!"
+    "thanks": "Thank you for your feedback!",
+    "certificateNudge": "Want this on your LinkedIn? Pro learners earn a verified certificate for every academy, added to their profile in one click.",
+    "certificateNudgeCta": "See Pro"
   },
   "newsletter": {
     "title": "Stay in the loop",
