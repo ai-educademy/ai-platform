@@ -1903,17 +1903,22 @@
   },
   "referral": {
     "title": "दोस्तों को आमंत्रित करें",
-    "description": "AI Educademy शेयर करें और पुरस्कार पाएं",
-    "yourLink": "आपका रेफ़रल लिंक",
+    "description": "एक महीना दें, एक महीना पाएं। आपके दोस्त को पहला महीना मुफ्त मिलेगा और उसके पहले भुगतान के बाद आपको एक महीना क्रेडिट होगा।",
+    "yourLink": "आपका रेफरल लिंक",
     "copied": "कॉपी हो गया!",
     "copy": "लिंक कॉपी करें",
-    "shareOn": "{platform} पर शेयर करें",
+    "shareOn": "{platform} पर साझा करें",
     "joinedCount": "{count} लोग आपके लिंक से जुड़े",
-    "noReferrals": "अभी तक कोई रेफ़रल नहीं. अपना लिंक शेयर करें!",
-    "reward": "आप और आपके दोस्त दोनों को लाभ मिलेगा",
-    "twitter": "Twitter/X",
+    "noReferrals": "अभी कोई रेफरल नहीं। अपना लिंक साझा करें।",
+    "reward": "पहला महीना मुफ्त दें। उनके पहले भुगतान के बाद एक महीना क्रेडिट पाएं।",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "इस पाठ की सफलता साझा करें",
+    "lessonDescription": "पाठ ताजा रहते हुए किसी दोस्त को पहला महीना मुफ्त दें।",
+    "checkoutTitle": "एक महीना दें, एक महीना पाएं",
+    "checkoutDescription": "अब आप Pro हैं। अपना लिंक साझा करें और दोस्त के भुगतान पर आपका अगला महीना क्रेडिट होगा।",
+    "shareText": "मैं AI Educademy पर AI सीख रहा हूं। पहले मुफ्त महीने के लिए मेरा लिंक इस्तेमाल करें।"
   },
   "certificates": {
     "title": "पूर्णता प्रमाणपत्र",
@@ -1923,7 +1928,9 @@
     "completed": "आपने अपना प्रमाणपत्र अर्जित कर लिया है!",
     "notSignedIn": "प्रगति ट्रैक करने और प्रमाणपत्र प्राप्त करने के लिए साइन इन करें",
     "upgradeToCertificate": "प्रमाणपत्र के लिए Pro में अपग्रेड करें",
-    "premiumOnly": "प्रीमियम प्रोग्राम के प्रमाणपत्र Pro सदस्यता के साथ उपलब्ध हैं"
+    "premiumOnly": "प्रीमियम प्रोग्राम के प्रमाणपत्र Pro सदस्यता के साथ उपलब्ध हैं",
+    "shareCertificate": "प्रमाणपत्र साझा करें",
+    "addToLinkedIn": "LinkedIn प्रोफाइल में जोड़ें"
   },
   "continueLearning": {
     "title": "जहाँ छोड़ा था वहीं से जारी रखें",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "व्यवस्थित AI शिक्षा, एक पाठ के साथ",
     "verifiedCompletion": "सत्यापित समापन",
     "defaultTitle": "उपलब्धि | AI Educademy",
-    "defaultDescription": "AI Educademy पर अर्जित एक उपलब्धि - संरचित AI शिक्षा, एक समय में एक पाठ।"
+    "defaultDescription": "AI Educademy पर अर्जित एक उपलब्धि - संरचित AI शिक्षा, एक समय में एक पाठ।",
+    "addToLinkedIn": "LinkedIn प्रोफाइल में जोड़ें",
+    "previewBadge": "Pro प्रमाणपत्र पूर्वावलोकन",
+    "previewDescription": "प्रमाणपत्र Pro लाभ हैं। सत्यापित प्रमाणपत्र URL प्रकाशित करने के लिए ट्रायल शुरू करें।",
+    "trialCta": "Pro ट्रायल शुरू करें"
   },
   "trustBar": {
     "lessons": "पाठ",

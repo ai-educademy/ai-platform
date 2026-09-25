@@ -1903,17 +1903,22 @@
   },
   "referral": {
     "title": "Freunde einladen",
-    "description": "Teile AI Educademy und erhalte Belohnungen",
+    "description": "Einen Monat schenken, einen Monat erhalten. Dein Freund bekommt den ersten Monat kostenlos und du erhältst nach der ersten Zahlung einen Monat gutgeschrieben.",
     "yourLink": "Dein Empfehlungslink",
     "copied": "Kopiert!",
     "copy": "Link kopieren",
-    "shareOn": "Teilen auf {platform}",
+    "shareOn": "Auf {platform} teilen",
     "joinedCount": "{count} Personen sind über deinen Link beigetreten",
-    "noReferrals": "Noch keine Empfehlungen. teile deinen Link!",
-    "reward": "Du und dein Freund erhalten beide Vorteile",
-    "twitter": "Twitter/X",
+    "noReferrals": "Noch keine Empfehlungen. Teile deinen Link.",
+    "reward": "Schenke einen kostenlosen ersten Monat. Erhalte nach der ersten Zahlung einen Monat gutgeschrieben.",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "Diesen Lernerfolg teilen",
+    "lessonDescription": "Schenke einem Freund den ersten Monat kostenlos, solange die Lektion noch frisch ist.",
+    "checkoutTitle": "Einen Monat schenken, einen Monat erhalten",
+    "checkoutDescription": "Du bist jetzt Pro. Teile deinen Link und dein nächster Monat wird gutgeschrieben, wenn ein Freund bezahlt.",
+    "shareText": "Ich lerne KI auf AI Educademy. Nutze meinen Link für deinen ersten kostenlosen Monat."
   },
   "certificates": {
     "title": "Abschlusszertifikat",
@@ -1923,7 +1928,9 @@
     "completed": "Du hast dein Zertifikat verdient!",
     "notSignedIn": "Melde dich an, um deinen Fortschritt zu verfolgen und Zertifikate zu erhalten",
     "premiumOnly": "Zertifikate für Premium-Programme sind mit einem Pro-Abonnement verfügbar",
-    "upgradeToCertificate": "Auf Pro upgraden für Zertifikat"
+    "upgradeToCertificate": "Auf Pro upgraden für Zertifikat",
+    "shareCertificate": "Zertifikat teilen",
+    "addToLinkedIn": "Zum LinkedIn Profil hinzufügen"
   },
   "continueLearning": {
     "title": "Machen Sie dort weiter, wo Sie aufgehört haben",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "Strukturierte KI-Bildung, eine Lektion nach der anderen",
     "verifiedCompletion": "Verifizierter Abschluss",
     "defaultTitle": "Leistung | AI Educademy",
-    "defaultDescription": "Eine mit AI Educademy erzielte Errungenschaft - strukturierte KI-Ausbildung, eine Lektion nach der anderen."
+    "defaultDescription": "Eine mit AI Educademy erzielte Errungenschaft - strukturierte KI-Ausbildung, eine Lektion nach der anderen.",
+    "addToLinkedIn": "Zum LinkedIn Profil hinzufügen",
+    "previewBadge": "Vorschau des Pro Zertifikats",
+    "previewDescription": "Zertifikate sind ein Pro Vorteil. Starte eine Testphase, um eine verifizierte Zertifikats URL zu veröffentlichen.",
+    "trialCta": "Pro Testphase starten"
   },
   "bookmarks": {
     "addedOn": "Gespeichert am",

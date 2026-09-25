@@ -1902,18 +1902,23 @@
     "analyzing": "جارٍ تحليل إجابتك..."
   },
   "referral": {
-    "title": "ادعُ أصدقاءك",
-    "description": "شارك AI Educademy واحصل على مكافآت",
+    "title": "ادع الأصدقاء",
+    "description": "امنح شهرا واحصل على شهر. يحصل صديقك على الشهر الأول مجانا وتحصل أنت على شهر مضاف بعد أول دفعة منه.",
     "yourLink": "رابط الإحالة الخاص بك",
     "copied": "تم النسخ!",
     "copy": "نسخ الرابط",
     "shareOn": "مشاركة على {platform}",
-    "joinedCount": "انضم {count} شخص عبر رابطك",
-    "noReferrals": "لا إحالات بعد. شارك رابطك!",
-    "reward": "أنت وصديقك تحصلان على مزايا",
-    "twitter": "Twitter/X",
+    "joinedCount": "انضم {count} أشخاص عبر رابطك",
+    "noReferrals": "لا توجد إحالات بعد. شارك رابطك.",
+    "reward": "امنح الشهر الأول مجانا. احصل على شهر مضاف بعد أول دفعة.",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "شارك إنجاز هذا الدرس",
+    "lessonDescription": "امنح صديقا شهرا أول مجانيا ما دام الدرس حاضرا في ذهنك.",
+    "checkoutTitle": "امنح شهرا واحصل على شهر",
+    "checkoutDescription": "أصبحت الآن Pro. شارك رابطك وسيضاف شهرك التالي عندما يدفع صديقك.",
+    "shareText": "أنا أتعلم الذكاء الاصطناعي على AI Educademy. استخدم رابطي للحصول على الشهر الأول مجانا."
   },
   "certificates": {
     "title": "شهادة إتمام",
@@ -1923,7 +1928,9 @@
     "completed": "لقد حصلت على شهادتك!",
     "notSignedIn": "سجّل الدخول لتتبع تقدمك والحصول على الشهادات",
     "upgradeToCertificate": "قم بالترقية إلى Pro للحصول على الشهادة",
-    "premiumOnly": "شهادات البرامج المميزة متاحة مع اشتراك Pro"
+    "premiumOnly": "شهادات البرامج المميزة متاحة مع اشتراك Pro",
+    "shareCertificate": "مشاركة الشهادة",
+    "addToLinkedIn": "إضافة إلى ملف LinkedIn"
   },
   "continueLearning": {
     "title": "أكمل من حيث توقفت",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "تعليم منظم للذكاء الاصطناعي، درسًا تلو الآخر",
     "verifiedCompletion": "إنجاز موثّق",
     "defaultTitle": "إنجاز | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - تعليم منظم للذكاء الاصطناعي، درسًا تلو الآخر."
+    "defaultDescription": "An achievement earned on AI Educademy - تعليم منظم للذكاء الاصطناعي، درسًا تلو الآخر.",
+    "addToLinkedIn": "إضافة إلى ملف LinkedIn",
+    "previewBadge": "معاينة شهادة Pro",
+    "previewDescription": "الشهادات ميزة في Pro. ابدأ تجربة لنشر رابط شهادة موثق.",
+    "trialCta": "بدء تجربة Pro"
   },
   "trustBar": {
     "lessons": "الدروس",

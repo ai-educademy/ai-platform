@@ -416,6 +416,9 @@ export default async function ProgramPage({
               isPremiumUser={isPremiumUser}
               isFree={isFreeProgram(programSlug)}
               locale={locale}
+              programName={tP(`${programSlug}.title`)}
+              userName={session?.user?.name ?? undefined}
+              userId={session?.user?.id}
             />
           </div>
         </AnimatedSection>

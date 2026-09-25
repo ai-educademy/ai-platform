@@ -1917,18 +1917,23 @@
     "analyzing": "Analyzing your answer..."
   },
   "referral": {
-    "title": "Invite Friends",
-    "description": "Share AI Educademy and earn rewards",
-    "yourLink": "Your Referral Link",
+    "title": "Invite friends",
+    "description": "Give a month, get a month. Your friend gets their first month free and you get one month credited after their first payment.",
+    "yourLink": "Your referral link",
     "copied": "Copied!",
-    "copy": "Copy Link",
+    "copy": "Copy link",
     "shareOn": "Share on {platform}",
     "joinedCount": "{count} people joined through your link",
-    "noReferrals": "No referrals yet. Share your link!",
-    "reward": "Both you and your friend get benefits",
-    "twitter": "Twitter/X",
+    "noReferrals": "No referrals yet. Share your link.",
+    "reward": "Give a free first month. Get one month credited after their first payment.",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "Share this lesson win",
+    "lessonDescription": "Give a friend a free first month while the lesson is still fresh.",
+    "checkoutTitle": "Give a month, get a month",
+    "checkoutDescription": "You are Pro now. Share your link and your next month is credited when a friend pays.",
+    "shareText": "I am learning AI on AI Educademy. Use my link for your first month free."
   },
   "certificates": {
     "title": "Certificate of Completion",
@@ -1938,7 +1943,9 @@
     "completed": "You've earned your certificate!",
     "notSignedIn": "Sign in to track progress and earn certificates",
     "upgradeToCertificate": "Upgrade to Pro for Certificate",
-    "premiumOnly": "Certificates for premium programs are available with a Pro subscription"
+    "premiumOnly": "Certificates for premium programs are available with a Pro subscription",
+    "shareCertificate": "Share certificate",
+    "addToLinkedIn": "Add to LinkedIn profile"
   },
   "terms": {
     "title": "Terms of Service",
@@ -2223,7 +2230,11 @@
     "ctaSubtitle": "Structured AI education, one lesson at a time",
     "verifiedCompletion": "Verified Completion",
     "defaultTitle": "Achievement | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - structured AI education, one lesson at a time."
+    "defaultDescription": "An achievement earned on AI Educademy - structured AI education, one lesson at a time.",
+    "addToLinkedIn": "Add to LinkedIn profile",
+    "previewBadge": "Pro certificate preview",
+    "previewDescription": "Certificates are a Pro benefit. Start a trial to publish a verified certificate URL.",
+    "trialCta": "Start Pro trial"
   },
   "leadMagnet": {
     "metaTitle": "Free Download: The 2026 AI Starter Kit | AI Educademy",

@@ -1903,17 +1903,22 @@
   },
   "referral": {
     "title": "Inviter des amis",
-    "description": "Partagez AI Educademy et gagnez des récompenses",
+    "description": "Offrez un mois, recevez un mois. Votre ami obtient son premier mois gratuit et vous recevez un mois crédité après son premier paiement.",
     "yourLink": "Votre lien de parrainage",
     "copied": "Copié !",
     "copy": "Copier le lien",
     "shareOn": "Partager sur {platform}",
     "joinedCount": "{count} personnes ont rejoint via votre lien",
-    "noReferrals": "Aucun parrainage pour le moment. partagez votre lien !",
-    "reward": "Vous et votre ami obtenez des avantages",
-    "twitter": "Twitter/X",
+    "noReferrals": "Aucun parrainage pour le moment. Partagez votre lien.",
+    "reward": "Offrez un premier mois gratuit. Recevez un mois crédité après son premier paiement.",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "Partagez cette réussite",
+    "lessonDescription": "Offrez à un ami un premier mois gratuit tant que la leçon est encore fraîche.",
+    "checkoutTitle": "Offrez un mois, recevez un mois",
+    "checkoutDescription": "Vous êtes maintenant Pro. Partagez votre lien et votre prochain mois sera crédité quand un ami paiera.",
+    "shareText": "J'apprends l'IA sur AI Educademy. Utilisez mon lien pour obtenir votre premier mois gratuit."
   },
   "certificates": {
     "title": "Certificat de réussite",
@@ -1923,7 +1928,9 @@
     "completed": "Vous avez obtenu votre certificat !",
     "notSignedIn": "Connectez-vous pour suivre vos progrès et obtenir des certificats",
     "premiumOnly": "Les certificats pour les programmes premium sont disponibles avec un abonnement Pro",
-    "upgradeToCertificate": "Passez à Pro pour obtenir le certificat"
+    "upgradeToCertificate": "Passez à Pro pour obtenir le certificat",
+    "shareCertificate": "Partager le certificat",
+    "addToLinkedIn": "Ajouter au profil LinkedIn"
   },
   "continueLearning": {
     "title": "Reprenez là où vous en étiez",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "Une formation en IA structurée, une leçon à la fois",
     "verifiedCompletion": "Achèvement vérifié",
     "defaultTitle": "Réalisation | AI Educademy",
-    "defaultDescription": "Un succès obtenu sur AI Educademy: enseignement structuré sur l'IA, une leçon à la fois."
+    "defaultDescription": "Un succès obtenu sur AI Educademy: enseignement structuré sur l'IA, une leçon à la fois.",
+    "addToLinkedIn": "Ajouter au profil LinkedIn",
+    "previewBadge": "Aperçu du certificat Pro",
+    "previewDescription": "Les certificats sont un avantage Pro. Lancez un essai pour publier une URL de certificat vérifiée.",
+    "trialCta": "Commencer l'essai Pro"
   },
   "bookmarks": {
     "addedOn": "Enregistré le",

@@ -67,7 +67,7 @@ export const accounts = pgTable(
     primaryKey({
       columns: [account.provider, account.providerAccountId],
     }),
-  ]
+  ],
 );
 
 export const sessions = pgTable("sessions", {
@@ -85,7 +85,7 @@ export const verificationTokens = pgTable(
     token: text("token").notNull(),
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
-  (vt) => [primaryKey({ columns: [vt.identifier, vt.token] })]
+  (vt) => [primaryKey({ columns: [vt.identifier, vt.token] })],
 );
 
 /* ─────────────── Subscription Tables ─────────────── */
@@ -102,7 +102,9 @@ export const subscriptions = pgTable("subscriptions", {
   plan: text("plan", { enum: ["monthly", "annual", "lifetime"] }).notNull(),
   status: text("status", {
     enum: ["active", "cancelled", "past_due", "trialing", "incomplete"],
-  }).notNull().default("active"),
+  })
+    .notNull()
+    .default("active"),
   currentPeriodStart: timestamp("current_period_start", { mode: "date" }),
   currentPeriodEnd: timestamp("current_period_end", { mode: "date" }),
   cancelAtPeriodEnd: boolean("cancel_at_period_end").notNull().default(false),
@@ -124,39 +126,62 @@ export const lessonProgress = pgTable(
     lessonSlug: text("lesson_slug").notNull(),
     programSlug: text("program_slug").notNull(),
     locale: text("locale").notNull().default("en"),
-    completedAt: timestamp("completed_at", { mode: "date" }).notNull().defaultNow(),
+    completedAt: timestamp("completed_at", { mode: "date" })
+      .notNull()
+      .defaultNow(),
   },
   (lp) => [
     uniqueIndex("lesson_progress_unique").on(
       lp.userId,
       lp.lessonSlug,
-      lp.programSlug
+      lp.programSlug,
     ),
-  ]
+  ],
 );
 
 /* ─────────────── Referral System ─────────────── */
 
-export const referrals = pgTable("referrals", {
-  id: text("id")
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-  referrerUserId: text("referrer_user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  refereeUserId: text("referee_user_id").references(() => users.id, {
-    onDelete: "set null",
-  }),
-  referralCode: text("referral_code").notNull().unique(),
-  refereeEmail: text("referee_email"),
-  status: text("status", {
-    enum: ["pending", "signed_up", "completed_lesson", "rewarded"],
-  })
-    .notNull()
-    .default("pending"),
-  createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
-  completedAt: timestamp("completed_at", { mode: "date" }),
-});
+export const referrals = pgTable(
+  "referrals",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    referrerUserId: text("referrer_user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    refereeUserId: text("referee_user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
+    referralCode: text("referral_code").notNull(),
+    refereeEmail: text("referee_email"),
+    stripeCustomerId: text("stripe_customer_id"),
+    stripeInvoiceId: text("stripe_invoice_id"),
+    stripeSubscriptionId: text("stripe_subscription_id"),
+    refereePaymentFingerprint: text("referee_payment_fingerprint"),
+    rewardStripeBalanceTransactionId: text(
+      "reward_stripe_balance_transaction_id",
+    ),
+    abuseReason: text("abuse_reason"),
+    status: text("status", {
+      enum: ["pending", "signed_up", "completed_lesson", "rewarded", "blocked"],
+    })
+      .notNull()
+      .default("pending"),
+    createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+    completedAt: timestamp("completed_at", { mode: "date" }),
+    rewardedAt: timestamp("rewarded_at", { mode: "date" }),
+  },
+  (referral) => [
+    uniqueIndex("referrals_referee_user_id_unique").on(referral.refereeUserId),
+    uniqueIndex("referrals_stripe_invoice_id_unique").on(
+      referral.stripeInvoiceId,
+    ),
+    uniqueIndex("referrals_reward_balance_tx_unique").on(
+      referral.rewardStripeBalanceTransactionId,
+    ),
+  ],
+);
 
 /* ─────────────── Newsletter Subscribers ─────────────── */
 
@@ -203,7 +228,9 @@ export const contactSubmissions = pgTable("contact_submissions", {
   email: text("email").notNull(),
   subject: text("subject").notNull(),
   message: text("message").notNull(),
-  status: text("status", { enum: ["new", "read", "replied", "archived"] }).default("new"),
+  status: text("status", {
+    enum: ["new", "read", "replied", "archived"],
+  }).default("new"),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
 });
 
@@ -238,7 +265,7 @@ export const playgroundScores = pgTable(
     bestScore: integer("best_score").notNull().default(0),
     updatedAt: timestamp("updated_at").defaultNow().notNull(),
   },
-  (table) => [unique().on(table.userId, table.gameId)]
+  (table) => [unique().on(table.userId, table.gameId)],
 );
 
 /* ─────────────── Lesson Bookmarks / Favorites ─────────────── */
@@ -256,7 +283,7 @@ export const lessonBookmarks = pgTable(
     lessonSlug: text("lesson_slug").notNull(),
     createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
   },
-  (table) => [unique().on(table.userId, table.programSlug, table.lessonSlug)]
+  (table) => [unique().on(table.userId, table.programSlug, table.lessonSlug)],
 );
 
 /* ─────────────── Marketing Campaigns ─────────────── */
@@ -274,12 +301,14 @@ export const campaignSends = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     campaign: text("campaign").notNull(),
-    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    userId: text("user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
     email: text("email").notNull(),
     locale: text("locale").notNull().default("en"),
     sentAt: timestamp("sent_at", { mode: "date" }).notNull().defaultNow(),
   },
-  (table) => [unique().on(table.campaign, table.email)]
+  (table) => [unique().on(table.campaign, table.email)],
 );
 
 /* ─────────────── First-party Funnel Analytics ─────────────── */
@@ -289,7 +318,9 @@ export const funnelEvents = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     event: text("event").notNull(),
-    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    userId: text("user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
     anonId: text("anon_id").notNull(),
     locale: text("locale"),
     path: text("path"),
@@ -301,8 +332,11 @@ export const funnelEvents = pgTable(
   },
   (table) => [
     index("funnel_events_created_at_idx").on(table.createdAt),
-    index("funnel_events_event_created_at_idx").on(table.event, table.createdAt),
+    index("funnel_events_event_created_at_idx").on(
+      table.event,
+      table.createdAt,
+    ),
     index("funnel_events_anon_id_idx").on(table.anonId),
     index("funnel_events_user_id_idx").on(table.userId),
-  ]
+  ],
 );

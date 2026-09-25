@@ -1903,17 +1903,22 @@
   },
   "referral": {
     "title": "邀请朋友",
-    "description": "分享 AI Educademy 并获得奖励",
-    "yourLink": "您的推荐链接",
+    "description": "送一个月，得一个月。朋友首月免费，你会在朋友首次付款后获得一个月抵扣。",
+    "yourLink": "你的推荐链接",
     "copied": "已复制！",
     "copy": "复制链接",
     "shareOn": "分享到 {platform}",
-    "joinedCount": "{count} 人通过您的链接加入",
-    "noReferrals": "还没有推荐. 分享您的链接吧！",
-    "reward": "您和您的朋友都将获得奖励",
-    "twitter": "Twitter/X",
+    "joinedCount": "{count} 人通过你的链接加入",
+    "noReferrals": "还没有推荐。分享你的链接吧。",
+    "reward": "送出首月免费。朋友首次付款后，你获得一个月抵扣。",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "分享这次学习成果",
+    "lessonDescription": "趁这节课还新鲜，把首月免费送给朋友。",
+    "checkoutTitle": "送一个月，得一个月",
+    "checkoutDescription": "你现在是 Pro。分享链接，朋友付款后你的下个月会获得抵扣。",
+    "shareText": "我正在 AI Educademy 学习 AI。用我的链接可获得首月免费。"
   },
   "certificates": {
     "title": "结业证书",
@@ -1923,7 +1928,9 @@
     "completed": "您已获得证书！",
     "notSignedIn": "登录以跟踪进度并获取证书",
     "upgradeToCertificate": "升级到 Pro 版获取证书",
-    "premiumOnly": "高级课程的证书需要 Pro 订阅"
+    "premiumOnly": "高级课程的证书需要 Pro 订阅",
+    "shareCertificate": "分享证书",
+    "addToLinkedIn": "添加到 LinkedIn 个人资料"
   },
   "continueLearning": {
     "title": "继续上次的学习",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "结构化的 AI 教育，一课接一课",
     "verifiedCompletion": "已验证完成",
     "defaultTitle": "成就 | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - 结构化的 AI 教育，一课接一课."
+    "defaultDescription": "An achievement earned on AI Educademy - 结构化的 AI 教育，一课接一课.",
+    "addToLinkedIn": "添加到 LinkedIn 个人资料",
+    "previewBadge": "Pro 证书预览",
+    "previewDescription": "证书是 Pro 权益。开始试用即可发布已验证的证书 URL。",
+    "trialCta": "开始 Pro 试用"
   },
   "trustBar": {
     "lessons": "课程",

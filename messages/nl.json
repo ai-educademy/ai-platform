@@ -1903,17 +1903,22 @@
   },
   "referral": {
     "title": "Vrienden uitnodigen",
-    "description": "Deel AI Educademy en verdien beloningen",
-    "yourLink": "Jouw verwijzingslink",
+    "description": "Geef een maand, krijg een maand. Je vriend krijgt de eerste maand gratis en jij krijgt na de eerste betaling een maand tegoed.",
+    "yourLink": "Je verwijzingslink",
     "copied": "Gekopieerd!",
     "copy": "Link kopiëren",
     "shareOn": "Delen op {platform}",
-    "joinedCount": "{count} mensen zijn via jouw link lid geworden",
-    "noReferrals": "Nog geen verwijzingen. deel je link!",
-    "reward": "Jij en je vriend krijgen beide voordelen",
-    "twitter": "Twitter/X",
+    "joinedCount": "{count} mensen zijn via je link lid geworden",
+    "noReferrals": "Nog geen verwijzingen. Deel je link.",
+    "reward": "Geef een gratis eerste maand. Krijg een maand tegoed na de eerste betaling.",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "Deel deze leswinst",
+    "lessonDescription": "Geef een vriend een gratis eerste maand terwijl de les nog vers is.",
+    "checkoutTitle": "Geef een maand, krijg een maand",
+    "checkoutDescription": "Je bent nu Pro. Deel je link en je volgende maand wordt verrekend wanneer een vriend betaalt.",
+    "shareText": "Ik leer AI op AI Educademy. Gebruik mijn link voor je eerste maand gratis."
   },
   "certificates": {
     "title": "Certificaat van voltooiing",
@@ -1923,7 +1928,9 @@
     "completed": "Je hebt je certificaat verdiend!",
     "notSignedIn": "Log in om je voortgang bij te houden en certificaten te verdienen",
     "upgradeToCertificate": "Upgrade naar Pro voor certificaat",
-    "premiumOnly": "Certificaten voor premium programma's zijn beschikbaar met een Pro-abonnement"
+    "premiumOnly": "Certificaten voor premium programma's zijn beschikbaar met een Pro-abonnement",
+    "shareCertificate": "Certificaat delen",
+    "addToLinkedIn": "Toevoegen aan LinkedIn profiel"
   },
   "continueLearning": {
     "title": "Ga verder waar je gebleven was",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "Gestructureerd AI-onderwijs, les voor les",
     "verifiedCompletion": "Geverifieerde voltooiing",
     "defaultTitle": "Prestatie | AI Educademy",
-    "defaultDescription": "Een prestatie verdiend op AI Educademy: gestructureerd AI-onderwijs, les voor les."
+    "defaultDescription": "Een prestatie verdiend op AI Educademy: gestructureerd AI-onderwijs, les voor les.",
+    "addToLinkedIn": "Toevoegen aan LinkedIn profiel",
+    "previewBadge": "Voorbeeld van Pro certificaat",
+    "previewDescription": "Certificaten zijn een Pro voordeel. Start een proefperiode om een geverifieerde certificaat URL te publiceren.",
+    "trialCta": "Start Pro proefperiode"
   },
   "trustBar": {
     "lessons": "Lessen",

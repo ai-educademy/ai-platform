@@ -12,6 +12,9 @@ interface CertificateButtonProps {
   isPremiumUser?: boolean;
   isFree?: boolean;
   locale?: string;
+  programName?: string;
+  userName?: string;
+  userId?: string;
 }
 
 export function CertificateButton({
@@ -22,11 +25,29 @@ export function CertificateButton({
   isPremiumUser = false,
   isFree = false,
   locale = "en",
+  programName,
+  userName,
+  userId,
 }: CertificateButtonProps) {
   const t = useTranslations("certificates");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const basePath = locale === "en" ? "" : `/${locale}`;
+  const certificateUrl = `https://aieducademy.org${basePath}/achievement/${programSlug}?user=${encodeURIComponent(userName ?? "A Learner")}${userId ? `&uid=${encodeURIComponent(userId)}` : ""}`;
+  const linkedInUrl = new URL("https://www.linkedin.com/profile/add");
+  linkedInUrl.searchParams.set("startTask", "CERTIFICATION_NAME");
+  linkedInUrl.searchParams.set(
+    "name",
+    `${programName ?? programSlug} Certificate of Completion`,
+  );
+  linkedInUrl.searchParams.set("organizationName", "AI Educademy");
+  linkedInUrl.searchParams.set("issueYear", String(new Date().getFullYear()));
+  linkedInUrl.searchParams.set("issueMonth", String(new Date().getMonth() + 1));
+  linkedInUrl.searchParams.set("certUrl", certificateUrl);
+  linkedInUrl.searchParams.set(
+    "certId",
+    `${programSlug}-${userId ?? "preview"}`,
+  );
 
   if (!isSignedIn) {
     return (
@@ -50,7 +71,7 @@ export function CertificateButton({
     setLoading(true);
     try {
       const res = await fetch(
-        `/api/certificates?programSlug=${encodeURIComponent(programSlug)}`
+        `/api/certificates?programSlug=${encodeURIComponent(programSlug)}`,
       );
       if (!res.ok) {
         const data = await res.json().catch(() => null);
@@ -66,7 +87,7 @@ export function CertificateButton({
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch {
-      // Silently handle — user sees the button revert to default state
+      // Silently handle. The user sees the button revert to default state.
     } finally {
       setLoading(false);
     }
@@ -93,6 +114,22 @@ export function CertificateButton({
                 <>📜 {t("download")}</>
               )}
             </button>
+            <div className="mt-3 flex flex-wrap justify-center gap-2">
+              <a
+                href={certificateUrl}
+                className="text-sm font-semibold text-[var(--color-primary)] hover:underline"
+              >
+                {t("shareCertificate")}
+              </a>
+              <a
+                href={linkedInUrl.toString()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-[var(--color-primary)] hover:underline"
+              >
+                {t("addToLinkedIn")}
+              </a>
+            </div>
           </>
         ) : (
           <>

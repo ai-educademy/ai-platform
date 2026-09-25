@@ -12,7 +12,11 @@ interface ReferralData {
   successfulReferrals: number;
 }
 
-export function ReferralWidget() {
+export function ReferralWidget({
+  context = "default",
+}: {
+  context?: "default" | "lesson" | "checkout";
+}) {
   const t = useTranslations("referral");
   const { data: session } = useSession();
   const [data, setData] = useState<ReferralData | null>(null);
@@ -38,7 +42,11 @@ export function ReferralWidget() {
     if (!data?.referralLink) return;
     try {
       await navigator.clipboard.writeText(data.referralLink);
-      void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "copy" }) });
+      void fetch("/api/referrals/share", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ channel: "copy" }),
+      });
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -49,13 +57,29 @@ export function ReferralWidget() {
       input.select();
       document.execCommand("copy");
       document.body.removeChild(input);
-      void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "copy" }) });
+      void fetch("/api/referrals/share", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ channel: "copy" }),
+      });
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
   }, [data?.referralLink]);
 
-  const shareText = "Learn AI for free at AI Educademy! 🚀";
+  const shareText = t("shareText");
+  const titleKey =
+    context === "lesson"
+      ? "lessonTitle"
+      : context === "checkout"
+        ? "checkoutTitle"
+        : "title";
+  const descriptionKey =
+    context === "lesson"
+      ? "lessonDescription"
+      : context === "checkout"
+        ? "checkoutDescription"
+        : "description";
 
   const shareUrls = data
     ? {
@@ -80,28 +104,20 @@ export function ReferralWidget() {
   if (!data) return null;
 
   return (
-    <div className="relative rounded-2xl p-6 overflow-hidden bg-white/5 border border-transparent bg-clip-padding"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(10,10,10,0.95), rgba(10,10,10,0.95)), linear-gradient(135deg, #6366f1, #8b5cf6)",
-        backgroundOrigin: "border-box",
-        backgroundClip: "padding-box, border-box",
-        border: "1px solid transparent",
-      }}
-    >
+    <div className="relative overflow-hidden rounded-2xl border border-indigo-500/30 bg-[var(--color-bg-card)] p-6 shadow-lg shadow-indigo-500/10">
       {/* Gradient glow effect */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-violet-500/10 pointer-events-none" />
 
       <div className="relative">
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-xl bg-indigo-500/20">
+          <div className="p-2 rounded-xl bg-indigo-500/15">
             <Share2 className="w-5 h-5 text-indigo-400" />
           </div>
           <div>
-            <h3 className="text-lg font-bold">{t("title")}</h3>
+            <h3 className="text-lg font-bold">{t(titleKey)}</h3>
             <p className="text-sm text-[var(--color-text-muted)]">
-              {t("description")}
+              {t(descriptionKey)}
             </p>
           </div>
         </div>
@@ -111,7 +127,7 @@ export function ReferralWidget() {
           {t("yourLink")}
         </label>
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex-1 px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-mono truncate">
+          <div className="flex-1 px-3 py-2.5 rounded-xl bg-[var(--color-bg-section)] border border-[var(--color-border)] text-sm font-mono truncate">
             {data.referralLink}
           </div>
           <button
@@ -148,10 +164,16 @@ export function ReferralWidget() {
           <div className="flex items-center gap-2">
             <a
               href={shareUrls.twitter}
-              onClick={() => void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "twitter" }) })}
+              onClick={() =>
+                void fetch("/api/referrals/share", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ channel: "twitter" }),
+                })
+              }
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm transition-all"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[var(--color-bg-section)] hover:bg-indigo-500/10 border border-[var(--color-border)] text-sm transition-all"
               aria-label={t("shareOn", { platform: t("twitter") })}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -161,10 +183,16 @@ export function ReferralWidget() {
             </a>
             <a
               href={shareUrls.linkedin}
-              onClick={() => void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "linkedin" }) })}
+              onClick={() =>
+                void fetch("/api/referrals/share", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ channel: "linkedin" }),
+                })
+              }
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm transition-all"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[var(--color-bg-section)] hover:bg-indigo-500/10 border border-[var(--color-border)] text-sm transition-all"
               aria-label={t("shareOn", { platform: t("linkedin") })}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -174,10 +202,16 @@ export function ReferralWidget() {
             </a>
             <a
               href={shareUrls.whatsapp}
-              onClick={() => void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "whatsapp" }) })}
+              onClick={() =>
+                void fetch("/api/referrals/share", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ channel: "whatsapp" }),
+                })
+              }
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm transition-all"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[var(--color-bg-section)] hover:bg-indigo-500/10 border border-[var(--color-border)] text-sm transition-all"
               aria-label={t("shareOn", { platform: t("whatsapp") })}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">

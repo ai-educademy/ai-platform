@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import programsData from "@data/programs.json";
+import { ReferralWidget } from "@/components/dashboard/ReferralWidget";
 
 interface LessonCompleteProps {
   slug: string; // "programSlug/lessonSlug"
@@ -357,9 +358,12 @@ export function LessonComplete({
         {/* Completion gate */}
         <div className="py-5 space-y-3">
           {completed || justCompleted ? (
-            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold">
-              <span className="text-xl">🎉</span>
-              {tL("lessonCompleted")}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold">
+                <span className="text-xl">🎉</span>
+                {tL("lessonCompleted")}
+              </div>
+              <ReferralWidget context="lesson" />
             </div>
           ) : (
             <>

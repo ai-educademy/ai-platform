@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useProgress } from "@/hooks/useProgress";
 import { useStreak } from "@/hooks/useStreak";
@@ -142,7 +142,6 @@ const PROGRAMS = [
   },
 ];
 
-
 function MotionReveal({
   children,
   animation = "fade-up",
@@ -209,14 +208,18 @@ export default function DashboardPage() {
   const { data: session } = useSession();
   const { profile, isSignedIn: isGuestSignedIn } = useGuestProfile();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const isSignedIn = !!session?.user || isGuestSignedIn;
   const userRole = (session?.user as { role?: string })?.role ?? "free";
   const isPremiumUser = userRole === "pro" || userRole === "admin";
   const [certProgram, setCertProgram] = useState<string | null>(null);
   const pathname = usePathname();
+  const paymentSuccess = searchParams.get("payment") === "success";
 
   const segments = pathname.split("/").filter(Boolean);
-  const locale = (locales as readonly string[]).includes(segments[0]) ? segments[0] : "en";
+  const locale = (locales as readonly string[]).includes(segments[0])
+    ? segments[0]
+    : "en";
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   const totalLessons = PROGRAMS.reduce((sum, p) => sum + p.lessons.length, 0);
@@ -225,7 +228,10 @@ export default function DashboardPage() {
     const validSlugs = new Set(p.lessons.map((l) => l.slug));
     return sum + progData.completed.filter((s) => validSlugs.has(s)).length;
   }, 0);
-  const percentage = totalLessons > 0 ? Math.min(Math.round((validTotalCompleted / totalLessons) * 100), 100) : 0;
+  const percentage =
+    totalLessons > 0
+      ? Math.min(Math.round((validTotalCompleted / totalLessons) * 100), 100)
+      : 0;
 
   // Find first incomplete lesson for "Continue Learning"
   const nextLesson = (() => {
@@ -240,7 +246,9 @@ export default function DashboardPage() {
   })();
 
   // Certificate modal data
-  const certProgramData = certProgram ? PROGRAMS.find((p) => p.slug === certProgram) : null;
+  const certProgramData = certProgram
+    ? PROGRAMS.find((p) => p.slug === certProgram)
+    : null;
   const certCompletionDate = (() => {
     if (!certProgramData) return "";
     const progData = getProgram(certProgramData.slug);
@@ -249,7 +257,9 @@ export default function DashboardPage() {
       .filter(Boolean)
       .sort();
     const last = dates[dates.length - 1];
-    return last ? new Date(last).toLocaleDateString() : new Date().toLocaleDateString();
+    return last
+      ? new Date(last).toLocaleDateString()
+      : new Date().toLocaleDateString();
   })();
 
   // Auth gate - prompt to sign in
@@ -258,7 +268,9 @@ export default function DashboardPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
         <MotionReveal animation="scale-in">
           <div className="text-7xl mb-6 animate-float-slow">🔒</div>
-          <h1 className="text-4xl font-bold mb-4 text-gradient">{t("title")}</h1>
+          <h1 className="text-4xl font-bold mb-4 text-gradient">
+            {t("title")}
+          </h1>
           <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto mb-10 leading-relaxed">
             {ta("signInPrompt")}
           </p>
@@ -282,7 +294,9 @@ export default function DashboardPage() {
             <div className="absolute -inset-4 rounded-full bg-indigo-500/10 blur-xl animate-pulse" />
             <div className="relative text-8xl animate-float-slow">🚀</div>
           </div>
-          <h1 className="text-4xl font-bold mb-4 text-gradient">{t("emptyTitle")}</h1>
+          <h1 className="text-4xl font-bold mb-4 text-gradient">
+            {t("emptyTitle")}
+          </h1>
           <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto mb-6 leading-relaxed">
             {t("emptySubtitle")}
           </p>
@@ -292,12 +306,22 @@ export default function DashboardPage() {
               { icon: "🧪", label: t("emptyPractice") },
               { icon: "🏆", label: t("emptyEarn") },
             ].map((item) => (
-              <div key={item.label} className="p-3 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)]">
+              <div
+                key={item.label}
+                className="p-3 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)]"
+              >
                 <div className="text-2xl mb-1">{item.icon}</div>
-                <div className="text-xs font-semibold text-[var(--color-text-muted)]">{item.label}</div>
+                <div className="text-xs font-semibold text-[var(--color-text-muted)]">
+                  {item.label}
+                </div>
               </div>
             ))}
           </div>
+          {paymentSuccess && session?.user?.id && (
+            <div className="mx-auto mb-10 max-w-md text-left">
+              <ReferralWidget context="checkout" />
+            </div>
+          )}
           <Link
             href={`${basePath}/programs/ai-seeds/lessons/what-is-ai`}
             className="btn-primary inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl text-lg font-bold shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-[1.02] transition-all"
@@ -337,17 +361,28 @@ export default function DashboardPage() {
       {/* Header */}
       <MotionReveal animation="fade-up">
         <div className="text-center mb-12">
-          {isSignedIn && (
-            <div className="text-5xl mb-4">{profile?.avatar}</div>
-          )}
+          {isSignedIn && <div className="text-5xl mb-4">{profile?.avatar}</div>}
           <h1 className="text-4xl font-bold mb-2 text-gradient">
-            {isSignedIn ? t("titleUser", { name: session?.user?.name || profile?.name || "" }) : t("title")}
+            {isSignedIn
+              ? t("titleUser", {
+                  name: session?.user?.name || profile?.name || "",
+                })
+              : t("title")}
           </h1>
           <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto">
             {t("subtitle")}
           </p>
         </div>
       </MotionReveal>
+
+      {/* Continue Learning */}
+      {paymentSuccess && session?.user?.id && (
+        <MotionReveal animation="fade-up">
+          <div className="mb-8">
+            <ReferralWidget context="checkout" />
+          </div>
+        </MotionReveal>
+      )}
 
       {/* Continue Learning */}
       <MotionReveal animation="fade-up">
@@ -368,16 +403,25 @@ export default function DashboardPage() {
                 {nextLesson.lesson.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs text-[var(--color-text-muted)] mb-0.5">{nextLesson.program.icon} {tpd(`${nextLesson.program.slug}.title`)}</p>
-                <h3 className="font-bold text-sm truncate">{tld(nextLesson.lesson.slug)}</h3>
-                <span className="text-xs text-[var(--color-text-muted)]">⏱️ {nextLesson.lesson.duration} {t("min")}</span>
+                <p className="text-xs text-[var(--color-text-muted)] mb-0.5">
+                  {nextLesson.program.icon}{" "}
+                  {tpd(`${nextLesson.program.slug}.title`)}
+                </p>
+                <h3 className="font-bold text-sm truncate">
+                  {tld(nextLesson.lesson.slug)}
+                </h3>
+                <span className="text-xs text-[var(--color-text-muted)]">
+                  ⏱️ {nextLesson.lesson.duration} {t("min")}
+                </span>
               </div>
               <span className="shrink-0 px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-semibold">
                 {t("continueLesson")} →
               </span>
             </Link>
           ) : (
-            <p className="text-center text-lg font-semibold py-4">{t("allComplete")}</p>
+            <p className="text-center text-lg font-semibold py-4">
+              {t("allComplete")}
+            </p>
           )}
         </div>
       </MotionReveal>
@@ -389,12 +433,16 @@ export default function DashboardPage() {
             <div className="flex items-center gap-2">
               <Flame size={22} className="text-orange-500" />
               <span className="font-bold">{t("currentStreak")}:</span>
-              <span className="text-xl font-bold text-gradient">{currentStreak} {t("days")}</span>
+              <span className="text-xl font-bold text-gradient">
+                {currentStreak} {t("days")}
+              </span>
             </div>
             <div className="w-px h-6 bg-[var(--color-border)]" />
             <div className="flex items-center gap-2">
               <span className="font-bold">{t("longestStreak")}:</span>
-              <span className="text-xl font-bold text-gradient">{longestStreak} {t("days")}</span>
+              <span className="text-xl font-bold text-gradient">
+                {longestStreak} {t("days")}
+              </span>
             </div>
           </div>
         </MotionReveal>
@@ -405,12 +453,24 @@ export default function DashboardPage() {
         <div className="mb-12 p-8 rounded-3xl bg-[var(--color-bg-card)] border border-[var(--color-border)] gradient-border">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">{t("overallProgress")}</h2>
-            <span className="text-3xl font-bold text-gradient">{percentage}%</span>
+            <span className="text-3xl font-bold text-gradient">
+              {percentage}%
+            </span>
           </div>
-          <AnimatedProgressBar percentage={percentage} className="h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden mb-4" />
+          <AnimatedProgressBar
+            percentage={percentage}
+            className="h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden mb-4"
+          />
           <div className="flex justify-between text-sm text-[var(--color-text-muted)]">
-            <span>{t("lessonsCompleted", { completed: validTotalCompleted, total: totalLessons })}</span>
-            <span>{t("remaining", { count: totalLessons - validTotalCompleted })}</span>
+            <span>
+              {t("lessonsCompleted", {
+                completed: validTotalCompleted,
+                total: totalLessons,
+              })}
+            </span>
+            <span>
+              {t("remaining", { count: totalLessons - validTotalCompleted })}
+            </span>
           </div>
         </div>
       </MotionReveal>
@@ -423,130 +483,202 @@ export default function DashboardPage() {
           <div key={track} className="mb-8">
             <MotionReveal animation="fade-up">
               <div className="flex items-center gap-2 mb-6 mt-4">
-                <span className="text-2xl">{track === "ai-learning" ? "🌳" : "🔨"}</span>
+                <span className="text-2xl">
+                  {track === "ai-learning" ? "🌳" : "🔨"}
+                </span>
                 <h2 className="text-lg font-bold text-[var(--color-text-muted)]">
                   {track === "ai-learning" ? t("trackAI") : t("trackCraft")}
                 </h2>
               </div>
             </MotionReveal>
             {trackPrograms.map((program, pIdx) => {
-        const progData = getProgram(program.slug);
-        const validSlugs = new Set(program.lessons.map((l) => l.slug));
-        const progCompleted = progData.completed.filter((s) => validSlugs.has(s)).length;
-        const progTotal = program.lessons.length;
-        const progPct = progTotal > 0 ? Math.min(Math.round((progCompleted / progTotal) * 100), 100) : 0;
+              const progData = getProgram(program.slug);
+              const validSlugs = new Set(program.lessons.map((l) => l.slug));
+              const progCompleted = progData.completed.filter((s) =>
+                validSlugs.has(s),
+              ).length;
+              const progTotal = program.lessons.length;
+              const progPct =
+                progTotal > 0
+                  ? Math.min(Math.round((progCompleted / progTotal) * 100), 100)
+                  : 0;
 
-        return (
-          <div key={program.slug} className="mb-12">
-            <MotionReveal animation="fade-up" delay={pIdx * 100}>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-4xl">{program.icon}</span>
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-xl font-bold">{tpd(`${program.slug}.title`)}</h2>
-                  <div className="flex items-center gap-3 mt-1">
-                    <AnimatedProgressBar
-                      percentage={progPct}
-                      className="flex-1 h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden"
-                    />
-                    <span className="text-2xl font-bold text-[var(--color-primary)] shrink-0">
-                      {progPct}%
-                    </span>
-                  </div>
-                  {progCompleted >= progTotal && (
-                    <div className="flex items-center gap-2 mt-2 flex-wrap">
-                      <button
-                        onClick={() => isPremiumUser ? setCertProgram(program.slug) : router.push(`${basePath}/pricing`)}
-                        className={`inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-lg text-white shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer ${
-                          isPremiumUser
-                            ? "bg-gradient-to-r from-yellow-400 to-amber-500"
-                            : "bg-gradient-to-r from-indigo-500 to-violet-600"
-                        }`}
-                      >
-                        <Trophy size={14} />
-                        {isPremiumUser ? t("viewCertificate") : t("upgradeCertificate")}
-                      </button>
-                      <ShareAchievement
-                        programSlug={program.slug}
-                        programName={tpd(`${program.slug}.title`)}
-                        userName={session?.user?.name || profile?.name || t("defaultUser")}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </MotionReveal>
-
-            <div className="space-y-3">
-              {program.lessons.map((lesson, idx) => {
-                const done = isCompleted(`${program.slug}/${lesson.slug}`);
-                return (
-                  <MotionReveal key={lesson.slug} animation="fade-up" delay={pIdx * 100 + idx * 60}>
-                    <Link
-                      href={`${basePath}/programs/${program.slug}/lessons/${lesson.slug}`}
-                      className="block group"
-                    >
-                      <div className={`flex items-center gap-4 p-4 rounded-2xl border transition-all duration-200 ${
-                        done
-                          ? "bg-[var(--color-accent)]/5 border-[var(--color-accent)]/20"
-                          : "bg-[var(--color-bg-card)] border-[var(--color-border)] hover:border-[var(--color-primary)]/40 hover:shadow-md hover:shadow-[var(--color-primary)]/5 hover:-translate-y-0.5"
-                      }`}>
-                        <div
-                          className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 transition-transform duration-200 group-hover:scale-110`}
-                          style={{ backgroundColor: done ? `${program.color}20` : "var(--color-bg-section)" }}
-                        >
-                          {lesson.icon}
+              return (
+                <div key={program.slug} className="mb-12">
+                  <MotionReveal animation="fade-up" delay={pIdx * 100}>
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="text-4xl">{program.icon}</span>
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-xl font-bold">
+                          {tpd(`${program.slug}.title`)}
+                        </h2>
+                        <div className="flex items-center gap-3 mt-1">
+                          <AnimatedProgressBar
+                            percentage={progPct}
+                            className="flex-1 h-3 rounded-full bg-[var(--color-bg-section)] overflow-hidden"
+                          />
+                          <span className="text-2xl font-bold text-[var(--color-primary)] shrink-0">
+                            {progPct}%
+                          </span>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-sm truncate">{tld(lesson.slug)}</h3>
-                          <span className="text-xs text-[var(--color-text-muted)]">⏱️ {lesson.duration} {t("min")}</span>
-                        </div>
-                        <div className="shrink-0">
-                          {done ? (
-                            <div className="w-8 h-8 rounded-full text-white flex items-center justify-center text-sm" style={{ backgroundColor: program.color }}>
-                              ✓
-                            </div>
-                          ) : (
-                            <div className="w-8 h-8 rounded-full border-2 border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] text-sm">
-                              →
-                            </div>
-                          )}
-                        </div>
+                        {progCompleted >= progTotal && (
+                          <div className="flex items-center gap-2 mt-2 flex-wrap">
+                            <button
+                              onClick={() =>
+                                isPremiumUser
+                                  ? setCertProgram(program.slug)
+                                  : router.push(`${basePath}/pricing`)
+                              }
+                              className={`inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold rounded-lg text-white shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer ${
+                                isPremiumUser
+                                  ? "bg-gradient-to-r from-yellow-400 to-amber-500"
+                                  : "bg-gradient-to-r from-indigo-500 to-violet-600"
+                              }`}
+                            >
+                              <Trophy size={14} />
+                              {isPremiumUser
+                                ? t("viewCertificate")
+                                : t("upgradeCertificate")}
+                            </button>
+                            <ShareAchievement
+                              programSlug={program.slug}
+                              programName={tpd(`${program.slug}.title`)}
+                              userName={
+                                session?.user?.name ||
+                                profile?.name ||
+                                t("defaultUser")
+                              }
+                            />
+                          </div>
+                        )}
                       </div>
-                    </Link>
+                    </div>
                   </MotionReveal>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}
+
+                  <div className="space-y-3">
+                    {program.lessons.map((lesson, idx) => {
+                      const done = isCompleted(
+                        `${program.slug}/${lesson.slug}`,
+                      );
+                      return (
+                        <MotionReveal
+                          key={lesson.slug}
+                          animation="fade-up"
+                          delay={pIdx * 100 + idx * 60}
+                        >
+                          <Link
+                            href={`${basePath}/programs/${program.slug}/lessons/${lesson.slug}`}
+                            className="block group"
+                          >
+                            <div
+                              className={`flex items-center gap-4 p-4 rounded-2xl border transition-all duration-200 ${
+                                done
+                                  ? "bg-[var(--color-accent)]/5 border-[var(--color-accent)]/20"
+                                  : "bg-[var(--color-bg-card)] border-[var(--color-border)] hover:border-[var(--color-primary)]/40 hover:shadow-md hover:shadow-[var(--color-primary)]/5 hover:-translate-y-0.5"
+                              }`}
+                            >
+                              <div
+                                className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 transition-transform duration-200 group-hover:scale-110`}
+                                style={{
+                                  backgroundColor: done
+                                    ? `${program.color}20`
+                                    : "var(--color-bg-section)",
+                                }}
+                              >
+                                {lesson.icon}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h3 className="font-bold text-sm truncate">
+                                  {tld(lesson.slug)}
+                                </h3>
+                                <span className="text-xs text-[var(--color-text-muted)]">
+                                  ⏱️ {lesson.duration} {t("min")}
+                                </span>
+                              </div>
+                              <div className="shrink-0">
+                                {done ? (
+                                  <div
+                                    className="w-8 h-8 rounded-full text-white flex items-center justify-center text-sm"
+                                    style={{ backgroundColor: program.color }}
+                                  >
+                                    ✓
+                                  </div>
+                                ) : (
+                                  <div className="w-8 h-8 rounded-full border-2 border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] text-sm">
+                                    →
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </Link>
+                        </MotionReveal>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         );
       })}
 
       {/* Achievements */}
       <MotionReveal animation="fade-up">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-gradient">🏅 {t("achievements")}</h2>
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-gradient">
+          🏅 {t("achievements")}
+        </h2>
       </MotionReveal>
       <div className="grid sm:grid-cols-3 gap-4 mb-12">
         {[
-          { id: "first-lesson", icon: "🌱", titleKey: "firstStep", descKey: "firstStepDesc", threshold: 1 },
-          { id: "half-way", icon: "⚡", titleKey: "halfWay", descKey: "halfWayDesc", threshold: 2 },
-          { id: "all-done", icon: "🏆", titleKey: "aiGraduate", descKey: "aiGraduateDesc", threshold: 3 },
+          {
+            id: "first-lesson",
+            icon: "🌱",
+            titleKey: "firstStep",
+            descKey: "firstStepDesc",
+            threshold: 1,
+          },
+          {
+            id: "half-way",
+            icon: "⚡",
+            titleKey: "halfWay",
+            descKey: "halfWayDesc",
+            threshold: 2,
+          },
+          {
+            id: "all-done",
+            icon: "🏆",
+            titleKey: "aiGraduate",
+            descKey: "aiGraduateDesc",
+            threshold: 3,
+          },
         ].map((achievement, idx) => {
           const unlocked = totalCompleted >= achievement.threshold;
           return (
-            <MotionReveal key={achievement.id} animation="scale-in" delay={idx * 100}>
-              <div className={`text-center p-6 rounded-2xl border transition-all ${
-                unlocked
-                  ? "bg-[var(--color-bg-card)] border-[var(--color-border)] gradient-border glow-sm"
-                  : "bg-[var(--color-bg-section)] border-[var(--color-border)] opacity-40 grayscale"
-              }`}>
-                <div className={`text-5xl mb-3 ${unlocked ? "animate-float-slow" : ""}`}>{achievement.icon}</div>
+            <MotionReveal
+              key={achievement.id}
+              animation="scale-in"
+              delay={idx * 100}
+            >
+              <div
+                className={`text-center p-6 rounded-2xl border transition-all ${
+                  unlocked
+                    ? "bg-[var(--color-bg-card)] border-[var(--color-border)] gradient-border glow-sm"
+                    : "bg-[var(--color-bg-section)] border-[var(--color-border)] opacity-40 grayscale"
+                }`}
+              >
+                <div
+                  className={`text-5xl mb-3 ${unlocked ? "animate-float-slow" : ""}`}
+                >
+                  {achievement.icon}
+                </div>
                 <h3 className="font-bold mb-1">{td(achievement.titleKey)}</h3>
-                <p className="text-xs text-[var(--color-text-muted)]">{td(achievement.descKey)}</p>
+                <p className="text-xs text-[var(--color-text-muted)]">
+                  {td(achievement.descKey)}
+                </p>
                 {unlocked && (
-                  <span className="inline-block mt-3 text-xs font-semibold text-gradient">✨ {t("unlocked")}</span>
+                  <span className="inline-block mt-3 text-xs font-semibold text-gradient">
+                    ✨ {t("unlocked")}
+                  </span>
                 )}
               </div>
             </MotionReveal>
@@ -564,7 +696,9 @@ export default function DashboardPage() {
       {/* Billing. Paying customers must always have a route to cancel, and
           everyone else gets the offer in the same slot rather than a blank. */}
       {session?.user?.id && (
-        <div className="mb-12">{isPremiumUser ? <ManageBilling /> : <UpgradeCard />}</div>
+        <div className="mb-12">
+          {isPremiumUser ? <ManageBilling /> : <UpgradeCard />}
+        </div>
       )}
 
       {/* Actions */}
