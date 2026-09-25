@@ -2343,5 +2343,17 @@
     "doneDetail": "你将不会再收到 AI Educademy 的营销邮件。收据等账户邮件仍会照常发送。",
     "error": "出了点问题，请重试。",
     "missingToken": "此退订链接不完整，请使用邮件中的链接。"
+  },
+  "lessonPreview": {
+    "previewLabel": "公开课程预览",
+    "programmeLabel": "课程体系",
+    "levelLabel": "难度",
+    "readingTimeLabel": "阅读时间",
+    "objectivesTitle": "学习目标",
+    "objectivesLead": "完成本课后，你将理解:",
+    "outlineTitle": "课程大纲",
+    "introTitle": "导入预览",
+    "lockedTitle": "使用 Pro 继续学习 {lessonTitle}",
+    "lockedDescription": "{lessonTitle} 是 {programTitle} 的一部分。升级后可解锁完整课程、测验、进度跟踪和所有学院内容。"
   }
 }

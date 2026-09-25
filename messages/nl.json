@@ -2343,5 +2343,17 @@
     "doneDetail": "Je ontvangt geen marketingmails meer van AI Educademy. Accountmails zoals bonnen worden nog wel verstuurd.",
     "error": "Er is iets misgegaan. Probeer het opnieuw.",
     "missingToken": "Deze afmeldlink is onvolledig. Gebruik de link uit je e-mail."
+  },
+  "lessonPreview": {
+    "previewLabel": "Openbare lespreview",
+    "programmeLabel": "Programma",
+    "levelLabel": "Niveau",
+    "readingTimeLabel": "Leestijd",
+    "objectivesTitle": "Leerdoelen",
+    "objectivesLead": "Aan het einde van deze les begrijp je:",
+    "outlineTitle": "Lesoverzicht",
+    "introTitle": "Inleidende preview",
+    "lockedTitle": "Ga verder met {lessonTitle} via Pro",
+    "lockedDescription": "{lessonTitle} is onderdeel van {programTitle}. Upgrade om de volledige les, quizzen, voortgangsregistratie en elke academie te ontgrendelen."
   }
 }

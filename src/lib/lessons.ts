@@ -32,8 +32,101 @@ export interface Lesson extends LessonMeta {
   machineTranslated: boolean;
 }
 
+export interface LessonPreview {
+  introExcerpt: string;
+  outline: { level: 2 | 3; title: string }[];
+  objectives: string[];
+  wordCount: number;
+  excerptWordCount: number;
+}
+
 function contentDir(programSlug: string): string {
-  return path.join(process.cwd(), "content", "programs", programSlug, "lessons");
+  return path.join(
+    process.cwd(),
+    "content",
+    "programs",
+    programSlug,
+    "lessons",
+  );
+}
+
+function stripMdxSyntax(value: string): string {
+  return value
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/!\[[^\]]*]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]+)]\([^)]*\)/g, "$1")
+    .replace(/[*_`>#|]/g, " ")
+    .replace(/\{[^}]*}/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function wordCount(value: string): number {
+  const text = stripMdxSyntax(value);
+  return text ? text.split(/\s+/).length : 0;
+}
+
+function truncateWords(value: string, maxWords: number): string {
+  const words = stripMdxSyntax(value).split(/\s+/).filter(Boolean);
+  if (words.length <= maxWords) return words.join(" ");
+  return `${words.slice(0, maxWords).join(" ")}...`;
+}
+
+function extractIntroExcerpt(content: string, totalWords: number): string {
+  const firstSection = content.split(/\n##\s+/)[0] ?? content;
+  const paragraphs = firstSection
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter((paragraph) => {
+      if (!paragraph) return false;
+      if (/^#\s+/.test(paragraph)) return false;
+      if (/^```/.test(paragraph)) return false;
+      if (/^</.test(paragraph)) return false;
+      if (/^\|/.test(paragraph)) return false;
+      return wordCount(paragraph) > 0;
+    });
+
+  if (paragraphs.length === 0) return "";
+
+  const maxWords = Math.max(1, Math.floor(totalWords * 0.15));
+  const firstSectionWords = wordCount(firstSection);
+  const cap = Math.max(1, Math.min(maxWords, firstSectionWords));
+  const selected: string[] = [];
+  let selectedWords = 0;
+
+  for (const paragraph of paragraphs) {
+    const paragraphWords = wordCount(paragraph);
+    if (selectedWords > 0 && selectedWords + paragraphWords > cap) break;
+    selected.push(paragraph);
+    selectedWords += paragraphWords;
+    if (selectedWords >= cap) break;
+  }
+
+  return truncateWords(selected.join("\n\n"), cap);
+}
+
+export function buildLessonPreview(lesson: Lesson): LessonPreview {
+  const outline = Array.from(
+    lesson.content.matchAll(/^(##|###)\s+(.+)$/gm),
+  ).map(([, hashes, title]) => ({
+    level: (hashes === "##" ? 2 : 3) as 2 | 3,
+    title: stripMdxSyntax(title),
+  }));
+  const totalWords = wordCount(lesson.content);
+  const objectives = outline
+    .filter((heading) => heading.level === 2)
+    .slice(0, 5)
+    .map((heading) => heading.title);
+  const introExcerpt = extractIntroExcerpt(lesson.content, totalWords);
+
+  return {
+    introExcerpt,
+    outline,
+    objectives,
+    wordCount: totalWords,
+    excerptWordCount: wordCount(introExcerpt),
+  };
 }
 
 export function getLessons(programSlug: string, locale: string): LessonMeta[] {
@@ -78,7 +171,11 @@ export function getLessons(programSlug: string, locale: string): LessonMeta[] {
     .sort((a, b) => a.order - b.order);
 }
 
-export function getLesson(programSlug: string, locale: string, slug: string): Lesson | null {
+export function getLesson(
+  programSlug: string,
+  locale: string,
+  slug: string,
+): Lesson | null {
   const baseDir = contentDir(programSlug);
   const localeDir = path.join(baseDir, locale);
   let filePath = path.join(localeDir, `${slug}.mdx`);

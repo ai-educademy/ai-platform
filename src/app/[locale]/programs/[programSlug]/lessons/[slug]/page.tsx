@@ -2,14 +2,19 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { getLesson, getLessons } from "@/lib/lessons";
+import {
+  buildLessonPreview,
+  getLesson,
+  getLessons,
+  type Lesson,
+} from "@/lib/lessons";
 import { getProgram, getPrograms, getProgramsByTrack } from "@/lib/programs";
 import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 import { LessonComplete } from "@/components/lessons/LessonComplete";
 import { QuizProvider } from "@/components/lessons/QuizContext";
 import { LessonFeedback } from "@/components/lessons/LessonFeedback";
 import { ListenButton } from "@/components/ui/ListenButton";
-import { BreadcrumbJsonLd, LearningResourceJsonLd } from "@/components/seo/JsonLd";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { routing } from "@/i18n/routing";
 import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
 import { requiresPremium } from "@/lib/content-access";
@@ -25,6 +30,74 @@ import { ContentLanguageNotice } from "@/components/lessons/ContentLanguageNotic
 
 export const dynamicParams = false;
 
+function lessonSeoDescription(
+  summary: string,
+  lessonTitle: string,
+  programTitle: string,
+): string {
+  const base = summary.trim();
+  const expanded =
+    base.length >= 120 ? base : `${base} ${programTitle}: ${lessonTitle}.`;
+  if (expanded.length <= 160) return expanded;
+  const truncated = expanded.slice(0, 157);
+  const lastSpace = truncated.lastIndexOf(" ");
+  return `${truncated.slice(0, lastSpace > 120 ? lastSpace : 157).trim()}...`;
+}
+
+function LessonStructuredData({
+  lesson,
+  lessonTitle,
+  programTitle,
+  locale,
+  url,
+  isPremium,
+}: {
+  lesson: Lesson;
+  lessonTitle: string;
+  programTitle: string;
+  locale: string;
+  url: string;
+  isPremium: boolean;
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["Article", "LearningResource"],
+    name: lessonTitle,
+    headline: lessonTitle,
+    description: lesson.description,
+    educationalLevel: lesson.difficulty,
+    timeRequired: `PT${lesson.duration}M`,
+    inLanguage: lesson.contentLocale || locale,
+    url,
+    isAccessibleForFree: !isPremium,
+    isPartOf: {
+      "@type": "Course",
+      name: programTitle,
+      provider: {
+        "@type": "Organization",
+        name: "AI Educademy",
+        url: BASE_URL,
+      },
+    },
+    ...(isPremium
+      ? {
+          hasPart: {
+            "@type": "WebPageElement",
+            isAccessibleForFree: false,
+            cssSelector: ".lesson-paywall",
+          },
+        }
+      : {}),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export function generateStaticParams() {
   const programs = getPrograms();
   return routing.locales.flatMap((locale) =>
@@ -33,7 +106,7 @@ export function generateStaticParams() {
       return lessons
         .filter((l) => l.published)
         .map((l) => ({ locale, programSlug: p.slug, slug: l.slug }));
-    })
+    }),
   );
 }
 
@@ -51,10 +124,14 @@ export async function generateMetadata({
 
   const tP = await getTranslations({ locale, namespace: "programs" });
   const tLT = await getTranslations({ locale, namespace: "lessonTitles" });
-  const lessonTitle = tLT(slug);
+  const lessonTitle = lesson.title || tLT(slug);
   const programTitle = tP(`${programSlug}.title`);
   const title = `${lessonTitle} - ${programTitle}`;
-  const description = lesson.description;
+  const description = lessonSeoDescription(
+    lesson.description,
+    lessonTitle,
+    programTitle,
+  );
 
   return createSeoMetadata({
     locale,
@@ -76,7 +153,8 @@ export default async function ProgramLessonPage({
 
   const t = await getTranslations("lessons");
   const tP = await getTranslations("programs");
-   const tLT = await getTranslations("lessonTitles");
+  const tLT = await getTranslations("lessonTitles");
+  const tPreview = await getTranslations("lessonPreview");
   const lesson = getLesson(programSlug, locale, slug);
 
   if (!lesson) {
@@ -106,8 +184,8 @@ export default async function ProgramLessonPage({
           and(
             eq(lessonBookmarks.userId, session.user.id),
             eq(lessonBookmarks.programSlug, programSlug),
-            eq(lessonBookmarks.lessonSlug, slug)
-          )
+            eq(lessonBookmarks.lessonSlug, slug),
+          ),
         );
       isBookmarked = !!bookmark;
     }
@@ -116,10 +194,15 @@ export default async function ProgramLessonPage({
   const allLessons = getLessons(programSlug, locale);
   const currentIdx = allLessons.findIndex((l) => l.slug === slug);
   const prev = currentIdx > 0 ? allLessons[currentIdx - 1] : null;
-  const next = currentIdx < allLessons.length - 1 ? allLessons[currentIdx + 1] : null;
+  const next =
+    currentIdx < allLessons.length - 1 ? allLessons[currentIdx + 1] : null;
 
   const basePath = locale === "en" ? "" : `/${locale}`;
   const programPath = `${basePath}/programs/${programSlug}`;
+  const lessonTitle = lesson.title || tLT(slug);
+  const programTitle = tP(`${programSlug}.title`);
+  const lessonUrl = `${BASE_URL}${programPath}/lessons/${slug}`;
+  const preview = buildLessonPreview(lesson);
 
   // Build lesson counts for all programs in this track (for confetti)
   const trackPrograms = getProgramsByTrack(program.track);
@@ -134,35 +217,42 @@ export default async function ProgramLessonPage({
         items={[
           { name: "Home", url: `${BASE_URL}${basePath}` },
           { name: tP("pageTitle"), url: `${BASE_URL}${basePath}/programs` },
-          { name: tP(`${programSlug}.title`), url: `${BASE_URL}${programPath}` },
-          { name: tLT(slug), url: `${BASE_URL}${programPath}/lessons/${slug}` },
+          { name: programTitle, url: `${BASE_URL}${programPath}` },
+          { name: lessonTitle, url: lessonUrl },
         ]}
       />
-      <LearningResourceJsonLd
-        name={tLT(slug)}
-        description={lesson.description}
-        educationalLevel={lesson.difficulty}
-        duration={lesson.duration}
+      <LessonStructuredData
+        lesson={lesson}
+        lessonTitle={lessonTitle}
+        programTitle={programTitle}
         locale={locale}
-        courseName={tP(`${programSlug}.title`)}
-        url={`${BASE_URL}${programPath}/lessons/${slug}`}
-        isAccessibleForFree={!isPremium}
+        url={lessonUrl}
+        isPremium={isPremium}
       />
       {/* Breadcrumb */}
       <div className="mb-8 text-sm text-[var(--color-text-muted)]">
-        <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">
+        <Link
+          href={`${basePath}/programs`}
+          className="hover:text-[var(--color-primary)] transition-colors"
+        >
           {tP("pageTitle")}
         </Link>
         <span className="mx-2">›</span>
-        <Link href={programPath} className="hover:text-[var(--color-primary)] transition-colors">
-          {program.icon} {tP(`${programSlug}.title`)}
+        <Link
+          href={programPath}
+          className="hover:text-[var(--color-primary)] transition-colors"
+        >
+          {program.icon} {programTitle}
         </Link>
         <span className="mx-2">›</span>
-        <Link href={`${programPath}/lessons`} className="hover:text-[var(--color-primary)] transition-colors">
+        <Link
+          href={`${programPath}/lessons`}
+          className="hover:text-[var(--color-primary)] transition-colors"
+        >
           {t("breadcrumbLessons")}
         </Link>
         <span className="mx-2">›</span>
-        <span>{tLT(slug)}</span>
+        <span>{lessonTitle}</span>
       </div>
 
       {/* Header */}
@@ -172,9 +262,12 @@ export default async function ProgramLessonPage({
           <div>
             <span
               className="text-xs font-medium px-2.5 py-0.5 rounded-full"
-              style={{ backgroundColor: `${program.color}20`, color: program.color }}
+              style={{
+                backgroundColor: `${program.color}20`,
+                color: program.color,
+              }}
             >
-              {tP(`${programSlug}.title`)} • {t(`difficulty.${lesson.difficulty}`)}
+              {programTitle} • {t(`difficulty.${lesson.difficulty}`)}
             </span>
             <span className="text-xs text-[var(--color-text-muted)] ml-2">
               ⏱️ {lesson.duration} {t("duration")}
@@ -182,7 +275,9 @@ export default async function ProgramLessonPage({
           </div>
         </div>
         <div className="flex items-start gap-3">
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight flex-1">{tLT(slug)}</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight flex-1">
+            {lessonTitle}
+          </h1>
           {session?.user?.id && (
             <BookmarkButton
               programSlug={programSlug}
@@ -201,10 +296,16 @@ export default async function ProgramLessonPage({
         <>
           <QuizProvider>
             {lesson.isFallback && (
-              <ContentLanguageNotice requestedLocale={locale} variant="fallback" />
+              <ContentLanguageNotice
+                requestedLocale={locale}
+                variant="fallback"
+              />
             )}
             {lesson.machineTranslated && (
-              <ContentLanguageNotice requestedLocale={locale} variant="machine" />
+              <ContentLanguageNotice
+                requestedLocale={locale}
+                variant="machine"
+              />
             )}
             {/* lang must describe the body text, not the page shell, so screen
                 readers switch voice instead of reading English in e.g. Japanese. */}
@@ -219,12 +320,12 @@ export default async function ProgramLessonPage({
               totalLessons={allLessons.length}
               currentIndex={currentIdx}
               nextSlug={next?.slug}
-              nextTitle={next ? tLT(next.slug) : undefined}
+              nextTitle={next?.title}
               prevSlug={prev?.slug}
-              prevTitle={prev ? tLT(prev.slug) : undefined}
+              prevTitle={prev?.title}
               basePath={`${programPath}/lessons`}
               programPath={programPath}
-              programTitle={tP(`${programSlug}.title`)}
+              programTitle={programTitle}
               programTrack={program.track}
               programLevel={program.level}
               trackLessonCounts={trackLessonCounts}
@@ -232,7 +333,11 @@ export default async function ProgramLessonPage({
           </QuizProvider>
 
           {/* Lesson Feedback */}
-          <LessonFeedback lessonSlug={slug} programSlug={programSlug} locale={locale} />
+          <LessonFeedback
+            lessonSlug={slug}
+            programSlug={programSlug}
+            locale={locale}
+          />
 
           {/* Discussion / Comments */}
           <LessonComments lessonSlug={slug} programSlug={programSlug} />
@@ -245,19 +350,126 @@ export default async function ProgramLessonPage({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
               {t("suggestEdit")}
             </a>
           </div>
         </>
       ) : (
-        <Paywall
-          programSlug={programSlug}
-          programTitle={tP(`${programSlug}.title`)}
-          programColor={program.color}
-          lessonTitle={tLT(slug)}
-          locale={locale}
-        />
+        <div className="space-y-10">
+          <section className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6 sm:p-8">
+            <div className="mb-6">
+              <p className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                {tPreview("previewLabel")}
+              </p>
+              <p className="text-lg text-[var(--color-text-muted)]">
+                {lesson.description}
+              </p>
+            </div>
+
+            <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+              <div className="rounded-xl bg-[var(--color-surface)] p-4">
+                <dt className="text-xs uppercase tracking-wide text-[var(--color-text-muted)]">
+                  {tPreview("programmeLabel")}
+                </dt>
+                <dd className="font-semibold mt-1">{programTitle}</dd>
+              </div>
+              <div className="rounded-xl bg-[var(--color-surface)] p-4">
+                <dt className="text-xs uppercase tracking-wide text-[var(--color-text-muted)]">
+                  {tPreview("levelLabel")}
+                </dt>
+                <dd className="font-semibold mt-1">
+                  {t(`difficulty.${lesson.difficulty}`)}
+                </dd>
+              </div>
+              <div className="rounded-xl bg-[var(--color-surface)] p-4">
+                <dt className="text-xs uppercase tracking-wide text-[var(--color-text-muted)]">
+                  {tPreview("readingTimeLabel")}
+                </dt>
+                <dd className="font-semibold mt-1">
+                  {lesson.duration} {t("duration")}
+                </dd>
+              </div>
+            </dl>
+
+            {preview.objectives.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-bold mb-3">
+                  {tPreview("objectivesTitle")}
+                </h2>
+                <p className="text-sm text-[var(--color-text-muted)] mb-3">
+                  {tPreview("objectivesLead")}
+                </p>
+                <ul className="grid gap-2 text-[var(--color-text)]">
+                  {preview.objectives.map((objective) => (
+                    <li key={objective} className="flex gap-2">
+                      <span
+                        aria-hidden="true"
+                        className="text-[var(--color-primary)]"
+                      >
+                        ✓
+                      </span>
+                      <span>{objective}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {preview.outline.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-bold mb-3">
+                  {tPreview("outlineTitle")}
+                </h2>
+                <ol className="space-y-2">
+                  {preview.outline.map((heading) => (
+                    <li
+                      key={`${heading.level}-${heading.title}`}
+                      className={
+                        heading.level === 3
+                          ? "ml-5 text-sm text-[var(--color-text-muted)]"
+                          : "font-medium"
+                      }
+                    >
+                      {heading.title}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
+            {preview.introExcerpt && (
+              <div>
+                <h2 className="text-xl font-bold mb-3">
+                  {tPreview("introTitle")}
+                </h2>
+                <p className="text-[var(--color-text)] leading-8">
+                  {preview.introExcerpt}
+                </p>
+              </div>
+            )}
+          </section>
+
+          <Paywall
+            programSlug={programSlug}
+            programTitle={programTitle}
+            programColor={program.color}
+            lessonTitle={lessonTitle}
+            locale={locale}
+          />
+        </div>
       )}
     </div>
   );

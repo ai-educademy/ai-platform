@@ -2343,5 +2343,17 @@
     "doneDetail": "Du erhältst keine Marketing-E-Mails mehr von AI Educademy. Konto-E-Mails wie Belege werden weiterhin verschickt.",
     "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
     "missingToken": "Dieser Abmeldelink ist unvollständig. Bitte nutze den Link aus deiner E-Mail."
+  },
+  "lessonPreview": {
+    "previewLabel": "Öffentliche Lektionsvorschau",
+    "programmeLabel": "Programm",
+    "levelLabel": "Niveau",
+    "readingTimeLabel": "Lesezeit",
+    "objectivesTitle": "Lernziele",
+    "objectivesLead": "Am Ende dieser Lektion verstehst du:",
+    "outlineTitle": "Lektionsübersicht",
+    "introTitle": "Einführende Vorschau",
+    "lockedTitle": "Setze {lessonTitle} mit Pro fort",
+    "lockedDescription": "{lessonTitle} ist Teil von {programTitle}. Upgrade, um die komplette Lektion, Quizze, Fortschrittsspeicherung und jede Akademie freizuschalten."
   }
 }

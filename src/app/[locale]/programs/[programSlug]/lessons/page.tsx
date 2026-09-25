@@ -21,12 +21,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "lessons" });
   const tP = await getTranslations({ locale, namespace: "programs" });
   const title = `${tP(`${programSlug}.title`)} ${t("title")}`;
+  const programTitle = tP(`${programSlug}.title`);
 
   return createSeoMetadata({
     locale,
     path: `/programs/${programSlug}/lessons`,
     title,
-    description: t("subtitle"),
+    description: `${programTitle}: ${t("subtitle")}`,
   });
 }
 
@@ -41,9 +42,9 @@ export default async function ProgramLessonsPage({
 
   const t = await getTranslations("lessons");
   const tP = await getTranslations("programs");
-  const tLT = await getTranslations("lessonTitles");
   const lessons = getLessons(programSlug, locale);
   const basePath = locale === "en" ? "" : `/${locale}`;
+  const programTitle = tP(`${programSlug}.title`);
 
   const difficultyColors: Record<string, string> = {
     beginner: "bg-green-100 text-green-700",
@@ -62,12 +63,18 @@ export default async function ProgramLessonsPage({
       {/* Breadcrumb */}
       <AnimatedSection animation="fade-in">
         <div className="mb-10 text-sm text-[var(--color-text-muted)]">
-          <Link href={`${basePath}/programs`} className="hover:text-[var(--color-primary)] transition-colors">
+          <Link
+            href={`${basePath}/programs`}
+            className="hover:text-[var(--color-primary)] transition-colors"
+          >
             {t("programs")}
           </Link>
           <span className="mx-2">›</span>
-          <Link href={`${basePath}/programs/${programSlug}`} className="hover:text-[var(--color-primary)] transition-colors">
-            {tP(`${programSlug}.title`)}
+          <Link
+            href={`${basePath}/programs/${programSlug}`}
+            className="hover:text-[var(--color-primary)] transition-colors"
+          >
+            {programTitle}
           </Link>
           <span className="mx-2">›</span>
           <span>{t("title")}</span>
@@ -78,9 +85,12 @@ export default async function ProgramLessonsPage({
         <div className="text-center mb-14">
           <div
             className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4"
-            style={{ backgroundColor: `${program.color}20`, color: program.color }}
+            style={{
+              backgroundColor: `${program.color}20`,
+              color: program.color,
+            }}
           >
-            {program.icon} {tP(`${programSlug}.title`)}
+            {program.icon} {programTitle}
           </div>
           <h1 className="text-4xl font-bold mb-4">{t("title")}</h1>
           <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto">
@@ -91,7 +101,11 @@ export default async function ProgramLessonsPage({
 
       <div className="space-y-4">
         {lessons.map((lesson, idx) => (
-          <AnimatedSection key={lesson.slug} animation="fade-up" delay={idx * 80}>
+          <AnimatedSection
+            key={lesson.slug}
+            animation="fade-up"
+            delay={idx * 80}
+          >
             <Link
               href={`${basePath}/programs/${programSlug}/lessons/${lesson.slug}`}
               className="block group"
@@ -109,21 +123,31 @@ export default async function ProgramLessonsPage({
                     />
                   </div>
                 )}
-                <div className="w-12 h-12 sm:hidden rounded-xl flex items-center justify-center text-xl font-bold shrink-0" style={{ backgroundColor: `${program.color}20`, color: program.color }}>
+                <div
+                  className="w-12 h-12 sm:hidden rounded-xl flex items-center justify-center text-xl font-bold shrink-0"
+                  style={{
+                    backgroundColor: `${program.color}20`,
+                    color: program.color,
+                  }}
+                >
                   {idx + 1}
                 </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-xl">{lesson.icon}</span>
-                    <h2 className="text-lg font-bold">{tLT(lesson.slug)}</h2>
-                    <LessonProgressBadge slug={`${programSlug}/${lesson.slug}`} />
+                    <h2 className="text-lg font-bold">{lesson.title}</h2>
+                    <LessonProgressBadge
+                      slug={`${programSlug}/${lesson.slug}`}
+                    />
                   </div>
                   <p className="text-[var(--color-text-muted)] text-sm mb-3">
                     {lesson.description}
                   </p>
                   <div className="flex items-center gap-3 text-xs">
-                    <span className={`px-2.5 py-0.5 rounded-full font-medium ${difficultyColors[lesson.difficulty]}`}>
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full font-medium ${difficultyColors[lesson.difficulty]}`}
+                    >
                       {t(`difficulty.${lesson.difficulty}`)}
                     </span>
                     <span className="text-[var(--color-text-muted)]">
@@ -132,7 +156,9 @@ export default async function ProgramLessonsPage({
                   </div>
                 </div>
 
-                <div className="text-[var(--color-text-muted)] text-xl shrink-0 self-center transition-transform duration-200 group-hover:translate-x-1">→</div>
+                <div className="text-[var(--color-text-muted)] text-xl shrink-0 self-center transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </div>
               </div>
             </Link>
           </AnimatedSection>
@@ -143,7 +169,9 @@ export default async function ProgramLessonsPage({
             <div className="text-center py-16 rounded-2xl bg-[var(--color-bg-card)] border border-dashed border-[var(--color-border)]">
               <div className="text-4xl mb-3">🚧</div>
               <p className="font-semibold mb-1">{t("lessonsComingSoon")}</p>
-              <p className="text-sm text-[var(--color-text-muted)]">{t("checkBackSoon")}</p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                {t("checkBackSoon")}
+              </p>
             </div>
           </AnimatedSection>
         )}
@@ -154,7 +182,10 @@ export default async function ProgramLessonsPage({
           href={`${basePath}/programs/${programSlug}`}
           className="group text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
         >
-          <span className="transition-transform duration-200 inline-block group-hover:-translate-x-0.5">←</span> {t("backToProgram")} {tP(`${programSlug}.title`)}
+          <span className="transition-transform duration-200 inline-block group-hover:-translate-x-0.5">
+            ←
+          </span>{" "}
+          {t("backToProgram")} {programTitle}
         </Link>
       </div>
     </div>

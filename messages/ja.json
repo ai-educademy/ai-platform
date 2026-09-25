@@ -2343,5 +2343,17 @@
     "doneDetail": "今後 AI Educademy からのマーケティングメールは届きません。領収書などのアカウントメールは引き続き送信されます。",
     "error": "問題が発生しました。もう一度お試しください。",
     "missingToken": "この配信停止リンクは不完全です。メール内のリンクをご利用ください。"
+  },
+  "lessonPreview": {
+    "previewLabel": "公開レッスンプレビュー",
+    "programmeLabel": "プログラム",
+    "levelLabel": "レベル",
+    "readingTimeLabel": "読了時間",
+    "objectivesTitle": "学習目標",
+    "objectivesLead": "このレッスンを終えると、次を理解できます:",
+    "outlineTitle": "レッスンの構成",
+    "introTitle": "導入プレビュー",
+    "lockedTitle": "Proで{lessonTitle}を続ける",
+    "lockedDescription": "{lessonTitle}は{programTitle}の一部です。アップグレードすると、完全なレッスン、クイズ、進捗トラッキング、すべてのアカデミーを利用できます。"
   }
 }
