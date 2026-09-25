@@ -11,7 +11,16 @@ import { localeUrl } from "@/lib/seo";
 
 const BASE_URL = "https://aieducademy.org";
 const ROOT = process.cwd();
-const EXCLUDED_PROGRAM_SLUGS = new Set(["ai-polish"]);
+// Lessons that moved to another programme and now 308 (see next.config.mjs).
+// Only the moved copies are left out; the rest of ai-polish is still live.
+export const MOVED_LESSON_PATHS = new Set([
+  "ai-polish/star-framework",
+  "ai-polish/behavioural-interview-mastery",
+  "ai-polish/career-transitions-to-ai",
+  "ai-polish/negotiating-your-offer",
+  "ai-polish/salary-benchmarking",
+  "ai-polish/building-personal-brand",
+]);
 const gitLastModifiedCache = new Map<string, Date | null>();
 const contentLastModifiedCache = new Map<string, Date | null>();
 const lessonLastModifiedCache = new Map<string, Date | null>();
@@ -233,14 +242,8 @@ function blogLastModified(slug: string): Date | null {
   return date;
 }
 
-function filteredPrograms() {
-  return getPrograms().filter(
-    (program) => !EXCLUDED_PROGRAM_SLUGS.has(program.slug),
-  );
-}
-
 export function buildSitemapEntries(locale: string): MetadataRoute.Sitemap {
-  const programs = filteredPrograms();
+  const programs = getPrograms();
   const programmesLastModified = newest(
     gitLastModified("data", "programs.json"),
     gitLastModified("src", "app", "[locale]", "programs", "page.tsx"),
@@ -274,13 +277,17 @@ export function buildSitemapEntries(locale: string): MetadataRoute.Sitemap {
   );
 
   const lessonPages = programs.flatMap((program) =>
-    getLessons(program.slug, "en").map((lesson) =>
-      entry(
-        locale,
-        `/programs/${program.slug}/lessons/${lesson.slug}`,
-        lessonLastModified(program.slug, lesson.slug),
+    getLessons(program.slug, "en")
+      .filter(
+        (lesson) => !MOVED_LESSON_PATHS.has(`${program.slug}/${lesson.slug}`),
+      )
+      .map((lesson) =>
+        entry(
+          locale,
+          `/programs/${program.slug}/lessons/${lesson.slug}`,
+          lessonLastModified(program.slug, lesson.slug),
+        ),
       ),
-    ),
   );
 
   const blogPages = getAllBlogSlugs()

@@ -120,7 +120,7 @@ test.describe("SEO & Security", () => {
     for (const locale of locales) {
       expect(xml).toContain(`hreflang="${locale}"`);
     }
-    expect(xml).not.toContain("/programs/ai-polish/");
+    expect(xml).not.toContain("/programs/ai-polish/lessons/star-framework");
   });
 
   test("manifest.webmanifest is valid JSON", async ({ request }) => {

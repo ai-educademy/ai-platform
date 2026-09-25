@@ -1,6 +1,6 @@
 import { execFileSync } from "child_process";
 import { describe, expect, it } from "vitest";
-import { buildSitemapEntries } from "@/lib/sitemap";
+import { buildSitemapEntries, MOVED_LESSON_PATHS } from "@/lib/sitemap";
 import { getAllBlogSlugs } from "@/lib/blog";
 import { getLessons } from "@/lib/lessons";
 import { getPrograms } from "@/lib/programs";
@@ -11,16 +11,18 @@ const entries = routing.locales.flatMap((locale) =>
   buildSitemapEntries(locale),
 );
 const urls = entries.map((entry) => entry.url);
-const indexableProgrammes = getPrograms().filter(
-  (program) => program.slug !== "ai-polish",
-);
+const indexableProgrammes = getPrograms();
 const staticPageCount = 13;
 const expectedPerLocale =
   staticPageCount +
   indexableProgrammes.length +
   indexableProgrammes.length +
   indexableProgrammes.reduce(
-    (count, program) => count + getLessons(program.slug, "en").length,
+    (count, program) =>
+      count +
+      getLessons(program.slug, "en").filter(
+        (lesson) => !MOVED_LESSON_PATHS.has(`${program.slug}/${lesson.slug}`),
+      ).length,
     0,
   ) +
   getAllBlogSlugs().length;
@@ -30,8 +32,22 @@ describe("sitemap", () => {
     expect(new Set(urls).size).toBe(urls.length);
   });
 
-  it("does not emit the legacy ai-polish URLs", () => {
-    expect(urls.filter((url) => url.includes("/ai-polish"))).toEqual([]);
+  it("leaves out lessons that moved and now redirect", () => {
+    for (const moved of MOVED_LESSON_PATHS) {
+      const [program, slug] = moved.split("/");
+      expect(
+        urls.filter((url) =>
+          url.endsWith(`/programs/${program}/lessons/${slug}`),
+        ),
+      ).toEqual([]);
+    }
+  });
+
+  it("keeps the ai-polish lessons that did not move", () => {
+    expect(urls).toContain(
+      "https://aieducademy.org/programs/ai-polish/lessons/ai-era-leadership",
+    );
+    expect(urls).toContain("https://aieducademy.org/programs/ai-polish");
   });
 
   it("emits absolute URLs with the canonical English root", () => {
