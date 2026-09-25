@@ -151,7 +151,11 @@ test.describe("SEO", () => {
     const jsonLd = await page.locator('script[type="application/ld+json"]').first().textContent();
     expect(jsonLd).toBeTruthy();
     const data = JSON.parse(jsonLd!);
-    const types = Array.isArray(data["@type"]) ? data["@type"] : [data["@type"]];
+    // Pages may emit a single node or an @graph of nodes.
+    const nodes = Array.isArray(data["@graph"]) ? data["@graph"] : [data];
+    const types = nodes.flatMap((n: { "@type"?: string | string[] }) =>
+      Array.isArray(n["@type"]) ? n["@type"] : n["@type"] ? [n["@type"]] : [],
+    );
     expect(types.some((t: string) => t.includes("Organization") || t.includes("EducationalOrganization") || t === "WebSite")).toBe(true);
   });
 });
