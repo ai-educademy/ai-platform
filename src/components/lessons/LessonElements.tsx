@@ -15,8 +15,13 @@ function useElementInView(margin = "-60px") {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setIsInView(true); obs.disconnect(); } },
-      { rootMargin: margin }
+      ([e]) => {
+        if (e.isIntersecting) {
+          setIsInView(true);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: margin },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -27,18 +32,25 @@ function useElementInView(margin = "-60px") {
 
 /* ── Animated MDX elements ── */
 
-export function AnimatedH1(props: React.HTMLAttributes<HTMLHeadingElement>) {
+export function AnimatedH1({
+  as: Tag = "h1",
+  ...props
+}: React.HTMLAttributes<HTMLHeadingElement> & { as?: "h1" | "h2" }) {
   const noMotion = useReducedMotion();
   const { ref, isInView } = useElementInView();
   return (
-    <h1
+    <Tag
       ref={ref as React.RefObject<HTMLHeadingElement>}
       className="text-3xl font-bold mt-8 mb-4 text-[var(--color-primary)]"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateX(-24px)",
-        transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateX(-24px)",
+              transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
+            }
+      }
       {...props}
     />
   );
@@ -51,11 +63,15 @@ export function AnimatedH2(props: React.HTMLAttributes<HTMLHeadingElement>) {
     <h2
       ref={ref as React.RefObject<HTMLHeadingElement>}
       className="text-2xl font-bold mt-8 mb-3"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateX(-24px)",
-        transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateX(-24px)",
+              transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
+            }
+      }
       {...props}
     />
   );
@@ -68,11 +84,15 @@ export function AnimatedH3(props: React.HTMLAttributes<HTMLHeadingElement>) {
     <h3
       ref={ref as React.RefObject<HTMLHeadingElement>}
       className="text-xl font-semibold mt-6 mb-2"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateX(-24px)",
-        transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateX(-24px)",
+              transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
+            }
+      }
       {...props}
     />
   );
@@ -85,10 +105,14 @@ export function AnimatedP(props: React.HTMLAttributes<HTMLParagraphElement>) {
     <p
       ref={ref as React.RefObject<HTMLParagraphElement>}
       className="text-lg leading-relaxed mb-4 text-[var(--color-text-muted)]"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transition: `opacity 0.4s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transition: `opacity 0.4s ${EASE}`,
+            }
+      }
       {...props}
     />
   );
@@ -101,11 +125,15 @@ export function AnimatedUL(props: React.HTMLAttributes<HTMLUListElement>) {
     <ul
       ref={ref as React.RefObject<HTMLUListElement>}
       className="list-disc list-inside space-y-2 mb-4 text-lg text-[var(--color-text-muted)]"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateY(20px)",
-        transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateY(20px)",
+              transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
+            }
+      }
       {...props}
     />
   );
@@ -118,28 +146,38 @@ export function AnimatedOL(props: React.HTMLAttributes<HTMLOListElement>) {
     <ol
       ref={ref as React.RefObject<HTMLOListElement>}
       className="list-decimal list-inside space-y-2 mb-4 text-lg text-[var(--color-text-muted)]"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateY(20px)",
-        transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateY(20px)",
+              transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
+            }
+      }
       {...props}
     />
   );
 }
 
-export function AnimatedBlockquote(props: React.HTMLAttributes<HTMLQuoteElement>) {
+export function AnimatedBlockquote(
+  props: React.HTMLAttributes<HTMLQuoteElement>,
+) {
   const noMotion = useReducedMotion();
   const { ref, isInView } = useElementInView();
   return (
     <blockquote
       ref={ref as React.RefObject<HTMLQuoteElement>}
       className="border-l-4 border-[var(--color-primary)] pl-4 py-2 my-4 bg-[var(--color-primary)]/5 rounded-r-lg italic text-lg"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateY(20px)",
-        transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateY(20px)",
+              transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
+            }
+      }
       {...props}
     />
   );
@@ -152,11 +190,15 @@ export function AnimatedPre(props: React.HTMLAttributes<HTMLPreElement>) {
     <pre
       ref={ref as React.RefObject<HTMLPreElement>}
       className="bg-[#1e293b] text-[#e2e8f0] p-4 sm:p-6 rounded-xl overflow-x-auto my-6 text-sm shadow-lg shadow-black/20"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "scale(0.95)",
-        transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "scale(0.95)",
+              transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
+            }
+      }
       {...props}
     />
   );
@@ -169,11 +211,15 @@ export function AnimatedTable(props: React.HTMLAttributes<HTMLTableElement>) {
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
       className="overflow-x-auto my-6 rounded-xl border border-[var(--color-border)]"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateY(20px)",
-        transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateY(20px)",
+              transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
+            }
+      }
     >
       <table className="w-full text-sm" {...props} />
     </div>
@@ -187,11 +233,15 @@ export function AnimatedImg(props: React.ImgHTMLAttributes<HTMLImageElement>) {
     <span
       ref={ref as React.RefObject<HTMLSpanElement>}
       className="block my-8"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "scale(0.95)",
-        transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "scale(0.95)",
+              transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
+            }
+      }
     >
       <span className="block rounded-2xl border border-[var(--color-border)] overflow-hidden bg-white">
         <Image
@@ -227,11 +277,15 @@ export function AnimatedIllustration({
     <figure
       ref={ref as React.RefObject<HTMLElement>}
       className="my-8"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "scale(0.95)",
-        transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "scale(0.95)",
+              transition: `opacity 0.5s ${SPRING}, transform 0.5s ${SPRING}`,
+            }
+      }
     >
       <div className="rounded-2xl border border-[var(--color-border)] overflow-hidden bg-white shadow-sm">
         <Image
@@ -271,15 +325,21 @@ export function AnimatedCallout({
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
       className={`border-l-4 p-5 my-6 rounded-r-xl ${styles[type]}`}
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateY(20px)",
-        transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateY(20px)",
+              transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
+            }
+      }
     >
       <div className="flex items-start gap-3">
         <span className="text-xl shrink-0">{icons[type]}</span>
-        <div className="text-[var(--color-text)] text-base leading-relaxed">{children}</div>
+        <div className="text-[var(--color-text)] text-base leading-relaxed">
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -292,11 +352,15 @@ export function AnimatedFunFact({ children }: { children: React.ReactNode }) {
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
       className="bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/20 rounded-2xl p-6 my-6"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateY(20px)",
-        transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateY(20px)",
+              transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
+            }
+      }
     >
       <div className="flex items-start gap-3">
         <span className="text-2xl shrink-0">🤯</span>
@@ -306,23 +370,33 @@ export function AnimatedFunFact({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function AnimatedThinkAboutIt({ children }: { children: React.ReactNode }) {
+export function AnimatedThinkAboutIt({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const noMotion = useReducedMotion();
   const { ref, isInView } = useElementInView();
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
       className="bg-[var(--color-secondary)]/8 border border-[var(--color-secondary)]/20 rounded-2xl p-6 my-6"
-      style={noMotion ? undefined : {
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "none" : "translateY(20px)",
-        transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
-      }}
+      style={
+        noMotion
+          ? undefined
+          : {
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? "none" : "translateY(20px)",
+              transition: `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`,
+            }
+      }
     >
       <div className="flex items-start gap-3">
         <span className="text-2xl shrink-0">🤔</span>
         <div className="text-[var(--color-text)]">
-          <strong className="block mb-1 text-[var(--color-secondary)]">Think about it:</strong>
+          <strong className="block mb-1 text-[var(--color-secondary)]">
+            Think about it:
+          </strong>
           {children}
         </div>
       </div>

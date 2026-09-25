@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { eq, and, desc, sql } from "drizzle-orm";
 import { auth } from "@/auth";
-import { db } from "@/lib/db";
+import { db, isDbConfigured } from "@/lib/db";
 import { lessonComments, users } from "@/lib/db/schema";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
@@ -11,7 +11,7 @@ function stripHtml(str: string): string {
   return str.replace(/<[^>]*>/g, "").trim();
 }
 
-/* ────────────── GET — fetch comments for a lesson ────────────── */
+/* ────────────── GET - fetch comments for a lesson ────────────── */
 
 const getSchema = z.object({
   lesson: z.string().min(1),
@@ -21,17 +21,25 @@ const getSchema = z.object({
 
 export async function GET(req: NextRequest) {
   const parsed = getSchema.safeParse(
-    Object.fromEntries(req.nextUrl.searchParams)
+    Object.fromEntries(req.nextUrl.searchParams),
   );
   if (!parsed.success) {
     return NextResponse.json(
       { error: "Invalid query parameters" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   const { lesson, program, offset } = parsed.data;
   const limit = 20;
+
+  if (!isDbConfigured) {
+    return NextResponse.json({
+      comments: [],
+      total: 0,
+      hasMore: false,
+    });
+  }
 
   const comments = await db
     .select({
@@ -49,8 +57,8 @@ export async function GET(req: NextRequest) {
     .where(
       and(
         eq(lessonComments.lessonSlug, lesson),
-        eq(lessonComments.programSlug, program)
-      )
+        eq(lessonComments.programSlug, program),
+      ),
     )
     .orderBy(desc(lessonComments.createdAt))
     .limit(limit)
@@ -62,8 +70,8 @@ export async function GET(req: NextRequest) {
     .where(
       and(
         eq(lessonComments.lessonSlug, lesson),
-        eq(lessonComments.programSlug, program)
-      )
+        eq(lessonComments.programSlug, program),
+      ),
     );
 
   return NextResponse.json({
@@ -73,7 +81,7 @@ export async function GET(req: NextRequest) {
   });
 }
 
-/* ────────────── POST — create a comment ────────────── */
+/* ────────────── POST - create a comment ────────────── */
 
 const postSchema = z.object({
   lessonSlug: z.string().min(1),
@@ -94,7 +102,7 @@ export async function POST(req: NextRequest) {
   if (!rl.success) {
     return NextResponse.json(
       { error: "Too many comments. Please wait a moment." },
-      { status: 429, headers: rateLimitHeaders(rl) }
+      { status: 429, headers: rateLimitHeaders(rl) },
     );
   }
 
@@ -110,7 +118,7 @@ export async function POST(req: NextRequest) {
   if (!parsed.success) {
     return NextResponse.json(
       { error: parsed.error.issues[0]?.message ?? "Validation failed" },
-      { status: 400, headers: rateLimitHeaders(rl) }
+      { status: 400, headers: rateLimitHeaders(rl) },
     );
   }
 
@@ -118,7 +126,7 @@ export async function POST(req: NextRequest) {
   if (!sanitized) {
     return NextResponse.json(
       { error: "Comment cannot be empty" },
-      { status: 400, headers: rateLimitHeaders(rl) }
+      { status: 400, headers: rateLimitHeaders(rl) },
     );
   }
 
@@ -134,11 +142,11 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json(
     { comment },
-    { status: 201, headers: rateLimitHeaders(rl) }
+    { status: 201, headers: rateLimitHeaders(rl) },
   );
 }
 
-/* ────────────── DELETE — delete own comment ────────────── */
+/* ────────────── DELETE - delete own comment ────────────── */
 
 const deleteSchema = z.object({
   id: z.string().uuid(),
@@ -179,9 +187,7 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  await db
-    .delete(lessonComments)
-    .where(eq(lessonComments.id, parsed.data.id));
+  await db.delete(lessonComments).where(eq(lessonComments.id, parsed.data.id));
 
   return NextResponse.json({ success: true });
 }
