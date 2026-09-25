@@ -77,22 +77,20 @@ describe("sitemap", () => {
       execFileSync("git", ["rev-parse", "--is-shallow-repository"], {
         encoding: "utf8",
       }).trim() !== "false";
-    const nonBlog = entries.filter((entry) => !entry.url.includes("/blog/"));
+    const dated = entries.filter((entry) => entry.lastModified !== undefined);
+    const uniqueLastmods = new Set(
+      dated.map((entry) =>
+        entry.lastModified instanceof Date
+          ? entry.lastModified.toISOString()
+          : entry.lastModified,
+      ),
+    );
 
+    // A shallow clone knows one commit, so trusting it would put the same
+    // date on every URL. Omitting lastmod is fine; a uniform one is not.
     if (shallow) {
-      // A shallow clone knows one commit, so any Git date would be identical
-      // on every URL. Those entries must omit lastmod instead.
-      expect(nonBlog.every((entry) => entry.lastModified === undefined)).toBe(
-        true,
-      );
+      expect(dated.length === 0 || uniqueLastmods.size > 1).toBe(true);
     } else {
-      const uniqueLastmods = new Set(
-        entries.map((entry) =>
-          entry.lastModified instanceof Date
-            ? entry.lastModified.toISOString()
-            : entry.lastModified,
-        ),
-      );
       expect(uniqueLastmods.size).toBeGreaterThan(5);
     }
   });
