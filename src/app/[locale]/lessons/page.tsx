@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
+// Legacy entry point. /programs is the canonical catalogue in every locale.
 export default async function LessonsPage({
   params,
 }: {
@@ -7,6 +8,5 @@ export default async function LessonsPage({
 }) {
   const { locale } = await params;
   const basePath = locale === "en" ? "" : `/${locale}`;
-  redirect(`${basePath}/programs/ai-seeds`);
+  permanentRedirect(`${basePath}/programs`);
 }
-

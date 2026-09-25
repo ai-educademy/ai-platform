@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { BrandMark } from "@/components/ui/BrandMark";
 import Link from "next/link";
@@ -10,6 +10,8 @@ const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 export default function ForgotPasswordPage() {
   const t = useTranslations("auth");
+  const locale = useLocale();
+  const basePath = locale === "en" ? "" : `/${locale}`;
   const noMotion = useReducedMotion();
 
   const [email, setEmail] = useState("");
@@ -136,7 +138,7 @@ export default function ForgotPasswordPage() {
             style={noMotion ? undefined : { animation: `fade-in 0.5s ease 700ms both` }}
           >
             <Link
-              href="/signin"
+              href={`${basePath}/signin`}
               className="text-[var(--color-primary)] hover:underline font-medium"
             >
               {t("backToSignIn")}

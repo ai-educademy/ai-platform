@@ -149,6 +149,11 @@ export function Footer() {
                 <FooterLink href={`${basePath}/lab`}>{t("lab")}</FooterLink>
               </li>
               <li>
+                <FooterLink href={`${basePath}/resources/ai-starter-kit`}>
+                  {t("starterKit")}
+                </FooterLink>
+              </li>
+              <li>
                 <FooterLink href={`${basePath}/pricing`}>
                   {tNav("pricing")}
                 </FooterLink>

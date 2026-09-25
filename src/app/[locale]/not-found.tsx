@@ -1,5 +1,9 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { locales } from "@/i18n/locales";
 
 const suggestedLinks = [
   { href: "/programs", key: "programs" },
@@ -10,6 +14,10 @@ const suggestedLinks = [
 
 export default function NotFound() {
   const t = useTranslations("notFound");
+  const pathname = usePathname();
+  const firstSegment = pathname.split("/").filter(Boolean)[0];
+  const locale = (locales as readonly string[]).includes(firstSegment) ? firstSegment : "en";
+  const basePath = locale === "en" ? "" : `/${locale}`;
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
@@ -21,7 +29,7 @@ export default function NotFound() {
         <p className="text-[var(--color-text-muted)] leading-relaxed">{t("description")}</p>
 
         <Link
-          href="/"
+          href={`${basePath}/`}
           className="inline-block px-8 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold hover:brightness-110 transition-all"
         >
           {t("backHome")}
@@ -37,7 +45,7 @@ export default function NotFound() {
             {suggestedLinks.map(({ href, key }) => (
               <Link
                 key={href}
-                href={href}
+                href={`${basePath}${href}`}
                 className="px-4 py-2 bg-[var(--color-bg-card)] text-[var(--color-primary)] rounded-lg text-sm font-medium border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:brightness-110 transition-all"
               >
                 {t(key)}

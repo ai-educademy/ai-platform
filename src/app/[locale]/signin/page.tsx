@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { BrandMark } from "@/components/ui/BrandMark";
 import Link from "next/link";
@@ -13,6 +13,9 @@ const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 export default function SignInPage() {
   const t = useTranslations("auth");
   const params = useSearchParams();
+  const routeParams = useParams<{ locale: string }>();
+  const locale = routeParams.locale ?? "en";
+  const basePath = locale === "en" ? "" : `/${locale}`;
   const callbackUrl = params.get("callbackUrl") || "/";
   const error = params.get("error");
   const verified = params.get("verified");
@@ -180,7 +183,7 @@ export default function SignInPage() {
             </div>
             <div className="text-right">
               <Link
-                href="/forgot-password"
+                href={`${basePath}/forgot-password`}
                 className="text-xs text-[var(--color-primary)] hover:underline"
               >
                 {t("forgotPassword")}
@@ -235,7 +238,7 @@ export default function SignInPage() {
           >
             {t("noAccount")}{" "}
             <Link
-              href="/signup"
+              href={`${basePath}/signup`}
               className="text-[var(--color-primary)] hover:underline font-medium"
             >
               {t("signUp")}
