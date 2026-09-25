@@ -85,6 +85,14 @@ const nextConfig = {
         destination: "https://aieducademy.org/:path*",
         permanent: true,
       },
+      // The playground became the lab; old links and bookmarks must not 404.
+      { source: "/playground", destination: "/lab", permanent: true },
+      { source: "/en/playground", destination: "/lab", permanent: true },
+      {
+        source: "/:locale(ar|de|es|fr|hi|ja|nl|pt|te|zh)/playground",
+        destination: "/:locale/lab",
+        permanent: true,
+      },
       ...movedLessonRedirects,
     ];
   },

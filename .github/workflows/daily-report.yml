@@ -27,7 +27,7 @@ jobs:
           echo "🏥 Site Health"
           echo "─────────────"
           FAILED=0
-          PAGES=("/" "/en" "/en/programs" "/en/playground" "/en/about")
+          PAGES=("/" "/programs" "/lab" "/pricing" "/about")
           for path in "${PAGES[@]}"; do
             STATUS=$(curl -sL -o /dev/null -w "%{http_code}" "${SITE_URL}${path}" --max-time 10)
             if [ "$STATUS" = "200" ]; then
@@ -49,14 +49,19 @@ jobs:
           echo "  sitemap.xml: ${SITEMAP}"
           echo "  manifest:    ${MANIFEST}"
 
-          SITEMAP_URLS=$(curl -sL "${SITE_URL}/sitemap.xml" --max-time 10 | grep -c "<url>")
+          # sitemap.xml is an index of per-locale sitemaps; sum their URLs.
+          SITEMAP_URLS=0
+          for child in $(curl -sL "${SITE_URL}/sitemap.xml" --max-time 10 | grep -o "<loc>[^<]*</loc>" | sed -e "s/<loc>//" -e "s/<\/loc>//"); do
+            COUNT=$(curl -sL "$child" --max-time 10 | grep -c "<url>" || true)
+            SITEMAP_URLS=$((SITEMAP_URLS + COUNT))
+          done
           echo "  Sitemap URLs: ${SITEMAP_URLS}"
 
           # --- Performance (response times) ---
           echo ""
           echo "⚡ Response Times"
           echo "─────────────────"
-          for path in "/" "/en/programs" "/en/playground"; do
+          for path in "/" "/programs" "/lab"; do
             TIME=$(curl -sL -o /dev/null -w "%{time_total}" "${SITE_URL}${path}" --max-time 15)
             echo "  ${path}: ${TIME}s"
           done
