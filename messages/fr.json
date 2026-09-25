@@ -1824,12 +1824,12 @@
     "monthly": {
       "title": "Pro mensuel",
       "period": "mois",
-      "cta": "Commencer l’essai gratuit de 7 jours"
+      "cta": "Essayez Pro gratuitement pendant 7 jours"
     },
     "annual": {
       "title": "Pro annuel",
       "period": "an",
-      "cta": "Commencer l’essai gratuit de 7 jours",
+      "cta": "Essayez Pro gratuitement pendant 7 jours",
       "save": "Economise {percent} % par rapport au mensuel"
     },
     "lifetime": {
@@ -1860,8 +1860,8 @@
     "selected": "Selectionne",
     "selectThisPlan": "Choisir ce plan",
     "alreadyPro": "Vous avez deja Pro. Gere ton abonnement depuis ton compte.",
-    "trialCta": "Commencer l’essai gratuit de 7 jours",
-    "trialNote": "7 jours gratuits, carte requise. Annulez à tout moment avant la fin de l’essai et vous ne serez pas facturé."
+    "trialCta": "Essayez Pro gratuitement pendant 7 jours",
+    "trialNote": "Gratuit pendant 7 jours. Annulez quand vous voulez, sans justification. Vous n’êtes facturé que si vous gardez Pro après l’essai."
   },
   "paywall": {
     "title": "Ton prochain niveau est derriere cette porte",
@@ -1872,9 +1872,9 @@
       "progressSync": "Synchronisation de la progression",
       "certificates": "Certificats"
     },
-    "upgradeCta": "Commencer l’essai gratuit de 7 jours",
+    "upgradeCta": "Essayez Pro gratuitement pendant 7 jours",
     "signInCta": "Connecte-toi d abord",
-    "guarantee": "Essai gratuit de 7 jours, carte requise. Annulez à tout moment avant la fin de l’essai."
+    "guarantee": "Gratuit pendant 7 jours. Annulez quand vous voulez, sans justification."
   },
   "mockInterview": {
     "title": "Labo d'entretien simulé par IA",

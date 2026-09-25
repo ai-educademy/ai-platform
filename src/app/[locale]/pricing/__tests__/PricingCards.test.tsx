@@ -112,12 +112,57 @@ describe("PricingCards", () => {
 
     expect(fetchMock).not.toHaveBeenCalled();
     expect(window.location.href).toBe(
-      `/fr/signin?callbackUrl=${encodeURIComponent("/fr/pricing")}`,
+      `/fr/signin?callbackUrl=${encodeURIComponent("/fr/pricing?checkout=annual")}`,
     );
     Object.defineProperty(window, "location", {
       configurable: true,
       value: original,
     });
+  });
+
+  it("given a learner returning from sign-in with a chosen plan, when the page loads, then checkout resumes once and the param is cleared", async () => {
+    window.history.replaceState(null, "", "/fr/pricing?checkout=annual");
+    const { rerender } = render(<PricingCards locale="fr" />);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toMatchObject({
+      plan: "annual",
+      locale: "fr",
+    });
+    expect(window.location.search).toBe("");
+    rerender(<PricingCards locale="fr" />);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("given the session is still loading, when a plan is clicked, then it waits instead of bouncing to sign-in and resumes when ready", async () => {
+    window.history.replaceState(null, "", "/pricing");
+    mockUseSession.mockReturnValue({ data: undefined, status: "loading" });
+    const user = userEvent.setup();
+    const { rerender } = render(<PricingCards locale="en" />);
+
+    await user.click(screen.getByRole("button", { name: /annual.title/ }));
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(window.location.pathname).toBe("/pricing");
+
+    mockUseSession.mockReturnValue({
+      data: { user: { id: "user_1", email: "learner@example.com" } },
+      status: "authenticated",
+    });
+    rerender(<PricingCards locale="en" />);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toMatchObject({
+      plan: "annual",
+    });
+  });
+
+  it("given a Pro member returning with a checkout param, when the page loads, then no second subscription is started", async () => {
+    window.history.replaceState(null, "", "/pricing?checkout=monthly");
+    mockUseProStatus.mockReturnValue({ isPro: true, loading: false });
+    render(<PricingCards locale="en" />);
+
+    await waitFor(() => expect(window.location.search).toBe(""));
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });
 

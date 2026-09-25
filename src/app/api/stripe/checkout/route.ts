@@ -44,6 +44,7 @@ async function resolveReferrer(
 async function customerHasUsedTrial(
   userId: string,
   customerId: string,
+  customerIsNew: boolean,
 ): Promise<boolean> {
   const priorRows = await db
     .select({ id: subscriptions.id })
@@ -52,6 +53,9 @@ async function customerHasUsedTrial(
     .limit(1);
 
   if (priorRows.length > 0) return true;
+  // A customer created moments ago cannot hold a Stripe subscription, so skip
+  // a round trip on the first, slowest checkout.
+  if (customerIsNew) return false;
 
   const priorStripeSubscriptions = await getStripe().subscriptions.list({
     customer: customerId,
@@ -108,6 +112,7 @@ export async function POST(req: NextRequest) {
       .limit(1);
 
     let customerId = user?.stripeCustomerId;
+    const customerIsNew = !customerId;
 
     if (!customerId) {
       const customer = await getStripe().customers.create({
@@ -123,9 +128,19 @@ export async function POST(req: NextRequest) {
         .where(eq(users.id, session.user.id));
     }
 
-    const trialEligible =
-      TRIAL_PLANS.has(plan) &&
-      !(await customerHasUsedTrial(session.user.id, customerId));
+    // Independent lookups; run them together to keep the redirect snappy.
+    const [trialEligible, referredBy] = await Promise.all([
+      TRIAL_PLANS.has(plan)
+        ? customerHasUsedTrial(session.user.id, customerId, customerIsNew).then(
+            (used) => !used,
+          )
+        : Promise.resolve(false),
+      resolveReferrer(
+        session.user.id,
+        user?.referralCode,
+        req.cookies?.get("ref_code")?.value,
+      ),
+    ]);
 
     const basePath = localeBasePath(locale);
 
@@ -134,11 +149,6 @@ export async function POST(req: NextRequest) {
     let referralApplied = false;
     const referralPromoCode =
       process.env.STRIPE_REFERRAL_PROMO_CODE ?? "GIVEAMONTH";
-    const referredBy = await resolveReferrer(
-      session.user.id,
-      user?.referralCode,
-      req.cookies?.get("ref_code")?.value,
-    );
     // The referral coupon is 100% off once, so it must never reach a plan or a
     // learner it was not issued for (a free lifetime purchase, for instance).
     const referralEligible =

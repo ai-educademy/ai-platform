@@ -1830,12 +1830,12 @@
     "monthly": {
       "title": "Pro Monthly",
       "period": "month",
-      "cta": "Start 7-day free trial"
+      "cta": "Try Pro free for 7 days"
     },
     "annual": {
       "title": "Pro Annual",
       "period": "year",
-      "cta": "Start 7-day free trial",
+      "cta": "Try Pro free for 7 days",
       "save": "Save {percent}% vs monthly"
     },
     "lifetime": {
@@ -1875,8 +1875,8 @@
     "selected": "Selected",
     "selectThisPlan": "Select this plan",
     "alreadyPro": "You already have Pro. Manage your subscription from your account.",
-    "trialCta": "Start 7-day free trial",
-    "trialNote": "7 days free, card required. Cancel anytime before the trial ends and you will not be charged."
+    "trialCta": "Try Pro free for 7 days",
+    "trialNote": "Free for 7 days. Cancel anytime, no questions asked. You're only charged if you keep Pro after the trial."
   },
   "paywall": {
     "title": "Your next level is behind this door",
@@ -1887,9 +1887,9 @@
       "progressSync": "Progress sync",
       "certificates": "Certificates"
     },
-    "upgradeCta": "Start 7-day free trial",
+    "upgradeCta": "Try Pro free for 7 days",
     "signInCta": "Sign in first",
-    "guarantee": "7-day free trial, card required. Cancel anytime before the trial ends."
+    "guarantee": "Free for 7 days. Cancel anytime, no questions asked."
   },
   "mockInterview": {
     "title": "AI Mock Interview Lab",

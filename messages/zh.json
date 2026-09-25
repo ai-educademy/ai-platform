@@ -1824,12 +1824,12 @@
     "monthly": {
       "title": "Pro 月度版",
       "period": "月",
-      "cta": "开始 7 天免费试用"
+      "cta": "免费试用 Pro 7 天"
     },
     "annual": {
       "title": "Pro 年度版",
       "period": "年",
-      "cta": "开始 7 天免费试用",
+      "cta": "免费试用 Pro 7 天",
       "save": "比月付节省 {percent}%"
     },
     "lifetime": {
@@ -1860,8 +1860,8 @@
     "selected": "已选择",
     "selectThisPlan": "选择此方案",
     "alreadyPro": "你已经拥有 Pro。可在账户中管理订阅。",
-    "trialCta": "开始 7 天免费试用",
-    "trialNote": "免费 7 天，需要银行卡。试用结束前可随时取消，不会扣费。"
+    "trialCta": "免费试用 Pro 7 天",
+    "trialNote": "7 天免费。随时取消，无需任何理由。只有在试用结束后继续使用 Pro 才会收费。"
   },
   "paywall": {
     "title": "你的下一阶段就在这扇门后",
@@ -1872,9 +1872,9 @@
       "progressSync": "进度同步",
       "certificates": "证书"
     },
-    "upgradeCta": "开始 7 天免费试用",
+    "upgradeCta": "免费试用 Pro 7 天",
     "signInCta": "请先登录",
-    "guarantee": "7 天免费试用，需要银行卡。试用结束前可随时取消。"
+    "guarantee": "7 天免费。随时取消，无需任何理由。"
   },
   "mockInterview": {
     "title": "AI 模拟面试实验室",
