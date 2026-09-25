@@ -1257,7 +1257,7 @@ function fitDescriptionForMeta(description: string): string {
 }
 
 function titleWithSite(title: string): string {
-  return title.endsWith(`| ${SITE_NAME}`) ? title : `${title} | ${SITE_NAME}`;
+  return title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
 }
 
 export function createSeoMetadata({
@@ -1289,7 +1289,11 @@ export function createSeoMetadata({
   const fittedTitle = fitTitleForMeta(localTitle);
   const fittedDescription = fitDescriptionForMeta(localDescription);
   const titled = titleWithSite(fittedTitle);
-  const pageTitle = fittedTitle;
+  // The root layout appends "| AI Educademy"; a title that already names the
+  // brand must bypass the template or Google sees it twice.
+  const pageTitle: Metadata["title"] = fittedTitle.includes(SITE_NAME)
+    ? { absolute: fittedTitle }
+    : fittedTitle;
 
   return {
     metadataBase: new URL(BASE_URL),
