@@ -1,8 +1,12 @@
 /**
  * Creates the test-mode referral coupon and promotion code.
  *
- * Run once with a Stripe test secret key in .env.local:
- *   npx tsx scripts/create-referral-promo-code.ts
+ * Run once with a Stripe secret key and STRIPE_PRICE_MONTHLY in .env.local:
+ *   npx tsx scripts/create-referral-promo-code.ts          (test mode)
+ *   npx tsx scripts/create-referral-promo-code.ts --live   (live mode)
+ *
+ * The coupon is restricted to the monthly product so it can never discount the
+ * annual or lifetime plans, even if the checkout guard were bypassed.
  *
  * The promotion code defaults to GIVEAMONTH, matching STRIPE_REFERRAL_PROMO_CODE.
  */
@@ -42,10 +46,14 @@ if (!secretKey) {
   process.exit(1);
 }
 
-if (!secretKey.startsWith("sk_test_")) {
-  console.error(
-    "Refusing to create live referral coupons before the PR is merged and verified.",
-  );
+if (!secretKey.startsWith("sk_test_") && !process.argv.includes("--live")) {
+  console.error("Live key detected. Re-run with --live to confirm.");
+  process.exit(1);
+}
+
+const monthlyPriceId = process.env.STRIPE_PRICE_MONTHLY;
+if (!monthlyPriceId) {
+  console.error("STRIPE_PRICE_MONTHLY not found in .env.local");
   process.exit(1);
 }
 
@@ -70,8 +78,15 @@ async function main() {
     return;
   }
 
+  const monthlyPrice = await stripe.prices.retrieve(monthlyPriceId as string);
+  const monthlyProduct =
+    typeof monthlyPrice.product === "string"
+      ? monthlyPrice.product
+      : monthlyPrice.product.id;
+
   const coupon = await stripe.coupons.create({
     percent_off: 100,
+    applies_to: { products: [monthlyProduct] },
     duration: "once",
     name: "Referral first month free",
     metadata: { purpose: "referral_referee_first_month_free" },

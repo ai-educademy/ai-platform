@@ -130,96 +130,33 @@ export function buildLessonPreview(lesson: Lesson): LessonPreview {
   };
 }
 
-function parseLessonMeta(
-  raw: string,
-): Record<string, string | number | boolean> {
-  const match = raw.match(/^---\n([\s\S]*?)\n---/);
-  if (!match) return {};
-
-  const data: Record<string, string | number | boolean> = {};
-  for (const line of match[1].split("\n")) {
-    const separator = line.indexOf(":");
-    if (separator === -1) continue;
-    const key = line.slice(0, separator).trim();
-    const rawValue = line.slice(separator + 1).trim();
-    if (!key) continue;
-
-    if (rawValue === "true") data[key] = true;
-    else if (rawValue === "false") data[key] = false;
-    else if (/^\d+$/.test(rawValue)) data[key] = Number.parseInt(rawValue, 10);
-    else data[key] = rawValue;
-  }
-
-  return data;
-}
-
-function readFrontmatter(filePath: string): string {
-  if (
-    typeof fs.openSync !== "function" ||
-    typeof fs.readSync !== "function" ||
-    typeof fs.closeSync !== "function"
-  ) {
-    return fs.readFileSync(filePath, "utf-8");
-  }
-
-  const fd = fs.openSync(filePath, "r");
-  try {
-    const buffer = Buffer.alloc(8192);
-    const bytesRead = fs.readSync(fd, buffer, 0, buffer.length, 0);
-    const head = buffer.subarray(0, bytesRead).toString("utf-8");
-    const end = head.indexOf("\n---", 4);
-    return end === -1 ? head : head.slice(0, end + 4);
-  } finally {
-    fs.closeSync(fd);
-  }
-}
-
-type LessonMetaByFile = Map<string, Record<string, string | number | boolean>>;
-const lessonMetaCache = new Map<
-  string,
-  { signature: string; entries: LessonMetaByFile }
->();
-
-function readLessonMetaByFile(dir: string): LessonMetaByFile {
-  if (!fs.existsSync(dir)) return new Map();
-
-  const files = fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".mdx"))
-    .sort();
-  const signature = files.join("|");
-  const cached = lessonMetaCache.get(dir);
-  if (cached?.signature === signature) return cached.entries;
-
-  const entries: LessonMetaByFile = new Map();
-  for (const file of files) {
-    const raw = readFrontmatter(path.join(dir, file));
-    entries.set(file, parseLessonMeta(raw));
-  }
-
-  lessonMetaCache.set(dir, { signature, entries });
-  return entries;
-}
-
 export function getLessons(programSlug: string, locale: string): LessonMeta[] {
   const baseDir = contentDir(programSlug);
   const dir = path.join(baseDir, locale);
   const enDir = path.join(baseDir, "en");
 
-  const enEntries = readLessonMetaByFile(enDir);
-  const localeEntries =
-    locale !== "en"
-      ? readLessonMetaByFile(dir)
-      : new Map<string, Record<string, string | number | boolean>>();
-  const enFiles = Array.from(enEntries.keys());
-  const localeFiles = Array.from(localeEntries.keys());
+  const enFiles = fs.existsSync(enDir)
+    ? fs.readdirSync(enDir).filter((f) => f.endsWith(".mdx"))
+    : [];
+
+  const localeFiles =
+    locale !== "en" && fs.existsSync(dir)
+      ? fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"))
+      : [];
 
   const allFiles = new Set([...enFiles, ...localeFiles]);
 
   const lessons = Array.from(allFiles)
     .map((file) => {
-      const data = localeEntries.get(file) ?? enEntries.get(file);
-      if (!data) return null;
+      const localePath = path.join(dir, file);
+      const enPath = path.join(enDir, file);
+      const filePath =
+        locale !== "en" && localeFiles.includes(file) ? localePath : enPath;
+
+      if (!fs.existsSync(filePath)) return null;
+
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const { data } = matter(raw);
       return {
         slug: file.replace(/\.mdx$/, ""),
         title: data.title || "",

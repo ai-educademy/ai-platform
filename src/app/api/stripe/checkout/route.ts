@@ -139,11 +139,18 @@ export async function POST(req: NextRequest) {
       user?.referralCode,
       req.cookies?.get("ref_code")?.value,
     );
+    // The referral coupon is 100% off once, so it must never reach a plan or a
+    // learner it was not issued for (a free lifetime purchase, for instance).
+    const referralEligible =
+      plan === "monthly" && currency === "gbp" && !!referredBy;
+    const requestedReferralCode =
+      promoCode?.trim().toUpperCase() === referralPromoCode.toUpperCase();
     const promoCodeToApply =
-      promoCode ??
-      (plan === "monthly" && currency === "gbp" && referredBy
-        ? referralPromoCode
-        : undefined);
+      promoCode && !requestedReferralCode
+        ? promoCode
+        : referralEligible
+          ? referralPromoCode
+          : undefined;
     if (promoCodeToApply) {
       try {
         const promoCodes = await getStripe().promotionCodes.list({
