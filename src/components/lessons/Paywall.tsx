@@ -19,11 +19,12 @@ export function Paywall({
   locale,
 }: PaywallProps) {
   const t = useTranslations("paywall");
+  const tPreview = useTranslations("lessonPreview");
   const { data: session } = useSession();
   const basePath = locale === "en" ? "" : `/${locale}`;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-12 text-center">
+    <div className="lesson-paywall relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 sm:p-12 text-center">
       {/* Gradient overlay */}
       <div
         className="absolute inset-0 opacity-5"
@@ -50,27 +51,29 @@ export function Paywall({
           </svg>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-          {t("title")}
+        <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-balance">
+          {tPreview("lockedTitle", { lessonTitle })}
         </h2>
 
         <p className="text-[var(--color-text-muted)] mb-2 text-lg">
           <span className="font-semibold" style={{ color: programColor }}>
             {lessonTitle}
           </span>{" "}
-          {t("isPartOf")}{" "}
-          <span className="font-semibold">{programTitle}</span>
+          {t("isPartOf")} <span className="font-semibold">{programTitle}</span>
         </p>
 
         <p className="text-[var(--color-text-muted)] mb-8 max-w-md mx-auto">
-          {t("description")}
+          {tPreview("lockedDescription", { lessonTitle, programTitle })}
         </p>
 
         {/* Features list */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-lg mx-auto text-sm">
           {(["allPrograms", "progressSync", "certificates"] as const).map(
             (feature) => (
-              <div key={feature} className="flex items-center gap-2 justify-center">
+              <div
+                key={feature}
+                className="flex items-center gap-2 justify-center"
+              >
                 <svg
                   className="h-4 w-4 text-green-500 flex-shrink-0"
                   fill="currentColor"
@@ -84,7 +87,7 @@ export function Paywall({
                 </svg>
                 <span>{t(`features.${feature}`)}</span>
               </div>
-            )
+            ),
           )}
         </div>
 

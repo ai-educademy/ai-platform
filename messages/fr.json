@@ -2343,5 +2343,17 @@
     "doneDetail": "Vous ne recevrez plus d'e-mails marketing d'AI Educademy. Les e-mails liés au compte, comme les reçus, seront toujours envoyés.",
     "error": "Une erreur est survenue. Veuillez réessayer.",
     "missingToken": "Ce lien de désabonnement est incomplet. Utilisez le lien figurant dans votre e-mail."
+  },
+  "lessonPreview": {
+    "previewLabel": "Aperçu public de la leçon",
+    "programmeLabel": "Programme",
+    "levelLabel": "Niveau",
+    "readingTimeLabel": "Temps de lecture",
+    "objectivesTitle": "Objectifs d’apprentissage",
+    "objectivesLead": "À la fin de cette leçon, tu comprendras :",
+    "outlineTitle": "Plan de la leçon",
+    "introTitle": "Aperçu introductif",
+    "lockedTitle": "Continue {lessonTitle} avec Pro",
+    "lockedDescription": "{lessonTitle} fait partie de {programTitle}. Passe à Pro pour débloquer la leçon complète, les quiz, le suivi de progression et toutes les académies."
   }
 }

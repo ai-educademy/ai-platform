@@ -2343,5 +2343,17 @@
     "doneDetail": "अब आपको AI Educademy से मार्केटिंग ईमेल नहीं मिलेंगे। रसीद जैसे खाता ईमेल फिर भी भेजे जाएँगे।",
     "error": "कुछ गलत हो गया। कृपया फिर से प्रयास करें।",
     "missingToken": "यह अनसब्सक्राइब लिंक अधूरा है। कृपया अपने ईमेल वाले लिंक का उपयोग करें।"
+  },
+  "lessonPreview": {
+    "previewLabel": "सार्वजनिक पाठ पूर्वावलोकन",
+    "programmeLabel": "प्रोग्राम",
+    "levelLabel": "स्तर",
+    "readingTimeLabel": "पढ़ने का समय",
+    "objectivesTitle": "सीखने के उद्देश्य",
+    "objectivesLead": "इस पाठ के अंत तक, आप समझेंगे:",
+    "outlineTitle": "पाठ की रूपरेखा",
+    "introTitle": "परिचयात्मक पूर्वावलोकन",
+    "lockedTitle": "Pro के साथ {lessonTitle} जारी रखें",
+    "lockedDescription": "{lessonTitle}, {programTitle} का हिस्सा है। पूरा पाठ, क्विज़, प्रगति ट्रैकिंग और सभी अकादमी अनलॉक करने के लिए अपग्रेड करें।"
   }
 }

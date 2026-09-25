@@ -2343,5 +2343,17 @@
     "doneDetail": "لن تصلك رسائل تسويقية من AI Educademy بعد الآن. أما رسائل الحساب مثل الإيصالات فستظل تُرسل.",
     "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
     "missingToken": "رابط إلغاء الاشتراك غير مكتمل. يرجى استخدام الرابط الوارد في بريدك."
+  },
+  "lessonPreview": {
+    "previewLabel": "معاينة عامة للدرس",
+    "programmeLabel": "البرنامج",
+    "levelLabel": "المستوى",
+    "readingTimeLabel": "وقت القراءة",
+    "objectivesTitle": "أهداف التعلم",
+    "objectivesLead": "بنهاية هذا الدرس ستفهم:",
+    "outlineTitle": "مخطط الدرس",
+    "introTitle": "معاينة تمهيدية",
+    "lockedTitle": "تابع {lessonTitle} مع Pro",
+    "lockedDescription": "{lessonTitle} جزء من {programTitle}. قم بالترقية لفتح الدرس الكامل والاختبارات وتتبع التقدم وكل الأكاديميات."
   }
 }

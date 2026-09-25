@@ -2343,5 +2343,17 @@
     "doneDetail": "You won't receive marketing emails from AI Educademy again. Account emails such as receipts will still be sent.",
     "error": "Something went wrong. Please try again.",
     "missingToken": "This unsubscribe link is incomplete. Please use the link from your email."
+  },
+  "lessonPreview": {
+    "previewLabel": "Public lesson preview",
+    "programmeLabel": "Programme",
+    "levelLabel": "Level",
+    "readingTimeLabel": "Reading time",
+    "objectivesTitle": "Learning objectives",
+    "objectivesLead": "By the end of this lesson, you will understand:",
+    "outlineTitle": "Lesson outline",
+    "introTitle": "Introductory preview",
+    "lockedTitle": "Continue {lessonTitle} with Pro",
+    "lockedDescription": "{lessonTitle} is part of {programTitle}. Upgrade to unlock the full lesson, quizzes, progress tracking, and every academy."
   }
 }

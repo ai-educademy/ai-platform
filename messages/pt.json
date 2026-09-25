@@ -2343,5 +2343,17 @@
     "doneDetail": "Você não receberá mais e-mails de marketing da AI Educademy. E-mails da conta, como recibos, continuarão sendo enviados.",
     "error": "Algo deu errado. Tente novamente.",
     "missingToken": "Este link de cancelamento está incompleto. Use o link do seu e-mail."
+  },
+  "lessonPreview": {
+    "previewLabel": "Prévia pública da lição",
+    "programmeLabel": "Programa",
+    "levelLabel": "Nível",
+    "readingTimeLabel": "Tempo de leitura",
+    "objectivesTitle": "Objetivos de aprendizagem",
+    "objectivesLead": "Ao final desta lição, você vai entender:",
+    "outlineTitle": "Resumo da lição",
+    "introTitle": "Prévia introdutória",
+    "lockedTitle": "Continue {lessonTitle} com Pro",
+    "lockedDescription": "{lessonTitle} faz parte de {programTitle}. Faça upgrade para desbloquear a lição completa, os questionários, o acompanhamento de progresso e todas as academias."
   }
 }
