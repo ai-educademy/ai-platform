@@ -101,6 +101,24 @@ describe("getLessons", () => {
     expect(lessons[0].slug).toBe("visible");
   });
 
+  it("omits lessons that moved to another programme", () => {
+    const cwd = process.cwd();
+    const enDir = `${cwd}/content/programs/ai-polish/lessons/en`;
+    const fm = (title: string, order: number) =>
+      `---\ntitle: ${title}\ndescription: d\norder: ${order}\ndifficulty: beginner\nduration: 5\nicon: 📚\npublished: true\n---\nContent`;
+
+    setupFiles(
+      {
+        [`${enDir}/ai-era-leadership.mdx`]: fm("Stays", 1),
+        [`${enDir}/star-framework.mdx`]: fm("Moved", 2),
+      },
+      { [enDir]: ["ai-era-leadership.mdx", "star-framework.mdx"] },
+    );
+
+    const lessons = getLessons("ai-polish", "en");
+    expect(lessons.map((l) => l.slug)).toEqual(["ai-era-leadership"]);
+  });
+
   it("returns empty array for missing program directory", () => {
     const lessons = getLessons("nonexistent-program", "en");
     expect(lessons).toEqual([]);

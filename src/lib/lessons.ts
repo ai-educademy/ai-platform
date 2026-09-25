@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import movedLessons from "@/lib/moved-lessons.json";
+
+// Lessons that now live in another programme. Their old URLs 308 via
+// next.config.mjs, so listing them here would only link to redirects.
+const MOVED_SLUGS: Record<string, Record<string, string>> = movedLessons;
 
 export interface LessonMeta {
   slug: string;
@@ -39,7 +44,6 @@ export interface LessonPreview {
   wordCount: number;
   excerptWordCount: number;
 }
-
 
 function contentDir(programSlug: string): string {
   return path.join(
@@ -168,7 +172,10 @@ export function getLessons(programSlug: string, locale: string): LessonMeta[] {
         published: data.published !== false,
       } as LessonMeta;
     })
-    .filter((l): l is LessonMeta => l !== null && l.published)
+    .filter(
+      (l): l is LessonMeta =>
+        l !== null && l.published && !MOVED_SLUGS[programSlug]?.[l.slug],
+    )
     .sort((a, b) => a.order - b.order);
   return lessons;
 }

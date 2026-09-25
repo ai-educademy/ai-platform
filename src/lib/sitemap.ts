@@ -8,19 +8,17 @@ import { getLessons } from "@/lib/lessons";
 import { getPrograms } from "@/lib/programs";
 import { routing } from "@/i18n/routing";
 import { localeUrl } from "@/lib/seo";
+import movedLessons from "@/lib/moved-lessons.json";
 
 const BASE_URL = "https://aieducademy.org";
 const ROOT = process.cwd();
-// Lessons that moved to another programme and now 308 (see next.config.mjs).
-// Only the moved copies are left out; the rest of ai-polish is still live.
-export const MOVED_LESSON_PATHS = new Set([
-  "ai-polish/star-framework",
-  "ai-polish/behavioural-interview-mastery",
-  "ai-polish/career-transitions-to-ai",
-  "ai-polish/negotiating-your-offer",
-  "ai-polish/salary-benchmarking",
-  "ai-polish/building-personal-brand",
-]);
+// Lessons that moved to another programme now 308 (see next.config.mjs), and
+// getLessons() already omits them. Kept for the tests that pin that contract.
+export const MOVED_LESSON_PATHS = new Set(
+  Object.entries(movedLessons).flatMap(([program, lessons]) =>
+    Object.keys(lessons).map((slug) => `${program}/${slug}`),
+  ),
+);
 const gitLastModifiedCache = new Map<string, Date | null>();
 const contentLastModifiedCache = new Map<string, Date | null>();
 const lessonLastModifiedCache = new Map<string, Date | null>();
