@@ -6,7 +6,7 @@ import { getBlogPost, getBlogPosts } from "@/lib/blog";
 import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
 import { ListenButton } from "@/components/ui/ListenButton";
-import { ArticleJsonLd } from "@/components/seo/JsonLd";
+import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { ShareButtons } from "@/components/blog/ShareButtons";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { slugify } from "@/lib/slugify";
@@ -21,11 +21,15 @@ function BlogH2({
     typeof children === "string"
       ? children
       : Array.isArray(children)
-      ? children.filter((c) => typeof c === "string").join("")
-      : "";
+        ? children.filter((c) => typeof c === "string").join("")
+        : "";
   const id = slugify(text);
   return (
-    <h2 id={id} className="text-2xl font-bold mt-8 mb-3 scroll-mt-24" {...props}>
+    <h2
+      id={id}
+      className="text-2xl font-bold mt-8 mb-3 scroll-mt-24"
+      {...props}
+    >
       {children}
     </h2>
   );
@@ -39,11 +43,15 @@ function BlogH3({
     typeof children === "string"
       ? children
       : Array.isArray(children)
-      ? children.filter((c) => typeof c === "string").join("")
-      : "";
+        ? children.filter((c) => typeof c === "string").join("")
+        : "";
   const id = slugify(text);
   return (
-    <h3 id={id} className="text-xl font-semibold mt-6 mb-2 scroll-mt-24" {...props}>
+    <h3
+      id={id}
+      className="text-xl font-semibold mt-6 mb-2 scroll-mt-24"
+      {...props}
+    >
       {children}
     </h3>
   );
@@ -118,9 +126,18 @@ export default async function BlogPostPage({
         description={post.description}
         datePublished={post.date}
         author={post.author}
+        dateModified={post.updatedAt}
         image={post.image}
         url={postUrl}
         tags={post.tags}
+        locale={locale}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: `${BASE_URL}${basePath}/` },
+          { name: t("title"), url: `${BASE_URL}${basePath}/blog` },
+          { name: post.title, url: postUrl },
+        ]}
       />
 
       {/*
@@ -144,14 +161,22 @@ export default async function BlogPostPage({
               href={`${basePath}/blog`}
               className="group inline-flex items-center gap-1 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors mb-8"
             >
-              <span aria-hidden="true" className="transition-transform duration-200 group-hover:-translate-x-0.5">←</span> {t("backToBlog")}
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:-translate-x-0.5"
+              >
+                ←
+              </span>{" "}
+              {t("backToBlog")}
             </Link>
           </AnimatedSection>
 
           {/* Header */}
           <AnimatedSection animation="fade-up" delay={80}>
             <div className="mb-10">
-              <h1 className="text-3xl sm:text-4xl font-bold mb-4">{post.title}</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+                {post.title}
+              </h1>
               <p className="text-lg text-[var(--color-text-muted)] mb-4">
                 {post.description}
               </p>
@@ -185,7 +210,11 @@ export default async function BlogPostPage({
               </div>
               <div className="flex flex-wrap items-center gap-4 mt-4">
                 <ListenButton locale={locale} />
-                <ShareButtons url={postUrl} title={post.title} description={post.description} />
+                <ShareButtons
+                  url={postUrl}
+                  title={post.title}
+                  description={post.description}
+                />
               </div>
             </div>
           </AnimatedSection>
@@ -206,8 +235,14 @@ export default async function BlogPostPage({
             <div className="mt-16 space-y-8">
               {/* Share bar */}
               <div className="py-6 border-t border-b border-[var(--color-border)] flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <p className="text-sm font-medium text-[var(--color-text)] shrink-0">{t("shareLabel")}</p>
-                <ShareButtons url={postUrl} title={post.title} description={post.description} />
+                <p className="text-sm font-medium text-[var(--color-text)] shrink-0">
+                  {t("shareLabel")}
+                </p>
+                <ShareButtons
+                  url={postUrl}
+                  title={post.title}
+                  description={post.description}
+                />
               </div>
 
               {/* Start Learning CTA.
@@ -241,7 +276,9 @@ export default async function BlogPostPage({
               {/* Related posts */}
               {related.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-bold mb-4">{tProgramDetail("relatedArticles")}</h3>
+                  <h3 className="text-lg font-bold mb-4">
+                    {tProgramDetail("relatedArticles")}
+                  </h3>
                   <div className="grid gap-4">
                     {related.map((rp) => (
                       <Link
@@ -257,7 +294,9 @@ export default async function BlogPostPage({
                             {rp.description}
                           </p>
                         </div>
-                        <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-primary)] transition-colors shrink-0 self-center">→</span>
+                        <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-primary)] transition-colors shrink-0 self-center">
+                          →
+                        </span>
                       </Link>
                     ))}
                   </div>
@@ -269,7 +308,13 @@ export default async function BlogPostPage({
                 href={`${basePath}/blog`}
                 className="group inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] hover:underline"
               >
-                <span aria-hidden="true" className="transition-transform duration-200 group-hover:-translate-x-0.5">←</span> {t("backToBlog")}
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-hover:-translate-x-0.5"
+                >
+                  ←
+                </span>{" "}
+                {t("backToBlog")}
               </Link>
             </div>
           </AnimatedSection>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { getProgram } from "@/lib/programs";
-import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
+import { BASE_URL, createSeoMetadata, getAchievementSeo } from "@/lib/seo";
 
 const PROGRAM_ICONS: Record<string, string> = {
   "ai-seeds": "🌱",
@@ -31,24 +31,22 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, programSlug } = await params;
   const { user } = await searchParams;
-  const t = await getTranslations("achievement");
   const tp = await getTranslations("programs");
 
   const program = getProgram(programSlug);
   const programName = program ? tp(`${programSlug}.title`) : programSlug;
   const userName = user || "A Learner";
 
-  const title = t("title", { program: programName });
-  const description = t("description", { user: userName, program: programName });
+  const seo = getAchievementSeo(locale, programName);
   const ogImage = `${BASE_URL}/api/share-card?program=${encodeURIComponent(programSlug)}&user=${encodeURIComponent(userName)}`;
 
   return createSeoMetadata({
     locale,
     path: `/achievement/${programSlug}`,
-    title,
-    description,
+    ...seo,
     imageUrl: ogImage,
     imageAlt: `${programName} achievement`,
+    robots: { index: false, follow: false },
   });
 }
 
@@ -93,14 +91,14 @@ export default async function AchievementPage({
             </h1>
 
             {/* Program name */}
-            <p className="text-xl sm:text-2xl font-bold mb-4">
-              {programName}
-            </p>
+            <p className="text-xl sm:text-2xl font-bold mb-4">{programName}</p>
 
             {/* Completed by */}
             <p className="text-[var(--color-text-muted)] mb-6">
               {t("completedBy")}{" "}
-              <span className="font-semibold text-[var(--color-text)]">{userName}</span>
+              <span className="font-semibold text-[var(--color-text)]">
+                {userName}
+              </span>
             </p>
 
             {/* Divider */}

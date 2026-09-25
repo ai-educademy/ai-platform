@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { createSeoMetadata } from "@/components/seo/metadata";
+import { createSeoMetadata, getPageSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -8,14 +7,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "mockInterview" });
+  const seo = getPageSeo(locale, "mockInterview");
 
-  return createSeoMetadata({
-    locale,
-    path: "/mock-interview",
-    title: t("title"),
-    description: t("description"),
-  });
+  return createSeoMetadata({ locale, path: "/mock-interview", ...seo });
 }
 
 export default function MockInterviewLayout({

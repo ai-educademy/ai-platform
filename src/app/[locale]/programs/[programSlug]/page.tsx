@@ -6,12 +6,16 @@ import { Lock } from "lucide-react";
 import { getProgram, getPrograms } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
-import { CourseJsonLd, BreadcrumbJsonLd, FAQJsonLd } from "@/components/seo/JsonLd";
+import {
+  CourseJsonLd,
+  BreadcrumbJsonLd,
+  FAQJsonLd,
+} from "@/components/seo/JsonLd";
 import { FaqAccordion } from "@/components/programs/FaqAccordion";
 import { RelatedArticles } from "@/components/programs/RelatedArticles";
 import { ExperimentCta } from "@/components/programs/ExperimentCta";
 import { routing } from "@/i18n/routing";
-import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
+import { BASE_URL, createSeoMetadata, getProgramSeo } from "@/lib/seo";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { lessonProgress } from "@/lib/db/schema";
@@ -25,7 +29,7 @@ export const dynamicParams = false;
 export function generateStaticParams() {
   const programs = getPrograms();
   return routing.locales.flatMap((locale) =>
-    programs.map((p) => ({ locale, programSlug: p.slug }))
+    programs.map((p) => ({ locale, programSlug: p.slug })),
   );
 }
 
@@ -39,14 +43,13 @@ export async function generateMetadata({
   if (!program) notFound();
 
   const tP = await getTranslations({ locale, namespace: "programs" });
-  const title = tP(`${programSlug}.title`);
-  const description = tP(`${programSlug}.description`);
+  const programName = tP(`${programSlug}.title`);
+  const seo = getProgramSeo(locale, programSlug, programName);
 
   return createSeoMetadata({
     locale,
     path: `/programs/${programSlug}`,
-    title,
-    description,
+    ...seo,
   });
 }
 
@@ -90,8 +93,8 @@ export default async function ProgramPage({
         .where(
           and(
             eq(lessonProgress.userId, session.user.id),
-            eq(lessonProgress.programSlug, programSlug)
-          )
+            eq(lessonProgress.programSlug, programSlug),
+          ),
         ),
       getUserPlan(session.user.id),
     ]);
@@ -118,7 +121,10 @@ export default async function ProgramPage({
         items={[
           { name: "Home", url: `${BASE_URL}${basePath}` },
           { name: tP("pageTitle"), url: `${BASE_URL}${basePath}/programs` },
-          { name: tP(`${programSlug}.title`), url: `${BASE_URL}${basePath}/programs/${programSlug}` },
+          {
+            name: tP(`${programSlug}.title`),
+            url: `${BASE_URL}${basePath}/programs/${programSlug}`,
+          },
         ]}
       />
       {/* Program header */}
@@ -126,13 +132,22 @@ export default async function ProgramPage({
         <div className="text-center mb-14">
           <div
             className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium mb-6"
-            style={{ backgroundColor: `${program.color}20`, color: program.color }}
+            style={{
+              backgroundColor: `${program.color}20`,
+              color: program.color,
+            }}
           >
             {program.icon} {t("level")} {program.level}
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-gradient">{tP(`${programSlug}.title`)}</h1>
-          <p className="text-xl text-[var(--color-text-muted)] mb-2 leading-relaxed">{tP(`${programSlug}.subtitle`)}</p>
-          <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto">{tP(`${programSlug}.description`)}</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-gradient">
+            {tP(`${programSlug}.title`)}
+          </h1>
+          <p className="text-xl text-[var(--color-text-muted)] mb-2 leading-relaxed">
+            {tP(`${programSlug}.subtitle`)}
+          </p>
+          <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto">
+            {tP(`${programSlug}.description`)}
+          </p>
         </div>
       </AnimatedSection>
 
@@ -144,9 +159,19 @@ export default async function ProgramPage({
             { value: `~${program.estimatedHours}h`, label: t("duration") },
             { value: `${program.level}/5`, label: t("level") },
           ].map((stat) => (
-            <div key={stat.label} className="text-center p-5 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] transition-all duration-300 hover:shadow-md hover:shadow-[var(--color-primary)]/5 hover:-translate-y-0.5">
-              <div className="text-2xl font-bold" style={{ color: program.color }}>{stat.value}</div>
-              <div className="text-xs text-[var(--color-text-muted)] mt-1">{stat.label}</div>
+            <div
+              key={stat.label}
+              className="text-center p-5 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] transition-all duration-300 hover:shadow-md hover:shadow-[var(--color-primary)]/5 hover:-translate-y-0.5"
+            >
+              <div
+                className="text-2xl font-bold"
+                style={{ color: program.color }}
+              >
+                {stat.value}
+              </div>
+              <div className="text-xs text-[var(--color-text-muted)] mt-1">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
@@ -157,12 +182,17 @@ export default async function ProgramPage({
         <div className="mb-14 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]">
           <h2 className="text-lg font-bold mb-4">🎯 {t("whatYouLearn")}</h2>
           <ul className="space-y-2">
-            {((tP.raw(`${programSlug}.outcomes`) as string[]) || []).map((outcome) => (
-              <li key={outcome} className="flex items-start gap-2 text-sm text-[var(--color-text-muted)]">
-                <span className="text-green-500 mt-0.5">✓</span>
-                {outcome}
-              </li>
-            ))}
+            {((tP.raw(`${programSlug}.outcomes`) as string[]) || []).map(
+              (outcome) => (
+                <li
+                  key={outcome}
+                  className="flex items-start gap-2 text-sm text-[var(--color-text-muted)]"
+                >
+                  <span className="text-green-500 mt-0.5">✓</span>
+                  {outcome}
+                </li>
+              ),
+            )}
           </ul>
         </div>
       </AnimatedSection>
@@ -172,14 +202,23 @@ export default async function ProgramPage({
         <div className="mb-14 p-4 rounded-xl bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/20">
           <p className="text-sm">
             <span className="font-semibold">{t("prerequisites")}:</span>{" "}
-            <span className="text-[var(--color-text-muted)]">{tP(`${programSlug}.prerequisites`)}</span>
+            <span className="text-[var(--color-text-muted)]">
+              {tP(`${programSlug}.prerequisites`)}
+            </span>
           </p>
         </div>
       </AnimatedSection>
 
       {/* Who Is This For? */}
       <AnimatedSection animation="fade-up" delay={220}>
-        <div className="mb-14 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]" style={{ background: "var(--color-glass)", backdropFilter: "saturate(200%) blur(24px)", WebkitBackdropFilter: "saturate(200%) blur(24px)" }}>
+        <div
+          className="mb-14 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]"
+          style={{
+            background: "var(--color-glass)",
+            backdropFilter: "saturate(200%) blur(24px)",
+            WebkitBackdropFilter: "saturate(200%) blur(24px)",
+          }}
+        >
           <h2 className="text-lg font-bold mb-3">👤 {t("whoIsThisFor")}</h2>
           <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
             {tP(`${programSlug}.audience`)}
@@ -192,15 +231,21 @@ export default async function ProgramPage({
         <div className="mb-14 p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)]">
           <h2 className="text-lg font-bold mb-4">🏷️ {t("topicsCovered")}</h2>
           <div className="flex flex-wrap gap-2">
-            {((tP.raw(`${programSlug}.topics`) as string[]) || []).map((topic) => (
-              <span
-                key={topic}
-                className="inline-block px-3 py-1.5 rounded-full text-xs font-medium"
-                style={{ backgroundColor: `${program.color}15`, color: program.color, border: `1px solid ${program.color}30` }}
-              >
-                {topic}
-              </span>
-            ))}
+            {((tP.raw(`${programSlug}.topics`) as string[]) || []).map(
+              (topic) => (
+                <span
+                  key={topic}
+                  className="inline-block px-3 py-1.5 rounded-full text-xs font-medium"
+                  style={{
+                    backgroundColor: `${program.color}15`,
+                    color: program.color,
+                    border: `1px solid ${program.color}30`,
+                  }}
+                >
+                  {topic}
+                </span>
+              ),
+            )}
           </div>
         </div>
       </AnimatedSection>
@@ -225,43 +270,59 @@ export default async function ProgramPage({
       {lessons.length > 0 ? (
         <div className="space-y-4 mb-8">
           {lessons.map((lesson, idx) => {
-            const locked = !isPremiumUser && requiresPremium(programSlug, idx + 1);
+            const locked =
+              !isPremiumUser && requiresPremium(programSlug, idx + 1);
             return (
-            <AnimatedSection key={lesson.slug} animation="fade-up" delay={300 + idx * 80}>
-              <Link
-                href={`${basePath}/programs/${programSlug}/lessons/${lesson.slug}`}
-                className="block group"
+              <AnimatedSection
+                key={lesson.slug}
+                animation="fade-up"
+                delay={300 + idx * 80}
               >
-                <div className="flex items-center gap-4 p-5 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary)]/5 hover:-translate-y-0.5 hover:border-[var(--color-primary)]/40">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 transition-transform duration-300 group-hover:scale-110"
-                    style={{ backgroundColor: `${program.color}20`, color: program.color }}
-                  >
-                    {idx + 1}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span>{lesson.icon}</span>
-                      <h3 className="font-bold line-clamp-2 leading-relaxed">{tLT(lesson.slug)}</h3>
+                <Link
+                  href={`${basePath}/programs/${programSlug}/lessons/${lesson.slug}`}
+                  className="block group"
+                >
+                  <div className="flex items-center gap-4 p-5 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary)]/5 hover:-translate-y-0.5 hover:border-[var(--color-primary)]/40">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 transition-transform duration-300 group-hover:scale-110"
+                      style={{
+                        backgroundColor: `${program.color}20`,
+                        color: program.color,
+                      }}
+                    >
+                      {idx + 1}
                     </div>
-                    <p className="text-sm text-[var(--color-text-muted)] line-clamp-1">{lesson.description}</p>
-                  </div>
-                  <div className="flex items-center gap-3 shrink-0">
-                    {locked && (
-                      /* Stating the lock up front. Previously every lesson
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span>{lesson.icon}</span>
+                        <h3 className="font-bold line-clamp-2 leading-relaxed">
+                          {tLT(lesson.slug)}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-[var(--color-text-muted)] line-clamp-1">
+                        {lesson.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 shrink-0">
+                      {locked && (
+                        /* Stating the lock up front. Previously every lesson
                          looked open and the paywall only appeared after the
                          click, which reads as a bait and switch. */
-                      <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400">
-                        <Lock className="h-3 w-3" aria-hidden="true" />
-                        {tP("pro")}
+                        <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400">
+                          <Lock className="h-3 w-3" aria-hidden="true" />
+                          {tP("pro")}
+                        </span>
+                      )}
+                      <span className="text-xs text-[var(--color-text-muted)]">
+                        ⏱️ {lesson.duration}m
                       </span>
-                    )}
-                    <span className="text-xs text-[var(--color-text-muted)]">⏱️ {lesson.duration}m</span>
-                    <span className="text-[var(--color-text-muted)] transition-transform duration-200 group-hover:translate-x-1">→</span>
+                      <span className="text-[var(--color-text-muted)] transition-transform duration-200 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </AnimatedSection>
+                </Link>
+              </AnimatedSection>
             );
           })}
         </div>
@@ -296,7 +357,9 @@ export default async function ProgramPage({
         )}
       </AnimatedSection>
 
-      <FAQJsonLd questions={faqItems.map((f) => ({ question: f.q, answer: f.a }))} />
+      <FAQJsonLd
+        questions={faqItems.map((f) => ({ question: f.q, answer: f.a }))}
+      />
 
       {/* CTA */}
       {lessons.length > 0 && (
@@ -364,7 +427,10 @@ export default async function ProgramPage({
           href={`${basePath}/programs`}
           className="group text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
         >
-          <span className="transition-transform duration-200 inline-block group-hover:-translate-x-0.5">←</span> {t("backToAll")}
+          <span className="transition-transform duration-200 inline-block group-hover:-translate-x-0.5">
+            ←
+          </span>{" "}
+          {t("backToAll")}
         </Link>
       </div>
     </div>

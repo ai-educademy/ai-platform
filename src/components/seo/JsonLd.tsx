@@ -1,6 +1,11 @@
-"use client";
+import {
+  BASE_URL,
+  SITE_NAME,
+  SOCIAL_IMAGE_URL,
+  localeUrl,
+  SUPPORTED_LANGUAGES,
+} from "@/lib/seo";
 
-const BASE_URL = "https://aieducademy.org";
 const GBP_OFFERS = [
   {
     "@type": "Offer",
@@ -8,7 +13,8 @@ const GBP_OFFERS = [
     price: "0",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    category: "free",
+    category: "free-preview",
+    description: "First lesson preview only",
   },
   {
     "@type": "Offer",
@@ -34,50 +40,13 @@ const GBP_OFFERS = [
     availability: "https://schema.org/InStock",
     category: "lifetime",
   },
-];
-const SUPPORTED_LANGUAGES = [
-  "en", "fr", "nl", "hi", "te", "es", "pt", "de", "ja", "zh", "ar",
-];
+] as const;
 
 function proficiencyLevel(level: number): string {
   return level <= 1 ? "Beginner" : level <= 3 ? "Intermediate" : "Advanced";
 }
 
-export function OrganizationJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": ["Organization", "WebSite"],
-    "@id": `${BASE_URL}/#website`,
-    name: "AI Educademy",
-    url: BASE_URL,
-    description:
-      "Multilingual AI education platform with interactive lessons and a Pro subscription",
-    inLanguage: SUPPORTED_LANGUAGES,
-    logo: {
-      "@type": "ImageObject",
-      url: `${BASE_URL}/icon-512.png`,
-    },
-    founder: {
-      "@type": "Person",
-      name: "Ramesh Reddy Adutla",
-      url: "https://github.com/rameshreddy-adutla",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "AI Educademy",
-      url: BASE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${BASE_URL}/icon-512.png`,
-      },
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${BASE_URL}/programs?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
-  };
-
+function JsonLdScript({ jsonLd }: { jsonLd: unknown }) {
   return (
     <script
       type="application/ld+json"
@@ -86,14 +55,51 @@ export function OrganizationJsonLd() {
   );
 }
 
-export function CourseJsonLd({
+export function buildOrganizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${BASE_URL}/#organization`,
+        name: SITE_NAME,
+        url: BASE_URL,
+        description:
+          "Multilingual AI education platform with guided lessons and paid Pro programmes",
+        logo: {
+          "@type": "ImageObject",
+          url: `${BASE_URL}/icon-512.png`,
+        },
+        founder: {
+          "@type": "Person",
+          name: "Ramesh Reddy Adutla",
+          url: "https://github.com/rameshreddy-adutla",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${BASE_URL}/#website`,
+        name: SITE_NAME,
+        url: BASE_URL,
+        publisher: { "@id": `${BASE_URL}/#organization` },
+        inLanguage: SUPPORTED_LANGUAGES,
+      },
+    ],
+  };
+}
+
+export function OrganizationJsonLd() {
+  return <JsonLdScript jsonLd={buildOrganizationJsonLd()} />;
+}
+
+export function buildCourseJsonLd({
   locale,
   name,
   description,
   slug,
   level,
   estimatedHours,
-  provider = "AI Educademy",
+  provider = SITE_NAME,
 }: {
   locale: string;
   name: string;
@@ -103,12 +109,12 @@ export function CourseJsonLd({
   estimatedHours?: number;
   provider?: string;
 }) {
-  const jsonLd = {
+  return {
     "@context": "https://schema.org",
     "@type": "Course",
     name,
     description,
-    url: `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${slug}`,
+    url: localeUrl(locale, `/programs/${slug}`),
     provider: {
       "@type": "Organization",
       name: provider,
@@ -117,7 +123,6 @@ export function CourseJsonLd({
     inLanguage: locale,
     isAccessibleForFree: false,
     educationalLevel: proficiencyLevel(level),
-    numberOfCredits: 0,
     audience: {
       "@type": "EducationalAudience",
       educationalRole: "student",
@@ -126,6 +131,10 @@ export function CourseJsonLd({
       "@type": "CourseInstance",
       courseMode: "online",
       courseWorkload: `PT${estimatedHours ?? 2}H`,
+      location: {
+        "@type": "VirtualLocation",
+        url: localeUrl(locale, `/programs/${slug}`),
+      },
     },
     offers: {
       "@type": "AggregateOffer",
@@ -136,13 +145,36 @@ export function CourseJsonLd({
       offers: GBP_OFFERS,
     },
   };
+}
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+export function CourseJsonLd(props: {
+  locale: string;
+  name: string;
+  description: string;
+  slug: string;
+  level: number;
+  estimatedHours?: number;
+  provider?: string;
+}) {
+  return <JsonLdScript jsonLd={buildCourseJsonLd(props)} />;
+}
+
+export function buildCourseListJsonLd({
+  courses,
+  locale,
+}: {
+  courses: { name: string; description: string; slug: string; level: number }[];
+  locale: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: courses.map((course, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: buildCourseJsonLd({ ...course, locale }),
+    })),
+  };
 }
 
 export function CourseListJsonLd({
@@ -152,43 +184,7 @@ export function CourseListJsonLd({
   courses: { name: string; description: string; slug: string; level: number }[];
   locale: string;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: courses.map((course, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Course",
-        name: course.name,
-        description: course.description,
-        provider: {
-          "@type": "Organization",
-          name: "AI Educademy",
-          url: BASE_URL,
-        },
-        isAccessibleForFree: false,
-        inLanguage: locale,
-        educationalLevel: proficiencyLevel(course.level),
-        url: `${BASE_URL}${locale === "en" ? "" : `/${locale}`}/programs/${course.slug}`,
-        offers: {
-          "@type": "AggregateOffer",
-          lowPrice: "0",
-          highPrice: "49.99",
-          priceCurrency: "GBP",
-          offerCount: GBP_OFFERS.length,
-          offers: GBP_OFFERS,
-        },
-      },
-    })),
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+  return <JsonLdScript jsonLd={buildCourseListJsonLd({ courses, locale })} />;
 }
 
 export function LearningResourceJsonLd({
@@ -225,7 +221,7 @@ export function LearningResourceJsonLd({
       name: courseName,
       provider: {
         "@type": "Organization",
-        name: "AI Educademy",
+        name: SITE_NAME,
         url: BASE_URL,
       },
     },
@@ -243,20 +239,15 @@ export function LearningResourceJsonLd({
       : {}),
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+  return <JsonLdScript jsonLd={jsonLd} />;
 }
 
-export function BreadcrumbJsonLd({
+export function buildBreadcrumbJsonLd({
   items,
 }: {
   items: { name: string; url: string }[];
 }) {
-  const jsonLd = {
+  return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
@@ -266,24 +257,26 @@ export function BreadcrumbJsonLd({
       item: item.url,
     })),
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
 }
 
-export function ArticleJsonLd({
+export function BreadcrumbJsonLd({
+  items,
+}: {
+  items: { name: string; url: string }[];
+}) {
+  return <JsonLdScript jsonLd={buildBreadcrumbJsonLd({ items })} />;
+}
+
+export function buildArticleJsonLd({
   headline,
   description,
   datePublished,
   dateModified,
   author,
-  image,
+  image = SOCIAL_IMAGE_URL,
   url,
   tags,
+  locale,
 }: {
   headline: string;
   description: string;
@@ -293,10 +286,14 @@ export function ArticleJsonLd({
   image?: string;
   url: string;
   tags?: string[];
+  locale: string;
 }) {
-  const jsonLd = {
+  const absoluteImage = image.startsWith("http")
+    ? image
+    : `${BASE_URL}${image}`;
+  return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline,
     description,
     datePublished,
@@ -304,28 +301,40 @@ export function ArticleJsonLd({
     author: { "@type": "Person", name: author },
     publisher: {
       "@type": "Organization",
-      name: "AI Educademy",
+      name: SITE_NAME,
       url: BASE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/icon-512.png`,
+      },
     },
-    image,
+    image: [absoluteImage],
+    inLanguage: locale,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     keywords: tags?.join(", "),
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
 }
 
-export function FAQJsonLd({
+export function ArticleJsonLd(props: {
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  author: string;
+  image?: string;
+  url: string;
+  tags?: string[];
+  locale: string;
+}) {
+  return <JsonLdScript jsonLd={buildArticleJsonLd(props)} />;
+}
+
+export function buildFAQJsonLd({
   questions,
 }: {
   questions: { question: string; answer: string }[];
 }) {
-  const jsonLd = {
+  return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: questions.map((q) => ({
@@ -337,11 +346,12 @@ export function FAQJsonLd({
       },
     })),
   };
+}
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+export function FAQJsonLd({
+  questions,
+}: {
+  questions: { question: string; answer: string }[];
+}) {
+  return <JsonLdScript jsonLd={buildFAQJsonLd({ questions })} />;
 }

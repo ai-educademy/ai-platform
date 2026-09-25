@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
-import { buildAlternates } from "@/lib/seo";
+import { createSeoMetadata, getPageSeo } from "@/lib/seo";
 import { getPurchasablePlans } from "@/lib/stripe";
 import { trackEvent } from "@/lib/funnel";
 import { resolvePricingCurrency } from "@/lib/pricing";
@@ -13,17 +13,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pricing" });
-  return {
-    // The root layout already applies a `%s | AI Educademy` title
-    // template, so appending the brand here rendered it twice.
-    title: t("pageTitle"),
-    description: t("pageDescription"),
-    alternates: {
-      canonical: `https://aieducademy.org${locale === "en" ? "" : `/${locale}`}/pricing`,
-      ...buildAlternates("/pricing"),
-    },
-  };
+  const seo = getPageSeo(locale, "pricing");
+  return createSeoMetadata({ locale, path: "/pricing", ...seo });
 }
 
 export default async function PricingPage({

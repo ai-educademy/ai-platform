@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
+import { BASE_URL, createSeoMetadata, getPageSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,16 +9,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "terms" });
+  const seo = getPageSeo(locale, "terms");
   return createSeoMetadata({
     locale,
     path: "/terms",
-    title: t("title"),
-    description: t("subtitle"),
+    ...seo,
     robots: { index: true, follow: true },
   });
 }
-
 const sectionKeys = [
   "use",
   "accounts",
