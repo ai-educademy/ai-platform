@@ -5,11 +5,16 @@
  * of undeliverable addresses in a campaign measurably degrades inbox placement
  * for everyone else on the list. The cheapest fix is not to send.
  *
- * This only excludes addresses that cannot receive mail by definition. It
- * deliberately does not guess at unfamiliar domains: a small or regional domain
- * looks exactly like a fake one, and wrongly dropping a real subscriber is a
- * worse error than one bounce.
+ * It excludes addresses that cannot receive mail by definition, plus throwaway
+ * inboxes on the community disposable-email-domains blocklist (refresh with
+ * scripts/refresh-disposable-domains.mjs). It deliberately does not guess
+ * beyond that list: a small or regional domain looks exactly like a fake one,
+ * and wrongly dropping a real subscriber is a worse error than one bounce.
  */
+
+import disposableDomains from "@/lib/disposable-domains.json";
+
+const DISPOSABLE_DOMAINS: ReadonlySet<string> = new Set(disposableDomains);
 
 /**
  * Reserved by RFC 2606 and RFC 6761 for documentation and testing. These are
@@ -38,6 +43,7 @@ export function isUndeliverableAddress(email: string | null | undefined): boolea
   const domain = trimmed.slice(at + 1);
   if (!domain.includes(".")) return true;
   if (NON_DELIVERABLE_DOMAINS.has(domain)) return true;
+  if (DISPOSABLE_DOMAINS.has(domain)) return true;
 
   const tld = domain.slice(domain.lastIndexOf(".") + 1);
   if (RESERVED_TLDS.has(tld)) return true;
