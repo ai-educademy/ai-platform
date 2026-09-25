@@ -48,11 +48,28 @@ function ConfettiOverlay({ onDone }: { onDone: () => void }) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const colours = ["#6366f1", "#f43f5e", "#fbbf24", "#10b981", "#8b5cf6", "#06b6d4", "#f97316", "#ec4899"];
+    const colours = [
+      "#6366f1",
+      "#f43f5e",
+      "#fbbf24",
+      "#10b981",
+      "#8b5cf6",
+      "#06b6d4",
+      "#f97316",
+      "#ec4899",
+    ];
     const particles: Array<{
-      x: number; y: number; vx: number; vy: number;
-      w: number; h: number; colour: string; rot: number; vr: number;
-      gravity: number; opacity: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      w: number;
+      h: number;
+      colour: string;
+      rot: number;
+      vr: number;
+      gravity: number;
+      opacity: number;
     }> = [];
 
     for (let i = 0; i < 200; i++) {
@@ -112,7 +129,13 @@ function ConfettiOverlay({ onDone }: { onDone: () => void }) {
   );
 }
 
-function CelebrationModal({ trackName, onClose }: { trackName: string; onClose: () => void }) {
+function CelebrationModal({
+  trackName,
+  onClose,
+}: {
+  trackName: string;
+  onClose: () => void;
+}) {
   const t = useTranslations("lessons");
   return (
     <div
@@ -127,13 +150,17 @@ function CelebrationModal({ trackName, onClose }: { trackName: string; onClose: 
       >
         <div
           className="text-6xl mb-4"
-          style={{ animation: "scale-in 0.4s cubic-bezier(0.22,1,0.36,1) 150ms both" }}
+          style={{
+            animation: "scale-in 0.4s cubic-bezier(0.22,1,0.36,1) 150ms both",
+          }}
         >
           🎉
         </div>
         <h2
           className="text-2xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-2"
-          style={{ animation: "fade-up 0.4s cubic-bezier(0.22,1,0.36,1) 250ms both" }}
+          style={{
+            animation: "fade-up 0.4s cubic-bezier(0.22,1,0.36,1) 250ms both",
+          }}
         >
           {t("trackComplete")}
         </h2>
@@ -170,7 +197,8 @@ export function LessonComplete({
   programLevel: _programLevel,
   trackLessonCounts,
 }: LessonCompleteProps) {
-  const { isCompleted, markComplete, getProgram, allData } = useProgress(programSlug);
+  const { isCompleted, markComplete, getProgram, allData } =
+    useProgress(programSlug);
   const { allQuizzesPassed, totalQuizzes, passedQuizzes } = useQuizContext();
   const tL = useTranslations("lessons");
   const tP = useTranslations("programs");
@@ -182,7 +210,7 @@ export function LessonComplete({
   const confettiTriggered = useRef(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const endRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(true);
   const completed = isCompleted(slug);
 
   const progData = getProgram(programSlug);
@@ -213,9 +241,12 @@ export function LessonComplete({
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight > 0) {
-        setScrollProgress(Math.min(100, Math.round((scrollTop / docHeight) * 100)));
+        setScrollProgress(
+          Math.min(100, Math.round((scrollTop / docHeight) * 100)),
+        );
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -251,7 +282,7 @@ export function LessonComplete({
           observer.disconnect();
         }
       },
-      { rootMargin: "-40px" }
+      { rootMargin: "-40px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -286,10 +317,14 @@ export function LessonComplete({
   return (
     <>
       {/* Confetti celebration for track completion */}
-      {showConfetti && <ConfettiOverlay onDone={() => setShowConfetti(false)} />}
+      {showConfetti && (
+        <ConfettiOverlay onDone={() => setShowConfetti(false)} />
+      )}
       {showCelebration && (
         <CelebrationModal
-          trackName={programTrack === "ai-learning" ? tL("trackAI") : tL("trackCraft")}
+          trackName={
+            programTrack === "ai-learning" ? tL("trackAI") : tL("trackCraft")
+          }
           onClose={() => setShowCelebration(false)}
         />
       )}
@@ -300,25 +335,23 @@ export function LessonComplete({
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <div
-        className="mt-12 space-y-6"
-        ref={endRef}
-        style={sectionStyle}
-      >
+      <div className="mt-12 space-y-6" ref={endRef} style={sectionStyle}>
         {/* Progress indicator */}
         <div className="flex items-center justify-between text-sm text-[var(--color-text-muted)]">
           <span>
             {tL("lessonOf", { current: currentIndex + 1, total: totalLessons })}
           </span>
           <span>
-            {tL("progressPercent", { percent: totalLessons > 0 ? Math.round((progCompleted / totalLessons) * 100) : 0 })}
+            {tL("progressPercent", {
+              percent:
+                totalLessons > 0
+                  ? Math.round((progCompleted / totalLessons) * 100)
+                  : 0,
+            })}
           </span>
         </div>
         <div className="progress-bar">
-          <div
-            className="progress-bar-fill"
-            style={progressStyle}
-          />
+          <div className="progress-bar-fill" style={progressStyle} />
         </div>
 
         {/* Completion gate */}
@@ -344,7 +377,10 @@ export function LessonComplete({
                         {tL("quizRequired")}
                       </div>
                       <div className="text-xs text-[var(--color-text-muted)]">
-                        {tL("quizProgress", { passed: passedQuizzes, total: totalQuizzes })}
+                        {tL("quizProgress", {
+                          passed: passedQuizzes,
+                          total: totalQuizzes,
+                        })}
                       </div>
                     </>
                   )}
@@ -374,7 +410,9 @@ export function LessonComplete({
               href={`${basePath}/${prevSlug}`}
               className="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] active:text-[var(--color-primary)] transition-colors min-w-0 min-h-[44px] px-2"
             >
-              <span className="shrink-0 group-hover:-translate-x-1 transition-transform">←</span>
+              <span className="shrink-0 group-hover:-translate-x-1 transition-transform">
+                ←
+              </span>
               <span className="line-clamp-1">{prevTitle}</span>
             </Link>
           ) : (
@@ -382,44 +420,54 @@ export function LessonComplete({
               href={programPath}
               className="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] active:text-[var(--color-primary)] transition-colors min-h-[44px] px-2"
             >
-              <span className="shrink-0 group-hover:-translate-x-1 transition-transform">←</span>
+              <span className="shrink-0 group-hover:-translate-x-1 transition-transform">
+                ←
+              </span>
               <span>{tL("backToProgram")}</span>
             </Link>
           )}
-          {(completed || justCompleted) && (
-            <>
-              {nextSlug ? (
-                <div className="hover:scale-[1.03] active:scale-[0.97] transition-transform">
-                  <Link
-                    href={`${basePath}/${nextSlug}`}
-                    className="group flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-xl hover:brightness-110 active:brightness-90 transition-all min-w-0 min-h-[44px] shadow-lg shadow-[var(--color-primary)]/20"
-                  >
-                    <span className="line-clamp-1">{nextTitle}</span>
-                    <span className="shrink-0 group-hover:translate-x-1 transition-transform">→</span>
-                  </Link>
-                </div>
-              ) : nextProgram ? (
-                <div className="hover:scale-[1.03] active:scale-[0.97] transition-transform">
-                  <Link
-                    href={programPath.replace(/\/[^/]+$/, `/${nextProgram.slug}`)}
-                    className="group flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl hover:shadow-lg active:brightness-90 transition-all min-h-[44px] shadow-lg shadow-indigo-600/20"
-                  >
-                    <span>{nextProgram.icon} {tP(`${nextProgram.slug}.title`)}</span>
-                    <span className="shrink-0 group-hover:translate-x-1 transition-transform">→</span>
-                  </Link>
-                </div>
-              ) : (
-                <div className="hover:scale-[1.03] active:scale-[0.97] transition-transform">
-                  <Link
-                    href={programPath.replace(/\/[^/]+$/, "")}
-                    className="group flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl hover:shadow-lg active:brightness-90 transition-all min-h-[44px] shadow-lg shadow-indigo-600/20"
-                  >
-                    <span>{tL("allPrograms")}</span>
-                    <span className="shrink-0 group-hover:translate-x-1 transition-transform">→</span>
-                  </Link>
-                </div>
-              )}
-            </>
+          {nextSlug ? (
+            <div className="hover:scale-[1.03] active:scale-[0.97] transition-transform">
+              <Link
+                href={`${basePath}/${nextSlug}`}
+                className="group flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-xl hover:brightness-110 active:brightness-90 transition-all min-w-0 min-h-[44px] shadow-lg shadow-[var(--color-primary)]/20"
+              >
+                <span className="line-clamp-1">
+                  {tL("continueToLesson", {
+                    title: nextTitle ?? tL("nextLesson"),
+                  })}
+                </span>
+                <span className="shrink-0 group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </Link>
+            </div>
+          ) : nextProgram ? (
+            <div className="hover:scale-[1.03] active:scale-[0.97] transition-transform">
+              <Link
+                href={programPath.replace(/\/[^/]+$/, `/${nextProgram.slug}`)}
+                className="group flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl hover:shadow-lg active:brightness-90 transition-all min-h-[44px] shadow-lg shadow-indigo-600/20"
+              >
+                <span>
+                  {nextProgram.icon} {tP(`${nextProgram.slug}.title`)}
+                </span>
+                <span className="shrink-0 group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </Link>
+            </div>
+          ) : (
+            <div className="hover:scale-[1.03] active:scale-[0.97] transition-transform">
+              <Link
+                href={programPath.replace(/\/[^/]+$/, "")}
+                className="group flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl hover:shadow-lg active:brightness-90 transition-all min-h-[44px] shadow-lg shadow-indigo-600/20"
+              >
+                <span>{tL("allPrograms")}</span>
+                <span className="shrink-0 group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </Link>
+            </div>
           )}
         </div>
       </div>

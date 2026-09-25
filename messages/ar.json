@@ -204,7 +204,8 @@
       "zh": "الصينية",
       "ar": "العربية"
     },
-    "machineTranslatedNotice": "تُرجِمت هذه الدروس تلقائيًا إلى {language} ولم تخضع بعد لمراجعة بشرية. إذا بدت أي صياغة غريبة، فالنسخة الإنجليزية هي المرجع."
+    "machineTranslatedNotice": "تُرجِمت هذه الدروس تلقائيًا إلى {language} ولم تخضع بعد لمراجعة بشرية. إذا بدت أي صياغة غريبة، فالنسخة الإنجليزية هي المرجع.",
+    "continueToLesson": "متابعة: {title}"
   },
   "programs": {
     "badge": "",
@@ -1082,7 +1083,15 @@
     "resetting": "Resetting...",
     "sending": "Sending...",
     "signingIn": "جارٍ تسجيل الدخول...",
-    "errorCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة. هل أكدت بريدك؟"
+    "errorCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة. هل أكدت بريدك؟",
+    "orContinueWithEmail": "أو استخدم البريد الإلكتروني",
+    "verifyBannerTitle": "تحقق من بريدك الإلكتروني عندما يتوفر لديك وقت",
+    "verifyBannerBody": "يمكنك متابعة التعلم الآن. يساعد التحقق في استرداد حسابك وقد يكون مطلوبًا قبل الدفع.",
+    "verifyBannerSend": "إرسال الرمز",
+    "verifyBannerSending": "جارٍ الإرسال...",
+    "verifyBannerSent": "تم إرسال الرمز. تحقق من صندوق الوارد.",
+    "verifyBannerOpen": "إدخال الرمز",
+    "verifyBannerError": "تعذر إرسال الرمز. حاول مرة أخرى بعد قليل."
   },
   "lessonTitles": {
     "agentic-workflows": "سير العمل الوكيلية",

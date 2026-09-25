@@ -204,7 +204,8 @@
       "zh": "chinês",
       "ar": "árabe"
     },
-    "machineTranslatedNotice": "Esta lição foi traduzida automaticamente para {language} e ainda não foi revisada por uma pessoa. Se algo parecer estranho, a versão em inglês é a definitiva."
+    "machineTranslatedNotice": "Esta lição foi traduzida automaticamente para {language} e ainda não foi revisada por uma pessoa. Se algo parecer estranho, a versão em inglês é a definitiva.",
+    "continueToLesson": "Continuar: {title}"
   },
   "programs": {
     "badge": "",
@@ -1082,7 +1083,15 @@
     "resetting": "Redefinindo...",
     "sending": "Enviando...",
     "signingIn": "Entrando...",
-    "errorCredentials": "E-mail ou senha invalidos. Voce verificou seu e-mail?"
+    "errorCredentials": "E-mail ou senha invalidos. Voce verificou seu e-mail?",
+    "orContinueWithEmail": "Ou use o e-mail",
+    "verifyBannerTitle": "Verifique seu e-mail quando tiver um minuto",
+    "verifyBannerBody": "Você pode continuar aprendendo agora. A verificação ajuda a recuperar a conta e pode ser necessária antes do pagamento.",
+    "verifyBannerSend": "Enviar código",
+    "verifyBannerSending": "Enviando...",
+    "verifyBannerSent": "Código enviado. Verifique sua caixa de entrada.",
+    "verifyBannerOpen": "Inserir código",
+    "verifyBannerError": "Não foi possível enviar o código. Tente novamente em instantes."
   },
   "lessonTitles": {
     "agentic-workflows": "Fluxos de Trabalho Agênticos",

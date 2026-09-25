@@ -204,7 +204,8 @@
       "zh": "Chinees",
       "ar": "Arabisch"
     },
-    "machineTranslatedNotice": "Deze les is automatisch vertaald naar het {language} en is nog niet door een mens nagekeken. Klinkt iets vreemd, dan is de Engelse versie leidend."
+    "machineTranslatedNotice": "Deze les is automatisch vertaald naar het {language} en is nog niet door een mens nagekeken. Klinkt iets vreemd, dan is de Engelse versie leidend.",
+    "continueToLesson": "Verdergaan: {title}"
   },
   "programs": {
     "badge": "",
@@ -1082,7 +1083,15 @@
     "resetting": "Resetten...",
     "sending": "Verzenden...",
     "signingIn": "Inloggen...",
-    "errorCredentials": "Ongeldig e-mailadres of wachtwoord. Heb je je e-mail geverifieerd?"
+    "errorCredentials": "Ongeldig e-mailadres of wachtwoord. Heb je je e-mail geverifieerd?",
+    "orContinueWithEmail": "Of gebruik e-mail",
+    "verifyBannerTitle": "Verifieer je e-mail wanneer je even tijd hebt",
+    "verifyBannerBody": "Je kunt nu blijven leren. Verificatie houdt je account herstelbaar en kan nodig zijn voor het afrekenen.",
+    "verifyBannerSend": "Code sturen",
+    "verifyBannerSending": "Bezig met sturen...",
+    "verifyBannerSent": "Code verstuurd. Controleer je inbox.",
+    "verifyBannerOpen": "Code invoeren",
+    "verifyBannerError": "We konden de code niet sturen. Probeer het zo opnieuw."
   },
   "lessonTitles": {
     "agentic-workflows": "Agentische workflows",

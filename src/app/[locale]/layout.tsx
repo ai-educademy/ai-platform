@@ -12,11 +12,11 @@ import "../globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { Providers } from "@/components/ui/Providers";
+import { EmailVerificationBanner } from "@/components/auth/EmailVerificationBanner";
 
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { ChatWidget } from "@/components/ui/chat/ChatWidget";
 import { ReferralTracker } from "@/components/ReferralTracker";
-
 
 import { buildAlternates } from "@/lib/seo";
 
@@ -153,7 +153,12 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning className={inter.variable}>
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      suppressHydrationWarning
+      className={inter.variable}
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -169,6 +174,7 @@ export default async function LocaleLayout({
           <NextIntlClientProvider messages={messages}>
             <div className="min-h-screen flex flex-col">
               <Navbar />
+              <EmailVerificationBanner />
               <main className="flex-1">{children}</main>
               <Footer />
             </div>

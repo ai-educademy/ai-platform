@@ -1,4 +1,11 @@
-import { welcomeEmailHtml, subscriptionEmailHtml, verificationCodeEmailHtml, passwordResetEmailHtml, leadMagnetEmailHtml, abandonedCartEmailHtml } from "./emailTemplates";
+import {
+  welcomeEmailHtml,
+  subscriptionEmailHtml,
+  verificationCodeEmailHtml,
+  passwordResetEmailHtml,
+  leadMagnetEmailHtml,
+  abandonedCartEmailHtml,
+} from "./emailTemplates";
 import { getEmailTranslator } from "./email-i18n";
 import { getOrCreateUnsubscribeToken, unsubscribeLinkFor } from "./unsubscribe";
 import { localeBasePath } from "./safe-locale";
@@ -45,27 +52,40 @@ const cancelSubjectByLocale: Record<string, string> = {
   ar: "لقد انتهى اشتراكك",
 };
 
-async function sendEmail(to: string, subject: string, html: string): Promise<void> {
+async function sendEmail(
+  to: string,
+  subject: string,
+  html: string,
+): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.info(`[Email] No RESEND_API_KEY set. Skipping email for ${to}`);
-    return;
+    return false;
   }
 
   try {
     const { Resend } = await import("resend");
     const resend = new Resend(apiKey);
-    const fromAddress = process.env.RESEND_FROM_EMAIL || "AI Educademy <onboarding@resend.dev>";
+    const fromAddress =
+      process.env.RESEND_FROM_EMAIL || "AI Educademy <onboarding@resend.dev>";
 
-    const result = await resend.emails.send({ from: fromAddress, to, subject, html });
+    const result = await resend.emails.send({
+      from: fromAddress,
+      to,
+      subject,
+      html,
+    });
 
     if (result.error) {
       console.error(`[Email] Resend API error for ${to}:`, result.error);
+      return false;
     } else {
       console.info(`[Email] Email sent to ${to} (id: ${result.data?.id})`);
+      return true;
     }
   } catch (error) {
     console.error(`[Email] Failed to send email to ${to}:`, error);
+    return false;
   }
 }
 
@@ -102,14 +122,17 @@ export async function sendMarketingEmail(
 ): Promise<MarketingSendResult> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.info(`[Email] No RESEND_API_KEY set. Skipping marketing email for ${to}`);
+    console.info(
+      `[Email] No RESEND_API_KEY set. Skipping marketing email for ${to}`,
+    );
     return { status: "rejected", reason: "RESEND_API_KEY is not set" };
   }
 
   try {
     const { Resend } = await import("resend");
     const resend = new Resend(apiKey);
-    const fromAddress = process.env.RESEND_FROM_EMAIL || "AI Educademy <onboarding@resend.dev>";
+    const fromAddress =
+      process.env.RESEND_FROM_EMAIL || "AI Educademy <onboarding@resend.dev>";
 
     const result = await resend.emails.send({
       from: fromAddress,
@@ -124,7 +147,10 @@ export async function sendMarketingEmail(
 
     if (result.error) {
       console.error(`[Email] Resend API error for ${to}:`, result.error);
-      return { status: "rejected", reason: result.error.message ?? String(result.error) };
+      return {
+        status: "rejected",
+        reason: result.error.message ?? String(result.error),
+      };
     }
     return { status: "sent" };
   } catch (error) {
@@ -135,10 +161,19 @@ export async function sendMarketingEmail(
   }
 }
 
-export async function sendWelcomeEmail(email: string, locale: string = "en", name?: string): Promise<void> {
+export async function sendWelcomeEmail(
+  email: string,
+  locale: string = "en",
+  name?: string,
+): Promise<void> {
   const subject = subjectByLocale[locale] || subjectByLocale.en;
   const token = await getOrCreateUnsubscribeToken(email);
-  const html = welcomeEmailHtml(email, locale, name, unsubscribeLinkFor(token, locale));
+  const html = welcomeEmailHtml(
+    email,
+    locale,
+    name,
+    unsubscribeLinkFor(token, locale),
+  );
   await sendEmail(email, subject, html);
 }
 
@@ -146,15 +181,19 @@ export async function sendSubscriptionEmail(
   email: string,
   type: "activated" | "cancelled",
   plan: string = "monthly",
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<void> {
-  const subjects = type === "activated" ? proSubjectByLocale : cancelSubjectByLocale;
+  const subjects =
+    type === "activated" ? proSubjectByLocale : cancelSubjectByLocale;
   const subject = subjects[locale] || subjects.en;
   const html = subscriptionEmailHtml(email, type, plan, locale);
   await sendEmail(email, subject, html);
 }
 
-export async function sendAdminNotification(subject: string, body: string): Promise<void> {
+export async function sendAdminNotification(
+  subject: string,
+  body: string,
+): Promise<void> {
   const adminEmail = process.env.ADMIN_EMAIL;
   if (!adminEmail) {
     console.info("[Email] No ADMIN_EMAIL set. Skipping admin notification.");
@@ -164,19 +203,29 @@ export async function sendAdminNotification(subject: string, body: string): Prom
   await sendEmail(adminEmail, `[AI Educademy] ${subject}`, html);
 }
 
-export async function sendVerificationEmail(email: string, code: string): Promise<void> {
+export async function sendVerificationEmail(
+  email: string,
+  code: string,
+): Promise<boolean> {
   const subject = "Your AI Educademy verification code";
   const html = verificationCodeEmailHtml(code);
-  await sendEmail(email, subject, html);
+  return sendEmail(email, subject, html);
 }
 
-export async function sendPasswordResetEmail(email: string, resetUrl: string): Promise<void> {
+export async function sendPasswordResetEmail(
+  email: string,
+  resetUrl: string,
+): Promise<void> {
   const subject = "Reset your AI Educademy password";
   const html = passwordResetEmailHtml(resetUrl);
   await sendEmail(email, subject, html);
 }
 
-export async function sendAbandonedCartEmail(email: string, name?: string, locale: string = "en"): Promise<void> {
+export async function sendAbandonedCartEmail(
+  email: string,
+  name?: string,
+  locale: string = "en",
+): Promise<void> {
   const tr = await getEmailTranslator(locale);
   const basePath = localeBasePath(tr.locale);
   const pricingUrl = `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/pricing`;
@@ -193,9 +242,17 @@ export async function sendAbandonedCartEmail(email: string, name?: string, local
   await sendEmail(email, subject, html);
 }
 
-export async function sendLeadMagnetEmail(email: string, name: string, downloadUrl: string): Promise<void> {
+export async function sendLeadMagnetEmail(
+  email: string,
+  name: string,
+  downloadUrl: string,
+): Promise<void> {
   const subject = "Your AI Starter Kit is Ready! 🚀";
   const token = await getOrCreateUnsubscribeToken(email);
-  const html = leadMagnetEmailHtml(name, downloadUrl, unsubscribeLinkFor(token, "en"));
+  const html = leadMagnetEmailHtml(
+    name,
+    downloadUrl,
+    unsubscribeLinkFor(token, "en"),
+  );
   await sendEmail(email, subject, html);
 }
