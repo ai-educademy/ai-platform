@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
 import { getPurchasablePlans } from "@/lib/stripe";
+import { trackEvent } from "@/lib/funnel";
 import { PricingCards } from "./PricingCards";
 
 export async function generateMetadata({
@@ -30,6 +31,7 @@ export default async function PricingPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pricing" });
+  trackEvent("pricing_viewed", { locale, path: `${locale === "en" ? "" : `/${locale}`}/pricing` });
 
   return (
     <section className="py-20 px-4 sm:px-6 max-w-6xl mx-auto">

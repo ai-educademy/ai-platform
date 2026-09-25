@@ -1985,7 +1985,7 @@
       },
       "use": {
         "title": "2. How We Use Your Information",
-        "content": "We use your information to: provide and personalise the learning experience; track your course progress; process payments and manage subscriptions; send important account and service notifications; improve our platform through analytics; send optional educational newsletters (you can opt out at any time)."
+        "content": "We use your information to: provide and personalise the learning experience; track your course progress; process payments and manage subscriptions; send important account and service notifications; improve our platform through analytics; send optional educational newsletters (you can opt out at any time). We also record first-party funnel events, such as sign-up, lesson, paywall and checkout milestones, to understand where the product needs improving."
       },
       "sharing": {
         "title": "3. Information Sharing",

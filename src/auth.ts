@@ -12,6 +12,7 @@ import { sendWelcomeEmail, sendAdminNotification } from "@/lib/email";
 import { cookies } from "next/headers";
 import { safeLocale } from "@/lib/safe-locale";
 import { refreshTokenRole } from "@/lib/auth-role";
+import { trackEvent } from "@/lib/funnel";
 
 if (!process.env.AUTH_SECRET) {
   console.warn(
@@ -115,8 +116,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // column existed, or who signed up through a provider. Only writes on a
       // genuine change.
       if (!user?.id) return;
+      const locale = await localeFromRequest();
+      trackEvent("signin", { userId: user.id, locale, path: "/signin" });
       try {
-        const locale = await localeFromRequest();
         await db
           .update(users)
           .set({ locale })
@@ -138,6 +140,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             .where(eq(users.id, user.id))
             .catch((err) => console.error("[Auth] Locale set failed:", err));
         }
+        trackEvent("signup_completed", { userId: user.id, locale, path: "/signup" });
         sendWelcomeEmail(user.email, locale, user.name || undefined).catch((err) =>
           console.error("[Auth] Welcome email failed:", err)
         );

@@ -96,6 +96,23 @@ interface FeedbackRow {
   createdAt: string | null;
 }
 
+interface FunnelSummary {
+  current: {
+    visitors: number;
+    signups: number;
+    activationRate: number;
+    paywallViews: number;
+    checkoutStarts: number;
+    trials: number;
+    paid: number;
+    churn: number;
+  };
+  previous: {
+    activationRate: number;
+  };
+  weekOnWeek: Record<"visitors" | "signups" | "paywallViews" | "checkoutStarts" | "trials" | "paid" | "churn", number | null>;
+}
+
 type Tab = "overview" | "users" | "contacts" | "subscribers" | "feedback";
 
 /* ═══════════════════════════ Helper components ═══════════════════════════ */
@@ -223,6 +240,7 @@ export default function AdminPage() {
 
   // Growth chart state
   const [growthData, setGrowthData] = useState<GrowthPoint[]>([]);
+  const [funnelData, setFunnelData] = useState<FunnelSummary | null>(null);
 
   /* ─────── Data fetchers ─────── */
 
@@ -232,6 +250,15 @@ export default function AdminPage() {
       if (res.ok) setGrowthData(await res.json());
     } catch (err) {
       console.error("[Admin] Growth fetch error:", err);
+    }
+  }, []);
+
+  const fetchFunnel = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/analytics/funnel");
+      if (res.ok) setFunnelData(await res.json());
+    } catch (err) {
+      console.error("[Admin] Funnel fetch error:", err);
     }
   }, []);
 
@@ -381,6 +408,10 @@ export default function AdminPage() {
   }, [isAdmin, fetchGrowth]);
 
   useEffect(() => {
+    if (isAdmin) fetchFunnel();
+  }, [isAdmin, fetchFunnel]);
+
+  useEffect(() => {
     if (isAdmin && activeTab === "users") fetchUsers();
   }, [isAdmin, activeTab, fetchUsers]);
 
@@ -508,6 +539,48 @@ export default function AdminPage() {
                   </GlassCard>
                 ))}
               </div>
+
+              {/* ── Charts ── */}
+              {funnelData && (
+                <GlassCard className="p-6">
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div>
+                      <h2 className="text-lg font-bold">Funnel, last 7 days</h2>
+                      <p className="text-xs text-[var(--color-text-muted)]">First-party events only. Week-on-week compares with the previous 7 days.</p>
+                    </div>
+                    <button
+                      onClick={fetchFunnel}
+                      className="text-xs px-3 py-1.5 rounded-lg bg-[var(--color-glass)] border border-[var(--color-border)] hover:bg-[var(--color-bg-card)] transition-colors"
+                    >
+                      Refresh funnel
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {[
+                      { key: "visitors", label: "Visitors", value: funnelData.current.visitors, change: funnelData.weekOnWeek.visitors },
+                      { key: "signups", label: "Signups", value: funnelData.current.signups, change: funnelData.weekOnWeek.signups },
+                      { key: "activation", label: "Activation", value: `${funnelData.current.activationRate}%`, change: funnelData.previous.activationRate },
+                      { key: "paywallViews", label: "Paywall views", value: funnelData.current.paywallViews, change: funnelData.weekOnWeek.paywallViews },
+                      { key: "checkoutStarts", label: "Checkout starts", value: funnelData.current.checkoutStarts, change: funnelData.weekOnWeek.checkoutStarts },
+                      { key: "trials", label: "Trials", value: funnelData.current.trials, change: funnelData.weekOnWeek.trials },
+                      { key: "paid", label: "Paid", value: funnelData.current.paid, change: funnelData.weekOnWeek.paid },
+                      { key: "churn", label: "Churn", value: funnelData.current.churn, change: funnelData.weekOnWeek.churn },
+                    ].map((metric) => (
+                      <div key={metric.key} className="rounded-xl bg-[var(--color-glass)] p-4">
+                        <p className="text-xs text-[var(--color-text-muted)]">{metric.label}</p>
+                        <p className="mt-1 text-2xl font-bold text-gradient tabular-nums">{metric.value}</p>
+                        <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                          {metric.key === "activation"
+                            ? `${metric.change}% previous`
+                            : metric.change === null
+                              ? "New this week"
+                              : `${metric.change > 0 ? "+" : ""}${metric.change}% week-on-week`}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </GlassCard>
+              )}
 
               {/* ── Charts ── */}
               <div className="grid grid-cols-1 gap-4">

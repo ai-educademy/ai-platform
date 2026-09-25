@@ -8,6 +8,7 @@ import {
   primaryKey,
   uniqueIndex,
   unique,
+  index,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 
@@ -279,4 +280,29 @@ export const campaignSends = pgTable(
     sentAt: timestamp("sent_at", { mode: "date" }).notNull().defaultNow(),
   },
   (table) => [unique().on(table.campaign, table.email)]
+);
+
+/* ─────────────── First-party Funnel Analytics ─────────────── */
+
+export const funnelEvents = pgTable(
+  "funnel_events",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    event: text("event").notNull(),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    anonId: text("anon_id").notNull(),
+    locale: text("locale"),
+    path: text("path"),
+    programSlug: text("program_slug"),
+    lessonSlug: text("lesson_slug"),
+    plan: text("plan"),
+    country: text("country"),
+    createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("funnel_events_created_at_idx").on(table.createdAt),
+    index("funnel_events_event_created_at_idx").on(table.event, table.createdAt),
+    index("funnel_events_anon_id_idx").on(table.anonId),
+    index("funnel_events_user_id_idx").on(table.userId),
+  ]
 );

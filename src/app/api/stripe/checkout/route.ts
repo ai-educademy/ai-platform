@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import type Stripe from "stripe";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { safeLocale, localeBasePath } from "@/lib/safe-locale";
+import { trackEvent } from "@/lib/funnel";
 
 export async function POST(req: NextRequest) {
   try {
@@ -110,6 +111,7 @@ export async function POST(req: NextRequest) {
         locale,
       },
     });
+    trackEvent("checkout_started", { userId: session.user.id, locale, path: `${basePath}/pricing`, plan });
 
     return NextResponse.json({ url: checkoutSession.url, promoApplied });
   } catch (err) {

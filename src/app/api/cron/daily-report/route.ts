@@ -5,6 +5,7 @@ import { sql, gte, count, eq } from "drizzle-orm";
 import { sendAdminNotification } from "@/lib/email";
 import Redis from "ioredis";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+import { getFunnelSummary } from "@/lib/funnel";
 
 let redis: Redis | null = null;
 
@@ -97,6 +98,7 @@ export async function GET(req: NextRequest) {
 
     const feedbackUp = todayFeedbackRows.filter((f) => f.rating === "up").length;
     const feedbackDown = todayFeedbackRows.filter((f) => f.rating === "down").length;
+    const funnel = await getFunnelSummary(7);
 
     // Page views from Redis (the real source of truth)
     let pageViews = 0;
@@ -140,6 +142,17 @@ export async function GET(req: NextRequest) {
     const recentUserRows = recentUsers
       .map((u) => `<tr><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;">${u.name || "-"}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;">${u.email || "-"}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#999;">${u.createdAt ? new Date(u.createdAt).toLocaleDateString("en-GB") : "-"}</td></tr>`)
       .join("");
+    const wow = (value: number | null) => value === null ? "new" : `${value > 0 ? "+" : ""}${value}%`;
+    const funnelRows = [
+      ["Visitors", funnel.current.visitors, wow(funnel.weekOnWeek.visitors)],
+      ["Signups", funnel.current.signups, wow(funnel.weekOnWeek.signups)],
+      ["Activation", `${funnel.current.activationRate}%`, `${funnel.previous.activationRate}% prev`],
+      ["Paywall views", funnel.current.paywallViews, wow(funnel.weekOnWeek.paywallViews)],
+      ["Checkout starts", funnel.current.checkoutStarts, wow(funnel.weekOnWeek.checkoutStarts)],
+      ["Trials", funnel.current.trials, wow(funnel.weekOnWeek.trials)],
+      ["Paid", funnel.current.paid, wow(funnel.weekOnWeek.paid)],
+      ["Churn", funnel.current.churn, wow(funnel.weekOnWeek.churn)],
+    ].map(([metric, value, change]) => `<tr><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;">${metric}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;text-align:right;font-weight:600;">${value}</td><td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;text-align:right;color:#6b7280;">${change}</td></tr>`).join("");
 
     const html = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:640px;margin:0 auto;color:#1f2937;">
@@ -186,6 +199,13 @@ export async function GET(req: NextRequest) {
           <span style="font-size:14px;">📧 Newsletter signups: <strong>${todaySubscribersResult.count}</strong> today / <strong>${totalSubscribersResult.count}</strong> total</span>
         </td>
       </tr>
+    </table>
+
+    <!-- Users by Role -->
+    <h3 style="margin:0 0 8px;font-size:16px;color:#374151;">🧭 Funnel, last 7 days</h3>
+    <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:24px;border:1px solid #e5e7eb;border-radius:8px;border-collapse:separate;">
+      <tr style="background:#f9fafb;"><th style="padding:8px 12px;text-align:left;font-size:13px;color:#6b7280;">Metric</th><th style="padding:8px 12px;text-align:right;font-size:13px;color:#6b7280;">Current</th><th style="padding:8px 12px;text-align:right;font-size:13px;color:#6b7280;">Week-on-week</th></tr>
+      ${funnelRows}
     </table>
 
     <!-- Users by Role -->
@@ -246,6 +266,7 @@ export async function GET(req: NextRequest) {
         feedbackDown,
         newsletterSignups: todaySubscribersResult.count,
         newsletterSubscribersTotal: totalSubscribersResult.count,
+        funnel,
       },
     });
   } catch (error) {

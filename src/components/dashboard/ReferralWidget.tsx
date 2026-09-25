@@ -38,6 +38,7 @@ export function ReferralWidget() {
     if (!data?.referralLink) return;
     try {
       await navigator.clipboard.writeText(data.referralLink);
+      void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "copy" }) });
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -48,6 +49,7 @@ export function ReferralWidget() {
       input.select();
       document.execCommand("copy");
       document.body.removeChild(input);
+      void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "copy" }) });
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -146,6 +148,7 @@ export function ReferralWidget() {
           <div className="flex items-center gap-2">
             <a
               href={shareUrls.twitter}
+              onClick={() => void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "twitter" }) })}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm transition-all"
@@ -158,6 +161,7 @@ export function ReferralWidget() {
             </a>
             <a
               href={shareUrls.linkedin}
+              onClick={() => void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "linkedin" }) })}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm transition-all"
@@ -170,6 +174,7 @@ export function ReferralWidget() {
             </a>
             <a
               href={shareUrls.whatsapp}
+              onClick={() => void fetch("/api/referrals/share", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channel: "whatsapp" }) })}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm transition-all"
