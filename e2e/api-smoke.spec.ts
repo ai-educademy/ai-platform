@@ -103,13 +103,24 @@ test.describe("SEO & Security", () => {
     expect(text).toContain("Sitemap:");
   });
 
-  test("sitemap.xml has all locales", async ({ request }) => {
-    const response = await request.get("/sitemap.xml");
-    expect(response.status()).toBe(200);
-    const xml = await response.text();
-    for (const locale of ["en", "fr", "nl", "hi", "te", "es", "pt", "de", "zh", "ja", "ar"]) {
+  test("sitemap.xml indexes one sitemap per locale, each with hreflang", async ({ request }) => {
+    const locales = ["en", "fr", "nl", "hi", "te", "es", "pt", "de", "zh", "ja", "ar"];
+    const index = await request.get("/sitemap.xml");
+    expect(index.status()).toBe(200);
+    const indexXml = await index.text();
+    expect(indexXml).toContain("<sitemapindex");
+
+    for (const locale of locales) {
+      expect(indexXml).toContain(`/sitemap/${locale}.xml`);
+    }
+
+    const child = await request.get("/sitemap/fr.xml");
+    expect(child.status()).toBe(200);
+    const xml = await child.text();
+    for (const locale of locales) {
       expect(xml).toContain(`hreflang="${locale}"`);
     }
+    expect(xml).not.toContain("/programs/ai-polish/lessons/star-framework");
   });
 
   test("manifest.webmanifest is valid JSON", async ({ request }) => {

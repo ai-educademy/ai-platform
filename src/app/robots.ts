@@ -21,6 +21,8 @@ const localizedPrivatePaths = routing.locales.flatMap((locale) =>
   )
 );
 
+const childSitemaps = routing.locales.map((locale) => `${BASE_URL}/sitemap/${locale}.xml`);
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -30,6 +32,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", ...localizedPrivatePaths],
       },
     ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: [`${BASE_URL}/sitemap.xml`, ...childSitemaps],
   };
 }
