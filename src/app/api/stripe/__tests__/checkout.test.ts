@@ -22,6 +22,7 @@ const mockDbUpdate = vi.fn();
 
 let userSelectResult: Array<{ stripeCustomerId: string | null }> = [];
 let subscriptionSelectResult: Array<{ id: string }> = [];
+let referralSelectResult: Array<{ referrerUserId: string }> = [];
 
 vi.mock("@/auth", () => ({ auth: () => mockAuth() }));
 
@@ -69,7 +70,9 @@ vi.mock("@/lib/db", () => ({
             Promise.resolve(
               table?.id === "subscriptions.id"
                 ? subscriptionSelectResult
-                : userSelectResult,
+                : table?.id === "referrals.id"
+                  ? referralSelectResult
+                  : userSelectResult,
             ),
         }),
       }),
@@ -88,6 +91,7 @@ vi.mock("@/lib/db", () => ({
 vi.mock("@/lib/db/schema", () => ({
   users: { id: "users.id", stripeCustomerId: "users.stripeCustomerId" },
   subscriptions: { id: "subscriptions.id", userId: "subscriptions.userId" },
+  referrals: { id: "referrals.id", refereeUserId: "referrals.refereeUserId" },
 }));
 vi.mock("drizzle-orm", () => ({ eq: () => ({}) }));
 
@@ -108,6 +112,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   userSelectResult = [{ stripeCustomerId: "cus_existing" }];
   subscriptionSelectResult = [];
+  referralSelectResult = [];
   mockAuth.mockResolvedValue(SIGNED_IN);
   mockSessionsCreate.mockResolvedValue({
     url: "https://checkout.stripe.com/s/1",
@@ -283,6 +288,53 @@ describe("POST /api/stripe/checkout", () => {
     expect(mockSessionsCreate).toHaveBeenCalledWith(
       expect.objectContaining({ discounts: [{ promotion_code: "promo_1" }] }),
     );
+  });
+
+  it("applies the referral month to a referred learner's monthly checkout", async () => {
+    // The tracker clears the cookie at sign-in, so the ledger row must suffice.
+    referralSelectResult = [{ referrerUserId: "user_referrer" }];
+    mockPromoList.mockResolvedValue({ data: [{ id: "promo_ref" }] });
+
+    const res = await POST(request({ plan: "monthly" }));
+
+    expect(await res.json()).toMatchObject({
+      promoApplied: true,
+      referralApplied: true,
+    });
+    expect(mockPromoList).toHaveBeenCalledWith(
+      expect.objectContaining({ code: "GIVEAMONTH" }),
+    );
+    expect(mockSessionsCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        discounts: [{ promotion_code: "promo_ref" }],
+        metadata: expect.objectContaining({ referredBy: "user_referrer" }),
+      }),
+    );
+  });
+
+  it("refuses the referral code on lifetime checkout for anyone", async () => {
+    mockPromoList.mockResolvedValue({ data: [{ id: "promo_ref" }] });
+
+    const res = await POST(
+      request({ plan: "lifetime", promoCode: "giveamonth" }),
+    );
+
+    expect(await res.json()).toMatchObject({ promoApplied: false });
+    expect(mockPromoList).not.toHaveBeenCalled();
+  });
+
+  it("refuses the referral code typed by a learner nobody referred", async () => {
+    await POST(request({ plan: "monthly", promoCode: "GIVEAMONTH" }));
+
+    expect(mockPromoList).not.toHaveBeenCalled();
+  });
+
+  it("does not apply the referral month to annual checkout", async () => {
+    referralSelectResult = [{ referrerUserId: "user_referrer" }];
+
+    await POST(request({ plan: "annual" }));
+
+    expect(mockPromoList).not.toHaveBeenCalled();
   });
 
   it("still completes checkout when the promo lookup throws", async () => {

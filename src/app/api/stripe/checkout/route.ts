@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { getPlanConfig, getStripe, type PaidPlan } from "@/lib/stripe";
 import { db } from "@/lib/db";
-import { subscriptions, users } from "@/lib/db/schema";
+import { referrals, subscriptions, users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import type Stripe from "stripe";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
@@ -11,6 +11,35 @@ import { trackEvent } from "@/lib/funnel";
 import { PRICING_TRIAL_DAYS, resolvePricingCurrency } from "@/lib/pricing";
 
 const TRIAL_PLANS = new Set<PaidPlan>(["monthly", "annual"]);
+const REFERRAL_CODE_PATTERN = /^[A-Z]{1,3}_[a-z0-9]{6}$/;
+
+// The cookie wins when present. ReferralTracker clears it once the referral is
+// recorded at sign-in, so by checkout the ledger row is usually the evidence.
+async function resolveReferrer(
+  userId: string,
+  ownReferralCode: string | null | undefined,
+  cookieCode: string | undefined,
+): Promise<string | undefined> {
+  if (
+    cookieCode &&
+    REFERRAL_CODE_PATTERN.test(cookieCode) &&
+    cookieCode !== ownReferralCode
+  ) {
+    const [referrer] = await db
+      .select({ id: users.id })
+      .from(users)
+      .where(eq(users.referralCode, cookieCode))
+      .limit(1);
+    if (referrer && referrer.id !== userId) return referrer.id;
+  }
+
+  const [recorded] = await db
+    .select({ referrerUserId: referrals.referrerUserId })
+    .from(referrals)
+    .where(eq(referrals.refereeUserId, userId))
+    .limit(1);
+  return recorded?.referrerUserId;
+}
 
 async function customerHasUsedTrial(
   userId: string,
@@ -70,7 +99,10 @@ export async function POST(req: NextRequest) {
     }
 
     const [user] = await db
-      .select({ stripeCustomerId: users.stripeCustomerId })
+      .select({
+        stripeCustomerId: users.stripeCustomerId,
+        referralCode: users.referralCode,
+      })
       .from(users)
       .where(eq(users.id, session.user.id))
       .limit(1);
@@ -99,16 +131,38 @@ export async function POST(req: NextRequest) {
 
     let discounts: Stripe.Checkout.SessionCreateParams["discounts"] | undefined;
     let promoApplied = false;
-    if (promoCode) {
+    let referralApplied = false;
+    const referralPromoCode =
+      process.env.STRIPE_REFERRAL_PROMO_CODE ?? "GIVEAMONTH";
+    const referredBy = await resolveReferrer(
+      session.user.id,
+      user?.referralCode,
+      req.cookies?.get("ref_code")?.value,
+    );
+    // The referral coupon is 100% off once, so it must never reach a plan or a
+    // learner it was not issued for (a free lifetime purchase, for instance).
+    const referralEligible =
+      plan === "monthly" && currency === "gbp" && !!referredBy;
+    const requestedReferralCode =
+      promoCode?.trim().toUpperCase() === referralPromoCode.toUpperCase();
+    const promoCodeToApply =
+      promoCode && !requestedReferralCode
+        ? promoCode
+        : referralEligible
+          ? referralPromoCode
+          : undefined;
+    if (promoCodeToApply) {
       try {
         const promoCodes = await getStripe().promotionCodes.list({
-          code: promoCode,
+          code: promoCodeToApply,
           active: true,
           limit: 1,
         });
         if (promoCodes.data.length > 0) {
           discounts = [{ promotion_code: promoCodes.data[0].id }];
           promoApplied = true;
+          referralApplied =
+            promoCodeToApply === referralPromoCode && !!referredBy;
         }
       } catch (err) {
         console.warn("[stripe/checkout] promo code lookup failed:", err);
@@ -146,6 +200,7 @@ export async function POST(req: NextRequest) {
         locale,
         currency,
         trialOffered: String(trialEligible),
+        ...(referredBy ? { referredBy } : {}),
       },
     });
     trackEvent("checkout_started", {
@@ -158,6 +213,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       url: checkoutSession.url,
       promoApplied,
+      referralApplied,
       trialOffered: trialEligible,
       currency,
     });

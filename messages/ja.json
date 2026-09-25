@@ -1903,17 +1903,22 @@
   },
   "referral": {
     "title": "友達を招待",
-    "description": "AI Educademyを共有して報酬を獲得",
-    "yourLink": "あなたの紹介リンク",
-    "copied": "コピーしました！",
+    "description": "1か月贈って、1か月もらえます。友達は初月無料、あなたは友達の初回支払い後に1か月分のクレジットを受け取ります。",
+    "yourLink": "紹介リンク",
+    "copied": "コピーしました",
     "copy": "リンクをコピー",
     "shareOn": "{platform}で共有",
     "joinedCount": "{count}人があなたのリンクから参加しました",
-    "noReferrals": "まだ紹介はありません. リンクを共有しましょう！",
-    "reward": "あなたとお友達の両方に特典があります",
-    "twitter": "Twitter/X",
+    "noReferrals": "紹介はまだありません。リンクを共有しましょう。",
+    "reward": "初月無料を贈れます。初回支払い後に1か月分のクレジットを受け取れます。",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "このレッスンの成果を共有",
+    "lessonDescription": "学びが新しいうちに、友達へ初月無料を贈りましょう。",
+    "checkoutTitle": "1か月贈って、1か月もらう",
+    "checkoutDescription": "Proになりました。リンクを共有すると、友達の支払い後に次の1か月分がクレジットされます。",
+    "shareText": "AI EducademyでAIを学んでいます。私のリンクで初月無料になります。"
   },
   "certificates": {
     "title": "修了証書",
@@ -1923,7 +1928,9 @@
     "completed": "証明書を獲得しました！",
     "notSignedIn": "進捗を追跡し証明書を取得するにはサインインしてください",
     "upgradeToCertificate": "修了証を取得するにはProにアップグレード",
-    "premiumOnly": "プレミアムプログラムの修了証はProサブスクリプションでご利用いただけます"
+    "premiumOnly": "プレミアムプログラムの修了証はProサブスクリプションでご利用いただけます",
+    "shareCertificate": "証明書を共有",
+    "addToLinkedIn": "LinkedInプロフィールに追加"
   },
   "continueLearning": {
     "title": "前回の続きから学ぶ",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "体系的なAI教育を、一レッスンずつ",
     "verifiedCompletion": "検証済みの完了",
     "defaultTitle": "達成 | AI Educademy",
-    "defaultDescription": "An achievement earned on AI Educademy - 体系的なAI教育を、一レッスンずつ."
+    "defaultDescription": "An achievement earned on AI Educademy - 体系的なAI教育を、一レッスンずつ.",
+    "addToLinkedIn": "LinkedInプロフィールに追加",
+    "previewBadge": "Pro証明書プレビュー",
+    "previewDescription": "証明書はPro特典です。トライアルを開始して検証済み証明書URLを公開しましょう。",
+    "trialCta": "Proトライアルを開始"
   },
   "trustBar": {
     "lessons": "レッスン",

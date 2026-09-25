@@ -1902,18 +1902,23 @@
     "analyzing": "Analisando sua resposta..."
   },
   "referral": {
-    "title": "Convide amigos",
-    "description": "Compartilhe o AI Educademy e ganhe recompensas",
-    "yourLink": "Seu link de indicação",
+    "title": "Convidar amigos",
+    "description": "Ofereça um mês, receba um mês. O seu amigo recebe o primeiro mês grátis e você recebe um mês creditado após o primeiro pagamento dele.",
+    "yourLink": "O seu link de indicação",
     "copied": "Copiado!",
     "copy": "Copiar link",
-    "shareOn": "Compartilhar no {platform}",
+    "shareOn": "Partilhar em {platform}",
     "joinedCount": "{count} pessoas entraram pelo seu link",
-    "noReferrals": "Nenhuma indicação ainda. compartilhe seu link!",
-    "reward": "Você e seu amigo ganham benefícios",
-    "twitter": "Twitter/X",
+    "noReferrals": "Ainda não há indicações. Partilhe o seu link.",
+    "reward": "Ofereça um primeiro mês grátis. Receba um mês creditado após o primeiro pagamento.",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "Partilhe esta conquista da aula",
+    "lessonDescription": "Ofereça a um amigo um primeiro mês grátis enquanto a aula ainda está fresca.",
+    "checkoutTitle": "Ofereça um mês, receba um mês",
+    "checkoutDescription": "Agora você é Pro. Partilhe o seu link e o próximo mês será creditado quando um amigo pagar.",
+    "shareText": "Estou a aprender IA no AI Educademy. Use o meu link para ter o primeiro mês grátis."
   },
   "certificates": {
     "title": "Certificado de conclusão",
@@ -1923,7 +1928,9 @@
     "completed": "Você conquistou seu certificado!",
     "notSignedIn": "Faça login para acompanhar seu progresso e ganhar certificados",
     "premiumOnly": "Certificados para programas premium estão disponíveis com uma assinatura Pro",
-    "upgradeToCertificate": "Assine o Pro para obter o Certificado"
+    "upgradeToCertificate": "Assine o Pro para obter o Certificado",
+    "shareCertificate": "Partilhar certificado",
+    "addToLinkedIn": "Adicionar ao perfil do LinkedIn"
   },
   "continueLearning": {
     "title": "Continue de onde parou",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "Educação estruturada em IA, uma aula de cada vez",
     "verifiedCompletion": "Conclusão verificada",
     "defaultTitle": "Conquista | AI Educademy",
-    "defaultDescription": "Uma conquista obtida no AI Educademy - educação estruturada em IA, uma lição por vez."
+    "defaultDescription": "Uma conquista obtida no AI Educademy - educação estruturada em IA, uma lição por vez.",
+    "addToLinkedIn": "Adicionar ao perfil do LinkedIn",
+    "previewBadge": "Prévia do certificado Pro",
+    "previewDescription": "Os certificados são um benefício Pro. Inicie um teste para publicar um URL de certificado verificado.",
+    "trialCta": "Iniciar teste Pro"
   },
   "bookmarks": {
     "addedOn": "Salvo em",

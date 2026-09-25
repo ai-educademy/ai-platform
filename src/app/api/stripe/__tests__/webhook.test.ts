@@ -18,6 +18,7 @@ const mockSubsRetrieve = vi.fn();
 const mockSendSubscriptionEmail = vi.fn();
 const mockSendAdminNotification = vi.fn();
 const mockSendAbandonedCart = vi.fn();
+const mockRewardReferralForPaidInvoice = vi.fn();
 const mockSendTrialWillEndEmail = vi.fn();
 
 const userUpdates: Array<Record<string, unknown>> = [];
@@ -31,6 +32,11 @@ vi.mock("@/lib/stripe", () => ({
     webhooks: { constructEvent: mockConstructEvent },
     subscriptions: { retrieve: mockSubsRetrieve },
   }),
+}));
+
+vi.mock("@/lib/referrals/rewards", () => ({
+  rewardReferralForPaidInvoice: (...a: unknown[]) =>
+    mockRewardReferralForPaidInvoice(...a),
 }));
 
 vi.mock("@/lib/email", () => ({
@@ -117,6 +123,10 @@ const SUBSCRIPTION_EVENT = {
 };
 
 beforeEach(() => {
+  mockRewardReferralForPaidInvoice.mockResolvedValue({
+    status: "ignored",
+    reason: "no_open_referral",
+  });
   vi.clearAllMocks();
   userUpdates.length = 0;
   subUpdates.length = 0;
@@ -399,6 +409,26 @@ describe("POST /api/stripe/webhook", () => {
       const res = await POST(request());
 
       expect(res.status).toBe(200);
+      expect(userUpdates).toEqual([]);
+    });
+  });
+
+  describe("referral rewards", () => {
+    it("runs referral rewards from invoice.paid without changing user roles", async () => {
+      const invoice = {
+        id: "in_1",
+        customer: "cus_referee",
+        subscription: "sub_123",
+      };
+      mockConstructEvent.mockReturnValue({
+        type: "invoice.paid",
+        data: { object: invoice },
+      });
+
+      const res = await POST(request());
+
+      expect(res.status).toBe(200);
+      expect(mockRewardReferralForPaidInvoice).toHaveBeenCalledWith(invoice);
       expect(userUpdates).toEqual([]);
     });
   });

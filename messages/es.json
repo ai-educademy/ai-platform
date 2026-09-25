@@ -1903,17 +1903,22 @@
   },
   "referral": {
     "title": "Invita a amigos",
-    "description": "Comparte AI Educademy y gana recompensas",
+    "description": "Regala un mes y recibe un mes. Tu amigo obtiene su primer mes gratis y tú recibes un mes acreditado tras su primer pago.",
     "yourLink": "Tu enlace de referido",
     "copied": "¡Copiado!",
     "copy": "Copiar enlace",
     "shareOn": "Compartir en {platform}",
     "joinedCount": "{count} personas se unieron a través de tu enlace",
-    "noReferrals": "Aún sin referidos. ¡comparte tu enlace!",
-    "reward": "Tú y tu amigo obtienen beneficios",
-    "twitter": "Twitter/X",
+    "noReferrals": "Aún no hay referidos. Comparte tu enlace.",
+    "reward": "Regala un primer mes gratis. Recibe un mes acreditado tras su primer pago.",
+    "twitter": "X",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "lessonTitle": "Comparte este logro de la lección",
+    "lessonDescription": "Regala a un amigo un primer mes gratis mientras la lección aún está reciente.",
+    "checkoutTitle": "Regala un mes y recibe un mes",
+    "checkoutDescription": "Ya eres Pro. Comparte tu enlace y tu próximo mes se acreditará cuando un amigo pague.",
+    "shareText": "Estoy aprendiendo IA en AI Educademy. Usa mi enlace para obtener tu primer mes gratis."
   },
   "certificates": {
     "title": "Certificado de finalización",
@@ -1923,7 +1928,9 @@
     "completed": "¡Has obtenido tu certificado!",
     "notSignedIn": "Inicia sesión para seguir tu progreso y obtener certificados",
     "premiumOnly": "Los certificados para programas premium están disponibles con una suscripción Pro",
-    "upgradeToCertificate": "Mejora a Pro para obtener el Certificado"
+    "upgradeToCertificate": "Mejora a Pro para obtener el Certificado",
+    "shareCertificate": "Compartir certificado",
+    "addToLinkedIn": "Añadir al perfil de LinkedIn"
   },
   "continueLearning": {
     "title": "Continúa donde lo dejaste",
@@ -2070,7 +2077,11 @@
     "ctaSubtitle": "Educación estructurada en IA, una lección a la vez",
     "verifiedCompletion": "Finalización verificada",
     "defaultTitle": "Logro | zxhold4zx",
-    "defaultDescription": "Un logro obtenido en AI Educademy: educación estructurada sobre IA, una lección a la vez."
+    "defaultDescription": "Un logro obtenido en AI Educademy: educación estructurada sobre IA, una lección a la vez.",
+    "addToLinkedIn": "Añadir al perfil de LinkedIn",
+    "previewBadge": "Vista previa del certificado Pro",
+    "previewDescription": "Los certificados son un beneficio Pro. Inicia una prueba para publicar una URL de certificado verificada.",
+    "trialCta": "Iniciar prueba Pro"
   },
   "bookmarks": {
     "addedOn": "Guardado el",

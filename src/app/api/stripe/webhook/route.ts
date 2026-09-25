@@ -13,6 +13,7 @@ import {
 import type Stripe from "stripe";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { trackEvent } from "@/lib/funnel";
+import { rewardReferralForPaidInvoice } from "@/lib/referrals/rewards";
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
@@ -331,6 +332,15 @@ async function handleEvent(event: Stripe.Event) {
         ).catch((err) =>
           console.error("[Webhook] Admin notification failed:", err),
         );
+      }
+      break;
+    }
+
+    case "invoice.paid": {
+      const invoice = event.data.object as Stripe.Invoice;
+      const result = await rewardReferralForPaidInvoice(invoice);
+      if (result.status === "blocked") {
+        console.warn(`[stripe/webhook] referral blocked: ${result.reason}`);
       }
       break;
     }
