@@ -75,25 +75,23 @@ function PromoCodeInput({
 }
 
 /**
- * One selectable plan.
- *
- * Built on a real radio input wrapped in a label rather than a div with an
- * onClick handler. That makes the entire card a click target, and the browser
- * supplies arrow key navigation, roving focus and screen reader semantics for
- * nothing. Previously only the button at the foot of each card did anything,
- * so most of the card looked interactive and was not, and the violet ring on
- * the monthly plan was a hardcoded "most popular" badge that visitors read as
- * a selection they were unable to change.
+ * One paid plan. The whole card is a single checkout button, so a click
+ * anywhere on it goes straight to Stripe (or to sign in first). Selecting a
+ * plan and then hunting for a separate, initially disabled button added a
+ * step at the exact moment someone had decided to pay.
  */
-function SelectablePlanCard({
+function PlanCard({
   title,
   price,
   period,
   features,
   popular,
   plan,
-  selected,
-  onSelect,
+  ctaLabel,
+  note,
+  pending,
+  disabled,
+  onCheckout,
 }: {
   title: string;
   price: string;
@@ -101,28 +99,24 @@ function SelectablePlanCard({
   features: string[];
   popular?: boolean;
   plan: PaidPlan;
-  selected: boolean;
-  onSelect: (plan: PaidPlan) => void;
+  ctaLabel: string;
+  note?: string;
+  pending: boolean;
+  disabled: boolean;
+  onCheckout: (plan: PaidPlan) => void;
 }) {
   const t = useTranslations("pricing");
 
   return (
-    <label
-      className={`group relative flex cursor-pointer flex-col rounded-2xl border p-8 transition-all has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-violet-500 has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-[var(--color-bg)] ${
-        selected
+    <article
+      className={`group relative flex flex-col rounded-2xl border p-8 transition-all focus-within:ring-2 focus-within:ring-violet-500 focus-within:ring-offset-2 focus-within:ring-offset-[var(--color-bg)] ${
+        pending
           ? "border-violet-500 shadow-xl shadow-violet-500/10 ring-2 ring-violet-500"
-          : "border-[var(--color-border)] hover:border-violet-400 hover:shadow-lg"
+          : popular
+            ? "border-violet-400/70 hover:border-violet-500 hover:shadow-xl hover:shadow-violet-500/10"
+            : "border-[var(--color-border)] hover:border-violet-400 hover:shadow-lg"
       }`}
     >
-      <input
-        type="radio"
-        name="plan"
-        value={plan}
-        checked={selected}
-        onChange={() => onSelect(plan)}
-        className="sr-only"
-      />
-
       {popular && (
         <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-r from-violet-500 to-indigo-600 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
           {t("mostPopular")}
@@ -130,24 +124,7 @@ function SelectablePlanCard({
       )}
 
       <div className="mb-6">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-xl font-bold text-[var(--color-text)]">
-            {title}
-          </h3>
-          {/* The tick is the only thing that means "selected". The popular
-              badge is social proof and must never be mistaken for one, which
-              is exactly how the previous design read. */}
-          <span
-            aria-hidden="true"
-            className={`mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
-              selected
-                ? "border-violet-500 bg-violet-500 text-white"
-                : "border-[var(--color-border)] group-hover:border-violet-400"
-            }`}
-          >
-            {selected && <Check className="h-3 w-3" strokeWidth={3} />}
-          </span>
-        </div>
+        <h3 className="text-xl font-bold text-[var(--color-text)]">{title}</h3>
         <div className="mt-4 flex items-baseline gap-1">
           <span className="text-4xl font-extrabold tabular-nums text-[var(--color-text)]">
             {price}
@@ -175,14 +152,29 @@ function SelectablePlanCard({
         ))}
       </ul>
 
-      <span
-        className={`mt-6 block text-center text-xs font-bold uppercase tracking-wider transition-colors ${
-          selected ? "text-violet-600" : "text-[var(--color-text-muted)]"
+      {/* The ::after overlay stretches this button across the card, so the
+          card is one real, focusable control rather than a div with onClick. */}
+      <button
+        type="button"
+        onClick={() => onCheckout(plan)}
+        disabled={disabled}
+        aria-label={`${ctaLabel}: ${title}`}
+        data-plan={plan}
+        className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none disabled:cursor-wait disabled:opacity-60 ${
+          popular || pending
+            ? "bg-gradient-to-r from-violet-500 to-indigo-600 text-white shadow-lg shadow-violet-500/25 group-hover:opacity-90"
+            : "border border-violet-500/40 text-violet-600 group-hover:bg-violet-500 group-hover:text-white dark:text-violet-300"
         }`}
       >
-        {selected ? t("selected") : t("selectThisPlan")}
-      </span>
-    </label>
+        <Sparkles size={16} aria-hidden="true" />
+        {pending ? t("redirecting") : ctaLabel}
+      </button>
+      {note && (
+        <p className="mt-3 text-center text-xs text-[var(--color-text-muted)]">
+          {note}
+        </p>
+      )}
+    </article>
   );
 }
 
@@ -250,7 +242,7 @@ export function PricingCards({
       ? purchasablePlans
       : (["monthly", "annual", "lifetime"] as PaidPlan[]);
 
-  const [selected, setSelected] = useState<PaidPlan | null>(null);
+  const [pendingPlan, setPendingPlan] = useState<PaidPlan | null>(null);
   const [promoCode, setPromoCode] = useState("");
   const [promoStatus, setPromoStatus] = useState<
     "idle" | "applied" | "invalid"
@@ -262,13 +254,9 @@ export function PricingCards({
   const priceLabels = getPlanPriceLabels(pricingCurrency);
   const annualSavingPercent = getAnnualSavingPercent(pricingCurrency);
 
-  const handleCheckout = async () => {
+  const handleCheckout = async (plan: PaidPlan) => {
     setError("");
-
-    if (!selected) {
-      setError(t("chooseAPlan"));
-      return;
-    }
+    setPendingPlan(plan);
 
     if (!session?.user) {
       window.location.href = `${basePath}/signin?callbackUrl=${encodeURIComponent(
@@ -283,7 +271,7 @@ export function PricingCards({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          plan: selected,
+          plan,
           locale,
           ...(promoCode ? { promoCode } : {}),
         }),
@@ -305,6 +293,7 @@ export function PricingCards({
       setError(t("genericError"));
     } finally {
       setLoading(false);
+      setPendingPlan(null);
     }
   };
 
@@ -363,79 +352,66 @@ export function PricingCards({
     },
   ];
 
-  const ctaLabel = selected
-    ? {
-        monthly: t("trialCta"),
-        annual: t("trialCta"),
-        lifetime: t("lifetime.cta"),
-      }[selected]
-    : t("chooseAPlan");
+  const ctaFor: Record<PaidPlan, string> = {
+    monthly: t("trialCta"),
+    annual: t("trialCta"),
+    lifetime: t("lifetime.cta"),
+  };
+  const alreadyPro = !proLoading && isPro;
 
   return (
     <div>
-      <fieldset className="border-0 p-0">
-        <legend className="sr-only">{t("chooseAPlan")}</legend>
-        <div
-          className={`grid grid-cols-1 gap-6 sm:grid-cols-2 ${
-            available.length === 3
-              ? "lg:grid-cols-4"
-              : available.length === 2
-                ? "lg:grid-cols-3"
-                : "lg:grid-cols-2"
-          }`}
-        >
-          <FreePlanCard
-            title={t("free.title")}
-            price={priceLabels.free}
-            features={[
-              t("free.f1"),
-              t("free.f2"),
-              t("free.f3"),
-              t("free.f4"),
-              t("free.f5"),
-            ]}
-          />
-          {paidPlans
-            .filter((p) => available.includes(p.plan))
-            .map((p) => (
-              <SelectablePlanCard
-                key={p.plan}
-                {...p}
-                selected={selected === p.plan}
-                onSelect={setSelected}
-              />
-            ))}
-        </div>
-      </fieldset>
+      <div
+        className={`grid grid-cols-1 gap-6 sm:grid-cols-2 ${
+          available.length === 3
+            ? "lg:grid-cols-4"
+            : available.length === 2
+              ? "lg:grid-cols-3"
+              : "lg:grid-cols-2"
+        }`}
+      >
+        <FreePlanCard
+          title={t("free.title")}
+          price={priceLabels.free}
+          features={[
+            t("free.f1"),
+            t("free.f2"),
+            t("free.f3"),
+            t("free.f4"),
+            t("free.f5"),
+          ]}
+        />
+        {paidPlans
+          .filter((p) => available.includes(p.plan))
+          .map((p) => (
+            <PlanCard
+              key={p.plan}
+              {...p}
+              ctaLabel={ctaFor[p.plan]}
+              note={p.plan === "lifetime" ? t("lifetime.note") : undefined}
+              pending={pendingPlan === p.plan}
+              disabled={loading || alreadyPro}
+              onCheckout={handleCheckout}
+            />
+          ))}
+      </div>
 
-      {/* One checkout action for the page, acting on whatever is selected.
-          Each card used to carry its own button, so the page offered four
-          competing calls to action with no way to tell which was active. */}
-      {!proLoading && isPro ? (
-        <p className="mt-8 text-center text-sm font-medium text-emerald-600">
-          {t("alreadyPro")}
-        </p>
-      ) : (
-        <div className="mt-8 flex flex-col items-center">
-          <button
-            type="button"
-            onClick={handleCheckout}
-            disabled={loading || !selected}
-            className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-lg shadow-violet-500/25 transition-all hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] disabled:opacity-50"
-          >
-            <Sparkles size={18} aria-hidden="true" />
-            {loading ? t("redirecting") : ctaLabel}
-          </button>
-          <p className="mt-3 max-w-md text-center text-sm text-[var(--color-text-muted)]">
-            {selected === "lifetime" ? t("lifetime.note") : t("trialNote")}
+      <div className="mt-8 flex flex-col items-center">
+        {alreadyPro ? (
+          <p className="text-center text-sm font-medium text-emerald-600">
+            {t("alreadyPro")}
           </p>
-          <div aria-live="polite">
-            {error && (
-              <p className="mt-3 text-center text-sm text-red-500">{error}</p>
-            )}
-          </div>
+        ) : (
+          <p className="max-w-md text-center text-sm text-[var(--color-text-muted)]">
+            {t("trialNote")}
+          </p>
+        )}
+        <div aria-live="polite">
+          {error && (
+            <p className="mt-3 text-center text-sm text-red-500">{error}</p>
+          )}
         </div>
-      )}
+      </div>
 
       <PromoCodeInput
         promoCode={promoCode}
