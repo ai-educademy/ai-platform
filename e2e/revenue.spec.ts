@@ -111,8 +111,8 @@ test.describe("Checkout API", () => {
     });
 
     await page.goto("/en/pricing");
-    await page.getByRole("radio", { name: /pro annual/i }).check({ force: true });
-    await page.getByRole("button", { name: /start 7-day free trial/i }).click();
+    // One click on the card is the whole journey to Stripe.
+    await page.getByRole("button", { name: /free trial: pro annual/i }).click();
 
     await expect(page).toHaveURL(/#stripe-checkout$/);
   });

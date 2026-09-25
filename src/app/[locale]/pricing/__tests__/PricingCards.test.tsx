@@ -36,15 +36,14 @@ beforeEach(() => {
 });
 
 describe("PricingCards", () => {
-  it("given the annual plan is selected, when checkout starts, then the API receives annual with the locale", async () => {
+  it("given the annual card, when it is clicked once, then checkout starts for annual with the locale", async () => {
     fetchMock.mockResolvedValue({
       json: () => Promise.resolve({ error: "checkout unavailable" }),
     });
     const user = userEvent.setup();
     render(<PricingCards locale="fr" />);
 
-    await user.click(screen.getByRole("radio", { name: /annual.title/ }));
-    await user.click(screen.getByRole("button", { name: /trialCta/ }));
+    await user.click(screen.getByRole("button", { name: /annual.title/ }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toMatchObject({
@@ -53,15 +52,16 @@ describe("PricingCards", () => {
     });
   });
 
-  it("given the lifetime plan is selected, when checkout starts, then the API receives lifetime", async () => {
+  it("given the lifetime card, when it is clicked once, then checkout starts for lifetime", async () => {
     fetchMock.mockResolvedValue({
       json: () => Promise.resolve({ error: "checkout unavailable" }),
     });
     const user = userEvent.setup();
     render(<PricingCards locale="en" />);
 
-    await user.click(screen.getByRole("radio", { name: /lifetime.title/ }));
-    await user.click(screen.getByRole("button", { name: /lifetime.cta/ }));
+    await user.click(
+      screen.getByRole("button", { name: /lifetime.cta: lifetime.title/ }),
+    );
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toMatchObject({
@@ -79,8 +79,7 @@ describe("PricingCards", () => {
 
     await user.click(screen.getByRole("button", { name: "promoCode" }));
     await user.type(screen.getByLabelText("promoCode"), "NOPE");
-    await user.click(screen.getByRole("radio", { name: /monthly.title/ }));
-    await user.click(screen.getByRole("button", { name: /trialCta/ }));
+    await user.click(screen.getByRole("button", { name: /monthly.title/ }));
 
     expect(await screen.findByText("promoCodeInvalid")).toBeInTheDocument();
     expect(window.location.href).toBe(startHref);
@@ -92,9 +91,33 @@ describe("PricingCards", () => {
     render(<PricingCards locale="en" />);
 
     expect(screen.getByText("alreadyPro")).toBeInTheDocument();
-    expect(
-      screen.queryByRole("button", { name: /trialCta/ }),
-    ).not.toBeInTheDocument();
+    for (const button of screen.getAllByRole("button", { name: /trialCta/ })) {
+      expect(button).toBeDisabled();
+    }
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("given a signed-out visitor, when a plan is clicked, then they are sent to sign in and back to pricing", async () => {
+    mockUseSession.mockReturnValue({ data: null });
+    const original = window.location;
+    // jsdom does not navigate, so capture the assignment instead.
+    Object.defineProperty(window, "location", {
+      configurable: true,
+      value: { href: "" },
+    });
+    const user = userEvent.setup();
+    render(<PricingCards locale="fr" />);
+
+    await user.click(screen.getByRole("button", { name: /annual.title/ }));
+
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(window.location.href).toBe(
+      `/fr/signin?callbackUrl=${encodeURIComponent("/fr/pricing")}`,
+    );
+    Object.defineProperty(window, "location", {
+      configurable: true,
+      value: original,
+    });
   });
 });
 
@@ -108,38 +131,39 @@ describe("PricingCards plan availability", () => {
     render(<PricingCards locale="en" purchasablePlans={["monthly"]} />);
 
     expect(
-      screen.getByRole("radio", { name: /monthly.title/ }),
+      screen.getByRole("button", { name: /monthly.title/ }),
     ).toBeInTheDocument();
     expect(
-      screen.queryByRole("radio", { name: /annual.title/ }),
+      screen.queryByRole("button", { name: /annual.title/ }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("radio", { name: /lifetime.title/ }),
+      screen.queryByRole("button", { name: /lifetime.title/ }),
     ).not.toBeInTheDocument();
   });
 
-  it("given monthly cannot be sold, when the page renders, then no plan is preselected", () => {
+  it("given the page renders, when nothing is clicked, then no checkout starts and every plan is enabled", () => {
     render(
       <PricingCards locale="en" purchasablePlans={["annual", "lifetime"]} />,
     );
 
+    expect(screen.getByRole("button", { name: /annual.title/ })).toBeEnabled();
     expect(
-      screen.getByRole("radio", { name: /annual.title/ }),
-    ).not.toBeChecked();
-    expect(screen.getByRole("button", { name: /chooseAPlan/ })).toBeDisabled();
+      screen.getByRole("button", { name: /lifetime.title/ }),
+    ).toBeEnabled();
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it("given no explicit availability, when the page renders, then all three plans are offered", () => {
     render(<PricingCards locale="en" />);
 
     expect(
-      screen.getByRole("radio", { name: /monthly.title/ }),
+      screen.getByRole("button", { name: /monthly.title/ }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("radio", { name: /annual.title/ }),
+      screen.getByRole("button", { name: /annual.title/ }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("radio", { name: /lifetime.title/ }),
+      screen.getByRole("button", { name: /lifetime.title/ }),
     ).toBeInTheDocument();
   });
 });
