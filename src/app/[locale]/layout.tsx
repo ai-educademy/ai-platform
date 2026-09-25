@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n/locales";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -14,11 +14,10 @@ import { Footer } from "@/components/ui/Footer";
 import { Providers } from "@/components/ui/Providers";
 import { EmailVerificationBanner } from "@/components/auth/EmailVerificationBanner";
 
-import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { ChatWidget } from "@/components/ui/chat/ChatWidget";
 import { ReferralTracker } from "@/components/ReferralTracker";
 
-import { buildAlternates } from "@/lib/seo";
+import { buildAlternates, getPageSeo, SOCIAL_IMAGE_URL } from "@/lib/seo";
 
 const BASE_URL = "https://aieducademy.org";
 
@@ -35,17 +34,25 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "meta" });
+  const pageSeo = getPageSeo(locale, "home");
+  // The homepage has no template applied, so the brand has to be in the copy
+  // or branded searches land on a title that never names the site.
+  const seo = {
+    ...pageSeo,
+    title: pageSeo.title.includes("AI Educademy")
+      ? pageSeo.title
+      : `AI Educademy: ${pageSeo.title}`,
+  };
 
   const canonicalUrl = locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`;
 
   return {
     metadataBase: new URL(BASE_URL),
     title: {
-      default: t("title"),
+      default: seo.title,
       template: `%s | AI Educademy`,
     },
-    description: t("description"),
+    description: seo.description,
     keywords: [
       "AI education",
       "artificial intelligence",
@@ -78,15 +85,15 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t("title"),
-      description: t("description"),
+      title: seo.title,
+      description: seo.description,
       type: "website",
       siteName: "AI Educademy",
       locale: locale,
       url: canonicalUrl,
       images: [
         {
-          url: `${BASE_URL}/social-preview.png`,
+          url: SOCIAL_IMAGE_URL,
           width: 1200,
           height: 630,
           alt: "AI Educademy multilingual AI learning platform",
@@ -95,9 +102,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
-      images: [`${BASE_URL}/social-preview.png`],
+      title: seo.title,
+      description: seo.description,
+      images: [SOCIAL_IMAGE_URL],
     },
     robots: {
       index: true,
@@ -169,7 +176,6 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://github.com" />
       </head>
       <body className="antialiased">
-        <OrganizationJsonLd />
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <div className="min-h-screen flex flex-col">

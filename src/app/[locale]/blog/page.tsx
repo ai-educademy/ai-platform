@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/blog";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
-import { createSeoMetadata } from "@/components/seo/metadata";
+import { createSeoMetadata, getPageSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -11,13 +11,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "blog" });
-  return createSeoMetadata({
-    locale,
-    path: "/blog",
-    title: t("title"),
-    description: t("subtitle"),
-  });
+  const seo = getPageSeo(locale, "blog");
+  return createSeoMetadata({ locale, path: "/blog", ...seo });
 }
 
 export default async function BlogPage({

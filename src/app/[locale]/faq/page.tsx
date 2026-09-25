@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { FAQJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
-import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
+import { BASE_URL, createSeoMetadata, getPageSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -11,14 +11,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "faq" });
+  const seo = getPageSeo(locale, "faq");
 
-  return createSeoMetadata({
-    locale,
-    path: "/faq",
-    title: t("title"),
-    description: t("subtitle"),
-  });
+  return createSeoMetadata({ locale, path: "/faq", ...seo });
 }
 
 const FAQ_COUNT = 25;
@@ -63,9 +58,13 @@ export default async function FAQPage({
         <AnimatedSection animation="fade-up">
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[var(--color-primary)]/10 mb-5">
-              <span className="text-2xl" aria-hidden="true">❓</span>
+              <span className="text-2xl" aria-hidden="true">
+                ❓
+              </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold mb-3">{t("title")}</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-3">
+              {t("title")}
+            </h1>
             <p className="text-[var(--color-text-muted)] text-lg max-w-xl mx-auto">
               {t("subtitle")}
             </p>
@@ -86,28 +85,30 @@ export default async function FAQPage({
               </h2>
 
               <div className="space-y-2">
-                {questions.slice(cat.range[0], cat.range[1]).map((item, idx) => {
-                  const qNum = cat.range[0] + idx + 1;
-                  return (
-                    <details
-                      key={qNum}
-                      className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] overflow-hidden"
-                    >
-                      <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-5 py-4 text-sm font-semibold text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors select-none">
-                        <span>{item.question}</span>
-                        <span
-                          aria-hidden="true"
-                          className="shrink-0 text-[var(--color-text-muted)] transition-transform duration-300 group-open:rotate-180"
-                        >
-                          ▾
-                        </span>
-                      </summary>
-                      <div className="px-5 pb-5 pt-1 text-sm leading-relaxed text-[var(--color-text-muted)] border-t border-[var(--color-border)]">
-                        {item.answer}
-                      </div>
-                    </details>
-                  );
-                })}
+                {questions
+                  .slice(cat.range[0], cat.range[1])
+                  .map((item, idx) => {
+                    const qNum = cat.range[0] + idx + 1;
+                    return (
+                      <details
+                        key={qNum}
+                        className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] overflow-hidden"
+                      >
+                        <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-5 py-4 text-sm font-semibold text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors select-none">
+                          <span>{item.question}</span>
+                          <span
+                            aria-hidden="true"
+                            className="shrink-0 text-[var(--color-text-muted)] transition-transform duration-300 group-open:rotate-180"
+                          >
+                            ▾
+                          </span>
+                        </summary>
+                        <div className="px-5 pb-5 pt-1 text-sm leading-relaxed text-[var(--color-text-muted)] border-t border-[var(--color-border)]">
+                          {item.answer}
+                        </div>
+                      </details>
+                    );
+                  })}
               </div>
             </section>
           </AnimatedSection>

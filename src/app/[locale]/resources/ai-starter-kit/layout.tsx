@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { createSeoMetadata } from "@/components/seo/metadata";
+import { createSeoMetadata, getPageSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -8,13 +7,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "leadMagnet" });
+  const seo = getPageSeo(locale, "starterKit");
 
   return createSeoMetadata({
     locale,
     path: "/resources/ai-starter-kit",
-    title: t("title"),
-    description: t("metaDescription"),
+    ...seo,
   });
 }
 

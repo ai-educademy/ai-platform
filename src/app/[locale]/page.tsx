@@ -16,6 +16,7 @@ import {
 } from "@/components/home/HomeDynamic";
 import HomeProBand from "@/components/home/HomeProBand";
 import { PLAN_PRICE_LABELS, ANNUAL_SAVING_PERCENT } from "@/lib/pricing";
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export default async function HomePage({
   params,
@@ -65,7 +66,11 @@ export default async function HomePage({
   }));
 
   // Resolve first lesson slugs for direct navigation
-  const allHomePrograms = [...aiLearningPrograms, ...craftPrograms, ...careerPrograms];
+  const allHomePrograms = [
+    ...aiLearningPrograms,
+    ...craftPrograms,
+    ...careerPrograms,
+  ];
   const firstLessonSlugs: Record<string, string | undefined> = {};
   const lessonNames: Record<string, string[]> = {};
   for (const p of allHomePrograms) {
@@ -95,7 +100,7 @@ export default async function HomePage({
   const totalPrograms = allPrograms.length;
   const totalLessons = allPrograms.reduce(
     (sum, p) => sum + getLessons(p.slug, locale).length,
-    0
+    0,
   );
   const totalLanguages = routing.locales.length;
 
@@ -108,6 +113,7 @@ export default async function HomePage({
 
   return (
     <>
+      <OrganizationJsonLd />
 
       {/* Section 1: Hero */}
       <section className="relative overflow-hidden min-h-[60vh] flex items-center">
@@ -220,13 +226,28 @@ export default async function HomePage({
         ctaText={tLP("ctaText")}
         ctaHref={`${basePath}/lab`}
         experiments={[
-          { name: tLP("neuralPlayground"), description: tLP("neuralPlaygroundDesc") },
+          {
+            name: tLP("neuralPlayground"),
+            description: tLP("neuralPlaygroundDesc"),
+          },
           { name: tLP("aiOrHuman"), description: tLP("aiOrHumanDesc") },
-          { name: tLP("promptEngineering"), description: tLP("promptEngineeringDesc") },
-          { name: tLP("imageGeneration"), description: tLP("imageGenerationDesc") },
-          { name: tLP("sentimentAnalysis"), description: tLP("sentimentAnalysisDesc") },
+          {
+            name: tLP("promptEngineering"),
+            description: tLP("promptEngineeringDesc"),
+          },
+          {
+            name: tLP("imageGeneration"),
+            description: tLP("imageGenerationDesc"),
+          },
+          {
+            name: tLP("sentimentAnalysis"),
+            description: tLP("sentimentAnalysisDesc"),
+          },
           { name: tLP("aiChat"), description: tLP("aiChatDesc") },
-          { name: tLP("ethicsScenarios"), description: tLP("ethicsScenariosDesc") },
+          {
+            name: tLP("ethicsScenarios"),
+            description: tLP("ethicsScenariosDesc"),
+          },
         ]}
       />
 

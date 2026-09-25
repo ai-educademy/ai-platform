@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { createSeoMetadata } from "@/components/seo/metadata";
+import { createSeoMetadata, getPageSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -8,19 +7,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "lab" });
-  return createSeoMetadata({
-    locale,
-    path: "/lab",
-    title: t("pageTitle"),
-    description: t("pageDescription"),
-  });
+  const seo = getPageSeo(locale, "lab");
+  return createSeoMetadata({ locale, path: "/lab", ...seo });
 }
 
-export default function LabLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function LabLayout({ children }: { children: React.ReactNode }) {
   return children;
 }
