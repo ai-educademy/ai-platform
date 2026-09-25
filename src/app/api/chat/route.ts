@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import { sendChatWithFallback } from "@/lib/ai-model";
 import { mapAiError } from "@/lib/ai-errors";
 import { z } from "zod";
 
@@ -79,22 +80,18 @@ export async function POST(req: NextRequest) {
     const { messages } = parsed.data;
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-flash-latest",
-      systemInstruction: SYSTEM_PROMPT,
-    });
-
     // Build history (all but last message)
     const history = messages.slice(0, -1).map((m) => ({
       role: m.role,
       parts: [{ text: m.content }],
     }));
 
-    const chat = model.startChat({ history });
-
     const lastMessage = messages[messages.length - 1];
-    const result = await chat.sendMessage(lastMessage.content);
-    const text = result.response.text();
+    const { text } = await sendChatWithFallback(genAI, {
+      systemInstruction: SYSTEM_PROMPT,
+      history,
+      message: lastMessage.content,
+    });
 
     return NextResponse.json({ content: text });
   } catch (err: unknown) {
