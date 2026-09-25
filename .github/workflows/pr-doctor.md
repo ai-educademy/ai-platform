@@ -44,6 +44,9 @@ tools:
     mode: gh-proxy
     toolsets: [pull_requests, repos, actions]
 safe-outputs:
+  # No Copilot token in this org; skip the AI pass. Agent PRs still need green CI.
+  threat-detection:
+    engine: false
   push-to-pull-request-branch:
   add-comment:
     max: 1
