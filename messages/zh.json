@@ -1270,7 +1270,9 @@
     "notHelpful": "有待改进",
     "tellUsMore": "告诉我们更多（可选）",
     "submit": "提交反馈",
-    "thanks": "感谢你的反馈！"
+    "thanks": "感谢你的反馈！",
+    "certificateNudge": "想把它展示在 LinkedIn 上吗？Pro 会员每完成一个学院都能获得认证证书，一键添加到个人资料。",
+    "certificateNudgeCta": "了解 Pro"
   },
   "newsletter": {
     "title": "保持关注",

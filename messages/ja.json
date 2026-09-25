@@ -1270,7 +1270,9 @@
     "notHelpful": "改善が必要",
     "tellUsMore": "詳しく教えてください（任意）",
     "submit": "フィードバックを送信",
-    "thanks": "フィードバックありがとうございます！"
+    "thanks": "フィードバックありがとうございます！",
+    "certificateNudge": "LinkedInに載せたいですか？Proメンバーは各アカデミーの認定証を取得でき、ワンクリックでプロフィールに追加できます。",
+    "certificateNudgeCta": "Proを見る"
   },
   "newsletter": {
     "title": "最新情報をチェック",
