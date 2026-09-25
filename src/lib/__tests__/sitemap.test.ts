@@ -43,11 +43,18 @@ describe("sitemap", () => {
     }
   });
 
-  it("keeps the ai-polish lessons that did not move", () => {
-    expect(urls).toContain(
-      "https://aieducademy.org/programs/ai-polish/lessons/ai-era-leadership",
+  it("keeps the ai-polish programme and its lessons that did not move", () => {
+    // Pro lesson files are absent where content-pro is not checked out, so
+    // assert against whatever lessons this checkout actually has.
+    const stayed = getLessons("ai-polish", "en").filter(
+      (lesson) => !MOVED_LESSON_PATHS.has(`ai-polish/${lesson.slug}`),
     );
     expect(urls).toContain("https://aieducademy.org/programs/ai-polish");
+    for (const lesson of stayed) {
+      expect(urls).toContain(
+        `https://aieducademy.org/programs/ai-polish/lessons/${lesson.slug}`,
+      );
+    }
   });
 
   it("emits absolute URLs with the canonical English root", () => {
