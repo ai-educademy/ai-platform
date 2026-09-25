@@ -112,7 +112,7 @@ test.describe("Checkout API", () => {
 
     await page.goto("/en/pricing");
     // One click on the card is the whole journey to Stripe.
-    await page.getByRole("button", { name: /free trial: pro annual/i }).click();
+    await page.getByRole("button", { name: /: pro annual$/i }).click();
 
     await expect(page).toHaveURL(/#stripe-checkout$/);
   });
