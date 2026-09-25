@@ -20,7 +20,18 @@ import {
   AnimatedThinkAboutIt,
 } from "./LessonElements";
 
-const localePrefixes = new Set(["ar", "de", "es", "fr", "hi", "ja", "nl", "pt", "te", "zh"]);
+const localePrefixes = new Set([
+  "ar",
+  "de",
+  "es",
+  "fr",
+  "hi",
+  "ja",
+  "nl",
+  "pt",
+  "te",
+  "zh",
+]);
 
 function localiseInternalHref(href: string | undefined, locale?: string) {
   if (!href) return href;
@@ -33,14 +44,16 @@ function localiseInternalHref(href: string | undefined, locale?: string) {
   const [pathWithQuery, hash = ""] = candidate.split("#");
   const [pathname, query = ""] = pathWithQuery.split("?");
   const segments = pathname.split("/").filter(Boolean);
-  const alreadyLocalised = segments.length > 0 && localePrefixes.has(segments[0]);
+  const alreadyLocalised =
+    segments.length > 0 && localePrefixes.has(segments[0]);
   const canonicalPath =
     pathname === "/experiments"
       ? "/lab"
       : pathname.startsWith("/blog/en/")
         ? pathname.replace(/^\/blog\/en\//, "/blog/")
         : pathname;
-  const prefix = locale && locale !== "en" && !alreadyLocalised ? `/${locale}` : "";
+  const prefix =
+    locale && locale !== "en" && !alreadyLocalised ? `/${locale}` : "";
   return `${prefix}${canonicalPath}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
 }
 
@@ -71,7 +84,9 @@ const components = {
   Animation: LottieAnimation,
   Quiz,
   a: createMdxLink(),
-  h1: AnimatedH1,
+  h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <AnimatedH1 as="h2" {...props} />
+  ),
   h2: AnimatedH2,
   h3: AnimatedH3,
   p: AnimatedP,
@@ -96,10 +111,16 @@ const components = {
     <thead className="bg-[var(--color-primary)]/10 text-left" {...props} />
   ),
   th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <th className="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text)] text-sm" {...props} />
+    <th
+      className="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text)] text-sm"
+      {...props}
+    />
   ),
   td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <td className="px-3 sm:px-4 py-3 border-t border-[var(--color-border)] text-[var(--color-text-muted)] text-sm" {...props} />
+    <td
+      className="px-3 sm:px-4 py-3 border-t border-[var(--color-border)] text-[var(--color-text-muted)] text-sm"
+      {...props}
+    />
   ),
   img: AnimatedImg,
   Illustration: AnimatedIllustration,
