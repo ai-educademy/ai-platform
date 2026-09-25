@@ -289,7 +289,7 @@ export default function SignUpPage() {
           >
             {t("hasAccount")}{" "}
             <Link
-              href="/signin"
+              href={`${basePath}/signin`}
               className="text-[var(--color-primary)] hover:underline font-medium"
             >
               {t("signIn")}

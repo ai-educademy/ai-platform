@@ -40,6 +40,7 @@ export interface LessonPreview {
   excerptWordCount: number;
 }
 
+
 function contentDir(programSlug: string): string {
   return path.join(
     process.cwd(),
@@ -145,7 +146,7 @@ export function getLessons(programSlug: string, locale: string): LessonMeta[] {
 
   const allFiles = new Set([...enFiles, ...localeFiles]);
 
-  return Array.from(allFiles)
+  const lessons = Array.from(allFiles)
     .map((file) => {
       const localePath = path.join(dir, file);
       const enPath = path.join(enDir, file);
@@ -169,6 +170,7 @@ export function getLessons(programSlug: string, locale: string): LessonMeta[] {
     })
     .filter((l): l is LessonMeta => l !== null && l.published)
     .sort((a, b) => a.order - b.order);
+  return lessons;
 }
 
 export function getLesson(

@@ -195,6 +195,7 @@ export default async function BlogPostPage({
             <div className="lesson-content">
               <LessonRenderer
                 content={post.content}
+                locale={locale}
                 extraComponents={{ h2: BlogH2, h3: BlogH3 }}
               />
             </div>

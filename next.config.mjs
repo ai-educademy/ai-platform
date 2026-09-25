@@ -11,12 +11,18 @@ const withMDX = createMDX({
 
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
-  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-XSS-Protection", value: "1; mode=block" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
   {
     // Google Analytics was being refused by this policy on every page load in
     // production, so the site has been collecting no analytics and no
@@ -39,6 +45,30 @@ const securityHeaders = [
   },
 ];
 
+// Lessons that moved out of ai-polish. English has no locale prefix, so each
+// move needs both forms or /programs/ai-polish/... keeps serving a duplicate.
+const MOVED_LESSONS = [
+  ["star-framework", "ai-behavioral"],
+  ["behavioural-interview-mastery", "ai-behavioral"],
+  ["career-transitions-to-ai", "ai-launchpad"],
+  ["negotiating-your-offer", "ai-offer"],
+  ["salary-benchmarking", "ai-offer"],
+  ["building-personal-brand", "ai-offer"],
+];
+
+const movedLessonRedirects = MOVED_LESSONS.flatMap(([slug, program]) => [
+  {
+    source: `/:locale(ar|de|es|fr|hi|ja|nl|pt|te|zh)/programs/ai-polish/lessons/${slug}`,
+    destination: `/:locale/programs/${program}/lessons/${slug}`,
+    permanent: true,
+  },
+  {
+    source: `/programs/ai-polish/lessons/${slug}`,
+    destination: `/programs/${program}/lessons/${slug}`,
+    permanent: true,
+  },
+]);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
@@ -50,37 +80,7 @@ const nextConfig = {
         destination: "https://aieducademy.org/:path*",
         permanent: true,
       },
-      // Lessons moved from ai-polish → career-ready programs
-      {
-        source: "/:locale/programs/ai-polish/lessons/star-framework",
-        destination: "/:locale/programs/ai-behavioral/lessons/star-framework",
-        permanent: true,
-      },
-      {
-        source: "/:locale/programs/ai-polish/lessons/behavioural-interview-mastery",
-        destination: "/:locale/programs/ai-behavioral/lessons/behavioural-interview-mastery",
-        permanent: true,
-      },
-      {
-        source: "/:locale/programs/ai-polish/lessons/career-transitions-to-ai",
-        destination: "/:locale/programs/ai-launchpad/lessons/career-transitions-to-ai",
-        permanent: true,
-      },
-      {
-        source: "/:locale/programs/ai-polish/lessons/negotiating-your-offer",
-        destination: "/:locale/programs/ai-offer/lessons/negotiating-your-offer",
-        permanent: true,
-      },
-      {
-        source: "/:locale/programs/ai-polish/lessons/salary-benchmarking",
-        destination: "/:locale/programs/ai-offer/lessons/salary-benchmarking",
-        permanent: true,
-      },
-      {
-        source: "/:locale/programs/ai-polish/lessons/building-personal-brand",
-        destination: "/:locale/programs/ai-offer/lessons/building-personal-brand",
-        permanent: true,
-      },
+      ...movedLessonRedirects,
     ];
   },
   images: {

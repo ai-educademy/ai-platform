@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
 import { normaliseMdxSource } from "@/lib/mdx-safety";
 import { Quiz } from "./Quiz";
 import { LottieAnimation } from "./LottieAnimation";
@@ -19,9 +20,57 @@ import {
   AnimatedThinkAboutIt,
 } from "./LessonElements";
 
+const localePrefixes = new Set(["ar", "de", "es", "fr", "hi", "ja", "nl", "pt", "te", "zh"]);
+
+function localiseInternalHref(href: string | undefined, locale?: string) {
+  if (!href) return href;
+  let candidate = href;
+  if (href.startsWith("https://aieducademy.org")) {
+    const url = new URL(href);
+    candidate = `${url.pathname}${url.search}${url.hash}`;
+  }
+  if (!candidate.startsWith("/")) return href;
+  const [pathWithQuery, hash = ""] = candidate.split("#");
+  const [pathname, query = ""] = pathWithQuery.split("?");
+  const segments = pathname.split("/").filter(Boolean);
+  const alreadyLocalised = segments.length > 0 && localePrefixes.has(segments[0]);
+  const canonicalPath =
+    pathname === "/experiments"
+      ? "/lab"
+      : pathname.startsWith("/blog/en/")
+        ? pathname.replace(/^\/blog\/en\//, "/blog/")
+        : pathname;
+  const prefix = locale && locale !== "en" && !alreadyLocalised ? `/${locale}` : "";
+  return `${prefix}${canonicalPath}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
+}
+
+function createMdxLink(locale?: string) {
+  function MdxLink({
+    href,
+    children,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+    const localisedHref = localiseInternalHref(href, locale);
+    if (localisedHref?.startsWith("/")) {
+      return (
+        <Link href={localisedHref} {...props}>
+          {children}
+        </Link>
+      );
+    }
+    return (
+      <a href={localisedHref} {...props}>
+        {children}
+      </a>
+    );
+  }
+  return MdxLink;
+}
+
 const components = {
   Animation: LottieAnimation,
   Quiz,
+  a: createMdxLink(),
   h1: AnimatedH1,
   h2: AnimatedH2,
   h3: AnimatedH3,
@@ -61,13 +110,18 @@ const components = {
 
 export function LessonRenderer({
   content,
+  locale,
   extraComponents,
 }: {
   content: string;
+  locale?: string;
   extraComponents?: Partial<typeof components>;
 }) {
-  const merged = extraComponents
-    ? { ...components, ...extraComponents }
+  const localisedComponents = locale
+    ? { ...components, a: createMdxLink(locale) }
     : components;
+  const merged = extraComponents
+    ? { ...localisedComponents, ...extraComponents }
+    : localisedComponents;
   return <MDXRemote source={normaliseMdxSource(content)} components={merged} />;
 }

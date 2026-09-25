@@ -103,6 +103,17 @@ npm run lint
 npm run build
 ```
 
+## SEO crawl
+
+Run the reusable Googlebot style crawler against production or a local `next start` instance:
+
+```bash
+node scripts/seo-crawl.mjs --site=https://aieducademy.org --out=seo-crawl-results/production
+node scripts/seo-crawl.mjs --site=http://localhost:3000 --out=seo-crawl-results/local
+```
+
+The crawler starts from the home page, locale home pages, and every sitemap URL, then follows internal links without auto-following redirects. It records status, redirect target and chain length, canonical URL, meta robots, and internal inlink counts. The command exits non-zero when it finds broken internal links, redirect chains, internal links to redirects, orphan indexable sitemap pages, soft 404 candidates, or mixed-locale internal links.
+
 ## Project structure
 
 ```text

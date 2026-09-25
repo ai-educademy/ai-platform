@@ -1,4 +1,6 @@
-import { redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { getLessons } from "@/lib/lessons";
+import { getPrograms } from "@/lib/programs";
 
 export default async function LessonPage({
   params,
@@ -7,5 +9,11 @@ export default async function LessonPage({
 }) {
   const { locale, slug } = await params;
   const basePath = locale === "en" ? "" : `/${locale}`;
-  redirect(`${basePath}/programs/ai-seeds/lessons/${slug}`);
+  const owningProgram = getPrograms().find((program) =>
+    getLessons(program.slug, locale).some((lesson) => lesson.slug === slug),
+  );
+
+  if (!owningProgram) notFound();
+
+  permanentRedirect(`${basePath}/programs/${owningProgram.slug}/lessons/${slug}`);
 }
