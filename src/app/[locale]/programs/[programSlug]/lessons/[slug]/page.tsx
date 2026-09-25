@@ -27,6 +27,7 @@ import { db, isDbConfigured } from "@/lib/db";
 import { lessonBookmarks } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { ContentLanguageNotice } from "@/components/lessons/ContentLanguageNotice";
+import { trackEvent } from "@/lib/funnel";
 
 export const dynamicParams = false;
 
@@ -203,6 +204,8 @@ export default async function ProgramLessonPage({
   const programTitle = tP(`${programSlug}.title`);
   const lessonUrl = `${BASE_URL}${programPath}/lessons/${slug}`;
   const preview = buildLessonPreview(lesson);
+  trackEvent("lesson_viewed", { userId: session?.user?.id, locale, path: `${programPath}/lessons/${slug}`, programSlug, lessonSlug: slug, plan: isPremium ? "gated" : "free" });
+  if (!hasAccess) trackEvent("paywall_viewed", { userId: session?.user?.id, locale, path: `${programPath}/lessons/${slug}`, programSlug, lessonSlug: slug, plan: "gated" });
 
   // Build lesson counts for all programs in this track (for confetti)
   const trackPrograms = getProgramsByTrack(program.track);

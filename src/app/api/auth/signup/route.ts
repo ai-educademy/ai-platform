@@ -8,6 +8,7 @@ import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { safeLocale } from "@/lib/safe-locale";
 import { isMissingColumn } from "@/lib/db/missing-column";
+import { trackEvent } from "@/lib/funnel";
 
 function generateCode(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -84,8 +85,10 @@ export async function POST(req: NextRequest) {
     // column that only personalises later email, so a missing column falls back
     // to creating the account without it. Remove this once 0004 is applied
     // everywhere.
+    const userId = crypto.randomUUID();
     try {
       await db.insert(users).values({
+        id: userId,
         name,
         email,
         password: hashedPassword,
@@ -96,6 +99,7 @@ export async function POST(req: NextRequest) {
       if (!isMissingColumn(error, "locale")) throw error;
       console.warn("[Signup] users.locale missing; apply migration 0004.");
       await db.insert(users).values({
+        id: userId,
         name,
         email,
         password: hashedPassword,
@@ -117,6 +121,7 @@ export async function POST(req: NextRequest) {
     sendVerificationEmail(email, code).catch((err) =>
       console.error("[Signup] Verification email failed:", err)
     );
+    trackEvent("signup_completed", { userId, locale, path: "/signup" });
 
     return NextResponse.json(
       { message: "Account created. Please check your email for a verification code." },

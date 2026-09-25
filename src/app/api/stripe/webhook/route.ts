@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { sendSubscriptionEmail, sendAdminNotification, sendAbandonedCartEmail } from "@/lib/email";
 import type Stripe from "stripe";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+import { trackEvent } from "@/lib/funnel";
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
@@ -63,6 +64,7 @@ async function handleEvent(event: Stripe.Event) {
       // that same event forever. `inserted` is empty on replay, which is what
       // gates the emails below so a customer is not thanked twice.
       let inserted: { id: string }[] = [];
+      let startedTrial = false;
 
       if (plan === "lifetime") {
         const paymentIntentId =
@@ -89,6 +91,7 @@ async function handleEvent(event: Stripe.Event) {
         const sub = await getStripe().subscriptions.retrieve(
           session.subscription as string
         );
+        startedTrial = sub.status === "trialing";
         const item = sub.items.data[0];
         inserted = await db
           .insert(subscriptions)
@@ -112,6 +115,8 @@ async function handleEvent(event: Stripe.Event) {
       // Replay of an already-processed event: entitlement is already correct and
       // the customer has already been emailed, so stop here.
       if (inserted.length === 0) break;
+      trackEvent("checkout_completed", { userId, locale: session.metadata?.locale, path: "/api/stripe/webhook", plan });
+      if (startedTrial) trackEvent("trial_started", { userId, locale: session.metadata?.locale, path: "/api/stripe/webhook", plan });
 
       // Send confirmation email to user
       if (userEmail) {
@@ -160,6 +165,7 @@ async function handleEvent(event: Stripe.Event) {
           .where(eq(subscriptions.stripeSubscriptionId, sub.id));
 
         if (status === "cancelled") {
+          trackEvent("subscription_cancelled", { userId: existing[0].userId, path: "/api/stripe/webhook", plan: existing[0].plan });
           await db
             .update(users)
             .set({ role: "free", updatedAt: new Date() })
@@ -193,6 +199,7 @@ async function handleEvent(event: Stripe.Event) {
         .limit(1);
 
       if (existing[0]) {
+        trackEvent("subscription_cancelled", { userId: existing[0].userId, path: "/api/stripe/webhook", plan: existing[0].plan });
         await db
           .update(subscriptions)
           .set({ status: "cancelled", updatedAt: new Date() })

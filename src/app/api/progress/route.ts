@@ -5,6 +5,7 @@ import { lessonProgress } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { z } from "zod";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
+import { trackEvent } from "@/lib/funnel";
 
 function serverError(route: string, error: unknown): NextResponse {
   if (isDatabaseNotConfigured(error)) return databaseUnavailable();
@@ -78,6 +79,7 @@ export async function POST(req: NextRequest) {
         locale,
       })
       .onConflictDoNothing();
+    trackEvent("lesson_completed", { userId: session.user.id, locale, path: `/programs/${programSlug}/lessons/${lessonSlug}`, programSlug, lessonSlug });
 
     return NextResponse.json({ success: true });
   } catch (error) {
