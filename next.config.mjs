@@ -2,6 +2,8 @@
 import withSerwist from "@serwist/next";
 import createNextIntlPlugin from "next-intl/plugin";
 import createMDX from "@next/mdx";
+import { readFileSync } from "node:fs";
+import { URL } from "node:url";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -47,23 +49,26 @@ const securityHeaders = [
 
 // Lessons that moved out of ai-polish. English has no locale prefix, so each
 // move needs both forms or /programs/ai-polish/... keeps serving a duplicate.
-const MOVED_LESSONS = [
-  ["star-framework", "ai-behavioral"],
-  ["behavioural-interview-mastery", "ai-behavioral"],
-  ["career-transitions-to-ai", "ai-launchpad"],
-  ["negotiating-your-offer", "ai-offer"],
-  ["salary-benchmarking", "ai-offer"],
-  ["building-personal-brand", "ai-offer"],
-];
+// Single source of truth shared with getLessons() and the sitemap.
+const MOVED_LESSONS = Object.entries(
+  JSON.parse(
+    readFileSync(
+      new URL("./src/lib/moved-lessons.json", import.meta.url),
+      "utf8",
+    ),
+  ),
+).flatMap(([from, lessons]) =>
+  Object.entries(lessons).map(([slug, program]) => [slug, program, from]),
+);
 
-const movedLessonRedirects = MOVED_LESSONS.flatMap(([slug, program]) => [
+const movedLessonRedirects = MOVED_LESSONS.flatMap(([slug, program, from]) => [
   {
-    source: `/:locale(ar|de|es|fr|hi|ja|nl|pt|te|zh)/programs/ai-polish/lessons/${slug}`,
+    source: `/:locale(ar|de|es|fr|hi|ja|nl|pt|te|zh)/programs/${from}/lessons/${slug}`,
     destination: `/:locale/programs/${program}/lessons/${slug}`,
     permanent: true,
   },
   {
-    source: `/programs/ai-polish/lessons/${slug}`,
+    source: `/programs/${from}/lessons/${slug}`,
     destination: `/programs/${program}/lessons/${slug}`,
     permanent: true,
   },
