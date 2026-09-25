@@ -20,6 +20,7 @@ permissions:
 engine:
   id: gemini
   model: gemini-3.1-flash-lite-preview
+  version: "0.39.1"
 timeout-minutes: 20
 strict: true
 network:
