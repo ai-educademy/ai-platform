@@ -3,6 +3,7 @@ import withSerwist from "@serwist/next";
 import createNextIntlPlugin from "next-intl/plugin";
 import createMDX from "@next/mdx";
 import { readFileSync } from "node:fs";
+import { URL } from "node:url";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
