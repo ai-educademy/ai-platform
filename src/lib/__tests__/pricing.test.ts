@@ -4,6 +4,10 @@ import {
   PLAN_PRICE_LABELS,
   ANNUAL_SAVING_PERCENT,
   formatPence,
+  formatMinorCurrency,
+  getAnnualSavingPercent,
+  getPlanPriceLabels,
+  resolvePricingCurrency,
 } from "@/lib/pricing";
 
 /**
@@ -30,18 +34,41 @@ describe("pricing", () => {
   });
 
   it("keeps the annual plan genuinely cheaper than paying monthly", () => {
-    expect(PLAN_PRICES_PENCE.annual).toBeLessThan(PLAN_PRICES_PENCE.monthly * 12);
+    expect(PLAN_PRICES_PENCE.annual).toBeLessThan(
+      PLAN_PRICES_PENCE.monthly * 12,
+    );
     expect(ANNUAL_SAVING_PERCENT).toBeGreaterThan(0);
   });
 
   it("prices lifetime above a single year, so it is not the obvious arbitrage", () => {
-    expect(PLAN_PRICES_PENCE.lifetime).toBeGreaterThan(PLAN_PRICES_PENCE.annual);
+    expect(PLAN_PRICES_PENCE.lifetime).toBeGreaterThan(
+      PLAN_PRICES_PENCE.annual,
+    );
+  });
+
+  it("formats INR prices for Indian visitors", () => {
+    expect(formatMinorCurrency(14900, "inr")).toBe("₹149");
+    expect(getPlanPriceLabels("inr").monthly).toBe("₹149");
+    expect(getAnnualSavingPercent("inr")).toBe(16);
+  });
+
+  it("selects INR for India and Indian-language locales", () => {
+    expect(resolvePricingCurrency("en", "IN")).toBe("inr");
+    expect(resolvePricingCurrency("hi", "GB")).toBe("inr");
+    expect(resolvePricingCurrency("te", null)).toBe("inr");
+    expect(resolvePricingCurrency("fr", "FR")).toBe("gbp");
   });
 
   it("exposes labels matching the underlying pence values", () => {
     expect(PLAN_PRICE_LABELS.free).toBe("£0");
-    expect(PLAN_PRICE_LABELS.monthly).toBe(formatPence(PLAN_PRICES_PENCE.monthly));
-    expect(PLAN_PRICE_LABELS.annual).toBe(formatPence(PLAN_PRICES_PENCE.annual));
-    expect(PLAN_PRICE_LABELS.lifetime).toBe(formatPence(PLAN_PRICES_PENCE.lifetime));
+    expect(PLAN_PRICE_LABELS.monthly).toBe(
+      formatPence(PLAN_PRICES_PENCE.monthly),
+    );
+    expect(PLAN_PRICE_LABELS.annual).toBe(
+      formatPence(PLAN_PRICES_PENCE.annual),
+    );
+    expect(PLAN_PRICE_LABELS.lifetime).toBe(
+      formatPence(PLAN_PRICES_PENCE.lifetime),
+    );
   });
 });

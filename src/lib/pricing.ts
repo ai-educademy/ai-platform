@@ -1,42 +1,82 @@
 /**
  * Plan prices, in one place.
  *
- * These were previously written twice: in pence in the Stripe config, and again
- * as formatted strings in the pricing page. The two drifted, and the annual
- * saving ended up advertised as 27% when the real figure was 37%, understating
- * the discount on every locale of the pricing page.
- *
- * This module deliberately has no dependencies, so both a server-only Stripe
- * helper and a client component can read from it.
+ * Amounts are minor units: pence for GBP, paise for INR. Keeping the display
+ * prices and Stripe price selection together avoids advertising one amount and
+ * charging another.
  */
 
-export const PLAN_PRICES_PENCE = {
-  monthly: 399,
-  annual: 2999,
-  lifetime: 4999,
+export const PRICING_TRIAL_DAYS = 7;
+
+export const PLAN_PRICES = {
+  gbp: {
+    monthly: 399,
+    annual: 2999,
+    lifetime: 4999,
+  },
+  inr: {
+    monthly: 14900,
+    annual: 149900,
+    lifetime: 249900,
+  },
 } as const;
 
-export type PaidPlan = keyof typeof PLAN_PRICES_PENCE;
+export type PricingCurrency = keyof typeof PLAN_PRICES;
+export type PaidPlan = keyof typeof PLAN_PRICES.gbp;
 
-/** Formats pence as sterling, dropping the decimals on whole amounts. */
-export function formatPence(pence: number): string {
-  const pounds = pence / 100;
+export const PLAN_PRICES_PENCE = PLAN_PRICES.gbp;
+
+const LOCALE_CURRENCY: Partial<Record<string, PricingCurrency>> = {
+  hi: "inr",
+  te: "inr",
+};
+
+export function resolvePricingCurrency(
+  locale: string,
+  country?: string | null,
+): PricingCurrency {
+  if (country?.toUpperCase() === "IN") return "inr";
+  return LOCALE_CURRENCY[locale] ?? "gbp";
+}
+
+export function formatMinorCurrency(
+  amount: number,
+  currency: PricingCurrency,
+): string {
+  if (currency === "inr") {
+    const rupees = amount / 100;
+    return Number.isInteger(rupees) ? `₹${rupees}` : `₹${rupees.toFixed(2)}`;
+  }
+
+  const pounds = amount / 100;
   return Number.isInteger(pounds) ? `£${pounds}` : `£${pounds.toFixed(2)}`;
 }
 
-export const PLAN_PRICE_LABELS: Record<PaidPlan | "free", string> = {
-  free: "£0",
-  monthly: formatPence(PLAN_PRICES_PENCE.monthly),
-  annual: formatPence(PLAN_PRICES_PENCE.annual),
-  lifetime: formatPence(PLAN_PRICES_PENCE.lifetime),
-};
+/** Formats pence as sterling, dropping the decimals on whole amounts. */
+export function formatPence(pence: number): string {
+  return formatMinorCurrency(pence, "gbp");
+}
 
-/**
- * What an annual subscriber saves against paying monthly for a year, rounded
- * to a whole percent. Computed rather than written down so it cannot go stale
- * the next time a price changes.
- */
-export const ANNUAL_SAVING_PERCENT = Math.round(
-  (100 * (PLAN_PRICES_PENCE.monthly * 12 - PLAN_PRICES_PENCE.annual)) /
-    (PLAN_PRICES_PENCE.monthly * 12),
-);
+export function getPlanPriceLabels(
+  currency: PricingCurrency,
+): Record<PaidPlan | "free", string> {
+  const prices = PLAN_PRICES[currency];
+  return {
+    free: currency === "inr" ? "₹0" : "£0",
+    monthly: formatMinorCurrency(prices.monthly, currency),
+    annual: formatMinorCurrency(prices.annual, currency),
+    lifetime: formatMinorCurrency(prices.lifetime, currency),
+  };
+}
+
+export const PLAN_PRICE_LABELS: Record<PaidPlan | "free", string> =
+  getPlanPriceLabels("gbp");
+
+export function getAnnualSavingPercent(currency: PricingCurrency): number {
+  const prices = PLAN_PRICES[currency];
+  return Math.round(
+    (100 * (prices.monthly * 12 - prices.annual)) / (prices.monthly * 12),
+  );
+}
+
+export const ANNUAL_SAVING_PERCENT = getAnnualSavingPercent("gbp");

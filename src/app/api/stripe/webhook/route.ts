@@ -3,7 +3,13 @@ import { getStripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
 import { subscriptions, users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
-import { sendSubscriptionEmail, sendAdminNotification, sendAbandonedCartEmail } from "@/lib/email";
+import { grantsAccess } from "@/lib/subscription";
+import {
+  sendSubscriptionEmail,
+  sendAdminNotification,
+  sendAbandonedCartEmail,
+  sendTrialWillEndEmail,
+} from "@/lib/email";
 import type Stripe from "stripe";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { trackEvent } from "@/lib/funnel";
@@ -21,7 +27,7 @@ export async function POST(req: NextRequest) {
     event = getStripe().webhooks.constructEvent(
       body,
       sig,
-      process.env.STRIPE_WEBHOOK_SECRET
+      process.env.STRIPE_WEBHOOK_SECRET,
     );
   } catch (err) {
     // No database work happens during signature verification, so a db guard
@@ -37,8 +43,34 @@ export async function POST(req: NextRequest) {
     // Return 500 so Stripe retries. The handler is idempotent, so a retry after
     // a partial failure cannot double-apply an entitlement or re-send an email.
     console.error(`[stripe/webhook] handler failed for ${event.type}:`, err);
-    return NextResponse.json({ error: "Webhook handler failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Webhook handler failed" },
+      { status: 500 },
+    );
   }
+}
+
+function normaliseSubscriptionStatus(status: Stripe.Subscription.Status) {
+  if (status === "active") return "active";
+  if (status === "trialing") return "trialing";
+  if (status === "past_due") return "past_due";
+  if (status === "canceled") return "cancelled";
+  return "incomplete";
+}
+
+async function setUserRoleUnlessAdmin(userId: string, role: "free" | "pro") {
+  const [user] = await db
+    .select({ role: users.role })
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(1);
+
+  if (user?.role === "admin") return;
+
+  await db
+    .update(users)
+    .set({ role, updatedAt: new Date() })
+    .where(eq(users.id, userId));
 }
 
 async function handleEvent(event: Stripe.Event) {
@@ -47,15 +79,16 @@ async function handleEvent(event: Stripe.Event) {
       const session = event.data.object as Stripe.Checkout.Session;
       const userId = session.metadata?.userId;
       const plan = session.metadata?.plan as
-        | "monthly"
-        | "annual"
-        | "lifetime"
-        | undefined;
+        "monthly" | "annual" | "lifetime" | undefined;
 
       if (!userId || !plan) break;
 
       // Look up user email for notifications
-      const [userRow] = await db.select({ email: users.email, name: users.name }).from(users).where(eq(users.id, userId)).limit(1);
+      const [userRow] = await db
+        .select({ email: users.email, name: users.name })
+        .from(users)
+        .where(eq(users.id, userId))
+        .limit(1);
       const userEmail = userRow?.email;
 
       // Stripe delivers webhooks at least once, so this handler must be safe to
@@ -83,13 +116,10 @@ async function handleEvent(event: Stripe.Event) {
           .onConflictDoNothing({ target: subscriptions.stripeSubscriptionId })
           .returning({ id: subscriptions.id });
 
-        await db
-          .update(users)
-          .set({ role: "pro", updatedAt: new Date() })
-          .where(eq(users.id, userId));
+        await setUserRoleUnlessAdmin(userId, "pro");
       } else if (session.subscription) {
         const sub = await getStripe().subscriptions.retrieve(
-          session.subscription as string
+          session.subscription as string,
         );
         startedTrial = sub.status === "trialing";
         const item = sub.items.data[0];
@@ -98,42 +128,58 @@ async function handleEvent(event: Stripe.Event) {
           .values({
             userId,
             plan,
-            status: "active",
+            status: normaliseSubscriptionStatus(sub.status),
             stripeSubscriptionId: sub.id,
             stripePriceId: item?.price.id,
-            currentPeriodStart: item ? new Date(item.current_period_start * 1000) : null,
-            currentPeriodEnd: item ? new Date(item.current_period_end * 1000) : null,
+            currentPeriodStart: item
+              ? new Date(item.current_period_start * 1000)
+              : null,
+            currentPeriodEnd: item
+              ? new Date(item.current_period_end * 1000)
+              : null,
           })
           .onConflictDoNothing({ target: subscriptions.stripeSubscriptionId })
           .returning({ id: subscriptions.id });
-        await db
-          .update(users)
-          .set({ role: "pro", updatedAt: new Date() })
-          .where(eq(users.id, userId));
+        await setUserRoleUnlessAdmin(userId, "pro");
       }
 
       // Replay of an already-processed event: entitlement is already correct and
       // the customer has already been emailed, so stop here.
       if (inserted.length === 0) break;
-      trackEvent("checkout_completed", { userId, locale: session.metadata?.locale, path: "/api/stripe/webhook", plan });
-      if (startedTrial) trackEvent("trial_started", { userId, locale: session.metadata?.locale, path: "/api/stripe/webhook", plan });
+      trackEvent("checkout_completed", {
+        userId,
+        locale: session.metadata?.locale,
+        path: "/api/stripe/webhook",
+        plan,
+      });
+      if (startedTrial)
+        trackEvent("trial_started", {
+          userId,
+          locale: session.metadata?.locale,
+          path: "/api/stripe/webhook",
+          plan,
+        });
 
       // Send confirmation email to user
       if (userEmail) {
         sendSubscriptionEmail(userEmail, "activated", plan).catch((err) =>
-          console.error("[Webhook] Subscription email failed:", err)
+          console.error("[Webhook] Subscription email failed:", err),
         );
       }
 
       // Notify admin
-      const amount = session.amount_total ? `£${(session.amount_total / 100).toFixed(2)}` : "N/A";
+      const amount = session.amount_total
+        ? `£${(session.amount_total / 100).toFixed(2)}`
+        : "N/A";
       sendAdminNotification(
         `New ${plan} subscription! 🎉`,
         `<p><strong>User:</strong> ${userRow?.name || "Unknown"} (${userEmail || userId})</p>
          <p><strong>Plan:</strong> ${plan}</p>
          <p><strong>Amount:</strong> ${amount}</p>
-         <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
-      ).catch((err) => console.error("[Webhook] Admin notification failed:", err));
+         <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`,
+      ).catch((err) =>
+        console.error("[Webhook] Admin notification failed:", err),
+      );
 
       break;
     }
@@ -147,35 +193,56 @@ async function handleEvent(event: Stripe.Event) {
         .limit(1);
 
       if (existing[0]) {
-        const status = sub.status === "active" ? "active" :
-          sub.status === "trialing" ? "trialing" :
-          sub.status === "past_due" ? "past_due" :
-          sub.status === "canceled" ? "cancelled" : "incomplete";
+        const status = normaliseSubscriptionStatus(sub.status);
 
         const item = sub.items.data[0];
         await db
           .update(subscriptions)
           .set({
             status,
-            currentPeriodStart: item ? new Date(item.current_period_start * 1000) : null,
-            currentPeriodEnd: item ? new Date(item.current_period_end * 1000) : null,
+            currentPeriodStart: item
+              ? new Date(item.current_period_start * 1000)
+              : null,
+            currentPeriodEnd: item
+              ? new Date(item.current_period_end * 1000)
+              : null,
             cancelAtPeriodEnd: sub.cancel_at_period_end,
             updatedAt: new Date(),
           })
           .where(eq(subscriptions.stripeSubscriptionId, sub.id));
 
         if (status === "cancelled") {
-          trackEvent("subscription_cancelled", { userId: existing[0].userId, path: "/api/stripe/webhook", plan: existing[0].plan });
-          await db
-            .update(users)
-            .set({ role: "free", updatedAt: new Date() })
-            .where(eq(users.id, existing[0].userId));
+          trackEvent("subscription_cancelled", {
+            userId: existing[0].userId,
+            path: "/api/stripe/webhook",
+            plan: existing[0].plan,
+          });
+        }
+        if (
+          grantsAccess(
+            status,
+            item ? new Date(item.current_period_end * 1000) : null,
+          )
+        ) {
+          await setUserRoleUnlessAdmin(existing[0].userId, "pro");
+        } else {
+          await setUserRoleUnlessAdmin(existing[0].userId, "free");
+        }
 
+        if (status === "cancelled") {
           // Notify user about cancellation
-          const [userRow] = await db.select({ email: users.email }).from(users).where(eq(users.id, existing[0].userId)).limit(1);
+          const [userRow] = await db
+            .select({ email: users.email })
+            .from(users)
+            .where(eq(users.id, existing[0].userId))
+            .limit(1);
           if (userRow?.email) {
-            sendSubscriptionEmail(userRow.email, "cancelled", existing[0].plan).catch((err) =>
-              console.error("[Webhook] Cancellation email failed:", err)
+            sendSubscriptionEmail(
+              userRow.email,
+              "cancelled",
+              existing[0].plan,
+            ).catch((err) =>
+              console.error("[Webhook] Cancellation email failed:", err),
             );
           }
 
@@ -183,8 +250,38 @@ async function handleEvent(event: Stripe.Event) {
             "Subscription cancelled ❌",
             `<p><strong>User:</strong> ${userRow?.email || existing[0].userId}</p>
              <p><strong>Plan:</strong> ${existing[0].plan}</p>
-             <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
-          ).catch((err) => console.error("[Webhook] Admin notification failed:", err));
+             <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`,
+          ).catch((err) =>
+            console.error("[Webhook] Admin notification failed:", err),
+          );
+        }
+      }
+      break;
+    }
+
+    case "customer.subscription.trial_will_end": {
+      const sub = event.data.object as Stripe.Subscription;
+      const existing = await db
+        .select()
+        .from(subscriptions)
+        .where(eq(subscriptions.stripeSubscriptionId, sub.id))
+        .limit(1);
+
+      if (existing[0]) {
+        const [userRow] = await db
+          .select({ email: users.email, locale: users.locale })
+          .from(users)
+          .where(eq(users.id, existing[0].userId))
+          .limit(1);
+
+        if (userRow?.email) {
+          sendTrialWillEndEmail(
+            userRow.email,
+            existing[0].plan,
+            userRow.locale ?? sub.metadata?.locale ?? "en",
+          ).catch((err) =>
+            console.error("[Webhook] Trial reminder email failed:", err),
+          );
         }
       }
       break;
@@ -199,21 +296,30 @@ async function handleEvent(event: Stripe.Event) {
         .limit(1);
 
       if (existing[0]) {
-        trackEvent("subscription_cancelled", { userId: existing[0].userId, path: "/api/stripe/webhook", plan: existing[0].plan });
+        trackEvent("subscription_cancelled", {
+          userId: existing[0].userId,
+          path: "/api/stripe/webhook",
+          plan: existing[0].plan,
+        });
         await db
           .update(subscriptions)
           .set({ status: "cancelled", updatedAt: new Date() })
           .where(eq(subscriptions.stripeSubscriptionId, sub.id));
 
-        await db
-          .update(users)
-          .set({ role: "free", updatedAt: new Date() })
-          .where(eq(users.id, existing[0].userId));
+        await setUserRoleUnlessAdmin(existing[0].userId, "free");
 
-        const [userRow] = await db.select({ email: users.email }).from(users).where(eq(users.id, existing[0].userId)).limit(1);
+        const [userRow] = await db
+          .select({ email: users.email })
+          .from(users)
+          .where(eq(users.id, existing[0].userId))
+          .limit(1);
         if (userRow?.email) {
-          sendSubscriptionEmail(userRow.email, "cancelled", existing[0].plan).catch((err) =>
-            console.error("[Webhook] Cancellation email failed:", err)
+          sendSubscriptionEmail(
+            userRow.email,
+            "cancelled",
+            existing[0].plan,
+          ).catch((err) =>
+            console.error("[Webhook] Cancellation email failed:", err),
           );
         }
 
@@ -221,8 +327,10 @@ async function handleEvent(event: Stripe.Event) {
           "Subscription deleted ❌",
           `<p><strong>User:</strong> ${userRow?.email || existing[0].userId}</p>
            <p><strong>Plan:</strong> ${existing[0].plan}</p>
-           <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
-        ).catch((err) => console.error("[Webhook] Admin notification failed:", err));
+           <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`,
+        ).catch((err) =>
+          console.error("[Webhook] Admin notification failed:", err),
+        );
       }
       break;
     }
@@ -230,25 +338,22 @@ async function handleEvent(event: Stripe.Event) {
     case "checkout.session.expired": {
       const expiredSession = event.data.object as Stripe.Checkout.Session;
       const customerEmail =
-        expiredSession.customer_details?.email ??
-        expiredSession.customer_email;
-      const customerName =
-        expiredSession.customer_details?.name ?? undefined;
+        expiredSession.customer_details?.email ?? expiredSession.customer_email;
+      const customerName = expiredSession.customer_details?.name ?? undefined;
 
       if (customerEmail) {
         const locale = expiredSession.metadata?.locale ?? "en";
         sendAbandonedCartEmail(customerEmail, customerName, locale).catch(
-          (err) =>
-            console.error("[Webhook] Abandoned cart email failed:", err)
+          (err) => console.error("[Webhook] Abandoned cart email failed:", err),
         );
 
         sendAdminNotification(
           "Abandoned checkout 🛒",
           `<p><strong>Email:</strong> ${customerEmail}</p>
            <p><strong>Name:</strong> ${customerName || "Unknown"}</p>
-           <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
+           <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`,
         ).catch((err) =>
-          console.error("[Webhook] Admin notification failed:", err)
+          console.error("[Webhook] Admin notification failed:", err),
         );
       }
       break;

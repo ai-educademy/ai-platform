@@ -1827,18 +1827,19 @@
     "monthly": {
       "title": "Pro Monthly",
       "period": "month",
-      "cta": "Start Pro Monthly"
+      "cta": "Start 7-day free trial"
     },
     "annual": {
       "title": "Pro Annual",
       "period": "year",
-      "cta": "Start Pro Annual",
+      "cta": "Start 7-day free trial",
       "save": "Save {percent}% vs monthly"
     },
     "lifetime": {
       "title": "Lifetime",
       "cta": "Get Lifetime Access",
-      "forever": "One payment, yours forever"
+      "forever": "One payment, yours forever",
+      "note": "One payment. No trial needed because this is not a subscription."
     },
     "pro": {
       "f1": "Every academy and learning track",
@@ -1870,7 +1871,9 @@
     "chooseAPlan": "Choose a plan",
     "selected": "Selected",
     "selectThisPlan": "Select this plan",
-    "alreadyPro": "You already have Pro. Manage your subscription from your account."
+    "alreadyPro": "You already have Pro. Manage your subscription from your account.",
+    "trialCta": "Start 7-day free trial",
+    "trialNote": "7 days free, card required. Cancel anytime before the trial ends and you will not be charged."
   },
   "paywall": {
     "title": "Your next level is behind this door",
@@ -1881,9 +1884,9 @@
       "progressSync": "Progress sync",
       "certificates": "Certificates"
     },
-    "upgradeCta": "Upgrade to Pro",
+    "upgradeCta": "Start 7-day free trial",
     "signInCta": "Sign in first",
-    "guarantee": "7-day money-back guarantee. Cancel anytime."
+    "guarantee": "7-day free trial, card required. Cancel anytime before the trial ends."
   },
   "mockInterview": {
     "title": "AI Mock Interview Lab",

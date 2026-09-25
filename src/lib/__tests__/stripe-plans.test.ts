@@ -17,6 +17,9 @@ const VARS = [
   "STRIPE_PRICE_MONTHLY",
   "STRIPE_PRICE_ANNUAL",
   "STRIPE_PRICE_LIFETIME",
+  "STRIPE_PRICE_INR_MONTHLY",
+  "STRIPE_PRICE_INR_ANNUAL",
+  "STRIPE_PRICE_INR_LIFETIME",
 ] as const;
 
 describe("stripe plan configuration", () => {
@@ -59,6 +62,14 @@ describe("stripe plan configuration", () => {
   // A price ID pasted into a dashboard very often carries a trailing newline.
   // Untrimmed it passes a truthiness check and then fails at Stripe, which is
   // the most expensive possible place to find out.
+  it("given INR price IDs are configured, when INR plans are resolved, then they are sellable", () => {
+    process.env.STRIPE_PRICE_INR_MONTHLY = "price_inr_monthly";
+    process.env.STRIPE_PRICE_INR_ANNUAL = "price_inr_annual";
+
+    expect(getPurchasablePlans("inr")).toEqual(["monthly", "annual"]);
+    expect(getPlanPriceId("monthly", "inr")).toBe("price_inr_monthly");
+  });
+
   it("given a price ID with surrounding whitespace, when it is read, then it is trimmed", () => {
     process.env.STRIPE_PRICE_ANNUAL = "  price_annual_123\n";
 

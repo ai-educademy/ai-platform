@@ -1821,18 +1821,19 @@
     "monthly": {
       "title": "Pro Maandelijks",
       "period": "maand",
-      "cta": "Pro maandelijks starten"
+      "cta": "Start gratis proefperiode van 7 dagen"
     },
     "annual": {
       "title": "Pro Jaarlijks",
       "period": "jaar",
-      "cta": "Start Pro jaarlijks",
+      "cta": "Start gratis proefperiode van 7 dagen",
       "save": "Bespaar {percent}% vergeleken met maandelijks"
     },
     "lifetime": {
       "title": "Levenslang",
       "cta": "Krijg levenslange toegang",
-      "forever": "Een betaling, voor altijd van jou"
+      "forever": "Een betaling, voor altijd van jou",
+      "note": "Eenmalige betaling. Geen proefperiode nodig, omdat dit geen abonnement is."
     },
     "pro": {
       "f1": "Elke academy en leertrack",
@@ -1855,7 +1856,9 @@
     "chooseAPlan": "Kies een plan",
     "selected": "Geselecteerd",
     "selectThisPlan": "Kies dit plan",
-    "alreadyPro": "Je hebt al Pro. Beheer uw abonnement vanuit uw account."
+    "alreadyPro": "Je hebt al Pro. Beheer uw abonnement vanuit uw account.",
+    "trialCta": "Start gratis proefperiode van 7 dagen",
+    "trialNote": "7 dagen gratis, kaart vereist. Annuleer op elk moment voordat de proefperiode eindigt en er wordt niets in rekening gebracht."
   },
   "paywall": {
     "title": "Je volgende niveau zit achter deze deur",
@@ -1866,9 +1869,9 @@
       "progressSync": "Voortgangssync",
       "certificates": "Certificaten"
     },
-    "upgradeCta": "Upgrade naar Pro",
+    "upgradeCta": "Start gratis proefperiode van 7 dagen",
     "signInCta": "Log eerst in",
-    "guarantee": "7 dagen geld-terug-garantie. Altijd opzegbaar."
+    "guarantee": "Gratis proefperiode van 7 dagen, kaart vereist. Annuleer op elk moment voordat de proefperiode eindigt."
   },
   "mockInterview": {
     "title": "AI Proef-sollicitatielab",

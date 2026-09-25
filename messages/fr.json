@@ -1821,18 +1821,19 @@
     "monthly": {
       "title": "Pro mensuel",
       "period": "mois",
-      "cta": "Commencer Pro mensuel"
+      "cta": "Commencer l’essai gratuit de 7 jours"
     },
     "annual": {
       "title": "Pro annuel",
       "period": "an",
-      "cta": "Commencer Pro annuel",
+      "cta": "Commencer l’essai gratuit de 7 jours",
       "save": "Economise {percent} % par rapport au mensuel"
     },
     "lifetime": {
       "title": "A vie",
       "cta": "Obtenir l acces a vie",
-      "forever": "Un seul paiement, a toi pour toujours"
+      "forever": "Un seul paiement, a toi pour toujours",
+      "note": "Un seul paiement. Pas besoin d’essai, car ce n’est pas un abonnement."
     },
     "pro": {
       "f1": "Toutes les academies et tous les parcours",
@@ -1855,7 +1856,9 @@
     "chooseAPlan": "Choisis un plan",
     "selected": "Selectionne",
     "selectThisPlan": "Choisir ce plan",
-    "alreadyPro": "Vous avez deja Pro. Gere ton abonnement depuis ton compte."
+    "alreadyPro": "Vous avez deja Pro. Gere ton abonnement depuis ton compte.",
+    "trialCta": "Commencer l’essai gratuit de 7 jours",
+    "trialNote": "7 jours gratuits, carte requise. Annulez à tout moment avant la fin de l’essai et vous ne serez pas facturé."
   },
   "paywall": {
     "title": "Ton prochain niveau est derriere cette porte",
@@ -1866,9 +1869,9 @@
       "progressSync": "Synchronisation de la progression",
       "certificates": "Certificats"
     },
-    "upgradeCta": "Passer a Pro",
+    "upgradeCta": "Commencer l’essai gratuit de 7 jours",
     "signInCta": "Connecte-toi d abord",
-    "guarantee": "Garantie satisfait ou rembourse de 7 jours. Annule a tout moment."
+    "guarantee": "Essai gratuit de 7 jours, carte requise. Annulez à tout moment avant la fin de l’essai."
   },
   "mockInterview": {
     "title": "Labo d'entretien simulé par IA",
