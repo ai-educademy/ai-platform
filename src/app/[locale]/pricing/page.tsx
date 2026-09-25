@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { headers } from "next/headers";
 import { buildAlternates } from "@/lib/seo";
 import { getPurchasablePlans } from "@/lib/stripe";
 import { trackEvent } from "@/lib/funnel";
+import { resolvePricingCurrency } from "@/lib/pricing";
 import { PricingCards } from "./PricingCards";
 
 export async function generateMetadata({
@@ -31,7 +33,15 @@ export default async function PricingPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pricing" });
-  trackEvent("pricing_viewed", { locale, path: `${locale === "en" ? "" : `/${locale}`}/pricing` });
+  trackEvent("pricing_viewed", {
+    locale,
+    path: `${locale === "en" ? "" : `/${locale}`}/pricing`,
+  });
+  const requestHeaders = await headers();
+  const pricingCurrency = resolvePricingCurrency(
+    locale,
+    requestHeaders.get("x-vercel-ip-country"),
+  );
 
   return (
     <section className="py-20 px-4 sm:px-6 max-w-6xl mx-auto">
@@ -48,7 +58,11 @@ export default async function PricingPage({
         </p>
       </div>
 
-      <PricingCards locale={locale} purchasablePlans={getPurchasablePlans()} />
+      <PricingCards
+        locale={locale}
+        pricingCurrency={pricingCurrency}
+        purchasablePlans={getPurchasablePlans(pricingCurrency)}
+      />
 
       {/* FAQ teaser */}
       <div className="mt-20 text-center">

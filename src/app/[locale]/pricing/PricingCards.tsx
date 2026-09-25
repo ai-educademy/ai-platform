@@ -4,7 +4,11 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import { Check, Tag, ChevronDown, ChevronUp, Sparkles } from "lucide-react";
-import { PLAN_PRICE_LABELS, ANNUAL_SAVING_PERCENT } from "@/lib/pricing";
+import {
+  getAnnualSavingPercent,
+  getPlanPriceLabels,
+  type PricingCurrency,
+} from "@/lib/pricing";
 import { useProStatus } from "@/hooks/useProStatus";
 
 type PaidPlan = "monthly" | "annual" | "lifetime";
@@ -61,7 +65,9 @@ function PromoCodeInput({
           </p>
         )}
         {promoStatus === "invalid" && (
-          <p className="mt-2 text-center text-xs text-red-500">{t("promoCodeInvalid")}</p>
+          <p className="mt-2 text-center text-xs text-red-500">
+            {t("promoCodeInvalid")}
+          </p>
         )}
       </div>
     </div>
@@ -125,7 +131,9 @@ function SelectablePlanCard({
 
       <div className="mb-6">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-xl font-bold text-[var(--color-text)]">{title}</h3>
+          <h3 className="text-xl font-bold text-[var(--color-text)]">
+            {title}
+          </h3>
           {/* The tick is the only thing that means "selected". The popular
               badge is social proof and must never be mistaken for one, which
               is exactly how the previous design read. */}
@@ -144,14 +152,24 @@ function SelectablePlanCard({
           <span className="text-4xl font-extrabold tabular-nums text-[var(--color-text)]">
             {price}
           </span>
-          {period && <span className="text-sm text-[var(--color-text-muted)]">/{period}</span>}
+          {period && (
+            <span className="text-sm text-[var(--color-text-muted)]">
+              /{period}
+            </span>
+          )}
         </div>
       </div>
 
       <ul className="flex-1 space-y-3">
         {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--color-text)]">
-            <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" aria-hidden="true" />
+          <li
+            key={i}
+            className="flex items-start gap-2.5 text-sm text-[var(--color-text)]"
+          >
+            <Check
+              className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500"
+              aria-hidden="true"
+            />
             <span>{f}</span>
           </li>
         ))}
@@ -191,8 +209,14 @@ function FreePlanCard({
       </div>
       <ul className="mb-8 flex-1 space-y-3">
         {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--color-text)]">
-            <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" aria-hidden="true" />
+          <li
+            key={i}
+            className="flex items-start gap-2.5 text-sm text-[var(--color-text)]"
+          >
+            <Check
+              className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500"
+              aria-hidden="true"
+            />
             <span>{f}</span>
           </li>
         ))}
@@ -207,8 +231,10 @@ function FreePlanCard({
 export function PricingCards({
   locale,
   purchasablePlans,
+  pricingCurrency = "gbp",
 }: {
   locale: string;
+  pricingCurrency?: PricingCurrency;
   /**
    * Which plans this deployment can actually charge for. Defaults to all
    * three so existing callers and tests keep their previous behaviour.
@@ -224,22 +250,29 @@ export function PricingCards({
       ? purchasablePlans
       : (["monthly", "annual", "lifetime"] as PaidPlan[]);
 
-  const [selected, setSelected] = useState<PaidPlan>(
-    available.includes("monthly") ? "monthly" : available[0]
-  );
+  const [selected, setSelected] = useState<PaidPlan | null>(null);
   const [promoCode, setPromoCode] = useState("");
-  const [promoStatus, setPromoStatus] = useState<"idle" | "applied" | "invalid">("idle");
+  const [promoStatus, setPromoStatus] = useState<
+    "idle" | "applied" | "invalid"
+  >("idle");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const basePath = locale === "en" ? "" : `/${locale}`;
+  const priceLabels = getPlanPriceLabels(pricingCurrency);
+  const annualSavingPercent = getAnnualSavingPercent(pricingCurrency);
 
   const handleCheckout = async () => {
     setError("");
 
+    if (!selected) {
+      setError(t("chooseAPlan"));
+      return;
+    }
+
     if (!session?.user) {
       window.location.href = `${basePath}/signin?callbackUrl=${encodeURIComponent(
-        `${basePath}/pricing`
+        `${basePath}/pricing`,
       )}`;
       return;
     }
@@ -249,7 +282,11 @@ export function PricingCards({
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: selected, locale, ...(promoCode ? { promoCode } : {}) }),
+        body: JSON.stringify({
+          plan: selected,
+          locale,
+          ...(promoCode ? { promoCode } : {}),
+        }),
       });
       const data = await res.json();
       if (!data.url) {
@@ -282,15 +319,22 @@ export function PricingCards({
     {
       plan: "monthly",
       title: t("monthly.title"),
-      price: PLAN_PRICE_LABELS.monthly,
+      price: priceLabels.monthly,
       period: t("monthly.period"),
-      features: [t("pro.f1"), t("pro.f2"), t("pro.f3"), t("pro.f4"), t("pro.f5"), t("pro.f6")],
+      features: [
+        t("pro.f1"),
+        t("pro.f2"),
+        t("pro.f3"),
+        t("pro.f4"),
+        t("pro.f5"),
+        t("pro.f6"),
+      ],
       popular: true,
     },
     {
       plan: "annual",
       title: t("annual.title"),
-      price: PLAN_PRICE_LABELS.annual,
+      price: priceLabels.annual,
       period: t("annual.period"),
       features: [
         t("pro.f1"),
@@ -299,13 +343,13 @@ export function PricingCards({
         t("pro.f4"),
         t("pro.f5"),
         t("pro.f6"),
-        t("annual.save", { percent: ANNUAL_SAVING_PERCENT }),
+        t("annual.save", { percent: annualSavingPercent }),
       ],
     },
     {
       plan: "lifetime",
       title: t("lifetime.title"),
-      price: PLAN_PRICE_LABELS.lifetime,
+      price: priceLabels.lifetime,
       period: "",
       features: [
         t("pro.f1"),
@@ -319,11 +363,13 @@ export function PricingCards({
     },
   ];
 
-  const ctaLabel = {
-    monthly: t("monthly.cta"),
-    annual: t("annual.cta"),
-    lifetime: t("lifetime.cta"),
-  }[selected];
+  const ctaLabel = selected
+    ? {
+        monthly: t("trialCta"),
+        annual: t("trialCta"),
+        lifetime: t("lifetime.cta"),
+      }[selected]
+    : t("chooseAPlan");
 
   return (
     <div>
@@ -340,8 +386,14 @@ export function PricingCards({
         >
           <FreePlanCard
             title={t("free.title")}
-            price={PLAN_PRICE_LABELS.free}
-            features={[t("free.f1"), t("free.f2"), t("free.f3"), t("free.f4"), t("free.f5")]}
+            price={priceLabels.free}
+            features={[
+              t("free.f1"),
+              t("free.f2"),
+              t("free.f3"),
+              t("free.f4"),
+              t("free.f5"),
+            ]}
           />
           {paidPlans
             .filter((p) => available.includes(p.plan))
@@ -360,20 +412,27 @@ export function PricingCards({
           Each card used to carry its own button, so the page offered four
           competing calls to action with no way to tell which was active. */}
       {!proLoading && isPro ? (
-        <p className="mt-8 text-center text-sm font-medium text-emerald-600">{t("alreadyPro")}</p>
+        <p className="mt-8 text-center text-sm font-medium text-emerald-600">
+          {t("alreadyPro")}
+        </p>
       ) : (
         <div className="mt-8 flex flex-col items-center">
           <button
             type="button"
             onClick={handleCheckout}
-            disabled={loading}
+            disabled={loading || !selected}
             className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-lg shadow-violet-500/25 transition-all hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] disabled:opacity-50"
           >
             <Sparkles size={18} aria-hidden="true" />
             {loading ? t("redirecting") : ctaLabel}
           </button>
+          <p className="mt-3 max-w-md text-center text-sm text-[var(--color-text-muted)]">
+            {selected === "lifetime" ? t("lifetime.note") : t("trialNote")}
+          </p>
           <div aria-live="polite">
-            {error && <p className="mt-3 text-center text-sm text-red-500">{error}</p>}
+            {error && (
+              <p className="mt-3 text-center text-sm text-red-500">{error}</p>
+            )}
           </div>
         </div>
       )}

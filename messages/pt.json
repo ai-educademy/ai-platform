@@ -1821,18 +1821,19 @@
     "monthly": {
       "title": "Pro mensal",
       "period": "mes",
-      "cta": "Iniciar Pro mensal"
+      "cta": "Iniciar teste grátis de 7 dias"
     },
     "annual": {
       "title": "Pro anual",
       "period": "ano",
-      "cta": "Iniciar Pro anual",
+      "cta": "Iniciar teste grátis de 7 dias",
       "save": "Economize {percent}% em relacao ao mensal"
     },
     "lifetime": {
       "title": "Vitalicio",
       "cta": "Obter acesso vitalicio",
-      "forever": "Um pagamento, seu para sempre"
+      "forever": "Um pagamento, seu para sempre",
+      "note": "Pagamento único. Não precisa de teste porque isto não é uma assinatura."
     },
     "pro": {
       "f1": "Todas as academias e trilhas de aprendizado",
@@ -1855,7 +1856,9 @@
     "chooseAPlan": "Escolha um plano",
     "selected": "Selecionado",
     "selectThisPlan": "Selecionar este plano",
-    "alreadyPro": "Voce ja tem Pro. Gerencie sua assinatura pela sua conta."
+    "alreadyPro": "Voce ja tem Pro. Gerencie sua assinatura pela sua conta.",
+    "trialCta": "Iniciar teste grátis de 7 dias",
+    "trialNote": "7 dias grátis, cartão obrigatório. Cancele a qualquer momento antes do fim do teste e nada será cobrado."
   },
   "paywall": {
     "title": "Seu proximo nivel esta atras desta porta",
@@ -1866,9 +1869,9 @@
       "progressSync": "Sincronizacao de progresso",
       "certificates": "Certificados"
     },
-    "upgradeCta": "Atualizar para Pro",
+    "upgradeCta": "Iniciar teste grátis de 7 dias",
     "signInCta": "Entre primeiro",
-    "guarantee": "Garantia de reembolso de 7 dias. Cancele quando quiser."
+    "guarantee": "Teste grátis de 7 dias, cartão obrigatório. Cancele a qualquer momento antes do fim do teste."
   },
   "mockInterview": {
     "title": "Laboratório de Entrevista Simulada com IA",

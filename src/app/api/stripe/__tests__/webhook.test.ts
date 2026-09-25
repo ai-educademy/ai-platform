@@ -18,6 +18,7 @@ const mockSubsRetrieve = vi.fn();
 const mockSendSubscriptionEmail = vi.fn();
 const mockSendAdminNotification = vi.fn();
 const mockSendAbandonedCart = vi.fn();
+const mockSendTrialWillEndEmail = vi.fn();
 
 const userUpdates: Array<Record<string, unknown>> = [];
 const subUpdates: Array<Record<string, unknown>> = [];
@@ -33,14 +34,30 @@ vi.mock("@/lib/stripe", () => ({
 }));
 
 vi.mock("@/lib/email", () => ({
-  sendSubscriptionEmail: (...a: unknown[]) => { mockSendSubscriptionEmail(...a); return Promise.resolve(); },
-  sendAdminNotification: (...a: unknown[]) => { mockSendAdminNotification(...a); return Promise.resolve(); },
-  sendAbandonedCartEmail: (...a: unknown[]) => { mockSendAbandonedCart(...a); return Promise.resolve(); },
+  sendSubscriptionEmail: (...a: unknown[]) => {
+    mockSendSubscriptionEmail(...a);
+    return Promise.resolve();
+  },
+  sendAdminNotification: (...a: unknown[]) => {
+    mockSendAdminNotification(...a);
+    return Promise.resolve();
+  },
+  sendAbandonedCartEmail: (...a: unknown[]) => {
+    mockSendAbandonedCart(...a);
+    return Promise.resolve();
+  },
+  sendTrialWillEndEmail: (...a: unknown[]) => {
+    mockSendTrialWillEndEmail(...a);
+    return Promise.resolve();
+  },
 }));
 
 vi.mock("@/lib/db/schema", () => ({
   users: { id: "users.id" },
-  subscriptions: { stripeSubscriptionId: "subscriptions.stripeSubscriptionId", id: "subscriptions.id" },
+  subscriptions: {
+    stripeSubscriptionId: "subscriptions.stripeSubscriptionId",
+    id: "subscriptions.id",
+  },
 }));
 
 vi.mock("drizzle-orm", () => ({ eq: (col: unknown) => ({ col }) }));
@@ -51,14 +68,18 @@ vi.mock("@/lib/db", () => ({
       from: (table: { id?: string }) => ({
         where: () => ({
           limit: () => {
-            return Promise.resolve(table?.id === "users.id" ? userSelectRows : subSelectRows);
+            return Promise.resolve(
+              table?.id === "users.id" ? userSelectRows : subSelectRows,
+            );
           },
         }),
       }),
     }),
     insert: () => ({
       values: () => ({
-        onConflictDoNothing: () => ({ returning: () => Promise.resolve(insertReturns) }),
+        onConflictDoNothing: () => ({
+          returning: () => Promise.resolve(insertReturns),
+        }),
       }),
     }),
     update: (table: { id?: string }) => ({
@@ -100,18 +121,27 @@ beforeEach(() => {
   userUpdates.length = 0;
   subUpdates.length = 0;
   insertReturns = [{ id: "row_1" }];
-  userSelectRows = [{ email: "learner@example.com", name: "Learner" }];
+  userSelectRows = [
+    {
+      email: "learner@example.com",
+      name: "Learner",
+      role: "free",
+      locale: "en",
+    },
+  ];
   subSelectRows = [{ userId: "user_1" }];
   process.env.STRIPE_WEBHOOK_SECRET = "whsec_test";
   mockConstructEvent.mockReturnValue(SUBSCRIPTION_EVENT);
   mockSubsRetrieve.mockResolvedValue({
     id: "sub_123",
     items: {
-      data: [{
-        price: { id: "price_monthly" },
-        current_period_start: 1_700_000_000,
-        current_period_end: 1_702_592_000,
-      }],
+      data: [
+        {
+          price: { id: "price_monthly" },
+          current_period_start: 1_700_000_000,
+          current_period_end: 1_702_592_000,
+        },
+      ],
     },
   });
 });
@@ -151,18 +181,70 @@ describe("POST /api/stripe/webhook", () => {
       const res = await POST(request());
 
       expect(res.status).toBe(200);
-      expect(userUpdates).toContainEqual(expect.objectContaining({ role: "pro" }));
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "pro" }),
+      );
     });
 
     it("promotes the user to pro on a completed lifetime payment", async () => {
       mockConstructEvent.mockReturnValue({
         type: "checkout.session.completed",
-        data: { object: { metadata: { userId: "user_1", plan: "lifetime" }, payment_intent: "pi_1", amount_total: 4999 } },
+        data: {
+          object: {
+            metadata: { userId: "user_1", plan: "lifetime" },
+            payment_intent: "pi_1",
+            amount_total: 4999,
+          },
+        },
       });
 
       await POST(request());
 
-      expect(userUpdates).toContainEqual(expect.objectContaining({ role: "pro" }));
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "pro" }),
+      );
+    });
+
+    it("records trialing subscriptions as pro access", async () => {
+      mockSubsRetrieve.mockResolvedValue({
+        id: "sub_123",
+        status: "trialing",
+        items: {
+          data: [
+            {
+              price: { id: "price_monthly" },
+              current_period_start: 1_700_000_000,
+              current_period_end: 1_702_592_000,
+            },
+          ],
+        },
+      });
+
+      await POST(request());
+
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "pro" }),
+      );
+    });
+
+    it("never demotes an admin while granting checkout access", async () => {
+      userSelectRows = [
+        {
+          email: "admin@example.com",
+          name: "Admin",
+          role: "admin",
+          locale: "en",
+        },
+      ];
+
+      await POST(request());
+
+      expect(userUpdates).not.toContainEqual(
+        expect.objectContaining({ role: "pro" }),
+      );
+      expect(userUpdates).not.toContainEqual(
+        expect.objectContaining({ role: "free" }),
+      );
     });
 
     it("does not grant access when a payment fails", async () => {
@@ -183,7 +265,9 @@ describe("POST /api/stripe/webhook", () => {
       await POST(request());
 
       expect(mockSendSubscriptionEmail).toHaveBeenCalledWith(
-        "learner@example.com", "activated", "monthly",
+        "learner@example.com",
+        "activated",
+        "monthly",
       );
       expect(mockSendAdminNotification).toHaveBeenCalled();
     });
@@ -233,7 +317,76 @@ describe("POST /api/stripe/webhook", () => {
       const res = await POST(request());
 
       expect(res.status).toBe(200);
-      expect(userUpdates).toContainEqual(expect.objectContaining({ role: "free" }));
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "free" }),
+      );
+    });
+
+    it("drops an unpaid ended trial back to free", async () => {
+      mockConstructEvent.mockReturnValue({
+        type: "customer.subscription.updated",
+        data: {
+          object: {
+            id: "sub_123",
+            status: "incomplete_expired",
+            cancel_at_period_end: false,
+            items: {
+              data: [
+                {
+                  current_period_start: 1_700_000_000,
+                  current_period_end: 1_700_001_000,
+                },
+              ],
+            },
+          },
+        },
+      });
+
+      await POST(request());
+
+      expect(userUpdates).toContainEqual(
+        expect.objectContaining({ role: "free" }),
+      );
+    });
+
+    it("keeps admins as admin when a subscription is deleted", async () => {
+      userSelectRows = [
+        {
+          email: "admin@example.com",
+          name: "Admin",
+          role: "admin",
+          locale: "en",
+        },
+      ];
+      mockConstructEvent.mockReturnValue({
+        type: "customer.subscription.deleted",
+        data: { object: { id: "sub_123" } },
+      });
+
+      await POST(request());
+
+      expect(userUpdates).not.toContainEqual(
+        expect.objectContaining({ role: "free" }),
+      );
+    });
+
+    it("sends a transactional trial ending reminder", async () => {
+      mockConstructEvent.mockReturnValue({
+        type: "customer.subscription.trial_will_end",
+        data: { object: { id: "sub_123", metadata: { locale: "fr" } } },
+      });
+      userSelectRows = [
+        { email: "learner@example.com", role: "free", locale: "fr" },
+      ];
+      subSelectRows = [{ userId: "user_1", plan: "monthly" }];
+
+      await POST(request());
+
+      expect(mockSendTrialWillEndEmail).toHaveBeenCalledWith(
+        "learner@example.com",
+        "monthly",
+        "fr",
+      );
     });
 
     it("does not revoke access for an unknown subscription", async () => {

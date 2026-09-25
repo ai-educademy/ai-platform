@@ -38,6 +38,51 @@ const proSubjectByLocale: Record<string, string> = {
   ar: "مرحبًا بك في Pro! 🚀",
 };
 
+const trialEndingSubjectByLocale: Record<string, string> = {
+  en: "Your AI Educademy Pro trial ends soon",
+  fr: "Votre essai AI Educademy Pro se termine bientôt",
+  nl: "Je AI Educademy Pro-proefperiode eindigt binnenkort",
+  hi: "आपका AI Educademy Pro ट्रायल जल्द समाप्त होगा",
+  te: "మీ AI Educademy Pro ట్రయల్ త్వరలో ముగుస్తుంది",
+  de: "Ihre AI Educademy Pro-Testphase endet bald",
+  es: "Tu prueba de AI Educademy Pro termina pronto",
+  ja: "AI Educademy Proのトライアルがまもなく終了します",
+  zh: "您的 AI Educademy Pro 试用即将结束",
+  pt: "Seu teste do AI Educademy Pro termina em breve",
+  ar: "ستنتهي تجربتك في AI Educademy Pro قريبًا",
+};
+
+function trialEndingHtml(plan: string, locale: string): string {
+  const basePath = localeBasePath(locale);
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org";
+  const portalUrl = `${appUrl}${basePath}/dashboard`;
+  const copy: Record<
+    string,
+    { title: string; body: string; cta: string; note: string }
+  > = {
+    en: {
+      title: "Your 7-day Pro trial ends soon",
+      body: `Your AI Educademy Pro ${plan} trial is ending soon. Your saved card will be charged when the trial ends unless you cancel first.`,
+      cta: "Manage billing",
+      note: "You can cancel anytime from your dashboard before the trial ends.",
+    },
+    fr: {
+      title: "Votre essai Pro de 7 jours se termine bientôt",
+      body: `Votre essai AI Educademy Pro ${plan} se termine bientôt. Votre carte enregistrée sera débitée à la fin de l'essai sauf annulation avant cette date.`,
+      cta: "Gérer la facturation",
+      note: "Vous pouvez annuler à tout moment depuis votre tableau de bord avant la fin de l'essai.",
+    },
+  };
+  const t = copy[locale] ?? copy.en;
+  return `<div style="font-family:system-ui,sans-serif;padding:24px;color:#111827;line-height:1.6;">
+    <h1 style="margin:0 0 12px;color:#4f46e5;font-size:24px;">${t.title}</h1>
+    <p>${t.body}</p>
+    <p>${t.note}</p>
+    <p><a href="${portalUrl}" style="display:inline-block;padding:12px 20px;background:#4f46e5;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:700;">${t.cta}</a></p>
+    <p style="color:#6b7280;font-size:12px;">This is a transactional notice about your trial, not a marketing email.</p>
+  </div>`;
+}
+
 const cancelSubjectByLocale: Record<string, string> = {
   en: "Your subscription has ended",
   fr: "Votre abonnement a pris fin",
@@ -188,6 +233,16 @@ export async function sendSubscriptionEmail(
   const subject = subjects[locale] || subjects.en;
   const html = subscriptionEmailHtml(email, type, plan, locale);
   await sendEmail(email, subject, html);
+}
+
+export async function sendTrialWillEndEmail(
+  email: string,
+  plan: string = "monthly",
+  locale: string = "en",
+): Promise<void> {
+  const subject =
+    trialEndingSubjectByLocale[locale] || trialEndingSubjectByLocale.en;
+  await sendEmail(email, subject, trialEndingHtml(plan, locale));
 }
 
 export async function sendAdminNotification(

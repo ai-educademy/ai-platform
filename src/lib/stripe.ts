@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { PLAN_PRICES_PENCE } from "@/lib/pricing";
+import { PLAN_PRICES, type PricingCurrency } from "@/lib/pricing";
 
 let _stripe: Stripe | null = null;
 
@@ -24,50 +24,57 @@ export const PAID_PLANS: readonly PaidPlan[] = [
   "lifetime",
 ];
 
-const PRICE_ENV_VAR: Record<PaidPlan, string> = {
-  monthly: "STRIPE_PRICE_MONTHLY",
-  annual: "STRIPE_PRICE_ANNUAL",
-  lifetime: "STRIPE_PRICE_LIFETIME",
+const PRICE_ENV_VAR: Record<PricingCurrency, Record<PaidPlan, string>> = {
+  gbp: {
+    monthly: "STRIPE_PRICE_MONTHLY",
+    annual: "STRIPE_PRICE_ANNUAL",
+    lifetime: "STRIPE_PRICE_LIFETIME",
+  },
+  inr: {
+    monthly: "STRIPE_PRICE_INR_MONTHLY",
+    annual: "STRIPE_PRICE_INR_ANNUAL",
+    lifetime: "STRIPE_PRICE_INR_LIFETIME",
+  },
 };
 
-/**
- * The Stripe price for a plan, or "" when it has not been configured.
- *
- * Read at call time rather than at module load so that a deployment which
- * gains the variable does not need a rebuild, and so tests can exercise the
- * unconfigured path.
- *
- * Trimmed deliberately. Environment values pasted into a dashboard pick up
- * trailing whitespace and newlines alarmingly often, and this project has
- * already been bitten by exactly that on another variable. An untrimmed price
- * ID passes a truthiness check and then fails at Stripe, which is the most
- * expensive place to discover the problem.
- */
-export function getPlanPriceId(plan: PaidPlan): string {
-  return (process.env[PRICE_ENV_VAR[plan]] ?? "").trim();
+export function getPlanPriceId(
+  plan: PaidPlan,
+  currency: PricingCurrency = "gbp",
+): string {
+  return (process.env[PRICE_ENV_VAR[currency][plan]] ?? "").trim();
 }
 
 /** Whether a plan can actually be sold in this environment. */
-export function isPlanPurchasable(plan: PaidPlan): boolean {
-  return getPlanPriceId(plan) !== "";
+export function isPlanPurchasable(
+  plan: PaidPlan,
+  currency: PricingCurrency = "gbp",
+): boolean {
+  return getPlanPriceId(plan, currency) !== "";
 }
 
-/**
- * The plans this deployment can actually take money for.
- *
- * Used to decide what to advertise. Offering a plan whose price ID is missing
- * sends the customer to a dead end: they pick it, click through, and get a
- * flat "Invalid plan" with no way forward, having already decided to pay.
- * Not showing it is worse than selling it and far better than that.
- */
-export function getPurchasablePlans(): PaidPlan[] {
-  return PAID_PLANS.filter(isPlanPurchasable);
+export function getPurchasablePlans(
+  currency: PricingCurrency = "gbp",
+): PaidPlan[] {
+  return PAID_PLANS.filter((plan) => isPlanPurchasable(plan, currency));
+}
+
+export function getPlanConfig(
+  plan: PaidPlan,
+  currency: PricingCurrency = "gbp",
+) {
+  const price = PLAN_PRICES[currency][plan];
+  return {
+    ...PLANS[plan],
+    price,
+    priceId: getPlanPriceId(plan, currency),
+    currency,
+  };
 }
 
 export const PLANS = {
   monthly: {
     name: "Pro Monthly",
-    price: PLAN_PRICES_PENCE.monthly,
+    price: PLAN_PRICES.gbp.monthly,
     interval: "month" as const,
     get priceId() {
       return getPlanPriceId("monthly");
@@ -75,7 +82,7 @@ export const PLANS = {
   },
   annual: {
     name: "Pro Annual",
-    price: PLAN_PRICES_PENCE.annual,
+    price: PLAN_PRICES.gbp.annual,
     interval: "year" as const,
     get priceId() {
       return getPlanPriceId("annual");
@@ -83,7 +90,7 @@ export const PLANS = {
   },
   lifetime: {
     name: "Lifetime Access",
-    price: PLAN_PRICES_PENCE.lifetime,
+    price: PLAN_PRICES.gbp.lifetime,
     interval: null,
     get priceId() {
       return getPlanPriceId("lifetime");

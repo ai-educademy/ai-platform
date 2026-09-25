@@ -17,24 +17,45 @@ const mockAuth = vi.fn();
 const mockCustomersCreate = vi.fn();
 const mockSessionsCreate = vi.fn();
 const mockPromoList = vi.fn();
+const mockSubsList = vi.fn();
 const mockDbUpdate = vi.fn();
 
-let selectResult: Array<{ stripeCustomerId: string | null }> = [];
+let userSelectResult: Array<{ stripeCustomerId: string | null }> = [];
+let subscriptionSelectResult: Array<{ id: string }> = [];
 
 vi.mock("@/auth", () => ({ auth: () => mockAuth() }));
 
 vi.mock("@/lib/stripe", async () => {
-  const actual = await vi.importActual<typeof import("@/lib/pricing")>("@/lib/pricing");
-  return {
-    PLANS: {
-      monthly: { name: "Pro Monthly", price: actual.PLAN_PRICES_PENCE.monthly, interval: "month", priceId: "price_monthly" },
-      annual: { name: "Pro Annual", price: actual.PLAN_PRICES_PENCE.annual, interval: "year", priceId: "price_annual" },
-      lifetime: { name: "Lifetime", price: actual.PLAN_PRICES_PENCE.lifetime, interval: null, priceId: "price_lifetime" },
+  const actual =
+    await vi.importActual<typeof import("@/lib/pricing")>("@/lib/pricing");
+  const prices = {
+    monthly: {
+      name: "Pro Monthly",
+      price: actual.PLAN_PRICES_PENCE.monthly,
+      interval: "month",
+      priceId: "price_monthly",
     },
+    annual: {
+      name: "Pro Annual",
+      price: actual.PLAN_PRICES_PENCE.annual,
+      interval: "year",
+      priceId: "price_annual",
+    },
+    lifetime: {
+      name: "Lifetime",
+      price: actual.PLAN_PRICES_PENCE.lifetime,
+      interval: null,
+      priceId: "price_lifetime",
+    },
+  };
+  return {
+    PLANS: prices,
+    getPlanConfig: (plan: keyof typeof prices) => prices[plan],
     getStripe: () => ({
       customers: { create: mockCustomersCreate },
       checkout: { sessions: { create: mockSessionsCreate } },
       promotionCodes: { list: mockPromoList },
+      subscriptions: { list: mockSubsList },
     }),
   };
 });
@@ -42,7 +63,16 @@ vi.mock("@/lib/stripe", async () => {
 vi.mock("@/lib/db", () => ({
   db: {
     select: () => ({
-      from: () => ({ where: () => ({ limit: () => Promise.resolve(selectResult) }) }),
+      from: (table: { id?: string }) => ({
+        where: () => ({
+          limit: () =>
+            Promise.resolve(
+              table?.id === "subscriptions.id"
+                ? subscriptionSelectResult
+                : userSelectResult,
+            ),
+        }),
+      }),
     }),
     update: () => ({
       set: (v: unknown) => ({
@@ -55,7 +85,10 @@ vi.mock("@/lib/db", () => ({
   },
 }));
 
-vi.mock("@/lib/db/schema", () => ({ users: {} }));
+vi.mock("@/lib/db/schema", () => ({
+  users: { id: "users.id", stripeCustomerId: "users.stripeCustomerId" },
+  subscriptions: { id: "subscriptions.id", userId: "subscriptions.userId" },
+}));
 vi.mock("drizzle-orm", () => ({ eq: () => ({}) }));
 
 import { POST } from "@/app/api/stripe/checkout/route";
@@ -67,15 +100,21 @@ function request(body: unknown) {
   }) as unknown as Parameters<typeof POST>[0];
 }
 
-const SIGNED_IN = { user: { id: "user_1", email: "learner@example.com", name: "Learner" } };
+const SIGNED_IN = {
+  user: { id: "user_1", email: "learner@example.com", name: "Learner" },
+};
 
 beforeEach(() => {
   vi.clearAllMocks();
-  selectResult = [{ stripeCustomerId: "cus_existing" }];
+  userSelectResult = [{ stripeCustomerId: "cus_existing" }];
+  subscriptionSelectResult = [];
   mockAuth.mockResolvedValue(SIGNED_IN);
-  mockSessionsCreate.mockResolvedValue({ url: "https://checkout.stripe.com/s/1" });
+  mockSessionsCreate.mockResolvedValue({
+    url: "https://checkout.stripe.com/s/1",
+  });
   mockPromoList.mockResolvedValue({ data: [] });
   mockCustomersCreate.mockResolvedValue({ id: "cus_new" });
+  mockSubsList.mockResolvedValue({ data: [] });
 });
 
 describe("POST /api/stripe/checkout", () => {
@@ -96,15 +135,22 @@ describe("POST /api/stripe/checkout", () => {
     expect(res.status).toBe(401);
   });
 
-  it.each(["monthly", "annual", "lifetime"])("creates a session for the %s plan", async (plan) => {
-    const res = await POST(request({ plan }));
+  it.each(["monthly", "annual", "lifetime"])(
+    "creates a session for the %s plan",
+    async (plan) => {
+      const res = await POST(request({ plan }));
 
-    expect(res.status).toBe(200);
-    expect(await res.json()).toMatchObject({ url: "https://checkout.stripe.com/s/1" });
-    expect(mockSessionsCreate).toHaveBeenCalledWith(
-      expect.objectContaining({ line_items: [{ price: `price_${plan}`, quantity: 1 }] }),
-    );
-  });
+      expect(res.status).toBe(200);
+      expect(await res.json()).toMatchObject({
+        url: "https://checkout.stripe.com/s/1",
+      });
+      expect(mockSessionsCreate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          line_items: [{ price: `price_${plan}`, quantity: 1 }],
+        }),
+      );
+    },
+  );
 
   it("rejects an unknown plan rather than charging for something undefined", async () => {
     const res = await POST(request({ plan: "free" }));
@@ -135,7 +181,9 @@ describe("POST /api/stripe/checkout", () => {
   it("bills lifetime as a one-off payment, not a recurring subscription", async () => {
     await POST(request({ plan: "lifetime" }));
 
-    expect(mockSessionsCreate).toHaveBeenCalledWith(expect.objectContaining({ mode: "payment" }));
+    expect(mockSessionsCreate).toHaveBeenCalledWith(
+      expect.objectContaining({ mode: "payment" }),
+    );
   });
 
   it.each(["monthly", "annual"])("bills %s as a subscription", async (plan) => {
@@ -143,6 +191,72 @@ describe("POST /api/stripe/checkout", () => {
 
     expect(mockSessionsCreate).toHaveBeenCalledWith(
       expect.objectContaining({ mode: "subscription" }),
+    );
+  });
+
+  it.each(["monthly", "annual"])(
+    "adds a 7-day card-required trial for first-time %s checkout",
+    async (plan) => {
+      await POST(request({ plan }));
+
+      expect(mockSessionsCreate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          payment_method_collection: "always",
+          subscription_data: expect.objectContaining({ trial_period_days: 7 }),
+        }),
+      );
+    },
+  );
+
+  it("does not add a trial to lifetime checkout", async () => {
+    await POST(request({ plan: "lifetime" }));
+
+    expect(mockSessionsCreate).toHaveBeenCalledWith(
+      expect.not.objectContaining({ subscription_data: expect.anything() }),
+    );
+  });
+
+  it("blocks repeat trials when a prior subscription row exists", async () => {
+    subscriptionSelectResult = [{ id: "sub_row_1" }];
+
+    await POST(request({ plan: "monthly" }));
+
+    expect(mockSessionsCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        subscription_data: expect.not.objectContaining({
+          trial_period_days: expect.anything(),
+        }),
+      }),
+    );
+  });
+
+  it("blocks repeat trials when Stripe has an older subscription for the customer", async () => {
+    mockSubsList.mockResolvedValue({ data: [{ id: "sub_old" }] });
+
+    await POST(request({ plan: "annual" }));
+
+    expect(mockSessionsCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        subscription_data: expect.not.objectContaining({
+          trial_period_days: expect.anything(),
+        }),
+      }),
+    );
+  });
+
+  it("uses INR price IDs for Indian visitors", async () => {
+    const req = request({ plan: "monthly", locale: "en" });
+    req.headers.set("x-vercel-ip-country", "IN");
+    const { PLANS } = await import("@/lib/stripe");
+    (PLANS.monthly as { priceId: string }).priceId = "price_inr_monthly";
+
+    await POST(req);
+
+    expect(mockSessionsCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        line_items: [{ price: "price_inr_monthly", quantity: 1 }],
+        metadata: expect.objectContaining({ currency: "inr" }),
+      }),
     );
   });
 
@@ -182,12 +296,15 @@ describe("POST /api/stripe/checkout", () => {
   });
 
   it("creates a Stripe customer only when the user has none, and stores the id", async () => {
-    selectResult = [{ stripeCustomerId: null }];
+    userSelectResult = [{ stripeCustomerId: null }];
 
     await POST(request({ plan: "monthly" }));
 
     expect(mockCustomersCreate).toHaveBeenCalledWith(
-      expect.objectContaining({ email: "learner@example.com", metadata: { userId: "user_1" } }),
+      expect.objectContaining({
+        email: "learner@example.com",
+        metadata: { userId: "user_1" },
+      }),
     );
     expect(mockDbUpdate).toHaveBeenCalledWith(
       expect.objectContaining({ stripeCustomerId: "cus_new" }),
@@ -234,6 +351,8 @@ describe("POST /api/stripe/checkout", () => {
     const res = await POST(request({ plan: "monthly" }));
 
     expect(res.status).toBe(500);
-    expect(JSON.stringify(await res.json())).not.toContain("card network on fire");
+    expect(JSON.stringify(await res.json())).not.toContain(
+      "card network on fire",
+    );
   });
 });

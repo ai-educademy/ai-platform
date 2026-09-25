@@ -1,13 +1,37 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { getStripe, PLANS } from "@/lib/stripe";
+import { getPlanConfig, getStripe, type PaidPlan } from "@/lib/stripe";
 import { db } from "@/lib/db";
-import { users } from "@/lib/db/schema";
+import { subscriptions, users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import type Stripe from "stripe";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { safeLocale, localeBasePath } from "@/lib/safe-locale";
 import { trackEvent } from "@/lib/funnel";
+import { PRICING_TRIAL_DAYS, resolvePricingCurrency } from "@/lib/pricing";
+
+const TRIAL_PLANS = new Set<PaidPlan>(["monthly", "annual"]);
+
+async function customerHasUsedTrial(
+  userId: string,
+  customerId: string,
+): Promise<boolean> {
+  const priorRows = await db
+    .select({ id: subscriptions.id })
+    .from(subscriptions)
+    .where(eq(subscriptions.userId, userId))
+    .limit(1);
+
+  if (priorRows.length > 0) return true;
+
+  const priorStripeSubscriptions = await getStripe().subscriptions.list({
+    customer: customerId,
+    status: "all",
+    limit: 1,
+  });
+
+  return priorStripeSubscriptions.data.length > 0;
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,32 +41,34 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { plan, locale: rawLocale, promoCode } = body as {
-      plan: "monthly" | "annual" | "lifetime";
+    const {
+      plan,
+      locale: rawLocale,
+      promoCode,
+    } = body as {
+      plan: PaidPlan;
       locale?: string;
       promoCode?: string;
     };
 
-    // Reaches Stripe metadata and later an outbound email URL, so it is laundered.
-    const locale = safeLocale(rawLocale);
-
-    const planConfig = PLANS[plan];
-    if (!planConfig) {
+    if (!["monthly", "annual", "lifetime"].includes(plan)) {
       return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
     }
+
+    const locale = safeLocale(rawLocale);
+    const currency = resolvePricingCurrency(
+      locale,
+      req.headers.get("x-vercel-ip-country"),
+    );
+    const planConfig = getPlanConfig(plan, currency);
+
     if (!planConfig.priceId) {
-      // A real plan that this deployment cannot sell, because its Stripe price
-      // ID is missing from the environment. That is an operator problem, not a
-      // bad request, and returning 400 "Invalid plan" made the two
-      // indistinguishable in the logs while quietly losing the sale.
       console.error(
-        `[stripe] No price ID configured for the "${plan}" plan. ` +
-          `Set STRIPE_PRICE_${plan.toUpperCase()} in this environment.`
+        `[stripe] No ${currency.toUpperCase()} price ID configured for the "${plan}" plan.`,
       );
       return NextResponse.json({ error: "Plan unavailable" }, { status: 503 });
     }
 
-    // Get or create Stripe customer
     const [user] = await db
       .select({ stripeCustomerId: users.stripeCustomerId })
       .from(users)
@@ -65,14 +91,12 @@ export async function POST(req: NextRequest) {
         .where(eq(users.id, session.user.id));
     }
 
+    const trialEligible =
+      TRIAL_PLANS.has(plan) &&
+      !(await customerHasUsedTrial(session.user.id, customerId));
+
     const basePath = localeBasePath(locale);
 
-    // Resolve promo code to a Stripe promotion code ID.
-    //
-    // The outcome is reported back to the caller as `promoApplied`. Previously
-    // the client showed "code applied" whenever checkout returned a URL, so a
-    // typo'd or expired code silently sent the customer to Stripe at full price
-    // while the UI told them the discount had been applied.
     let discounts: Stripe.Checkout.SessionCreateParams["discounts"] | undefined;
     let promoApplied = false;
     if (promoCode) {
@@ -87,39 +111,62 @@ export async function POST(req: NextRequest) {
           promoApplied = true;
         }
       } catch (err) {
-        // Only Stripe is called here, so a db guard would be misleading. A bad
-        // promo code must not block checkout, so this stays non-fatal and is
-        // reported as "not applied".
         console.warn("[stripe/checkout] promo code lookup failed:", err);
       }
     }
 
-    // Create checkout session
+    const subscriptionData: Stripe.Checkout.SessionCreateParams.SubscriptionData =
+      {
+        metadata: {
+          userId: session.user.id,
+          plan,
+          locale,
+          currency,
+          trialOffered: String(trialEligible),
+        },
+        ...(trialEligible ? { trial_period_days: PRICING_TRIAL_DAYS } : {}),
+      };
+
     const checkoutSession = await getStripe().checkout.sessions.create({
       customer: customerId,
       mode: plan === "lifetime" ? "payment" : "subscription",
       line_items: [{ price: planConfig.priceId, quantity: 1 }],
       ...(discounts ? { discounts } : {}),
+      ...(plan === "lifetime"
+        ? {}
+        : {
+            payment_method_collection: "always",
+            subscription_data: subscriptionData,
+          }),
       success_url: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/dashboard?payment=success`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://aieducademy.org"}${basePath}/pricing?payment=cancelled`,
       metadata: {
         userId: session.user.id,
         plan,
-        // The checkout.session.expired webhook reads metadata.locale to pick the
-        // language for the abandoned-cart email. Without it every one of those
-        // emails went out in English regardless of the user's locale.
         locale,
+        currency,
+        trialOffered: String(trialEligible),
       },
     });
-    trackEvent("checkout_started", { userId: session.user.id, locale, path: `${basePath}/pricing`, plan });
+    trackEvent("checkout_started", {
+      userId: session.user.id,
+      locale,
+      path: `${basePath}/pricing`,
+      plan,
+    });
 
-    return NextResponse.json({ url: checkoutSession.url, promoApplied });
+    return NextResponse.json({
+      url: checkoutSession.url,
+      promoApplied,
+      trialOffered: trialEligible,
+      currency,
+    });
   } catch (err) {
     if (isDatabaseNotConfigured(err)) return databaseUnavailable();
     console.error("[stripe/checkout] error:", err);
     return NextResponse.json(
       { error: "Failed to create checkout session" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
