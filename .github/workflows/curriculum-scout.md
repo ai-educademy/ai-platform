@@ -19,7 +19,7 @@ max-turns: 60
 max-turn-cache-misses: 60
 engine:
   id: gemini
-  model: gemini-3.5-flash-lite
+  model: gemini-3.1-flash-lite-preview
   version: "0.39.1"
 timeout-minutes: 30
 strict: true
