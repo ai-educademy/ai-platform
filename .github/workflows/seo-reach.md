@@ -121,3 +121,16 @@ estimate of the traffic at stake. Never open an issue that just says
 Report what you verified, not what you assume. If you could not check
 something, say so. Do not claim a ranking improvement: you cannot observe one
 from inside a CI run. Describe the defect you fixed and leave it there.
+
+## Mandatory final step
+
+Your run is only recorded if you finish with a safe-output call. Ending with a plain-text summary counts as a failed run.
+
+- If you found something actionable, use the matching safe output (for example `create_issue` or `create_pull_request`).
+- If there is nothing to report, run exactly this shell command, with your one-line summary as the message:
+
+```bash
+safeoutputs noop '{"message":"<one-line summary of what you checked and found>"}'
+```
+
+Do not stop until one of these calls has succeeded.

@@ -146,3 +146,16 @@ The diff already says what changed.
 Then comment on the pull request with a short, factual summary: what was
 broken, what the cause was, what you changed, and what you verified. If you
 fixed nothing, say that plainly rather than claiming success.
+
+## Mandatory final step
+
+Your run is only recorded if you finish with a safe-output call. Ending with a plain-text summary counts as a failed run.
+
+- If you found something actionable, use the matching safe output (for example `create_issue` or `create_pull_request`).
+- If there is nothing to report, run exactly this shell command, with your one-line summary as the message:
+
+```bash
+safeoutputs noop '{"message":"<one-line summary of what you checked and found>"}'
+```
+
+Do not stop until one of these calls has succeeded.
