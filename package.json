@@ -37,7 +37,6 @@
     "@tailwindcss/postcss": "^4.2.1",
     "@types/eslint": "^9.6.1",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/kv": "^3.0.0",
     "@vercel/speed-insights": "^2.0.0",
     "bcryptjs": "^3.0.3",
     "drizzle-orm": "^0.45.1",
