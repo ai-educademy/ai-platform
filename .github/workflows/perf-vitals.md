@@ -13,6 +13,7 @@ permissions:
   issues: read
 # Free-tier budget: one run may use at most 60 model requests.
 max-turns: 60
+max-turn-cache-misses: 60
 engine:
   id: gemini
   model: gemini-3.1-flash-lite-preview
@@ -25,7 +26,7 @@ tools:
   cli-proxy: true
   edit:
   cache-memory: true
-  bash: ["git *", "npm ci", "npm run *", "npx tsc *", "npx vitest *", "npx playwright *", "cat", "ls", "grep", "head", "du", "wc"]
+  bash: ["safeoutputs *", "git *", "npm ci", "npm run *", "npx tsc *", "npx vitest *", "npx playwright *", "cat", "ls", "grep", "head", "du", "wc"]
   github:
     mode: gh-proxy
     toolsets: [repos, issues, pull_requests]

@@ -15,6 +15,7 @@ permissions:
   vulnerability-alerts: read
 # Free-tier budget: one run may use at most 60 model requests.
 max-turns: 60
+max-turn-cache-misses: 60
 engine:
   id: gemini
   model: gemini-3.1-flash-lite-preview
@@ -27,7 +28,7 @@ tools:
   cli-proxy: true
   edit:
   cache-memory: true
-  bash: ["git *", "npm ci", "npm audit *", "npm run *", "npx tsc *", "npx vitest *", "cat", "ls", "grep", "head"]
+  bash: ["safeoutputs *", "git *", "npm ci", "npm audit *", "npm run *", "npx tsc *", "npx vitest *", "cat", "ls", "grep", "head"]
   github:
     mode: gh-proxy
     toolsets: [repos, issues, pull_requests, code_security, secret_protection, dependabot]
