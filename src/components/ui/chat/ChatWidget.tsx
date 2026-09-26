@@ -70,8 +70,12 @@ export function ChatWidget() {
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
   const scrollToBottom = useCallback(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    messagesEndRef.current?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    messagesEndRef.current?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
   }, []);
 
   useEffect(() => {
@@ -102,10 +106,12 @@ export function ChatWidget() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          messages: updated.filter((m) => m.id !== "welcome").map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
+          messages: updated
+            .filter((m) => m.id !== "welcome")
+            .map((m) => ({
+              role: m.role,
+              content: m.content,
+            })),
         }),
       });
 
@@ -200,11 +206,14 @@ export function ChatWidget() {
         <button
           onClick={open}
           aria-label={t("open")}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-lg shadow-violet-500/40 flex items-center justify-center hover:scale-110 transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2"
+          className="chat-floating-trigger fixed z-50 w-14 h-14 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-lg shadow-violet-500/40 flex items-center justify-center hover:scale-110 transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2"
         >
           <Bot className="w-6 h-6" />
           {hasUnread && (
-            <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500 border-2 border-white" aria-hidden="true" />
+            <span
+              className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500 border-2 border-white"
+              aria-hidden="true"
+            />
           )}
         </button>
       )}
@@ -213,7 +222,7 @@ export function ChatWidget() {
       {isOpen && (
         <div
           ref={panelRef}
-          className={`fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl shadow-2xl shadow-black/20 flex flex-col overflow-hidden transition-all duration-200 ${
+          className={`chat-panel fixed z-50 w-[360px] max-w-[calc(100vw-2rem)] bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl shadow-2xl shadow-black/20 flex flex-col overflow-hidden transition-all duration-200 ${
             isMinimised ? "h-14" : "h-[480px]"
           }`}
           role="dialog"
@@ -253,7 +262,11 @@ export function ChatWidget() {
           {!isMinimised && (
             <>
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scroll-smooth" aria-live="polite" aria-relevant="additions text">
+              <div
+                className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scroll-smooth"
+                aria-live="polite"
+                aria-relevant="additions text"
+              >
                 {messages.map((m) => (
                   <MessageBubble key={m.id} message={m} />
                 ))}

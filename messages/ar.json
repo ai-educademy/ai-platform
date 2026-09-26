@@ -588,7 +588,9 @@
       "tileLabel": "العرض",
       "homeDesc": "اتخذ خطوتك التالية بثقة واطّلاع"
     },
-    "curriculumVersion": "منهج الذكاء الاصطناعي الإنتاجي لعام 2026"
+    "curriculumVersion": "منهج الذكاء الاصطناعي الإنتاجي لعام 2026",
+    "clearSearch": "مسح البحث",
+    "emptySearchSuggestions": "جرّب مسارًا مقترحًا أو امسح البحث لرؤية جميع البرامج الـ 15 و150 درسًا."
   },
   "programDetail": {
     "level": "المستوى",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "جارٍ الإرسال...",
     "verifyBannerSent": "تم إرسال الرمز. تحقق من صندوق الوارد.",
     "verifyBannerOpen": "إدخال الرمز",
-    "verifyBannerError": "تعذر إرسال الرمز. حاول مرة أخرى بعد قليل."
+    "verifyBannerError": "تعذر إرسال الرمز. حاول مرة أخرى بعد قليل.",
+    "signInTrustLine": "تابع تقدمك المحفوظ وإشاراتك المرجعية وشهاداتك بأمان عبر أجهزتك."
   },
   "lessonTitles": {
     "agentic-workflows": "سير العمل الوكيلية",

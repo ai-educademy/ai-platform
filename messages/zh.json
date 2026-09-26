@@ -588,7 +588,9 @@
       "tileLabel": "录用通知",
       "homeDesc": "做出自信而明智的下一步"
     },
-    "curriculumVersion": "2026 生产级 AI 教学大纲"
+    "curriculumVersion": "2026 生产级 AI 教学大纲",
+    "clearSearch": "清除搜索",
+    "emptySearchSuggestions": "试试推荐学习路径，或清除搜索以查看全部 15 个项目和 150 节课程。"
   },
   "programDetail": {
     "level": "等级",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "正在发送...",
     "verifyBannerSent": "验证码已发送。请查看收件箱。",
     "verifyBannerOpen": "输入验证码",
-    "verifyBannerError": "无法发送验证码。请稍后再试。"
+    "verifyBannerError": "无法发送验证码。请稍后再试。",
+    "signInTrustLine": "在多台设备上安全继续你的学习进度、书签和证书。"
   },
   "lessonTitles": {
     "agentic-workflows": "智能体工作流",

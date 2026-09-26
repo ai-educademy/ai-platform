@@ -15,7 +15,12 @@ import { useShouldPromptUpgrade } from "@/hooks/useProStatus";
 import { BrandMark } from "../BrandMark";
 import { CommandPalette } from "../CommandPalette";
 import { NavDropdown } from "../NavDropdown";
-import { AI_PATH, CRAFT_PATH, CAREER_READY_PATH, LAB_EXPERIMENTS } from "./navData";
+import {
+  AI_PATH,
+  CRAFT_PATH,
+  CAREER_READY_PATH,
+  LAB_EXPERIMENTS,
+} from "./navData";
 import { HamburgerIcon } from "./HamburgerIcon";
 import { MobileSection } from "./MobileSection";
 import { MobilePrograms } from "./MobileMenu";
@@ -44,18 +49,21 @@ export function Navbar() {
     "ai-or-human": tl("navAiOrHuman"),
     "prompt-lab": tl("navPromptLab"),
     "image-gen": tl("navImageGen"),
-    "sentiment": tl("navSentiment"),
-    "chatbot": tl("navChatbot"),
+    sentiment: tl("navSentiment"),
+    chatbot: tl("navChatbot"),
     "ethics-sim": tl("navEthics"),
   };
 
   const segments = pathname.split("/").filter(Boolean);
-  const locale = (locales as readonly string[]).includes(segments[0]) ? segments[0] : "en";
+  const locale = (locales as readonly string[]).includes(segments[0])
+    ? segments[0]
+    : "en";
   const basePath = locale === "en" ? "" : `/${locale}`;
 
-  const pathWithoutLocale = locale === "en"
-    ? pathname
-    : pathname.replace(new RegExp(`^/${locale}`), "") || "/";
+  const pathWithoutLocale =
+    locale === "en"
+      ? pathname
+      : pathname.replace(new RegExp(`^/${locale}`), "") || "/";
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -76,7 +84,9 @@ export function Navbar() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
@@ -89,6 +99,7 @@ export function Navbar() {
   return (
     <div className="sticky top-0 z-50 px-3 sm:px-4 pt-3 pb-1">
       <nav
+        aria-label="Primary navigation"
         className={`max-w-6xl mx-auto rounded-2xl border border-[var(--color-border)] glass transition-shadow duration-300 ${
           scrolled
             ? "shadow-lg shadow-black/[0.06] dark:shadow-black/30"
@@ -190,24 +201,27 @@ export function Navbar() {
                     aria-label={t("bookmarks") ?? "Bookmarks"}
                     title={t("bookmarks") ?? "Bookmarks"}
                   >
-                    <Bookmark size={16} fill={isActive("/bookmarks") ? "currentColor" : "none"} />
+                    <Bookmark
+                      size={16}
+                      fill={isActive("/bookmarks") ? "currentColor" : "none"}
+                    />
                     {isActive("/bookmarks") && (
                       <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[var(--color-primary)]" />
                     )}
                   </Link>
                   <Link
-                  href={`${basePath}/dashboard`}
-                  className={`relative px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
-                    isActive("/dashboard")
-                      ? "text-[var(--color-primary)] bg-[var(--color-primary)]/10 font-semibold"
-                      : "text-[var(--color-text)] hover:text-[var(--color-primary)] hover:bg-[var(--color-text)]/[0.06]"
-                  }`}
-                >
-                  {t("dashboard")}
-                  {isActive("/dashboard") && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[var(--color-primary)]" />
-                  )}
-                </Link>
+                    href={`${basePath}/dashboard`}
+                    className={`relative px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                      isActive("/dashboard")
+                        ? "text-[var(--color-primary)] bg-[var(--color-primary)]/10 font-semibold"
+                        : "text-[var(--color-text)] hover:text-[var(--color-primary)] hover:bg-[var(--color-text)]/[0.06]"
+                    }`}
+                  >
+                    {t("dashboard")}
+                    {isActive("/dashboard") && (
+                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[var(--color-primary)]" />
+                    )}
+                  </Link>
                 </>
               )}
             </div>
@@ -247,7 +261,8 @@ export function Navbar() {
                     href={`${basePath}/signin`}
                     className="inline-flex items-center px-4 py-1.5 text-sm font-semibold rounded-full text-white transition-colors"
                     style={{
-                      background: "linear-gradient(135deg, var(--color-primary-dark), var(--color-primary))",
+                      background:
+                        "linear-gradient(135deg, var(--color-primary-dark), var(--color-primary))",
                       boxShadow: "0 2px 8px var(--color-primary-glow)",
                     }}
                   >
@@ -321,9 +336,27 @@ export function Navbar() {
             <div className="py-2">
               {/* Programs */}
               <MobileSection title={t("programs")} icon="📚">
-                <MobilePrograms basePath={basePath} closeMobile={closeMobile} pathLabel={t("aiFoundationsPath")} programs={AI_PATH} trackSlug="ai-learning" />
-                <MobilePrograms basePath={basePath} closeMobile={closeMobile} pathLabel={t("aiMasteryPath")} programs={CRAFT_PATH} trackSlug="craft-engineering" />
-                <MobilePrograms basePath={basePath} closeMobile={closeMobile} pathLabel={t("careerReadyPath")} programs={CAREER_READY_PATH} trackSlug="career-ready" />
+                <MobilePrograms
+                  basePath={basePath}
+                  closeMobile={closeMobile}
+                  pathLabel={t("aiFoundationsPath")}
+                  programs={AI_PATH}
+                  trackSlug="ai-learning"
+                />
+                <MobilePrograms
+                  basePath={basePath}
+                  closeMobile={closeMobile}
+                  pathLabel={t("aiMasteryPath")}
+                  programs={CRAFT_PATH}
+                  trackSlug="craft-engineering"
+                />
+                <MobilePrograms
+                  basePath={basePath}
+                  closeMobile={closeMobile}
+                  pathLabel={t("careerReadyPath")}
+                  programs={CAREER_READY_PATH}
+                  trackSlug="career-ready"
+                />
               </MobileSection>
 
               {/* Lab */}
@@ -453,7 +486,8 @@ export function Navbar() {
                   onClick={closeMobile}
                   className="flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold rounded-xl text-white transition-all"
                   style={{
-                    background: "linear-gradient(135deg, var(--color-primary-dark), var(--color-primary))",
+                    background:
+                      "linear-gradient(135deg, var(--color-primary-dark), var(--color-primary))",
                     boxShadow: "0 2px 8px var(--color-primary-glow)",
                   }}
                 >

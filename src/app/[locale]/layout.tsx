@@ -141,7 +141,7 @@ const shouldLoadAnalytics =
   process.env.NODE_ENV === "production" &&
   process.env.VERCEL_ENV === "production";
 
-const themeScript = `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}else{document.documentElement.classList.add('light')}})()`;
+const themeScript = `(function(){var q=new URLSearchParams(location.search).get('theme');var t=q==='dark'||q==='light'?q:localStorage.getItem('theme');if(q==='dark'||q==='light'){localStorage.setItem('theme',q)}if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light')}else{document.documentElement.classList.add('light');document.documentElement.classList.remove('dark')}})()`;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -192,12 +192,17 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://github.com" />
       </head>
       <body className="antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <div className="min-h-screen flex flex-col">
               <Navbar />
               <EmailVerificationBanner />
-              <main className="flex-1">{children}</main>
+              <main id="main-content" className="flex-1">
+                {children}
+              </main>
               <Footer />
             </div>
             <LazyChatWidget />

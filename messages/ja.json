@@ -588,7 +588,9 @@
       "tileLabel": "オファー",
       "homeDesc": "自信を持って、納得のうえで次の一歩を踏み出す"
     },
-    "curriculumVersion": "2026年版 本番AIカリキュラム"
+    "curriculumVersion": "2026年版 本番AIカリキュラム",
+    "clearSearch": "検索をクリア",
+    "emptySearchSuggestions": "おすすめのトラックを試すか、検索をクリアして15個のプログラムと150件のレッスンを表示してください。"
   },
   "programDetail": {
     "level": "レベル",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "送信中...",
     "verifyBannerSent": "コードを送信しました。受信トレイを確認してください。",
     "verifyBannerOpen": "コードを入力",
-    "verifyBannerError": "コードを送信できませんでした。少ししてからもう一度お試しください。"
+    "verifyBannerError": "コードを送信できませんでした。少ししてからもう一度お試しください。",
+    "signInTrustLine": "保存した進捗、ブックマーク、証明書を複数のデバイスで安全に続けられます。"
   },
   "lessonTitles": {
     "agentic-workflows": "エージェントワークフロー",

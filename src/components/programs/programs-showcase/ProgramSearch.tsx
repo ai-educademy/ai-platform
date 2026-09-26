@@ -3,9 +3,22 @@
 import { Search, X } from "lucide-react";
 
 /* ─────────────────────── Search ─────────────────────── */
-export function ProgramSearch({ query, onChange, placeholder }: { query: string; onChange: (v: string) => void; placeholder: string }) {
+export function ProgramSearch({
+  query,
+  onChange,
+  placeholder,
+  clearLabel,
+}: {
+  query: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  clearLabel: string;
+}) {
   return (
-    <div className="max-w-xl mx-auto mb-8 motion-section motion-fade-up motion-visible" style={{ transitionDelay: "400ms" }}>
+    <div
+      className="max-w-xl mx-auto mb-8 motion-section motion-fade-up motion-visible"
+      style={{ transitionDelay: "400ms" }}
+    >
       <div className="relative group">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-text-muted)] transition-colors group-focus-within:text-[var(--color-primary)]" />
         <input
@@ -17,7 +30,9 @@ export function ProgramSearch({ query, onChange, placeholder }: { query: string;
         />
         {query && (
           <button
+            type="button"
             onClick={() => onChange("")}
+            aria-label={clearLabel}
             className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-[var(--color-border)] transition-colors cursor-pointer"
           >
             <X className="w-3.5 h-3.5 text-[var(--color-text-muted)]" />

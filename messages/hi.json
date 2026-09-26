@@ -588,7 +588,9 @@
       "tileLabel": "ऑफर",
       "homeDesc": "अगला कदम आत्मविश्वासपूर्ण और जानकारीपूर्ण बनाएं"
     },
-    "curriculumVersion": "2026 प्रोडक्शन एआई पाठ्यक्रम"
+    "curriculumVersion": "2026 प्रोडक्शन एआई पाठ्यक्रम",
+    "clearSearch": "खोज साफ़ करें",
+    "emptySearchSuggestions": "सुझाया गया ट्रैक आज़माएँ या सभी 15 कार्यक्रम और 150 पाठ देखने के लिए खोज साफ़ करें।"
   },
   "programDetail": {
     "level": "स्तर",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "भेजा जा रहा है...",
     "verifyBannerSent": "कोड भेज दिया गया। अपना इनबॉक्स देखें।",
     "verifyBannerOpen": "कोड डालें",
-    "verifyBannerError": "हम कोड नहीं भेज पाए। थोड़ी देर बाद फिर कोशिश करें।"
+    "verifyBannerError": "हम कोड नहीं भेज पाए। थोड़ी देर बाद फिर कोशिश करें।",
+    "signInTrustLine": "अपनी सहेजी गई प्रगति, बुकमार्क और प्रमाणपत्र सभी डिवाइस पर सुरक्षित रूप से जारी रखें।"
   },
   "lessonTitles": {
     "agentic-workflows": "एजेंट वर्कफ़्लोज़",

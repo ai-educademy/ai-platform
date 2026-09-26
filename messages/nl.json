@@ -588,7 +588,9 @@
       "tileLabel": "Aanbod",
       "homeDesc": "Maak een zelfverzekerde, geïnformeerde volgende stap"
     },
-    "curriculumVersion": "2026 productie AI-syllabus"
+    "curriculumVersion": "2026 productie AI-syllabus",
+    "clearSearch": "Zoekopdracht wissen",
+    "emptySearchSuggestions": "Probeer een voorgesteld traject of wis de zoekopdracht om alle 15 programma’s en 150 lessen te zien."
   },
   "programDetail": {
     "level": "Niveau",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "Bezig met sturen...",
     "verifyBannerSent": "Code verstuurd. Controleer je inbox.",
     "verifyBannerOpen": "Code invoeren",
-    "verifyBannerError": "We konden de code niet sturen. Probeer het zo opnieuw."
+    "verifyBannerError": "We konden de code niet sturen. Probeer het zo opnieuw.",
+    "signInTrustLine": "Ga veilig verder met je opgeslagen voortgang, bladwijzers en certificaten op al je apparaten."
   },
   "lessonTitles": {
     "agentic-workflows": "Agentische workflows",

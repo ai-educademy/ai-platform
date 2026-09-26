@@ -49,6 +49,8 @@ export interface ProgramsI18n {
   showLess: string;
   searchPlaceholder: string;
   noResults: string;
+  clearSearch: string;
+  emptySearchSuggestions: string;
   allTracks: string;
   free?: string;
   pro?: string;

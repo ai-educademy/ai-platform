@@ -588,7 +588,9 @@
       "tileLabel": "Offre",
       "homeDesc": "Faites un prochain pas en toute confiance et en connaissance de cause"
     },
-    "curriculumVersion": "Programme d'IA de production 2026"
+    "curriculumVersion": "Programme d'IA de production 2026",
+    "clearSearch": "Effacer la recherche",
+    "emptySearchSuggestions": "Essaie un parcours suggéré ou efface la recherche pour voir les 15 programmes et 150 leçons."
   },
   "programDetail": {
     "level": "Niveau",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "Envoi...",
     "verifyBannerSent": "Code envoyé. Vérifiez votre boîte mail.",
     "verifyBannerOpen": "Saisir le code",
-    "verifyBannerError": "Impossible d’envoyer le code. Réessayez dans un instant."
+    "verifyBannerError": "Impossible d’envoyer le code. Réessayez dans un instant.",
+    "signInTrustLine": "Retrouve en toute sécurité ta progression, tes favoris et tes certificats sur tous tes appareils."
   },
   "lessonTitles": {
     "agentic-workflows": "Workflows agentiques",

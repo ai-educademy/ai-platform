@@ -603,7 +603,9 @@
       "tileLabel": "Offer",
       "homeDesc": "Make a confident, informed next move"
     },
-    "curriculumVersion": "2026 production AI syllabus"
+    "curriculumVersion": "2026 production AI syllabus",
+    "clearSearch": "Clear search",
+    "emptySearchSuggestions": "Try a suggested track or clear the search to see all 15 programmes and 150 lessons."
   },
   "programDetail": {
     "level": "Level",
@@ -1107,7 +1109,8 @@
     "verifyBannerSending": "Sending...",
     "verifyBannerSent": "Code sent. Check your inbox.",
     "verifyBannerOpen": "Enter code",
-    "verifyBannerError": "We could not send the code. Try again shortly."
+    "verifyBannerError": "We could not send the code. Try again shortly.",
+    "signInTrustLine": "Continue your saved progress, bookmarks and certificates securely across devices."
   },
   "lessonTitles": {
     "agentic-workflows": "Agentic Workflows",

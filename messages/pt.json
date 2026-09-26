@@ -588,7 +588,9 @@
       "tileLabel": "Oferta",
       "homeDesc": "Dê o próximo passo confiante e informado"
     },
-    "curriculumVersion": "Programa de IA de produção de 2026"
+    "curriculumVersion": "Programa de IA de produção de 2026",
+    "clearSearch": "Limpar pesquisa",
+    "emptySearchSuggestions": "Experimente uma trilha sugerida ou limpe a pesquisa para ver todos os 15 programas e 150 aulas."
   },
   "programDetail": {
     "level": "Nível",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "Enviando...",
     "verifyBannerSent": "Código enviado. Verifique sua caixa de entrada.",
     "verifyBannerOpen": "Inserir código",
-    "verifyBannerError": "Não foi possível enviar o código. Tente novamente em instantes."
+    "verifyBannerError": "Não foi possível enviar o código. Tente novamente em instantes.",
+    "signInTrustLine": "Continue com segurança seu progresso salvo, favoritos e certificados em todos os dispositivos."
   },
   "lessonTitles": {
     "agentic-workflows": "Fluxos de Trabalho Agênticos",
