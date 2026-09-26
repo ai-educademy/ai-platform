@@ -2,6 +2,8 @@ import { getBlogPosts } from "@/lib/blog";
 
 const BASE_URL = "https://aieducademy.org";
 
+export const dynamic = "force-static";
+
 function escapeXml(str: string): string {
   return str
     .replace(/&/g, "&amp;")
@@ -27,7 +29,7 @@ export async function GET() {
       <pubDate>${toRfc822(post.date)}</pubDate>
       <guid isPermaLink="true">${BASE_URL}/blog/${post.slug}</guid>
       <author>${escapeXml(post.author)}</author>
-    </item>`
+    </item>`,
     )
     .join("\n");
 
@@ -46,6 +48,8 @@ ${items}
   return new Response(xml, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control":
+        "public, max-age=0, s-maxage=86400, stale-while-revalidate=86400",
     },
   });
 }
