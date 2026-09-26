@@ -49,6 +49,8 @@ function LessonStructuredData({
   lesson,
   lessonTitle,
   programTitle,
+  programSlug,
+  programUrl,
   locale,
   url,
   isPremium,
@@ -56,6 +58,8 @@ function LessonStructuredData({
   lesson: Lesson;
   lessonTitle: string;
   programTitle: string;
+  programSlug: string;
+  programUrl: string;
   locale: string;
   url: string;
   isPremium: boolean;
@@ -70,10 +74,17 @@ function LessonStructuredData({
     timeRequired: `PT${lesson.duration}M`,
     inLanguage: lesson.contentLocale || locale,
     url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
     isAccessibleForFree: !isPremium,
     isPartOf: {
       "@type": "Course",
+      "@id": programUrl,
       name: programTitle,
+      url: programUrl,
+      courseCode: programSlug,
       provider: {
         "@type": "Organization",
         name: "AI Educademy",
@@ -230,6 +241,8 @@ export default async function ProgramLessonPage({
         lesson={lesson}
         lessonTitle={lessonTitle}
         programTitle={programTitle}
+        programSlug={programSlug}
+        programUrl={`${BASE_URL}${programPath}`}
         locale={locale}
         url={lessonUrl}
         isPremium={isPremium}
