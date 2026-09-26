@@ -17,6 +17,8 @@ permissions:
   pull-requests: read
   actions: read
   checks: read
+# Free-tier budget: one run may use at most 60 model requests.
+max-turns: 60
 engine:
   id: gemini
   model: gemini-3.1-flash-lite-preview
