@@ -7,8 +7,9 @@ on:
     branches: [main]
     paths:
       - "src/**"
-      - "content/**"
-      - "content-pro/**"
+      # Submodule bumps change the gitlink path itself, not files beneath it.
+      - "content"
+      - "content-pro"
       - "messages/**"
   schedule:
     - cron: "30 6 * * 1"
