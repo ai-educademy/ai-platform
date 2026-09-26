@@ -32,6 +32,14 @@ describe("content access", () => {
     expect(requiresPremium("ai-forest", 2)).toBe(true);
   });
 
+  it("given an unknown programme slug, when access is checked, then only the first lesson is free", () => {
+    expect(isFreeProgram("unknown-programme")).toBe(false);
+    expect(isFreeLessonAccess("unknown-programme", 1)).toBe(true);
+    expect(requiresPremium("unknown-programme", 1)).toBe(false);
+    expect(isFreeLessonAccess("unknown-programme", 2)).toBe(false);
+    expect(requiresPremium("unknown-programme", 2)).toBe(true);
+  });
+
   it("given every locale, when published lessons are gated, then only order 1 is free", () => {
     for (const locale of routing.locales) {
       for (const program of getPrograms()) {

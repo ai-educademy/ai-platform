@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { isUndeliverableAddress } from "@/lib/email-hygiene";
+import disposableDomains from "@/lib/disposable-domains.json";
 
 describe("isUndeliverableAddress", () => {
   it("excludes RFC-reserved documentation and test domains", () => {
@@ -66,5 +67,21 @@ describe("isUndeliverableAddress", () => {
   it("keeps real providers and unfamiliar regional domains", () => {
     expect(isUndeliverableAddress("someone@gmail.com")).toBe(false);
     expect(isUndeliverableAddress("someone@cu.edu.ge")).toBe(false);
+  });
+
+  it("keeps legitimate reserved-looking TLDs that are not RFC-reserved", () => {
+    expect(isUndeliverableAddress("learner@example.education")).toBe(false);
+    expect(isUndeliverableAddress("learner@example.training")).toBe(false);
+  });
+
+  it("keeps a snapshot of the refreshed disposable list shape to catch accidental drift", () => {
+    expect(disposableDomains).toHaveLength(8981);
+    expect(disposableDomains.slice(0, 3)).toEqual([
+      "0-mail.com",
+      "0-mailer.dynv6.net",
+      "000-webmail.myhome-server.de",
+    ]);
+    expect(disposableDomains).toContain("mailinator.com");
+    expect(disposableDomains).toContain("minitts.net");
   });
 });
