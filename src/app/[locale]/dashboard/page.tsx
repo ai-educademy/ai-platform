@@ -268,9 +268,9 @@ export default function DashboardPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
         <MotionReveal animation="scale-in">
           <div className="text-7xl mb-6 animate-float-slow">🔒</div>
-          <h1 className="text-4xl font-bold mb-4 text-gradient">
+          <h2 className="text-4xl font-bold mb-4 text-gradient">
             {t("title")}
-          </h1>
+          </h2>
           <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto mb-10 leading-relaxed">
             {ta("signInPrompt")}
           </p>
@@ -294,9 +294,9 @@ export default function DashboardPage() {
             <div className="absolute -inset-4 rounded-full bg-indigo-500/10 blur-xl animate-pulse" />
             <div className="relative text-8xl animate-float-slow">🚀</div>
           </div>
-          <h1 className="text-4xl font-bold mb-4 text-gradient">
+          <h2 className="text-4xl font-bold mb-4 text-gradient">
             {t("emptyTitle")}
-          </h1>
+          </h2>
           <p className="text-lg text-[var(--color-text-muted)] max-w-md mx-auto mb-6 leading-relaxed">
             {t("emptySubtitle")}
           </p>
