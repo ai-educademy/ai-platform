@@ -80,3 +80,16 @@ Then look for:
   nothing. Micro-optimising a fast page burns review attention for no gain.
 - Anything architectural, or anything touching payments, goes in an issue with
   your measurements, not a pull request.
+
+## Mandatory final step
+
+Your run is only recorded if you finish with a safe-output call. Ending with a plain-text summary counts as a failed run.
+
+- If you found something actionable, use the matching safe output (for example `create_issue` or `create_pull_request`).
+- If there is nothing to report, run exactly this shell command, with your one-line summary as the message:
+
+```bash
+safeoutputs noop '{"message":"<one-line summary of what you checked and found>"}'
+```
+
+Do not stop until one of these calls has succeeded.
