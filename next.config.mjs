@@ -85,6 +85,15 @@ const nextConfig = {
         destination: "https://aieducademy.org/:path*",
         permanent: true,
       },
+      // The production *.vercel.app aliases serve the whole site and compete
+      // with the real domain in search. /api is left alone because Stripe
+      // webhooks and OAuth callbacks do not follow redirects.
+      ...["aieducademy.vercel.app", "ai-educademy.vercel.app"].map((value) => ({
+        source: "/:path((?!api/).*)",
+        has: [{ type: "host", value }],
+        destination: "https://aieducademy.org/:path",
+        permanent: true,
+      })),
       // The playground became the lab; old links and bookmarks must not 404.
       { source: "/playground", destination: "/lab", permanent: true },
       { source: "/en/playground", destination: "/lab", permanent: true },
