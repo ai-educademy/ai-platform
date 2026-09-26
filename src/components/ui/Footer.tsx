@@ -10,7 +10,6 @@ import { ArrowUp } from "lucide-react";
 import { locales } from "@/i18n/locales";
 import { useGuestProfile } from "@/hooks/useGuestProfile";
 import { BrandMark } from "./BrandMark";
-import { PageViewCounter } from "./PageViewCounter";
 
 function FooterLink({
   href,
@@ -124,9 +123,6 @@ export function Footer() {
                   into the catalogues so it cannot go stale in 11 locales. */}
               © {new Date().getFullYear()} AI Educademy. {t("license")}
             </p>
-            <div className="mt-3">
-              <PageViewCounter />
-            </div>
           </div>
 
           {/* Learn */}

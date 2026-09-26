@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { getProgramsByTrack } from "@/lib/programs";
 import { getLessons } from "@/lib/lessons";
@@ -18,6 +18,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const seo = getPageSeo(locale, "programs");
   return createSeoMetadata({ locale, path: "/programs", ...seo });
 }
@@ -28,6 +29,7 @@ export default async function ProgramsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("programs");
   const tLT = await getTranslations("lessonTitles");
   const tracks = getTracks();

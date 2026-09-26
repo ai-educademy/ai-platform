@@ -39,8 +39,11 @@ export function PageViewCounter() {
 
   const fetchViews = useCallback(async () => {
     try {
-      // POST increments (deduplicated per session), returns count
-      const res = await fetch("/api/page-views", { method: "POST" });
+      // Read-only: this counter now lives on the admin dashboard only, so it
+      // reports the accumulated total without incrementing. It used to POST from
+      // the public footer on every page view, which spent one serverless
+      // invocation per visit and pushed the free tier towards an auto-pause.
+      const res = await fetch("/api/page-views");
       const data = await res.json();
       if (data.views !== null) {
         setViews(data.views);

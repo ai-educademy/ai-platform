@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Lock } from "lucide-react";
@@ -39,6 +39,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; programSlug: string }>;
 }): Promise<Metadata> {
   const { locale, programSlug } = await params;
+  setRequestLocale(locale);
   const program = getProgram(programSlug);
   if (!program) notFound();
 
@@ -59,6 +60,7 @@ export default async function ProgramPage({
   params: Promise<{ locale: string; programSlug: string }>;
 }) {
   const { locale, programSlug } = await params;
+  setRequestLocale(locale);
   const program = getProgram(programSlug);
   if (!program) notFound();
 

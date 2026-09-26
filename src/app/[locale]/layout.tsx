@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n/locales";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -140,6 +140,10 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID?.trim() || undefined;
 
 const themeScript = `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}else{document.documentElement.classList.add('light')}})()`;
 
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -156,6 +160,11 @@ export default async function LocaleLayout({
   if (!locales.includes(locale as (typeof locales)[number])) {
     notFound();
   }
+
+  // Tell next-intl the locale statically so getMessages/getTranslations do not
+  // read request headers. Without this every localised page opts into dynamic
+  // rendering and costs one serverless invocation per view.
+  setRequestLocale(locale);
 
   const messages = await getMessages();
 

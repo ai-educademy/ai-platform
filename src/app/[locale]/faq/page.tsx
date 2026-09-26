@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FAQJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
 import { BASE_URL, createSeoMetadata, getPageSeo } from "@/lib/seo";
@@ -11,6 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const seo = getPageSeo(locale, "faq");
 
   return createSeoMetadata({ locale, path: "/faq", ...seo });
@@ -24,6 +25,7 @@ export default async function FAQPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("faq");
   const basePath = locale === "en" ? "" : `/${locale}`;
   const pageUrl = `${BASE_URL}${basePath}/faq`;
