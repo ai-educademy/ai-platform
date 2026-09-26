@@ -37,6 +37,20 @@ const PRICE_ENV_VAR: Record<PricingCurrency, Record<PaidPlan, string>> = {
   },
 };
 
+export function validateStripePriceConfig(): void {
+  const missing = Object.entries(PRICE_ENV_VAR).flatMap(([currency, prices]) =>
+    Object.entries(prices)
+      .filter(([, envVar]) => (process.env[envVar] ?? "").trim() === "")
+      .map(([plan, envVar]) => `${currency}.${plan} (${envVar})`),
+  );
+
+  if (missing.length > 0) {
+    throw new Error(
+      `Stripe price configuration is incomplete. Missing price IDs: ${missing.join(", ")}`,
+    );
+  }
+}
+
 export function getPlanPriceId(
   plan: PaidPlan,
   currency: PricingCurrency = "gbp",
@@ -62,6 +76,7 @@ export function getPlanConfig(
   plan: PaidPlan,
   currency: PricingCurrency = "gbp",
 ) {
+  validateStripePriceConfig();
   const price = PLAN_PRICES[currency][plan];
   return {
     ...PLANS[plan],

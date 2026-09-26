@@ -3,7 +3,12 @@ import { eq, and } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { users, verificationTokens } from "@/lib/db/schema";
 import { sendWelcomeEmail, sendAdminNotification } from "@/lib/email";
-import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import {
+  getClientIp,
+  rateLimit,
+  rateLimitHeaders,
+  RATE_LIMITS,
+} from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { isMissingColumn } from "@/lib/db/missing-column";
 
@@ -28,24 +33,25 @@ async function readUserLocale(email: string): Promise<string> {
 }
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const ip = getClientIp(req);
   const rl = rateLimit(`auth-verify:${ip}`, RATE_LIMITS.auth);
   if (!rl.success) {
     return NextResponse.json(
       { error: "Too many requests. Please try again later." },
-      { status: 429, headers: rateLimitHeaders(rl) }
+      { status: 429, headers: rateLimitHeaders(rl) },
     );
   }
 
   try {
     const body = await req.json();
-    const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+    const email =
+      typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
     const code = typeof body.code === "string" ? body.code.trim() : "";
 
     if (!email || !code) {
       return NextResponse.json(
         { error: "Email and verification code are required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -56,15 +62,15 @@ export async function POST(req: NextRequest) {
       .where(
         and(
           eq(verificationTokens.identifier, email),
-          eq(verificationTokens.token, code)
-        )
+          eq(verificationTokens.token, code),
+        ),
       )
       .limit(1);
 
     if (!token) {
       return NextResponse.json(
         { error: "Invalid verification code." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -76,12 +82,12 @@ export async function POST(req: NextRequest) {
         .where(
           and(
             eq(verificationTokens.identifier, email),
-            eq(verificationTokens.token, code)
-          )
+            eq(verificationTokens.token, code),
+          ),
         );
       return NextResponse.json(
         { error: "Verification code has expired. Please request a new one." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -97,8 +103,8 @@ export async function POST(req: NextRequest) {
       .where(
         and(
           eq(verificationTokens.identifier, email),
-          eq(verificationTokens.token, code)
-        )
+          eq(verificationTokens.token, code),
+        ),
       );
 
     // Get user for welcome email.
@@ -120,24 +126,28 @@ export async function POST(req: NextRequest) {
     if (user) {
       const locale = await readUserLocale(email);
       sendWelcomeEmail(email, locale, user.name || undefined).catch((err) =>
-        console.error("[VerifyEmail] Welcome email failed:", err)
+        console.error("[VerifyEmail] Welcome email failed:", err),
       );
       sendAdminNotification(
         "New user signed up! 🎉",
-        `<p><strong>Name:</strong> ${user.name || "—"}</p>
+        `<p><strong>Name:</strong> ${user.name || "&mdash;"}</p>
          <p><strong>Email:</strong> ${user.email}</p>
          <p><strong>Method:</strong> Email/Password</p>
-         <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`
-      ).catch((err) => console.error("[VerifyEmail] Admin notification failed:", err));
+         <p><strong>Time:</strong> ${new Date().toUTCString()}</p>`,
+      ).catch((err) =>
+        console.error("[VerifyEmail] Admin notification failed:", err),
+      );
     }
 
-    return NextResponse.json({ message: "Email verified successfully. You can now sign in." });
+    return NextResponse.json({
+      message: "Email verified successfully. You can now sign in.",
+    });
   } catch (error) {
     if (isDatabaseNotConfigured(error)) return databaseUnavailable();
     console.error("[VerifyEmail] Error:", error);
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

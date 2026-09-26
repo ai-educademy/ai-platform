@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import {
+  getClientIp,
+  rateLimit,
+  rateLimitHeaders,
+  RATE_LIMITS,
+} from "@/lib/rate-limit";
 import { sendAdminNotification } from "@/lib/email";
 import { db } from "@/lib/db";
 import { contactSubmissions } from "@/lib/db/schema";
@@ -18,7 +23,10 @@ const ContactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   subject: z.enum(SUBJECTS),
-  message: z.string().min(10, "Message must be at least 10 characters").max(2000, "Message must be under 2000 characters"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(2000, "Message must be under 2000 characters"),
 });
 
 function buildContactEmailHtml(data: z.infer<typeof ContactSchema>): string {
@@ -91,12 +99,15 @@ function escapeHtml(str: string): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+    const ip = getClientIp(req);
     const rl = rateLimit(`contact:${ip}`, RATE_LIMITS.form);
 
     if (!rl.success) {
       return NextResponse.json(
-        { success: false, message: "Too many requests. Please try again later." },
+        {
+          success: false,
+          message: "Too many requests. Please try again later.",
+        },
         { status: 429, headers: rateLimitHeaders(rl) },
       );
     }
@@ -106,7 +117,10 @@ export async function POST(req: NextRequest) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { success: false, message: parsed.error.issues[0]?.message ?? "Invalid input" },
+        {
+          success: false,
+          message: parsed.error.issues[0]?.message ?? "Invalid input",
+        },
         { status: 400, headers: rateLimitHeaders(rl) },
       );
     }
@@ -132,7 +146,9 @@ export async function POST(req: NextRequest) {
       if (apiKey) {
         const { Resend } = await import("resend");
         const resend = new Resend(apiKey);
-        const fromAddress = process.env.RESEND_FROM_EMAIL || "AI Educademy <onboarding@resend.dev>";
+        const fromAddress =
+          process.env.RESEND_FROM_EMAIL ||
+          "AI Educademy <onboarding@resend.dev>";
 
         await resend.emails.send({
           from: fromAddress,

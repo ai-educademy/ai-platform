@@ -4,6 +4,12 @@ import { eq } from "drizzle-orm";
 
 export type UserPlan = "free" | "pro" | "admin";
 
+const USER_PLANS = new Set<UserPlan>(["free", "pro", "admin"]);
+
+function toUserPlan(role: string | null | undefined): UserPlan {
+  return role && USER_PLANS.has(role as UserPlan) ? (role as UserPlan) : "free";
+}
+
 export async function getUserPlan(userId: string): Promise<UserPlan> {
   // Check user role first (admin overrides everything)
   const [user] = await db
@@ -25,7 +31,7 @@ export async function getUserPlan(userId: string): Promise<UserPlan> {
     .where(eq(subscriptions.userId, userId));
 
   if (subs.some((s) => grantsAccess(s.status, s.currentPeriodEnd))) return "pro";
-  return user.role as UserPlan;
+  return toUserPlan(user.role);
 }
 
 /**

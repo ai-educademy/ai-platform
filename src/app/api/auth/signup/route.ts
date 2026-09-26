@@ -1,25 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomInt } from "node:crypto";
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { users, verificationTokens } from "@/lib/db/schema";
 import { sendVerificationEmail } from "@/lib/email";
-import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import {
+  getClientIp,
+  rateLimit,
+  rateLimitHeaders,
+  RATE_LIMITS,
+} from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 import { safeLocale } from "@/lib/safe-locale";
 import { isMissingColumn } from "@/lib/db/missing-column";
 import { trackEvent } from "@/lib/funnel";
 
-function generateCode(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString();
+export function generateCode(): string {
+  return randomInt(100000, 1000000).toString();
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PASSWORD_RE = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
 
 export async function POST(req: NextRequest) {
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const ip = getClientIp(req);
   const rl = rateLimit(`auth-signup:${ip}`, RATE_LIMITS.auth);
   if (!rl.success) {
     return NextResponse.json(

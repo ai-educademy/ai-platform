@@ -1,18 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomInt } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { users, verificationTokens } from "@/lib/db/schema";
 import { sendVerificationEmail } from "@/lib/email";
-import { rateLimit, rateLimitHeaders, RATE_LIMITS } from "@/lib/rate-limit";
+import {
+  getClientIp,
+  rateLimit,
+  rateLimitHeaders,
+  RATE_LIMITS,
+} from "@/lib/rate-limit";
 import { isDatabaseNotConfigured, databaseUnavailable } from "@/lib/db-guard";
 
-function generateCode(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString();
+export function generateCode(): string {
+  return randomInt(100000, 1000000).toString();
 }
 
 export async function POST(req: NextRequest) {
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const ip = getClientIp(req);
   const rl = rateLimit(`auth-resend:${ip}`, RATE_LIMITS.auth);
   if (!rl.success) {
     return NextResponse.json(
@@ -41,7 +46,7 @@ export async function POST(req: NextRequest) {
       .limit(1);
 
     if (!user || user.emailVerified) {
-      // Don't reveal whether user exists — return success either way
+      // Do not reveal whether the user exists. Return success either way.
       return NextResponse.json({
         message: "If the account needs verification, a new code has been sent.",
       });

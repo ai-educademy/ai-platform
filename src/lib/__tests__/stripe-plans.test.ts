@@ -8,9 +8,11 @@
  */
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
+  getPlanConfig,
   getPlanPriceId,
   getPurchasablePlans,
   isPlanPurchasable,
+  validateStripePriceConfig,
 } from "@/lib/stripe";
 
 const VARS = [
@@ -81,5 +83,40 @@ describe("stripe plan configuration", () => {
     process.env.STRIPE_PRICE_LIFETIME = "   \n";
 
     expect(isPlanPurchasable("lifetime")).toBe(false);
+  });
+
+  it("given a supported currency is missing price IDs, when the Stripe config is validated, then it fails fast", () => {
+    process.env.STRIPE_PRICE_MONTHLY = "price_gbp_monthly";
+    process.env.STRIPE_PRICE_ANNUAL = "price_gbp_annual";
+    process.env.STRIPE_PRICE_LIFETIME = "price_gbp_lifetime";
+
+    expect(() => validateStripePriceConfig()).toThrow(/inr\.monthly/);
+  });
+
+  it("given a sold plan has a blank price ID, when the Stripe config is validated, then it names the blank setting", () => {
+    process.env.STRIPE_PRICE_MONTHLY = "price_gbp_monthly";
+    process.env.STRIPE_PRICE_ANNUAL = "price_gbp_annual";
+    process.env.STRIPE_PRICE_LIFETIME = " ";
+    process.env.STRIPE_PRICE_INR_MONTHLY = "price_inr_monthly";
+    process.env.STRIPE_PRICE_INR_ANNUAL = "price_inr_annual";
+    process.env.STRIPE_PRICE_INR_LIFETIME = "price_inr_lifetime";
+
+    expect(() => validateStripePriceConfig()).toThrow(/gbp\.lifetime/);
+  });
+
+  it("given every cross-currency price ID is present, when the config is validated, then checkout config resolves", () => {
+    process.env.STRIPE_PRICE_MONTHLY = "price_gbp_monthly";
+    process.env.STRIPE_PRICE_ANNUAL = "price_gbp_annual";
+    process.env.STRIPE_PRICE_LIFETIME = "price_gbp_lifetime";
+    process.env.STRIPE_PRICE_INR_MONTHLY = "price_inr_monthly";
+    process.env.STRIPE_PRICE_INR_ANNUAL = "price_inr_annual";
+    process.env.STRIPE_PRICE_INR_LIFETIME = "price_inr_lifetime";
+
+    expect(() => validateStripePriceConfig()).not.toThrow();
+    expect(getPlanConfig("annual", "inr")).toMatchObject({
+      currency: "inr",
+      price: 149900,
+      priceId: "price_inr_annual",
+    });
   });
 });

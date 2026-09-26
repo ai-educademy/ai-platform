@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-type UserRow = { id: string; role: "free" | "pro" | "admin" };
+type UserRow = { id: string; role: string | null };
 type SubscriptionRow = {
   userId: string;
   status: "active" | "cancelled" | "past_due" | "trialing" | "incomplete";
@@ -78,6 +78,16 @@ describe("getUserPlan", () => {
     await expect(getUserPlan("user_free")).resolves.toBe("free");
   });
 
+  it.each([
+    ["unknown", "vip"],
+    ["malformed", "not-a-plan"],
+    ["missing", null],
+  ])("given a %s role with no subscription, when the plan is read, then it fails safe to free", async (_case, role) => {
+    userRows = [{ id: "user_bad_role", role }];
+
+    await expect(getUserPlan("user_bad_role")).resolves.toBe("free");
+  });
+
   it("given a user with an active monthly subscription, when the plan is read, then they are pro", async () => {
     userRows = [{ id: "user_monthly", role: "free" }];
     subscriptionRows = [{ userId: "user_monthly", status: "active", plan: "monthly" }];
@@ -96,6 +106,10 @@ describe("getUserPlan", () => {
     subscriptionRows = [{ userId: "expired_user", status: "cancelled", plan: "annual", currentPeriodEnd: new Date("2024-01-01T00:00:00Z") }];
 
     await expect(getUserPlan("expired_user")).resolves.toBe("free");
+  });
+
+  it("given a user row is absent, when the plan is read, then access fails safe to free", async () => {
+    await expect(getUserPlan("missing_user")).resolves.toBe("free");
   });
 
   it("given a lifetime purchase, when the plan is read, then access is granted as pro", async () => {

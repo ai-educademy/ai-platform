@@ -137,6 +137,9 @@ export async function generateMetadata({
  * entered.
  */
 const gaId = process.env.NEXT_PUBLIC_GA_ID?.trim() || undefined;
+const shouldLoadAnalytics =
+  process.env.NODE_ENV === "production" &&
+  process.env.VERCEL_ENV === "production";
 
 const themeScript = `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}else{document.documentElement.classList.add('light')}})()`;
 
@@ -179,8 +182,12 @@ export default async function LocaleLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
-        <link rel="preconnect" href="https://va.vercel-scripts.com" />
-        <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+        {shouldLoadAnalytics && (
+          <>
+            <link rel="preconnect" href="https://va.vercel-scripts.com" />
+            <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+          </>
+        )}
         <link rel="preconnect" href="https://avatars.githubusercontent.com" />
         <link rel="dns-prefetch" href="https://github.com" />
       </head>
@@ -203,9 +210,9 @@ export default async function LocaleLayout({
             </Suspense>
           </NextIntlClientProvider>
         </Providers>
-        <Analytics />
-        <SpeedInsights />
-        {gaId && <GoogleAnalytics gaId={gaId} />}
+        {shouldLoadAnalytics && <Analytics />}
+        {shouldLoadAnalytics && <SpeedInsights />}
+        {shouldLoadAnalytics && gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );
