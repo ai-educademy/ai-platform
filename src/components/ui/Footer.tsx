@@ -57,7 +57,8 @@ export function Footer() {
   useEffect(() => {
     const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    const handler = (e: MediaQueryListEvent) =>
+      setPrefersReducedMotion(e.matches);
     mql.addEventListener("change", handler);
     return () => mql.removeEventListener("change", handler);
   }, []);
@@ -108,7 +109,12 @@ export function Footer() {
           }`}
         >
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1 footer-item" style={prefersReducedMotion ? undefined : { transitionDelay: "50ms" }}>
+          <div
+            className="col-span-2 md:col-span-1 footer-item"
+            style={
+              prefersReducedMotion ? undefined : { transitionDelay: "50ms" }
+            }
+          >
             <Link
               href={`${basePath}/`}
               className="inline-flex items-center mb-3 hover:opacity-90 transition-opacity"
@@ -126,123 +132,141 @@ export function Footer() {
           </div>
 
           {/* Learn */}
-          <div className="footer-item" style={prefersReducedMotion ? undefined : { transitionDelay: "150ms" }}>
+          <div
+            className="footer-item"
+            style={
+              prefersReducedMotion ? undefined : { transitionDelay: "150ms" }
+            }
+          >
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
               {t("learnHeader")}
             </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <FooterLink href={`${basePath}/programs`}>
-                  {t("programs")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/programs/ai-seeds`}>
-                  {t("lessons")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/lab`}>{t("lab")}</FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/resources/ai-starter-kit`}>
-                  {t("starterKit")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/pricing`}>
-                  {tNav("pricing")}
-                </FooterLink>
-              </li>
-              {isSignedIn && (
+            <nav aria-label="Footer learning navigation">
+              <ul className="space-y-2.5 text-sm">
                 <li>
-                  <FooterLink href={`${basePath}/dashboard`}>
-                    {t("dashboard")}
+                  <FooterLink href={`${basePath}/programs`}>
+                    {t("programs")}
                   </FooterLink>
                 </li>
-              )}
-            </ul>
+                <li>
+                  <FooterLink href={`${basePath}/programs/ai-seeds`}>
+                    {t("lessons")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/lab`}>{t("lab")}</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/resources/ai-starter-kit`}>
+                    {t("starterKit")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/pricing`}>
+                    {tNav("pricing")}
+                  </FooterLink>
+                </li>
+                {isSignedIn && (
+                  <li>
+                    <FooterLink href={`${basePath}/dashboard`}>
+                      {t("dashboard")}
+                    </FooterLink>
+                  </li>
+                )}
+              </ul>
+            </nav>
           </div>
 
           {/* Community */}
-          <div className="footer-item" style={prefersReducedMotion ? undefined : { transitionDelay: "250ms" }}>
+          <div
+            className="footer-item"
+            style={
+              prefersReducedMotion ? undefined : { transitionDelay: "250ms" }
+            }
+          >
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
               {t("communityHeader")}
             </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <FooterLink href="https://github.com/ai-educademy" external>
-                  {t("github")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink
-                  href="https://github.com/ai-educademy/ai-platform/blob/main/CONTRIBUTING.md"
-                  external
-                >
-                  {t("contributing")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink
-                  href="https://github.com/ai-educademy/ai-platform/blob/main/CODE_OF_CONDUCT.md"
-                  external
-                >
-                  {t("coc")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/about`}>
-                  {t("about")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/faq`}>
-                  {t("faq")}
-                </FooterLink>
-              </li>
-            </ul>
+            <nav aria-label="Footer community navigation">
+              <ul className="space-y-2.5 text-sm">
+                <li>
+                  <FooterLink href="https://github.com/ai-educademy" external>
+                    {t("github")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink
+                    href="https://github.com/ai-educademy/ai-platform/blob/main/CONTRIBUTING.md"
+                    external
+                  >
+                    {t("contributing")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink
+                    href="https://github.com/ai-educademy/ai-platform/blob/main/CODE_OF_CONDUCT.md"
+                    external
+                  >
+                    {t("coc")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/about`}>
+                    {t("about")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/faq`}>{t("faq")}</FooterLink>
+                </li>
+              </ul>
+            </nav>
           </div>
 
           {/* Support */}
-          <div className="footer-item" style={prefersReducedMotion ? undefined : { transitionDelay: "350ms" }}>
+          <div
+            className="footer-item"
+            style={
+              prefersReducedMotion ? undefined : { transitionDelay: "350ms" }
+            }
+          >
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
               {t("supportHeader")}
             </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <a
-                  href="https://buymeacoffee.com/rameshreddy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-block text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
-                >
-                  {t("buyMeACoffee")}{" "}
-                  <span className="inline-block transition-transform duration-300 group-hover:animate-bounce">
-                    ☕
-                  </span>
-                  <span className="absolute -bottom-px left-0 h-px w-0 bg-[var(--color-primary)] transition-all duration-300 ease-out group-hover:w-full" />
-                </a>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/terms`}>
-                  {t("terms")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/privacy`}>
-                  {t("privacy")}
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink href={`${basePath}/contact`}>
-                  {t("contact")}
-                </FooterLink>
-              </li>
-            </ul>
+            <nav aria-label="Footer support navigation">
+              <ul className="space-y-2.5 text-sm">
+                <li>
+                  <a
+                    href="https://buymeacoffee.com/rameshreddy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-block text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                  >
+                    {t("buyMeACoffee")}{" "}
+                    <span className="inline-block transition-transform duration-300 group-hover:animate-bounce">
+                      ☕
+                    </span>
+                    <span className="absolute -bottom-px left-0 h-px w-0 bg-[var(--color-primary)] transition-all duration-300 ease-out group-hover:w-full" />
+                  </a>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/terms`}>
+                    {t("terms")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/privacy`}>
+                    {t("privacy")}
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={`${basePath}/contact`}>
+                    {t("contact")}
+                  </FooterLink>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
-
       </div>
 
       {/* Floating back-to-top button - fixed to viewport */}

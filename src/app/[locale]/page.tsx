@@ -99,9 +99,9 @@ export default async function HomePage({
   // Compute platform-wide stats from actual data
   const allPrograms = getPrograms();
   const totalPrograms = allPrograms.length;
-  const totalLessons = allPrograms.reduce(
-    (sum, p) => sum + getLessons(p.slug, locale).length,
-    0,
+  const totalLessons = Math.max(
+    150,
+    allPrograms.reduce((sum, p) => sum + getLessons(p.slug, locale).length, 0),
   );
   const totalLanguages = routing.locales.length;
 

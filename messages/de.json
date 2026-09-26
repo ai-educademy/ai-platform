@@ -588,7 +588,9 @@
       "tileLabel": "Angebot",
       "homeDesc": "Machen Sie einen selbstbewussten und informierten nächsten Schritt"
     },
-    "curriculumVersion": "Lehrplan für Produktions-KI 2026"
+    "curriculumVersion": "Lehrplan für Produktions-KI 2026",
+    "clearSearch": "Suche löschen",
+    "emptySearchSuggestions": "Probiere einen empfohlenen Lernpfad aus oder lösche die Suche, um alle 15 Programme und 150 Lektionen zu sehen."
   },
   "programDetail": {
     "level": "Niveau",
@@ -1092,7 +1094,8 @@
     "verifyBannerSending": "Wird gesendet...",
     "verifyBannerSent": "Code gesendet. Prüfe dein Postfach.",
     "verifyBannerOpen": "Code eingeben",
-    "verifyBannerError": "Der Code konnte nicht gesendet werden. Bitte versuche es gleich noch einmal."
+    "verifyBannerError": "Der Code konnte nicht gesendet werden. Bitte versuche es gleich noch einmal.",
+    "signInTrustLine": "Setze deinen gespeicherten Fortschritt, deine Lesezeichen und Zertifikate sicher auf allen Geräten fort."
   },
   "lessonTitles": {
     "agentic-workflows": "Agenten-Workflows",
