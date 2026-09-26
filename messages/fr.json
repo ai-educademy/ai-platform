@@ -661,7 +661,7 @@
         },
         {
           "q": "Vais-je apprendre sur ChatGPT et les grands modèles de langage ?",
-          "a": "Oui ! AI Canopy couvre le fonctionnement des grands modèles de langage, y compris l'architecture Transformer qui alimente ChatGPT, GPT-4 et des modèles similaires. Vous maîtriserez également les techniques d'ingénierie de prompts."
+          "a": "Oui ! AI Canopy couvre le fonctionnement des grands modèles de langage, y compris l'architecture Transformer qui alimente ChatGPT, Claude, Gemini et des modèles similaires. Vous maîtriserez également les techniques d'ingénierie de prompts."
         },
         {
           "q": "Dois-je savoir programmer pour AI Canopy ?",
