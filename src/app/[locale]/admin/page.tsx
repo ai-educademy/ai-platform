@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { CampaignPanel } from "./CampaignPanel";
+import { PageViewCounter } from "@/components/ui/PageViewCounter";
 import {
   Users,
   CreditCard,
@@ -484,7 +485,10 @@ export default function AdminPage() {
     <div className="max-w-6xl mx-auto px-4 py-12 space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-3xl font-bold text-gradient">{t("title")}</h1>
+        <div className="flex flex-col gap-2">
+          <h1 className="text-3xl font-bold text-gradient">{t("title")}</h1>
+          <PageViewCounter />
+        </div>
         <button
           onClick={fetchSummary}
           disabled={summaryLoading}

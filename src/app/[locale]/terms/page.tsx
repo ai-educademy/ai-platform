@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { BASE_URL, createSeoMetadata, getPageSeo } from "@/lib/seo";
 
@@ -9,6 +9,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const seo = getPageSeo(locale, "terms");
   return createSeoMetadata({
     locale,
@@ -36,6 +37,7 @@ export default async function TermsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "terms" });
   const basePath = locale === "en" ? "" : `/${locale}`;
 

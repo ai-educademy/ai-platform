@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getProgram } from "@/lib/programs";
 import { BASE_URL, createSeoMetadata, getAchievementSeo } from "@/lib/seo";
 import { getLessons } from "@/lib/lessons";
@@ -35,6 +35,7 @@ export async function generateMetadata({
   searchParams: Promise<{ user?: string; uid?: string }>;
 }): Promise<Metadata> {
   const { locale, programSlug } = await params;
+  setRequestLocale(locale);
   const { user } = await searchParams;
   const tp = await getTranslations("programs");
 
@@ -63,6 +64,7 @@ export default async function AchievementPage({
   searchParams: Promise<{ user?: string; uid?: string }>;
 }) {
   const { locale, programSlug } = await params;
+  setRequestLocale(locale);
   const { user, uid } = await searchParams;
   const t = await getTranslations("achievement");
   const tp = await getTranslations("programs");

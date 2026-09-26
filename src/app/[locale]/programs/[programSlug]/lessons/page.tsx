@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,6 +15,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; programSlug: string }>;
 }): Promise<Metadata> {
   const { locale, programSlug } = await params;
+  setRequestLocale(locale);
   const program = getProgram(programSlug);
   if (!program) return { robots: { index: false, follow: false } };
 
@@ -37,6 +38,7 @@ export default async function ProgramLessonsPage({
   params: Promise<{ locale: string; programSlug: string }>;
 }) {
   const { locale, programSlug } = await params;
+  setRequestLocale(locale);
   const program = getProgram(programSlug);
   if (!program) notFound();
 

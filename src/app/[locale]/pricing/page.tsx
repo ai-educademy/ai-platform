@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { headers } from "next/headers";
 import { createSeoMetadata, getPageSeo } from "@/lib/seo";
 import { getPurchasablePlans } from "@/lib/stripe";
@@ -13,6 +13,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const seo = getPageSeo(locale, "pricing");
   return createSeoMetadata({ locale, path: "/pricing", ...seo });
 }
@@ -23,6 +24,7 @@ export default async function PricingPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pricing" });
   trackEvent("pricing_viewed", {
     locale,

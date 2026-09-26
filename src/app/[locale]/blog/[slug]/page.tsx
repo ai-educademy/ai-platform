@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getBlogPost, getBlogPosts, getAllBlogSlugs } from "@/lib/blog";
+import { routing } from "@/i18n/routing";
 import { LessonRenderer } from "@/components/lessons/LessonRenderer";
 import { AnimatedSection } from "@/components/ui/MotionWrappers";
 import { ListenButton } from "@/components/ui/ListenButton";
@@ -57,12 +58,22 @@ function BlogH3({
   );
 }
 
+export const dynamicParams = true;
+
+export function generateStaticParams() {
+  const slugs = getAllBlogSlugs();
+  return routing.locales.flatMap((locale) =>
+    slugs.map((slug) => ({ locale, slug })),
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const post = getBlogPost(slug, locale);
   if (!post) return { robots: { index: false, follow: false } };
   const imageUrl = post.image?.startsWith("http")
@@ -98,6 +109,7 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("blog");
   const tPrograms = await getTranslations("programs");
   const tPricing = await getTranslations("pricing");
