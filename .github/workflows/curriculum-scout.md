@@ -27,7 +27,7 @@ tools:
   cli-proxy: true
   cache-memory: true
   web-fetch:
-  bash: ["cat", "ls", "grep", "head", "find", "wc"]
+  bash: ["safeoutputs *", "cat", "ls", "grep", "head", "find", "wc"]
   github:
     mode: gh-proxy
     toolsets: [repos, issues]

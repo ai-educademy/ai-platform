@@ -25,7 +25,7 @@ tools:
   cli-proxy: true
   edit:
   cache-memory: true
-  bash: ["git *", "npm ci", "npm run *", "npx tsc *", "npx eslint *", "npx vitest *", "npx playwright *", "cat", "ls", "grep", "head", "tail"]
+  bash: ["safeoutputs *", "git *", "npm ci", "npm run *", "npx tsc *", "npx eslint *", "npx vitest *", "npx playwright *", "cat", "ls", "grep", "head", "tail"]
   github:
     mode: gh-proxy
     toolsets: [repos, issues, pull_requests]

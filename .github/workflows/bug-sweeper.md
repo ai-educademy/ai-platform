@@ -24,6 +24,7 @@ tools:
   cli-proxy: true
   edit:
   bash:
+    - "safeoutputs *"
     - "git *"
     - "npm ci"
     - "npm run *"
