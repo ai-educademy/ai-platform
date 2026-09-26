@@ -16,7 +16,7 @@ import {
  * These tests keep the claim tied to the prices.
  */
 describe("pricing", () => {
-  it("formats pence as sterling, dropping decimals on whole pounds", () => {
+  it("given GBP minor units, when labels are formatted, then whole pounds drop decimals", () => {
     expect(formatPence(399)).toBe("£3.99");
     expect(formatPence(2999)).toBe("£29.99");
     expect(formatPence(5000)).toBe("£50");
@@ -46,17 +46,22 @@ describe("pricing", () => {
     );
   });
 
-  it("formats INR prices for Indian visitors", () => {
+  it("given INR minor units, when labels are formatted, then rupee prices are selected", () => {
     expect(formatMinorCurrency(14900, "inr")).toBe("₹149");
     expect(getPlanPriceLabels("inr").monthly).toBe("₹149");
     expect(getAnnualSavingPercent("inr")).toBe(16);
   });
 
-  it("selects INR for India and Indian-language locales", () => {
+  it("given India signals, when pricing currency is resolved, then INR wins over the locale fallback", () => {
     expect(resolvePricingCurrency("en", "IN")).toBe("inr");
     expect(resolvePricingCurrency("hi", "GB")).toBe("inr");
     expect(resolvePricingCurrency("te", null)).toBe("inr");
     expect(resolvePricingCurrency("fr", "FR")).toBe("gbp");
+  });
+
+  it("given an unknown locale and missing country, when pricing currency is resolved, then GBP is the safe fallback", () => {
+    expect(resolvePricingCurrency("xx", undefined)).toBe("gbp");
+    expect(resolvePricingCurrency("", null)).toBe("gbp");
   });
 
   it("exposes labels matching the underlying pence values", () => {
