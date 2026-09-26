@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 function AnimatedNumber({ value }: { value: number }) {
   const [display, setDisplay] = useState(0);
@@ -34,8 +35,15 @@ function AnimatedNumber({ value }: { value: number }) {
 
 export function PageViewCounter() {
   const t = useTranslations("footer");
+  const pathname = usePathname();
   const [views, setViews] = useState<number | null>(null);
   const hasFetched = useRef(false);
+  const segments = pathname.split("/").filter(Boolean);
+  const routeSegments =
+    segments[0] && /^[a-z]{2}$/.test(segments[0])
+      ? segments.slice(1)
+      : segments;
+  const isAdminRoute = routeSegments[0] === "admin";
 
   const fetchViews = useCallback(async () => {
     try {
@@ -48,16 +56,19 @@ export function PageViewCounter() {
       if (data.views !== null) {
         setViews(data.views);
       }
-    } catch { /* fetch failed, hide counter */ }
+    } catch {
+      /* fetch failed, hide counter */
+    }
   }, []);
 
   useEffect(() => {
+    if (!isAdminRoute) return;
     if (hasFetched.current) return;
     hasFetched.current = true;
     fetchViews();
-  }, [fetchViews]);
+  }, [fetchViews, isAdminRoute]);
 
-  if (views === null) return null;
+  if (!isAdminRoute || views === null) return null;
 
   return (
     <div className="flex items-center gap-1.5 text-sm text-[var(--color-text-muted)]">

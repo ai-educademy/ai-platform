@@ -100,5 +100,9 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|sw\\.js|workbox-.*|.*\\..*).*)"],
+  matcher: [
+    "/",
+    "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?",
+    "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?/:path(about|achievement|admin|blog|bookmarks|contact|dashboard|faq|forgot-password|journey|lab|lessons|mock-interview|offline|onboarding|pricing|privacy|programs|reset-password|resources|signin|signup|terms|unsubscribe|verify-email)(.*)",
+  ],
 };
