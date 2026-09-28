@@ -209,11 +209,8 @@ export default function HomeHero({
   const ease = "cubic-bezier(0.22,1,0.36,1)";
 
   return (
-    <div
-      ref={ref}
-      className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]"
-    >
-      <div className="text-center lg:text-left">
+    <div ref={ref} className="mx-auto max-w-4xl">
+      <div className="text-center">
         <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-violet-600 dark:text-violet-300">
           <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
           {badge}
@@ -236,7 +233,7 @@ export default function HomeHero({
               alt="AI Educademy"
               width={80}
               height={80}
-              className="mx-auto mb-8 rounded-2xl shadow-lg ring-1 ring-[var(--color-border)] lg:mx-0"
+              className="mx-auto mb-8 rounded-2xl shadow-lg ring-1 ring-[var(--color-border)]"
               priority
             />
           </div>
@@ -311,7 +308,7 @@ export default function HomeHero({
 
         {/* Stats row - animated counters with subtle card treatment */}
         <div
-          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:justify-start"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
           style={{
             opacity: noMotion || isInView ? 1 : 0,
             transform: noMotion || isInView ? "none" : "translateY(12px)",
@@ -353,61 +350,6 @@ export default function HomeHero({
             </svg>
             ⭐ Star
           </a>
-        </div>
-      </div>
-
-      <div
-        className="relative mx-auto w-full max-w-md lg:max-w-none"
-        aria-hidden="true"
-      >
-        <div className="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-fuchsia-500/20 blur-2xl" />
-        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-bg-card)]/85 p-5 shadow-lg">
-          <div className="absolute inset-0 bg-grid opacity-35" />
-          <div className="relative rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg)]/70 p-4">
-            <div className="mb-4 flex items-center justify-between">
-              <span className="rounded-full bg-[var(--color-primary)]/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-primary)]">
-                AI Academy
-              </span>
-              <span className="tabular-nums text-xs font-semibold text-[var(--color-text-muted)]">
-                {statLessons}
-              </span>
-            </div>
-            <div className="grid gap-3">
-              {[
-                ["01", "AI Foundations", "Model behaviour, prompts, safety"],
-                ["02", "AI Mastery", "Systems, algorithms, engineering"],
-                ["03", "Career Ready", "Interview craft and evidence"],
-              ].map(([num, heading, body]) => (
-                <div
-                  key={num}
-                  className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] px-4 py-3 shadow-sm"
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="tabular-nums rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 px-2.5 py-1 text-xs font-black text-white">
-                      {num}
-                    </span>
-                    <div>
-                      <p className="font-bold text-[var(--color-text)]">
-                        {heading}
-                      </p>
-                      <p className="mt-0.5 text-sm text-[var(--color-text-muted)]">
-                        {body}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 p-4 text-white shadow-lg shadow-indigo-500/20">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/70">
-                Live learning map
-              </p>
-              <p className="mt-2 text-2xl font-black tracking-tight">
-                {statPrograms}
-              </p>
-              <p className="mt-1 text-sm text-white/78">{statLanguages}</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
