@@ -1,4 +1,9 @@
 import type { EmailTranslator } from "./email-i18n";
+import {
+  resolvePricingCurrency,
+  getPlanPriceLabels,
+  type PaidPlan,
+} from "./pricing";
 
 /**
  * Escapes a value for interpolation into an email HTML body. Translated copy is
@@ -201,9 +206,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "Resubscribe",
     cancelClosing: "We hope to see you back! Our free content is always available, and you can resubscribe anytime.",
     planLabel: "Plan",
-    monthly: "Pro Monthly (£3.99/mo)",
-    annual: "Pro Annual (£29.99/yr)",
-    lifetime: "Lifetime Access (£49.99)",
+    monthly: "Pro Monthly ({price}/mo)",
+    annual: "Pro Annual ({price}/yr)",
+    lifetime: "Lifetime Access ({price})",
   },
   fr: {
     proTitle: "Bienvenue chez Pro ! 🚀",
@@ -223,9 +228,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "Se reabonner",
     cancelClosing: "Nous esperons vous revoir ! Notre contenu gratuit est toujours disponible, et vous pouvez vous reabonner a tout moment.",
     planLabel: "Formule",
-    monthly: "Pro Mensuel (3,99 £/mois)",
-    annual: "Pro Annuel (29,99 £/an)",
-    lifetime: "Acces a vie (49,99 £)",
+    monthly: "Pro Mensuel ({price}/mois)",
+    annual: "Pro Annuel ({price}/an)",
+    lifetime: "Acces a vie ({price})",
   },
   nl: {
     proTitle: "Welkom bij Pro! 🚀",
@@ -245,9 +250,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "Opnieuw abonneren",
     cancelClosing: "We hopen je terug te zien! Onze gratis content is altijd beschikbaar en je kunt je altijd opnieuw abonneren.",
     planLabel: "Plan",
-    monthly: "Pro Maandelijks (£3,99/maand)",
-    annual: "Pro Jaarlijks (£29,99/jaar)",
-    lifetime: "Levenslange toegang (£49,99)",
+    monthly: "Pro Maandelijks ({price}/maand)",
+    annual: "Pro Jaarlijks ({price}/jaar)",
+    lifetime: "Levenslange toegang ({price})",
   },
   hi: {
     proTitle: "Pro में आपका स्वागत है! 🚀",
@@ -267,9 +272,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "फिर से सदस्यता लें",
     cancelClosing: "हम आपको फिर से देखने की उम्मीद करते हैं! हमारा फ्री कंटेंट हमेशा उपलब्ध है।",
     planLabel: "प्लान",
-    monthly: "Pro मासिक (£3.99/माह)",
-    annual: "Pro वार्षिक (£29.99/वर्ष)",
-    lifetime: "लाइफटाइम एक्सेस (£49.99)",
+    monthly: "Pro मासिक ({price}/माह)",
+    annual: "Pro वार्षिक ({price}/वर्ष)",
+    lifetime: "लाइफटाइम एक्सेस ({price})",
   },
   te: {
     proTitle: "Pro కి స్వాగతం! 🚀",
@@ -289,9 +294,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "మళ్ళీ సబ్‌స్క్రైబ్ చేయండి",
     cancelClosing: "మిమ్మల్ని మళ్ళీ చూడాలని ఆశిస్తున్నాము! మా ఉచిత కంటెంట్ ఎల్లప్పుడూ అందుబాటులో ఉంటుంది.",
     planLabel: "ప్లాన్",
-    monthly: "Pro నెలవారీ (£3.99/నెల)",
-    annual: "Pro వార్షిక (£29.99/సం.)",
-    lifetime: "లైఫ్‌టైమ్ యాక్సెస్ (£49.99)",
+    monthly: "Pro నెలవారీ ({price}/నెల)",
+    annual: "Pro వార్షిక ({price}/సం.)",
+    lifetime: "లైఫ్‌టైమ్ యాక్సెస్ ({price})",
   },
   de: {
     proTitle: "Willkommen bei Pro! 🚀",
@@ -311,9 +316,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "Abonnieren Sie erneut",
     cancelClosing: "Wir hoffen, Sie wiederzusehen! Unsere kostenlosen Inhalte sind immer verfügbar und Sie können sich jederzeit erneut anmelden.",
     planLabel: "Planen",
-    monthly: "Pro Monatlich (3,99 £/Monat)",
-    annual: "Pro Jährlich (29,99 £/Jahr)",
-    lifetime: "Lebenslanger Zugriff (49,99 £)",
+    monthly: "Pro Monatlich ({price}/Monat)",
+    annual: "Pro Jährlich ({price}/Jahr)",
+    lifetime: "Lebenslanger Zugriff ({price})",
   },
   es: {
     proTitle: "¡Bienvenido a Pro! 🚀",
@@ -333,9 +338,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "Volver a suscribirse",
     cancelClosing: "¡Esperamos verte de regreso! Nuestro contenido gratuito siempre está disponible y puedes volver a suscribirte en cualquier momento.",
     planLabel: "Plan",
-    monthly: "Pro Mensual (3,99 £/mes)",
-    annual: "Pro Anual (29,99 £/año)",
-    lifetime: "Acceso de por vida (49,99 £)",
+    monthly: "Pro Mensual ({price}/mes)",
+    annual: "Pro Anual ({price}/año)",
+    lifetime: "Acceso de por vida ({price})",
   },
   ja: {
     proTitle: "Proへようこそ！ 🚀",
@@ -355,9 +360,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "再購読",
     cancelClosing: "またお会いできるのを楽しみにしています！無料のコンテンツはいつでも利用でき、いつでも再購読できます。",
     planLabel: "プラン",
-    monthly: "Pro 毎月 (£3.99/月)",
-    annual: "Pro 年次 (£29.99/年)",
-    lifetime: "生涯アクセス (£49.99)",
+    monthly: "Pro 毎月 ({price}/月)",
+    annual: "Pro 年次 ({price}/年)",
+    lifetime: "生涯アクセス ({price})",
   },
   zh: {
     proTitle: "欢迎来到Pro！ 🚀",
@@ -377,9 +382,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "重新订阅",
     cancelClosing: "我们希望再次见到您！我们的免费内容始终可用，您可以随时重新订阅。",
     planLabel: "计划",
-    monthly: "Pro 每月 (£3.99/月)",
-    annual: "Pro 年度 (£29.99/年)",
-    lifetime: "终身访问 (£49.99)",
+    monthly: "Pro 每月 ({price}/月)",
+    annual: "Pro 年度 ({price}/年)",
+    lifetime: "终身访问 ({price})",
   },
   pt: {
     proTitle: "Bem-vindo ao Pro! 🚀",
@@ -399,9 +404,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "Inscrever-se novamente",
     cancelClosing: "Esperamos vê-lo de volta! Nosso conteúdo gratuito está sempre disponível e você pode assinar novamente a qualquer momento.",
     planLabel: "Plano",
-    monthly: "Pro Mensal (3,99 £/mês)",
-    annual: "Pro Anual (29,99 £/ano)",
-    lifetime: "Acesso vitalício (49,99 £)",
+    monthly: "Pro Mensal ({price}/mês)",
+    annual: "Pro Anual ({price}/ano)",
+    lifetime: "Acesso vitalício ({price})",
   },
   ar: {
     proTitle: "مرحبًا بك في Pro! 🚀",
@@ -421,9 +426,9 @@ const subscriptionStrings: Record<string, Record<string, string>> = {
     cancelCta: "إعادة الاشتراك",
     cancelClosing: "نأمل أن نراكم مرة أخرى! المحتوى المجاني الخاص بنا متاح دائمًا، ويمكنك إعادة الاشتراك في أي وقت.",
     planLabel: "يخطط",
-    monthly: "Pro شهريًا (£3.99/شهر)",
-    annual: "Pro سنوي (£29.99/سنة)",
-    lifetime: "الوصول مدى الحياة (£49.99)",
+    monthly: "Pro شهريًا ({price}/شهر)",
+    annual: "Pro سنوي ({price}/سنة)",
+    lifetime: "الوصول مدى الحياة ({price})",
   },
 };
 
@@ -436,7 +441,12 @@ export function subscriptionEmailHtml(
   const dir = locale === "ar" ? "rtl" : "ltr";
   const s = subscriptionStrings[locale] || subscriptionStrings.en;
   const isActivated = type === "activated";
-  const planLabel = s[plan as keyof typeof s] || plan;
+  const currency = resolvePricingCurrency(locale);
+  const priceLabels = getPlanPriceLabels(currency);
+  const planTemplate = (s[plan as keyof typeof s] as string) || plan;
+  const price =
+    plan in priceLabels ? priceLabels[plan as PaidPlan | "free"] : "";
+  const planLabel = planTemplate.replace("{price}", price);
   const title = isActivated ? s.proTitle : s.cancelTitle;
   const subtitle = isActivated ? s.proSubtitle : s.cancelSubtitle;
   const greeting = isActivated ? s.proGreeting : s.cancelGreeting;

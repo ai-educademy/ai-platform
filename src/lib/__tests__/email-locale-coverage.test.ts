@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { getEmailTranslator } from "../email-i18n";
 import { proUpgradeEmailHtml, welcomeEmailHtml, subscriptionEmailHtml } from "../emailTemplates";
 import { locales } from "@/i18n/locales";
+import { resolvePricingCurrency, getPlanPriceLabels } from "../pricing";
 
 const UNSUBSCRIBE = "https://aieducademy.org/unsubscribe?token=abc123";
 const PRICING = "https://aieducademy.org/pricing";
@@ -65,10 +66,13 @@ describe("welcome and subscription emails cover every locale", () => {
 
     expect(html).toContain(`lang="${locale}"`);
     expect(html).toContain(`dir="${locale === "ar" ? "rtl" : "ltr"}"`);
-    // The amount is held out of translation, but the decimal separator and the
-    // symbol's position are locale conventions, so assert on the digits only.
-    expect(html).toMatch(/3[.,]99/);
-    expect(html).toContain("£");
+    // The amount is held out of translation and comes from the single source of
+    // truth in pricing.ts, so INR locales must show the rupee price they are
+    // actually charged, not a stale GBP string.
+    const currency = resolvePricingCurrency(locale);
+    const monthlyLabel = getPlanPriceLabels(currency).monthly;
+    expect(html).toContain(monthlyLabel);
+    expect(html).toContain(currency === "inr" ? "₹" : "£");
     // "/mo" and "/yr" are English abbreviations. They were left behind in six
     // locales when the plan labels were first generated.
     if (locale !== "en") {
