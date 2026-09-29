@@ -263,6 +263,11 @@ export function Footer() {
                     {t("contact")}
                   </FooterLink>
                 </li>
+                <li>
+                  <FooterLink href={`${basePath}/sitemap`}>
+                    {t("sitemap")}
+                  </FooterLink>
+                </li>
               </ul>
             </nav>
           </div>

@@ -22,7 +22,7 @@
       "description": "AI Educademy チームが選んだ、無料枠と学生割引つきの最良の AI ツールの厳選ディレクトリ。"
     }
   },
-  "proUpsell":   {
+  "proUpsell": {
     "badge": "Proにする",
     "headingLead": "すべてを、",
     "headingHighlight": "Proで解放",
@@ -127,7 +127,8 @@
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
     "contact": "お問い合わせ",
-    "starterKit": "AIスターターキット"
+    "starterKit": "AIスターターキット",
+    "sitemap": "Sitemap"
   },
   "about": {
     "title": "AI Educademyについて",
@@ -2421,5 +2422,38 @@
     "introTitle": "導入プレビュー",
     "lockedTitle": "Proで{lessonTitle}を続ける",
     "lockedDescription": "{lessonTitle}は{programTitle}の一部です。アップグレードすると、完全なレッスン、クイズ、進捗トラッキング、すべてのアカデミーを利用できます。"
+  },
+  "sitemap": {
+    "seo": {
+      "title": "Sitemap",
+      "description": "Browse every page on AI Educademy: academies, lessons, blog posts, tools and more."
+    },
+    "eyebrow": "All pages",
+    "title": "Sitemap",
+    "intro": "Every page on AI Educademy, in one place. Explore our academies and lessons, the latest articles, our tools directory and more.",
+    "headings": {
+      "main": "Main pages",
+      "academies": "Academies & lessons",
+      "blog": "Blog",
+      "legal": "Legal"
+    },
+    "links": {
+      "home": "Home",
+      "programs": "Academies",
+      "lab": "Lab",
+      "mockInterview": "Mock Interview",
+      "journey": "Journey",
+      "tools": "AI Tools",
+      "blog": "Blog",
+      "about": "About",
+      "faq": "FAQ",
+      "starterKit": "AI Starter Kit",
+      "pricing": "Pricing",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "comingSoon": "Coming soon",
+    "xmlNote": "Looking for the machine-readable version? See our"
   }
 }

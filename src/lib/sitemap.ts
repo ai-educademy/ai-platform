@@ -48,6 +48,7 @@ const STATIC_PATHS = [
   { path: "/privacy", file: ["src", "app", "[locale]", "privacy", "page.tsx"] },
   { path: "/terms", file: ["src", "app", "[locale]", "terms", "page.tsx"] },
   { path: "/pricing", file: ["src", "app", "[locale]", "pricing", "page.tsx"] },
+  { path: "/sitemap", file: ["src", "app", "[locale]", "sitemap", "page.tsx"] },
 ];
 
 function existingFile(...segments: string[]): string | null {
