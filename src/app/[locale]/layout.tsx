@@ -142,6 +142,13 @@ const shouldLoadAnalytics =
   process.env.NODE_ENV === "production" &&
   process.env.VERCEL_ENV === "production";
 
+// Impact.com media-partner site-verification tag. Injected verbatim (value=)
+// rather than through Next's metadata API, which would emit content= instead.
+const impactSiteVerification: Record<string, string> = {
+  name: "impact-site-verification",
+  value: "7a08783b-6d4d-4575-80e9-dcdee74c3e1a",
+};
+
 const themeScript = `(function(){var q=new URLSearchParams(location.search).get('theme');var t=q==='dark'||q==='light'?q:localStorage.getItem('theme');if(q==='dark'||q==='light'){localStorage.setItem('theme',q)}if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light')}else{document.documentElement.classList.add('light');document.documentElement.classList.remove('dark')}})()`;
 
 export function generateStaticParams() {
@@ -180,6 +187,7 @@ export default async function LocaleLayout({
       className={inter.variable}
     >
       <head>
+        <meta {...impactSiteVerification} />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
