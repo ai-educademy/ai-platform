@@ -12,7 +12,7 @@ const entries = routing.locales.flatMap((locale) =>
 );
 const urls = entries.map((entry) => entry.url);
 const indexableProgrammes = getPrograms();
-const staticPageCount = 13;
+const staticPageCount = 14;
 const expectedPerLocale =
   staticPageCount +
   indexableProgrammes.length +
