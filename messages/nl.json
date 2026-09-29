@@ -1,4 +1,16 @@
 {
+  "proUpsell":   {
+    "badge": "Word Pro",
+    "headingLead": "Ontgrendel alles met",
+    "headingHighlight": "Pro",
+    "subheading": "Je leert nu met de gratis les. Pro opent elke academy, elk project, lab en certificaat, in alle 11 talen.",
+    "trialLead": "{days} dagen gratis proberen.",
+    "trialThen": "daarna {price}/maand. Altijd opzegbaar.",
+    "cta": "Gratis proberen",
+    "dismiss": "Misschien later",
+    "dontShowAgain": "Niet meer tonen",
+    "closeLabel": "Sluiten"
+  },
   "meta": {
     "title": "AI Educademy: leer AI op jouw manier",
     "description": "Leer kunstmatige intelligentie vanaf nul, in jouw taal. Geen programmeerervaring nodig."

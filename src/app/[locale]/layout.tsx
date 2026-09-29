@@ -15,6 +15,7 @@ import { Providers } from "@/components/ui/Providers";
 import { EmailVerificationBanner } from "@/components/auth/EmailVerificationBanner";
 
 import { LazyChatWidget } from "@/components/ui/LazyChatWidget";
+import { LazyProUpsellModal } from "@/components/ui/LazyProUpsellModal";
 import { ReferralTracker } from "@/components/ReferralTracker";
 
 import { buildAlternates, getPageSeo, SOCIAL_IMAGE_URL } from "@/lib/seo";
@@ -206,6 +207,7 @@ export default async function LocaleLayout({
               <Footer />
             </div>
             <LazyChatWidget />
+            <LazyProUpsellModal />
             {/* useSearchParams() opts the whole tree out of static rendering
                 unless it sits behind a Suspense boundary. This component only
                 runs effects and renders null, so there is nothing to fall back

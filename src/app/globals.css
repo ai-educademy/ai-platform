@@ -1691,3 +1691,39 @@ h6 {
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
+/* Pro upsell modal entrance */
+@keyframes pro-upsell-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pro-upsell-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pro-upsell-fade {
+  animation: pro-upsell-fade-in 0.2s ease-out both;
+}
+
+.pro-upsell-pop {
+  animation: pro-upsell-pop-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pro-upsell-fade,
+  .pro-upsell-pop {
+    animation: none;
+  }
+}

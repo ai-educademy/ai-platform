@@ -1,4 +1,16 @@
 {
+  "proUpsell":   {
+    "badge": "Go Pro",
+    "headingLead": "Unlock everything with",
+    "headingHighlight": "Pro",
+    "subheading": "You're on the free lesson. Pro opens every academy, project, lab and certificate, in all 11 languages.",
+    "trialLead": "{days}-day free trial.",
+    "trialThen": "then {price}/month. Cancel anytime.",
+    "cta": "Start free trial",
+    "dismiss": "Maybe later",
+    "dontShowAgain": "Don't show this again",
+    "closeLabel": "Close"
+  },
   "meta": {
     "title": "AI Educademy: Learn AI, Your Way",
     "description": "Learn Artificial Intelligence from scratch, in your language. No coding experience needed."
