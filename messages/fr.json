@@ -1,4 +1,27 @@
 {
+  "tools": {
+    "eyebrow": "BOÎTE À OUTILS",
+    "title": "Les outils IA que nous recommandons",
+    "subtitle": "Une sélection d'outils IA que nous utilisons, enseignons et en qui nous avons confiance. Offres gratuites, réductions étudiantes et choix honnêtes.",
+    "disclosure": "Certains liens sont des liens d'affiliation ou de partenariat. Si vous vous inscrivez via ces liens, nous pouvons percevoir une petite commission, sans coût supplémentaire pour vous. Nous ne listons que des outils que nous apprécions vraiment.",
+    "regionNote": "Offres pertinentes pour {country}.",
+    "filterLabel": "Filtrer les outils par catégorie",
+    "all": "Tous",
+    "visit": "Voir",
+    "visitAria": "Voir {name} (ouvre un nouvel onglet)",
+    "categories": {
+      "chat": "Assistants",
+      "devtools": "Développement",
+      "cloud": "Calcul",
+      "data": "Données & vecteurs",
+      "automation": "Automatisation",
+      "learning": "Apprentissage"
+    },
+    "seo": {
+      "title": "Répertoire d'outils IA",
+      "description": "Une sélection des meilleurs outils IA, avec offres gratuites et réductions étudiantes, choisis par l'équipe AI Educademy."
+    }
+  },
   "proUpsell":   {
     "badge": "Passer Pro",
     "headingLead": "Débloquez tout avec",
@@ -16,6 +39,8 @@
     "description": "Apprenez l'Intelligence Artificielle à partir de zéro, dans votre langue. Aucune expérience en programmation requise."
   },
   "nav": {
+    "tools": "Outils IA",
+    "toolsDesc": "Une sélection d'outils que nous utilisons et recommandons",
     "home": "Accueil",
     "lessons": "Leçons",
     "dashboard": "Tableau de bord",

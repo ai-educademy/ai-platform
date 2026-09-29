@@ -1,4 +1,27 @@
 {
+  "tools": {
+    "eyebrow": "WERKZEUGKASTEN",
+    "title": "KI-Tools, die wir empfehlen",
+    "subtitle": "Ein handverlesenes Verzeichnis der KI-Tools, die wir wirklich nutzen, mit denen wir lehren und denen wir vertrauen. Kostenlose Tarife, Studentenrabatte und ehrliche Empfehlungen.",
+    "disclosure": "Einige Links sind Affiliate- oder Partnerlinks. Wenn du dich darüber anmeldest, erhalten wir möglicherweise eine kleine Provision, ohne Mehrkosten für dich. Wir listen nur Tools, die wir wirklich schätzen.",
+    "regionNote": "Passende Angebote für {country}.",
+    "filterLabel": "Tools nach Kategorie filtern",
+    "all": "Alle",
+    "visit": "Ansehen",
+    "visitAria": "{name} ansehen (öffnet in einem neuen Tab)",
+    "categories": {
+      "chat": "Assistenten",
+      "devtools": "Entwicklung",
+      "cloud": "Rechenleistung",
+      "data": "Daten & Vektoren",
+      "automation": "Automatisierung",
+      "learning": "Lernen"
+    },
+    "seo": {
+      "title": "KI-Tools-Verzeichnis",
+      "description": "Ein handverlesenes Verzeichnis der besten KI-Tools, mit kostenlosen Tarifen und Studentenrabatten, ausgewählt vom AI-Educademy-Team."
+    }
+  },
   "proUpsell":   {
     "badge": "Pro holen",
     "headingLead": "Schalte alles frei mit",
@@ -16,6 +39,8 @@
     "description": "Lerne Künstliche Intelligenz von Grund auf, in deiner Sprache. Keine Programmiererfahrung nötig."
   },
   "nav": {
+    "tools": "KI-Tools",
+    "toolsDesc": "Sorgfältig ausgewählte Tools, die wir nutzen und empfehlen",
     "home": "Startseite",
     "lessons": "Lektionen",
     "dashboard": "Armaturenbrett",

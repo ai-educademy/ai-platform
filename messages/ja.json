@@ -1,4 +1,27 @@
 {
+  "tools": {
+    "eyebrow": "ツールキット",
+    "title": "おすすめの AI ツール",
+    "subtitle": "私たちが実際に使い、教え、信頼している AI ツールの厳選ディレクトリ。無料枠、学生割引、正直なおすすめ。",
+    "disclosure": "一部のリンクはアフィリエイトまたはパートナーリンクです。これらから登録されると、追加費用なしで少額の手数料を得ることがあります。本当に評価しているツールのみを掲載しています。",
+    "regionNote": "{country} に関連するオファーを表示しています。",
+    "filterLabel": "カテゴリでツールを絞り込む",
+    "all": "すべて",
+    "visit": "見る",
+    "visitAria": "{name} を見る（新しいタブで開きます）",
+    "categories": {
+      "chat": "アシスタント",
+      "devtools": "開発",
+      "cloud": "コンピュート",
+      "data": "データとベクトル",
+      "automation": "自動化",
+      "learning": "学習"
+    },
+    "seo": {
+      "title": "AI ツール ディレクトリ",
+      "description": "AI Educademy チームが選んだ、無料枠と学生割引つきの最良の AI ツールの厳選ディレクトリ。"
+    }
+  },
   "proUpsell":   {
     "badge": "Proにする",
     "headingLead": "すべてを、",
@@ -16,6 +39,8 @@
     "description": "ゼロから始めるAI学習。あなたの言語で。コーディング経験不要。"
   },
   "nav": {
+    "tools": "AI ツール",
+    "toolsDesc": "私たちが使い、おすすめする厳選ツール",
     "home": "ホーム",
     "lessons": "レッスン",
     "dashboard": "ダッシュボード",

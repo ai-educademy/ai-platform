@@ -1,4 +1,27 @@
 {
+  "tools": {
+    "eyebrow": "工具箱",
+    "title": "我们推荐的 AI 工具",
+    "subtitle": "我们真正使用、教学并信赖的 AI 工具精选目录。免费额度、学生优惠和诚实推荐。",
+    "disclosure": "部分链接为联盟或合作伙伴链接。如果你通过这些链接注册，我们可能获得少量佣金，你无需支付额外费用。我们只列出真正认可的工具。",
+    "regionNote": "正在显示与 {country} 相关的优惠。",
+    "filterLabel": "按类别筛选工具",
+    "all": "全部",
+    "visit": "访问",
+    "visitAria": "访问 {name}（在新标签页打开）",
+    "categories": {
+      "chat": "助手",
+      "devtools": "开发",
+      "cloud": "算力",
+      "data": "数据与向量",
+      "automation": "自动化",
+      "learning": "学习"
+    },
+    "seo": {
+      "title": "AI 工具目录",
+      "description": "由 AI Educademy 团队精选的最佳 AI 工具目录，包含免费额度和学生优惠。"
+    }
+  },
   "proUpsell":   {
     "badge": "升级 Pro",
     "headingLead": "用",
@@ -16,6 +39,8 @@
     "description": "从零开始学习人工智能，用你的母语。无需编程经验。"
   },
   "nav": {
+    "tools": "AI 工具",
+    "toolsDesc": "我们使用并推荐的精选工具",
     "home": "首页",
     "lessons": "课程",
     "dashboard": "仪表板",
