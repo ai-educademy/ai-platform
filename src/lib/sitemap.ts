@@ -34,6 +34,7 @@ const STATIC_PATHS = [
   { path: "/about", file: ["src", "app", "[locale]", "about", "page.tsx"] },
   { path: "/blog", file: ["src", "app", "[locale]", "blog", "page.tsx"] },
   { path: "/faq", file: ["src", "app", "[locale]", "faq", "page.tsx"] },
+  { path: "/tools", file: ["src", "app", "[locale]", "tools", "page.tsx"] },
   {
     path: "/mock-interview",
     file: ["src", "app", "[locale]", "mock-interview", "page.tsx"],

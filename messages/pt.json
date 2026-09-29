@@ -1,4 +1,27 @@
 {
+  "tools": {
+    "eyebrow": "CAIXA DE FERRAMENTAS",
+    "title": "Ferramentas de IA que recomendamos",
+    "subtitle": "Um diretório selecionado de ferramentas de IA que realmente usamos, ensinamos e confiamos. Planos gratuitos, descontos para estudantes e escolhas honestas.",
+    "disclosure": "Alguns links são de afiliados ou parceiros. Se você se inscrever por eles, podemos ganhar uma pequena comissão, sem custo adicional para você. Só listamos ferramentas que realmente valorizamos.",
+    "regionNote": "Mostrando ofertas relevantes para {country}.",
+    "filterLabel": "Filtrar ferramentas por categoria",
+    "all": "Todas",
+    "visit": "Ver",
+    "visitAria": "Ver {name} (abre em uma nova aba)",
+    "categories": {
+      "chat": "Assistentes",
+      "devtools": "Desenvolvimento",
+      "cloud": "Computação",
+      "data": "Dados e vetores",
+      "automation": "Automação",
+      "learning": "Aprendizado"
+    },
+    "seo": {
+      "title": "Diretório de ferramentas de IA",
+      "description": "Um diretório selecionado das melhores ferramentas de IA, com planos gratuitos e descontos para estudantes, escolhidas pela equipe da AI Educademy."
+    }
+  },
   "proUpsell":   {
     "badge": "Seja Pro",
     "headingLead": "Desbloqueie tudo com o",
@@ -16,6 +39,8 @@
     "description": "Aprenda Inteligência Artificial do zero, no seu idioma. Nenhuma experiência em programação necessária."
   },
   "nav": {
+    "tools": "Ferramentas de IA",
+    "toolsDesc": "Ferramentas selecionadas que usamos e recomendamos",
     "home": "Inicio",
     "lessons": "Aulas",
     "dashboard": "Painel",

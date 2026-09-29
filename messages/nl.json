@@ -1,4 +1,27 @@
 {
+  "tools": {
+    "eyebrow": "GEREEDSCHAP",
+    "title": "AI-tools die wij aanraden",
+    "subtitle": "Een zorgvuldig gekozen overzicht van AI-tools die we echt gebruiken, mee lesgeven en vertrouwen. Gratis versies, studentenkortingen en eerlijke keuzes.",
+    "disclosure": "Sommige links zijn affiliate- of partnerlinks. Als je je via deze links aanmeldt, ontvangen we mogelijk een kleine commissie, zonder extra kosten voor jou. We vermelden alleen tools die we echt waarderen.",
+    "regionNote": "Aanbiedingen relevant voor {country}.",
+    "filterLabel": "Filter tools op categorie",
+    "all": "Alle",
+    "visit": "Bekijk",
+    "visitAria": "Bekijk {name} (opent in een nieuw tabblad)",
+    "categories": {
+      "chat": "Assistenten",
+      "devtools": "Ontwikkelaars",
+      "cloud": "Rekenkracht",
+      "data": "Data & vectoren",
+      "automation": "Automatisering",
+      "learning": "Leren"
+    },
+    "seo": {
+      "title": "AI-tools overzicht",
+      "description": "Een zorgvuldig gekozen overzicht van de beste AI-tools, met gratis versies en studentenkortingen, gekozen door het AI Educademy-team."
+    }
+  },
   "proUpsell":   {
     "badge": "Word Pro",
     "headingLead": "Ontgrendel alles met",
@@ -16,6 +39,8 @@
     "description": "Leer kunstmatige intelligentie vanaf nul, in jouw taal. Geen programmeerervaring nodig."
   },
   "nav": {
+    "tools": "AI-tools",
+    "toolsDesc": "Zorgvuldig gekozen tools die we gebruiken en aanraden",
     "home": "Thuis",
     "lessons": "Lessen",
     "dashboard": "Leerbord",

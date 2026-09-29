@@ -4,6 +4,7 @@ import { routing } from "./i18n/routing";
 import { getBlogPost } from "./lib/blog";
 import { getLesson, getLessons } from "./lib/lessons";
 import { getProgram, getPrograms } from "./lib/programs";
+import { COUNTRY_COOKIE } from "./lib/geo";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -96,13 +97,28 @@ export default function proxy(request: NextRequest) {
     return notFoundResponse(request);
   }
 
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+
+  // Stamp the visitor's country into a client-readable cookie so static pages
+  // (e.g. the tools directory) can tailor offers by region without becoming
+  // dynamic. Vercel injects x-vercel-ip-country at the edge; absent locally.
+  const country = request.headers.get("x-vercel-ip-country");
+  if (country && response) {
+    response.cookies.set(COUNTRY_COOKIE, country.toUpperCase(), {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+      sameSite: "lax",
+      httpOnly: false,
+    });
+  }
+
+  return response;
 }
 
 export const config = {
   matcher: [
     "/",
     "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?",
-    "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?/:path(about|achievement|admin|blog|bookmarks|contact|dashboard|faq|forgot-password|journey|lab|lessons|mock-interview|offline|onboarding|pricing|privacy|programs|reset-password|resources|signin|signup|terms|unsubscribe|verify-email)(.*)",
+    "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?/:path(about|achievement|admin|blog|bookmarks|contact|dashboard|faq|forgot-password|journey|lab|lessons|mock-interview|offline|onboarding|pricing|privacy|programs|reset-password|resources|signin|signup|terms|tools|unsubscribe|verify-email)(.*)",
   ],
 };

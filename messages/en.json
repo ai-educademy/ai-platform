@@ -1,4 +1,27 @@
 {
+  "tools": {
+    "eyebrow": "TOOLKIT",
+    "title": "AI Tools We Recommend",
+    "subtitle": "A hand-picked directory of the AI tools we actually use, teach with and trust. Free tiers, student deals and honest picks.",
+    "disclosure": "Some links are affiliate or partner links. If you sign up through them we may earn a small commission, at no extra cost to you. We only list tools we genuinely rate.",
+    "regionNote": "Showing offers relevant to {country}.",
+    "filterLabel": "Filter tools by category",
+    "all": "All",
+    "visit": "Visit",
+    "visitAria": "Visit {name} (opens in a new tab)",
+    "categories": {
+      "chat": "Assistants",
+      "devtools": "Developer",
+      "cloud": "Compute",
+      "data": "Data & vectors",
+      "automation": "Automation",
+      "learning": "Learning"
+    },
+    "seo": {
+      "title": "AI Tools Directory",
+      "description": "A curated directory of the best AI tools, with free tiers and student deals, chosen by the AI Educademy team."
+    }
+  },
   "proUpsell":   {
     "badge": "Go Pro",
     "headingLead": "Unlock everything with",
@@ -16,6 +39,8 @@
     "description": "Learn Artificial Intelligence from scratch, in your language. No coding experience needed."
   },
   "nav": {
+    "tools": "AI Tools",
+    "toolsDesc": "Curated tools we use and recommend",
     "home": "Home",
     "lessons": "Lessons",
     "dashboard": "Dashboard",
