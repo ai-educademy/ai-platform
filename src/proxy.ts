@@ -120,5 +120,6 @@ export const config = {
     "/",
     "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?",
     "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?/:path(about|achievement|admin|blog|bookmarks|contact|dashboard|faq|forgot-password|journey|lab|lessons|mock-interview|offline|onboarding|pricing|privacy|programs|reset-password|resources|signin|signup|terms|tools|unsubscribe|verify-email)(.*)",
+    "/:locale(en|fr|nl|hi|te|es|pt|de|zh|ja|ar)?/sitemap",
   ],
 };
