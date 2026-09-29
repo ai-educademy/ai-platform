@@ -85,9 +85,9 @@ const PAGE_SEO: Record<SupportedLocale, Record<StaticSeoKey, SeoCopy>> = {
         "Map your AI learning path from first concepts to career readiness with guided milestones, programme choices and practical next steps.",
     },
     mockInterview: {
-      title: "AI mock interview practice",
+      title: "AI Mock Interview: Practice Questions & Answers",
       description:
-        "Practise AI, machine learning and system design interviews with guided prompts, feedback loops and career-ready preparation tools.",
+        "Practise AI, machine learning and system design interviews with real questions, model answers, guided prompts and instant feedback. Free to start.",
     },
     starterKit: {
       title: "Free AI starter kit resources",
