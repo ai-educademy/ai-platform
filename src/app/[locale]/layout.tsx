@@ -180,6 +180,10 @@ export default async function LocaleLayout({
       className={inter.variable}
     >
       <head>
+        <meta
+          name="impact-site-verification"
+          value="7a08783b-6d4d-4575-80e9-dcdee74c3e1a"
+        />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
