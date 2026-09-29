@@ -9,6 +9,7 @@ import { AnimatedSection } from "@/components/ui/MotionWrappers";
 import { ListenButton } from "@/components/ui/ListenButton";
 import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { ShareButtons } from "@/components/blog/ShareButtons";
+import { BlogComments } from "@/components/blog/BlogComments";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { slugify } from "@/lib/slugify";
 import { BASE_URL, createSeoMetadata } from "@/components/seo/metadata";
@@ -256,6 +257,9 @@ export default async function BlogPostPage({
                   description={post.description}
                 />
               </div>
+
+              {/* Comments: reuses the platform comment system, deferred to protect the function quota */}
+              <BlogComments slug={slug} />
 
               {/* Start Learning CTA.
                   This block used to be hard-coded English on all 11 locales,
