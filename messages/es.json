@@ -1,4 +1,16 @@
 {
+  "proUpsell":   {
+    "badge": "Hazte Pro",
+    "headingLead": "Desbloquea todo con",
+    "headingHighlight": "Pro",
+    "subheading": "Estás en la lección gratuita. Pro abre todas las academias, proyectos, labs y certificados, en los 11 idiomas.",
+    "trialLead": "{days} días de prueba gratis.",
+    "trialThen": "luego {price}/mes. Cancela cuando quieras.",
+    "cta": "Empezar prueba gratis",
+    "dismiss": "Quizás más tarde",
+    "dontShowAgain": "No volver a mostrar",
+    "closeLabel": "Cerrar"
+  },
   "meta": {
     "title": "AI Educademy: aprende IA a tu manera",
     "description": "Aprende Inteligencia Artificial desde cero, en tu idioma. No se necesita experiencia en programación."

@@ -1,4 +1,16 @@
 {
+  "proUpsell":   {
+    "badge": "Pro holen",
+    "headingLead": "Schalte alles frei mit",
+    "headingHighlight": "Pro",
+    "subheading": "Du lernst gerade mit der kostenlosen Lektion. Pro öffnet jede Akademie, jedes Projekt, Lab und Zertifikat, in allen 11 Sprachen.",
+    "trialLead": "{days} Tage kostenlos testen.",
+    "trialThen": "danach {price}/Monat. Jederzeit kündbar.",
+    "cta": "Kostenlos testen",
+    "dismiss": "Vielleicht später",
+    "dontShowAgain": "Nicht mehr anzeigen",
+    "closeLabel": "Schließen"
+  },
   "meta": {
     "title": "AI Educademy: KI lernen, auf deine Art",
     "description": "Lerne Künstliche Intelligenz von Grund auf, in deiner Sprache. Keine Programmiererfahrung nötig."

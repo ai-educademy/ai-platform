@@ -1,4 +1,16 @@
 {
+  "proUpsell":   {
+    "badge": "Proにする",
+    "headingLead": "すべてを、",
+    "headingHighlight": "Proで解放",
+    "subheading": "いまは無料レッスンで学習中です。Proならすべてのアカデミー、プロジェクト、ラボ、修了証が、11言語すべてで使えます。",
+    "trialLead": "{days}日間の無料トライアル。",
+    "trialThen": "その後は{price}/月。いつでも解約可能。",
+    "cta": "無料で始める",
+    "dismiss": "あとで",
+    "dontShowAgain": "今後表示しない",
+    "closeLabel": "閉じる"
+  },
   "meta": {
     "title": "AI Educademy：自分のやり方でAIを学ぶ",
     "description": "ゼロから始めるAI学習。あなたの言語で。コーディング経験不要。"

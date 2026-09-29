@@ -1,4 +1,16 @@
 {
+  "proUpsell":   {
+    "badge": "升级 Pro",
+    "headingLead": "用",
+    "headingHighlight": "Pro 解锁全部",
+    "subheading": "你正在学习免费课程。Pro 解锁全部学院、项目、实验室和证书，支持全部 11 种语言。",
+    "trialLead": "{days} 天免费试用。",
+    "trialThen": "之后 {price}/月，随时取消。",
+    "cta": "开始免费试用",
+    "dismiss": "以后再说",
+    "dontShowAgain": "不再显示",
+    "closeLabel": "关闭"
+  },
   "meta": {
     "title": "AI Educademy：以你的方式学习 AI",
     "description": "从零开始学习人工智能，用你的母语。无需编程经验。"
