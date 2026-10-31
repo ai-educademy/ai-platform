@@ -84,20 +84,20 @@
     "goPro": "Passer à Pro"
   },
   "hero": {
-    "badge": "Open Source • Multilingue",
+    "badge": "Compétences pratiques en IA · 11 langues · Conçu pour l'ère de l'IA",
     "title": "Apprentissage de l’IA,",
-    "titleHighlight": "Simplifié.",
-    "subtitle": "Des leçons interactives qui vous accompagnent de la curiosité à la maîtrise. Partez de zéro - allez aussi loin que vous le souhaitez.",
-    "cta": "Commencez votre parcours IA",
-    "ctaSecondary": "Explorer le Labo",
-    "students": "Apprenants actifs",
+    "titleHighlight": "Conçu pour demain.",
+    "subtitle": "Développez une véritable maîtrise de l'IA grâce à des académies guidées, des laboratoires interactifs et des projets prêts pour la carrière. Apprenez les concepts, lancez vos travaux et gardez une longueur d'avance à mesure que le domaine évolue.",
+    "cta": "Explorer les académies",
+    "ctaSecondary": "Explorer le Labo IA",
+    "students": "Apprenants",
     "languages": "Langues",
     "lessons": "Leçons interactives",
     "cost": "Coût",
-    "openSource": "Code ouvert",
-    "statPrograms": "10 Programmes",
-    "statLessons": "{count}+ lecons",
-    "statLanguages": "10 Langues"
+    "openSource": "Open Source",
+    "statPrograms": "15 Programmes",
+    "statLessons": "{count} Leçons",
+    "statLanguages": "11 Langues"
   },
   "features": {
     "lessonsTitle": "100+ leçons d'experts",
